@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: sap-lcm-videos.html 
+summary: SAP 수명 주기 관리에 대해 설명하는 비디오 및 데모 시리즈 
+keywords: netapp, solutions, SAP, lifecycle, management, lcm, videos, demos 
+---
+= SAP Lifecycle Management 비디오 및 데모
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP 수명 주기 관리를 강조하는 비디오 및 데모 개요
+
+
+
+=== SAP Lifecycle Management 비디오 및 데모
+
+* link:https://www.netapp.tv/details/25588["SAP 프로젝트의 위험 감소 및 품질 향상"]
+* link:https://www.netapp.tv/details/25595["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"]
+* link:https://www.netapp.tv/details/28400["SnapCenter 사용 사례"]
+* link:https://www.netapp.tv/details/28401["Libelle 및 SnapCenter와 함께 SAP 시스템 복사"]
+

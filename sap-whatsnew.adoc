@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: sap-whatsnew.html 
+summary: SAP 솔루션 포트폴리오에 최근 추가되었습니다 
+keywords: netapp, solutions, SAP, what's new 
+---
+= SAP의 새로운 기능
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+최신 SAP 솔루션 및 솔루션 자료 개요
+
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/backup/saphana-backup-anf-overview.html["TR-4905: SnapCenter 기반 SAP HANA 백업 및 복구(Azure NetApp Files 서비스 포함)"]
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/backup/saphana-dr-anf_data_protection_overview_overview.html["TR-4891: Azure NetApp Files를 사용한 SAP HANA 재해 복구"]
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/bp/saphana_aff_nfs_introduction.html["TR-4435: NFS 구성 가이드를 지원하는 NetApp AFF 시스템 기반 SAP HANA"]
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/bp/saphana-fas-nfs_introduction.html["TR-4290: NFS 구성 가이드가 있는 NetApp FAS 시스템 기반 SAP HANA"]
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/bp/saphana_fas_fc_introduction.html["TR-4384: 파이버 채널 프로토콜 구성 가이드를 지원하는 NetApp FAS 시스템 기반 SAP HANA"]
+* link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_saphome/bp/saphana_aff_fc_introduction.html["TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"]
+

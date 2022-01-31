@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana_aff_nfs_sap_hana_data_volume_size.html 
+keywords: data volume, service, 
+summary: 기본적으로 SAP HANA는 SAP HANA 서비스당 하나의 데이터 볼륨만 사용합니다. 파일 시스템의 최대 파일 크기 제한 때문에 최대 데이터 볼륨 크기를 제한하는 것이 좋습니다. 
+---
+= SAP HANA 데이터 볼륨 크기
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html["이전: SAP HANA용 I/O 스택 구성"]
+
+기본적으로 SAP HANA는 SAP HANA 서비스당 하나의 데이터 볼륨만 사용합니다. 파일 시스템의 최대 파일 크기 제한 때문에 최대 데이터 볼륨 크기를 제한하는 것이 좋습니다.
+
+자동으로 설정하려면 '[지속성]' 섹션의 global.ini` 에서 다음 매개변수를 설정합니다.
+
+....
+datavolume_striping = true
+datavolume_striping_size_gb = 8000
+....
+이렇게 하면 8,000GB 제한에 도달한 후 새 데이터 볼륨이 생성됩니다. https://launchpad.support.sap.com/["SAP 메모 240005 질문 15"^] 자세한 내용은 에 나와 있습니다.
+
+link:saphana_aff_nfs_sap_hana_software_installation.html["다음: SAP HANA 소프트웨어 설치"]

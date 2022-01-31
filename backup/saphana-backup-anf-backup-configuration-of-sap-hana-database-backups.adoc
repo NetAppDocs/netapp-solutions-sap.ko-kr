@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html 
+keywords: configuration, database, backups, MDC 
+summary: 이 섹션에서는 단일 호스트 SAP HANA MDC 단일 테넌트 시스템 PR1의 구성 단계를 설명합니다. 이 단계는 여러 테넌트가 있는 MDC 시스템에서 동일합니다. 단일 컨테이너 또는 다중 호스트 시스템의 차이점은 해당 구성 단계에 반영됩니다. 
+---
+= SAP HANA 데이터베이스 백업의 백업 구성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html["이전: SnapCenter 서비스 스냅샷 백업 구성 개요"]
+
+이 섹션에서는 단일 호스트 SAP HANA MDC 단일 테넌트 시스템 PR1의 구성 단계를 설명합니다. 이 단계는 여러 테넌트가 있는 MDC 시스템에서 동일합니다. 단일 컨테이너 또는 다중 호스트 시스템의 차이점은 해당 구성 단계에 반영됩니다.
+
+
+
+== SAP HANA 백업 사용자
+
+SnapCenter 서비스를 사용하여 백업 작업을 실행하려면 HANA 데이터베이스에 전용 데이터베이스 사용자를 구성하는 것이 좋습니다. SnapCenter 서비스의 HANA 시스템 구성 중에 이 백업 사용자에 대해 HANA 데이터베이스 사용자 저장소 키가 구성되고 이 사용자 저장소 키는 HANA 시스템과 통신하는 데 사용됩니다.
+
+다음 그림에서는 백업 사용자를 생성하는 데 사용할 수 있는 SAP HANA Studio의 스크린샷을 보여 줍니다.
+
+
+NOTE: SAP HANA 2.0 SPS5 릴리즈에서 변경된 필수 권한: 백업 관리자, 카탈로그 읽기, 데이터베이스 백업 관리자 및 데이터베이스 복구 운영자 필요 이전 릴리즈의 경우 백업 관리자 및 카탈로그 읽기에 충분합니다.
+
+단일 또는 다중 테넌트가 있는 SAP HANA MDC 시스템의 경우 시스템 데이터베이스를 사용하여 시스템 데이터베이스와 테넌트 데이터베이스의 모든 백업 명령을 실행하기 때문에 시스템 데이터베이스에 사용자를 생성해야 합니다.
+
+image:saphana-backup-anf-image19.png["오류: 그래픽 이미지가 없습니다"]
+
+
+
+== SnapCenter 서비스의 SAP HANA 시스템 구성
+
+SnapCenter 서비스에서 SAP HANA 시스템 PR1을 구성하려면 다음 단계를 수행하십시오.
+
+. SAP HANA 시스템 으로 이동하여 추가 를 클릭합니다.
+. 시스템 세부 정보 화면에서 시스템 유형, HANA 단일 컨테이너 또는 멀티 테넌트 데이터베이스 컨테이너를 선택합니다. HANA 시스템의 SID를 제공하고 선택한 텍스트를 시스템 이름으로 입력합니다.
+. HANA 데이터베이스 사용자 저장소 키를 추가하려면 키 추가를 클릭합니다.
++
+image:saphana-backup-anf-image20.png["오류: 그래픽 이미지가 없습니다"]
+
+. HANA 데이터베이스의 사용자 저장소 키를 구성하기 위한 정보를 입력합니다. 키 이름으로 원하는 이름을 지정할 수 있습니다.
++
+시스템 세부 정보에는 hdbsql 클라이언트를 사용하여 시스템 데이터베이스와 통신할 IP 주소 및 포트가 포함됩니다. SAP HANA MDC 단일 테넌트 설정의 경우 포트 '3<instanceNo>13'이 시스템 데이터베이스에 대한 SQL 액세스를 위한 표준 포트입니다. SAP HANA 단일 컨테이너 설정의 경우 포트 '3<instanceNo>15'가 인덱스 서버에 대한 SQL 액세스를 위한 표준 포트이며 구성에 사용되어야 합니다. SAP HANA 다중 호스트 설정의 경우 모든 호스트에 대해 사용자 저장소 키를 구성해야 합니다. SnapCenter 서비스는 제공된 각 키를 사용하여 데이터베이스에 연결을 시도하므로 SAP HANA 서비스를 다른 호스트로 페일오버하는 것과 독립적으로 작동할 수 있습니다.
+
++
+이전에 구성된 시스템 데이터베이스에 있는 데이터베이스 사용자의 사용자 이름과 암호를 입력해야 합니다. SnapCenter는 이 정보를 사용하여 사용자 저장소 키를 자동으로 생성하고 이 키를 사용하여 HANA 데이터베이스와 통신합니다.
+
+. 계속하려면 추가를 클릭합니다.
++
+image:saphana-backup-anf-image21.png["오류: 그래픽 이미지가 없습니다"]
+
+. 스토리지 설치 공간 구성으로 진행하려면 계속을 클릭합니다.
++
+image:saphana-backup-anf-image22.png["오류: 그래픽 이미지가 없습니다"]
+
+. HANA 시스템의 스토리지 볼륨에 대한 정보를 입력합니다.
++
+HANA 시스템의 Azure NetApp Files 볼륨에 사용되는 작업 환경과 NetApp 계정을 선택합니다. HANA 시스템의 데이터 볼륨(예: 'PR1_DATA_mnt00001')을 선택합니다.
+
++
+SAP HANA 다중 호스트 시스템의 경우 시스템에 속한 모든 HANA 호스트의 데이터 볼륨을 선택해야 합니다.
+
++
+image:saphana-backup-anf-image23.png["오류: 그래픽 이미지가 없습니다"]
+
++
+image:saphana-backup-anf-image24.png["오류: 그래픽 이미지가 없습니다"]
+
+. 계속 을 클릭합니다.
++
+image:saphana-backup-anf-image25.png["오류: 그래픽 이미지가 없습니다"]
+
+. HANA 시스템을 추가하려면 추가 를 클릭합니다.
++
+image:saphana-backup-anf-image26.png["오류: 그래픽 이미지가 없습니다"]
+
+. 보호 구성을 계속하려면 Proceed(계속) 를 클릭합니다.
++
+image:saphana-backup-anf-image27.png["오류: 그래픽 이미지가 없습니다"]
+
++
+화면에 SnapCenter 서비스에 구성된 모든 정책이 표시됩니다.
+
++
+image:saphana-backup-anf-image28.png["오류: 그래픽 이미지가 없습니다"]
+
+. 할당할 정책을 선택합니다. 예를 들어, 이전에 만든 정책 '스냅샷4시간' 및 '블록통합성 체크에버데이'를 선택합니다.
+. HANA 시스템에 정책을 할당하려면 보호 를 클릭합니다.
++
+image:saphana-backup-anf-image29.png["오류: 그래픽 이미지가 없습니다"]
+
++
+HANA 시스템 개요 화면에는 HANA 시스템과 할당된 정책이 표시됩니다.
+
++
+image:saphana-backup-anf-image30.png["오류: 그래픽 이미지가 없습니다"]
+
+
+
+link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["다음: SAP HANA 비 데이터 볼륨의 백업 구성"]

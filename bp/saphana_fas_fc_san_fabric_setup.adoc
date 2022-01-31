@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana_fas_fc_san_fabric_setup.html 
+keywords: san, fabric, setup, sap, hana, setup, fcp, connection, storage, controller, 8gbps 
+summary: 각 SAP HANA 서버에는 최소 8Gbps 대역폭으로 이중화된 FCP SAN 연결이 있어야 합니다. 스토리지 컨트롤러에 연결된 각 SAP HANA 호스트에 대해 스토리지 컨트롤러에서 8Gbps 이상의 대역폭을 구성해야 합니다. 
+---
+= SAN 패브릭 설정
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana_fas_fc_infrastructure_setup_and_configuration_overview.html["이전: 인프라 설정 및 구성."]
+
+각 SAP HANA 서버에는 최소 8Gbps 대역폭으로 이중화된 FCP SAN 연결이 있어야 합니다. 스토리지 컨트롤러에 연결된 각 SAP HANA 호스트에 대해 스토리지 컨트롤러에서 8Gbps 이상의 대역폭을 구성해야 합니다.
+
+다음 그림에서는 두 개의 스토리지 컨트롤러에 연결된 4개의 SAP HANA 호스트를 보여 주는 예를 보여 줍니다. 각 SAP HANA 호스트에는 중복 패브릭에 연결된 두 개의 FCP 포트가 있습니다. 스토리지 계층에서는 각 SAP HANA 호스트에 필요한 처리량을 제공하도록 FCP 포트 4개가 구성됩니다.
+
+image:saphana_fas_fc_image9.png["오류: 그래픽 이미지가 없습니다"]
+
+스위치 계층의 조닝 외에도 스토리지 시스템의 각 LUN을 이 LUN에 접속된 호스트에 매핑해야 합니다. 스위치의 조닝을 간단하게 유지합니다. 즉, 모든 호스트 HBA가 모든 컨트롤러 HBA를 볼 수 있는 하나의 존 세트를 정의합니다.
+
+link:saphana_fas_fc_time_synchronization.html["다음: 시간 동기화."]

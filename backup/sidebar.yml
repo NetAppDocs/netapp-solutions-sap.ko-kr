@@ -1,0 +1,100 @@
+---
+section: backup
+title: 백업, 복원 및 재해 복구
+entries:
+- title: Azure NetApp Files를 사용한 SAP HANA 재해 복구
+  type: solutions
+  entries:
+  - title: 데이터 보호 개요
+    url: "/backup/saphana-dr-anf_data_protection_overview_overview.html"
+  - title: 재해 복구 솔루션 비교
+    url: "/backup/saphana-dr-anf_disaster_recovery_solution_comparison.html"
+  - title: SAP HANA를 사용한 ANF 지역 간 복제
+    entries:
+    - title: SAP HANA를 사용한 교차 지역 복제 개요
+      url: "/backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html"
+    - title: SAP HANA를 사용한 지역 간 복제를 위한 구성 옵션입니다
+      url: "/backup/saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html"
+    - title: 요구사항에 대해 설명합니다
+      url: "/backup/saphana-dr-anf_requirements_and_best_practices.html"
+    - title: 랩 설정
+      url: "/backup/saphana-dr-anf_lab_setup.html"
+    - title: ANF 지역 간 복제를 위한 구성 단계
+      url: "/backup/saphana-dr-anf_configuration_steps_for_anf_cross-region_replication.html"
+    - title: ANF 지역 간 복제 모니터링
+      url: "/backup/saphana-dr-anf_monitoring_anf_cross-region_replication.html"
+  - title: 재해 복구 테스트
+    entries:
+    - title: 재해 복구 테스트 개요
+      url: "/backup/saphana-dr-anf_disaster_recovery_testing_overview.html"
+    - title: 타겟 호스트를 준비합니다
+      url: "/backup/saphana-dr-anf_prepare_the_target_host.html"
+    - title: 재해 복구 사이트에서 스냅샷 백업을 기반으로 새 볼륨을 생성합니다
+      url: "/backup/saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html"
+    - title: 타겟 호스트에 새 볼륨을 마운트합니다
+      url: "/backup/saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html"
+    - title: HANA 데이터베이스 복구
+      url: "/backup/saphana-dr-anf_hana_database_recovery.html"
+  - title: 재해 복구 페일오버
+    entries:
+    - title: 재해 복구 페일오버 개요
+      url: "/backup/saphana-dr-anf_disaster_recovery_failover_overview.html"
+    - title: 타겟 호스트를 준비합니다
+      url: "/backup/saphana-dr-anf_prepare_the_target_host_01.html"
+    - title: 복제 피어링을 분리 및 삭제합니다
+      url: "/backup/saphana-dr-anf_break_and_delete_replication_peering.html"
+    - title: 타겟 호스트에 볼륨을 마운트합니다
+      url: "/backup/saphana-dr-anf_mount_the_volumes_at_the_target_host.html"
+    - title: HANA 데이터베이스 복구
+      url: "/backup/saphana-dr-anf_hana_database_recovery_01.html"
+  - title: 기록 업데이트
+    url: "/backup/saphana-dr-anf_update_history.html"
+- title: Azure NetApp Files with SnapCenter 서비스를 사용한 SAP HANA 백업 및 복구
+  type: solutions
+  entries:
+  - title: 개요
+    url: "/backup/saphana-backup-anf-overview.html"
+  - title: 제공하는 데 이 때 넷엡솔루션이 사용됩니다
+    url: "/backup/saphana-backup-anf-the-netapp-solution.html"
+  - title: SnapCenter 서비스 아키텍처
+    url: "/backup/saphana-backup-anf-snapcenter-service-architecture.html"
+  - title: SnapCenter 서비스 SAP HANA 백업 솔루션
+    url: "/backup/saphana-backup-anf-snapcenter-service-sap-hana-backup-solution.html"
+  - title: SnapCenter 서비스 개념 및 모범 사례
+    url: "/backup/saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html"
+  - title: 이 보고서에 사용된 랩 설정
+    url: "/backup/saphana-backup-anf-lab-setup-used-for-this-report.html"
+  - title: SnapCenter 서비스 정책 구성
+    url: "/backup/saphana-backup-anf-snapcenter-service-policy-configuration.html"
+  - title: SnapCenter 서비스 스냅샷 백업 구성
+    entries:
+    - title: 개요
+      url: "/backup/saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html"
+    - title: SAP HANA 데이터베이스 백업의 백업 구성
+      url: "/backup/saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html"
+    - title: SAP HANA 비 데이터 볼륨의 백업 구성
+      url: "/backup/saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html"
+    - title: 글로벌 비 데이터 볼륨의 백업 구성
+      url: "/backup/saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html"
+  - title: SAP HANA 데이터베이스 Snapshot 백업
+    url: "/backup/saphana-backup-anf-sap-hana-database-snapshot-backups.html"
+  - title: 파일 기반 백업 및 블록 무결성 검사
+    url: "/backup/saphana-backup-anf-file-based-backups-and-block-integrity-check.html"
+  - title: 복원 및 복구
+    url: "/backup/saphana-backup-anf-restore-and-recovery.html"
+  - title: 추가 정보
+    url: "/backup/saphana-backup-anf-additional-information.html"
+  - title: 버전 기록
+    url: "/backup/saphana-backup-anf-version-history.html"
+- title: SnapCenter를 사용한 SAP HANA 백업 및 복구
+  url: "/backup/saphana-br-sc_pdf_link.html"
+- title: 스토리지 복제를 사용한 SAP HANA 재해 복구
+  url: "/backup/saphana-dr-sr_pdf_link.html"
+- title: SnapCenter를 사용한 SAP HANA 시스템 복제, 백업 및 복구
+  url: "/backup/saphana-sr_pdf_link.html"
+- title: Snap Creator를 통해 SAP HANA 백업 및 복구
+  url: "/backup/saphana-bandr-sc_pdf_link.html"
+- title: NetApp 스토리지 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구
+  url: "/backup/saphana-commvault_pdf_link.html"
+- title: NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구
+  url: "/backup/saphana-san_pdf_link.html"

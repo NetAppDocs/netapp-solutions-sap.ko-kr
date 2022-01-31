@@ -1,0 +1,149 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana_aff_fc_sap_hana_software_installation.html 
+keywords: software, installation, 
+summary: 이 섹션에서는 단일 호스트 및 다중 호스트 시스템에 SAP HANA를 설치하는 데 필요한 준비를 설명합니다. 
+---
+= SAP HANA 소프트웨어 설치
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html["이전: SAP HANA용 I/O 스택 구성"]
+
+
+
+== 단일 호스트 시스템에 설치합니다
+
+SAP HANA 소프트웨어 설치는 단일 호스트 시스템을 위한 추가 준비가 필요하지 않습니다.
+
+
+
+== 다중 호스트 시스템에 설치
+
+설치를 시작하기 전에 설치 프로세스 중에 SAP 스토리지 커넥터를 사용할 수 있도록 global.ini` 파일을 만듭니다. SAP 스토리지 커넥터는 설치 프로세스 중에 작업자 호스트에 필요한 파일 시스템을 마운트합니다. global.ini` 파일은 모든 호스트에서 액세스할 수 있는 파일 시스템('/hana/shared' 파일 시스템 등)에서 사용할 수 있어야 합니다.
+
+다중 호스트 시스템에 SAP HANA 소프트웨어를 설치하기 전에 다음 단계를 완료해야 합니다.
+
+. 데이터 LUN 및 로그 LUN에 대한 다음 마운트 옵션을 "global.ini` 파일에 추가합니다.
++
+** 데이터 및 로그 파일 시스템에 대한 relaytime과 inode64
+
+
+. 데이터 및 로그 파티션의 WWID를 추가합니다. WWID는 '/etc/multipath.conf' 파일에 구성된 별칭 이름과 일치해야 합니다.
++
+다음 출력에서는 SID(시스템 식별자)가 SS3인 2+1 다중 호스트 설정의 예를 보여 줍니다.
+
++
+....
+stlrx300s8-6:~ # cat /hana/shared/global.ini
+[communication]
+listeninterface = .global
+[persistence]
+basepath_datavolumes = /hana/data/SS3
+basepath_logvolumes = /hana/log/SS3
+[storage]
+ha_provider = hdb_ha.fcClient
+partition_*_*__prtype = 5
+partition_*_data__mountoptions = -o relatime,inode64
+partition_*_log__mountoptions = -o relatime,inode64,nobarrier
+partition_1_data__wwid = hana-SS3_data_mnt00001
+partition_1_log__wwid = hana-SS3_log_mnt00001
+partition_2_data__wwid = hana-SS3_data_mnt00002
+partition_2_log__wwid = hana-SS3_log_mnt00002
+[system_information]
+usage = custom
+[trace]
+ha_fcclient = info
+stlrx300s8-6:~ #
+....
++
+Linux LVM을 사용하는 경우 필요한 구성은 다릅니다. 다음 예에서는 SID = FC5인 2+1 다중 호스트 설정을 보여 줍니다.
+
++
+....
+sapcc-hana-tst-03:/hana/shared # cat global.ini
+[communication]
+listeninterface = .global
+[persistence]
+basepath_datavolumes = /hana/data/FC5
+basepath_logvolumes = /hana/log/FC5
+[storage]
+ha_provider = hdb_ha.fcClientLVM
+partition_*_*__prtype = 5
+partition_*_data__mountOptions = -o relatime,inode64
+partition_*_log__mountOptions = -o relatime,inode64
+partition_1_data__lvmname = FC5_data_mnt00001-vol
+partition_1_log__lvmname = FC5_log_mnt00001-vol
+partition_2_data__lvmname = FC5_data_mnt00002-vol
+partition_2_log__lvmname = FC5_log_mnt00002-vol
+sapcc-hana-tst-03:/hana/shared #
+Using the SAP hdblcm installation tool, start the installation by running the following command at one of the worker hosts. Use the `addhosts` option to add the second worker (sapcc-hana-tst-04) and the standby host (sapcc-hana-tst-05).
+....
++
+
+NOTE: 준비된 global.ini` 파일이 저장된 디렉토리는 'storage_cfg' CLI 옵션('--storage_cfg=/hana/shared')에 포함되어 있습니다.
+
++
+
+NOTE: 사용 중인 OS 버전에 따라 SAP HANA 데이터베이스를 설치하기 전에 Python 2.7을 설치해야 할 수 있습니다.
+
++
+....
+sapcc-hana-tst-03:/mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_LCM_LINUX_X86_64 # ./hdblcm --action=install --addhosts=sapcc-hana-tst-04:role=worker:storage_partion=2,sapcc-hana-tst-05:role:=standby --storage_cfg=/hana(shared/shared
+
+
+SAP HANA Lifecycle Management - SAP HANA Database 2.00.052.00.1599235305
+************************************************************************
+
+
+Scanning software locations...
+Detected components:
+    SAP HANA AFL (incl.PAL,BFL,OFL) (2.00.052.0000.1599259237) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_AFL_LINUX_X86_64/packages
+    SAP HANA Database (2.00.052.00.1599235305) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_SERVER_LINUX_X86_64/server
+    SAP HANA Database Client (2.5.109.1598303414) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_CLIENT_LINUX_X86_64/client
+    SAP HANA Smart Data Access (2.00.5.000.0) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/SAP_HANA_SDA_20_LINUX_X86_64/packages
+    SAP HANA Studio (2.3.54.000000) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_STUDIO_LINUX_X86_64/studio
+    SAP HANA Local Secure Store (2.4.24.0) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HANA_LSS_24_LINUX_X86_64/packages
+    SAP HANA XS Advanced Runtime (1.0.130.519) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_RT_10_LINUX_X86_64/packages
+    SAP HANA EML AFL (2.00.052.0000.1599259237) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/HDB_EML_AFL_10_LINUX_X86_64/packages
+    SAP HANA EPM-MDS (2.00.052.0000.1599259237) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/SAP_HANA_EPM-MDS_10/packages
+    GUI for HALM for XSA (including product installer) Version 1 (1.014.1) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACALMPIUI14_1.zip
+    XSAC FILEPROCESSOR 1.0 (1.000.85) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACFILEPROC00_85.zip
+    SAP HANA tools for accessing catalog content, data preview, SQL console, etc. (2.012.20341) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSAC_HRTT_20/XSACHRTT12_20341.zip
+    XS Messaging Service 1 (1.004.10) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACMESSSRV04_10.zip
+    Develop and run portal services for customer apps on XSA (1.005.1) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACPORTALSERV05_1.zip
+    SAP Web IDE Web Client (4.005.1) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSAC_SAP_WEB_IDE_20/XSACSAPWEBIDE05_1.zip
+    XS JOB SCHEDULER 1.0 (1.007.12) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACSERVICES07_12.zip
+    SAPUI5 FESV6 XSA 1 - SAPUI5 1.71 (1.071.25) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACUI5FESV671_25.zip
+    SAPUI5 SERVICE BROKER XSA 1 - SAPUI5 Service Broker 1.0 (1.000.3) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACUI5SB00_3.zip
+    XSA Cockpit 1 (1.001.17) in /mnt/sapcc-share/software/SAP/HANA2SP5-52/DATA_UNITS/XSA_CONTENT_10/XSACXSACOCKPIT01_17.zip
+
+
+SAP HANA Database version '2.00.052.00.1599235305' will be installed.
+
+Select additional components for installation:
+  Index | Components | Description
+  ---------------------------------------------------------------------------------------------
+  1     | all        | All components
+  2     | server     | No additional components
+  3     | client     | Install SAP HANA Database Client version 2.5.109.1598303414
+  4     | lss        | Install SAP HANA Local Secure Store version 2.4.24.0
+  5     | studio     | Install SAP HANA Studio version 2.3.54.000000
+  6     | smartda    | Install SAP HANA Smart Data Access version 2.00.5.000.0
+  7     | xs         | Install SAP HANA XS Advanced Runtime version 1.0.130.519
+  8     | afl        | Install SAP HANA AFL (incl.PAL,BFL,OFL) version 2.00.052.0000.1599259237
+  9     | eml        | Install SAP HANA EML AFL version 2.00.052.0000.1599259237
+  10    | epmmds     | Install SAP HANA EPM-MDS version 2.00.052.0000.1599259237
+
+Enter comma-separated list of the selected indices [3]: 2,3
+Enter Installation Path [/hana/shared]:
+Enter Local Host Name [sapcc-hana-tst-03]:
+....
+. 설치 도구가 모든 작업자 및 대기 호스트에 선택한 모든 구성 요소를 설치했는지 확인합니다.
+
+
+link:saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html["다음: SAP HANA 단일 호스트 시스템을 위한 추가 데이터 볼륨 파티션 추가."]

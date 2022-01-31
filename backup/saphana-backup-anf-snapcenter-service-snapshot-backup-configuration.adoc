@@ -1,0 +1,14 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-snapcenter-service-snapshot-backup-configuration.html 
+keywords:  
+summary:  
+---
+= SnapCenter 서비스 스냅샷 백업 구성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+

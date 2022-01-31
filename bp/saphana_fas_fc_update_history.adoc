@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana_fas_fc_update_history.html 
+keywords:  
+summary:  
+---
+= 기록 업데이트
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana_fas_fc_where_to_find_additional_information.html["Previous(이전): 추가 정보를 찾을 위치."]
+
+이 솔루션의 원래 게시 이후 다음과 같은 기술적 변경 사항이 있습니다.
+
+[cols="25,25,50"]
+|===
+| 버전 | 날짜 | 업데이트 요약 
+
+
+| 버전 1.0 | 2015년 2월 | 초기 버전 
+
+
+| 버전 2.0 | 2015년 10월 | SAP HANA 및 HWVAL SPS 10 이상에 대한 입출력 매개 변수가 포함되어 있습니다 
+
+
+| 버전 2.1 | 2016년 2월 | 업데이트된 용량 사이징 
+
+
+| 버전 3.0 | 2017년 2월 | 새로운 NetApp 스토리지 시스템 및 디스크 쉘프 ONTAP 9 새로운 OS 릴리즈(SLES12 SP1 및 Red Hat Enterprise Linux 7.2)의 새로운 SAP HANA 릴리즈 
+
+
+| 버전 3.1 | 2017년 7월 | 사소한 업데이트 
+
+
+| 버전 4.0 | 2018년 9월 | 새로운 NetApp 스토리지 시스템 새로운 OS 릴리즈(SLES12 SP3 및 Red Hat Enterprise Linux 7.4) 추가 업데이트 SAP HANA 2.0 SPS3 
+
+
+| 버전 4.1 | 2019년 9월 | 새로운 OS는 사소한 업데이트를 릴리스합니다 
+
+
+| 버전 4.2 | 2020년 4월 | 새로운 AFF ASA 시리즈 스토리지 시스템은 SAP HANA 2.0 SPS4 이후 여러 데이터 파티션 기능을 사용할 수 있게 되었습니다 
+
+
+| 버전 4.3 | 2020년 6월 | 선택적 기능 Minor 업데이트에 대한 추가 정보입니다 
+
+
+| 버전 5.0 | 2021년 2월 | Linux LVM은 새로운 NetApp 스토리지 시스템 지원 새로운 OS 릴리즈(SLES15SP2, RHEL 8) 
+
+
+| 버전 5.1 | 2021년 4월 | VMware vSphere 관련 정보가 추가되었습니다 
+|===

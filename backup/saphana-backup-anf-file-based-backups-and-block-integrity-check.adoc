@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-file-based-backups-and-block-integrity-check.html 
+keywords: file-based, backup, block integrity, check, 
+summary: SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. SnapCenter 서비스는 파일 기반 백업을 백업 유형으로 선택하는 정책을 사용하여 블록 무결성 검사 실행을 지원합니다. 
+---
+= 파일 기반 백업 및 블록 무결성 검사
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["이전: SAP HANA 데이터베이스 Snapshot 백업."]
+
+SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. SnapCenter 서비스는 파일 기반 백업을 백업 유형으로 선택하는 정책을 사용하여 블록 무결성 검사 실행을 지원합니다.
+
+파일 기반 백업은 HANA 데이터 볼륨의 스냅샷 백업뿐 아니라 보조 백업 복사본도 사용하는 것입니다. 이러한 파일 기반 백업을 사용하여 운영 데이터 볼륨이 완전히 손실된 경우 복원 및 복구 작업을 수행할 수 있습니다.
+
+이 정책을 사용하여 백업을 예약할 때 SnapCenter 서비스는 시스템 및 모든 테넌트 데이터베이스에 대한 표준 SAP HANA 파일 백업을 생성합니다.
+
+SnapCenter 서비스는 스냅샷 기반 백업과 같은 방식으로 파일 기반 백업을 표시하지 않습니다. 대신 마지막 파일 기반 백업만 나열됩니다. 파일 기반 백업의 성공 또는 실패는 Job Monitor 보기에 표시됩니다.
+
+image:saphana-backup-anf-image51.png["오류: 그래픽 이미지가 없습니다"]
+
+SAP HANA 백업 카탈로그에는 시스템과 테넌트 데이터베이스 모두에 대한 항목이 표시됩니다. 다음 그림에서는 시스템 데이터베이스의 백업 카탈로그에 있는 SnapCenter 서비스 블록 무결성 검사를 보여 줍니다.
+
+image:saphana-backup-anf-image58.png["오류: 그래픽 이미지가 없습니다"]
+
+블록 무결성 검사가 성공적으로 완료되면 표준 SAP HANA 데이터 백업 파일이 생성됩니다. SnapCenter 서비스는 파일 기반 데이터 백업 작업을 위해 HANA 데이터베이스에 구성된 백업 경로를 사용합니다.
+
+....
+vm-pr1:/hanabackup/PR1/file # ls -al *
+DB_PR1:
+total 1743736
+drwxr-xr-- 2 pr1adm sapsys       4096 Jun  6 05:12 .
+drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
+-rw-r----- 1 pr1adm sapsys     155648 Jun  6 05:00 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_0_1
+-rw-r----- 1 pr1adm sapsys   83894272 Jun  6 05:01 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_2_1
+-rw-r----- 1 pr1adm sapsys 1694507008 Jun  6 05:02 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_3_1
+SYSTEMDB:
+total 1562788
+drwxr-xr-- 2 pr1adm sapsys       4096 Jun  6 05:12 .
+drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
+-rw-r----- 1 pr1adm sapsys     159744 Jun  6 05:00 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_0_1
+-rw-r----- 1 pr1adm sapsys 1593843712 Jun  6 05:02 SnapCenter_SCS_PR1_BlockIntegrityCheckEverySunday_Weekly_2021_06_06_05_00_00_databackup_1_1
+....
+
+
+== 파일 기반 백업을 사용한 복구 및 복구
+
+HANA Studio 또는 HANA Cockpit의 표준 HANA 복구 작업을 사용하여 SnapCenter 외부의 파일 기반 백업을 복원 및 복구해야 합니다.
+
+link:saphana-backup-anf-restore-and-recovery.html["다음: 복원 및 복구."]

@@ -1,0 +1,10 @@
+---
+section: briefs
+title: 솔루션 개요
+entries:
+- title: SAP HANA 라이프사이클 관리
+  url: "/briefs/saphana-lm-sb_pdf_link.html"
+- title: SAP HANA 백업 및 복구
+  url: https://www.netapp.com/us/media/sb-3965.pdf
+- title: SAP HANA 재해 복구
+  url: https://www.netapp.com/us/media/sb-3968.pdf

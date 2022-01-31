@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: sap-bp-blogs.html 
+summary: SAP 구성 모범 사례에 대해 설명하는 블로그 시리즈 
+keywords: netapp, solutions, SAP, best practices, blogs 
+---
+= SAP 구성 모범 사례 블로그
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP 구성 모범 사례를 강조하는 블로그의 개요
+
+
+
+=== SAP 구성 모범 사례 블로그

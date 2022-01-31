@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-backup-anf-snapcenter-service-sap-hana-backup-solution.html 
+keywords: solution components, scheduling, retention, 
+summary: 이 섹션에서는 SnapCenter 서비스 백업 솔루션이 다루는 영역에 대해 설명합니다. 
+---
+= SnapCenter 서비스 SAP HANA 백업 솔루션
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-backup-anf-snapcenter-service-architecture.html["이전: SnapCenter 서비스 아키텍처."]
+
+
+
+== 솔루션 구성 요소
+
+SAP HANA용 SnapCenter 서비스 백업 솔루션은 다음과 같은 영역을 다룹니다.
+
+* 스토리지 기반 Snapshot 복사본으로 SAP HANA 데이터 백업:
++
+** 백업 스케줄링
+** 필요 시 백업
+** 보존 관리
+** SAP HANA 백업 카탈로그 관리
+** 복원 작업
+
+
+* 스토리지 기반 Snapshot 복사본으로 데이터를 백업하지 않습니다
++
+** SnapCenter는 HANA 공유 볼륨 등 특정 HANA 시스템에 속한 비 데이터 볼륨과 SAP 전송 디렉토리와 같은 특정 HANA 시스템에 속하지 않는 글로벌 비 데이터 볼륨을 구분합니다.
+** 백업 스케줄링
+** 필요 시 백업
+** 보존 관리
+** 복원 작업
+
+
+* 데이터베이스 블록 무결성 검사를 위한 파일 기반 백업 또는 두 번째 위치에 백업:
++
+** 백업 스케줄링
+** 필요 시 백업
+** 보존 관리
+** SAP HANA 백업 카탈로그 관리
+
+
+* HANA 데이터베이스 로그 백업의 보존 관리:
++
+** 데이터 백업 보존에 기반한 보존 관리
+** SAP HANA 백업 카탈로그 관리
+
+
+
+
+스냅샷 데이터 백업은 SAP HANA 데이터베이스 백업 저장점을 트리거하여 SnapCenter 서비스에서 실행되므로 스토리지 계층에 생성된 스냅샷 복사본은 SAP HANA 데이터베이스의 일관된 이미지를 기반으로 합니다.
+
+모든 SAP HANA 관련 리소스를 완벽하게 백업할 수 있도록 SnapCenter 서비스를 통해 데이터 이외의 모든 볼륨을 스토리지 기반 Snapshot 복사본으로 백업할 수도 있습니다. 개별 보존 및 보호 정책을 사용할 수 있도록 데이터베이스 데이터 백업과 별도로 비데이터 볼륨을 예약할 수 있습니다.
+
+SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. SnapCenter 내에서 블록 무결성 검사를 실행할 수 있습니다. 블록 무결성 검사(파일 기반) 백업도 백업을 보조 스토리지 위치로 오프로드하는 데 사용됩니다.
+
+구성 가능한 보존 정책에 따라 SnapCenter 서비스는 데이터 백업, 로그 백업 및 SAP HANA 백업 카탈로그의 관리 작업을 관리합니다.
+
+다음 그림에서는 백업 솔루션을 요약합니다.
+
+image:saphana-backup-anf-image9.png["오류: 그래픽 이미지가 없습니다"]
+
+비 데이터 볼륨의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter 서비스는 다음 작업을 수행합니다.
+
+. 비 데이터 볼륨의 스토리지 스냅샷 복사본을 생성합니다.
+. 정의된 보존 정책을 기반으로 스토리지 스냅샷 복사본을 삭제합니다.
+
+
+SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter 서비스는 다음 작업을 수행합니다.
+
+. SAP HANA 백업 저장점을 생성하여 지속성 계층에서 일관된 이미지를 생성합니다.
+. 데이터 볼륨의 스토리지 스냅샷 복사본을 생성합니다.
+. 스토리지 스냅샷 백업을 SAP HANA 백업 카탈로그에 등록합니다.
+. SAP HANA 백업 저장점을 릴리즈합니다.
+. 정의된 보존 정책을 기반으로 스토리지 스냅샷 복사본을 삭제합니다.
+. 정의된 보존 정책을 기반으로 SAP HANA 백업 카탈로그 항목을 삭제합니다.
+. 데이터 백업을 수동으로 삭제하거나 보존 정책을 기반으로 할 때마다 SnapCenter 서비스는 가장 오래된 데이터 백업보다 오래된 모든 로그 백업을 삭제합니다. 로그 백업은 파일 시스템과 SAP HANA 백업 카탈로그에서 삭제됩니다.
+
+
+
+
+== 지원되는 SAP HANA 릴리즈 및 구성
+
+SnapCenter 서비스는 Azure NetApp Files 볼륨에 연결된 SAP HANA 단일 호스트 및 다중 호스트 구성을 지원합니다.
+
+SnapCenter 서비스는 다음과 같은 SAP HANA 아키텍처 및 릴리즈를 지원합니다.
+
+* SAP HANA 단일 컨테이너:
++
+** SAP HANA 1.0 SPS12
+
+
+* 단일 또는 다중 테넌트가 포함된 SAP HANA 멀티 테넌트-데이터베이스 컨테이너(MDC):
++
+** SAP HANA 2.0 SPS4 이상
+
+
+
+
+
+NOTE: MDC 시스템에 대한 스냅샷 백업 지원은 단일 테넌트 시스템용 HANA 2.0 SP1 및 다중 테넌트 시스템용 HANA 2.0 SPS4에 의해 도입되었습니다.
+
+데이터 스냅샷 백업과 SnapCenter 서비스 및 로그 백업을 backint 솔루션과 함께 사용하는 것은 지원되지 않습니다. 로그 백업은 파일 시스템에 기록되도록 구성해야 합니다.
+
+link:saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html["다음: SnapCenter 서비스 개념 및 모범 사례"]

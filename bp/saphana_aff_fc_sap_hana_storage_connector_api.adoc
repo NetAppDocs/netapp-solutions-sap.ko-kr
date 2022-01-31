@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: bp/saphana_aff_fc_sap_hana_storage_connector_api.html 
+keywords: api, failover, ha, high availability 
+summary: 스토리지 커넥터는 페일오버 기능이 있는 다중 호스트 환경에서만 필요합니다. 다중 호스트 설정에서 SAP HANA 데이터베이스 호스트가 대기 호스트로 페일오버할 수 있도록 SAP HANA는 고가용성 기능을 제공합니다. 이 경우 장애가 발생한 호스트의 LUN을 액세스하고 대기 호스트에서 사용합니다. 
+---
+= SAP HANA 스토리지 커넥터 API
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana_aff_fc_storage_controller_setup.html["이전: 저장소 컨트롤러 설정."]
+
+스토리지 커넥터는 페일오버 기능이 있는 다중 호스트 환경에서만 필요합니다. 다중 호스트 설정에서 SAP HANA 데이터베이스 호스트가 대기 호스트로 페일오버할 수 있도록 SAP HANA는 고가용성 기능을 제공합니다. 이 경우 장애가 발생한 호스트의 LUN을 액세스하고 대기 호스트에서 사용합니다. 스토리지 커넥터는 한 번에 하나의 데이터베이스 호스트만 스토리지 파티션에 액세스할 수 있도록 하는 데 사용됩니다.
+
+NetApp 스토리지가 있는 SAP HANA 다중 호스트 구성에서는 SAP에서 제공하는 표준 스토리지 커넥터가 사용됩니다. "SAP HANA 파이버 채널 스토리지 커넥터 관리 가이드"는 에 대한 첨부 파일로 찾을 수 있습니다 https://service.sap.com/sap/support/notes/1900823["SAP 노트 1900823"^].
+
+link:saphana_aff_fc_host_setup.html["다음: 호스트 설정."]

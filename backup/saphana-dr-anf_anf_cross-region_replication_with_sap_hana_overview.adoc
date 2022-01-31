@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html 
+keywords: application, agnostic, information, azure, sap, hana 
+summary: 지역 간 복제에 대한 애플리케이션 독립적 정보는 다음 위치에서 찾을 수 있습니다. 
+---
+= SAP HANA를 사용한 ANF 지역 간 복제
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-dr-anf_disaster_recovery_solution_comparison.html["이전: 재해 복구 솔루션 비교."]
+
+지역 간 복제에 대한 애플리케이션 독립적 정보는 에서 찾을 수 있습니다 https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files 설명서 | Microsoft 문서"^] 개념 및 방법 가이드 섹션을 참조하십시오.
+
+link:saphana-dr-anf_configuration_options_for_cross-region_replication_with_sap_hana.html["다음: SAP HANA를 사용한 지역 간 복제를 위한 구성 옵션"]

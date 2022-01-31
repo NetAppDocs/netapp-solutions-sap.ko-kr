@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: sap-videos.html 
+summary: SAP 솔루션을 소개하는 비디오 및 데모 시리즈 
+keywords: netapp, solutions, SAP, videos, demos 
+---
+= SAP 솔루션 비디오 및 데모
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:table-stripes: odd
+:imagesdir: ./media/
+
+
+[role="lead"]
+SAP 솔루션에 대한 비디오 및 데모를 간략하게 소개합니다.
+
+
+
+=== SAP 구성 모범 사례 비디오 및 데모
+
+* link:https://www.netapp.tv/details/28149["SAP HANA는 NetApp 인프라에서 가장 잘 실행됩니다"]
+* link:https://www.netapp.tv/details/28189["Azure NetApp Files 기반 SAP: 개요 및 업데이트"]
+* link:https://www.netapp.tv/details/28402["SAP Data Intelligence에 NetApp 블록 및 오브젝트 스토리지 사용"]
+
+
+
+
+=== SAP 백업, 복원 및 재해 복구 비디오 및 데모
+
+* link:https://www.netapp.tv/details/25592["SAP 애플리케이션의 가용성을 보장하고 다운타임을 최소화합니다"]
+* link:https://www.netapp.tv/details/28399["Azure NetApp Files을 기반으로 SAP HANA에 대한 데이터 보호를 최적화하십시오"]
+* link:https://www.netapp.tv/details/28398["SAP HANA용 재해 복구 옵션"]
+* link:https://www.netapp.tv/details/28406["ANF 및 지역 간 복제를 통한 SAP HANA 재해 복구"]
+
+
+
+
+=== SAP Lifecycle Management 비디오 및 데모
+
+* link:https://www.netapp.tv/details/25588["SAP 프로젝트의 위험 감소 및 품질 향상"]
+* link:https://www.netapp.tv/details/25595["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"]
+* link:https://www.netapp.tv/details/28400["SnapCenter 사용 사례"]
+* link:https://www.netapp.tv/details/28401["Libelle 및 SnapCenter와 함께 SAP 시스템 복사"]
+
