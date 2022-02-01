@@ -2607,4 +2607,255 @@
   <block id="fceb9e9a7a8e75da09a45b74960f3ce3" category="sidebar">Snap Creator를 통해 SAP HANA 백업 및 복구</block>
   <block id="0f1df2d5d1f6e9db4283f9e9814fa12a" category="sidebar">NetApp 스토리지 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구</block>
   <block id="eeb338bfcd3ad35ad6983ecfa31efba2" category="sidebar">NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구</block>
+  <block id="093a45d87b6b8692e6c9a73c1a04c137" category="doc">추가 정보 및 버전 기록을 찾을 수 있는 위치</block>
+  <block id="0a0c1759064aa4f9f09c1efae7e5497c" category="inline-link-macro">이전: 다른 호스트에서 생성된 백업에서 복구 및 복구</block>
+  <block id="9336d28943665078fed40ddbea21b0c3" category="paragraph"><block ref="9336d28943665078fed40ddbea21b0c3" category="inline-link-macro-rx"></block></block>
+  <block id="243e854b0d7da6e16a4a87f0f9ea87ba" category="paragraph">이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서를 참조하십시오.</block>
+  <block id="b1cd4632a9cd8998e7a0017f528fcc5b" category="list-text">SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화</block>
+  <block id="210b71749fc2f7d24034c09eef132638" category="paragraph"><block ref="210b71749fc2f7d24034c09eef132638" category="inline-link-macro-rx"></block></block>
+  <block id="36352fdf713e8c1508666c9640668e0a" category="summary">SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다.</block>
+  <block id="8b1c808eafbee9527d4e168ef1f16c09" category="doc">리소스 그룹을 사용한 SnapCenter 4.6 구성</block>
+  <block id="d1dc4a7aad3c7160c6649b5e3c9591f0" category="inline-link-macro">이전: SAP 시스템 복제에 대한 SnapCenter 구성 옵션</block>
+  <block id="a1d763646bbddba03e82d23f2d098717" category="paragraph"><block ref="a1d763646bbddba03e82d23f2d098717" category="inline-link-macro-rx"></block></block>
+  <block id="b39fd9047d2089b24c418d3512b8c903" category="paragraph">SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다. 또한 자동 복원 및 복구 기능은 이제 HANA 시스템 복제 환경에서도 사용할 수 있습니다.</block>
+  <block id="6a24c6a18054ecbcf8919b90f4ff5eb8" category="section-title">HANA 시스템 복제 환경의 SnapCenter 4.6 구성</block>
+  <block id="ef7979296ea2465331699c64e5450ad0" category="paragraph">다음 그림은 이 장에 사용된 랩 설정을 보여 줍니다. HANA 시스템 복제를 통해 2개의 HANA 호스트, 즉 HANA-3 및 HANA-4가 구성되었습니다.</block>
+  <block id="3ca4a9c5f67351b7924bb2876dc1e870" category="paragraph">백업 및 복구 작업을 실행하는 데 필요한 권한이 있는 데이터베이스 사용자 “SnapCenter”가 HANA 시스템 데이터베이스에 대해 생성되었습니다(참조)<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>)를 클릭합니다. 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.</block>
+  <block id="3719dabf545d56e27391b4c1bb73b944" category="paragraph">개괄적인 관점에서 다음 단계를 수행하여 SnapCenter 내에서 HANA 시스템 복제를 설정해야 합니다.</block>
+  <block id="bc1873525b8d9ae5c49626cd6b47592c" category="list-text">기본 및 보조 호스트에 HANA 플러그인을 설치합니다. 자동 검색이 실행되고 각 운영 호스트 또는 보조 호스트에 대해 HANA 시스템 복제 상태가 감지됩니다.</block>
+  <block id="3b7407b92790f4d78d820c6ebd3e159d" category="list-text">SnapCenter 'configure database'를 실행하고 hdbuserstore 키를 제공한다. 추가 자동 검색 작업이 실행됩니다.</block>
+  <block id="93564a49cedf2137deead20877f792cd" category="list-text">두 호스트를 포함하여 리소스 그룹을 생성하고 보호를 구성합니다.</block>
+  <block id="59d72e64253c8467af99838d40400078" category="paragraph"><block ref="59d72e64253c8467af99838d40400078" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b9e7f8ca0dd679eb7244d3b0c456f58e" category="paragraph">두 HANA 호스트에 SnapCenter HANA 플러그인을 설치하면 다른 자동 검색 리소스와 동일하게 SnapCenter 리소스 보기에 HANA 시스템이 표시됩니다. SnapCenter 4.6부터 HANA 시스템 복제(사용/사용 안 함, 운영/보조) 상태를 표시하는 추가 열이 표시됩니다.</block>
+  <block id="6510b37e0aa52b9177b46d7048e004b0" category="paragraph"><block ref="6510b37e0aa52b9177b46d7048e004b0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d6fc9c8644818503f282251021723ef4" category="paragraph">리소스를 클릭하면 SnapCenter가 HANA 시스템에 대한 HANA 사용자 저장소 키를 요청합니다.</block>
+  <block id="2d44da370270eab693da74c47ec83061" category="paragraph"><block ref="2d44da370270eab693da74c47ec83061" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8b0bc5e36095bf09eb695be9b8de1862" category="paragraph">추가 자동 검색 단계가 실행되고 SnapCenter에서 리소스 세부 정보를 표시합니다. SnapCenter 4.6에서는 시스템 복제 상태와 보조 서버가 이 보기에 나열됩니다.</block>
+  <block id="d19657916dcd1afc21e008c24fe75407" category="paragraph"><block ref="d19657916dcd1afc21e008c24fe75407" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="28fd5edae03b34a5e3181325d18aaf9b" category="paragraph">두 번째 HANA 리소스에 대해 동일한 단계를 수행한 후 자동 검색 프로세스가 완료되고 두 HANA 리소스가 모두 SnapCenter에 구성됩니다.</block>
+  <block id="2683deb5c42609367ecfaad1b5fef47f" category="paragraph"><block ref="2683deb5c42609367ecfaad1b5fef47f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3a6aa9f1c27d2d807b9c4b5cc15c0c66" category="paragraph">HANA 시스템 복제 지원 시스템의 경우 두 HANA 리소스를 모두 포함하여 SnapCenter 리소스 그룹을 구성해야 합니다.</block>
+  <block id="b0fcf7bdbcef70574c2315aee4c7bd44" category="paragraph"><block ref="b0fcf7bdbcef70574c2315aee4c7bd44" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="78110de010c4ee1945de37cc79b3b7cf" category="paragraph">호스트 이름, 정책 및 일정이 포함되어야 하는 스냅샷 이름에 사용자 지정 이름 형식을 사용하는 것이 좋습니다.</block>
+  <block id="ab5827f336cb4c48fe8b5bd0f31a12be" category="paragraph"><block ref="ab5827f336cb4c48fe8b5bd0f31a12be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7ca4e5c2fcfa31585e0bf441458f2cfc" category="paragraph">두 HANA 호스트를 리소스 그룹에 모두 추가해야 합니다.</block>
+  <block id="0137252606945b276a3e75410b8c8cdc" category="paragraph"><block ref="0137252606945b276a3e75410b8c8cdc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ed775f1c4384259d73349821be6c2694" category="paragraph">리소스 그룹에 대해 정책 및 일정이 구성됩니다.</block>
+  <block id="91804b09f65a1f54267e7fa96cbfd6f1" category="admonition">정책에 정의된 보존은 두 HANA 호스트 간에 사용됩니다. 예를 들어 정책에서 보존 기간이 10인 경우 두 호스트의 백업 합계가 백업 삭제 기준으로 사용됩니다. SnapCenter는 현재 운영 호스트 또는 보조 호스트에서 생성된 가장 오래된 백업을 독립적으로 삭제합니다.</block>
+  <block id="b7d5f7a64153eda186c820a5953bdc24" category="paragraph"><block ref="b7d5f7a64153eda186c820a5953bdc24" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d963f6f8f451d72b26442e3c2c35bcf1" category="paragraph">이제 리소스 그룹 구성이 완료되고 백업을 실행할 수 있습니다.</block>
+  <block id="557673722dfb11ceac9abea3c56b3f0c" category="paragraph"><block ref="557673722dfb11ceac9abea3c56b3f0c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fd9995518117cdb8133215d354a99249" category="paragraph"><block ref="fd9995518117cdb8133215d354a99249" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb04e74862dcc89c849934898ae20df8" category="section-title">Snapshot 백업 작업</block>
+  <block id="c14b7fc8184ded19e7d1d53f9e7ab803" category="paragraph">리소스 그룹의 백업 작업이 실행될 때 SnapCenter는 운영 호스트인 호스트를 식별하며 운영 호스트에서만 백업을 트리거합니다. 즉, 기본 호스트의 데이터 볼륨만 스냅샷을 만듭니다. 이 예에서 HANA-3은 현재 운영 호스트이며 이 호스트에서 백업이 실행됩니다.</block>
+  <block id="7f8aba1af0cb84f6ad2df2c0fe1b0d13" category="paragraph"><block ref="7f8aba1af0cb84f6ad2df2c0fe1b0d13" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="779618797296fde495820a84f779ecab" category="paragraph">SnapCenter 작업 로그에는 현재 운영 호스트 HANA-3에서 백업 실행 및 ID 작업이 표시됩니다.</block>
+  <block id="49a1ffdf6282e694b7744f45751cfdee" category="paragraph"><block ref="49a1ffdf6282e694b7744f45751cfdee" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c652f5e24fbe7fb888911613189b45da" category="paragraph">이제 기본 HANA 리소스에 스냅샷 백업이 생성되었습니다. 백업 이름에 포함된 호스트 이름은 HANA-3으로 표시됩니다.</block>
+  <block id="ac88926a1485953a491829ab4b5850cb" category="paragraph"><block ref="ac88926a1485953a491829ab4b5850cb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bcb05d93e0f8deb7992f97c99b67a704" category="paragraph">동일한 스냅샷 백업도 HANA 백업 카탈로그에 표시됩니다.</block>
+  <block id="b9ff4f01a529d6b564f0f7bc11b15cd3" category="paragraph"><block ref="b9ff4f01a529d6b564f0f7bc11b15cd3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="227417a294975cfdd600c953a7227e0a" category="paragraph">테이크오버 작업이 실행되면 SnapCenter 백업이 추가로 이전 2차 호스트(HANA-4)를 운영 호스트로 식별하고 백업 작업이 HANA-4에서 실행됩니다. 다시 한 번 말씀드리지만 새로운 기본 호스트(HANA-4)의 데이터 볼륨만 스냅샷을 사용합니다.</block>
+  <block id="126fd58f4273ad597cbcab66140a53bf" category="admonition">SnapCenter 식별 로직은 HANA 호스트가 1차-2차 관계에 있거나 HANA 호스트 중 하나가 오프라인인 시나리오만 다룹니다.</block>
+  <block id="7d59e4b6f8bc59ccfda2c21ab1f5d4a5" category="paragraph"><block ref="7d59e4b6f8bc59ccfda2c21ab1f5d4a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="146a3e54d7baf77bf5f24736862b2e87" category="paragraph">SnapCenter 작업 로그에는 현재 운영 호스트 HANA-4에서 백업 실행 및 ID 작업이 표시됩니다.</block>
+  <block id="cdce16c69115cd1993e3774f2d45f042" category="paragraph"><block ref="cdce16c69115cd1993e3774f2d45f042" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bbd4f4df2e21b1ce421727b7362f417b" category="paragraph">이제 기본 HANA 리소스에 스냅샷 백업이 생성되었습니다. 백업 이름에 포함된 호스트 이름은 HANA-4로 표시됩니다.</block>
+  <block id="295e7a62ef846e05b78001f65287d3b9" category="paragraph"><block ref="295e7a62ef846e05b78001f65287d3b9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="386b96f6053bd85647b9d68016068eb5" category="paragraph"><block ref="386b96f6053bd85647b9d68016068eb5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4964ef2f01ba430e3456e779528b2769" category="section-title">파일 기반 백업을 사용한 블록 무결성 검사 작업</block>
+  <block id="b69253be3260fc04bd3bfddc522b4fc4" category="paragraph">SnapCenter 4.6은 파일 기반 백업을 사용한 블록 무결성 검사 작업에 대해 스냅샷 백업 작업에 대해 설명된 것과 동일한 논리를 사용합니다. SnapCenter는 현재 운영 HANA 호스트를 식별하고 이 호스트에 대한 파일 기반 백업을 실행합니다. 또한 두 호스트 모두에서 보존 관리가 수행되므로 현재 운영 중인 호스트에 관계없이 가장 오래된 백업이 삭제됩니다.</block>
+  <block id="6856414db85233a8e045263f695b175e" category="section-title">SnapVault 복제</block>
+  <block id="061d3cb22e674e47881a1e516fec08eb" category="paragraph">테이크오버와 현재 운영 호스트인 HANA 호스트에 대해 독립적인 수동 개입 없이 투명한 백업 작업을 허용하려면 두 호스트의 데이터 볼륨에 대해 SnapVault 관계를 구성해야 합니다. SnapCenter는 각 백업이 실행될 때마다 현재 운영 호스트에 대한 SnapVault 업데이트 작업을 실행합니다.</block>
+  <block id="6d2237ec4d6cf324b50a6aa67d5813d6" category="admonition">보조 호스트에 대한 테이크오버가 오랫동안 수행되지 않으면 보조 호스트에서 첫 번째 SnapVault 업데이트에 대해 변경된 블록 수가 높아집니다.</block>
+  <block id="8bcfb1be8ac0f60d97f95518b3e7f466" category="paragraph">SnapVault 타겟의 보존 관리는 ONTAP에서 SnapCenter 외부에서 관리하므로 두 HANA 호스트 모두에서 보존을 처리할 수 없습니다. 따라서 인수 전에 생성된 백업은 이전 보조 백업에서 백업 작업과 함께 삭제되지 않습니다. 이러한 백업은 이전의 기본 백업이 다시 기본 백업이 될 때까지 유지됩니다. 이러한 백업이 로그 백업의 보존 관리를 차단하지 않도록 하려면 SnapVault 타겟 또는 HANA 백업 카탈로그 내에서 수동으로 삭제해야 합니다.</block>
+  <block id="e16ff6e568f8eb35263ae87e0b2fb4c7" category="admonition">하나의 스냅샷 복사본이 동기화 지점으로 차단되므로 모든 SnapVault 스냅샷 복사본을 정리할 수 없습니다. 최신 스냅샷 복사본도 삭제해야 하는 경우 SnapVault 복제 관계를 삭제해야 합니다. 이 경우 HANA 백업 카탈로그에서 백업을 삭제하여 로그 백업 보존 관리를 차단 해제하는 것이 좋습니다.</block>
+  <block id="0e048ce853fa09ec76d5dacb494e68c4" category="paragraph"><block ref="0e048ce853fa09ec76d5dacb494e68c4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc89ca90a524118bdb23dfe95009d16c" category="paragraph">SnapCenter 4.6은 두 HANA 호스트 모두에서 Snapshot 백업, 블록 무결성 검사 작업, HANA 백업 카탈로그 항목 및 로그 백업(비활성화되지 않은 경우)에 대한 보존을 관리하므로 현재 어떤 호스트가 기본 호스트인지 보조 호스트인지 여부는 중요하지 않습니다. 현재 운영 호스트 또는 보조 호스트에서 삭제 작업이 필요한지 여부에 관계없이 HANA 카탈로그에 있는 백업(데이터 및 로그) 및 항목은 정의된 보존 기간을 기준으로 삭제됩니다. 즉, Takeover 작업을 수행하거나 복제를 반대 방향으로 구성하는 경우에는 수동 개입이 필요하지 않습니다.</block>
+  <block id="b622880d7effd20d409afc8f9d337338" category="paragraph">SnapVault 복제가 데이터 보호 전략의 일부인 경우 섹션에 설명된 대로 특정 시나리오에 대해 수동 작업이 필요합니다 <block ref="d418ccf14dbb0e729818939bd00e84be" category="inline-xref-macro-rx"></block>.</block>
+  <block id="6db8f8c174516b1dc5a1f3305fe43190" category="paragraph">다음 그림에서는 두 사이트 모두에서 여러 테이크오버가 실행되고 스냅샷 백업이 생성된 시나리오를 보여 줍니다. 현재 상태의 호스트 HANA-3은 기본 호스트이며 최신 백업은 호스트 HANA-3에서 생성된 T4입니다. 복원 및 복구 작업을 수행해야 하는 경우 SnapCenter에서 T1 및 T4 백업을 복원 및 복구에 사용할 수 있습니다. 호스트 HANA-4(T2, T3)에서 생성된 백업은 SnapCenter를 사용하여 복구할 수 없습니다. 이러한 백업은 복구를 위해 HANA-3의 데이터 볼륨으로 수동으로 복사해야 합니다.</block>
+  <block id="320176f9e489dcceb76831b66fbd7f35" category="paragraph"><block ref="320176f9e489dcceb76831b66fbd7f35" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="801b7a55bf3ed44abb2d821602e1c449" category="paragraph">SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 참조하십시오<block ref="f91ad5f72ca89ecac47641fa01cbfa5f" category="inline-link-rx"></block>.</block>
+  <block id="50ff1d24fad3646f6fdf9aea77002929" category="inline-link-macro">다른 호스트에서 생성된 백업에서 복구 및 복구</block>
+  <block id="6f14e8618cb532fa598b498e9c3fc455" category="paragraph">다른 호스트에서 생성된 백업의 복구 작업은 섹션에 설명되어 있습니다 <block ref="383e6e7e7573de7f2a0f06e6daaee412" category="inline-link-macro-rx"></block>.</block>
+  <block id="bba05b1a991c5925ab68cab0b8987cbc" category="inline-link-macro">다음: 단일 리소스가 있는 SnapCenter 구성</block>
+  <block id="9b599e23e279b030519f6f24e213957a" category="paragraph"><block ref="9b599e23e279b030519f6f24e213957a" category="inline-link-macro-rx"></block></block>
+  <block id="1fd25d525832cdf3655a067856ae6010" category="summary">SnapCenter 리소스는 HANA 시스템 복제 환경의 가상 IP 주소(호스트 이름)로 구성됩니다. 이 접근 방식을 통해 SnapCenter는 호스트 1과 호스트 2가 운영 호스트인지에 관계없이 항상 운영 호스트와 통신합니다.</block>
+  <block id="260f08a78b9b41762b41f2772c1cda65" category="doc">단일 리소스를 사용하는 SnapCenter 구성</block>
+  <block id="6f9a98f7009a1ee5777f92bba3d3ca80" category="inline-link-macro">이전: 리소스 그룹을 사용한 SnapCenter 4.6 구성</block>
+  <block id="04dcd1081c91e99bae759a46231ea277" category="paragraph"><block ref="04dcd1081c91e99bae759a46231ea277" category="inline-link-macro-rx"></block></block>
+  <block id="5411f416854228c6901553a528a29ad7" category="paragraph">SnapCenter 리소스는 HANA 시스템 복제 환경의 가상 IP 주소(호스트 이름)로 구성됩니다. 이 접근 방식을 통해 SnapCenter는 호스트 1과 호스트 2가 운영 호스트인지에 관계없이 항상 운영 호스트와 통신합니다. 두 SAP HANA 호스트의 데이터 볼륨은 SnapCenter 리소스에 포함되어 있습니다.</block>
+  <block id="d223d6e73fef21ec370c1a5c0e109630" category="admonition">가상 IP 주소가 항상 기본 SAP HANA 호스트에 바인딩되어 있다고 가정합니다. 가상 IP 주소의 페일오버는 SnapCenter 외부에서 HANA 시스템 복제 페일오버 워크플로우의 일부로 수행됩니다.</block>
+  <block id="6f723c4c9a56249ef6ad0fc5205452b8" category="paragraph">호스트 1을 운영 호스트로 사용하여 백업을 실행하면 호스트 1의 데이터 볼륨에서 데이터베이스 정합성 보장 스냅샷 백업이 생성됩니다. 호스트 2의 데이터 볼륨은 SnapCenter 리소스에 포함되므로 이 볼륨에 대해 또 다른 스냅샷 복사본이 생성됩니다. 이 스냅샷 복사본은 데이터베이스 정합성이 보장되지 않고 2차 호스트의 장애 이미지일 뿐입니다.</block>
+  <block id="748f9383138a6d21a5f9dc95cf69b88c" category="paragraph">SAP HANA 백업 카탈로그와 SnapCenter 리소스에는 호스트 1에서 생성된 백업이 포함되어 있습니다.</block>
+  <block id="97a1bf3e5cbe14f9b60224db75b4418c" category="paragraph"><block ref="97a1bf3e5cbe14f9b60224db75b4418c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9b9c7d8b5c0d0fafbea9ea847faf4e80" category="paragraph">다음 그림에서는 호스트 2로 페일오버 후 백업 작업과 호스트 2에서 호스트 1로 복제를 보여 줍니다. SnapCenter는 SnapCenter 리소스에 구성된 가상 IP 주소를 사용하여 호스트 2와 자동으로 통신합니다. 이제 호스트 2에서 백업이 생성됩니다. SnapCenter은 2개의 스냅샷 복사본을 생성합니다. 하나는 호스트 2의 데이터 볼륨에 대한 데이터베이스 정합성 보장 백업이고 다른 하나는 호스트 1의 데이터 볼륨에 있는 스냅샷 복사본입니다. 이제 SAP HANA 백업 카탈로그와 SnapCenter 리소스에 호스트 1에서 생성된 백업과 호스트 2에서 생성된 백업이 포함됩니다.</block>
+  <block id="2b26158b4aff092cc0728d277d344a5a" category="paragraph">데이터 및 로그 백업의 하우스키핑은 정의된 SnapCenter 보존 정책을 기반으로 하며, 운영 또는 보조 호스트와 상관없이 백업이 삭제됩니다.</block>
+  <block id="8f051c9b2bafb13696b25fd6f436a556" category="paragraph"><block ref="8f051c9b2bafb13696b25fd6f436a556" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b3c7f675aa9e386d0aaa73f2de847188" category="inline-link-macro">스토리지 스냅샷 백업 및 SAP 시스템 복제</block>
+  <block id="102f334e96097bebfae58a079388d7f2" category="paragraph">섹션에 설명된 대로 <block ref="570e066d63188ae45a45b07d6865440b" category="inline-link-macro-rx"></block>스토리지 기반 Snapshot 백업을 사용한 복구 작업은 복원해야 하는 백업에 따라 다릅니다. 로컬 스토리지 볼륨에서 복구를 수행할 수 있는지 또는 다른 호스트의 스토리지 볼륨에서 복구를 수행해야 하는지 여부를 확인하려면 에서 백업이 생성된 호스트를 확인해야 합니다.</block>
+  <block id="76668f896551ee021941705402feda3b" category="paragraph">단일 리소스 SnapCenter 구성을 사용하는 경우 SnapCenter는 백업이 생성된 위치를 알지 못합니다. 따라서 SnapCenter 백업 워크플로우에 사전 백업 스크립트를 추가하여 현재 기본 SAP HANA 호스트인 호스트를 식별하는 것이 좋습니다.</block>
+  <block id="bb9f6626d16fda2d847f88dabedc7961" category="paragraph">다음 그림에서는 백업 호스트의 ID를 보여 줍니다.</block>
+  <block id="70e6889eeb72975a0660142211d133ac" category="paragraph"><block ref="70e6889eeb72975a0660142211d133ac" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4b152f4bba0a5ca6345daa47736e4622" category="section-title">SnapCenter 구성</block>
+  <block id="32423786e97f4f83fdc90f030727503b" category="paragraph">다음 그림은 랩 설정과 필요한 SnapCenter 구성의 개요를 보여 줍니다.</block>
+  <block id="3cfc873aaec262d66172e9ff275d4389" category="paragraph"><block ref="3cfc873aaec262d66172e9ff275d4389" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c1968668fc5cbc2c5e8b49c18c362b55" category="paragraph">어떤 SAP HANA 호스트가 기본이고 하나의 호스트가 다운된 경우에도 백업 작업을 수행하려면 SnapCenter SAP HANA 플러그인을 중앙 플러그인 호스트에 구축해야 합니다. 연구소 설정에서 SnapCenter 서버를 중앙 플러그인 호스트로 사용했고 SnapCenter 서버에 SAP HANA 플러그인을 배포했습니다.</block>
+  <block id="bd5c6333eef324e59a3de18aa6e29173" category="paragraph">백업 작업을 수행하기 위해 HANA 데이터베이스에서 사용자가 생성되었습니다. SAP HANA 플러그인이 설치된 SnapCenter 서버에서 사용자 저장소 키를 구성했습니다. 사용자 저장소 키에는 SAP HANA 시스템 복제 호스트('SR-VIP')의 가상 IP 주소가 포함됩니다.</block>
+  <block id="5a2cdf3fb46c8f521d96d7e7bc4c9b2f" category="paragraph">SAP HANA 플러그인 구축 옵션 및 사용자 저장소 구성에 대한 자세한 내용은 기술 보고서 TR-4614:<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>.</block>
+  <block id="d7e2061a39f4790783431f1963349b9b" category="paragraph">SnapCenter에서는 이전에 구성한 사용자 저장소 키와 SnapCenter 서버를 "hdbsql" 통신 호스트로 사용하여 다음 그림과 같이 자원을 구성합니다.</block>
+  <block id="6fa9e53701a1c7daddbc7f621164665e" category="paragraph"><block ref="6fa9e53701a1c7daddbc7f621164665e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2a64b18e126555fa2ca4e7fb0bf3bc37" category="paragraph">다음 그림에서 볼 수 있듯이, 두 SAP HANA 호스트의 데이터 볼륨은 스토리지 설치 공간 구성에 포함됩니다.</block>
+  <block id="f349bc5106429125b1ece6199df508c3" category="paragraph"><block ref="f349bc5106429125b1ece6199df508c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="90323af735fbe3861cb8bc49a36914b1" category="paragraph">앞에서 설명한 것처럼 SnapCenter는 백업이 생성된 위치를 알지 못합니다. 따라서 SnapCenter 백업 워크플로우에 사전 백업 스크립트를 추가하여 현재 기본 SAP HANA 호스트인 호스트를 식별하는 것이 좋습니다. 다음 그림과 같이 백업 워크플로우에 추가된 SQL 문을 사용하여 이 ID를 수행할 수 있습니다.</block>
+  <block id="a8b9f97ba8782fd76582d42b533aa232" category="paragraph"><block ref="a8b9f97ba8782fd76582d42b533aa232" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0b345bf9ce49cf6e06f2ca4c412deff5" category="section-title">SnapCenter 백업 작업</block>
+  <block id="82e7650ccab95a6d3386e10752618019" category="paragraph">이제 백업 작업이 평소와 같이 실행됩니다. 데이터 및 로그 백업의 하우스키핑은 어떤 SAP HANA 호스트가 기본 또는 보조 호스트인지 독립적으로 수행됩니다.</block>
+  <block id="d0c6300a20b1a2c2c3b854a631ac2e32" category="paragraph">백업 작업 로그에는 SQL 문의 출력이 포함되어 있으므로 백업을 생성한 SAP HANA 호스트를 확인할 수 있습니다.</block>
+  <block id="6354370842f86dd420800ec685504912" category="paragraph">다음 그림에서는 호스트 1이 운영 호스트로 포함된 백업 작업 로그를 보여 줍니다.</block>
+  <block id="bcb58afb89609d906c95964f746f4de7" category="paragraph"><block ref="bcb58afb89609d906c95964f746f4de7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="21707873392b599f402b6c2e8519e23a" category="paragraph">이 그림에서는 호스트 2가 운영 호스트로 포함된 백업 작업 로그를 보여 줍니다.</block>
+  <block id="5fe0de453194cc3da32e5f1e04d39d67" category="paragraph"><block ref="5fe0de453194cc3da32e5f1e04d39d67" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="13dea575ccfa5ca9cd3d63c2e68f6d10" category="paragraph">다음 그림에서는 SAP HANA Studio의 SAP HANA 백업 카탈로그를 보여 줍니다. SAP HANA 데이터베이스가 온라인 상태일 때 SAP HANA Studio에서 백업이 생성된 SAP HANA 호스트가 표시됩니다.</block>
+  <block id="193b24cf7c478d099c4fbbe19f8ad124" category="admonition">복구 및 복구 작업 중에 사용되는 파일 시스템의 SAP HANA 백업 카탈로그에는 백업을 생성한 호스트 이름이 포함되지 않습니다. 데이터베이스가 다운되었을 때 호스트를 식별하는 유일한 방법은 백업 카탈로그 항목을 두 SAP HANA 호스트의 'backup.log' 파일과 결합하는 것입니다.</block>
+  <block id="373d32b62b1d826732c4a18f8312353b" category="paragraph"><block ref="373d32b62b1d826732c4a18f8312353b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e0e4fbbcdc158520c486ebd1cb95f4e" category="paragraph">앞에서 설명한 대로 선택한 백업이 생성된 위치를 확인하여 필요한 복원 작업을 정의할 수 있어야 합니다. SAP HANA 데이터베이스가 아직 온라인 상태인 경우 SAP HANA Studio를 사용하여 백업이 생성된 호스트를 확인할 수 있습니다. 데이터베이스가 오프라인 상태인 경우 이 정보는 SnapCenter 백업 작업 로그에서만 사용할 수 있습니다.</block>
+  <block id="ec3a3d8d3490fe3ecd7daa9a92d23e25" category="paragraph">다음 그림에서는 선택한 백업에 따라 다른 복원 작업을 보여 줍니다.</block>
+  <block id="f3f8ad38930fbe26474c020c9937d5e0" category="paragraph">복구 작업이 타임 스탬프 T3 이후에 수행되어야 하고 호스트 1이 기본 복구 작업인 경우 SnapCenter를 사용하여 T1 또는 T3에서 생성된 백업을 복원할 수 있습니다. 이러한 스냅샷 백업은 호스트 1에 연결된 스토리지 볼륨에서 사용할 수 있습니다.</block>
+  <block id="a039a31368090cbccac747771d4314fe" category="paragraph">호스트 2의 스토리지 볼륨에 있는 스냅샷 복사본인 호스트 2(T2)에서 생성된 백업을 사용하여 복구해야 하는 경우 호스트 1에서 백업을 사용할 수 있도록 해야 합니다. 백업에서 NetApp FlexClone 복사본을 생성하고 FlexClone 복사본을 호스트 1에 마운트한 다음 데이터를 원래 위치에 복사하여 이 백업을 사용할 수 있습니다.</block>
+  <block id="110682bcbc84e2b26e25965736a6ce46" category="paragraph"><block ref="110682bcbc84e2b26e25965736a6ce46" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cc77c2d84c4d0532580c7648fb527068" category="paragraph">단일 SnapCenter 리소스 구성을 사용하면 두 SAP HANA 시스템 복제 호스트의 두 스토리지 볼륨에서 스냅샷 복사본이 생성됩니다. 기본 SAP HANA 호스트의 스토리지 볼륨에서 생성되는 스냅샷 백업만 향후 복구에 사용할 수 있습니다. 2차 SAP HANA 호스트의 스토리지 볼륨에서 생성된 스냅샷 복사본은 향후 복구에 사용할 수 없는 충돌 이미지입니다.</block>
+  <block id="914fe0e173ea134cf6a261a23bb9be7c" category="paragraph">SnapCenter를 사용한 복구 작업은 다음 두 가지 방법으로 수행할 수 있습니다.</block>
+  <block id="da47f45ee3786a65f83ac527b48e3368" category="list-text">유효한 백업만 복원합니다</block>
+  <block id="efa0a43a073fecc57325043414b7410e" category="list-text">유효한 백업 및 충돌 요소를 포함하여 전체 리소스를 복원합니다.다음 섹션에서는 두 가지 다른 복원 작업에 대해 자세히 설명합니다.</block>
+  <block id="cae4c5e22b0e817592c5813faad601cf" category="paragraph">다음 그림에서는 단일 SnapCenter 리소스 구성을 사용하는 복구 작업을 보여 줍니다.</block>
+  <block id="e5e18ed760ed51854f8cf556564f1d8a" category="paragraph"><block ref="e5e18ed760ed51854f8cf556564f1d8a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="999b37dc80676993381a9707924e29c3" category="section-title">유효한 백업의 SnapCenter 복구만 가능합니다</block>
+  <block id="f17433ab3965bf2e142fb4e1dff405e2" category="paragraph">다음 그림에서는 이 섹션에서 설명하는 복원 및 복구 시나리오의 개요를 보여 줍니다.</block>
+  <block id="36859b36c1aed5070a33950066055b92" category="paragraph">호스트 1의 T1에서 백업이 생성되었습니다. 호스트 2에 대한 페일오버가 수행되었습니다. 특정 시점 이후에 호스트 1에 대한 또 다른 페일오버가 수행되었습니다. 현재 시점에서 호스트 1은 운영 호스트입니다.</block>
+  <block id="880f2e960b16f01349f2ca3486d1bd6a" category="list-text">오류가 발생하여 호스트 1에서 T1에 생성된 백업으로 복구해야 합니다.</block>
+  <block id="4af51d00fac3b893eeec6663c152d51a" category="list-text">보조 호스트(호스트 2)가 종료되었지만 복원 작업이 실행되지 않습니다.</block>
+  <block id="7ded02ea0206a70a9c98edbe7828dcdb" category="list-text">호스트 1의 스토리지 볼륨은 T1에서 생성된 백업으로 복구됩니다.</block>
+  <block id="dd764570723e348d81f59c7841180784" category="list-text">정방향 복구는 호스트 1과 호스트 2의 로그를 사용하여 수행됩니다.</block>
+  <block id="209c12c254cf841cccc9a950309a933e" category="list-text">호스트 2가 시작되고 호스트 2의 시스템 복제 재동기화가 자동으로 시작됩니다.</block>
+  <block id="10f06444eb9ad361b94842dcd1d07f91" category="paragraph"><block ref="10f06444eb9ad361b94842dcd1d07f91" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c37725f2a48f8baeb00c03c364ea3a90" category="paragraph">다음 그림에서는 SAP HANA Studio의 SAP HANA 백업 카탈로그를 보여 줍니다. 강조 표시된 백업에는 호스트 1에서 T1에서 생성된 백업이 표시됩니다.</block>
+  <block id="20e08948845c7f57b4f19b8c6d62dedf" category="paragraph"><block ref="20e08948845c7f57b4f19b8c6d62dedf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5b426b49c093dba7596721df7ef7ef47" category="paragraph">복구 및 복구 작업은 SAP HANA Studio에서 시작됩니다. 다음 그림에서 볼 수 있듯이, 백업이 생성된 호스트의 이름이 복구 및 복구 워크플로우에서 표시되지 않습니다.</block>
+  <block id="f608de875db67dd46fec88060326d0b1" category="admonition">이 테스트 시나리오에서는 데이터베이스가 아직 온라인 상태일 때 SAP HANA Studio에서 올바른 백업(호스트 1에서 생성된 백업)을 식별할 수 있었습니다. 데이터베이스를 사용할 수 없는 경우 SnapCenter 백업 작업 로그를 확인하여 올바른 백업을 식별해야 합니다.</block>
+  <block id="9e47f487ab6c5d1b77d41f104eb57710" category="paragraph"><block ref="9e47f487ab6c5d1b77d41f104eb57710" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="53b821249032276c494242cb38256d19" category="paragraph">SnapCenter에서 백업이 선택되고 파일 레벨 복구 작업이 수행됩니다. 파일 레벨 복구 화면에서는 유효한 백업만 복구되도록 호스트 1 볼륨만 선택됩니다.</block>
+  <block id="59d1491be762fd48a25b2420384f08b4" category="paragraph"><block ref="59d1491be762fd48a25b2420384f08b4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b01c5d1bb46aad41f5286805bebfd4f0" category="paragraph">복구 작업 후 SAP HANA Studio에서 백업이 녹색으로 강조 표시됩니다. 호스트 1과 호스트 2의 로그 백업의 파일 경로가 백업 카탈로그에 포함되므로 추가 로그 백업 위치를 입력할 필요가 없습니다.</block>
+  <block id="c856693eb2fac53b282a7876fc383731" category="paragraph"><block ref="c856693eb2fac53b282a7876fc383731" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f286578015316aaefdf2a9d71504270e" category="paragraph">정방향 복구가 완료되면 보조 호스트(호스트 2)가 시작되고 SAP HANA 시스템 복제 재동기화가 시작됩니다.</block>
+  <block id="4fb7470490997c95ffa1c5600ec5ecd3" category="admonition">보조 호스트가 최신 상태이지만(호스트 2에 대해 복원 작업이 수행되지 않음) SAP HANA는 모든 데이터의 전체 복제를 실행합니다. 이 동작은 SAP HANA 시스템 복제를 사용한 복원 및 복구 작업 후 표준 동작입니다.</block>
+  <block id="30951caa04f9b919b2494a0f6f8be109" category="paragraph"><block ref="30951caa04f9b919b2494a0f6f8be109" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="79dc576ddf59dc20fca6834461f7ac09" category="section-title">유효한 백업 및 충돌 이미지의 SnapCenter 복원</block>
+  <block id="da1933d80ef83cf1ec0c167fcc7d7f1e" category="list-text">2차 호스트(호스트 2)가 종료되고 T1 충돌 이미지가 복구됩니다.</block>
+  <block id="184f8e362eb69a36b78d905cfdd2bf4e" category="list-text">호스트 2가 시작되고 호스트 2의 시스템 복제 재동기화가 자동으로 시작됩니다.</block>
+  <block id="8a993f24e02842ba2d1d5f79c4856c17" category="paragraph"><block ref="8a993f24e02842ba2d1d5f79c4856c17" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="95069540deba789e6c51a01cc226e5b2" category="paragraph">SAP HANA Studio를 사용한 복구 작업은 섹션에 설명된 단계와 동일합니다 <block ref="873b82be62d7406e4e13ae8683307096" category="inline-link-macro-rx"></block>.</block>
+  <block id="ce7fc220814189df737dd5a85d9ec6fe" category="paragraph">복원 작업을 수행하려면 SnapCenter에서 전체 리소스 를 선택합니다. 두 호스트의 볼륨이 복구됩니다.</block>
+  <block id="056b602d58a8966b7b63ac3a6ebc5ba8" category="paragraph"><block ref="056b602d58a8966b7b63ac3a6ebc5ba8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a2d30341e8760144a82505e4f2584b74" category="paragraph">정방향 복구가 완료되면 보조 호스트(호스트 2)가 시작되고 SAP HANA 시스템 복제 재동기화가 시작됩니다. 모든 데이터의 전체 복제가 실행됩니다.</block>
+  <block id="583e9ba0a822a77e1226f1eb7ab4c414" category="paragraph"><block ref="583e9ba0a822a77e1226f1eb7ab4c414" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1f2e2708a4cb2228c40c0919e9fc4deb" category="inline-link-macro">다음: 다른 호스트에서 생성된 백업에서 복구 및 복구</block>
+  <block id="99c19b4112a8eb56423d73b25136b497" category="paragraph"><block ref="99c19b4112a8eb56423d73b25136b497" category="inline-link-macro-rx"></block></block>
+  <block id="8b882a288d6cd3bd9c486a64d890100d" category="summary">다른 SAP HANA 호스트에 생성된 백업에서 복원 작업은 두 SnapCenter 구성 옵션에 대해 유효한 시나리오입니다.</block>
+  <block id="9256b11afc32bceb372c74dfeeb3433a" category="doc">다른 호스트에서 생성된 백업에서 복구 및 복구</block>
+  <block id="730ab62aba9f1e37ab14624e5e1d85c4" category="inline-link-macro">이전: 단일 리소스가 있는 SnapCenter 구성</block>
+  <block id="db9fb51585abfdfc58e046a57e5e016c" category="paragraph"><block ref="db9fb51585abfdfc58e046a57e5e016c" category="inline-link-macro-rx"></block></block>
+  <block id="a45630ea5c1a78685a85cc9991055838" category="paragraph">호스트 1의 T1에서 백업이 생성되었습니다. 호스트 2에 대한 페일오버가 수행되었습니다. 현재 시점에서 호스트 2가 운영 호스트입니다.</block>
+  <block id="7f7f6d932a287ba353121a42032e859c" category="list-text">운영 호스트(호스트 1)가 종료됩니다.</block>
+  <block id="08ab08de2b84a1abeec853852fbb270b" category="list-text">호스트 1의 백업 데이터 T1이 호스트 2로 복구됩니다.</block>
+  <block id="54a006a73eb9494b19b57e09390aac49" category="list-text">정방향 복구는 호스트 1과 호스트 2의 로그를 사용하여 수행됩니다.</block>
+  <block id="61eb913111b23af6c5cbbc8dbc814cc4" category="list-text">호스트 1이 시작되고 호스트 1의 시스템 복제 재동기화가 자동으로 시작됩니다.</block>
+  <block id="b81038ea00f0038ea05ad622788d5612" category="paragraph"><block ref="b81038ea00f0038ea05ad622788d5612" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="420b1e4ee829dd3eb714e9041891238b" category="paragraph">다음 그림에서는 SAP HANA 백업 카탈로그를 보여 주고 복구 작업에 사용된 호스트 1에서 생성된 백업을 보여 줍니다.</block>
+  <block id="5551467de000a8b6e4643a76c3372938" category="paragraph"><block ref="5551467de000a8b6e4643a76c3372938" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd5d505ca2373cdc7d18efb2869033ed" category="paragraph">복원 작업에는 다음 단계가 포함됩니다.</block>
+  <block id="2d08d5136ddc4086894bda34d14b24d0" category="list-text">호스트 1에서 생성된 백업에서 클론을 생성합니다.</block>
+  <block id="6043974c0cea7ef12e2b91ac16162035" category="list-text">호스트 2에 클론 생성된 볼륨을 마운트합니다.</block>
+  <block id="451bde33fa7b247f83d7b14fd93c467a" category="list-text">복제된 볼륨의 데이터를 원래 위치로 복사합니다.</block>
+  <block id="9fcc4360269dfed6a58662eaaff3f7a4" category="paragraph">SnapCenter에서 백업이 선택되고 클론 작업이 시작됩니다.</block>
+  <block id="453eaeaa8c790bd63f7a4520d7e9ecd6" category="paragraph"><block ref="453eaeaa8c790bd63f7a4520d7e9ecd6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3b8d6cba3e9f1c4ec4c62eaa46003ff0" category="paragraph">클론 서버와 NFS 엑스포트 IP 주소를 제공해야 합니다.</block>
+  <block id="50d76361ddca8e22e3d17e0f39e45c9c" category="admonition">SnapCenter 단일 리소스 구성에서는 SAP HANA 플러그인이 데이터베이스 호스트에 설치되어 있지 않습니다. SnapCenter 클론 워크플로우를 실행하려면 HANA 플러그인이 설치된 모든 호스트를 클론 서버로 사용할 수 있습니다.</block>
+  <block id="59edb5bba2c252f423a3013c5a80ed7a" category="paragraph">+ 별도의 리소스가 있는 SnapCenter 구성에서는 HANA 데이터베이스 호스트를 클론 서버로 선택하고 마운트 스크립트를 사용하여 클론을 타겟 호스트에 마운트합니다.</block>
+  <block id="d80c5ce20d24da7129e1f053b85b14a9" category="paragraph"><block ref="d80c5ce20d24da7129e1f053b85b14a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fe739341f732db5aff63cb28381d9cdc" category="paragraph">클론 복제된 볼륨을 마운트하는 데 필요한 접합 경로를 확인하려면 다음 그림과 같이 클론 작업의 작업 로그를 확인하십시오.</block>
+  <block id="e5dec5069f1f7102326e78e2fc5f4222" category="paragraph"><block ref="e5dec5069f1f7102326e78e2fc5f4222" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a5f909bb980ebce8c8c504b2b21da69a" category="paragraph">이제 복제된 볼륨을 마운트할 수 있습니다.</block>
+  <block id="c5dcd428c947792bd217fd89ee812f51" category="paragraph">클론 복제된 볼륨에는 HANA 데이터베이스의 데이터가 포함됩니다.</block>
+  <block id="1f20a3a37744f93109db368fed3d4d72" category="paragraph">데이터가 원래 위치에 복사됩니다.</block>
+  <block id="691b6e8cda25aff0ec57af52318e1685" category="paragraph">SAP HANA Studio를 사용한 복구는 섹션에 설명된 대로 수행됩니다 <block ref="873b82be62d7406e4e13ae8683307096" category="inline-link-macro-rx"></block>.</block>
+  <block id="6f687960a3c4d1594e6b79f66918e95a" category="paragraph"><block ref="6f687960a3c4d1594e6b79f66918e95a" category="inline-link-macro-rx"></block></block>
+  <block id="cb014ba864354c430b0d6d7e306d1c0c" category="summary">이 페이지에서는 SAP 시스템 복제에 대한 구성 옵션을 설명합니다.</block>
+  <block id="76c0a8113c74eb76e36c8c87f7095211" category="doc">SAP 시스템 복제에 대한 SnapCenter 구성 옵션</block>
+  <block id="dd0e039d4e26c48a6dd3f7b3d4414a25" category="inline-link-macro">이전: 스토리지 스냅샷 백업 및 SAP 시스템 복제.</block>
+  <block id="61f99bf9b57fd4bab17beadc9b01e359" category="paragraph"><block ref="61f99bf9b57fd4bab17beadc9b01e359" category="inline-link-macro-rx"></block></block>
+  <block id="b65fb91c7466f471e73d7a165cddad8f" category="paragraph">SAP HANA 시스템 복제 환경에서 NetApp SnapCenter 소프트웨어로 데이터 보호를 구성하는 방법에는 두 가지 옵션이 있습니다.</block>
+  <block id="a6161fc735dff46e0f1e300b07198882" category="list-text">SAP HANA 호스트 및 SnapCenter 버전 4.6 이상의 자동 검색을 포함하는 SnapCenter 리소스 그룹입니다.</block>
+  <block id="27cd07c42b7b1163d4ec30ce77a50ba7" category="list-text">가상 IP 주소를 사용하는 두 SAP HANA 호스트에 대한 단일 SnapCenter 리소스입니다.</block>
+  <block id="26f65af2f58b8f28da27697016899223" category="paragraph"><block ref="26f65af2f58b8f28da27697016899223" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8cf962f6ac56a026f883cf2e827b0423" category="paragraph">SnapCenter 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HANA 시스템의 자동 검색을 지원합니다. 각 호스트는 해당 물리적 IP 주소(호스트 이름)와 스토리지 계층의 개별 데이터 볼륨을 사용하여 구성됩니다. 두 SnapCenter 리소스가 리소스 그룹에 결합되어 SnapCenter는 운영 또는 보조 호스트를 자동으로 식별하고 그에 따라 필요한 백업 작업을 실행합니다. SnapCenter에서 생성된 스냅샷 및 파일 기반 백업의 보존 관리는 두 호스트 모두에서 수행되므로 이전 백업도 현재 보조 호스트에서 삭제됩니다.</block>
+  <block id="cbcfd6defd0fc62b33d3178fca9312bf" category="paragraph">두 SAP HANA 호스트에 대해 단일 리소스 구성을 사용하면 SAP HANA 시스템 복제 호스트의 가상 IP 주소를 사용하여 단일 SnapCenter 리소스를 구성할 수 있습니다. SAP HANA 호스트의 두 데이터 볼륨은 SnapCenter 리소스에 포함되어 있습니다. 단일 SnapCenter 리소스이기 때문에 SnapCenter에서 생성한 스냅샷 및 파일 기반 백업의 보존 관리는 현재 운영 또는 2차 호스트와는 독립적으로 작동합니다. 이 옵션은 모든 SnapCenter 릴리스에서 사용할 수 있습니다.</block>
+  <block id="56360ee768eb6691b2c48a27f2d5295a" category="paragraph">다음 표에는 두 구성 옵션의 주요 차이점이 요약되어 있습니다.</block>
+  <block id="624d27e661ea476c564f0a0e3d4759da" category="cell">SnapCenter 4.6을 사용하는 리소스 그룹</block>
+  <block id="26fa56c884b002243efdac83893ee4ce" category="cell">단일 SnapCenter 리소스 및 가상 IP 주소입니다</block>
+  <block id="99f1744d8b70ed4b0920b180edf0fcaf" category="cell">백업 작업(스냅샷 및 파일 기반)</block>
+  <block id="b683f173eb3a957cb9fcf3dee8b98d20" category="cell">리소스 그룹의 운영 호스트 자동 식별</block>
+  <block id="d0a2e35f97d84456638a2e94141fefe0" category="cell">가상 IP 주소를 자동으로 사용합니다</block>
+  <block id="cba3252df7023060b9d2ea4794c05c95" category="cell">보존 관리(Snapshot 및 파일 기반)</block>
+  <block id="d7689d65ad93f6364ea756a32efbf386" category="cell">두 호스트 모두에서 자동으로 실행됩니다</block>
+  <block id="8d7c7381c71c46d6b299eed1ea14ad55" category="cell">단일 리소스를 자동으로 사용합니다</block>
+  <block id="c8fa3fe6d9be52e4e17b9869fed3de64" category="cell">백업 용량 요구 사항</block>
+  <block id="5bb47a2dec0018ff60254946131850c6" category="cell">백업은 운영 호스트 볼륨에서만 생성됩니다</block>
+  <block id="0bd97517cd8fd61a12818f7ae5a32550" category="cell">백업은 항상 두 호스트 볼륨에 생성됩니다. 두 번째 호스트의 백업은 충돌의 일관성일 뿐이며 롤포워드하는 데 사용할 수 없습니다.</block>
+  <block id="9ab07fad125b53ff193b9837f7d654bb" category="cell">현재 활성 호스트의 백업을 복구 작업에 사용할 수 있습니다</block>
+  <block id="85afbaa0de4ef1ff6c48b160c1b340ff" category="cell">유효한 백업을 식별하고 복구에 사용할 수 있는 백업을 식별하는 데 필요한 사전 백업 스크립트입니다</block>
+  <block id="8d5e0cfc83e98d36864aa5b7f1ba6186" category="cell">복구 작업</block>
+  <block id="a92469fe3f104489efc5db9c40bbbea5" category="cell">모든 복구 옵션은 자동 검색 리소스와 동일하게 사용할 수 있습니다</block>
+  <block id="54bdadbafa35816a3af014e9c09e968a" category="cell">수동 복구가 필요합니다</block>
+  <block id="bae3dca5f2cc89808cfbe3a06c9cb114" category="admonition">일반적으로 SnapCenter 4.6과 함께 리소스 그룹 구성 옵션을 사용하여 HANA 시스템 복제를 사용하도록 설정한 HANA 시스템을 보호하는 것이 좋습니다. 단일 SnapCenter 리소스 구성은 SnapCenter 운영 방식이 중앙 플러그인 호스트를 기반으로 하고 HANA 플러그인을 HANA 데이터베이스 호스트에 배포하지 않는 경우에만 필요합니다.</block>
+  <block id="075a31e8a9e4995876239319585370dc" category="paragraph">다음 섹션에서는 두 옵션에 대해 자세히 설명합니다.</block>
+  <block id="fd379de989694996f5de797e5014f4ba" category="inline-link-macro">다음: 리소스 그룹을 사용하는 SnapCenter 4.6 구성</block>
+  <block id="0764f827a402f9e923a503628fba8701" category="paragraph"><block ref="0764f827a402f9e923a503628fba8701" category="inline-link-macro-rx"></block></block>
+  <block id="02d0cc60ddfcc9dc29916a6b5d3b6cf2" category="summary">백업 작업은 항상 운영 SAP HANA 호스트에서 수행됩니다. 백업 작업에 필요한 SQL 명령은 보조 SAP HANA 호스트에서 수행할 수 없습니다.</block>
+  <block id="8acd7da6dce942a7c8148e0a6e5875e2" category="doc">스토리지 스냅샷 백업 및 SAP 시스템 복제</block>
+  <block id="72a310aab90ac8db8720965336308077" category="inline-link-macro">이전: SAP HANA 시스템 복제 개요</block>
+  <block id="af1d1bf542c91a5272a15cd218689ee6" category="paragraph"><block ref="af1d1bf542c91a5272a15cd218689ee6" category="inline-link-macro-rx"></block></block>
+  <block id="1d3a0cbc6231799f2858090710d6f945" category="paragraph">SAP HANA 백업 작업의 경우 기본 및 보조 SAP HANA 호스트는 단일 엔터티입니다. 이들은 운영 또는 보조 SAP HANA 호스트에서 백업을 생성했는지 여부에 관계없이 동일한 SAP HANA 백업 카탈로그를 공유하고 복원 및 복구에 백업을 사용합니다.</block>
+  <block id="c492ffff6ae308c1f530d6498d7ecfe5" category="paragraph">복구를 위해 모든 백업을 사용하고 두 호스트에서 로그 백업을 사용하여 복구를 전달하는 기능을 사용하려면 두 호스트에서 액세스할 수 있는 공유 로그 백업 위치가 필요합니다. 공유 스토리지 볼륨을 사용하는 것이 좋습니다. 그러나 로그 백업 대상을 공유 볼륨 내의 하위 디렉토리로도 분리해야 합니다.</block>
+  <block id="0dc8552d7c114c04ba4721d2bfce22a8" category="paragraph">각 SAP HANA 호스트에는 자체 스토리지 볼륨이 있습니다. 스토리지 기반 Snapshot을 사용하여 백업을 수행하면 기본 SAP HANA 호스트의 스토리지 볼륨에 데이터베이스 정합성이 보장되는 Snapshot이 생성됩니다.</block>
+  <block id="d60e21c67d65d3194c204fa9a2e5277b" category="paragraph"><block ref="d60e21c67d65d3194c204fa9a2e5277b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="20298f12913ee9159d89657f340f41d0" category="paragraph">호스트 2에 대한 페일오버가 수행되면 호스트 2가 운영 호스트가 되고, 호스트 2에서 백업이 실행되고, 호스트 2의 스토리지 볼륨에서 스냅샷 백업이 생성됩니다.</block>
+  <block id="ec9f7dc4c9415267c560fe9756643a87" category="paragraph">호스트 2에서 생성된 백업은 스토리지 계층에서 직접 복구할 수 있습니다. 호스트 1에서 생성된 백업을 사용해야 하는 경우 호스트 1 스토리지 볼륨에서 호스트 2 스토리지 볼륨으로 백업을 복제해야 합니다. 정방향 복구는 두 호스트의 로그 백업을 사용합니다.</block>
+  <block id="87b45a585e45776e4cb007923331c4e5" category="paragraph"><block ref="87b45a585e45776e4cb007923331c4e5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d4e624f6176a09b7b1fb6ef3ea9d8b34" category="inline-link-macro">다음: SAP 시스템 복제에 대한 SnapCenter 구성 옵션</block>
+  <block id="247dc46544c919fa59a6baedb439288d" category="paragraph"><block ref="247dc46544c919fa59a6baedb439288d" category="inline-link-macro-rx"></block></block>
+  <block id="d53230f85b50903f17f7e6099737f107" category="summary">SAP HANA 시스템 복제는 일반적으로 SAP HANA 데이터베이스를 위한 고가용성 또는 재해 복구 솔루션으로 사용됩니다. SAP HANA 시스템 복제는 사용 사례 또는 가용성 요구사항에 따라 사용할 수 있는 다양한 운영 모드를 제공합니다.</block>
+  <block id="ac95c867fdf2157d0248719b002ae0f0" category="paragraph">다음과 같은 두 가지 주요 사용 사례를 결합할 수 있습니다.</block>
+  <block id="c34a01f37570a68dbcba0f7ef58b79c6" category="list-text">전용 2차 SAP HANA 호스트를 사용하여 제로 RPO(복구 시점 목표)와 RTO(복구 시간 목표)가 포함된 고가용성</block>
+  <block id="d824f0f483d8766968c3873c43c7e813" category="list-text">원거리에서 재해 복구. 보조 SAP HANA 호스트는 정상 운영 중에 개발 또는 테스트에 사용될 수도 있습니다.</block>
+  <block id="f5c1fbf48c6494a4f2e5ddc50e73ce6e" category="section-title">RPO 0과 RTO가 최소인 고가용성</block>
+  <block id="af656bf36a5e2d1cdf132f7992f06b9e" category="paragraph">시스템 복제는 보조 SAP HANA 호스트의 메모리에 사전 로드된 테이블을 사용하는 동기식 복제로 구성됩니다. 이 고가용성 솔루션을 사용하면 하드웨어 또는 소프트웨어 장애를 해결하고, SAP HANA 소프트웨어 업그레이드(다운타임이 거의 발생하지 않는 운영) 중에 계획된 다운타임을 줄일 수 있습니다.</block>
+  <block id="1634b98ad5173e165735c803c11fe9d5" category="paragraph">장애 조치 작업은 종종 타사 클러스터 소프트웨어를 사용하거나 SAP Landscape Management 소프트웨어를 사용하여 클릭 한 번으로 워크플로우를 통해 자동화됩니다.</block>
+  <block id="3d3f4f563a8744c58df8ea6e38510f02" category="paragraph">백업 요구사항의 관점에서 볼 때 어떤 SAP HANA 호스트가 기본 또는 보조 호스트인지 독립적으로 백업을 생성할 수 있어야 합니다. 공유 백업 인프라스트럭처는 백업이 생성된 호스트에 관계없이 모든 백업을 복구하는 데 사용됩니다.</block>
+  <block id="511a3a3dfd265b06ef79626d79c520e7" category="paragraph">이 문서의 나머지 부분에서는 고가용성 솔루션으로 구성된 SAP 시스템 복제를 사용하는 백업 작업에 대해 중점적으로 설명합니다.</block>
+  <block id="f58f587cb199854e0bd3b18a53d5c804" category="paragraph"><block ref="f58f587cb199854e0bd3b18a53d5c804" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="24d82a388e886346237cd51fe934aa03" category="section-title">원거리에서 재해 복구</block>
+  <block id="118abb1eac5a98e2067a4403636320af" category="paragraph">보조 호스트의 메모리에 사전 로드된 테이블이 없는 비동기식 복제로 시스템 복제를 구성할 수 있습니다. 이 솔루션은 데이터 센터 장애를 해결하는 데 사용되며 페일오버 작업은 일반적으로 수동으로 수행됩니다.</block>
+  <block id="6daa00da4eeb35d26853e03f23ef0546" category="paragraph">백업 요구 사항과 관련하여 데이터 센터 1의 정상적인 작동 중 및 데이터 센터 2의 재해 복구 중에 백업을 생성할 수 있어야 합니다. 데이터 센터 1과 2에서 별도의 백업 인프라를 사용할 수 있으며, 백업 작업은 재해 페일오버의 일부로 활성화됩니다. 일반적으로 백업 인프라스트럭처는 공유되지 않으며 다른 데이터 센터에서 생성된 백업의 복구 작업은 불가능합니다.</block>
+  <block id="ff732da203a83da376d0205d280f1894" category="paragraph"><block ref="ff732da203a83da376d0205d280f1894" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="733df4de2f76b685d2b28b68f07516a4" category="inline-link-macro">다음: 스토리지 스냅샷 백업 및 SAP 시스템 복제.</block>
+  <block id="09b8937df74fc30b4d98cda19a606cf2" category="paragraph"><block ref="09b8937df74fc30b4d98cda19a606cf2" category="inline-link-macro-rx"></block></block>
+  <block id="0d29acf224f492a80bc68566c1ad4948" category="paragraph"><block ref="0d29acf224f492a80bc68566c1ad4948" category="inline-link-macro-rx"></block></block>
+  <block id="0844bd2427e754de1d07ca91d15284a5" category="cell">문서 버전 기록</block>
+  <block id="77fce67ff1ced73f063cdd19c439b627" category="cell">2018년 10월</block>
+  <block id="b9365bb9132d1eb8770275a763fc5d69" category="cell">2022년 1월</block>
+  <block id="bc86535b64f45ec20770222ebaa5ca21" category="cell">SnapCenter 4.6 HANA 시스템 복제 지원을 포함하는 업데이트</block>
+  <block id="02fa3d38f575ae1d4c7d0f5663a0d3ed" category="sidebar">SnapCenter를 사용한 SAP HANA 시스템 복제 백업 및 복구</block>
+  <block id="4bb12dc6461f1d5fa4e11ed67fdeef9e" category="sidebar">SAP HANA 시스템 복제 개요</block>
 </blocks>

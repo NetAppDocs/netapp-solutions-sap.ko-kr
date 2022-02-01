@@ -2,6 +2,25 @@
 section: backup
 title: 백업, 복원 및 재해 복구
 entries:
+- title: SnapCenter를 사용한 SAP HANA 시스템 복제 백업 및 복구
+  type: solutions
+  entries:
+  - title: SAP HANA 시스템 복제 개요
+    url: "/backup/saphana-sr-scs-sap-hana-system-replication-overview.html"
+  - title: 스토리지 스냅샷 백업 및 SAP 시스템 복제
+    url: "/backup/saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html"
+  - title: SAP 시스템 복제에 대한 SnapCenter 구성 옵션
+    url: "/backup/saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html"
+  - title: 리소스 그룹을 사용한 SnapCenter 4.6 구성
+    url: "/backup/saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html"
+  - title: 단일 리소스를 사용하는 SnapCenter 구성
+    url: "/backup/saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html"
+  - title: 다른 호스트에서 생성된 백업에서 복구 및 복구
+    url: "/backup/saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html"
+  - title: 추가 정보를 찾을 수 있는 위치
+    url: "/backup/saphana-sr-scs-where-to-find-additional-information_overview.html"
+  - title: 버전 기록
+    url: "/backup/saphana-sr-scs-version-history.html"
 - title: Azure NetApp Files를 사용한 SAP HANA 재해 복구
   type: solutions
   entries:

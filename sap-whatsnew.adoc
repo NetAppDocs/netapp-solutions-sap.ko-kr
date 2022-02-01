@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: sap-whatsnew.html 
 summary: SAP 솔루션 포트폴리오에 최근 추가되었습니다 
-keywords: netapp, solutions, SAP, what's new 
+keywords: 'netapp, solutions, SAP, what"s new' 
 ---
 = SAP의 새로운 기능
 :hardbreaks:
