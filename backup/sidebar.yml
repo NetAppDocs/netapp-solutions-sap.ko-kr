@@ -109,8 +109,6 @@ entries:
   url: "/backup/saphana-br-sc_pdf_link.html"
 - title: 스토리지 복제를 사용한 SAP HANA 재해 복구
   url: "/backup/saphana-dr-sr_pdf_link.html"
-- title: SnapCenter를 사용한 SAP HANA 시스템 복제, 백업 및 복구
-  url: "/backup/saphana-sr_pdf_link.html"
 - title: Snap Creator를 통해 SAP HANA 백업 및 복구
   url: "/backup/saphana-bandr-sc_pdf_link.html"
 - title: NetApp 스토리지 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구
