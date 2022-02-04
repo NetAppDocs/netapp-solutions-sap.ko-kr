@@ -83,9 +83,6 @@
   <block id="af01ac16ca42b9b924b834a3199131e9" category="paragraph">이 인증은 다음 모델에 대해 유효합니다.</block>
   <block id="47230a2a4e3598c31d12840cfd054ac9" category="list-text">AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800</block>
   <block id="130c9ce9d2909449cb229a98c66f9d29" category="inline-link">인증되고 지원되는 SAP HANA 하드웨어 디렉토리</block>
-  <block id="79fc4220549a4c2c93c30a0983ee4447" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="4863cb1d1ac806ba02e335dda429f580" category="inline-link-rx"></block>.</block>
-  <block id="e6f3c771b97ae513ec4c1db0f4a875ce" category="paragraph">이 문서에서는 NFS 프로토콜 버전 3(NFSv3) 또는 NFS 프로토콜 버전 4(NFSv4.0 및 NFSv4.1)에 대한 ONTAP 구성 요구 사항에 대해 설명합니다.</block>
-  <block id="f40ff8772938c5d60689bb69269c8692" category="paragraph">이 문서의 나머지 부분에서는 NFSv4가 NFSv4.0과 NFSv4.1을 모두 참조합니다.</block>
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
   <block id="793f62e70c31f71a93161db091bea2c0" category="paragraph">FCP를 사용하는 NetApp AFF 시스템 및 NFS 또는 FCP를 사용하는 FAS 시스템의 구성 가이드는 다음 링크에서 찾을 수 있습니다.</block>
   <block id="fd645c3ffaeed1c3efb140082b037a69" category="inline-link">파이버 채널 프로토콜을 지원하는 NetApp FAS 시스템 기반 SAP HANA</block>
@@ -544,7 +541,6 @@
   <block id="7654c857db3169792d3c5833ad28cd37" category="cell">NFS modify -vserver &lt;vserver_name&gt; -v4.1 -write-delegation disabled</block>
   <block id="ffea0284d7bfb3aad7e0d7a07765b424" category="cell">NFSv4 숫자 ID를 해제합니다</block>
   <block id="96adb5308418a0e6a16e78f391a5725d" category="cell">NFS modify -vserver &lt;vserver_name&gt; -v4-numeric-ids disabled</block>
-  <block id="d36a06d4ce7ff3f416af683fa8c69c48" category="admonition">NFS 버전 4의 경우 0, 4.1 대신 4.0 명령을 사용합니다. NFSv4.0이 지원되는 경우에는 NFSv4.1이 권장됩니다.</block>
   <block id="c480c17814d28d6a9b00fd06a87dee2a" category="inline-link-macro">“NFSv4를 위한 SAP HANA 설치 준비”</block>
   <block id="9fa840f16cd7cf7f80145507faa2a523" category="admonition">섹션에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버("/etc/idmapd.conf") 및 SVM에서 동일한 값으로 설정해야 합니다 <block ref="19618adae76246007b68ca646cc14e2b" category="inline-link-macro-rx"></block></block>
   <block id="7fe6e3db98dfe3477134c69fb6a1a8e6" category="admonition">NFSV4.1을 사용 중인 경우 pNFS가 활성화되고 기본적으로 사용됩니다(권장).</block>
@@ -920,11 +916,9 @@
   <block id="d52686ae129e1d4bbe8cb75712e98f22" category="cell">vers = 3, nolock</block>
   <block id="16523b39871af16af52009bc15a2673c" category="cell">vers = 4, MinorVersion = 0, lock</block>
   <block id="5ce2764cf9f6ed7aadfe7ba01b6b29a4" category="cell">vers = 4, MinorVersion = 1, lock</block>
-  <block id="5c2fca07471576b78522310793904392" category="cell">rsize = 1048576, wsize = 1048576</block>
   <block id="9fdcbaccc733453d8e7687d8e14a4e06" category="cell">rsize=65536, wsize=65536</block>
   <block id="a6b3bab4792cb8cb5eda6f38e11a69e7" category="admonition">NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.</block>
   <block id="c252bc09fef14c3fb2a8d711bae9e7ed" category="admonition">성능 테스트 결과 nconnect=8은 좋은 판독 결과를 제공하는 것으로 나타났습니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 추가 마운트는 nconnect에 다른 값을 사용하더라도 이 값을 변경하지 않습니다.</block>
-  <block id="dacabe1f6964cddac20654972bf735ae" category="admonition">NFSv4의 경우 ONTAP 9.8부터 NFSv4.1용 NetApp에서 nconnect 옵션이 지원됩니다. NFSv4.1을 통해 nconnect를 지원하는 최초의 NFS 클라이언트는 SLES15SP2 및 RHEL 8.3에서 사용할 수 있습니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
   <block id="d3413923f038d5ccbb48c2ba31d26f55" category="paragraph">다음 예에서는 NFSv3과 1MB의 NFS 전송 크기를 사용하는 SID=NF2가 있는 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.</block>
   <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.</block>
@@ -1126,7 +1120,6 @@
   <block id="53186c8561352a2df976925dcabf62f0" category="paragraph">다음 표에는 디스크 쉘프당 지원되는 SAP HANA 호스트 수가 요약되어 있습니다.</block>
   <block id="f1ae15f6fd143c9e1276af68c06658c7" category="cell">12GB SAS 쉘프(DS224C)는 SSD 12개와 ADPv2가 절반 로드되어 있습니다</block>
   <block id="67daefa02c71a745373981700ce5c943" category="admonition">이 계산은 사용되는 스토리지 컨트롤러와 무관합니다. 디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.</block>
-  <block id="de1ff9288ed7f638a8b7369cd4297ed8" category="paragraph">첫 번째 쉘프에 최소 12개의 NVMe SSD가 최대 16개의 SAP HANA 호스트를 지원합니다. SSD 24개, 완전히 채워진 쉘프는 최대 34개의 SAP HANA 호스트를 지원합니다. AFF A800 시스템의 내부 디스크에도 동일하게 적용됩니다.</block>
   <block id="336d2fc2904f8210c02f37eb24f92eca" category="admonition">디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.</block>
   <block id="1d8d1934499ced39732f5c5099083c6b" category="paragraph">SAP 성능 테스트 툴을 사용하여 다른 워크로드에 이미 사용 중인 기존 스토리지 컨트롤러에서 SAP HANA 호스트를 추가로 실행할 수 있는지 확인해야 합니다. SAP 애플리케이션 서버를 SAP HANA 데이터베이스와 동일한 스토리지 컨트롤러 및/또는 Aggregate에 안전하게 배치할 수 있습니다.</block>
   <block id="fac3c55a3cdc98c6d08b96c048885f29" category="section-title">성능 테스트 도구 구성</block>
@@ -1341,7 +1334,6 @@
   <block id="16761c2a0fb024c597b40911ae9db317" category="paragraph">다음 명령 예는 2+ 1 다중 호스트 HANA 시스템에 대한 것입니다.</block>
   <block id="83ae0722b3e48679da7a55d190be5e44" category="list-text">모든 호스트의 '/etc/fstab' 구성 파일에 추가 파일 시스템을 추가합니다.</block>
   <block id="474fcd58a82b43abb0995925c1918bb9" category="paragraph">NFSv4.1을 사용하는 단일 호스트 시스템에 대해서는 다음 예를 참조하십시오.</block>
-  <block id="f1a09f6792682f701db17bcfb7a8d318" category="admonition">각 데이터 볼륨을 연결하는 데 다른 스토리지 가상 인터페이스를 사용하여 각 볼륨에 대해 서로 다른 TCP 세션을 사용하고 있는지 확인합니다</block>
   <block id="d3bc1dd8c6c3cc7ddb77b7e695a19878" category="list-text">'mount –a' 명령을 실행하여 파일 시스템을 마운트합니다.</block>
   <block id="f24c14c86fe4885372ee7537f12b5831" category="section-title">추가 데이터 볼륨 파티션 추가</block>
   <block id="356dd722b5b14363393c40db43145fba" category="paragraph">테넌트 데이터베이스에 대해 다음 SQL 문을 실행하여 테넌트 데이터베이스에 추가 데이터 볼륨 파티션을 추가합니다. 추가 볼륨의 경로를 사용합니다.</block>
@@ -2603,7 +2595,6 @@
   <block id="0f68b904e33d9ac04605aecc958bcf52" category="sidebar">추가 정보</block>
   <block id="f41a551d63cd5cff04cf3c09ee2c3dea" category="sidebar">SnapCenter를 사용한 SAP HANA 백업 및 복구</block>
   <block id="dd0dec62b557e33c38d24dc3cbaed4bc" category="sidebar">스토리지 복제를 사용한 SAP HANA 재해 복구</block>
-  <block id="556e7469391c18d85f90a695dc28f80e" category="sidebar">SnapCenter를 사용한 SAP HANA 시스템 복제, 백업 및 복구</block>
   <block id="fceb9e9a7a8e75da09a45b74960f3ce3" category="sidebar">Snap Creator를 통해 SAP HANA 백업 및 복구</block>
   <block id="0f1df2d5d1f6e9db4283f9e9814fa12a" category="sidebar">NetApp 스토리지 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구</block>
   <block id="eeb338bfcd3ad35ad6983ecfa31efba2" category="sidebar">NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구</block>
@@ -2858,4 +2849,14 @@
   <block id="bc86535b64f45ec20770222ebaa5ca21" category="cell">SnapCenter 4.6 HANA 시스템 복제 지원을 포함하는 업데이트</block>
   <block id="02fa3d38f575ae1d4c7d0f5663a0d3ed" category="sidebar">SnapCenter를 사용한 SAP HANA 시스템 복제 백업 및 복구</block>
   <block id="4bb12dc6461f1d5fa4e11ed67fdeef9e" category="sidebar">SAP HANA 시스템 복제 개요</block>
+  <block id="c35a0cd0a7282bf70f4933947c018788" category="list-text">AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900</block>
+  <block id="152277675a8ef46c12f1dc91f2f53ede" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>.</block>
+  <block id="18cab9085e2115741cf08f1964299a5a" category="paragraph">이 문서에서는 NFS 프로토콜 버전 3(NFSv3) 또는 NFS 프로토콜 버전 4(NFSv4.1)의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
+  <block id="e678bbdfe53ad933277605d32601cebe" category="admonition">NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.</block>
+  <block id="c16b7b6c06ec01825313e31feb82c6d2" category="cell">rsize = 1048576, wsize = 262144</block>
+  <block id="c16896dd475dc23d3a84eb0def7cee50" category="admonition">ONTAP 9.8부터 NFSv4.1을 위한 NetApp의 nconnect 옵션이 지원됩니다. NFSv4.1을 통해 nconnect를 지원하는 최초의 NFS 클라이언트는 SLES15SP2 및 RHEL 8.4에서 사용할 수 있습니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
+  <block id="d15827908daa628f6154e0a4e3d8a3da" category="paragraph">첫 번째 쉘프에 최소 12개의 NVMe SSD가 최대 16개의 SAP HANA 호스트를 지원합니다. 완전히 채워진 쉘프(SSD 24개)는 최대 48개의 SAP HANA 호스트를 지원합니다. AFF A800 시스템의 내부 디스크에도 동일하게 적용됩니다.</block>
+  <block id="5f99a6ad54bfd8d0c68c8cc9f709365b" category="inline-link">SAP Note 1900823</block>
+  <block id="8e473bb8179de06c9675fded85db8531" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 백서.</block>
+  <block id="0b65064648e048922c198e4d6e2cafc1" category="admonition">각 데이터 볼륨을 연결하는 데 다른 스토리지 가상 인터페이스를 사용하여 각 볼륨에 대해 다른 TCP 세션을 사용하고 있는지 확인하거나 OS에서 사용할 수 있는 경우 nconnect 마운트 옵션을 사용하십시오.</block>
 </blocks>
