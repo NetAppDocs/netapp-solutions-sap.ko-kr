@@ -1,0 +1,77 @@
+---
+sidebar: sidebar 
+permalink: backup/saphana-br-scs-snapcenter-configuration.html 
+keywords: configuration, resource-specific, dependencies, storage system, credentials, hosts, policies 
+summary: SnapCenter 구성은 초기 구성과 리소스별 구성의 두 가지 주요 영역으로 구분할 수 있습니다. 
+---
+= SnapCenter 구성
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:saphana-br-scs-lab-setup-used-for-this-report.html["Previous(이전): 이 보고서에 사용된 랩 설정입니다."]
+
+SnapCenter 구성은 다음 두 가지 주요 영역으로 구분할 수 있습니다.
+
+* * 초기 구성. * 개별 SAP HANA 데이터베이스와는 별개로 일반 구성을 다룹니다. 스토리지 시스템, 중앙 HANA 플러그인 호스트 및 정책과 같은 구성으로 리소스에 특정한 구성을 실행할 때 선택됩니다.
+* * 리소스 관련 구성 * 은 SAP HANA 시스템별 구성을 다루며 각 SAP HANA 데이터베이스에 대해 수행해야 합니다.
+
+
+다음 그림에서는 구성 구성 요소와 해당 종속성에 대한 개요를 제공합니다. 녹색 상자는 SnapCenter 외부에서 수행해야 하는 구성 단계를 보여 줍니다. 파란색 상자는 SnapCenter GUI를 사용하여 수행한 단계를 보여 줍니다.
+
+image:saphana-br-scs-image22.png["오류: 그래픽 이미지가 없습니다"]
+
+초기 구성에서 다음 구성 요소가 설치 및 구성됩니다.
+
+* * 스토리지 시스템. * SAP HANA 시스템에서 사용되는 모든 SVM에 대한 자격 증명 구성: 일반적으로 운영, 외부 백업, 재해 복구 스토리지
+
+
+
+NOTE: 또한 개별 SVM 자격 증명 대신 스토리지 클러스터 자격 증명을 구성할 수도 있습니다.
+
+* * 자격 증명 * 호스트에 SAP HANA 플러그인을 구축하는 데 사용되는 자격 증명 구성.
+* * 호스트(중앙 HANA 플러그인 호스트용). * SAP HANA 플러그인 구축. 호스트에 SAP HANA hdbclient 소프트웨어 설치 SAP hdbclient 소프트웨어는 수동으로 설치해야 합니다.
+* * 정책. * 백업 유형, 보존 및 복제의 구성. 일반적으로 로컬 스냅샷 복사본에 대해 하나 이상의 정책과 SnapVault 복제에 대한 정책과 파일 기반 백업에 대한 정책이 하나 이상 필요합니다.
+
+
+각 SAP HANA 데이터베이스에 대해 리소스별 구성을 수행해야 하며 다음과 같은 구성이 포함됩니다.
+
+* SAP HANA 비 데이터 볼륨 리소스 구성:
++
+** 기술을 자세히 소개합니다
+
+
+* SAP hdbuserstore 키 구성:
++
+** 특정 SAP HANA 데이터베이스에 대한 SAP hdbuserstore 키 구성은 HANA 플러그인을 구축하는 위치에 따라 중앙 플러그인 호스트 또는 HANA 데이터베이스 호스트에서 수행해야 합니다.
+
+
+* 자동으로 검색된 SAP HANA 데이터베이스 리소스:
++
+** 데이터베이스 호스트에 SAP HANA 플러그인 구축
+** hdBuserstore 키를 제공합니다
+
+
+* 수동 SAP HANA 데이터베이스 리소스 구성:
++
+** SAP HANA 데이터베이스 SID, 플러그인 호스트, hdbuserstore 키, 스토리지 시스템 및 볼륨
+
+
+* 리소스 보호 구성:
++
+** 필요한 정책 선택
+** 각 정책에 대한 스케줄의 정의
+
+
+* ONTAP 데이터 보호 구성:
++
+** 백업을 오프 사이트 백업 스토리지로 복제해야 하는 경우에만 필요합니다.
+** 관계 및 보존의 정의.
+
+
+
+
+link:saphana-br-scs-snapcenter-initial-configuration.html["다음: SnapCenter 초기 구성."]
