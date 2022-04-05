@@ -93,7 +93,7 @@ NOTE: HANA 플러그인을 HANA 데이터베이스 호스트에 구축하면 기
 |===
 
 
-=== SAP HANA 플러그인의 구축 옵션
+== SAP HANA 플러그인의 구축 옵션
 
 다음 그림에서는 SnapCenter Server와 SAP HANA 데이터베이스 간의 논리적 뷰 및 통신을 보여 줍니다.
 

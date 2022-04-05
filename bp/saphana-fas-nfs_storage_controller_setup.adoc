@@ -65,9 +65,9 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 . 에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다 link:saphana-fas-nfs_storage_controller_setup.html#aggregate-configuration["애그리게이트 구성"]
 . 에 설명된 대로 SVM(스토리지 가상 시스템)을 생성합니다 link:saphana-fas-nfs_storage_controller_setup.html#storage-virtual-machine-configuration["스토리지 가상 머신 구성"]
 . 에 설명된 대로 LIF를 생성합니다 link:saphana-fas-nfs_storage_controller_setup.html#logical-interface-configuration["논리 인터페이스 구성"]
-. 에 설명된 대로 애그리게이트 내에 볼륨을 생성합니다 link:saphana-fas-nfs_storage_controller_setup.html#volume-configuration-for-sap-hana-single-host-systems["SAP HANA 단일 호스트 시스템을 위한 볼륨 구성"] 및 
+. 에 설명된 대로 애그리게이트 내에 볼륨을 생성합니다 link:saphana-fas-nfs_storage_controller_setup.html#volume-configuration-for-sap-hana-single-host-systems["SAP HANA 단일 호스트 시스템을 위한 볼륨 구성"] 및 link:saphana-fas-nfs_storage_controller_setup.html#volume-configuration-for-sap-hana-multiple-host-systems["SAP HANA 다중 호스트 시스템을 위한 볼륨 구성"]
 . 에 설명된 대로 필요한 볼륨 옵션을 설정합니다 link:saphana-fas-nfs_storage_controller_setup.html#volume-options["볼륨 옵션:"]
-. 에 설명된 대로 NFSv3에 필요한 옵션을 설정합니다 link:saphana-fas-nfs_storage_controller_setup.html#nfs-configuration-for-nfsv3["NFSv3용 NFS 구성"] 또는 NFSv4의 경우 에 설명된 대로 
+. 에 설명된 대로 NFSv3에 필요한 옵션을 설정합니다 link:saphana-fas-nfs_storage_controller_setup.html#nfs-configuration-for-nfsv3["NFSv3용 NFS 구성"] 또는 NFSv4의 경우 에 설명된 대로 link:saphana-fas-nfs_storage_controller_setup.html#nfs-configuration-for-nfsv4["NFSv4에 대한 NFS 구성."]
 . 에 설명된 대로 볼륨을 네임스페이스에 마운트하고 엑스포트 정책을 설정합니다 link:saphana-fas-nfs_storage_controller_setup.html#mount-volumes-to-namespace-and-set-export-policies["볼륨을 네임스페이스에 마운트하고 엑스포트 정책을 설정합니다."]
 
 

@@ -113,7 +113,7 @@ NetApp이 성능 테스트를 수행하여 최적의 값을 정의했습니다. 
 
 | Async_write_submit_blocks입니다 | 모두 
 |===
-SAP 테스트 툴 구성에 대한 자세한 내용은 을 참조하십시오 https://service.sap.com/sap/support/notes/1943937["SAP 노트 1943937"^] HWCCT(SAP HANA 1.0) 및 의 경우 HCMT/HCOT용(SAP HANA 2.0).
+SAP 테스트 툴 구성에 대한 자세한 내용은 을 참조하십시오 https://service.sap.com/sap/support/notes/1943937["SAP 노트 1943937"^] HWCCT(SAP HANA 1.0) 및 의 경우 https://launchpad.support.sap.com/["SAP 메모 2493172"^] HCMT/HCOT용(SAP HANA 2.0).
 
 다음 예제는 HCMT/HCOT 실행 계획에 대해 변수를 설정하는 방법을 보여줍니다.
 

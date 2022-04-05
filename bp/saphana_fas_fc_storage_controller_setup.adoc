@@ -67,7 +67,7 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 . 섹션에 설명된 대로 논리 인터페이스(LIF)를 생성합니다 link:saphana_fas_fc_storage_controller_setup.html#logical-interface-configuration["논리 인터페이스 구성"]
 . 섹션에 설명된 대로 FCP 포트 세트를 생성합니다 link:saphana_fas_fc_storage_controller_setup.html#fcp-port-sets["FCP 포트 집합."]
 . 섹션에 설명된 대로 HANA 서버의 WWN(Worldwide Name)이 포함된 이니시에이터 그룹(igroup)을 생성합니다 link:saphana_fas_fc_storage_controller_setup.html#initiator-groups["이니시에이터 그룹"]
-. 섹션에 설명된 대로 애그리게이트 내에 볼륨 및 LUN을 생성합니다 link:saphana_fas_fc_storage_controller_setup.html#volume-and-lun-configuration-for-sap-hana-single-host-systems["SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성"] 및 
+. 섹션에 설명된 대로 애그리게이트 내에 볼륨 및 LUN을 생성합니다 link:saphana_fas_fc_storage_controller_setup.html#volume-and-lun-configuration-for-sap-hana-single-host-systems["SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성"] 및 link:saphana_fas_fc_storage_controller_setup.html#volume-and-lun-configuration-for-sap-hana-multiple-host-systems["SAP HANA 다중 호스트 시스템을 위한 볼륨 및 LUN 구성"]
 
 
 
