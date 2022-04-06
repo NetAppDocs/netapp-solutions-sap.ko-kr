@@ -344,9 +344,6 @@ image:saphana-fas-nfs_image18.jpg["오류: 그래픽 이미지가 없습니다"]
 | NFSv4 쓰기 위임을 해제합니다 | NFS modify -vserver <vserver_name> -v4.1 -write-delegation disabled 
 
 
-| NFSv4 임대 시간을 설정합니다 | 고급 NFS modify -vserver <vserver_name> -v4-lease-seconds 10 set admin을 설정합니다 
-
-
 | NFSv4 숫자 ID를 해제합니다 | NFS modify -vserver <vserver_name> -v4-numeric-ids disabled 
 |===
 
