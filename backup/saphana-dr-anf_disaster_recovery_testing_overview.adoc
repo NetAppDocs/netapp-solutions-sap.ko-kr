@@ -6,6 +6,7 @@ summary: 효과적인 재해 복구 전략을 구현하려면 필요한 워크�
 ---
 = 재해 복구 테스트
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

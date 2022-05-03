@@ -6,6 +6,7 @@ summary: SnapCenter 구성은 초기 구성과 리소스별 구성의 두 가지
 ---
 = SnapCenter 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

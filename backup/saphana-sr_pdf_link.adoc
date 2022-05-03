@@ -6,6 +6,7 @@ summary: TR-4719에서는 NetApp SnapCenter 기술과 SAP HANA 플러그인을 �
 ---
 = TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

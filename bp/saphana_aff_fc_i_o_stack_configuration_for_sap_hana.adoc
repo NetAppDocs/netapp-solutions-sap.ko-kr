@@ -6,6 +6,7 @@ summary: SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는
 ---
 = SAP HANA용 I/O 스택 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

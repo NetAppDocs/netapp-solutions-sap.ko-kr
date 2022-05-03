@@ -6,6 +6,7 @@ summary: 스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간�
 ---
 = 시간 동기화
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

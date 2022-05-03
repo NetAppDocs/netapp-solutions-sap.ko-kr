@@ -5,6 +5,7 @@ keywords: sap, hana, fas, systems, nfs, configuration, guide
 summary: 'NetApp FAS 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 인증된 엔터프라이즈 스토리지 시스템의 특징은 NetApp ONTAP 소프트웨어입니다.' 
 ---
 = TR-4290: NFS 구성 가이드가 있는 NetApp FAS 시스템 기반 SAP HANA
+:allow-uri-read: 
 
 
 NetApp의 Nils Bauer와 Marco schön

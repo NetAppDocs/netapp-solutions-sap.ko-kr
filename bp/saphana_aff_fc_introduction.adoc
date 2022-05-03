@@ -6,6 +6,7 @@ summary: NetApp AFF 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 �
 ---
 = TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

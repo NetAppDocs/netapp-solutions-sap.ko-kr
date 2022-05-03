@@ -6,6 +6,7 @@ summary: 재해 복구 시 타겟 호스트에서 읽기 및 쓰기 작업을 �
 ---
 = 복제 피어링을 분리 및 삭제합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

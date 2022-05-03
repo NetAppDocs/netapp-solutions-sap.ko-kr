@@ -6,6 +6,7 @@ summary: 이전에 생성된 /etc/fstab 파일을 기반으로 새 볼륨을 타
 ---
 = 타겟 호스트에 새 볼륨을 마운트합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

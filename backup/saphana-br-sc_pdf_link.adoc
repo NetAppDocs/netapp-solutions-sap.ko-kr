@@ -6,6 +6,7 @@ summary: 기술 보고서 TR-4614는 NetApp SnapCenter를 통해 SAP HANA 데이
 ---
 = TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

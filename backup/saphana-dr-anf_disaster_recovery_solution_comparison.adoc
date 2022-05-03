@@ -6,6 +6,7 @@ summary: 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이�
 ---
 = 재해 복구 솔루션 비교
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

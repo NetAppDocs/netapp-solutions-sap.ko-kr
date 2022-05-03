@@ -6,6 +6,7 @@ summary: 스토리지 커넥터는 페일오버 기능이 있는 다중 호스�
 ---
 = SAP HANA 스토리지 커넥터 API
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

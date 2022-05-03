@@ -6,6 +6,7 @@ summary: 비 데이터 볼륨의 백업은 SAP HANA 플러그인의 통합 부�
 ---
 = 비 데이터 볼륨 백업을 위한 SnapCenter 리소스 관련 구성입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

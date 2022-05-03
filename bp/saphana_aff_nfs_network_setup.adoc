@@ -6,6 +6,7 @@ summary: 이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 �
 ---
 = 네트워크 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

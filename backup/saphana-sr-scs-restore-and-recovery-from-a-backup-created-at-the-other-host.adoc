@@ -6,6 +6,7 @@ summary: 다른 SAP HANA 호스트에 생성된 백업에서 복원 작업은 �
 ---
 = 다른 호스트에서 생성된 백업에서 복구 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

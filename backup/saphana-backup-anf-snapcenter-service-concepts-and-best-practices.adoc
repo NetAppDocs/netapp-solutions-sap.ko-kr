@@ -6,6 +6,7 @@ summary:
 ---
 = SnapCenter 서비스 개념 및 모범 사례
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

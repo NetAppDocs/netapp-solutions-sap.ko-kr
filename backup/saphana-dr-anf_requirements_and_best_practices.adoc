@@ -6,6 +6,7 @@ summary: 'Microsoft Azure는 생성 시 또는 할당 해제된 VM을 시작할 
 ---
 = 요구사항에 대해 설명합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

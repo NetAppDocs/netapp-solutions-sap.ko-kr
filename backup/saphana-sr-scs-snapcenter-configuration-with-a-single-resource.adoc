@@ -6,6 +6,7 @@ summary: 'SnapCenter 리소스는 HANA 시스템 복제 환경의 가상 IP 주�
 ---
 = 단일 리소스를 사용하는 SnapCenter 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

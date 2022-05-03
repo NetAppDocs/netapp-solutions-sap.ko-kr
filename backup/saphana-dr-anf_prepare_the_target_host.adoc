@@ -6,6 +6,7 @@ summary: 이 섹션에서는 재해 복구 장애 조치 테스트에 사용되�
 ---
 = 타겟 호스트를 준비합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

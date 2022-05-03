@@ -5,6 +5,7 @@ keywords: tr-4821, pdf, sap, hana, ibm, aff, nfs
 summary: 'IBM Power Systems는 SAP HANA와 같은 데이터 집약적인 미션 크리티컬 워크로드를 위해 설계되었습니다. IBM Power Systems는 탁월한 가상화 및 유연성, 빠른 프로비저닝, 경제적인 확장성, 가동 시간 극대화와 같은 4가지 주요 기능을 제공하여 SAP HANA 구축을 단순화하고 속도를 높입니다. NetApp AFF 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었으며 IBM Power Systems를 완벽하게 보완합니다. 이 문서에서는 AFF 제품군 및 IBM Power Systems에서 NetApp ONTAP를 사용하여 NAS(NFS) 스토리지를 설정하는 모범 사례에 대해 설명합니다.' 
 ---
 = TR-4821: IBM 전원 시스템 기반 SAP HANA 및 NFS를 사용하는 NetApp AFF 시스템
+:allow-uri-read: 
 :firstname: : hardbreaks:
 :author: : hardbreaks:
 :authorinitials: :

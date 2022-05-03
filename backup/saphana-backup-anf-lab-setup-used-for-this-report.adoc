@@ -6,6 +6,7 @@ summary: 이 보고서에 사용되는 실습 설정에는 SAP HANA 시스템 PR
 ---
 = 이 보고서에 사용된 랩 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

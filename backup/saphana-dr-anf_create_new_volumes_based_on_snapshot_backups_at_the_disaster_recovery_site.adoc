@@ -6,6 +6,7 @@ summary: '재해 복구 설정(로그 백업 복제 포함 또는 제외)에 따
 ---
 = 재해 복구 사이트에서 스냅샷 백업을 기반으로 새 볼륨을 생성합니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

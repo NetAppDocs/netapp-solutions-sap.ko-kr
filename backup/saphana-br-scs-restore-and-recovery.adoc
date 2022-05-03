@@ -6,6 +6,7 @@ summary: 다음 섹션에서는 세 가지 시나리오 및 예제 구성의 복
 ---
 = 복원 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

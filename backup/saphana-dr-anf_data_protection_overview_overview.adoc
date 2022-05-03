@@ -5,6 +5,7 @@ keywords: sap, hana, disaster, recovery, azure, files
 summary: 연구 결과에 따르면 비즈니스 애플리케이션 다운타임이 기업의 비즈니스에 미치는 영향은 상당히 부정적인 것으로 나타났습니다. 
 ---
 = TR-4891: Azure NetApp Files를 사용한 SAP HANA 재해 복구
+:allow-uri-read: 
 
 
 Nils Bauer, NetApp Ralf Klahr, Microsoft

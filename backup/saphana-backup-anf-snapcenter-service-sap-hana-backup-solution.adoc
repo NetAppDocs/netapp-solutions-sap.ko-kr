@@ -6,6 +6,7 @@ summary: 이 섹션에서는 SnapCenter 서비스 백업 솔루션이 다루는 
 ---
 = SnapCenter 서비스 SAP HANA 백업 솔루션
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

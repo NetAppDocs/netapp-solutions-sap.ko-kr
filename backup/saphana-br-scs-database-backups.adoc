@@ -6,6 +6,7 @@ summary: SnapCenter에서 데이터베이스 백업은 일반적으로 각 HANA 
 ---
 = 데이터베이스 백업
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

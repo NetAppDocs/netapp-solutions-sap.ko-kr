@@ -6,6 +6,7 @@ summary: 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대�
 ---
 = 호스트 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: TR-4711에서는 SAP HANA용 NetApp 및 Commvault 솔루션의 디자�
 ---
 = TR-4711: NetApp 스토리지 시스템 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 'SAP HANA 호스트는 이중화된 10GbE 또는 더 빠른 네트워�
 ---
 = 있습니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ keywords: 'netapp, solutions, SAP, what"s new'
 ---
 = SAP의 새로운 기능
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

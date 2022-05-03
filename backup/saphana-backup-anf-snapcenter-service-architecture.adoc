@@ -6,6 +6,7 @@ summary: SnapCenter 서비스는 애플리케이션 정합성을 보장하는 �
 ---
 = SnapCenter 서비스 아키텍처
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

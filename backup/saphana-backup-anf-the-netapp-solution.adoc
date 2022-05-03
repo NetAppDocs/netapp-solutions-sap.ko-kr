@@ -6,6 +6,7 @@ summary: Azure NetApp Files의 NetApp 스냅샷 기술을 사용하여 몇 초 �
 ---
 = 제공하는 데 이 때 넷엡솔루션이 사용됩니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

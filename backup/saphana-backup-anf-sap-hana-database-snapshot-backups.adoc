@@ -6,6 +6,7 @@ summary: SnapCenter 서비스를 사용하면 데이터베이스 백업이 일�
 ---
 = SAP HANA 데이터베이스 Snapshot 백업
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

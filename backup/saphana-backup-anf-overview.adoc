@@ -6,6 +6,7 @@ summary: 이 기술 보고서에서는 NetApp SnapCenter 서비스 및 Azure Net
 ---
 = TR-4905: SnapCenter 기반 SAP HANA 백업 및 복구(Azure NetApp Files 서비스 포함)
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

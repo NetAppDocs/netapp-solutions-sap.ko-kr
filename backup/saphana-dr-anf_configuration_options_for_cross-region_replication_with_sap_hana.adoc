@@ -6,6 +6,7 @@ summary: 다음 그림에서는 ANF 지역 간 복제를 사용하는 SAP HANA �
 ---
 = SAP HANA를 사용한 지역 간 복제를 위한 구성 옵션입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

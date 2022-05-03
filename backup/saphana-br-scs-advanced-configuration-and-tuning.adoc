@@ -6,6 +6,7 @@ summary: 이 페이지에서는 구성 및 조정을 완료하는 데 필요한 
 ---
 = 고급 구성 및 조정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

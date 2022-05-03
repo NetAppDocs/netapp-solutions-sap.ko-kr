@@ -6,6 +6,7 @@ summary: SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기�
 ---
 = 파일 기반 백업 및 블록 무결성 검사
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

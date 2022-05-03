@@ -6,6 +6,7 @@ summary: 이 섹션에서 설명하는 모든 단계는 물리적 서버의 SAP 
 ---
 = 호스트 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 이 섹션에는 구성 요소, 지원되는 SAP HANA 릴리즈 및 구
 ---
 = SnapCenter SAP HANA 백업 솔루션
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

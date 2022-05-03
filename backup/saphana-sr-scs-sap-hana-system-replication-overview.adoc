@@ -6,6 +6,7 @@ summary: SAP HANA 시스템 복제는 일반적으로 SAP HANA 데이터베이�
 ---
 = TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

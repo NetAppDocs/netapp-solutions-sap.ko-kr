@@ -6,6 +6,7 @@ summary: 이 섹션에서는 두 가지 예제 구성, SS2 및 SS1에 대한 구
 ---
 = SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

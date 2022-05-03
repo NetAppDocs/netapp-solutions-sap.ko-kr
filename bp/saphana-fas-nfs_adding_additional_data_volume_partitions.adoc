@@ -6,6 +6,7 @@ summary: SAP HANA 2.0 SPS4부터 SAP HANA 테넌트 데이터베이스의 데이
 ---
 = 추가 데이터 볼륨 파티션 추가
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

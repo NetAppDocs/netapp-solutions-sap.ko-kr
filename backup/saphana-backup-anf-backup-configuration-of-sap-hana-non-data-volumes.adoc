@@ -6,6 +6,7 @@ summary: 비 데이터 볼륨의 백업은 SnapCenter 서비스의 통합된 부
 ---
 = SAP HANA 비 데이터 볼륨의 백업 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

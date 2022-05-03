@@ -6,6 +6,7 @@ summary: 이 섹션에서는 단일 호스트 SAP HANA MDC 단일 테넌트 시�
 ---
 = SAP HANA 데이터베이스 백업의 백업 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

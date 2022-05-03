@@ -6,6 +6,7 @@ summary:
 ---
 = 재해 복구 테스트
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

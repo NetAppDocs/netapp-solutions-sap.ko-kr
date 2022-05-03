@@ -6,6 +6,7 @@ summary:
 ---
 = 재해 복구 페일오버
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

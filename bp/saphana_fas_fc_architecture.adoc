@@ -6,6 +6,7 @@ summary: SAP HANA 호스트는 이중화된 FCP 인프라 및 다중 경로 소�
 ---
 = 있습니다
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

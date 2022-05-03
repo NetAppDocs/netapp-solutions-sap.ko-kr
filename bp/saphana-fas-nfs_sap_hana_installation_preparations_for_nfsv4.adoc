@@ -6,6 +6,7 @@ summary: 'NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDA
 ---
 = NFSv4를 위한 SAP HANA 설치 준비
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

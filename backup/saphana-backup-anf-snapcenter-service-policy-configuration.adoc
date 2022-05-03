@@ -6,6 +6,7 @@ summary:
 ---
 = SnapCenter 서비스 정책 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

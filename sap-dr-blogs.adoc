@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, backuop, restore, dr, disaster recovery, blogs
 ---
 = SAP 백업, 복원 및 재해 복구 블로그 를 참조하십시오
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

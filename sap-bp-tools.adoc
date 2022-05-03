@@ -6,6 +6,7 @@ keywords: netapp, solutions, SAP, best practices, tools
 ---
 = SAP 구성 모범 사례 도구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

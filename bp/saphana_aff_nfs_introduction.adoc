@@ -6,6 +6,7 @@ summary: 'NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration
 ---
 = TR-4435: NFS 구성 가이드를 지원하는 NetApp AFF 시스템 기반 SAP HANA
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary:
 ---
 = SnapCenter 서비스 스냅샷 백업 구성 개요
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 다음 섹션에서는 SAP HANA용 스토리지 시스템 사이징에 
 ---
 = 스토리지 사이징
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

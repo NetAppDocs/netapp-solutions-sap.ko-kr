@@ -6,6 +6,7 @@ summary: TR-4646은 SAP HANA의 재해 복구 보호 옵션에 대한 개요입�
 ---
 = TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

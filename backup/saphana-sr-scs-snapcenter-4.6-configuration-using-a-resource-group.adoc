@@ -6,6 +6,7 @@ summary: SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 
 ---
 = 리소스 그룹을 사용한 SnapCenter 4.6 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

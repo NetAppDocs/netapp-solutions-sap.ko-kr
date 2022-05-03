@@ -6,6 +6,7 @@ summary: 이 기술 보고서에 사용되는 실습 설정에는 5가지 SAP HA
 ---
 = 이 보고서에 사용된 랩 설정
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

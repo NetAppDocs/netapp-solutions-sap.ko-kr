@@ -6,6 +6,7 @@ summary: 볼륨 복제를 구성하려면 재해 복구 사이트에서 몇 가�
 ---
 = ANF 지역 간 복제를 위한 구성 단계
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

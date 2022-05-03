@@ -6,6 +6,7 @@ summary: 이 페이지에서는 SAP 시스템 복제에 대한 구성 옵션을 
 ---
 = SAP 시스템 복제에 대한 SnapCenter 구성 옵션
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 오늘날 기업은 SAP 애플리케이션을 위해 중단 없는 지�
 ---
 = TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 로그 백업 복제가 재해 복구 설정의 일부인지 여부에 
 ---
 = 재해 복구 페일오버
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -5,6 +5,7 @@ keywords: nva-1147, pdf, sap, hana, disaster, recovery, data protection, dr, sna
 summary: 'NetApp 검증 아키텍처는 Brocade FC SAN 패브릭을 사용하여 NetApp ASA(All SAN Array) 스토리지 시스템 기반의 SAP HANA를 위한 SAP 시스템 현대화 및 운영을 다룹니다. 여기에는 백업 및 복구, 재해 복구, 데이터 보호 등이 포함됩니다.' 
 ---
 = NVA-1147-design: NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구
+:allow-uri-read: 
 
 
 Nils Bauer, Roland Wartenberg, Darryl Clink스케일, Daniel Hohman, Marco Schöen, 스티브 보킨, 마이클 페퍼스, 비둘라 아이이어, 스티브 콜린스, 파반 자만니, NetApp, Lee Dorrier

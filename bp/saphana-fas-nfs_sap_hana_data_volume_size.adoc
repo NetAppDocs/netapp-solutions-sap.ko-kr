@@ -6,6 +6,7 @@ summary: 기본적으로 SAP HANA는 SAP HANA 서비스당 하나의 데이터 �
 ---
 = SAP HANA 데이터 볼륨 크기
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

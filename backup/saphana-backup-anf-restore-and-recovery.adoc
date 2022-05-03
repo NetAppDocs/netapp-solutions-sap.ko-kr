@@ -6,6 +6,7 @@ summary: 이 섹션에서는 HANA MDC 단일 호스트, 단일 테넌트 시스�
 ---
 = 복원 및 복구
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

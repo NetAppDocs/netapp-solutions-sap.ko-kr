@@ -6,6 +6,7 @@ summary:
 ---
 = SAP HANA를 사용한 ANF 지역 간 복제
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -6,6 +6,7 @@ summary: 지역 간 복제에 대한 애플리케이션 독립적 정보는 다�
 ---
 = SAP HANA를 사용한 ANF 지역 간 복제
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

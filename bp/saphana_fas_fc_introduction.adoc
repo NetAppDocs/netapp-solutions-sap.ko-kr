@@ -5,6 +5,7 @@ keywords: sap, hana, fas, systems, fibre, channel, protocol, configuration, data
 summary: NetApp FAS 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 인증 엔터프라이즈 스토리지 플랫폼은 NetApp ONTAP 운영 체제를 기반으로 합니다. 
 ---
 = TR-4384: 파이버 채널 프로토콜 구성 가이드를 지원하는 NetApp FAS 시스템 기반 SAP HANA
+:allow-uri-read: 
 
 
 NetApp의 Nils Bauer와 Marco Schoen

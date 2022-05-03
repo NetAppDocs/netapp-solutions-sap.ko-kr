@@ -6,6 +6,7 @@ summary: 다음 세 개의 스크린샷은 데이터, 로그 백업 및 공유 �
 ---
 = ANF 지역 간 복제 모니터링
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

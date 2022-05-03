@@ -6,6 +6,7 @@ summary: 이 섹션에서는 SAP HANA 리소스 구성 및 구축과 관련된 S
 ---
 = SnapCenter 개념 및 모범 사례
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

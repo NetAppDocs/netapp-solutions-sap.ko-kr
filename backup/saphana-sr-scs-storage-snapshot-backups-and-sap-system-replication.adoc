@@ -6,6 +6,7 @@ summary: 백업 작업은 항상 운영 SAP HANA 호스트에서 수행됩니다
 ---
 = 스토리지 스냅샷 백업 및 SAP 시스템 복제
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

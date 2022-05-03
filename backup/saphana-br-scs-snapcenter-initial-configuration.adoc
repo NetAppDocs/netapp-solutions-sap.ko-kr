@@ -6,6 +6,7 @@ summary: 이 섹션에서는 스토리지 시스템, 자격 증명, 호스트, h
 ---
 = 초기 SnapCenter 구성
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
