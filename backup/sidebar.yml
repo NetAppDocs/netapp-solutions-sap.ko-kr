@@ -136,8 +136,6 @@ entries:
     url: "/backup/saphana-backup-anf-additional-information.html"
   - title: 버전 기록
     url: "/backup/saphana-backup-anf-version-history.html"
-- title: SnapCenter를 사용한 SAP HANA 백업 및 복구
-  url: "/backup/saphana-br-sc_pdf_link.html"
 - title: 스토리지 복제를 사용한 SAP HANA 재해 복구
   url: "/backup/saphana-dr-sr_pdf_link.html"
 - title: Snap Creator를 통해 SAP HANA 백업 및 복구
