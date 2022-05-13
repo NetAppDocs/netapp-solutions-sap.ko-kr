@@ -2,6 +2,39 @@
 section: backup
 title: 백업, 복원 및 재해 복구
 entries:
+- title: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구
+  type: solutions
+  entries:
+  - title: 개요
+    url: "/backup/amazon-fsx-overview.html"
+  - title: ONTAP용 Amazon FSx를 사용한 백업 및 복구
+    url: "/backup/amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html"
+  - title: SnapCenter 아키텍처
+    url: "/backup/amazon-fsx-snapcenter-architecture.html"
+  - title: SnapCenter 구성
+    url: "/backup/amazon-fsx-snapcenter-configuration.html"
+  - title: SnapCenter 백업 작업
+    url: "/backup/amazon-fsx-snapcenter-backup-operations.html"
+  - title: 비 데이터 볼륨 백업
+    url: "/backup/amazon-fsx-backup-of-non-data-volumes.html"
+  - title: SnapVault를 사용한 백업 복제
+    entries:
+    - title: 개요
+      url: "/backup/amazon-fsx-backup-replication-with-snapvault_overview.html"
+    - title: ONTAP 파일 시스템용 FSx에서 복제 관계를 구성합니다
+      url: "/backup/amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html"
+    - title: SnapCenter에 SVM 백업을 추가합니다
+      url: "/backup/amazon-fsx-add-a-backup-svm-to-snapcenter.html"
+    - title: 백업 복제에 대한 새 SnapCenter 정책을 생성합니다
+      url: "/backup/amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html"
+    - title: 리소스 보호에 정책을 추가합니다
+      url: "/backup/amazon-fsx-add-a-policy-to-resource-protection.html"
+    - title: 복제를 사용하여 백업을 생성합니다
+      url: "/backup/amazon-fsx-create-a-backup-with-replication.html"
+    - title: 보조 스토리지에서 복원 및 복구
+      url: "/backup/amazon-fsx-restore-and-recover-from-secondary-storage.html"
+  - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
+    url: "/backup/amazon-fsx-where-to-find-additional-information.html"
 - title: SnapCenter를 사용한 SAP HANA 백업 및 복구
   type: solutions
   entries:

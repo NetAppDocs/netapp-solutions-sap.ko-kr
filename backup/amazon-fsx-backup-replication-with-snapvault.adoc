@@ -1,0 +1,15 @@
+---
+sidebar: sidebar 
+permalink: amazon-fsx-backup-replication-with-snapvault.html 
+keywords:  
+summary:  
+---
+= SnapVault를 사용한 백업 복제
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

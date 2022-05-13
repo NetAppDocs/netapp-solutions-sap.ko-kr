@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: backup/amazon-fsx-add-a-policy-to-resource-protection.html 
+keywords: policy, resource, protection, hana, daily schedule 
+summary: 이 섹션에서는 리소스 보호에 정책을 추가하는 방법에 대해 설명합니다. 
+---
+= 리소스 보호에 정책을 추가합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:amazon-fsx-create-a-new-snapcenter-policy-for-backup-replication.html["이전: 백업 복제에 대한 새 SnapCenter 정책을 생성합니다."]
+
+다음 그림과 같이 HANA 리소스 보호 구성에 새 정책을 추가해야 합니다.
+
+image:amazon-fsx-image86.png["오류: 그래픽 이미지가 없습니다"]
+
+일별 일정은 설정에 정의되어 있습니다.
+
+image:amazon-fsx-image87.png["오류: 그래픽 이미지가 없습니다"]
+
+link:amazon-fsx-create-a-backup-with-replication.html["다음: 복제를 사용하여 백업을 생성합니다."]
