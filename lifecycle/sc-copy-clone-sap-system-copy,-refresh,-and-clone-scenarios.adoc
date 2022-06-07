@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html 
+keywords: sap system refresh, system copy, system clone, 
+summary: SAP 시스템 복사라는 용어는 SAP 시스템 새로 고침, SAP 시스템 복사 또는 SAP 시스템 클론 작업의 동의어로 사용되는 경우가 많습니다. 워크플로와 사용 사례는 각각 다르므로 서로 다른 작업을 구분하는 것이 중요합니다. 
+---
+= SAP 시스템 복제, 업데이트 및 클론 시나리오
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-introduction.html["이전: 소개."]
+
+SAP 시스템 복사라는 용어는 SAP 시스템 새로 고침, SAP 시스템 복사 또는 SAP 시스템 클론 작업의 세 가지 다른 프로세스의 동의어로 사용되는 경우가 많습니다. 워크플로와 사용 사례는 각각 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.
+
+* * SAP 시스템 업데이트. * SAP 시스템 새로 고침은 기존 타겟 SAP 시스템을 소스 SAP 시스템의 데이터로 새로 고치는 것입니다. 타겟 시스템은 일반적으로 운영 시스템의 데이터로 업데이트되는 품질 보증 시스템과 같은 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.
+* * SAP 시스템 복사. * SAP 시스템 복사본은 소스 SAP 시스템의 데이터를 포함하는 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어 새로운 대상 시스템은 운영 시스템의 데이터가 포함된 추가 테스트 시스템일 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.
+* * SAP 시스템 클론. * SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서 호스트 이름, 인스턴스 번호 및 SID는 동일하게 유지됩니다. 따라서 대상 시스템에 대해 적절한 네트워크 펜싱을 설정하여 운영 환경과 통신이 없는지 확인해야 합니다.
+
+
+다음 그림에서는 시스템 업데이트, 시스템 복제 또는 시스템 클론 작업 중에 수행해야 하는 주요 단계를 보여 줍니다. 파란색 상자는 SnapCenter에서 자동화할 수 있는 단계를 나타내고 녹색 상자는 SnapCenter 외부에서 수동으로 또는 타사 도구를 사용하여 수행해야 하는 단계를 나타냅니다.
+
+세 가지 운영 작업은 모두 SAP LaMa와 NetApp Storage Services Connector를 사용하여 완전히 자동화할 수 있습니다. 자세한 내용은 에서 확인할 수 있습니다 https://www.netapp.com/us/media/tr-4018.pdf["NetApp ONTAP 시스템을 SAP 환경 관리와 통합"^].
+
+NetApp은 Libelle에서도 근무한 바 있습니다 https://www.libelle.com["www.libelle.com"^] SnapCenter 클로닝을 Libelle SystemCopy와 통합하여 SAP 사전 및 사후 처리를 자동화합니다. 에 자세한 솔루션 설명이 나와 있습니다 link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화"^].
+
+image:sc-copy-clone-image2.png["오류: 그래픽 이미지가 없습니다"]
+
+link:sc-copy-clone-use-cases-for-system-refresh-and-cloning.html["다음: 시스템 업데이트 및 클론 복제 사용 사례"]

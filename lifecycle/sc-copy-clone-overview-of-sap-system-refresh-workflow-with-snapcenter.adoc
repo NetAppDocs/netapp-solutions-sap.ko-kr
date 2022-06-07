@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html 
+keywords: overview, sap system refresh, workflow 
+summary: SnapCenter은 기존 스냅샷 백업에서 데이터 세트의 클론을 관리할 수 있는 워크플로우를 제공합니다. 클론 복제된 이 데이터 집합인 FlexClone 볼륨을 사용하여 소스 시스템에서 HANA 데이터 볼륨을 신속하게 프로비저닝하고 타겟 시스템에 연결할 수 있습니다. 따라서 QA, 테스트, 샌드박스 또는 교육 시스템의 시스템 업데이트 작업을 실행하는 데 매우 적합합니다. 
+---
+= SnapCenter를 사용한 SAP 시스템 업데이트 워크플로우 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-use-cases-for-system-refresh-and-cloning.html["이전: 시스템 업데이트 및 클론 복제 사용 사례"]
+
+SnapCenter은 기존 스냅샷 백업에서 데이터 세트의 클론을 관리할 수 있는 워크플로우를 제공합니다. 클론 복제된 이 데이터 집합인 FlexClone 볼륨을 사용하여 소스 시스템에서 HANA 데이터 볼륨을 신속하게 프로비저닝하고 타겟 시스템에 연결할 수 있습니다. 따라서 QA, 테스트, 샌드박스 또는 교육 시스템의 시스템 업데이트 작업을 실행하는 데 매우 적합합니다.
+
+SnapCenter 클론 복제 워크플로우에서는 스토리지 계층에서 필요한 모든 작업을 처리하며, 스크립트를 사용하여 확장하여 호스트별 및 HANA 데이터베이스별 작업을 실행할 수 있습니다. 이 문서에서는 스크립트를 사용하여 타겟 호스트에서 마운트 및 마운트 해제 작업과 HANA 데이터베이스 복구 및 종료 작업을 실행합니다. 스크립트를 사용하여 추가 자동화를 지원하는 SnapCenter 워크플로우에서는 필요한 모든 HANA 데이터베이스 작업을 처리하지만, 필요한 SAP 사후 처리 단계는 다루지 않습니다. SAP 사후 처리는 수동으로 또는 타사 툴을 사용하여 수행해야 합니다.
+
+
+NOTE: 스크립트를 사용하여 자동화된 모든 단계를 수동으로 실행할 수도 있습니다. 하지만 타겟 호스트의 마운트 작업을 수행하려면 FlexClone 볼륨의 스토리지 시스템 접속 경로를 알아야 합니다. SnapCenter 내에 접합 경로가 표시되지 않으므로 스토리지 시스템에서 직접 접합 경로를 조회하거나, 타겟 호스트에서 SnapCenter 환경 변수를 제공하는 간단한 스크립트를 사용할 수 있습니다. 자세한 내용은 섹션을 참조하십시오 link:sc-copy-clone-automation-example-scripts.html["“자동화 예제 스크립트”"]
+
+SnapCenter를 사용한 SAP 시스템 새로 고침 워크플로는 다음 그림과 같이 5가지 주요 단계로 구성됩니다.
+
+. 대상 시스템의 일회성 초기 설치 및 준비
+. SnapCenter 클론은 워크플로우를 생성합니다.
+. SAP 사후 처리(수동 또는 타사 툴 사용)
+. 시스템은 테스트/QA 시스템으로 사용할 수 있습니다.
+. 새 시스템 업데이트가 요청되면 SnapCenter 클론 삭제 워크플로우를 사용하여 FlexClone 볼륨을 제거하고 2단계로 새로 고침이 다시 시작됩니다.
+
+
+image:sc-copy-clone-image7.png["오류: 그래픽 이미지가 없습니다"]
+
+대부분의 경우 타겟 테스트/QA 시스템이 최소 2주 동안 사용되며 FlexClone 용량은 1~2주 후에는 더 이상 사용되지 않습니다. 소스 시스템의 스냅샷 백업은 SnapCenter 보존 관리를 통해 삭제할 수 있도록 FlexClone 볼륨에서 해제되어야 합니다. 따라서 FlexClone 볼륨을 즉시 분할하거나 이틀 후에 분할하는 것이 좋습니다. 클론 분할 작업은 클론 복제된 볼륨의 사용을 차단하지 않으므로 HANA 데이터베이스를 사용하는 동안 언제든지 수행할 수 있습니다.
+
+
+NOTE: FlexClone 볼륨을 분할할 때 SnapCenter은 타겟 시스템에서 생성된 모든 백업을 삭제합니다.
+
+클론 분할을 포함한 새로 고침 작업은 다음 단계로 구성됩니다(다음 그림).
+
+. 1회, 초기 설치 및 대상 시스템 준비
+. SnapCenter 클론 생성 워크플로우
+. SnapCenter 클론 분할 워크플로우
+. SAP 사후 처리(수동 또는 타사 툴 사용)
+. 이제 시스템을 테스트/QA 시스템으로 사용할 수 있습니다.
+. 새 시스템 업데이트가 요청되면 SnapCenter 클론 생성 워크플로우가 추가 종료 및 마운트 해제 단계와 함께 사용됩니다.
+
+
+
+NOTE: 이전에 분할되었던 이전 데이터 볼륨은 스토리지 시스템에서 수동으로 삭제해야 합니다.
+
+다음 그림에서는 클론 분할 기능이 있는 SnapCenter를 사용한 SAP 시스템 새로 고침 워크플로우의 개요를 보여 줍니다.
+
+image:sc-copy-clone-image8.png["오류: 그래픽 이미지가 없습니다"]
+
+섹션을 참조하십시오 link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html[""SnapCenter를 통한 SAP HANA 시스템 교체""] 에서는 두 시스템 새로 고침 워크플로우에 대한 자세한 단계별 설명을 제공합니다.
+
+link:sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html["다음: SnapCenter를 사용한 SAP 시스템 복제 워크플로우 개요"]

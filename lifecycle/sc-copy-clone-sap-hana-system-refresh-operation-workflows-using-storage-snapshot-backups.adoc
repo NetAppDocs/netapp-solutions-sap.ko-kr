@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html 
+keywords: tenant create, rename, drop, refresh 
+summary: 다음 그림과 같이 SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 소스 시스템 테넌트 구성과 타겟 시스템의 필수 테넌트 이름에 따라 다릅니다. 
+---
+= 스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 운영 워크플로우
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html["이전: SnapCenter를 사용한 SAP 시스템 클론 워크플로우 개요"]
+
+다음 그림과 같이 SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 소스 시스템 테넌트 구성과 타겟 시스템의 필수 테넌트 이름에 따라 다릅니다.
+
+테넌트 이름은 시스템 데이터베이스에 구성되어 있으므로 시스템 데이터베이스를 복구한 후 타겟 시스템에서 소스 시스템의 테넌트 이름도 사용할 수 있습니다. 따라서 타겟 시스템의 테넌트는 다음 그림의 옵션 1에 나와 있는 것처럼 소스 테넌트와 동일한 이름으로 복구할 수 있습니다. 타겟 시스템의 테넌트 이름이 달라야 하는 경우, 먼저 테넌트와 동일한 이름으로 테넌트를 복구한 다음 필요한 타겟 테넌트 이름으로 이름을 변경해야 합니다. 이 옵션은 다음 그림의 옵션 2입니다.
+
+이 규칙의 예외는 단일 테넌트가 있는 HANA 시스템으로, 테넌트 이름은 시스템 SID와 동일합니다. 이 구성은 초기 HANA 설치 후 기본값입니다. 이 특정 구성은 HANA 데이터베이스에 의해 플래그가 지정됩니다. 이 경우 타겟 시스템의 테넌트 이름을 사용하여 타겟 시스템의 테넌트 복구를 실행할 수 있습니다. 테넌트 이름은 타겟 시스템의 시스템 SID와 동일해야 합니다. 이 워크플로는 다음 그림의 옵션 3에 나와 있습니다.
+
+
+NOTE: 소스 시스템에서 테넌트 생성, 이름 변경 또는 삭제 작업이 실행되는 즉시 이 구성 플래그는 HANA 데이터베이스에서 삭제됩니다. 따라서 구성을 다시 tenant=SID로 되돌려도 플래그를 더 이상 사용할 수 없으며 워크플로 3을 사용한 테넌트 복구에 대한 예외는 더 이상 가능하지 않습니다. 이 경우 옵션 2가 필요한 워크플로입니다.
+
+image:sc-copy-clone-image11.png["오류: 그래픽 이미지가 없습니다"]
+
+이 그림은 초기 MDC 단일 테넌트 설치에 대한 구성 플래그를 보여 줍니다.
+
+image:sc-copy-clone-image12.png["오류: 그래픽 이미지가 없습니다"]
+
+link:sc-copy-clone-automation-example-scripts.html["다음: 자동화 예제 스크립트"]

@@ -1,0 +1,245 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html 
+keywords: prerequisites, limitations, AzAcSnap, systemcopy, sc-system-refresh.sh, configuration, ZSCCOPYSHUTDOWN, ZSCCOPYUMOUNT, ZAZACSNAPRESTORE, ZSCCOPYRECOVER 
+summary: Azure에서 Azure NetApp Files for SAP HANA, Oracle 및 DB2를 사용하면 기본 Microsoft Azure NetApp Files 서비스와 함께 NetApp ONTAP의 고급 데이터 관리 및 데이터 보호 기능을 고객에게 제공할 수 있습니다. 
+---
+= LSC, AzAcSnap 및 Azure NetApp Files를 통해 SAP HANA 시스템 업데이트
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html["이전: LSC 및 SnapCenter를 통해 SAP HANA 시스템 업데이트"]
+
+사용 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures["SAP HANA용 Azure NetApp Files"^], Oracle 및 DB2 on Azure는 고객에게 기본 Microsoft Azure NetApp Files 서비스와 함께 NetApp ONTAP의 고급 데이터 관리 및 데이터 보호 기능을 제공합니다. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azacsnap-introduction["AzAcSnap"^] SAP HANA 및 Oracle 시스템의 애플리케이션 정합성을 보장하는 NetApp Snapshot 복사본을 생성하기 위한 매우 빠른 SAP 시스템 업데이트 작업의 기반입니다(DB2는 현재 AzAcSnap에서 지원되지 않음).
+
+그런 다음 필요 시 또는 백업 전략의 일부로 정기적으로 생성되는 스냅샷 복사본 백업을 새 볼륨에 효율적으로 클론 복제하여 타겟 시스템을 신속하게 업데이트할 수 있습니다. AzAcSnap은 백업을 생성하고 새 볼륨에 클론을 생성하는 데 필요한 워크플로우를 제공하며 Libelle SystemCopy는 전체 시스템 업데이트에 필요한 사전 및 사후 처리 단계를 수행합니다.
+
+이 장에서는 SAP HANA를 기본 데이터베이스로 사용하는 AzAcSnap 및 Libelle SystemCopy를 사용한 자동 SAP 시스템 새로 고침에 대해 설명합니다. AzAcSnap도 Oracle에 사용할 수 있기 때문에 Oracle용 AzAcSnap을 사용하여 동일한 절차를 구현할 수도 있습니다. 나중에 다른 데이터베이스가 AzAcSnap에서 지원될 수 있으며, 이 경우 LSC 및 AzAcSnap을 사용하는 데이터베이스에 대한 시스템 복사 작업이 활성화됩니다.
+
+다음 그림에서는 AzAcSnap 및 LSC를 사용한 SAP 시스템 업데이트 주기의 일반적인 상위 레벨 워크플로우를 보여 줍니다.
+
+* 대상 시스템의 일회성 초기 설치 및 준비
+* LSC에서 SAP 전처리 작업을 수행합니다.
+* AzAcSnap에서 수행하는 타겟 시스템에 소스 시스템의 기존 스냅샷 복사본을 복구(또는 클론 복제)합니다.
+* LSC에서 SAP 사후 처리 작업을 수행합니다.
+
+
+그런 다음 시스템을 테스트 또는 QA 시스템으로 사용할 수 있습니다. 새 시스템 새로 고침이 요청되면 워크플로가 2단계로 다시 시작됩니다. 남아 있는 클론 볼륨은 수동으로 삭제해야 합니다.
+
+image:libelle-sc-image23.png["오류: 그래픽 이미지가 없습니다"]
+
+
+
+== 사전 요구 사항 및 제한 사항
+
+다음 필수 구성 요소를 이행해야 합니다.
+
+
+
+=== 소스 데이터베이스에 대해 설치 및 구성된 AzAcSnap
+
+일반적으로 다음 그림과 같이 AzAcSnap에 대한 두 가지 구축 옵션이 있습니다.
+
+image:libelle-sc-image24.png["오류: 그래픽 이미지가 없습니다"]
+
+AzAcSnap은 중앙 Linux VM에서 설치 및 실행할 수 있으며, 중앙 Linux VM에서는 모든 DB 구성 파일이 중앙 집중식으로 저장되고, AzAcSnap은 모든 데이터베이스(hdbsql 클라이언트 사용)와 이러한 모든 데이터베이스에 대해 구성된 HANA 사용자 저장소 키를 액세스할 수 있습니다. 분산된 배포에서는 일반적으로 로컬 데이터베이스의 DB 구성만 저장되는 각 데이터베이스 호스트에 AzAcSnap이 개별적으로 설치됩니다. 두 배포 옵션 모두 LSC 통합에 지원됩니다. 그러나 이 문서의 연구소 설정에서 하이브리드 접근 방식을 따랐습니다. 모든 DB 구성 파일과 함께 중앙 NFS 공유에 AzAcSnap이 설치되었습니다. 이 중앙 설치 공유는 모든 VM에 '/mnt/software/AZACSNAP/snapshot-tool'으로 마운트되었습니다. 그런 다음 DB VM에서 로컬로 도구를 실행합니다.
+
+
+
+=== Libelle SystemCopy 소스 및 대상 SAP 시스템에 설치 및 구성되어 있습니다
+
+Libelle SystemCopy 배포는 다음 구성 요소로 구성됩니다.
+
+image:libelle-sc-image25.png["오류: 그래픽 이미지가 없습니다"]
+
+* * LSC Master. * 이름에서 알 수 있듯이 Libelle 기반 시스템 사본의 자동 워크플로를 제어하는 마스터 구성 요소입니다.
+* * LSC Worker. * LSC 작업자는 일반적으로 대상 SAP 시스템에서 실행되며 자동 시스템 복사본에 필요한 스크립트를 실행합니다.
+* * LSC Satellite. * LSC Satellite는 추가 스크립트를 실행해야 하는 타사 시스템에서 실행됩니다. LSC 마스터는 LSC 위성 시스템의 역할도 수행할 수 있습니다.
+
+
+LSC(Libelle SystemCopy) GUI는 적절한 VM에 설치해야 합니다. 이 랩 설정에서 LSC GUI는 별도의 Windows VM에 설치되었지만 LSC 작업자와 함께 DB 호스트에서도 실행할 수 있습니다. LSC 작업자는 최소한 대상 DB의 VM에 설치해야 합니다. 선택한 AzAcSnap 배포 옵션에 따라 추가 LSC 작업자 설치가 필요할 수 있습니다. AzAcSnap이 실행되는 VM에 LSC 작업자가 설치되어 있어야 합니다.
+
+LSC를 설치한 후, LSC 지침에 따라 소스 및 타겟 데이터베이스의 기본 구성을 수행해야 합니다. 다음 이미지는 이 문서의 실습 환경 구성을 보여 줍니다. 소스 및 타겟 SAP 시스템과 데이터베이스에 대한 자세한 내용은 다음 섹션을 참조하십시오.
+
+image:libelle-sc-image26.png["오류: 그래픽 이미지가 없습니다"]
+
+또한 SAP 시스템에 적합한 표준 작업 목록을 구성해야 합니다. LSC의 설치 및 구성에 대한 자세한 내용은 LSC 설치 패키지의 일부인 LSC 사용 설명서를 참조하십시오.
+
+
+
+=== 알려진 제한 사항
+
+여기에 설명된 AzAcSnap 및 LSC 통합은 SAP HANA 단일 호스트 데이터베이스에만 작동합니다. SAP HANA 다중 호스트(또는 스케일아웃) 구축도 지원할 수 있지만, 이러한 구축에서는 복사 단계 및 언더레이팅된 스크립트에 대한 LSC 맞춤형 작업을 몇 가지 조정 또는 개선해야 합니다. 이러한 향상된 기능은 본 문서에서 다루지 않습니다.
+
+SAP 시스템 업데이트 통합에서는 항상 소스 시스템의 성공적인 최신 스냅샷 복제본을 사용하여 타겟 시스템을 새로 고칩니다. 이전의 다른 스냅샷 복사본을 사용하려면 에서 해당 논리를 사용합니다 <<ZAZACSNAPRESTORE>> 사용자 정의 작업을 조정해야 합니다. 이 프로세스는 이 문서의 범위를 벗어납니다.
+
+
+
+== 랩 설정
+
+실습 설정은 소스 SAP 시스템과 타겟 SAP 시스템으로 구성되며, 두 시스템 모두 SAP HANA 단일 호스트 데이터베이스에서 실행됩니다.
+
+다음 그림은 실습 설정을 보여 줍니다.
+
+image:libelle-sc-image27.png["오류: 그래픽 이미지가 없습니다"]
+
+여기에는 다음과 같은 시스템, 소프트웨어 버전 및 Azure NetApp Files 볼륨이 포함됩니다.
+
+* * P01. * SAP HANA 2.0 SP5 데이터베이스. 소스 데이터베이스, 단일 호스트, 단일 사용자 테넌트
+* * PN1. * SAP NetWeaver ABAP 7.51. 소스 SAP 시스템
+* * VM-P01. * AzAcSnap이 설치된 SLES 15 SP2 P01 및 PN1을 호스팅하는 소스 VM
+* * QL1. * SAP HANA 2.0 SP5 데이터베이스. 시스템 업데이트 대상 데이터베이스, 단일 호스트, 단일 사용자 테넌트
+* * QN1. * SAP NetWeaver ABAP 7.51. 시스템 업데이트 대상 SAP 시스템
+* * VM-ql1. * LSC 작업자가 설치된 SLES 15 SP2. QL1 및 QN1을 호스팅하는 대상 VM
+* LSC 마스터 버전 9.0.0.0.052.
+* * VM-LSC-master. * Windows Server 2016. LSC 마스터 및 LSC GUI를 호스팅합니다.
+* 전용 DB 호스트에 마운트된 P01 및 QL1에 대해 데이터, 로그 및 공유를 위한 Azure NetApp Files 볼륨
+* 스크립트를 위한 중앙 Azure NetApp Files 볼륨, AzAcSnap 설치 및 모든 VM에 마운트된 구성 파일
+
+
+
+
+== 초기 1회 준비 단계
+
+첫 번째 SAP 시스템 업데이트를 실행하기 전에 AzAcSnap에서 실행되는 Azure NetApp Files 스냅샷 복사본 및 클론 복제 기반 스토리지 작업을 통합해야 합니다. 또한 데이터베이스를 시작 및 중지하고 Azure NetApp Files 볼륨을 마운트 또는 마운트 해제하는 보조 스크립트를 실행해야 합니다. 필요한 모든 작업은 복사 단계의 일부로 LSC에서 사용자 정의 작업으로 수행됩니다. 다음 그림에서는 LSC 작업 목록의 사용자 지정 작업을 보여 줍니다.
+
+image:libelle-sc-image28.png["오류: 그래픽 이미지가 없습니다"]
+
+5가지 복사 작업에 대해 자세히 설명합니다. 이러한 일부 작업에서는 필요한 SAP HANA 데이터베이스 복구 작업과 데이터 볼륨의 마운트 및 마운트 해제를 더욱 자동화하는 샘플 스크립트 'sc-system-refresh.sh'가 사용됩니다. 이 스크립트는 시스템 출력에서 LSC:SUCCESS 메시지를 사용하여 LSC에 대한 성공적인 실행을 나타냅니다. 사용자 정의 작업 및 사용 가능한 매개변수에 대한 자세한 내용은 LSC 사용자 설명서 및 LSC 개발자 가이드 를 참조하십시오. 이 실습 환경의 모든 작업은 타겟 DB VM에서 실행됩니다.
+
+
+NOTE: 샘플 스크립트는 있는 그대로 제공되며 NetApp에서 지원하지 않습니다. 스크립트를 mailto:ng-sapcc@netapp.com [ng-sapcc@netapp.com^]으로 전자 메일로 요청할 수 있습니다.
+
+
+
+=== Sc-system-refresh.sh 구성 파일
+
+앞에서 설명한 것처럼 보조 스크립트는 데이터베이스를 시작 및 중지하고, Azure NetApp Files 볼륨을 마운트 및 마운트 해제하고, 스냅샷 복사본에서 SAP HANA 데이터베이스를 복구하는 데 사용됩니다. 스크립트 'c-system-refresh.sh'는 중앙 NFS 공유에 저장됩니다. 스크립트에는 스크립트 자체와 동일한 폴더에 저장해야 하는 각 대상 데이터베이스에 대한 구성 파일이 필요합니다. 구성 파일의 이름은 'sc-system-refresh-<target DB SID>.cfg'이어야 합니다(예: 이 실습 환경에서는 'c-system-refresh-ql1.cfg'). 여기에 사용된 구성 파일은 고정/하드 코딩된 소스 DB SID를 사용합니다. 몇 가지 변경 사항이 있을 경우 스크립트와 구성 파일을 개선하여 소스 DB SID를 입력 매개 변수로 사용할 수 있습니다.
+
+다음 매개변수는 특정 환경에 따라 조정해야 합니다.
+
+....
+# hdbuserstore key, which should be used to connect to the target database
+KEY=”QL1SYSTEM”
+# single container or MDC
+export P01_HANA_DATABASE_TYPE=MULTIPLE_CONTAINERS
+# source tenant names { TENANT_SID [, TENANT_SID]* }
+export P01_TENANT_DATABASE_NAMES=P01
+# cloned vol mount path
+export CLONED_VOLUMES_MOUNT_PATH=`tail -2 /mnt/software/AZACSNAP/snapshot_tool/logs/azacsnap-restore-azacsnap-P01.log | grep -oe “[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*:/.* “`
+....
+
+
+=== ZSCCOPYSHUTDOWN
+
+이 작업은 타겟 SAP HANA 데이터베이스를 중지합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
+
+....
+$_include_tool(unix_header.sh)_$
+sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh shutdown $_system(target_db, id)_$ > $_logfile_$
+....
+스크립트 'c-system-refresh.sh'는 sapcontrol을 사용하여 SAP HANA 데이터베이스를 중지하기 위해 'hutdown' 명령과 DB SID라는 두 가지 매개 변수를 사용합니다. 시스템 출력이 표준 LSC 로그 파일로 리디렉션됩니다. 앞서 언급한 바와 같이, 성공적인 실행을 나타내기 위해 LSC: SUCCESS 메시지를 사용한다.
+
+image:libelle-sc-image29.png["오류: 그래픽 이미지가 없습니다"]
+
+
+
+=== ZSCCOPYUMOUNT
+
+이 작업은 타겟 DB 운영 체제(OS)에서 이전 Azure NetApp Files 데이터 볼륨을 마운트 해제합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
+
+....
+$_include_tool(unix_header.sh)_$
+sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh umount $_system(target_db, id)_$ > $_logfile_$
+....
+이전 작업과 동일한 스크립트가 사용됩니다. 전달된 두 파라미터는 umount 명령과 DB SID입니다.
+
+
+
+=== ZAZACSNAPRESTORE
+
+이 작업은 AzAcSnap을 실행하여 소스 데이터베이스의 성공한 최신 스냅샷 복사본을 타겟 데이터베이스의 새 볼륨에 복제합니다. 이 작업은 기존 백업 환경에서 리디렉션된 백업 복원과 동일합니다. 하지만 스냅샷 복사본 및 클론 복제 기능을 사용하면 최대 규모의 데이터베이스도 몇 초 내에 이 작업을 수행할 수 있습니다. 그러나 기존 백업을 사용하면 이 작업에 몇 시간이 걸릴 수 있습니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
+
+....
+$_include_tool(unix_header.sh)_$
+sudo /mnt/software/AZACSNAP/snapshot_tool/azacsnap -c restore --restore snaptovol --hanasid $_system(source_db, id)_$ --configfile=/mnt/software/AZACSNAP/snapshot_tool/azacsnap-$_system(source_db, id)_$.json > $_logfile_$
+....
+"restore" 명령에 대한 AzAcSnap 명령줄 옵션에 대한 전체 설명서는 Azure 설명서에서 찾을 수 있습니다. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azacsnap-cmd-ref-restore["Azure Application Consistent Snapshot 도구를 사용하여 복원합니다"^]. 이 호출에서는 중앙 NFS 공유에서 소스 DB에 대한 json DB 구성 파일을 "azacsnap-<source DB SID>"라는 명명 규칙과 함께 찾을 수 있다고 가정합니다. JSON(예: 이 연구소 환경의 azacsnap-P01.json).
+
+
+NOTE: AzAcSnap 명령의 출력을 변경할 수 없으므로 이 작업에 기본 LSC: SUCCESS 메시지를 사용할 수 없습니다. 따라서 AzAcSnap 출력의 문자열 "예제 마운트 명령"이 성공적인 반환 코드로 사용됩니다. 5.0 GA 버전의 AzAcSnap에서 이 출력은 복제 프로세스가 성공한 경우에만 생성됩니다.
+
+다음 그림에서는 새 볼륨에 대한 AzAcSnap 복원 성공 메시지를 보여 줍니다.
+
+image:libelle-sc-image30.png["오류: 그래픽 이미지가 없습니다"]
+
+
+
+=== ZSCCOPYMOUNT
+
+이 작업은 타겟 DB의 OS에 새 Azure NetApp Files 데이터 볼륨을 마운트합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
+
+....
+$_include_tool(unix_header.sh)_$
+sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh mount $_system(target_db, id)_$ > $_logfile_$
+....
+sc-system-refresh.sh 스크립트가 다시 사용되어 'mount' 명령과 대상 DB SID를 전달합니다.
+
+
+
+=== ZSCCOPYRECOVER
+
+이 작업은 복원된(클론 복제된) 스냅샷 복사본을 기반으로 시스템 데이터베이스와 테넌트 데이터베이스의 SAP HANA 데이터베이스 복구를 수행합니다. 여기에 사용되는 복구 옵션은 추가 로그 없이 특정 데이터베이스 백업에 적용됩니다. 따라서 복구 시간이 매우 짧습니다(최대 몇 분). 이 작업의 런타임은 복구 프로세스 후에 자동으로 발생하는 SAP HANA 데이터베이스의 시작에 의해 결정됩니다. 시작 시간을 단축하기 위해 필요한 경우 이 Azure 설명서에 설명된 대로 Azure NetApp Files 데이터 볼륨의 처리량을 일시적으로 늘릴 수 있습니다. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-performance-considerations["볼륨 할당량을 동적으로 늘리거나 줄입니다"^]. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
+
+....
+$_include_tool(unix_header.sh)_$
+sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh recover $_system(target_db, id)_$ > $_logfile_$
+....
+이 스크립트는 'recover' 명령 및 대상 DB SID와 함께 다시 사용됩니다.
+
+
+
+== SAP HANA 시스템 업데이트 작업
+
+이 섹션에서는 랩 시스템의 예제 새로 고침 작업에 이 워크플로의 주요 단계가 나와 있습니다.
+
+백업 카탈로그에 나열된 대로 P01 소스 데이터베이스에 대해 필요 시 Snapshot 복제본을 정기적으로 생성합니다.
+
+image:libelle-sc-image31.jpg["오류: 그래픽 이미지가 없습니다"]
+
+새로 고침 작업의 경우 3월 12일의 최신 백업이 사용되었습니다. 백업 세부 정보 섹션에 이 백업의 EBID(외부 백업 ID)가 나열됩니다. 다음 그림과 같이 Azure NetApp Files 데이터 볼륨에 있는 해당 스냅샷 복사본 백업의 스냅샷 복사본 이름입니다.
+
+image:libelle-sc-image32.jpg["오류: 그래픽 이미지가 없습니다"]
+
+새로 고침 작업을 시작하려면 LSC GUI에서 올바른 구성을 선택한 다음 실행 시작을 클릭합니다.
+
+image:libelle-sc-image33.jpg["오류: 그래픽 이미지가 없습니다"]
+
+LSC는 검사 단계의 작업을 실행한 다음 사전 단계의 구성된 작업을 실행하기 시작합니다.
+
+image:libelle-sc-image34.jpg["오류: 그래픽 이미지가 없습니다"]
+
+Pre 단계의 마지막 단계로 대상 SAP 시스템이 중지됩니다. 다음 복사 단계에서는 이전 섹션에서 설명한 단계가 실행됩니다. 먼저 타겟 SAP HANA 데이터베이스가 중지되고 기존 Azure NetApp Files 볼륨이 OS에서 마운트 해제됩니다.
+
+image:libelle-sc-image35.jpg["오류: 그래픽 이미지가 없습니다"]
+
+그런 다음 ZAZACSNAPRESTORE 작업은 P01 시스템의 기존 스냅샷 복사본에서 새 볼륨을 클론으로 생성합니다. 다음 두 사진은 LSC GUI의 작업 로그와 Azure 포털의 복제된 Azure NetApp Files 볼륨을 보여줍니다.
+
+image:libelle-sc-image36.jpg["오류: 그래픽 이미지가 없습니다"]
+
+image:libelle-sc-image37.jpg["오류: 그래픽 이미지가 없습니다"]
+
+그런 다음 이 새 볼륨이 타겟 DB 호스트에 마운트되고 시스템 데이터베이스와 테넌트 데이터베이스는 포함된 스냅샷 복사본을 사용하여 복구됩니다. 복구가 성공적으로 완료되면 SAP HANA 데이터베이스가 자동으로 시작됩니다. 이러한 SAP HANA 데이터베이스 시작은 Copy 단계의 대부분을 차지합니다. 데이터베이스의 크기에 관계없이 나머지 단계는 일반적으로 몇 초에서 몇 분 정도 완료됩니다. 다음 그림에서는 SAP에서 제공하는 비톤 복구 스크립트를 사용하여 시스템 데이터베이스를 복구하는 방법을 보여 줍니다.
+
+image:libelle-sc-image38.jpg["오류: 그래픽 이미지가 없습니다"]
+
+복사 단계 후 LSC는 사후 단계의 정의된 모든 단계를 계속 진행합니다. 시스템 새로 고침 프로세스가 완전히 완료되면 대상 시스템이 다시 가동되고 다시 실행되며 완전히 사용할 수 있습니다. 이 실습 시스템에서 SAP 시스템 업데이트의 총 런타임은 약 25분이었으며, 이 중 복사 단계가 5분 미만으로 사용되었습니다.
+
+image:libelle-sc-image39.jpg["오류: 그래픽 이미지가 없습니다"]
+
+link:libelle-sc-where-to-find-additional-information.html["다음: 추가 정보 및 버전 기록을 찾을 위치."]

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html 
+keywords: system clone, target host, clone create 
+summary: FlexClone 기술은 프로비저닝 프로세스를 단축하고 용량을 크게 절감해 줍니다. 복구 시스템은 일반적으로 짧은 시간에만 사용되기 때문입니다. 
+---
+= SnapCenter를 사용한 SAP 시스템 클론 워크플로우 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html["이전: SnapCenter를 사용한 SAP 시스템 복제 워크플로우 개요"]
+
+이전 섹션에서 설명한 것처럼 SnapCenter는 기존 Snapshot 백업에서 데이터 세트의 클론을 관리할 수 있으며 이러한 데이터 세트를 타겟 시스템으로 신속하게 프로비저닝할 수 있습니다. 논리적 손상을 해결하기 위해 운영 데이터를 복구 시스템에 프로비저닝하는 속도는 매우 중요합니다. 복구 시스템을 재설정하고 다른 운영 데이터 세트를 선택해야 하는 경우가 많기 때문입니다. FlexClone 기술은 프로비저닝 프로세스를 단축하고 용량을 크게 절감해 줍니다. 복구 시스템은 일반적으로 짧은 시간에만 사용되기 때문입니다.
+
+다음 그림에서는 SnapCenter를 사용하는 SAP 시스템 클론 작업에 필요한 단계를 간략하게 보여 줍니다.
+
+. 타겟 호스트를 준비합니다.
+. SnapCenter 클론은 HANA 공유 볼륨에 대한 워크플로우를 생성합니다.
+. SAP HANA 서비스 시작
+. SnapCenter 클론 - 데이터베이스 복구를 포함하여 HANA 데이터 볼륨에 대한 워크플로우를 생성합니다.
+. 이제 HANA 시스템을 수리 시스템으로 사용할 수 있습니다.
+
+
+
+NOTE: 시스템을 다른 스냅샷 백업으로 재설정해야 하는 경우 6단계와 4단계만으로 충분합니다. HANA 공유 볼륨은 계속 마운트할 수 있습니다.
+
+시스템이 더 이상 필요하지 않은 경우 다음 단계를 수행하여 정리 프로세스를 수행합니다.
+
+. 데이터베이스 종료를 포함하여 HANA 데이터 볼륨에 대한 SnapCenter 클론 삭제 워크플로우
+. SAP HANA 서비스 중지
+. HANA 공유 볼륨에 대한 SnapCenter 클론 삭제 워크플로우
+
+
+image:sc-copy-clone-image10.png["오류: 그래픽 이미지가 없습니다"]
+
+섹션을 참조하십시오 link:sc-copy-clone-sap-system-clone-with-snapcenter.html[""SnapCenter를 사용한 SAP 시스템 클론""] 에서는 시스템 클론 워크플로우에 대한 자세한 단계별 설명을 제공합니다.
+
+link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["다음: 스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 운영 워크플로우"]

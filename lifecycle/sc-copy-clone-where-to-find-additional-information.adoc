@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-where-to-find-additional-information.html 
+keywords:  
+summary:  
+---
+= 추가 정보를 찾을 수 있는 위치
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:sc-copy-clone-sap-system-clone-with-snapcenter.html["이전: SnapCenter를 사용한 SAP 시스템 클론"]
+
+이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
+
+* TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구
++
+https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html"^]
+
+* https://www.netapp.com/us/media/tr-4018.pdf["TR-4018: NetApp ONTAP 시스템을 SAP 환경 관리와 통합"^]
++
+https://www.netapp.com/us/media/tr-4018.pdf["https://www.netapp.com/us/media/tr-4018.pdf"^]
+
+* https://www.netapp.com/us/media/tr-4646.pdf["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구"^]
++
+https://www.netapp.com/us/media/tr-4646.pdf["https://www.netapp.com/us/media/tr-4646.pdf"^]
+
+* TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp All Flash FAS 시스템 기반 SAP HANA
++
+https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html["https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html"^]
+
+* TR-4435: NFS를 포함한 NetApp All Flash FAS 시스템 기반 SAP HANA
++
+https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html"^]
+
+* NetApp SAP 소프트웨어 솔루션 제품 페이지
++
+http://www.netapp.com/us/solutions/applications/sap/index.aspx["http://www.netapp.com/us/solutions/applications/sap/index.aspx"^]
+
+
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2018년 2월 | 최초 릴리스. 
+
+
+| 버전 2.0 | 2021년 2월 | SnapCenter 4.3 및 향상된 자동화 스크립트를 포함하는 완전한 재작성. 시스템 업데이트 및 시스템 클론 작업에 대한 새로운 워크플로우 설명 
+
+
+| 버전 3.0 | 2022년 5월 | SnapCenter 4.6 P1에 대한 워크플로가 업데이트되었습니다. 
+|===

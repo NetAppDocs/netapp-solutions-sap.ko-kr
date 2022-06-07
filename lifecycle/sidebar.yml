@@ -2,6 +2,42 @@
 section: lifecycle
 title: 라이프사이클 관리
 entries:
+- title: SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화
+  type: solutions
+  entries:
+  - title: 소개
+    url: "/lifecycle/sc-copy-clone-introduction.html"
+  - title: SAP 시스템 복제, 업데이트 및 클론 시나리오
+    url: "/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html"
+  - title: 시스템 업데이트 및 클론 복제 사용 사례
+    url: "/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html"
+  - title: SnapCenter를 사용한 SAP 시스템 업데이트 워크플로우 개요
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html"
+  - title: SnapCenter를 사용한 SAP 시스템 복제 워크플로우 개요
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html"
+  - title: SnapCenter를 사용한 SAP 시스템 클론 워크플로우 개요
+    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html"
+  - title: 스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 운영 워크플로우
+    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html"
+  - title: 자동화 스크립트 예
+    url: "/lifecycle/sc-copy-clone-automation-example-scripts.html"
+  - title: SnapCenter으로 SAP HANA 시스템 업데이트
+    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html"
+  - title: SnapCenter를 사용한 SAP 시스템 클론
+    url: "/lifecycle/sc-copy-clone-sap-system-clone-with-snapcenter.html"
+  - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
+    url: "/lifecycle/sc-copy-clone-where-to-find-additional-information.html"
+- title: Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화
+  type: solutions
+  entries:
+  - title: 개요
+    url: "/lifecycle/libelle-sc-overview.html"
+  - title: LSC 및 SnapCenter를 통해 SAP HANA 시스템 업데이트
+    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html"
+  - title: LSC, AzAcSnap 및 Azure NetApp Files를 통해 SAP HANA 시스템 업데이트
+    url: "/lifecycle/libelle-sc-sap-hana-system-refresh-with-lsc,-azacsnap,-and-azure-netapp-files.html"
+  - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
+    url: "/lifecycle/libelle-sc-where-to-find-additional-information.html"
 - title: SnapCenter SAP HANA 플러그인을 사용하여 SAP 시스템 복사본 자동화
   url: https://www.netapp.com/us/media/tr-4667.pdf
 - title: NetApp 스토리지를 SAP Landscape Management와 통합
