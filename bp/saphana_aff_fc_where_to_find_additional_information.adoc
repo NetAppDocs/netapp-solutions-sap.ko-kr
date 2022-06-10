@@ -51,7 +51,7 @@ http://www.netapp.com/us/media/tr-4338.pdf["www.netapp.com/us/media/tr-4338.pdf"
 
 * TR-4667: SnapCenter 4.0 SAP HANA 플러그인을 사용하여 SAP 시스템 복사본 자동화
 +
-https://www.netapp.com/us/media/tr-4667.pdf["https://www.netapp.com/us/media/tr-4667.pdf"^]
+https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html"^]
 
 * NetApp 문서화 센터
 +

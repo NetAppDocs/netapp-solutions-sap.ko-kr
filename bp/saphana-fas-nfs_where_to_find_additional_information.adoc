@@ -25,7 +25,7 @@ link:saphana-fas-nfs_adding_additional_data_volume_partitions.html["이전: 추�
 * TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구 http://www.netapp.com/us/media/tr-4646.pdf["www.netapp.com/us/media/tr-4646.pdf"^]
 * TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구 http://www.netapp.com/us/media/tr-4614.pdf["www.netapp.com/us/media/tr-4614.pdf"^]
 * TR-4338: NetApp FAS 및 AFF 시스템을 갖춘 VMware vSphere 기반 SAP HANA http://www.netapp.com/us/media/tr-4338.pdf["www.netapp.com/us/media/tr-4338.pdf"^]
-* TR-4667: SnapCenter 4.0 SAP HANA 플러그인을 사용하여 SAP 시스템 복사본 자동화 http://www.netapp.com/us/media/tr-4667.pdf["www.netapp.com/us/media/tr-4667.pdf"^]
+* TR-4667: SnapCenter 4.0 SAP HANA 플러그인을 사용하여 SAP 시스템 복사본 자동화 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["www.netapp.com/us/media/tr-4667.pdf"^]
 * NetApp 문서화 센터 https://www.netapp.com/us/documentation/index.aspx["https://www.netapp.com/us/documentation/index.aspx"^]
 * NetApp FAS 스토리지 시스템 리소스 https://mysupport.netapp.com/info/web/ECMLP2676498.html["https://mysupport.netapp.com/info/web/ECMLP2676498.html"^]
 * SAP HANA 소프트웨어 솔루션 http://www.netapp.com/us/solutions/applications/sap/index.aspx["www.netapp.com/us/solutions/applications/sap/index.aspx#sap-hana"^]

@@ -29,7 +29,7 @@ SAP AnyDB에 대한 기본 SnapCenter 에이전트 및 데이터베이스 플러
 
 다음 섹션에서는 표준 설치 또는 중앙 통신 호스트를 사용하여 LSC와 SnapCenter의 통합 사이의 차이점을 설명합니다. 특히 강조 표시되지 않은 모든 구성 단계는 설치 옵션과 사용된 데이터베이스에 관계없이 동일합니다.
 
-소스 데이터베이스에서 자동화된 스냅샷 복사본 기반 백업을 수행하고 새 타겟 데이터베이스의 클론을 생성하기 위해 설명된 LSC와 SnapCenter 간의 통합은 에 설명된 구성 옵션 및 스크립트를 사용합니다 https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^].
+소스 데이터베이스에서 자동화된 스냅샷 복사본 기반 백업을 수행하고 새 타겟 데이터베이스의 클론을 생성하기 위해 설명된 LSC와 SnapCenter 간의 통합은 에 설명된 구성 옵션 및 스크립트를 사용합니다 link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^].
 
 
 
@@ -91,7 +91,7 @@ SAP 환경에 LSC 마스터 및 LSC 작업자가 설치되어 있어야 합니�
 * https://docs.netapp.com/us-en/snapcenter/["SnapCenter 문서 센터"^]
 * https://www.netapp.com/pdf.html?item=/media/12403-tr4700.pdf["TR-4700: Oracle 데이터베이스용 SnapCenter 플러그인"^]
 * https://www.netapp.com/pdf.html?item=/media/12405-tr4614pdf.pdf["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^]
-* https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^]
 * https://fieldportal.netapp.com/content/883721["TR-4769 - SnapCenter 모범 사례 및 사이징 지침"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2880726["SnapCenter 4.6 cmdlet 참조 가이드"^]
 

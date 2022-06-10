@@ -80,7 +80,7 @@ Check, Pre 및 Post 단계의 경우, LSC는 일반적인 새로 고침 작업�
 * 재해 복구 테스트 시나리오
 
 
-복구 시스템과 재해 복구 테스트 시스템은 일반적으로 업데이트된 테스트 및 교육 시스템에 대해 SAP 시스템 클론(광범위한 사후 처리 작업이 필요하지 않음)을 사용하여 제공되지만 소스 시스템과 공존할 수 있도록 이러한 사후 처리 단계를 적용해야 합니다. 따라서 이 문서에서는 SAP 시스템 업데이트 시나리오에 대해 중점적으로 설명합니다. 다양한 사용 사례에 대한 자세한 내용은 기술 보고서를 참조하십시오 https://www.netapp.com/pdf.html?item=/media/17111-tr4667pdf.pdf["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^].
+복구 시스템과 재해 복구 테스트 시스템은 일반적으로 업데이트된 테스트 및 교육 시스템에 대해 SAP 시스템 클론(광범위한 사후 처리 작업이 필요하지 않음)을 사용하여 제공되지만 소스 시스템과 공존할 수 있도록 이러한 사후 처리 단계를 적용해야 합니다. 따라서 이 문서에서는 SAP 시스템 업데이트 시나리오에 대해 중점적으로 설명합니다. 다양한 사용 사례에 대한 자세한 내용은 기술 보고서를 참조하십시오 https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"^].
 
 이 문서의 나머지 부분은 두 부분으로 나뉩니다. 첫 번째 부분에서는 NetApp SnapCenter를 Libelle SystemCopy for SAP HANA 및 온프레미스 NetApp ONTAP 시스템에서 실행되는 SAP AnyDB 시스템에 통합하는 방법을 설명합니다. 두 번째 부분에서는 제공된 Azure NetApp Files를 사용하여 Microsoft Azure에서 실행되는 SAP HANA 시스템용 AzAcSnap과 LSC의 통합에 대해 설명합니다. 언더레이 ONTAP 기술은 동일하지만 Azure NetApp Files는 기본 ONTAP 설치와 비교하여 다양한 인터페이스 및 툴 통합(예: AzAcSnap)을 제공합니다.
 
