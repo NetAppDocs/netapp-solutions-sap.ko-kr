@@ -953,7 +953,6 @@
   <block id="4f0141ecc04bee7dc293f8992542b4bd" category="summary">NetApp FAS 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 인증 엔터프라이즈 스토리지 플랫폼은 NetApp ONTAP 운영 체제를 기반으로 합니다.</block>
   <block id="3582e9217fbd3de24b2e5ecfb0fc97b4" category="paragraph">NetApp의 Nils Bauer와 Marco Schoen</block>
   <block id="e4509a748ae3ce7cb528662f2f9f7e10" category="paragraph">인증은 다음 모델에 대해 유효합니다.</block>
-  <block id="d505ac9d8d6e21d17ef8d33d547be191" category="list-text">FAS2720, FAS2750, FAS8200, FAS8300, FAS8700, FAS9000</block>
   <block id="42eb56ae1e83db3afce70f056a668205" category="inline-link">인증되고 지원되는 SAP HANA 하드웨어 디렉토리</block>
   <block id="b448d121930edfc4a956027d7533c403" category="paragraph">이 문서에서는 FCP(파이버 채널 프로토콜)를 사용하는 FAS 구성에 대해 설명합니다.</block>
   <block id="bd06b22fab5b6b92f9bf2b53d26f4805" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
@@ -2830,7 +2829,6 @@
   <block id="f9d7623ba6cc83509340e737618f63c2" category="paragraph">다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다.</block>
   <block id="b6002aa673859c29cc8fc6915c01cf54" category="paragraph">다음 예에서는 데이터 및 로그 파일 시스템에 NFSv4.1을 사용하고 "/HANA/공유" 및 "/usr/SAP/NF2" 파일 시스템에 대해 NFSv3을 사용하는 SID=NF2인 다중 호스트 SAP HANA 데이터베이스를 보여 줍니다. 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K가 사용됩니다.</block>
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 첨부된 백서</block>
-  <block id="257f17de4aa60411125a8899104c5927" category="list-text">SAP HANA용 FAS2720, FAS2750, FAS8300, FAS8700 및 FAS9000A NetApp 인증 스토리지 솔루션 전체 목록은 에서 확인할 수 있습니다<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>.</block>
   <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">이 문서에서는 NFS 버전 3(NFSv3) 프로토콜 또는 NFS 버전 4(NFSv4.1) 프로토콜의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
   <block id="bc3bbc9b5df10cfc4c9d9747e9b15e4f" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 를 참조하십시오<block ref="2585df8f0f74fb3d91dc9a930fa3213b" category="inline-link-rx"></block>.</block>
   <block id="fa880fcc81edcdb201d07b92940b6c2c" category="paragraph">첫 번째 쉘프에 최소 12개의 NVMe SSD가 최대 16개의 SAP HANA 호스트를 지원합니다. 완전히 채워진 쉘프는 최대 48개의 SAP HANA 호스트를 지원합니다.</block>
@@ -4937,4 +4935,6 @@
   <block id="845479810e43d8fc64263c1a762de016" category="paragraph">소스 데이터베이스에서 자동화된 스냅샷 복사본 기반 백업을 수행하고 새 타겟 데이터베이스의 클론을 생성하기 위해 설명된 LSC와 SnapCenter 간의 통합은 에 설명된 구성 옵션 및 스크립트를 사용합니다 <block ref="6cb270d5a2712c948be937faf1cb1d50" category="inline-link-macro-rx"></block>.</block>
   <block id="66988e72fd271cabc6a7489ab70e1a4f" category="list-text"><block ref="66988e72fd271cabc6a7489ab70e1a4f" category="inline-link-rx"></block></block>
   <block id="5c427e461906a4b90dc3d5777ec58bfa" category="paragraph">복구 시스템과 재해 복구 테스트 시스템은 일반적으로 업데이트된 테스트 및 교육 시스템에 대해 SAP 시스템 클론(광범위한 사후 처리 작업이 필요하지 않음)을 사용하여 제공되지만 소스 시스템과 공존할 수 있도록 이러한 사후 처리 단계를 적용해야 합니다. 따라서 이 문서에서는 SAP 시스템 업데이트 시나리오에 대해 중점적으로 설명합니다. 다양한 사용 사례에 대한 자세한 내용은 기술 보고서를 참조하십시오<block ref="d89e94a6aaf703375bdbc4104c3e8227" category="inline-link-rx"></block>.</block>
+  <block id="ecf911b27dfacab49658bef695c01f50" category="list-text">FAS2720, FAS2750, FAS8300, FAS8700, FAS9000, 및 FAS9500에 대해 설명합니다. SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>.</block>
+  <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720, FAS2750, FAS8200, FAS8300, FAS8700, FAS9000, FAS9500</block>
 </blocks>
