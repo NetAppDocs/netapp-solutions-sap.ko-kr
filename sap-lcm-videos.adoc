@@ -19,7 +19,7 @@ SAP 수명 주기 관리를 강조하는 비디오 및 데모 개요
 
 
 
-=== SAP Lifecycle Management 비디오 및 데모
+== SAP Lifecycle Management 비디오 및 데모
 
 * link:https://www.netapp.tv/details/25588["SAP 프로젝트의 위험 감소 및 품질 향상"]
 * link:https://www.netapp.tv/details/25595["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"]
