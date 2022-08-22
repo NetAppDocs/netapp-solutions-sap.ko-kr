@@ -77,6 +77,9 @@ net.ipv4.tcp_timestamps = 1
 net.ipv4.tcp_sack = 1
 ....
 
+NOTE: RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오 https://launchpad.support.sap.com/["SAP 메모 3024346"^] (SAP 로그인 필요).
+
+
 
 == /HANA/공유 볼륨에 하위 디렉토리를 생성합니다
 
