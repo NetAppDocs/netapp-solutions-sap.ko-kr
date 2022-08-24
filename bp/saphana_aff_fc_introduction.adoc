@@ -36,9 +36,9 @@ NOTE: 이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 �
 
 NFS 및 NetApp FAS 시스템을 사용하는 AFF 시스템의 구성 가이드는 다음 링크를 사용하여 찾을 수 있습니다.
 
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_fas_fc_introduction.html["FCP가 있는 NetApp FAS 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_fas_fc_introduction.html["FCP가 있는 NetApp FAS 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]
 
 
 SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 특정 Linux 커널 종속성에 대해서는 항상 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오 https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA 지원 운영 체제"^].
@@ -54,7 +54,6 @@ image:saphana_aff_fc_image1.png["오류: 그래픽 이미지가 없습니다"]
 생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
 
 * http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html["SAP HANA 맞춤형 데이터 센터 통합 FAQ를 참조하십시오"^]
-* http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html["SAP HANA 스토리지 요구사항"^]
 
 
 

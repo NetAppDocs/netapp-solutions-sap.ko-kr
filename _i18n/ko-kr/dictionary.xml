@@ -85,11 +85,8 @@
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
   <block id="793f62e70c31f71a93161db091bea2c0" category="paragraph">FCP를 사용하는 NetApp AFF 시스템 및 NFS 또는 FCP를 사용하는 FAS 시스템의 구성 가이드는 다음 링크에서 찾을 수 있습니다.</block>
   <block id="fd645c3ffaeed1c3efb140082b037a69" category="inline-link">파이버 채널 프로토콜을 지원하는 NetApp FAS 시스템 기반 SAP HANA</block>
-  <block id="6578ba8f8050606717eb26d6e9c36396" category="list-text"><block ref="6578ba8f8050606717eb26d6e9c36396" category="inline-link-rx"></block></block>
   <block id="794aa68d1e6abb7bdd6b9ecf4a1125fd" category="inline-link">NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA</block>
-  <block id="172a4f6be2e5258ba785f0fbe99140f7" category="list-text"><block ref="172a4f6be2e5258ba785f0fbe99140f7" category="inline-link-rx"></block></block>
   <block id="d3eeeac9b8ca9512c68dfff9f3b301a2" category="inline-link">파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA</block>
-  <block id="9e2f7b0947eed9e36a3d84200631ce7d" category="list-text"><block ref="9e2f7b0947eed9e36a3d84200631ce7d" category="inline-link-rx"></block></block>
   <block id="36fafbaf89be825de435f50a73ce793c" category="paragraph">다음 표에는 SAP HANA 데이터베이스 구성에 따라 NFS 버전, NFS 잠금 및 필수 격리 구현이 지원되는 조합이 나와 있습니다.</block>
   <block id="4a74ba49b2778c7cf6b73600b7dfe758" category="paragraph">SAP HANA 단일 호스트 시스템 또는 호스트 자동 페일오버를 사용하지 않는 여러 호스트의 경우 NFSv3 및 NFSv4가 지원됩니다.</block>
   <block id="8456bce54ecacb824d3f0f3333eec164" category="paragraph">SAP HANA 호스트 자동 페일오버를 지원하는 여러 호스트 시스템의 경우 NetApp은 NFSv4만 지원하는 동시에 서버별 STONITH(SAP HANA HA/DR 공급자) 구축의 대안으로 NFSv4 잠금을 사용합니다.</block>
@@ -113,11 +110,9 @@
   <block id="5d75848b6169b06c4cd7d6a8c2ec2337" category="paragraph">NetApp AFF 스토리지 컨트롤러는 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하는 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 단일 호스트 또는 다중 호스트 구성의 HANA 기반 SAP Business Warehouse와 같은 현재 SAP HANA 시나리오에 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. SAP HANA TDI의 아키텍처 개요는 다음 그림을 참조하십시오.</block>
   <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">오류: 그래픽 이미지가 없습니다</block>
   <block id="b397cda0484ae78f49c994384022879a" category="paragraph"><block ref="b397cda0484ae78f49c994384022879a" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0b915d978fec9594c52c6c0d2f128886" category="paragraph">producti SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.</block>
   <block id="14a31d6554fa48b10cc86d1aaf656a07" category="inline-link">SAP HANA 맞춤형 데이터 센터 통합 FAQ를 참조하십시오</block>
   <block id="9282f2106e2ecc166cf241e78c58163e" category="list-text"><block ref="9282f2106e2ecc166cf241e78c58163e" category="inline-link-rx"></block></block>
   <block id="244d98fed97800c3bc8073163dc1e3b2" category="inline-link">SAP HANA 스토리지 요구사항</block>
-  <block id="44cbaf598c2b8895a3d3a875dd63203f" category="list-text"><block ref="44cbaf598c2b8895a3d3a875dd63203f" category="inline-link-rx"></block></block>
   <block id="ff3f1e894014f4c26eac8cab49b8a0f4" category="section-title">VMware vSphere를 사용하는 SAP HANA</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 기본 옵션은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 호스트 및 스토리지의 구성이 물리적 호스트와 VM 간에 차이가 없습니다.</block>
   <block id="35eb3c62d099b5d5e6334b74d5b2bcff" category="paragraph">NFS 데이터 저장소와 NFS의 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다. 또한, SAP 시스템 클로닝과 같이 NetApp SnapCenter과 이를 기반으로 한 솔루션에서 조율된 스냅샷 기반 백업 및 복구 기능을 구현할 수 없습니다.</block>
@@ -955,12 +950,10 @@
   <block id="b448d121930edfc4a956027d7533c403" category="paragraph">이 문서에서는 FCP(파이버 채널 프로토콜)를 사용하는 FAS 구성에 대해 설명합니다.</block>
   <block id="bd06b22fab5b6b92f9bf2b53d26f4805" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
   <block id="b33f6954e7bec0569d3be6ef5cea4d1d" category="paragraph">NFS 및 NetApp AFF 시스템을 사용하는 FAS 시스템의 구성 가이드는 다음 링크를 사용하여 찾을 수 있습니다.</block>
-  <block id="d76e7542f28a5b74ef246f360a1518d6" category="list-text"><block ref="d76e7542f28a5b74ef246f360a1518d6" category="inline-link-rx"></block></block>
   <block id="5f6e041a9634120ceb1ee084f6acde8a" category="inline-link">SAP Note 2235581 – SAP HANA 지원 운영 체제</block>
   <block id="1800d8919a8de7dbf0bdd4d4ef0a94f4" category="paragraph">SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 관련 Linux 커널 종속성에 대해서는 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>.</block>
   <block id="324c1541e14a4687bde362da7f340662" category="paragraph">NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 파이버 채널(SAN) 프로토콜을 사용하는 SAP HANA TDI(Tailored Data Center Integration) 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 모든 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 인증된 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.</block>
   <block id="edf706df3a1da44f680d9aeb650d6f07" category="paragraph"><block ref="edf706df3a1da44f680d9aeb650d6f07" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ea6847e11cffe9d9606d920fe126bfdc" category="paragraph">생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.</block>
   <block id="8d4c28e332eb5d0e100502eb8922957f" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 설명되어 있습니다<block ref="5860d5b399407cf49d81a6277de3a895" category="inline-link-rx"></block>.</block>
   <block id="2119e51f96366de40a69723f79096b89" category="paragraph">RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 기반 백업 및 복구와 이를 기반으로 하는 솔루션(예: SAP 시스템 클론 복제)은 구현할 수 없습니다.</block>
   <block id="b8d262c1ae7b810ad38a6e608b89ffa6" category="paragraph"><block ref="b8d262c1ae7b810ad38a6e608b89ffa6" category="inline-link-macro-rx"></block></block>
@@ -1385,7 +1378,6 @@
   <block id="171ad4663cdfb492651e0357292fbe82" category="paragraph">이 문서에서는 FCP(파이버 채널 프로토콜)를 사용하는 AFF 구성에 대해 설명합니다.</block>
   <block id="9ba59bf1b64e9d129b41dbb49f3c385f" category="paragraph">NFS 및 NetApp FAS 시스템을 사용하는 AFF 시스템의 구성 가이드는 다음 링크를 사용하여 찾을 수 있습니다.</block>
   <block id="6e309be8793679276c5f6a7bdd2bfdfa" category="inline-link">FCP가 있는 NetApp FAS 시스템 기반 SAP HANA</block>
-  <block id="c9d1db03ff9188655c6df6826c9cec88" category="list-text"><block ref="c9d1db03ff9188655c6df6826c9cec88" category="inline-link-rx"></block></block>
   <block id="10fba2fd8d2b0860517a92eefbfce26b" category="paragraph">SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 특정 Linux 커널 종속성에 대해서는 항상 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>.</block>
   <block id="e13ebe7bf91deecb41098f3561e752bf" category="paragraph">NetApp AFF 스토리지 시스템은 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하여 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 단일 호스트 또는 다중 호스트 구성의 HANA 기반 SAP Business Warehouse와 같은 현재 SAP HANA 시나리오에 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. 다음 그림에서는 아키텍처 개요를 보여 줍니다.</block>
   <block id="92587b11e86da44eb218f2b17846d58e" category="paragraph"><block ref="92587b11e86da44eb218f2b17846d58e" category="inline-image-macro-rx" type="image"></block></block>
@@ -1512,9 +1504,6 @@
   <block id="ae9c01e101eba86b0e6ff092df062fae" category="inline-link">인증되고 지원되는 SAP HANA 하드웨어 디렉토리</block>
   <block id="134a6ecca2c7d98e325ad00ee461d25a" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
   <block id="c79fca4f33a4c23e62509e315c7a3415" category="paragraph">FCP를 사용하는 NetApp FAS 시스템 및 NFS 또는 FC를 사용하는 AFF 시스템의 구성 가이드는 다음 링크에서 찾을 수 있습니다.</block>
-  <block id="8c286ade008f7d794b82d8e4bc981424" category="list-text"><block ref="8c286ade008f7d794b82d8e4bc981424" category="inline-link-rx"></block></block>
-  <block id="4300aba024439d53329726e8ecb7f77b" category="list-text"><block ref="4300aba024439d53329726e8ecb7f77b" category="inline-link-rx"></block></block>
-  <block id="c5b75af125f41729ef7bcd709c04f970" category="list-text"><block ref="c5b75af125f41729ef7bcd709c04f970" category="inline-link-rx"></block></block>
   <block id="90a239e164a24bfe58142290491d6a2c" category="paragraph">SAP HANA 단일 호스트 시스템 또는 호스트 자동 페일오버 기능이 없는 여러 호스트의 경우 NFSv3 및 NFSv4가 지원됩니다.</block>
   <block id="97e382ecf7e6f1064476764cbcc5b429" category="cell">NFS 버전</block>
   <block id="63bed36f11f7ad7653116b5a06c528d7" category="cell">NFS 잠금</block>
@@ -1525,7 +1514,6 @@
   <block id="fdb63fa26dfca812f4f453ca18a829c7" category="section-title">SAP HANA 맞춤형 데이터 센터 통합</block>
   <block id="c2798d82f6c464fd30d247919005bc5b" category="paragraph">NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하는 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 기존 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.</block>
   <block id="780627a969a9ecaba83ec1a8ad4e34f6" category="paragraph"><block ref="780627a969a9ecaba83ec1a8ad4e34f6" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c57f9f1ae5801f0d8675d5d2053fbac7" category="paragraph">운영 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 SAP 리소스를 참조하십시오.</block>
   <block id="cd67947f6f1984974a5e507afaa2222d" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 물리적 호스트와 VM 간에 호스트 및 스토리지 구성이 달라지지 않습니다.</block>
   <block id="3e0badc46d16811661a7977c8991b3ea" category="paragraph">NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 복사본 기반 백업 및 복구 기능과 SAP 시스템 클론 복제와 같은 이를 기반으로 하는 솔루션은 구현할 수 없습니다.</block>
   <block id="41f8d362e2484ed69d1a57c66be636dc" category="paragraph"><block ref="41f8d362e2484ed69d1a57c66be636dc" category="inline-link-macro-rx"></block></block>
@@ -4938,4 +4926,12 @@
   <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우, '/etc/modprobe.d/sunrpc.conf'에서 매개 변수 'sunrpc.tcp_max_slot_table_entries 매개 변수를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.</block>
   <block id="c27949e29c7b8b43b4bd0feb8b22be99" category="admonition">RedHat Enterprise Linux 버전 8.6부터 SAP용 RHEL 시스템 역할(Ansible)을 사용하여 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="a45ee993bf9abd75c709b9125c24c32a" category="admonition">RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="d34bfa3c287edf039e3a5c4e365c2a83" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
+  <block id="6ed4f46c3f6437e250cb69f8684772f4" category="list-text"><block ref="6ed4f46c3f6437e250cb69f8684772f4" category="inline-link-rx"></block></block>
+  <block id="24d3ef74df0d2ceedb42c4a4c33104d4" category="list-text"><block ref="24d3ef74df0d2ceedb42c4a4c33104d4" category="inline-link-rx"></block></block>
+  <block id="a52e74dbfc20d705ac349fdd5b3d0188" category="list-text"><block ref="a52e74dbfc20d705ac349fdd5b3d0188" category="inline-link-rx"></block></block>
+  <block id="aeb3b72555ced42ccaba566af6824c8b" category="paragraph">생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.</block>
+  <block id="bee7a17172474fbff8f082af26c835d8" category="list-text"><block ref="bee7a17172474fbff8f082af26c835d8" category="inline-link-rx"></block></block>
+  <block id="1b0cf038717d1ac5c71d63e939cce293" category="list-text"><block ref="1b0cf038717d1ac5c71d63e939cce293" category="inline-link-rx"></block></block>
+  <block id="e7f295e915bb11e75ddb24aa294f7351" category="paragraph">운영 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 SAP 리소스를 참조하십시오.</block>
+  <block id="1ad4402d015b30446fdee11f5a31f55b" category="paragraph">producti SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.</block>
 </blocks>

@@ -31,9 +31,9 @@ NOTE: 이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 �
 
 FCP를 사용하는 NetApp AFF 시스템 및 NFS 또는 FCP를 사용하는 FAS 시스템의 구성 가이드는 다음 링크에서 찾을 수 있습니다.
 
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_fas_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp FAS 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_fas_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp FAS 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"^]
 
 
 다음 표에는 SAP HANA 데이터베이스 구성에 따라 NFS 버전, NFS 잠금 및 필수 격리 구현이 지원되는 조합이 나와 있습니다.
@@ -76,7 +76,6 @@ image:saphana_aff_nfs_image1.png["오류: 그래픽 이미지가 없습니다"]
 producti SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
 
 * http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html["SAP HANA 맞춤형 데이터 센터 통합 FAQ를 참조하십시오"^]
-* http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html["SAP HANA 스토리지 요구사항"^]
 
 
 
