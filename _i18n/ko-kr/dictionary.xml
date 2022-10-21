@@ -896,11 +896,8 @@
   <block id="5ce2764cf9f6ed7aadfe7ba01b6b29a4" category="cell">vers = 4, MinorVersion = 1, lock</block>
   <block id="9fdcbaccc733453d8e7687d8e14a4e06" category="cell">rsize=65536, wsize=65536</block>
   <block id="a6b3bab4792cb8cb5eda6f38e11a69e7" category="admonition">NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.</block>
-  <block id="c252bc09fef14c3fb2a8d711bae9e7ed" category="admonition">성능 테스트 결과 nconnect=8은 좋은 판독 결과를 제공하는 것으로 나타났습니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 추가 마운트는 nconnect에 다른 값을 사용하더라도 이 값을 변경하지 않습니다.</block>
-  <block id="d3413923f038d5ccbb48c2ba31d26f55" category="paragraph">다음 예에서는 NFSv3과 1MB의 NFS 전송 크기를 사용하는 SID=NF2가 있는 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.</block>
   <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.</block>
-  <block id="8ffd511efff2f95144ac621432b751cd" category="paragraph">다음 예에서는 데이터 및 로그 파일 시스템에 NFSv4.1을 사용하고 "/HANA/공유" 및 "/usr/SAP/NF2" 파일 시스템에 대해 NFSv3을 사용하는 SID=NF2인 다중 호스트 SAP HANA 데이터베이스를 보여 줍니다. 1MB의 NFS 전송 크기가 사용됩니다.</block>
   <block id="2555851d01cabd281a371497bed0a9a9" category="list-text">모든 호스트의 '/etc/fstab' 구성 파일에 필요한 파일 시스템을 추가합니다.</block>
   <block id="4292e3e460b31d735c080ccc8524778e" category="admonition">데이터베이스 호스트마다 '/usr/sap/nF2' 파일 시스템이 다릅니다. 다음 예제는 "/nF2_shared/usr-sap-host1"을 보여줍니다.</block>
   <block id="05fcfc623e22f168e6b8f88a05afe537" category="inline-link-macro">다음: NFSv4를 위한 SAP HANA 설치 준비</block>
@@ -1038,7 +1035,6 @@
   <block id="ebb8355d8accfb697b6808ce518c8666" category="paragraph">SUSE Linux Enterprise Server(SLES) 12 SP1부터 커널 매개 변수는 '/etc/sysctl.d' 디렉토리의 구성 파일에 설정되어야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
   <block id="fe039cc1acff15ac3ebdef50867dad8e" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우 '/etc/modprobe.d/sunrpc.conf'에서 'unrpc.tcp_max_slot_table_entries' 매개 변수를 설정해야 합니다. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.</block>
   <block id="82740b25df395d68a79118ebc5c4da80" category="section-title">Red Hat Enterprise Linux 7.2 이상에 대한 구성 매개 변수입니다</block>
-  <block id="ba0e722235d43672bc79f8b3d5e18c9f" category="paragraph">SAP HANA에서 생성되는 워크로드에 대해 각 SAP HANA 호스트에서 추가 커널 및 구성 매개 변수를 조정해야 합니다.</block>
   <block id="384d34c5cb85a44702029243289c3645" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우, '/etc/modprobe.d/sunrpc.conf'에서 매개 변수 'sunrpc.tcp_max_slot_table_entries'를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.</block>
   <block id="c2e770dd6d768668395e4b8d3b9291d1" category="paragraph">Red Hat Enterprise Linux 7.2부터 '/etc/sysctl.d' 디렉토리의 구성 파일에서 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
   <block id="67435e0588f5cb039a7fb0f4578e90a7" category="admonition">이 예에서는 SID = NF2인 SAP HANA 데이터베이스를 보여 줍니다.</block>
@@ -1050,8 +1046,6 @@
   <block id="1017e4c4798ba77b88c85f3b8c6fdf03" category="cell">rw, bg, hard, timeo = 600, nocatime,</block>
   <block id="7f4fbd9239422e6cbff6a5c40524adb3" category="cell">vers = 3, nolock,</block>
   <block id="7d7894f31c9b83146d2bc22185ed5db0" category="cell">rsize=65536, wsize=65536,</block>
-  <block id="15ae6c88c5781cc59702ffce23dbc9c4" category="admonition">NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.</block>
-  <block id="5af44f409fcf1d822ee94e4abf92a132" category="admonition">성능 테스트 결과 nconnect=8은 양호한 판독 결과를 제공합니다. 로그 쓰기의 경우 nconnect=2 등 적은 수의 세션을 사용할 수 있습니다 NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 더 많은 마운트로 인해 'nconnect'에 다른 값이 사용되더라도 이 값은 변경되지 않습니다.</block>
   <block id="ae2c578e6abfee06e6c468fd4e7cb392" category="paragraph">시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
   <block id="c0153fd855ce5fc4d351344c800a4d34" category="paragraph"><block ref="c0153fd855ce5fc4d351344c800a4d34" category="inline-link-macro-rx"></block></block>
   <block id="2faa028f31cd6505efeb538b561fa154" category="inline-link-macro">이전: 스토리지 사이징.</block>
@@ -2802,13 +2796,11 @@
   <block id="18cab9085e2115741cf08f1964299a5a" category="paragraph">이 문서에서는 NFS 프로토콜 버전 3(NFSv3) 또는 NFS 프로토콜 버전 4(NFSv4.1)의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
   <block id="e678bbdfe53ad933277605d32601cebe" category="admonition">NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.</block>
   <block id="c16b7b6c06ec01825313e31feb82c6d2" category="cell">rsize = 1048576, wsize = 262144</block>
-  <block id="c16896dd475dc23d3a84eb0def7cee50" category="admonition">ONTAP 9.8부터 NFSv4.1을 위한 NetApp의 nconnect 옵션이 지원됩니다. NFSv4.1을 통해 nconnect를 지원하는 최초의 NFS 클라이언트는 SLES15SP2 및 RHEL 8.4에서 사용할 수 있습니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
   <block id="d15827908daa628f6154e0a4e3d8a3da" category="paragraph">첫 번째 쉘프에 최소 12개의 NVMe SSD가 최대 16개의 SAP HANA 호스트를 지원합니다. 완전히 채워진 쉘프(SSD 24개)는 최대 48개의 SAP HANA 호스트를 지원합니다. AFF A800 시스템의 내부 디스크에도 동일하게 적용됩니다.</block>
   <block id="5f99a6ad54bfd8d0c68c8cc9f709365b" category="inline-link">SAP Note 1900823</block>
   <block id="8e473bb8179de06c9675fded85db8531" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 백서.</block>
   <block id="0b65064648e048922c198e4d6e2cafc1" category="admonition">각 데이터 볼륨을 연결하는 데 다른 스토리지 가상 인터페이스를 사용하여 각 볼륨에 대해 다른 TCP 세션을 사용하고 있는지 확인하거나 OS에서 사용할 수 있는 경우 nconnect 마운트 옵션을 사용하십시오.</block>
   <block id="4a09ae73b23148acb0508b47589e3623" category="cell">rsize = 1048576, wsize = 262144,</block>
-  <block id="1aee368bcb2be0cdb87c1fb6bbdfe17d" category="admonition">ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
   <block id="f9d7623ba6cc83509340e737618f63c2" category="paragraph">다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다.</block>
   <block id="b6002aa673859c29cc8fc6915c01cf54" category="paragraph">다음 예에서는 데이터 및 로그 파일 시스템에 NFSv4.1을 사용하고 "/HANA/공유" 및 "/usr/SAP/NF2" 파일 시스템에 대해 NFSv3을 사용하는 SID=NF2인 다중 호스트 SAP HANA 데이터베이스를 보여 줍니다. 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K가 사용됩니다.</block>
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 첨부된 백서</block>
@@ -4933,5 +4925,10 @@
   <block id="537754f62b9e3072d7b143e82ea96f51" category="admonition">SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 자세한 내용은 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="64de99f49b55f96ef81b9f1d7d3ef301" category="admonition">RedHat Enterprise Linux 버전 8.6부터 SAP용 RHEL 시스템 역할(Ansible)을 사용하여 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="a02f77a47cb5c9004f19c8c78d662cd5" category="admonition">SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
-  <block id="bdd70ece842485df8dbfc92d3ddc2d1e" category="admonition">RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
+  <block id="8af9dcc6bc45874f6dab0a351794996a" category="admonition">성능 테스트 결과 nconnect=8은 데이터 볼륨에 대해 좋은 읽기 결과를 제공하는 것으로 나타났습니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용할 경우 많은 이점을 얻을 수 있습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
+  <block id="b35bcba907dc97a5b6020488961f3307" category="admonition">ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
+  <block id="dbe18498a47f8eb26e80012f0c049b0d" category="paragraph">다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
+  <block id="afd4f67ca3483f6b519e8ebc2a53dcea" category="admonition">RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
+  <block id="e7a66fb065da642109c3abf1481bfcd0" category="paragraph">NFS 버전 및 ONTAP 릴리즈별로 다른 마운트 옵션이 사용됩니다. 다음 파일 시스템이 호스트에 마운트되어야 합니다.</block>
+  <block id="d1805ea655a389bcd86b519f65f01560" category="admonition">성능 테스트 결과, nconnect=8은 데이터 볼륨에 대해 읽기 좋은 결과를 제공합니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
 </blocks>

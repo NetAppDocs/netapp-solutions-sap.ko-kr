@@ -228,7 +228,7 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 
 == 추가 SAP 애플리케이션 서비스 클론 생성
 
-추가 SAP 애플리케이션 서비스는 " 섹션에 설명된 대로 SAP HANA 공유 볼륨과 동일한 방식으로 복제됩니다<<Cloning the HANA shared volume>>.” 물론 SAP 애플리케이션 서버의 필수 스토리지 볼륨도 SnapCenter로 보호해야 합니다.
+추가 SAP 애플리케이션 서비스는 " 섹션에 설명된 대로 SAP HANA 공유 볼륨과 동일한 방식으로 복제됩니다 the HANA shared volume.” 물론 SAP 애플리케이션 서버의 필수 스토리지 볼륨도 SnapCenter로 보호해야 합니다.
 
 필요한 서비스 항목을 "/usr/sap/sapservices"에 추가해야 하며 포트, 사용자 및 파일 시스템 마운트 지점(예: "/usr/sap/sid")을 준비해야 합니다.
 

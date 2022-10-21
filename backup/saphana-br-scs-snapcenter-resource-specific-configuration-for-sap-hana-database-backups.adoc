@@ -169,7 +169,7 @@ image:saphana-br-scs-image54.png["오류: 그래픽 이미지가 없습니다"]
 다음 그림에서는 보호 정책을 보여 줍니다. 보호 관계에 사용되는 보호 정책은 SnapMirror 레이블과 보조 스토리지의 백업 보존을 정의합니다. 이 예에서는 사용된 레이블이 매일, 그리고 잔상이 5로 설정되어 있습니다.
 
 
-NOTE: 생성되는 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다. 자세한 내용은 “ 를 참조하십시오<<Policy for daily Snapshot backups with SnapVault replication>>.”
+NOTE: 생성되는 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다. 자세한 내용은 “ 를 참조하십시오 for daily Snapshot backups with SnapVault replication.”
 
 
 NOTE: 오프 사이트 백업 스토리지의 백업 보존은 정책에 정의되어 있으며 ONTAP에서 제어합니다.
@@ -235,7 +235,7 @@ image:saphana-br-scs-image59.png["오류: 그래픽 이미지가 없습니다"]
 +
 image:saphana-br-scs-image60.png["오류: 그래픽 이미지가 없습니다"]
 
-.. 리소스 구성이 완료되면 " 섹션에 설명된 대로 리소스 보호 구성을 수행합니다<<Resource protection configuration>>.”
+.. 리소스 구성이 완료되면 " 섹션에 설명된 대로 리소스 보호 구성을 수행합니다 protection configuration.”
 
 
 
