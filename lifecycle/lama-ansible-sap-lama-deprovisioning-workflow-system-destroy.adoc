@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html 
+keywords: destroy, workflow 
+summary: 클론 복제된 시스템을 해제하려면 먼저 중지하고 준비해야 합니다. 그런 다음 시스템 제거 워크플로를 시작할 수 있습니다. 
+---
+= SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["이전: SAP LaMa 프로비저닝 워크플로우 - 클론 시스템"]
+
+[role="lead"]
+다음 그림에서는 시스템 제거 워크플로와 함께 실행되는 주요 단계를 보여 줍니다.
+
+image:lama-ansible-image32.png["이 이미지는 시스템 삭제 워크플로의 개요를 보여 줍니다. 여기에는 시스템 중지, 시스템 준비 해제, 스토리지 클론 삭제 및 시스템 구성 삭제 단계가 포함됩니다."]
+
+. 클론 복제된 시스템을 해제하려면 먼저 중지하고 준비해야 합니다. 그런 다음 시스템 제거 워크플로를 시작할 수 있습니다.
++
+image:lama-ansible-image33.png["이 그래픽에는 이전에 언급한 워크플로 단계가 시스템에서 발생하는 아키텍처 다이어그램이 포함되어 있습니다."]
+
+. 이 예에서는 이전에 생성된 시스템에 대한 시스템 삭제 워크플로우를 실행합니다. System View * 화면에서 시스템을 선택하고 * Destroy Processes * 에서 시스템 삭제 워크플로우를 시작합니다.
++
+image:lama-ansible-image34.png["이 스크린샷에서는 System  GT에 대해 열려 있는 SAP LaMa GUI, Destroy Systems 드롭다운을 열 수 있는 Provisioning Systems View를 보여 줍니다."]
+
+. 프로비저닝 단계에서 유지 관리되는 모든 마운트 지점이 여기에 표시되며 시스템 제거 워크플로우 프로세스 중에 삭제됩니다.
++
+image:lama-ansible-image35.png["이 스크린샷은 모든 마운트 지점이 나열된 스토리지 볼륨 제거 탭 아래의 시스템 제거 화면을 보여 줍니다."]
+
++
+가상 호스트 이름은 DNS를 통해 유지 관리되고 자동으로 할당되므로 삭제되지 않습니다.
+
++
+image:lama-ansible-image36.png["이 스크린샷은 Delete Host Names(호스트 이름 삭제) 탭 아래의 Destroy System(시스템 제거) 화면을 보여 줍니다. 나열된 호스트 이름이 없습니다."]
+
+. 실행 버튼을 클릭하면 작업이 시작됩니다.
++
+image:lama-ansible-image37.png["이 스크린샷은 스토리지 볼륨 제거 요약 페이지를 보여 줍니다."]
+
++
+이제 SAP LaMa가 볼륨 클론을 삭제하고 복제된 시스템의 구성을 삭제합니다.
+
+. 모니터링 * 메뉴에서 클론 워크플로우의 진행 상황을 모니터링할 수 있습니다.
++
+image:lama-ansible-image38.png["이 스크린샷은 시스템 제거 워크플로의 진행 상황을 실시간으로 보여 줍니다."]
+
+. NetAppClone * 삭제 작업을 선택하면 해당 단계에 대한 자세한 로그가 표시됩니다. Ansible 플레이북을 실행하는 방법은 다음과 같습니다. 보시다시피 Ansible 플레이북도 있습니다 `netapp_lama_ServiceConfigRemoval.yml` 각 HANA 데이터베이스 볼륨, 데이터, 로그 및 공유에 대해 실행됩니다.
++
+image:lama-ansible-image39.png["이 스크린샷은 시스템 제거 워크플로의 로그 페이지를 보여 줍니다."]
+
+
+
+link:lama-ansible-sap-lama-provisioning-workflow-copy-system.html["다음으로, SAP LaMa가 워크플로우-복제본 시스템을 프로비저닝합니다."]

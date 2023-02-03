@@ -2,6 +2,31 @@
 section: lifecycle
 title: 라이프사이클 관리
 entries:
+- title: Ansible을 사용한 NetApp SAP Landscape Management 통합
+  type: solutions
+  entries:
+  - title: 소개
+    url: "/lifecycle/lama-ansible-introduction.html"
+  - title: SAP 시스템 클론, 복제 및 업데이트 시나리오
+    url: "/lifecycle/lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html"
+  - title: 시스템 업데이트, 복사 및 클론 복제 사용 사례
+    url: "/lifecycle/lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html"
+  - title: Ansible을 사용하여 NetApp SAP LaMa 통합
+    url: "/lifecycle/lama-ansible-netapp-sap-lama-integration-using-ansible.html"
+  - title: 구현 예
+    url: "/lifecycle/lama-ansible-example-implementation.html"
+  - title: SAP LaMa가 워크플로우-클론 시스템을 프로비저닝합니다
+    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-clone-system.html"
+  - title: SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기
+    url: "/lifecycle/lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html"
+  - title: SAP LaMa가 워크플로우-복사 시스템을 프로비저닝합니다
+    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-copy-system.html"
+  - title: SAP LaMa 프로비저닝 워크플로우 - 시스템 업데이트
+    url: "/lifecycle/lama-ansible-sap-lama-provisioning-workflow-system-refresh.html"
+  - title: 공급자 스크립트 구성 및 Ansible 플레이북
+    url: "/lifecycle/lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html"
+  - title: 결론
+    url: "/lifecycle/lama-ansible-conclusion.html"
 - title: SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화
   type: solutions
   entries:

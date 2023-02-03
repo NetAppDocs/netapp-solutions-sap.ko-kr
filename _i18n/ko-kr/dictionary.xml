@@ -4931,4 +4931,361 @@
   <block id="afd4f67ca3483f6b519e8ebc2a53dcea" category="admonition">RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="e7a66fb065da642109c3abf1481bfcd0" category="paragraph">NFS 버전 및 ONTAP 릴리즈별로 다른 마운트 옵션이 사용됩니다. 다음 파일 시스템이 호스트에 마운트되어야 합니다.</block>
   <block id="d1805ea655a389bcd86b519f65f01560" category="admonition">성능 테스트 결과, nconnect=8은 데이터 볼륨에 대해 읽기 좋은 결과를 제공합니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
+  <block id="6f7cbdc39f9acbcde843e913e06a5bd8" category="summary">클론 복제된 시스템을 해제하려면 먼저 중지하고 준비해야 합니다. 그런 다음 시스템 제거 워크플로를 시작할 수 있습니다.</block>
+  <block id="7c4bf45739108965dce4dca9b396f39d" category="doc">SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기</block>
+  <block id="7d2873665d2795e9c49d5a4c3b46fde1" category="inline-link-macro">이전: SAP LaMa 프로비저닝 워크플로우 - 클론 시스템</block>
+  <block id="d364b9b9187e547b897ed747674bc53a" category="paragraph"><block ref="d364b9b9187e547b897ed747674bc53a" category="inline-link-macro-rx"></block></block>
+  <block id="ce5e3f676f90c441971cc56d6dffe08e" category="paragraph">다음 그림에서는 시스템 제거 워크플로와 함께 실행되는 주요 단계를 보여 줍니다.</block>
+  <block id="fa37114811e0a6c252384710fd555989" category="inline-image-macro">이 이미지는 시스템 삭제 워크플로의 개요를 보여 줍니다. 여기에는 시스템 중지, 시스템 준비 해제, 스토리지 클론 삭제 및 시스템 구성 삭제 단계가 포함됩니다.</block>
+  <block id="2c49f1c2b6cf2a413b781562e94f51c9" category="paragraph"><block ref="2c49f1c2b6cf2a413b781562e94f51c9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="326db1dde007554a6fc6a7f35a558d15" category="inline-image-macro">이 그래픽에는 이전에 언급한 워크플로 단계가 시스템에서 발생하는 아키텍처 다이어그램이 포함되어 있습니다.</block>
+  <block id="be134f57e81ec33622cfc4840b1b0b96" category="paragraph"><block ref="be134f57e81ec33622cfc4840b1b0b96" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cd1551a21e8c953f9daec26871057a76" category="list-text">이 예에서는 이전에 생성된 시스템에 대한 시스템 삭제 워크플로우를 실행합니다. System View * 화면에서 시스템을 선택하고 * Destroy Processes * 에서 시스템 삭제 워크플로우를 시작합니다.</block>
+  <block id="22dd11876567037f3dce168aca90a55d" category="inline-image-macro">이 스크린샷에서는 System &amp; GT에 대해 열려 있는 SAP LaMa GUI, Destroy Systems 드롭다운을 열 수 있는 Provisioning Systems View를 보여 줍니다.</block>
+  <block id="c29f9ca5d936c517167eb4d17112544a" category="paragraph"><block ref="cd60d04f86fbd91a9f493108cae035e8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d34819d82542a5e53e6821ec5e4db0e4" category="list-text">프로비저닝 단계에서 유지 관리되는 모든 마운트 지점이 여기에 표시되며 시스템 제거 워크플로우 프로세스 중에 삭제됩니다.</block>
+  <block id="b6d7ae1d25c1ed56190634cbcb9f9b20" category="inline-image-macro">이 스크린샷은 모든 마운트 지점이 나열된 스토리지 볼륨 제거 탭 아래의 시스템 제거 화면을 보여 줍니다.</block>
+  <block id="80e4ac8363c4bb43c3e0be2319263403" category="paragraph"><block ref="80e4ac8363c4bb43c3e0be2319263403" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c55590507c7a5987bf4a4f7b1d810243" category="paragraph">가상 호스트 이름은 DNS를 통해 유지 관리되고 자동으로 할당되므로 삭제되지 않습니다.</block>
+  <block id="47667892836644d0cd83d17b4917dc35" category="inline-image-macro">이 스크린샷은 Delete Host Names(호스트 이름 삭제) 탭 아래의 Destroy System(시스템 제거) 화면을 보여 줍니다. 나열된 호스트 이름이 없습니다.</block>
+  <block id="ed02cb72288b1d82c109e6809814b6d8" category="paragraph"><block ref="ed02cb72288b1d82c109e6809814b6d8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bbd7a36bba667209844b03f241994057" category="list-text">실행 버튼을 클릭하면 작업이 시작됩니다.</block>
+  <block id="99ed6ae4a60e41a6306ef4ca90f88b38" category="inline-image-macro">이 스크린샷은 스토리지 볼륨 제거 요약 페이지를 보여 줍니다.</block>
+  <block id="c9e5185c4873df6611b8dfbcf745108e" category="paragraph"><block ref="c9e5185c4873df6611b8dfbcf745108e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4ccc4170b3fa1543f818c336ac8fe5f3" category="paragraph">이제 SAP LaMa가 볼륨 클론을 삭제하고 복제된 시스템의 구성을 삭제합니다.</block>
+  <block id="3c4c4cc2b32a212b8dfdcb531f7833dc" category="list-text">모니터링 * 메뉴에서 클론 워크플로우의 진행 상황을 모니터링할 수 있습니다.</block>
+  <block id="048eec815017fa246a747d2da0febba7" category="inline-image-macro">이 스크린샷은 시스템 제거 워크플로의 진행 상황을 실시간으로 보여 줍니다.</block>
+  <block id="665bbfd6b563f38b5fe08024fd11bd2a" category="paragraph"><block ref="665bbfd6b563f38b5fe08024fd11bd2a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2f0172893615db7f6217f8aea9f5d77c" category="list-text">NetAppClone * 삭제 작업을 선택하면 해당 단계에 대한 자세한 로그가 표시됩니다. Ansible 플레이북을 실행하는 방법은 다음과 같습니다. 보시다시피 Ansible 플레이북도 있습니다<block ref="02f575c9a42953c46d6832e43305b6fd" prefix=" " category="inline-code"></block> 각 HANA 데이터베이스 볼륨, 데이터, 로그 및 공유에 대해 실행됩니다.</block>
+  <block id="4354252a68eb4bbcfdd68b6514d4c26f" category="inline-image-macro">이 스크린샷은 시스템 제거 워크플로의 로그 페이지를 보여 줍니다.</block>
+  <block id="9337347d6d92fec3b5156bcc5bb61fdb" category="paragraph"><block ref="9337347d6d92fec3b5156bcc5bb61fdb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3444b3912e49b9ee6b82e89cd3ee703d" category="inline-link-macro">다음으로, SAP LaMa가 워크플로우-복제본 시스템을 프로비저닝합니다.</block>
+  <block id="65f3658bf00c6057ea5e6b3944007494" category="paragraph"><block ref="65f3658bf00c6057ea5e6b3944007494" category="inline-link-macro-rx"></block></block>
+  <block id="b9b81059c0673276efc1c1e439881f55" category="summary">Ansible과 같은 최신 자동화 프레임워크를 SAP LaMa 프로비저닝 워크플로우에 통합하면 고객은 표준 또는 더 복잡한 인프라 요구사항을 해결할 수 있는 유연한 솔루션을 얻게 됩니다.</block>
+  <block id="6f8b794f3246b0c1e1780bb4d4d5dc53" category="doc">결론</block>
+  <block id="5d31f0d1a0a87ea0f6a99aa660b266a4" category="inline-link-macro">이전: 공급자 스크립트 구성 및 Ansible 플레이북</block>
+  <block id="5f02483aeae731e2ae996fee251c5cfd" category="paragraph"><block ref="5f02483aeae731e2ae996fee251c5cfd" category="inline-link-macro-rx"></block></block>
+  <block id="261f5cfcc4c662ad4bdb40d9718a5735" category="list-text">컬렉션 in the NetApp 네임스페이스</block>
+  <block id="95b860ff1d3414d84c1d0dd66c71beb5" category="inline-link"><block ref="95b860ff1d3414d84c1d0dd66c71beb5" category="inline-link-rx"></block></block>
+  <block id="c7d87c9780b4892d37181cf021e638e2" category="paragraph"><block ref="c7d87c9780b4892d37181cf021e638e2" category="inline-link-rx"></block></block>
+  <block id="1371cf980b833fe3e01808264a214fa5" category="list-text">Ansible 통합 및 샘플 Ansible Playbook에 대한 문서</block>
+  <block id="17d0c87f7f769c8ea7ac812812ebd6d5" category="inline-link"><block ref="17d0c87f7f769c8ea7ac812812ebd6d5" category="inline-link-rx"></block></block>
+  <block id="854bcd8220ccda1e905303668e3793ab" category="paragraph"><block ref="854bcd8220ccda1e905303668e3793ab" category="inline-link-rx"></block></block>
+  <block id="1bc1c7499928cd5f0942064dd37f54f2" category="list-text">일반 Ansible 및 NetApp 통합</block>
+  <block id="d7b64d94b2b9e3dbbe93b80934086220" category="inline-link"><block ref="d7b64d94b2b9e3dbbe93b80934086220" category="inline-link-rx"></block></block>
+  <block id="a71e2ab189cc2e25539ceb7f9c4ced72" category="paragraph"><block ref="a71e2ab189cc2e25539ceb7f9c4ced72" category="inline-link-rx"></block></block>
+  <block id="54ec5aa26742228ba1f9e4024c4d73ac" category="list-text">SAP LaMa를 Ansible과 통합하는 방법에 대한 블로그</block>
+  <block id="3da5f444c1b02ebe424e80c245333bf1" category="inline-link"><block ref="3da5f444c1b02ebe424e80c245333bf1" category="inline-link-rx"></block></block>
+  <block id="b6a1e2104cef9312a7e1e31c53499350" category="paragraph"><block ref="b6a1e2104cef9312a7e1e31c53499350" category="inline-link-rx"></block></block>
+  <block id="abf2ed748dab1316ba3962b6eacbe747" category="list-text">SAP Landscape Management 3.0, Enterprise Edition 설명서</block>
+  <block id="137cdbd940ab5580ba6f97a90cdc49d7" category="inline-link"><block ref="137cdbd940ab5580ba6f97a90cdc49d7" category="inline-link-rx"></block></block>
+  <block id="c9d90f3898ea1626d1c3a9a148fd4de1" category="paragraph"><block ref="c9d90f3898ea1626d1c3a9a148fd4de1" category="inline-link-rx"></block></block>
+  <block id="2358274d65c1630d9cc77d20a679ca78" category="list-text">SAP LaMa 설명서 – 공급자 정의</block>
+  <block id="aa594a5bd07b5bc43679c6743f5318cc" category="inline-link"><block ref="aa594a5bd07b5bc43679c6743f5318cc" category="inline-link-rx"></block></block>
+  <block id="76ff1106df915feb26c63a2d10f8ed76" category="paragraph"><block ref="76ff1106df915feb26c63a2d10f8ed76" category="inline-link-rx"></block></block>
+  <block id="cf584bec369b5b183362b23e3b48c171" category="list-text">SAP LaMa 설명서 - 맞춤형 후크</block>
+  <block id="a449378b07182beacf1e06df0157fb1a" category="inline-link"><block ref="a449378b07182beacf1e06df0157fb1a" category="inline-link-rx"></block></block>
+  <block id="29786d40f149d2b6bde83fc7b3b8d311" category="paragraph"><block ref="29786d40f149d2b6bde83fc7b3b8d311" category="inline-link-rx"></block></block>
+  <block id="82f583fbca7e52c75cf724100fceeb87" category="list-text">SAP LaMa 설명서 - SAP Host Agent 등록 스크립트 구성</block>
+  <block id="a42ebcc58d97420fee4c785861bdf4d3" category="inline-link"><block ref="a42ebcc58d97420fee4c785861bdf4d3" category="inline-link-rx"></block></block>
+  <block id="b837152d68eb7f96b0f885c89e076a13" category="paragraph"><block ref="b837152d68eb7f96b0f885c89e076a13" category="inline-link-rx"></block></block>
+  <block id="41bf842c374d0fd4ab82ce0e6079a372" category="list-text">SAP LaMa Documentation - Custom Operations 및 Custom Hook에 대한 매개 변수입니다</block>
+  <block id="ef2b3fe29f808573588186cae37d62c0" category="inline-link"><block ref="ef2b3fe29f808573588186cae37d62c0" category="inline-link-rx"></block></block>
+  <block id="a8fc83992fa48ceb04a6dd0a40ec951e" category="paragraph"><block ref="a8fc83992fa48ceb04a6dd0a40ec951e" category="inline-link-rx"></block></block>
+  <block id="ac28a244d6bbc68fc735b6d8e78c406f" category="list-text">SAP LaMa 설명서 - Adaptive Design</block>
+  <block id="c3c9babca9a3c4755fc4fc97aab15698" category="inline-link"><block ref="c3c9babca9a3c4755fc4fc97aab15698" category="inline-link-rx"></block></block>
+  <block id="062786b87b67b615196261414e684e55" category="paragraph"><block ref="062786b87b67b615196261414e684e55" category="inline-link-rx"></block></block>
+  <block id="3cd8b5fe5ca94a9fdb5caaf96875ef7e" category="inline-link"><block ref="3cd8b5fe5ca94a9fdb5caaf96875ef7e" category="inline-link-rx"></block></block>
+  <block id="6bfac05f3cc2c0adace9c385ef708fd9" category="paragraph"><block ref="6bfac05f3cc2c0adace9c385ef708fd9" category="inline-link-rx"></block></block>
+  <block id="abb14d21829ba186172f6e1d0b64b55b" category="cell">2023년 1월</block>
+  <block id="dfd02aef9802f4824ead7c08b8f81f1f" category="cell">최초 릴리스</block>
+  <block id="30216ab76baa66d9e857660c909822e7" category="summary">이 장에서는 시스템 클론 워크플로우 및 입력 화면의 차이점에 대해 간략하게 설명합니다.</block>
+  <block id="50cca7f997c3211915cd57a3bb04b29c" category="doc">SAP LaMa가 워크플로우-복사 시스템을 프로비저닝합니다</block>
+  <block id="8ff70a8b4cc140ad4c748b96474f870b" category="inline-link-macro">이전: SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기</block>
+  <block id="59219532e5305fac7e7ddba7d8c9f225" category="paragraph"><block ref="59219532e5305fac7e7ddba7d8c9f225" category="inline-link-macro-rx"></block></block>
+  <block id="072f81464e5d856a8d5a7f8883a36632" category="paragraph">다음 그림에서는 시스템 복제 워크플로우에서 실행되는 기본 단계를 보여 줍니다.</block>
+  <block id="01b76581a904a061a13aac9f12d95640" category="inline-image-macro">이 그림에서는 시스템 복사 워크플로의 일정을 보여 줍니다. 여기에는 스토리지 클론 생성, 시스템 준비, 격리 활성화, 시스템 이름 변경, 시스템 시작 단계가 포함됩니다. 구성을 가져오고, 사후 복제 자동화를 수행하고, 시스템을 비활성화합니다.</block>
+  <block id="1fd4abb2e9e4644dca0b00cc5564ae7d" category="paragraph"><block ref="1fd4abb2e9e4644dca0b00cc5564ae7d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="266de5c670b51a2300bfff08eadf3f83" category="paragraph">이 장에서는 시스템 클론 워크플로우 및 입력 화면의 차이점에 대해 간략하게 설명합니다. 다음 이미지에서 볼 수 있듯이 스토리지 워크플로우에는 아무런 변화가 없습니다.</block>
+  <block id="3f9896a740ccd028335e64982c037d5a" category="inline-image-macro">이 그림은 워크플로의 각 단계가 수행되는 위치를 보여주는 중첩된 단계가 있는 아키텍처 다이어그램을 제공합니다.</block>
+  <block id="0ee7ebf271ff2743b8f544bbfeb81691" category="paragraph"><block ref="0ee7ebf271ff2743b8f544bbfeb81691" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c46bd11826f2315cf0610d409ffd537e" category="list-text">시스템 복사 워크플로는 시스템이 준비되면 시작할 수 있습니다. 이 작업은 이 구성에 대한 특정 작업이 아니며 자세한 내용은 설명하지 않습니다. 자세한 내용은 SAP LaMa 설명서를 참조하십시오.</block>
+  <block id="4233ffb48a1b0153e20c92c0f6c40e0c" category="inline-image-macro">이 스크린샷은 Systems 탭 아래의 Provisioning System 보기를 보여 줍니다. 두 시스템이 나열되고 Copy System 드롭다운이 강조 표시됩니다.</block>
+  <block id="675714232d181513a4eeff22a3b0db21" category="paragraph"><block ref="675714232d181513a4eeff22a3b0db21" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="083716145cee33ff2046c406370b2405" category="list-text">복사 작업 중에는 첫 번째 화면에서 지정해야 하는 것처럼 시스템 이름이 변경됩니다.</block>
+  <block id="bc347213ce1c3f1d2438267811473b15" category="inline-image-macro">이 스크린샷은 시스템 ID와 HANA SID 상자가 강조 표시된 Copy System 페이지를 보여 줍니다.</block>
+  <block id="0e5538f491798b42e37ed0f1c413963d" category="paragraph"><block ref="0e5538f491798b42e37ed0f1c413963d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6c469dd99db5fe4f2cdd41a2240beab2" category="list-text">워크플로 중에 인스턴스 번호를 변경할 수 있습니다.</block>
+  <block id="4deccc9f34577d008d9c3b2b0c99aec4" category="inline-image-macro">이 스크린샷은 SAP 인스턴스 번호 탭과 세 개의 데이터 상자를 보여 줍니다.</block>
+  <block id="fd186e381af91342321d2f87740110a9" category="paragraph"><block ref="fd186e381af91342321d2f87740110a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7803f3d937daa0d08bcf01b401c1f147" category="admonition">인스턴스 번호 변경은 테스트되지 않았으며 공급자 스크립트의 변경이 필요할 수 있습니다.</block>
+  <block id="f5ad1b268b7a64d86910e1ae4182ef29" category="list-text">설명과 같이 * 사용자 지정 클론 * 화면은 클론 생성 워크플로와 다르지 않습니다.</block>
+  <block id="d5dc66f7bd8c1011c81ddc3e66057ee0" category="inline-image-macro">이 스크린샷은 사용자 지정 클론 정보와 작업 매개 변수가 있는 시스템 복사 페이지를 보여 줍니다.</block>
+  <block id="d6c61f59b9d13174e1e29f1881cb383a" category="paragraph"><block ref="d6c61f59b9d13174e1e29f1881cb383a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54ca6a630ee4f94a5198fac13397bd58" category="list-text">이미 설명했듯이 나머지 입력 마스크는 표준에서 벗어나지 않으며 더 이상 여기에 넣지 않습니다. 최종 화면에는 요약이 표시되며 이제 실행을 시작할 수 있습니다.</block>
+  <block id="e0543801e3151d1c0326270020101b9a" category="inline-image-macro">이 스크린샷은 기본 정보와 호스트 목록이 있는 시스템 복사 화면을 보여 줍니다. 오른쪽 아래쪽에는 Execute 버튼이 있습니다.</block>
+  <block id="7413e2537a132edd12589463531e2bcd" category="paragraph"><block ref="7413e2537a132edd12589463531e2bcd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e3ae308e52556fdb623ce663f313b439" category="paragraph">복제 프로세스 후에는 타겟 인스턴스가 사용자 지정 클론 생성 프로세스에 대해 설정되지 않습니다.</block>
+  <block id="f25336d3bf88cbd451a163c97ac17567" category="inline-image-macro">이 스크린샷은 시스템 세부 정보와 함께 LaMa Systems 화면을 보여 줍니다.</block>
+  <block id="3692e43b127e4974805821bedcf7b7af" category="paragraph"><block ref="3692e43b127e4974805821bedcf7b7af" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8da564d2ce3424e459494f5a0676b5fe" category="paragraph">제약 조건이 설정되어 실행을 방해할 수 있으므로 시스템 폐기 프로세스 중에 사전 후크 단계를 실행하려면 수동으로 적용해야 합니다.</block>
+  <block id="ccca928b2a7d8dd76d677eb328f1da6f" category="inline-image-macro">이 스크린샷은 시스템 세부 정보와 함께 LaMa Systems 화면을 보여 주며 Use Custom Processing Process(사용자 지정 처리 프로세스 사용) 확인란이 선택되어 있습니다.</block>
+  <block id="ea9e8adaeb644dd10fe0cff853bb61c9" category="paragraph"><block ref="ea9e8adaeb644dd10fe0cff853bb61c9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="447b03b249dc99078c09554651d7b75d" category="inline-link-macro">다음으로, SAP LaMa가 워크플로우-시스템 업데이트를 프로비저닝합니다.</block>
+  <block id="d0fafa2f13b6bd5677fb87cf6b3377a9" category="paragraph"><block ref="d0fafa2f13b6bd5677fb87cf6b3377a9" category="inline-link-macro-rx"></block></block>
+  <block id="c4da05fb7cdd8766abc25fbafbea5a65" category="summary">이 문서에서는 샘플 배포 및 워크플로우 실행 중에 다음과 같은 공급자 구성 파일, 실행 스크립트 및 Ansible 플레이북을 사용합니다.</block>
+  <block id="d53d04a1ea080883183470ec02c16fdd" category="doc">공급자 스크립트 구성 및 Ansible 플레이북</block>
+  <block id="d075b8370b5d1860d1832df4652c9bcb" category="inline-link-macro">이전: AP LaMa 프로비저닝 워크플로우 - 시스템 업데이트.</block>
+  <block id="c9d0557baae9a55d0e043df1c3e959d0" category="paragraph"><block ref="c9d0557baae9a55d0e043df1c3e959d0" category="inline-link-macro-rx"></block></block>
+  <block id="f23e38be71134dd193343d810430ee13" category="admonition">예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원하지 않습니다. mailto:ng-sapcc@netapp.com [ng-sapcc@netapp.com^]으로 이메일을 통해 스크립트의 현재 버전을 요청할 수 있습니다.</block>
+  <block id="9feebf1712ffdf30142ff1038f2355ff" category="section-title">provider 구성 파일 netapp_clone.conf</block>
+  <block id="15d4f6de10e85918b52fcdf3fa78b2a5" category="paragraph">구성 파일은 에 설명된 대로 생성됩니다<block ref="840230e2b210400caa403b3aab40b668" category="inline-link-rx"></block>. 이 구성 파일은 SAP 호스트 에이전트가 설치된 Ansible 제어 노드에 위치해야 합니다.</block>
+  <block id="d0813c701ba6b269a96b838cf74abedc" category="paragraph">구성된 OS-사용자입니다<block ref="24a29401ac4c9ae51f6da9510e56b6ab" prefix=" " category="inline-code"></block> 스크립트와 소위 Ansible 플레이북을 실행할 수 있는 적절한 권한이 있어야 합니다. 스크립트를 일반 스크립트 디렉토리에 배치할 수 있습니다. SAP LaMa는 스크립트를 호출할 때 여러 매개 변수를 제공할 수 있습니다.</block>
+  <block id="a0104975cac3e4d943107b138472b95f" category="inline-link">SAP LaMa 설명서</block>
+  <block id="fe04f70c92d468b41a00ac721c2baa57" category="paragraph">사용자 정의 매개변수 외에<block ref="d4dd8a053b8921e0c97c9fad320ec6c2" prefix=" " category="inline-code"></block>,<block ref="5272e959f6dcee40a765dfc5b7c078e4" prefix=" " category="inline-code"></block>,<block ref="d4dd8a053b8921e0c97c9fad320ec6c2" prefix=" " category="inline-code"></block>, 및<block ref="5272e959f6dcee40a765dfc5b7c078e4" prefix=" " category="inline-code"></block>에 나와 있는 것처럼 많은 다른 사람들이 인도될 수 있습니다<block ref="7af1e5ad564c38fa8886e29ffc9fd522" category="inline-link-rx"></block>.</block>
+  <block id="cf0f4d3b8cdc69ccc8949ccb49435a5a" category="section-title">공급자 스크립트 netapp_clone.sh</block>
+  <block id="2ba17681023aebd89534577dad86560b" category="paragraph">공급자 스크립트는 에 저장해야 합니다<block ref="7d2dc603b61f4a1874bc1ce662075b91" prefix=" " category="inline-code"></block> 공급자 구성 파일에 구성되어 있습니다.</block>
+  <block id="03df896fc71cd516fdcf44aa699c4933" category="section-title">변수</block>
+  <block id="bc01539c93d17a2b0f783e4f71b90e40" category="paragraph">다음 변수는 스크립트에 하드 코딩되어 있으며 그에 따라 수정해야 합니다.</block>
+  <block id="f6cd53bc6bdc52ffc68b4d7d70bd2983" category="list-text"><block ref="5c02ab368b8fc3928b534dac33254332" prefix="" category="inline-code"></block>&lt;hostname of netapp cluster&gt;</block>
+  <block id="c2d8140083809cc5b28989c192c7583b" category="list-text"><block ref="e24726c77a4b5dec5edaf5bac725b89f" prefix="" category="inline-code"></block>&lt;SVM name where source system volumes are stored&gt;</block>
+  <block id="05b0a54c6c43fd11d9f8332bcfff94aa" category="inline-link">NetApp Ansible 모듈 - ONTAP을 준비합니다</block>
+  <block id="0438110aaa77dc44bccb1ddfe89b0d28" category="paragraph">인증서 파일입니다<block ref="5697de2afb62d59b2877f2a7351ecff8" prefix=" " category="inline-code"></block> 및<block ref="03af5d39699563e8a0e5f65d820a4f9c" prefix=" " category="inline-code"></block> 에 설명된 대로 제공해야 합니다<block ref="3af2b6d20ca12a9d04bef18f3151e29e" category="inline-link-rx"></block>.</block>
+  <block id="9ab689b3746aba13d2b0d80a43a23582" category="admonition">서로 다른 SAP 시스템에 서로 다른 클러스터 또는 SVM이 필요한 경우 이러한 변수를 SAP LaMa 공급자 정의의 매개 변수로 추가할 수 있습니다.</block>
+  <block id="18d821c99fe3d5876a94747ea97ee786" category="section-title">Function(기능): 재고 파일을 생성합니다</block>
+  <block id="8bd40edd8c06fc2cce652993a0e9b88e" category="paragraph">Ansible 플레이북을 더 동적이며<block ref="5041a4494e62ffcb13cfe23041ebc270" prefix=" " category="inline-code"></block> 파일이 즉시 생성됩니다. 일부 정적 값은 변수 섹션에서 구성되며, 일부는 실행 중에 동적으로 생성됩니다.</block>
+  <block id="576eb476f089a96bcd4354951241757b" category="section-title">기능: Ansible 플레이북을 실행하십시오</block>
+  <block id="ce8914401ecb3769fce4ddc4e1ced2e8" category="paragraph">이 기능은 동적으로 생성된 과 함께 Ansible 플레이북을 실행하는 데 사용됩니다<block ref="d28e452e49fc926f32af1d87afcff3ce" prefix=" " category="inline-code"></block> 파일. Playbook의 명명 규칙은 입니다<block ref="a6d1d971f71d0033c54dd886792835e2" prefix=" " category="inline-code"></block>. 의 값<block ref="11f852efb3bc8ae7dac506ad959a0820" prefix=" " category="inline-code"></block> LaMa 운용에 의존하며 LaMa에 의해 명령행 파라미터로 전달된다.</block>
+  <block id="bd5cc661e59e91681d4af8d42f266b60" category="section-title">섹션 기본</block>
+  <block id="8008be4d646729fc2b2eacc341248378" category="paragraph">이 섹션에서는 기본 실행 계획을 다룹니다. 변수<block ref="11f852efb3bc8ae7dac506ad959a0820" prefix=" " category="inline-code"></block> LAMA 교체 단계의 이름이 포함되어 있으며 스크립트를 호출할 때 LaMa에서 제공됩니다.</block>
+  <block id="ee18f05f19fdfaeb9188e25812655d93" category="list-text">시스템 클론 및 시스템 복사본 프로비저닝 워크플로와 관련된 값:</block>
+  <block id="5bc5a2b2e92b316952f792fccde81bfc" category="list-text">볼륨</block>
+  <block id="fa4194159c5a4ad6ef8927aa7d748906" category="list-text">PostCloneVolumes</block>
+  <block id="924718ea3d11b3fab6f774ae0dc5d993" category="list-text">시스템이 워크플로를 소멸시키는 값:</block>
+  <block id="2b566d405e2ccbecac2cf005770047cb" category="list-text">ServiceConfigRemoval</block>
+  <block id="65c7a43c3cc81a55199e705b073e6c04" category="list-text">시스템 새로 고침 워크플로의 값:</block>
+  <block id="ddb34f7875ee414d57c52d7f6b1532c0" category="list-text">ClearMountConfig를 클릭합니다</block>
+  <block id="b7a8d056647cd4547e218c04d0f035da" category="section-title">HookOperationName = CloneVolumes입니다</block>
+  <block id="d84f8c0ddcc3d73f02cf17eccbacb6e2" category="paragraph">이 단계에서는 Ansible 플레이북을 실행하여 스냅샷 복사본 및 클론 복제 작업을 트리거합니다. 볼륨 이름 및 마운트 구성은 변수에 정의된 XML 파일을 통해 SAP LaMa에 의해 전달됩니다<block ref="e0a24edf8af93d34591b84a3ba4c60ca" prefix=" " category="inline-code"></block>. 이 파일은 나중에 단계에서 사용되므로 저장됩니다<block ref="de1ba36294d8c3bc57e5d9df81711f9e" prefix=" " category="inline-code"></block> 를 클릭하여 새 마운트 지점 구성을 생성합니다. 볼륨 이름은 XML 파일에서 추출되고 Ansible 클론 플레이북은 각 볼륨에 대해 실행됩니다.</block>
+  <block id="c80bb2258a3a0e1a34ad0ba8971ad5d7" category="admonition">이 예에서 AS 인스턴스와 중앙 서비스는 동일한 볼륨을 공유합니다. 따라서 볼륨 클론 복제는 SAP 인스턴스 번호에서만 실행됩니다 <block ref="14ba4a6ef0dc47790ff7704515344fff" prefix="(" category="inline-code"></block>)은(는) 아닙니다<block ref="96a3be3cf272e017046d1b2674a52bd3" prefix=" " category="inline-code"></block>. 이는 다른 환경에 따라 다를 수 있으므로 그에 따라 변경해야 합니다.</block>
+  <block id="ef6e9f1dd886e5d5363a05e4d08cecc6" category="section-title">HookOperationName = PostCloneVolumes</block>
+  <block id="223edcc0773a44e4b34959031a80f42f" category="paragraph">이 단계에서 사용자 정의 속성이 표시됩니다<block ref="58df34e81d3ebd3108d3cd89e9ed8c5d" prefix=" " category="inline-code"></block> 및<block ref="8f2c6579709285c9a24c1233a19b7518" prefix=" " category="inline-code"></block> 타겟 시스템의 마운트 지점 구성이 유지됩니다.</block>
+  <block id="7ade54baca7712e1446f7644e2b63881" category="paragraph">사용자 정의 속성은 나중에 이 과정에서 시스템을 해체할 때 입력으로 사용됩니다<block ref="2b566d405e2ccbecac2cf005770047cb" prefix=" " category="inline-code"></block> 또는<block ref="ddb34f7875ee414d57c52d7f6b1532c0" prefix=" " category="inline-code"></block> 단계. 시스템은 시스템 프로비저닝 워크플로우 중에 지정된 사용자 지정 매개 변수의 설정을 보존하도록 설계되었습니다.</block>
+  <block id="f6e52e9107b3ac6aa07d820f3587c7e7" category="paragraph">이 예제에서 사용되는 값은 입니다<block ref="bdb47fed0d313262c9d3c7d41c894201" prefix=" " category="inline-code"></block> 및<block ref="85e7e9424d29538746c1b1b2cbb86003" prefix=" " category="inline-code"></block>.</block>
+  <block id="7beba9ba634960c6d652b856b7fa9af7" category="paragraph">를 선택합니다<block ref="feb928da308850091372edc73ab231a4" prefix=" " category="inline-code"></block>동적으로 생성된 Ansible 파일에는 다음 값이 포함됩니다.<block ref="74570c0ba8bed87fb108923b85e1c86e" prefix=" " category="inline-code"></block>:<block ref="feb928da308850091372edc73ab231a4" prefix=" " category="inline-code"></block>,<block ref="ab8c0f3f510441dfbf6832e5c66506cb" prefix=" " category="inline-code"></block>, 및<block ref="404f3f40c3094f27edaf2e379e807d19" prefix=" " category="inline-code"></block>.</block>
+  <block id="39637c1bfac2481530e7f976d2404f57" category="paragraph">이 경우 볼륨 HN9_SAP의 스냅샷 이름으로 연결됩니다<block ref="a929b360dff8b79736d40929f007faec" prefix=" " category="inline-code"></block> 생성된 볼륨 클론 이름입니다<block ref="2f11b298ad59bd8dfd88c2aadbbf81e8" prefix=" " category="inline-code"></block>.</block>
+  <block id="b199cb39ab8949193c27458fe7923308" category="admonition">사용자 지정 속성은 프로비저닝 프로세스 중에 사용되는 매개 변수를 보존하기 위해 어떤 방법으로든 사용할 수 있습니다.</block>
+  <block id="17b57d511dca01dac6e1f3d0eea8591e" category="inline-link">SAP 참고 1889590</block>
+  <block id="37bfe2d6c630cd8dce994786cedb88f1" category="paragraph">마운트 지점 구성은 에서 LaMa가 넘겨준 XML 파일에서 추출됩니다<block ref="c76dd551d0df4615489f4840c234db4e" prefix=" " category="inline-code"></block> 단계. 를 클릭합니다<block ref="58df34e81d3ebd3108d3cd89e9ed8c5d" prefix=" " category="inline-code"></block> 볼륨 이름에 추가되고 기본 스크립트 출력을 통해 LaMa로 다시 전송됩니다. 기능에 대한 설명은 에 나와 있습니다<block ref="f917bd775336e1bab012a560d990f292" category="inline-link-rx"></block>.</block>
+  <block id="96552086a9a139af05ca83c2b608b1f5" category="admonition">이 예에서는 스토리지 시스템의 qtree가 단일 볼륨에 여러 데이터를 배치하는 일반적인 방법으로 사용됩니다. 예를 들면, 다음과 같습니다.<block ref="feb928da308850091372edc73ab231a4" prefix=" " category="inline-code"></block> 의 마운트 지점을 보유합니다<block ref="602440fe8fe65977e9574638f9a2c511" prefix=" " category="inline-code"></block>,<block ref="10fba32c279114a49cdfd03372e1e02e" prefix=" " category="inline-code"></block>, 및<block ref="238092ea5275b74b281dd99d812a95eb" prefix=" " category="inline-code"></block>. 하위 디렉터리는 같은 방식으로 작동합니다. 이는 다른 환경에 따라 다를 수 있으므로 그에 따라 변경해야 합니다.</block>
+  <block id="346a028f600790fffe377b01a2b9981c" category="section-title">HookOperationName = ServiceConfigRemoval</block>
+  <block id="53a8b34c26f167a4b06e6eec25b55427" category="paragraph">이 단계에서는 볼륨 클론을 삭제하는 역할을 하는 Ansible 플레이북을 실행합니다.</block>
+  <block id="5ac066717b22e8c02f8bffb6a8ddcd96" category="paragraph">볼륨 이름은 마운트 구성 파일 및 사용자 지정 속성을 통해 SAP LaMa에서 전달됩니다<block ref="58df34e81d3ebd3108d3cd89e9ed8c5d" prefix=" " category="inline-code"></block> 및<block ref="8f2c6579709285c9a24c1233a19b7518" prefix=" " category="inline-code"></block> 시스템 프로비저닝 워크플로우 중에 원래 지정된 매개 변수의 값을 넘기는 데 사용됩니다(의 참고 사항 참조)<block ref="ef6e9f1dd886e5d5363a05e4d08cecc6" prefix=" " category="inline-code"></block>)를 클릭합니다.</block>
+  <block id="e8065accf11ce1a2b63e42eec427fd63" category="paragraph">볼륨 이름은 XML 파일에서 추출되고, Ansible 클론 플레이북은 각 볼륨에 대해 실행됩니다.</block>
+  <block id="81ad9d04ab6444acadad9192d00a12c0" category="admonition">이 예에서 AS 인스턴스와 중앙 서비스는 동일한 볼륨을 공유합니다. 따라서 볼륨 삭제는 SAP 인스턴스 번호에서만 실행됩니다 <block ref="14ba4a6ef0dc47790ff7704515344fff" prefix="(" category="inline-code"></block>)은(는) 아닙니다<block ref="96a3be3cf272e017046d1b2674a52bd3" prefix=" " category="inline-code"></block>. 이는 다른 환경에 따라 다를 수 있으므로 그에 따라 변경해야 합니다.</block>
+  <block id="92f6f8cba070fb9e27767dd5551e768b" category="section-title">HookOperationName = ClearMountConfig입니다</block>
+  <block id="4a4f44bf22d06f8fafafadd3fd090a90" category="paragraph">이 단계에서는 시스템 업데이트 워크플로우 중에 볼륨 클론을 삭제하는 역할을 하는 Ansible 플레이북을 실행합니다.</block>
+  <block id="d58b54d2e52ca8489cc7248ba854ae21" category="paragraph">볼륨 이름은 마운트 구성 파일 및 사용자 지정 속성을 통해 SAP LaMa에서 전달됩니다<block ref="58df34e81d3ebd3108d3cd89e9ed8c5d" prefix=" " category="inline-code"></block> 및<block ref="8f2c6579709285c9a24c1233a19b7518" prefix=" " category="inline-code"></block> 시스템 프로비저닝 워크플로우 중에 원래 지정된 매개 변수의 값을 넘기는 데 사용됩니다.</block>
+  <block id="8886a6fe82aff5197d15c38da5b592fd" category="paragraph">볼륨 이름은 XML 파일에서 추출되고 Ansible 클론 플레이북은 각 볼륨에 대해 실행됩니다.</block>
+  <block id="8d58923ab8b9151914bc816648b0875d" category="admonition">이 예에서 AS 인스턴스와 중앙 서비스는 동일한 볼륨을 공유합니다. 따라서 볼륨 삭제는 SAP 인스턴스 번호에서만 실행됩니다 <block ref="14ba4a6ef0dc47790ff7704515344fff" prefix="(" category="inline-code"></block>)은(는) 아닙니다<block ref="96a3be3cf272e017046d1b2674a52bd3" prefix=" " category="inline-code"></block>. 이는 다른 환경에 따라 다를 수 있으므로 그에 따라 변경해야 합니다.</block>
+  <block id="1943d0253ccc5d45e36df0227dd4793e" category="section-title">Ansible 플레이북 NetApp_LaMa_CloneVolumes.yml</block>
+  <block id="d370af02588316b01d589655a107cbbc" category="inline-link">NetApp Ansible 모듈 - YAML 파일</block>
+  <block id="06a69040885f67ea75f8c71bd26cdfdf" category="paragraph">LaMa 시스템 클론 워크플로우의 CloneVolumes 단계에서 실행되는 플레이북은 의 조합입니다<block ref="3e3c61f048949537d0dfdcc5a1db6ce2" prefix=" " category="inline-code"></block> 및<block ref="bf70df0c372967b21792d4176664f064" prefix=" " category="inline-code"></block> (을 참조하십시오<block ref="ae5d962151a417d9f49d9333a90e0f3c" category="inline-link-rx"></block>)를 클릭합니다. 이 플레이북은 보조 및 클론 분할 작업의 클론 복제와 같은 추가 사용 사례를 쉽게 포함할 수 있습니다.</block>
+  <block id="455e5b157968d37a4203a9f3779b384a" category="section-title">Ansible 플레이북 NetApp_LaMa_ServiceConfigRemoval.yml</block>
+  <block id="ce2acc94df9bd91ff47fc72ecf404031" category="paragraph">동안 실행되는 플레이북<block ref="2b566d405e2ccbecac2cf005770047cb" prefix=" " category="inline-code"></block> LaMa 시스템 제거 워크플로의 단계는 의 조합입니다<block ref="35dd0b5421b741dfd4e373d5f4d1e4d1" prefix=" " category="inline-code"></block> 및<block ref="8e983ebe58c49099839bfd3bb1b83f41" prefix=" " category="inline-code"></block> (을 참조하십시오<block ref="ae5d962151a417d9f49d9333a90e0f3c" category="inline-link-rx"></block>)를 클릭합니다. 의 실행 단계와 정렬되어야 합니다<block ref="1f06042fc02f2e855ea461c7817d81a4" prefix=" " category="inline-code"></block> 플레이북.</block>
+  <block id="bd68c303edefacbfbb91261b59a4e9ac" category="section-title">Ansible Playbook NetApp_LaMa_ClearMountConfig.yml</block>
+  <block id="ff0f6a8ce2fcd64cebec6e1d9151cfce" category="paragraph">Playbook은 에서 실행됩니다<block ref="219f5b01b91b2ed6147264d0df5f9c07" prefix=" " category="inline-code"></block> LaMa 시스템 업데이트 워크플로의 단계는 의 조합입니다<block ref="35dd0b5421b741dfd4e373d5f4d1e4d1" prefix=" " category="inline-code"></block> 및<block ref="8e983ebe58c49099839bfd3bb1b83f41" prefix=" " category="inline-code"></block> (을 참조하십시오<block ref="ae5d962151a417d9f49d9333a90e0f3c" category="inline-link-rx"></block>)를 클릭합니다. 의 실행 단계와 정렬되어야 합니다<block ref="1f06042fc02f2e855ea461c7817d81a4" prefix=" " category="inline-code"></block> 플레이북.</block>
+  <block id="85e6de7723c608b48d8483e8f080d82e" category="section-title">Ansible 재고 샘플</block>
+  <block id="13618afb34e29ee98ce78d61d6dd1f2c" category="paragraph">이 재고 파일은 워크플로 실행 중에 동적으로 구축되며, 여기에는 설명을 위한 용도로만 표시됩니다.</block>
+  <block id="4b774a4819b60036fd16dae7b1618fe7" category="inline-link-macro">다음: 결론.</block>
+  <block id="0121b72f1048ad47d27993ba834591c8" category="paragraph"><block ref="0121b72f1048ad47d27993ba834591c8" category="inline-link-macro-rx"></block></block>
+  <block id="b606dabc2c3e184086b564adb1940f56" category="doc">SAP 시스템 클론, 복제 및 업데이트 시나리오</block>
+  <block id="624ad99ea806758007584adea9961445" category="paragraph"><block ref="624ad99ea806758007584adea9961445" category="inline-link-macro-rx"></block></block>
+  <block id="3e2c20ce79434cedb498fc7527d30dbe" category="paragraph">SAP 시스템 복사라는 용어는 SAP 시스템 클론, SAP 시스템 복제 또는 SAP 시스템 교체와 같은 세 가지 프로세스의 동의어로 사용되는 경우가 많습니다. 워크플로와 사용 사례는 각각 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.</block>
+  <block id="43767cf21d4b8f31f9dcdee8e59adb69" category="paragraph">다음 그림에서는 시스템 클론, 시스템 복사본 또는 시스템 업데이트 작업 중에 수행해야 하는 주요 단계를 보여 줍니다. 보라색 상자는 NetApp 스토리지 기능을 통합할 수 있는 단계를 나타냅니다. SAP LaMa를 사용하면 세 가지 작업을 모두 완벽하게 자동화할 수 있습니다.</block>
+  <block id="596b75e644e7872d4337d48a315dd53d" category="inline-image-macro">이 그래픽은 시스템 클론, 시스템 복사본 및 시스템 새로 고침에 대한 3가지 프로세스 일정을 보여 줍니다.</block>
+  <block id="50e1d44f2792b680cc4c690f57736241" category="paragraph"><block ref="50e1d44f2792b680cc4c690f57736241" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2c93721b169a730e0590387eea9a96ee" category="inline-link-macro">다음 사례: 시스템 업데이트, 복사 및 클론 복제 사용 사례</block>
+  <block id="bb0ac805dad993ca6396fa3c7a85f266" category="paragraph"><block ref="bb0ac805dad993ca6396fa3c7a85f266" category="inline-link-macro-rx"></block></block>
+  <block id="10f22ce6f0d2560d2593dccd1c7a2cac" category="summary">SAP LaMa(Landscape Management)를 사용하면 SAP 시스템 관리자가 전체 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 비롯한 SAP 시스템 작업을 자동화할 수 있습니다.</block>
+  <block id="f0e2318cd32c61c7c602d5745e21791b" category="doc">TR-4953: Ansible을 사용한 NetApp SAP 환경 관리 통합</block>
+  <block id="5d36e325b7addc853f5a7a6ecd350eb2" category="paragraph">Michael Schlosser, NetApp Nils Bauer</block>
+  <block id="f130ce1e1c7d90310044ef7daf088f2e" category="paragraph">NetApp은 SAP LaMa가 SAP LaMa Automation Studio를 통해 NetApp Snapshot 및 FlexClone과 같은 기술에 액세스할 수 있도록 다양한 Ansible 모듈을 제공합니다. 이러한 기술을 통해 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 간소화 및 가속화할 수 있습니다.</block>
+  <block id="d2c4fa04492deec7383fc3a48fb61fcc" category="paragraph">이러한 통합은 사내에서 NetApp 스토리지 솔루션을 실행하는 고객 또는 Amazon Web Services, Microsoft Azure 또는 Google Cloud Platform과 같은 퍼블릭 클라우드 공급자가 제공하는 NetApp 스토리지 서비스를 사용하는 고객이 사용할 수 있습니다.</block>
+  <block id="e95a257ceffab9c7ca49cb69ae38d9d7" category="paragraph">이 문서에서는 Ansible 자동화를 사용하여 SAP 시스템 복사, 클론 복제, 업데이트 작업을 위한 NetApp 스토리지 기능을 갖춘 SAP LaMa 구성을 설명합니다.</block>
+  <block id="494151a5ba2beb41cd33cb34ecaa3b34" category="inline-link-macro">다음: SAP 시스템 클론, 복제 및 업데이트 시나리오</block>
+  <block id="f1f59a5379c668a0313447a3dba4f01f" category="paragraph"><block ref="f1f59a5379c668a0313447a3dba4f01f" category="inline-link-macro-rx"></block></block>
+  <block id="1549d8a91814eafffd1bb350b7956ad9" category="summary">새로 고침 워크플로우 중에 스토리지 클론을 삭제해야 합니다. 시스템 폐기 워크플로와 동일한 Ansible 플레이북을 사용할 수 있습니다. 그러나 맞춤형 후크는 다른 단계로 정의되므로 이에 따라 플레이북의 이름이 지정됩니다. 클론의 프로세스 단계가 다르지 않습니다.</block>
+  <block id="7949afbae2a9d5fd15f7b4c7f7a05fa4" category="doc">SAP LaMa 프로비저닝 워크플로우 - 시스템 업데이트</block>
+  <block id="9220fe6d4e22f106fa49606d2e0f9dc7" category="inline-link-macro">이전: SAP LaMa 프로비저닝 워크플로우 - 복제 시스템.</block>
+  <block id="1795fc9ac323cc6308efcae72b0bafbc" category="paragraph"><block ref="1795fc9ac323cc6308efcae72b0bafbc" category="inline-link-macro-rx"></block></block>
+  <block id="7f4f2ac27cfdf79058d0e50de2e9742d" category="paragraph">다음 그림에서는 시스템 새로 고침 워크플로로 실행되는 주요 단계를 보여 줍니다.</block>
+  <block id="481edeab724446585cba31c21c5c303b" category="inline-image-macro">이 이미지는 시스템 새로 고침 워크플로우의 단계에 대한 타임라인을 보여줍니다. 여기에는 구성 내보내기, 시스템 중지, 시스템 준비 해제, 스토리지 클론 삭제, 스토리지 클론 생성, 시스템 준비, 격리 활성화, 시스템 이름 변경, 시스템 시작, 구성 가져오기, 복제 후 자동화 및 격리 비활성화</block>
+  <block id="9c922d24ae362be7b4b207796c78fc80" category="paragraph"><block ref="9c922d24ae362be7b4b207796c78fc80" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="271d28463c63d7fd4374acd04ad1d970" category="paragraph">새로 고침 워크플로우 중에 스토리지 클론을 삭제해야 합니다. 시스템 폐기 워크플로와 동일한 Ansible 플레이북을 사용할 수 있습니다. 그러나 맞춤형 후크는 다른 단계로 정의되므로 이에 따라 플레이북의 이름이 지정됩니다. 클론의 프로세스 단계가 다르게 적용되지 않습니다.</block>
+  <block id="9e5091c63ff2962a881841af91e2823c" category="inline-image-macro">이 이미지는 이 워크플로에 포함된 단계를 포함하는 아키텍처 다이어그램을 보여 줍니다.</block>
+  <block id="f66bd4318b3bbbdefc2a05b723e920b8" category="paragraph"><block ref="f66bd4318b3bbbdefc2a05b723e920b8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d1a447a92da11b77de2544fbcfe43acf" category="paragraph">새로 고침 워크플로는 복제된 시스템에 대한 프로비저닝 화면을 통해 트리거될 수 있습니다.</block>
+  <block id="5d395370196d6d4e376fe46b17b57d79" category="inline-image-macro">이 스크린샷은 Refresh system(시스템 새로 고침) 드롭다운이 강조 표시된 Provisioning system(프로비저닝 시스템) 보기를 보여 줍니다.</block>
+  <block id="6940d83e659b53fe2828f35b5691fab4" category="paragraph"><block ref="6940d83e659b53fe2828f35b5691fab4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8cfad5ce51e7271ce19cce7c6b114c91" category="paragraph">다시 한 번 강조하지만 입력 화면과 표준에는 차이가 없으며, 요약 화면에서 워크플로우 실행을 시작할 수 있습니다.</block>
+  <block id="29fc636c559035fd7df8a518d41d0ce2" category="inline-image-macro">이 스크린샷은 새로 고칠 시스템의 기본 데이터 및 대상 시스템의 호스트 선택을 포함하여 시스템 새로 고침 화면을 보여 줍니다.</block>
+  <block id="dfbc93639d1067b24f414457d7eb84e4" category="paragraph"><block ref="dfbc93639d1067b24f414457d7eb84e4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e22f2b8efbb602218c7385804fb05f3" category="inline-link-macro">다음: 공급자 스크립트 구성 및 Ansible 플레이북</block>
+  <block id="db0410882f9a399768af0469082c6756" category="paragraph"><block ref="db0410882f9a399768af0469082c6756" category="inline-link-macro-rx"></block></block>
+  <block id="3174e9fa49f311c5e00e12e71a3b5b98" category="summary">시스템 및 스토리지 설정에 사용할 수 있는 옵션이 많기 때문에 예제 구현은 개별 시스템 설정 및 구성 요구 사항을 템플릿으로 사용해야 합니다.</block>
+  <block id="22b2b5c6aa3ef83ba384074fa4b1f70b" category="doc">구현 예</block>
+  <block id="d636957b95987f0920f5f75840a58677" category="inline-link-macro">이전: Ansible을 사용하여 NetApp SAP LaMa 통합</block>
+  <block id="f19fa360d8053527cbb9fdad004ee091" category="paragraph"><block ref="f19fa360d8053527cbb9fdad004ee091" category="inline-link-macro-rx"></block></block>
+  <block id="218856d6f0f5481bf616ccd68aa42cba" category="section-title">검증된 구성 및 제한</block>
+  <block id="ead08ec5c8fd39a74fa185810bb7521e" category="paragraph">예제 구현에 적용된 원리는 다음과 같습니다. 고객의 요구 사항에 맞게 조정해야 할 수 있습니다.</block>
+  <block id="da30655d4bed2647c2fec11ec1ee095a" category="list-text">관리형 SAP 시스템은 NFS를 사용하여 NetApp 스토리지 볼륨에 액세스했으며 적응형 설계 원칙에 따라 설정되었습니다.</block>
+  <block id="a606bd07766c70874c1247221e4b6920" category="list-text">NetApp Ansible 모듈(ZAPI 및 REST API)에서 지원하는 모든 ONTAP 릴리즈를 사용할 수 있습니다.</block>
+  <block id="8a13407d32dabdb45cd5b99a37d3658d" category="list-text">단일 NetApp 클러스터 및 SVM에 대한 자격 증명은 공급자 스크립트에서 변수로 하드 코딩되었습니다.</block>
+  <block id="62479efe2da12c69ae8fead43ad2a41c" category="list-text">소스 SAP 시스템에서 사용한 것과 동일한 스토리지 시스템에서 스토리지 클론 생성이 수행되었습니다.</block>
+  <block id="2822fed36861cecbea9530e16c3dc549" category="list-text">타겟 SAP 시스템의 스토리지 볼륨은 부록이 있는 소스와 이름이 동일합니다.</block>
+  <block id="45d18080d1d1501f967a6234b8e9c807" category="list-text">2차 스토리지(SV/SM)에서 클론이 구축되지 않았습니다.</block>
+  <block id="a2c82d2d1a8c3fa26f5d24f153350b67" category="list-text">FlexClone 분할이 구현되지 않았습니다.</block>
+  <block id="295940074fec313c1941e256113f0e88" category="list-text">소스 및 타겟 SAP 시스템에 대한 인스턴스 번호가 동일합니다.</block>
+  <block id="92b9b9bba1ad0383940e73178d2d2b1f" category="inline-link">적응형 설계</block>
+  <block id="694793abedab052f0f8fe31c7ed5d468" category="inline-link">NetApp ONTAP용 Ansible 플레이북</block>
+  <block id="e3f6982f9a27e912e8c722adde3efd24" category="paragraph">다음 그림은 사용된 랩 설정을 보여 줍니다. 시스템 클론 작업에 사용되는 소스 SAP 시스템 HN9는 데이터베이스 H09, SAP CS 및 SAP가 설치된 동일한 호스트(SAP-lnx32)에서 실행되는 서비스로 구성되었습니다<block ref="0f7e6b0bf7b6b1239b509159ab784efd" category="inline-link-rx"></block> 활성화됨. 에 따라 Ansible 컨트롤 노드가 준비되었습니다<block ref="2b2330f758d35be084c542c192f2a4aa" category="inline-link-rx"></block> 문서화:</block>
+  <block id="440bd2077d1dc4268b805695e517765a" category="inline-link-macro">“부록: 공급자 스크립트 구성”</block>
+  <block id="0ddc9ab61cfb2c7266939699da865a07" category="paragraph">이 호스트에도 SAP 호스트 에이전트가 설치되었습니다. 에 설명된 대로 Ansible 제어 노드에서 NetApp 공급자 스크립트와 Ansible 플레이북을 구성했습니다 <block ref="3a5309a81be4983848acab2ae66229f5" category="inline-link-macro-rx"></block></block>
+  <block id="b66c6a3a7edc45e35e3ddf6c05273c2e" category="paragraph">호스트<block ref="0e4bb0c252ec92e9686dfba6c8df0076" prefix=" " category="inline-code"></block> SAP LaMa 클론 복제 작업의 타겟으로 사용되었으며, 격리 지원 기능이 구성되었습니다.</block>
+  <block id="83b45fa496284bbb2f02b9bded901b86" category="paragraph">PCA(Post Copy Automation)가 활성화되어 있기 때문에 시스템 복사 및 새로 고침 작업에 여러 SAP 시스템(HNA를 소스로, HN2 타겟을 대상으로)이 사용되었습니다.</block>
+  <block id="dfa47107ed64e58579a060d20cca230a" category="inline-image-macro">이 이미지는 다양한 SAP 호스트 에이전트와 NFS 마운트를 통해 NetApp 스토리지와 상호 작용하는 방법을 보여줍니다. SAP LaMa 인스턴스도 표시됩니다.</block>
+  <block id="d0f0f43af738b26d182641cb7c12254e" category="paragraph"><block ref="d0f0f43af738b26d182641cb7c12254e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9d50189ad22fa1f80dd4993b241fa520" category="paragraph">실습 설치 시 사용된 소프트웨어 릴리즈는 다음과 같습니다.</block>
+  <block id="b4cd99983baacefc54875fd2de6c03d4" category="list-text">SAP LaMa Enterprise Edition 3.00 SP23_2</block>
+  <block id="7bdc9b8c3e894f5a2369e5c3b8a133e4" category="list-text">SAP HANA 2.00.052.00.1599235305</block>
+  <block id="d550cc442fbc5ea03e42ba86d0cfeb03" category="list-text">SAP 7.77 패치 27(S/4 HANA 1909)</block>
+  <block id="f6297e2394a4dfe959fc0dace04882a1" category="list-text">SAP 호스트 에이전트 7.22 패치 56</block>
+  <block id="780c1fbb148682140e46cccca790b4ff" category="list-text">SAPACEXT 7.22 패치 69</block>
+  <block id="bded4cce06ec88cd16a823fa44159118" category="list-text">Linux SLES 15 SP2</block>
+  <block id="8271f798ae4ae5f28efaa3a9eaf06233" category="list-text">Ansible 2. 13.7</block>
+  <block id="4b0373c99a4c85c6b0f82b56d8c42730" category="list-text">NetApp ONTAP 9.8P8</block>
+  <block id="70cc2142e75ab6a0289b10c66ef4448a" category="section-title">SAP LaMa 구성</block>
+  <block id="97604b3e0820bd1474b9e6fae5edb42d" category="section-title">SAP LaMa Provider 정의</block>
+  <block id="cdde8d4b44ba034030a4e67f7cd1355c" category="paragraph">공급자 정의는 다음 스크린샷과 같이 SAP LaMa의 Automation Studio 내에서 수행됩니다. 예제 구현에서는 앞에서 설명한 것처럼 다양한 사용자 지정 프로비저닝 단계 및 작업 후크에 사용되는 단일 공급자 정의를 사용합니다.</block>
+  <block id="1746e76929a022aece9b6dfb14dae7f4" category="inline-image-macro">SAP LaMa GUI의 SAP 공급자 정의 스크린샷</block>
+  <block id="08c5b98069920bf5ac7b4961005b5056" category="paragraph"><block ref="08c5b98069920bf5ac7b4961005b5056" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4f341f0e5eb3b1f46991cea35272fcf1" category="paragraph">제공합니다<block ref="f66a8619ee48b9a9e3c50bb78492093d" prefix=" " category="inline-code"></block> 스크립트로 정의됩니다<block ref="e43ee3b6f349861a2a2c82d22b32d52e" prefix=" " category="inline-code"></block> SAP Host Agent에 등록되어 있습니다. SAP 호스트 에이전트는 중앙 호스트에서 실행됩니다<block ref="b364ceeb78cb4529181c9ca2c288a0f4" prefix=" " category="inline-code"></block>Ansible 제어 노드 역할도 합니다.</block>
+  <block id="64435bf2455f95dd405db3790145406d" category="inline-image-macro">일반 탭 아래의 NetApp_clone이라는 개별 공급자 정의의 스크린샷 요약 섹션, 사용된 항목 섹션 및 옵션 섹션을 표시합니다.</block>
+  <block id="54c6354a212b8f91f2ff043d95c8a94e" category="paragraph"><block ref="54c6354a212b8f91f2ff043d95c8a94e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0534b8ad7bf71ef8b710dad564e0cd7a" category="paragraph">[사용] 탭에 공급자가 사용하는 사용자 정의 작업이 표시됩니다. 사용자 지정 프로비저닝 * NetAppClone * 및 사용자 지정 후크 * NetAppClone 삭제 * 및 * NetAppClone 새로 고침 삭제 * 에 대한 구성은 다음 장에 나와 있습니다.</block>
+  <block id="a340f1bceb05f0cd1b147b9f672ba8d2" category="inline-image-macro">정의를 사용하는 사용자 정의 작업 목록이 있는 사용된 위치 섹션의 스크린샷. 이 예제에는 NetApp 클론 삭제, NetApp 클론 업데이트 삭제 및 NetApp 클론 복제 가 나와 있습니다.</block>
+  <block id="70f474aab1616506d03d24a8657ae910" category="paragraph"><block ref="70f474aab1616506d03d24a8657ae910" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7a0ae7f1897ba065a4175f0a031d40ca" category="paragraph">프로비저닝 워크플로를 실행하는 동안 * ClonePostFix * 및 * SnapPostFix * 매개 변수가 요청되며 스냅샷 및 FlexClone 볼륨 이름에 사용됩니다.</block>
+  <block id="e9f68f9346bf37c4d5361a06a77f7922" category="inline-image-macro">CLonePostFix 및 SnapPostFix의 두 매개 변수 목록이 있는 매개 변수 섹션의 스크린샷.</block>
+  <block id="7f23aeaaf119e1c77839ccb7a26f572a" category="paragraph"><block ref="7f23aeaaf119e1c77839ccb7a26f572a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f75575994c2d652cc4c91f3475946ddd" category="section-title">SAP LaMa 맞춤형 프로비저닝</block>
+  <block id="71f3f2d0ca1eb7593b6ccbae27d47630" category="paragraph">SAP LaMa 사용자 지정 프로비저닝 구성에서 앞서 설명한 고객 공급자는 프로비저닝 워크플로우 단계 * 클론 볼륨 * 및 * PostCloneVolumes * 를 대체하는 데 사용됩니다.</block>
+  <block id="9f86a21de7693c92ea6e20ccf4b6bfed" category="inline-image-macro">사용자 지정 프로비저닝 구성 화면의 스크린샷 CloneVolumes 및 FinalizeCloneVolumes 프로세스가 나열됩니다.</block>
+  <block id="18ed31da1adaccc57dd6543fc9b26c8f" category="paragraph"><block ref="18ed31da1adaccc57dd6543fc9b26c8f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9e1240b3666e6094668a9e44b93b1aaf" category="section-title">SAP LaMa 맞춤형 후크</block>
+  <block id="fc234b36f71d0a48d49f813690e499d5" category="paragraph">시스템이 시스템 제거 워크플로와 함께 삭제된 경우 hook * Delete NetAppClone * 은 공급자 정의를 호출하는 데 사용됩니다<block ref="f66a8619ee48b9a9e3c50bb78492093d" prefix=" " category="inline-code"></block>. 실행 중에 인스턴스가 유지되므로 * NetApp 클론 업데이트 삭제 * 후크는 시스템 업데이트 워크플로우 중에 사용됩니다.</block>
+  <block id="1214fb9ed85a47de9908cb172d861fb9" category="inline-image-macro">사용자 지정 후크가 포함된 사용자 지정 후크 화면의 스크린샷 NetApp 클론 새로 고침 삭제 및 NetApp 클론 삭제.</block>
+  <block id="baaa9a167a827541388c50135103e4fd" category="paragraph"><block ref="baaa9a167a827541388c50135103e4fd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0c3cf1c76c18bb4fefa6e023a411ffc4" category="paragraph">SAP LaMa가 공급업체에 마운트 지점 구성 정보를 제공할 수 있도록 사용자 지정 후크에 대해 * Mount Data XML * 사용 을 구성하는 것이 중요합니다.</block>
+  <block id="f2e7523bdd169ca65eca0147bca8fff1" category="inline-image-macro">"Mount Data XML yes 사용"이 강조 표시된 Delete NetAppClone General 화면의 스크린샷</block>
+  <block id="8a8dd4fc02cb2cf28f0b93868a12473e" category="paragraph"><block ref="8a8dd4fc02cb2cf28f0b93868a12473e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="98f4e317bbaa784645b3288ba01b74c6" category="paragraph">사용자 지정 후크를 사용자 지정 프로비저닝 워크플로로 시스템을 생성할 때만 사용하고 실행되도록 하려면 다음 제약 조건이 추가됩니다.</block>
+  <block id="ec60f21e7cd865823a756b683438922a" category="inline-image-macro">NetApp 클론 제약 조건 삭제 페이지의 스크린샷 사용자 지정 클론 프로세스 이름(정적)이라는 단일 제약 조건이 포함되어 있습니다.</block>
+  <block id="d574b7c12d0ffbf3da10d882088b0cef" category="paragraph"><block ref="d574b7c12d0ffbf3da10d882088b0cef" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="251b0d3699e5721f1881283a4fca406a" category="paragraph">사용자 지정 후크 사용에 대한 자세한 내용은 에서 확인할 수 있습니다<block ref="cccebfd04b7323b5c9d595ca9e1a8202" category="inline-link-rx"></block>.</block>
+  <block id="8e28a1dc58486d267cf25af39d6a11e6" category="section-title">SAP 소스 시스템에 대한 사용자 지정 프로비저닝 워크플로우를 설정합니다</block>
+  <block id="113da349476dc9377bcc12b4a0257c93" category="paragraph">소스 시스템에 대한 사용자 지정 프로비저닝 워크플로우를 설정하려면 구성에서 해당 워크플로우를 적용해야 합니다. 해당 사용자 지정 프로비저닝 정의와 함께 * 사용자 지정 프로비저닝 프로세스 사용 * 확인란을 선택해야 합니다.</block>
+  <block id="0f9f630eca85dbbe04a442a7a696930c" category="inline-image-macro">SAP LaMa Configuration &amp; GT, Systems &amp; GT, System Details 화면의 스크린샷 Use Custom Provisioning Process 확인란이 선택되어 있습니다.</block>
+  <block id="032c2a456234741b329b07d476cc4d1a" category="paragraph"><block ref="875d532bdc997e1002f70ac7b667645e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7d2b00bc2711e0322869201b0aa47d14" category="inline-link-macro">다음으로, SAP LaMa가 워크플로우 클론 시스템을 프로비저닝합니다.</block>
+  <block id="00dce0767e2512b23468b23504bee9ac" category="paragraph"><block ref="00dce0767e2512b23468b23504bee9ac" category="inline-link-macro-rx"></block></block>
+  <block id="9d9c41126d52bd5f1a379e53bd0752f3" category="summary">이 섹션에서는 HANA 데이터베이스 H09가 포함된 소스 SAP 시스템 HN9를 기반으로 하는 전체 SAP LaMa 시스템 클론 복제 워크플로우를 살펴보겠습니다. 다음 그림은 워크플로 중에 실행된 단계에 대한 개요를 제공합니다.</block>
+  <block id="2080b046fbab316052bf3cd004fba2c1" category="doc">SAP LaMa가 워크플로우-클론 시스템을 프로비저닝합니다</block>
+  <block id="24699046bc864ed36aa118e7d56dfb78" category="inline-link-macro">이전: 예제 구현.</block>
+  <block id="6b7cd807aa80b4988f851f2971fd2751" category="paragraph"><block ref="6b7cd807aa80b4988f851f2971fd2751" category="inline-link-macro-rx"></block></block>
+  <block id="f928bd8b1ecd05387cc712d7a46bf18c" category="paragraph">다음 그림에서는 시스템 클론 워크플로우에서 실행되는 주요 단계를 보여 줍니다.</block>
+  <block id="f796aa70006aac29ee5eb4b2ed23ba95" category="inline-image-macro">스토리지 클론 생성, 시스템 준비, 격리 활성화 및 시스템 시작 단계가 포함된 워크플로 다이어그램</block>
+  <block id="43c1e12c4de1117893166b4d61a58800" category="paragraph"><block ref="43c1e12c4de1117893166b4d61a58800" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fdf5d8e6fccfdfce632b92c3e93acaf7" category="inline-image-macro">이 이미지는 클론 생성된 시스템 구성 생성, 스토리지 스냅샷 및 클론 생성, 마운트 지점 구성 생성, 사용자 지정 속성 설정, 시스템 준비 및 시작 등 워크플로우 중에 실행된 단계를 보여 줍니다.</block>
+  <block id="11be0398e50f67b0d6de3c0d5065d86d" category="paragraph"><block ref="11be0398e50f67b0d6de3c0d5065d86d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bcda724368fccf9bf6be920fc775e707" category="list-text">클론 생성 워크플로우를 시작하려면 메뉴 트리에서 * Provisioning * 을 열고 소스 시스템(예: HN9)을 선택합니다. 그런 다음 * 클론 시스템 * 마법사를 시작합니다.</block>
+  <block id="320b2524f93a492ce1312bd5ae04746a" category="inline-image-macro">이 스크린샷은 Provisioning System 보기를 보여 줍니다. 두 개의 시스템이 포함되어 있습니다.</block>
+  <block id="92e855188fcadbee0c81d0aef8797e36" category="paragraph"><block ref="92e855188fcadbee0c81d0aef8797e36" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="26f307d1b32126e9ef74d6d94d34593a" category="list-text">요청된 값을 입력합니다. 마법사의 화면 1에서 클론 생성된 시스템의 풀 이름을 묻는 메시지가 표시됩니다. 이 단계에서는 복제된 시스템을 시작할 인스턴스(가상 또는 물리적)를 지정합니다. 기본값은 시스템을 타겟 시스템과 동일한 풀에 복제하는 것입니다.</block>
+  <block id="28e2a407caa32a2e6d85a365fc6137ee" category="inline-image-macro">클론 시스템 마법사 화면 1 - 대상 시스템의 기본 데이터를 제공합니다.</block>
+  <block id="5d15a1dd9a1e0efc6857b74627bf9a71" category="paragraph"><block ref="5d15a1dd9a1e0efc6857b74627bf9a71" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="93097e472af50d9306626ab3c2ad088c" category="list-text">마법사의 화면 2에서 새 SAP 인스턴스가 시작된 타겟 호스트를 요청합니다. 이전 화면에서 지정한 호스트 풀에서 이 인스턴스의 대상 호스트를 선택할 수 있습니다. 각 인스턴스 또는 서비스는 다른 호스트에서 시작할 수 있습니다. 이 예에서는 세 서비스가 모두 동일한 호스트에서 실행됩니다.</block>
+  <block id="d45437922cbadac03e555f9396029c52" category="inline-image-macro">클론 시스템 마법사 화면 2에서는 대상 시스템의 호스트 선택을 제공합니다.</block>
+  <block id="942813ee3bf3e2e859a1cad799510176" category="paragraph"><block ref="942813ee3bf3e2e859a1cad799510176" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dbbb3c208933ad8e73912e8b71c8cfe9" category="list-text">화면 3에서 요청한 정보를 제공하여 가상 호스트 이름과 네트워크를 요청합니다. 일반적으로 호스트 이름은 DNS에서 유지되므로 IP 주소는 이에 따라 미리 채워집니다.</block>
+  <block id="1e0378f2db383a2474acde3e5f6c08c4" category="inline-image-macro">시스템 복제 마법사 화면 3에서는 가상 호스트 이름과 네트워크를 제공할 수 있습니다.</block>
+  <block id="47a8e72c82c913fb5ec4254dfdc296d9" category="paragraph"><block ref="47a8e72c82c913fb5ec4254dfdc296d9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="45f39a262ef1deb0ae56818de7b8012c" category="list-text">화면 4에 사용자 지정 클론 작업이 나열됩니다. FlexClone 볼륨과 스냅샷 이름의 스토리지 클론 작업 중에 각각 사용되는 클론 및 * SnapPostfix * 이름이 제공됩니다. 이러한 필드를 비워 두면 공급자 스크립트의 변수 섹션에 구성된 기본값이 됩니다<block ref="e43ee3b6f349861a2a2c82d22b32d52e" prefix=" " category="inline-code"></block> 사용됩니다.</block>
+  <block id="9dd8edfbceb76bf22d88c7fd9447943b" category="inline-image-macro">클론 시스템 마법사 화면 4에서는 사용자 지정 클론 옵션이 작업 매개 변수로 표시됩니다.</block>
+  <block id="d2131ff1c4a2e5d26bf0b2cb33f5c8eb" category="paragraph"><block ref="d2131ff1c4a2e5d26bf0b2cb33f5c8eb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0eca4f9874b4bf56a3688acd75704009" category="list-text">화면 5에서 데이터베이스 정합성 옵션이 선택됩니다. 이 예에서는 * Online: Clone Running DB * 를 선택했습니다.</block>
+  <block id="31680669fa3034c6e5659a85a5154f00" category="inline-image-macro">클론 시스템 마법사 화면 5에서 데이터베이스 정합성 옵션은 온라인: 실행 중인 DB 클론 이 선택된 상태로 표시됩니다.</block>
+  <block id="78a4d37e4d6724327721d85ef21012d9" category="paragraph"><block ref="78a4d37e4d6724327721d85ef21012d9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="625f6568780e6e1c8d04b941df9248ef" category="list-text">화면 6에서는 테넌트 클론을 수행하는 경우에만 입력이 필요합니다.</block>
+  <block id="47abcfee5b22144e9b3b60e685c63dc6" category="inline-image-macro">클론 시스템 마법사 화면 6에서 테넌트 클론을 수행하는 경우 사용자 이름과 암호를 제공할 수 있습니다.</block>
+  <block id="9326b2ac6972353a648e8ebac728915c" category="paragraph"><block ref="9326b2ac6972353a648e8ebac728915c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="64606b6bd8cb0c32c15e338b0756702c" category="list-text">화면 7에서 시스템 격리를 구성할 수 있습니다.</block>
+  <block id="31d6011ed5b7611543fb146a48f8b7ec" category="inline-image-macro">클론 시스템 마법사 화면 7에서는 시스템 격리를 위해 허용되는 발신 연결을 정의할 수 있습니다.</block>
+  <block id="1d8e554fbc28ed599fa3b330903e7d0b" category="paragraph"><block ref="1d8e554fbc28ed599fa3b330903e7d0b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d5be567f5a60baa8d0255d467375bfb9" category="list-text">화면 8에서 요약 페이지에는 워크플로가 시작되기 전에 최종 확인을 위한 모든 설정이 포함되어 있습니다. [실행]을 클릭하여 워크플로우를 시작합니다.</block>
+  <block id="632b59e47eba1c14746c6f4bb3c38289" category="inline-image-macro">시스템 클론 마법사 화면 8은 입력된 정보를 요약해서 제공합니다.</block>
+  <block id="7a46bc035ec735ffe93788d32e556ee4" category="paragraph"><block ref="7a46bc035ec735ffe93788d32e556ee4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="93cefbf94e2762da32c6ca08f9ea4841" category="paragraph">이제 SAP LaMa가 구성에 표시된 모든 작업을 수행합니다. 이러한 조치에는 스토리지 볼륨 클론 및 엑스포트 생성, 타겟 호스트에 마운트, 격리를 위한 방화벽 규칙 추가, HANA 데이터베이스 및 SAP 서비스 시작 등이 포함됩니다.</block>
+  <block id="e214579b1ef23c2afaf6095e9e34f58f" category="inline-image-macro">t "이 스크린샷은 시스템 클론 프로세스의 모니터링 화면을 보여 줍니다."</block>
+  <block id="a118fa5c9c9accd7643ffad4342eaf35" category="paragraph"><block ref="a118fa5c9c9accd7643ffad4342eaf35" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c2cc1ea5bc6c9297f5c6cb7ff1096618" category="paragraph">상세 로그 내에서 * 클론 볼륨 * 및 * 마운트 지점 수정 및 사용자 정의 속성 추가 * 작업은 Ansible 노드인 에서 실행됩니다<block ref="b364ceeb78cb4529181c9ca2c288a0f4" prefix=" " category="inline-code"></block> 호스트. 이러한 단계는 각 서비스, HANA 데이터베이스, SAP 중앙 서비스 및 SAP AS 서비스에 대해 실행됩니다.</block>
+  <block id="3df6b54174cd2a42f59a8dbd7cbc813a" category="inline-image-macro">이 스크린샷은 상세 로그에 표시된 다양한 작업을 보여 주는 시스템 클론 화면을 보여 줍니다.</block>
+  <block id="6721ceca95a36e6e11baced7869c395e" category="paragraph"><block ref="6721ceca95a36e6e11baced7869c395e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f63912439c7fa06d095f53e9e3e4b864" category="list-text">Clone Volumes * 작업을 선택하면 해당 단계에 대한 상세 로그가 표시되며 Ansible Playbook의 실행이 여기에 표시됩니다. Ansible 플레이북이 보일 것입니다<block ref="c9a20dd023079737355442f70666f77f" prefix=" " category="inline-code"></block> 각 HANA 데이터베이스 볼륨, 데이터, 로그 및 공유에 대해 실행됩니다.</block>
+  <block id="ca31c500f57ebe381bd2273516bebe25" category="inline-image-macro">이 화면에는 볼륨 클론을 자세히 설명하는 로그가 표시됩니다.</block>
+  <block id="55ca9b09ad1ce9c38941c90c88767f7e" category="paragraph"><block ref="55ca9b09ad1ce9c38941c90c88767f7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="857f308602f7ba1d17c9bcd529db65a0" category="list-text">단계 * 마운트 지점 수정 및 사용자 정의 속성 추가 * 의 세부 정보 보기에서 실행 스크립트에서 제공한 마운트 지점 및 사용자 정의 속성에 대한 정보를 찾을 수 있습니다.</block>
+  <block id="b030ac3d8ad8890898d0e771a32c477b" category="inline-image-macro">추가 로그 정보</block>
+  <block id="441425b2f5b62ff29a43ee5c4a2ca207" category="paragraph"><block ref="441425b2f5b62ff29a43ee5c4a2ca207" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="22bfd63c8b4d3df02dbc6b174c65b0f1" category="paragraph">워크플로가 완료되면 복제된 SAP 시스템이 준비, 시작 및 사용할 준비가 됩니다.</block>
+  <block id="746a177f13d2fcdab855bd4b1944a327" category="inline-link-macro">다음: SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기</block>
+  <block id="25ca648c91e1e2b245d67a22ef8392b2" category="paragraph"><block ref="25ca648c91e1e2b245d67a22ef8392b2" category="inline-link-macro-rx"></block></block>
+  <block id="ac8a75fedf05fbee71814a271251285f" category="summary">이 통합 방식에서는 NetApp 스토리지 관리를 위한 Ansible 플레이북을 사용하여 SAP LaMa 맞춤형 프로비저닝 및 운영 후크를 사용합니다. 다음 그림에서는 LaMa 측 구성과 예제 구현의 해당 구성 요소를 개괄적으로 보여 줍니다.</block>
+  <block id="3a05a4cf01114d4fe10b4485ddee4278" category="doc">Ansible을 사용하여 NetApp SAP LaMa 통합</block>
+  <block id="e48765c69029da61acaebe483e9316c2" category="inline-link-macro">이전: 시스템 업데이트, 복사 및 클론 복제 사용 사례</block>
+  <block id="89525646254a114f60fce4de9edd46b2" category="paragraph"><block ref="89525646254a114f60fce4de9edd46b2" category="inline-link-macro-rx"></block></block>
+  <block id="198b2bd9b00943bcedf9ecdd177e1c38" category="inline-image-macro">SAP LaMa, Ansible Control Node, NetApp Storage라는 레이블이 붙은 세 개의 상자가 있는 매우 복잡한 이미지입니다. 각 상자에는 각 레벨에서 수행되는 각 프로세스 단계가 포함되어 있습니다.</block>
+  <block id="e066a9a52290d370f53ecf456c5be0f4" category="paragraph"><block ref="e066a9a52290d370f53ecf456c5be0f4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b9e659c463a2a678f0e611704e512f86" category="paragraph">Ansible 제어 노드 역할을 하는 중앙 호스트는 SAP LaMa의 요청을 실행하고 Ansible 플레이북을 사용하여 NetApp 스토리지 운영을 트리거하는 데 사용됩니다. SAP LaMa에 대한 통신 게이트웨이로 호스트를 사용할 수 있도록 SAP 호스트 에이전트 구성 요소가 이 호스트에 설치되어 있어야 합니다.</block>
+  <block id="638982755cb7864b186283043849388f" category="paragraph">LaMa Automation Studio 내에서 Ansible 호스트의 SAP 호스트 에이전트에 등록된 공급자가 정의됩니다. Host Agent 구성 파일은 요청된 작업에 따라 명령줄 매개 변수 집합을 사용하여 SAP LaMa에서 호출되는 셸 스크립트를 가리킵니다.</block>
+  <block id="68dcf0e282674b14fed37a5be8c28905" category="paragraph">LaMa Automation Studio 내에서 사용자 지정 프로비저닝과 사용자 지정 후크는 프로비저닝 중에 스토리지 클론 생성 작업을 실행하고, 시스템 프로비저닝 해제 시 정리 작업을 실행하도록 정의됩니다. 그런 다음 Ansible 제어 노드의 셸 스크립트가 해당하는 Ansible 플레이북을 실행하여 스냅샷 및 FlexClone 작업을 트리거하고 프로비저닝 해제 워크플로우에서 클론을 삭제합니다.</block>
+  <block id="dae3fc22ee8211dc76b1b10604d664bf" category="paragraph">NetApp Ansible 모듈과 LaMa Provider 정의에 대한 자세한 내용은 다음 사이트에서 확인할 수 있습니다.</block>
+  <block id="0041533e713a78228719d821d293dcd4" category="inline-link">NetApp Ansible 모듈</block>
+  <block id="9f56dd7786268026308d6c101b3d76c4" category="list-text"><block ref="9f56dd7786268026308d6c101b3d76c4" category="inline-link-rx"></block></block>
+  <block id="d57e5b07e6dad93c13ff5947c9e556e5" category="inline-link">SAP LaMa 설명서 – 공급자 정의</block>
+  <block id="b961383b57c9b01bb96a93facf9ff473" category="list-text"><block ref="b961383b57c9b01bb96a93facf9ff473" category="inline-link-rx"></block></block>
+  <block id="714cd76444125876327bb20f1a232e54" category="inline-link-macro">다음은 구현 예입니다.</block>
+  <block id="19c69d5c1080a8849a938b3a8ddcefed" category="paragraph"><block ref="19c69d5c1080a8849a938b3a8ddcefed" category="inline-link-macro-rx"></block></block>
+  <block id="4159d7c81405c1d9cd6ccf2d2dc39862" category="summary">테스트 또는 교육 목적으로 대상 시스템에서 소스 시스템의 데이터를 사용할 수 있도록 여러 가지 시나리오가 있습니다. 이러한 테스트 및 교육 시스템은 정기적으로 소스 시스템의 데이터를 업데이트하여 테스트 및 교육이 현재 데이터 세트와 함께 수행되도록 해야 합니다. 이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 있는 여러 작업으로 구성되며 자동화 수준에 따라 몇 일이 걸릴 수 있습니다.</block>
+  <block id="f57f410c06dab6a60fe8e6a28770509d" category="doc">시스템 업데이트, 복사 및 클론 복제 사용 사례</block>
+  <block id="58cf688ef7e81bf38e1210c60ca69584" category="inline-link-macro">이전: SAP 시스템 클론, 복제 및 업데이트 시나리오</block>
+  <block id="47e39cc1a5ff97fe1718e7ce1eb31c90" category="paragraph"><block ref="47e39cc1a5ff97fe1718e7ce1eb31c90" category="inline-link-macro-rx"></block></block>
+  <block id="56d5fedf8fc8bf63d4174389cb19f7ed" category="inline-image-macro">이 이미지는 주요 개발 환경에서 임시 프로젝트 분할, 수리 시스템, 교육 시스템 및 SANbox 시스템에 이르는 환경 워크플로를 보여 줍니다. 이 슬라이드에는 시스템 새로 고침, 시스템 복제 및 시스템 클론이 이러한 용도로 사용되는 위치가 나와 있습니다.</block>
+  <block id="27a88cfd40f9f876e71c77f4b3ebce5b" category="paragraph"><block ref="27a88cfd40f9f876e71c77f4b3ebce5b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3e7487fffc42c7f8a2aeaa0819e630a4" category="paragraph">SAP LaMa와 NetApp 클론 복제 워크플로우를 사용하면 인프라 및 데이터베이스 계층에서 필요한 작업을 더 빠르게 처리하고 자동화할 수 있습니다. SAP LaMa는 소스 시스템에서 타겟 시스템으로 백업을 복원하는 대신 NetApp Snapshot 복사본과 NetApp FlexClone 기술을 사용하여 다음 그림과 같이 몇 시간이 아닌 몇 분 이내에 HANA 데이터베이스를 시작하는 데 필요한 작업을 수행할 수 있습니다. 클론 생성 프로세스에 필요한 시간은 데이터베이스의 크기와 무관합니다. 따라서 몇 분 안에 초대형 시스템도 만들 수 있습니다. 운영 체제 및 데이터베이스 계층뿐만 아니라 SAP 사후 처리 측면에서도 작업을 자동화하여 런타임을 더욱 줄일 수 있습니다.</block>
+  <block id="5250c15aaf7bc535777e729ee215e00a" category="inline-image-macro">이 이미지는 NetApp Snapshot 복사본 및 NetApp FlexClone ® 기술을 사용하는 복제 프로세스와 그 없는 복제 프로세스를 비교하여 보여줍니다. 따라서 프로세스 속도가 크게 향상됩니다.</block>
+  <block id="a0519aa55a3128b6d977868b191a4c9b" category="paragraph"><block ref="a0519aa55a3128b6d977868b191a4c9b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f18de1d998f8c83fe7b43b1fe738c842" category="paragraph">논리적 손상은 소프트웨어 오류, 인적 오류 또는 태업 때문에 발생할 수 있습니다. 하지만 논리적 손상은 표준 고가용성 및 재해 복구 솔루션을 통해 해결할 수 없는 경우가 많습니다. 따라서 논리적 손상이 발생한 계층, 애플리케이션, 파일 시스템 또는 스토리지에 따라 가동 중지 시간을 최소화하고 허용되는 데이터 손실 요구 사항을 충족하지 못하는 경우가 있습니다.</block>
+  <block id="fe74c6bc72a7cff471befb07d7218feb" category="paragraph">SAP 시스템을 복원하는 대신 별도의 복구 시스템에서 문제를 분석하여 시스템 내의 논리적 오류를 해결하는 것이 더 좋습니다. 근본 원인 분석에는 비즈니스 프로세스 및 애플리케이션 소유자의 참여가 필요합니다. 이 시나리오에서는 논리적 손상이 발생하기 전에 저장된 데이터를 기반으로 복구 시스템(운영 시스템의 클론)을 생성합니다. 복구 시스템 내에서 필요한 데이터를 내보낸 후 운영 시스템으로 가져올 수 있습니다. 이 방법을 사용하면 운영 시스템을 중단할 필요가 없으며, 최상의 시나리오에서는 데이터가 없거나 극히 일부의 데이터만 손실됩니다.</block>
+  <block id="ff74c5a8991cf91e9cf124b189bc2877" category="paragraph">수리 시스템을 설정할 때는 유연성과 속도가 매우 중요합니다. NetApp 스토리지 기반 Snapshot 백업을 사용하면 일관된 여러 데이터베이스 이미지를 사용하여 NetApp FlexClone 기술을 사용하여 운영 시스템의 클론을 생성할 수 있습니다. 파일 기반 백업에서 리디렉션된 복원을 사용하여 복구 시스템을 설정하는 경우 몇 시간이 아니라 몇 초 이내에 FlexClone 볼륨을 생성할 수 있습니다.</block>
+  <block id="7b0ea79aabb35accd10a6389af9d0d3b" category="inline-image-macro">이 이미지는 FlexClone 기술을 사용하여 클론 복제 시스템에서 복구 시스템을 생성하는 단계별 프로세스를 보여 줍니다.</block>
+  <block id="0fd3fed7a6654b610a5215582f3890df" category="paragraph"><block ref="0fd3fed7a6654b610a5215582f3890df" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7a11ff2d89142afadf2fbe0a94ecc400" category="paragraph">SnapMirror를 통한 스토리지 복제를 사용하면 RTO 및 RPO를 위험에 빠뜨리지 않고 재해 복구 테스트를 실행할 수 있습니다. 데이터 복제를 중단하지 않고 재해 복구 테스트를 수행할 수 있습니다. 비동기식 및 동기식 SnapMirror의 재해 복구 테스트에서는 재해 복구 대상에 있는 Snapshot 백업과 FlexClone 볼륨을 사용합니다.</block>
+  <block id="ecec150056053bbf2793c30155015e60" category="paragraph">SAP LaMa는 전체 테스트 절차를 조율하는 데 사용할 수 있으며 네트워크 펜싱, 대상 호스트 유지 관리 등을 수행합니다.</block>
+  <block id="cf485594ca520eaab221d7e9f1c35741" category="inline-image-macro">이 이미지는 운영 데이터 센터의 NetApp 스토리지 시스템, 로컬 DR 데이터 센터 및 원격 DR 데이터 센터 간의 관계를 보여 줍니다. 동기식 SnapMirror와 비동기식 SnapMirror 관계에 의해 연결됩니다.</block>
+  <block id="8dda9dbd415a90ebdecd67562ff62647" category="paragraph"><block ref="8dda9dbd415a90ebdecd67562ff62647" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="041a3821794f47be7b2454c6e42e40e9" category="inline-link-macro">이제 Ansible을 사용하여 NetApp SAP LaMa를 통합할 수 있습니다.</block>
+  <block id="cbd461cf21aebe404144b08c1c869d9c" category="paragraph"><block ref="cbd461cf21aebe404144b08c1c869d9c" category="inline-link-macro-rx"></block></block>
+  <block id="2e979feafadb9bbdb7932ab43f8d549c" category="sidebar">Ansible을 사용한 NetApp SAP Landscape Management 통합</block>
 </blocks>

@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-introduction.html 
+keywords: tr4953, introduction, 4953, clone, copy, refresh automation 
+summary: 'SAP LaMa(Landscape Management)를 사용하면 SAP 시스템 관리자가 전체 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 비롯한 SAP 시스템 작업을 자동화할 수 있습니다.' 
+---
+= TR-4953: Ansible을 사용한 NetApp SAP 환경 관리 통합
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+Michael Schlosser, NetApp Nils Bauer
+
+[role="lead"]
+SAP LaMa(Landscape Management)를 사용하면 SAP 시스템 관리자가 전체 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 비롯한 SAP 시스템 작업을 자동화할 수 있습니다.
+
+NetApp은 SAP LaMa가 SAP LaMa Automation Studio를 통해 NetApp Snapshot 및 FlexClone과 같은 기술에 액세스할 수 있도록 다양한 Ansible 모듈을 제공합니다. 이러한 기술을 통해 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 간소화 및 가속화할 수 있습니다.
+
+이러한 통합은 사내에서 NetApp 스토리지 솔루션을 실행하는 고객 또는 Amazon Web Services, Microsoft Azure 또는 Google Cloud Platform과 같은 퍼블릭 클라우드 공급자가 제공하는 NetApp 스토리지 서비스를 사용하는 고객이 사용할 수 있습니다.
+
+이 문서에서는 Ansible 자동화를 사용하여 SAP 시스템 복사, 클론 복제, 업데이트 작업을 위한 NetApp 스토리지 기능을 갖춘 SAP LaMa 구성을 설명합니다.
+
+link:lama-ansible-sap-system-clone,-copy,-and-refresh-scenarios.html["다음: SAP 시스템 클론, 복제 및 업데이트 시나리오"]

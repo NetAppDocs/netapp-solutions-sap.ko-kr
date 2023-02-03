@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-conclusion.html 
+keywords: conclusion, additional information, version history 
+summary: Ansible과 같은 최신 자동화 프레임워크를 SAP LaMa 프로비저닝 워크플로우에 통합하면 고객은 표준 또는 더 복잡한 인프라 요구사항을 해결할 수 있는 유연한 솔루션을 얻게 됩니다. 
+---
+= 결론
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:lama-ansible-appendix-provider-script-configuration-and-ansible-playbooks.html["이전: 공급자 스크립트 구성 및 Ansible 플레이북"]
+
+[role="lead"]
+Ansible과 같은 최신 자동화 프레임워크를 SAP LaMa 프로비저닝 워크플로우에 통합하면 고객은 표준 또는 더 복잡한 인프라 요구사항을 해결할 수 있는 유연한 솔루션을 얻게 됩니다.
+
+
+
+== 추가 정보를 찾을 수 있는 위치
+
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* 컬렉션 in the NetApp 네임스페이스
++
+https://docs.ansible.com/ansible/latest/collections/netapp/index.html["https://docs.ansible.com/ansible/latest/collections/netapp/index.html"^]
+
+* Ansible 통합 및 샘플 Ansible Playbook에 대한 문서
++
+https://github.com/sap-linuxlab/demo.netapp_ontap["https://github.com/sap-linuxlab/demo.netapp_ontap"^]
+
+* 일반 Ansible 및 NetApp 통합
++
+https://www.ansible.com/integrations/infrastructure/netapp["https://www.ansible.com/integrations/infrastructure/netapp"^]
+
+* SAP LaMa를 Ansible과 통합하는 방법에 대한 블로그
++
+https://blogs.sap.com/2020/06/08/outgoing-api-calls-from-sap-landscape-management-lama-with-automation-studio/["https://blogs.sap.com/2020/06/08/outgoing-api-calls-from-sap-landscape-management-lama-with-automation-studio/"^]
+
+* SAP Landscape Management 3.0, Enterprise Edition 설명서
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/4df88a8f418c5059e10000000a42189c.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/4df88a8f418c5059e10000000a42189c.html#loio4df88a8f418c5059e10000000a42189c"^]
+
+* SAP LaMa 설명서 – 공급자 정의
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html"^]
+
+* SAP LaMa 설명서 - 맞춤형 후크
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/139eca2f925e48738a20dbf0b56674c5.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/139eca2f925e48738a20dbf0b56674c5.html"^]
+
+* SAP LaMa 설명서 - SAP Host Agent 등록 스크립트 구성
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/250dfc5eef4047a38bab466c295d3a49.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/250dfc5eef4047a38bab466c295d3a49.html"^]
+
+* SAP LaMa Documentation - Custom Operations 및 Custom Hook에 대한 매개 변수입니다
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/0148e495174943de8c1c3ee1b7c9cc65.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/0148e495174943de8c1c3ee1b7c9cc65.html"^]
+
+* SAP LaMa 설명서 - Adaptive Design
++
+https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html["https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html"^]
+
+* NetApp 제품 설명서
++
+https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]
+
+
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2023년 1월 | 최초 릴리스 
+|===
