@@ -2791,7 +2791,6 @@
   <block id="bc86535b64f45ec20770222ebaa5ca21" category="cell">SnapCenter 4.6 HANA 시스템 복제 지원을 포함하는 업데이트</block>
   <block id="02fa3d38f575ae1d4c7d0f5663a0d3ed" category="sidebar">SnapCenter를 사용한 SAP HANA 시스템 복제 백업 및 복구</block>
   <block id="4bb12dc6461f1d5fa4e11ed67fdeef9e" category="sidebar">SAP HANA 시스템 복제 개요</block>
-  <block id="c35a0cd0a7282bf70f4933947c018788" category="list-text">AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900</block>
   <block id="152277675a8ef46c12f1dc91f2f53ede" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>.</block>
   <block id="18cab9085e2115741cf08f1964299a5a" category="paragraph">이 문서에서는 NFS 프로토콜 버전 3(NFSv3) 또는 NFS 프로토콜 버전 4(NFSv4.1)의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
   <block id="e678bbdfe53ad933277605d32601cebe" category="admonition">NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.</block>
@@ -5288,4 +5287,5 @@
   <block id="041a3821794f47be7b2454c6e42e40e9" category="inline-link-macro">이제 Ansible을 사용하여 NetApp SAP LaMa를 통합할 수 있습니다.</block>
   <block id="cbd461cf21aebe404144b08c1c869d9c" category="paragraph"><block ref="cbd461cf21aebe404144b08c1c869d9c" category="inline-link-macro-rx"></block></block>
   <block id="2e979feafadb9bbdb7932ab43f8d549c" category="sidebar">Ansible을 사용한 NetApp SAP Landscape Management 통합</block>
+  <block id="17f31b52b49dfe7dec5229f7caf638c6" category="list-text">AFF A150, AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900</block>
 </blocks>
