@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: backup/anf-cba-where-to-find-additional-information-and-version-history.html 
+keywords:  
+summary:  
+---
+= 추가 정보 및 버전 기록을 찾을 수 있는 위치
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:anf-cba-backup-operations-with-hana-system-replication.html["이전: HANA 시스템 복제를 사용한 백업 작업."]
+
+[role="lead"]
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* NetApp Cloud Backup for Applications 제품 설명서
++
+https://docs.netapp.com/us-en/cloud-manager-backup-restore/concept-protect-cloud-app-data-to-cloud.html["클라우드 네이티브 애플리케이션 데이터 보호 | NetApp 문서"^]
+
+* Azure NetApp Files를 사용하는 솔루션 아키텍처
++
+https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures["https://learn.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures"^]
+
+
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2023년 3월 | 초기 버전 
+|===

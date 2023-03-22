@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: backup/anf-cba-snapshot-based-backup-operations-of-non-data-volumes.html 
+keywords: configuration, assign policy, non-data volume, cba topology view, azure portal 
+summary: 이 섹션에서는 비 데이터 볼륨에 대한 스냅샷 기반 백업 작업을 수행하는 방법에 대해 설명합니다. 
+---
+= 데이터가 아닌 볼륨에 대한 스냅샷 기반 백업 작업
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:anf-cba-file-based-backup-operations-of-the-hana-database.html["이전: HANA 데이터베이스의 파일 기반 백업 작업"]
+
+[role="lead"]
+앞에서 설명한 바와 같이 CBA는 비 데이터 볼륨의 백업 작업을 지원합니다. 비 데이터 볼륨은 과 같은 특정 SAP HANA 시스템에 속하는 볼륨입니다 `/hana/shared` 또는 SAP 애플리케이션 서버 볼륨 등 `/usr/sap/SID` 또는 `sapmnt/SID`.
+
+
+
+== 구성
+
+. CBA 대시보드 뷰에서 Manage System – Add Non-Data Volume을 선택합니다.
++
+image:anf-cba-image57.png["완료 중인 단계의 스크린샷."]
+
+. 비 데이터 볼륨에 대한 정보를 입력합니다.
++
+HANA 시스템의 ANF 볼륨에 사용되는 작업 환경과 NetApp 계정을 선택합니다. 볼륨을 선택합니다. 이 예에서 `PR1_shared`.
+
++
+image:anf-cba-image58.png["완료 중인 단계의 스크린샷."]
+
+
+
+
+
+== 정책을 할당합니다
+
+예약된 백업을 활성화하려면 백업 정책을 할당해야 합니다.
+
+. 정책 할당 * > * 비 데이터 볼륨 * 으로 이동합니다.
++
+image:anf-cba-image59.png["완료 중인 단계의 스크린샷."]
+
+. 할당 * 을 클릭합니다.
++
+image:anf-cba-image60.png["완료 중인 단계의 스크린샷."]
+
+
+
+
+
+== 데이터 볼륨이 아닌 볼륨에 대해 필요 시 백업을 생성합니다
+
+필요 시 데이터베이스 백업을 생성하려면 다음 단계를 수행하십시오.
+
+. CBA 대시보드 보기의 컨텍스트 메뉴에서 On-Demand Backup – Data Volume을 선택합니다.
++
+image:anf-cba-image61.png["완료 중인 단계의 스크린샷."]
+
+. 주문형 백업 대화 상자에서 * 정책 기반 * 또는 * 한 번 * 을 선택합니다.
++
+** 정책 기반의 경우 필요 시 백업은 보존 및 사전/사후 스크립트 구성과 관련하여 예약된 백업과 동일한 방식으로 처리됩니다.
+** 한 번만 사용하면 특정 보존, 특정 백업 이름 및 특정 사전/사후 스크립트를 정의할 수 있습니다.
++
+이 예에서는 정책 기반 을 선택했으며 다음 단계로 정책 및 보존 을 선택해야 합니다.
+
++
+image:anf-cba-image62.png["완료 중인 단계의 스크린샷."]
+
++
+작업 모니터링 보기에서 다양한 워크플로 단계, 단계의 런타임 및 전체 작업 런타임을 볼 수 있습니다. 이 예에서는 백업 작업에 47초가 걸렸습니다.
+
++
+image:anf-cba-image63.png["작업 모니터링 보기의 스크린 샷"]
+
+
+
+
+
+
+
+== CBA 토폴로지 뷰에서 스냅샷 백업 정보를 검토합니다
+
+CBA 대시보드 보기의 컨텍스트 메뉴에서 * 토폴로지 보기 * 를 선택하여 백업 개요를 엽니다.
+
+백업 개요에는 CBA를 사용하여 생성된 백업 목록이 표시됩니다.
+
+
+NOTE: 백업 이름은 백업 정책에 정의된 형식을 사용합니다. ANF 볼륨의 스냅샷 이름에 동일한 명명 규칙도 사용됩니다.
+
+image:anf-cba-image64.png["완료 중인 단계의 스크린샷."]
+
+
+
+== Azure Portal에서 스냅샷 백업 정보를 검토합니다
+
+CBA에서 백업 이름으로 사용되는 이름은 ANF 볼륨의 스냅샷 백업 이름으로 사용됩니다. 다음 그림에서는 비 데이터 볼륨에 대한 Azure 포털과 스냅샷 백업을 보여 줍니다 `pr1-shared`.
+
+image:anf-cba-image65.png["완료 중인 단계의 스크린샷."]
+
+link:anf-cba-snapshot-based-backup-operations-of-global-non-data-volumes.html["다음: 글로벌 비 데이터 볼륨의 스냅샷 기반 백업 작업"]
