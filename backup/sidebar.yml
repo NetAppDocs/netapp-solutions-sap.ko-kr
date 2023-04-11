@@ -10,11 +10,13 @@ entries:
   - title: Azure NetApp Files를 사용한 백업 및 복구
     url: "/backup/anf-cba-backup-and-recovery-using-azure-netapp-files.html"
   - title: 신속한 백업 및 클론 복제 작업의 사용 사례와 가치를 나타냅니다
-    entries:
-    - title: 개요
-      url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
-    - title: Cloud Backup for Applications 아키텍처
-      url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
+    url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
+  - title: Cloud Backup for Applications 아키텍처
+    url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
+  - title: ANF 기반 SAP HANA용 Cloud Backup for Applications
+    url: "/backup/anf-cba-cloud-backup-for-applications-for-sap-hana-on-anf.html"
+  - title: Cloud Backup for Applications 개념 및 모범 사례
+    url: "/backup/anf-cba-cloud-backup-for-applications-concepts-and-best-practices.html"
   - title: 설치 및 구성 단계 개요
     url: "/backup/anf-cba-overview-of-installation-and-configuration-steps.html"
   - title: 백업 정책을 생성합니다

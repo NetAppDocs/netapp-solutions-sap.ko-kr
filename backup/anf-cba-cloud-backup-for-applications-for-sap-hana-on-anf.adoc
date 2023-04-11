@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: backup/anf-cba-cloud-backup-for-applications-for-sap-hana-on-anf.html 
+keywords: sap hana releases, configurations, operations 
+summary: SAP HANA 파일 기반 백업은 데이터베이스 블록 무결성 검사에 사용되며, 필요 시 또는 예약된 백업 작업으로 실행될 수도 있습니다. 정책 기반 보존 관리는 파일 시스템 레벨 및 HANA 백업 카탈로그 내에서 수행됩니다. 
+---
+= ANF 기반 SAP HANA용 Cloud Backup for Applications
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+link:anf-cba-cloud-backup-for-applications-architecture.html["이전: Cloud Backup for Applications 아키텍처"]
+
+
+
+== 솔루션 개요
+
+Cloud Backup for Application은 다음 구성 요소에 대해 스냅샷 기반 백업 작업을 지원합니다.
+
+. * SAP HANA 시스템 * 데이터 볼륨.
+. SAP HANA 데이터베이스의 * 비 데이터 볼륨 예를 들면, 입니다 `/hana/shared` 볼륨 및/또는 SAP 애플리케이션 서버 데이터
+. * 특정 HANA 시스템에 속하지 않는 글로벌 비 데이터 볼륨 *. 예를 들어, SAP 전송 디렉토리입니다 `/usr/sap/trans`.
+
+
+이러한 구성 요소의 백업 작업은 다음과 같습니다.
+
+* 예약된 백업 또는 필요 시 백업
+* 사전/사후 스크립트 옵션
+* 정책 기반 보존 관리
++
+** ANF 볼륨 레벨의 스냅샷
+** SAP HANA 백업 카탈로그 내(HANA 데이터 볼륨 백업용)
+
+
+
+
+SAP HANA 파일 기반 백업은 데이터베이스 블록 무결성 검사에 사용되며, 필요 시 또는 예약된 백업 작업으로 실행될 수도 있습니다. 정책 기반 보존 관리는 파일 시스템 레벨 및 HANA 백업 카탈로그 내에서 수행됩니다.
+
+HANA 데이터베이스 로그 백업의 보존 관리는 HANA 데이터베이스 데이터 백업(스냅샷 또는 파일 기반)의 정의된 보존을 기반으로 수행됩니다.
+
+CBA는 모든 스냅샷 기반 백업에 대한 복원 작업을 지원합니다. 파일 기반 백업은 기본 HANA 툴을 사용해서만 복원할 수 있습니다.
+
+image:anf-cba-image6.png["이 이미지는 HANA 시스템 멀티 테넌트 데이터베이스 컨테이너 및 글로벌 비 데이터 볼륨에 대한 백업 및 복원을 보여 줍니다."]
+
+
+
+== 솔루션 운영
+
+스냅샷 데이터 백업은 SAP HANA 데이터베이스 백업 저장점을 트리거하여 Cloud Backup for Applications에서 실행되므로 스토리지 계층에 생성된 스냅샷 복사본은 SAP HANA 데이터베이스의 일관된 이미지를 기반으로 합니다. 를 참조하십시오 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b41a2823576f4726be649bc98e61d62c.html?q=sap%20hana%20snapshot%20backup["SAP 관리 가이드 를 참조하십시오"^] 를 참조하십시오.
+
+Cloud Backup for Applications는 모든 SAP HANA 관련 리소스를 완벽하게 백업할 수 있도록 스토리지 기반 Snapshot 복사본을 사용하여 데이터가 아닌 모든 볼륨을 백업할 수도 있습니다. 개별 보존 및 보호 정책을 사용할 수 있도록 데이터베이스 데이터 백업과 별도로 비데이터 볼륨을 예약할 수 있습니다.
+
+SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. CBA 내에서 블록 무결성 검사를 실행할 수 있습니다. 블록 무결성 검사(파일 기반) 백업도 백업을 보조 스토리지 위치로 오프로드하는 데 사용됩니다.
+
+구성 가능한 보존 정책을 기반으로 Cloud Backup for Applications는 데이터 백업, 로그 백업, SAP HANA 백업 카탈로그를 관리하는 기능을 제공합니다.
+
+다음 그림에서는 백업 솔루션을 요약합니다.
+
+image:anf-cba-image7.png["이 그림은 백업 솔루션을 요약합니다."]
+
+비데이터 볼륨의 스토리지 기반 스냅샷 백업을 실행할 때 Cloud Backup for Applications는 다음 작업을 수행합니다.
+
+. 비 데이터 볼륨의 스토리지 스냅샷 복사본을 생성합니다.
+. 정의된 보존 정책을 기반으로 스토리지 스냅샷 복사본을 삭제합니다.
+
+
+SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할 때 Cloud Backup for Applications는 다음 작업을 수행합니다.
+
+. SAP HANA 백업 저장점을 생성하여 지속성 계층에서 일관된 이미지를 생성합니다.
+. 데이터 볼륨의 스토리지 스냅샷 복사본을 생성합니다.
+. 스토리지 스냅샷 백업을 SAP HANA 백업 카탈로그에 등록합니다.
+. SAP HANA 백업 저장점을 릴리즈합니다.
+. 정의된 보존 정책을 기반으로 스토리지 스냅샷 복사본을 삭제합니다.
+. 정의된 보존 정책을 기반으로 SAP HANA 백업 카탈로그 항목을 삭제합니다.
+. 데이터 백업을 수동으로 삭제하거나 보존 정책을 기반으로 할 때마다 Cloud Backup for Applications는 가장 오래된 데이터 백업보다 오래된 모든 로그 백업을 삭제합니다. 로그 백업은 파일 시스템과 SAP HANA 백업 카탈로그에서 삭제됩니다.
+
+
+
+
+== 지원되는 SAP HANA 릴리즈 및 구성
+
+Cloud Backup for Applications는 다음과 같은 구성 옵션을 사용하는 하나 또는 여러 테넌트가 있는 HANA MDC 시스템을 지원합니다.
+
+* SAP HANA 2.0 SPS4 이상
+* SAP HANA 단일 호스트 시스템
+* 섹션에 설명된 대로 SAP HANA 다중 호스트 시스템을 구축할 수 있습니다 link:anf-cba-backup-operations-with-hana-system-replication.html#backup-operations-with-hana-multiple-host-systems[""HANA 다중 호스트 시스템을 사용한 백업 작업""]
+* 섹션에 설명된 대로 HSR(HANA 시스템 복제)으로 구성된 SAP HANA 시스템 link:anf-cba-backup-operations-with-hana-system-replication.html["“HANA 시스템 복제를 사용한 백업 작업”"]
+
+
+link:anf-cba-cloud-backup-for-applications-concepts-and-best-practices.html["다음은 Cloud Backup for Applications 개념 및 모범 사례입니다."]

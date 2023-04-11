@@ -2533,8 +2533,6 @@
   <block id="0435a2de9b6c71fb28e3ba4071b531de" category="sidebar">SAP HANA를 사용한 교차 지역 복제 개요</block>
   <block id="6c45d41e933130a1d4e3729dad7439f3" category="sidebar">재해 복구 테스트 개요</block>
   <block id="6db8771af1e20f8b4493135fb9b2465f" category="sidebar">재해 복구 페일오버 개요</block>
-  <block id="6abf73ac39531a37ff136074cc08335d" category="sidebar">Azure NetApp Files with SnapCenter 서비스를 사용한 SAP HANA 백업 및 복구</block>
-  <block id="0f68b904e33d9ac04605aecc958bcf52" category="sidebar">추가 정보</block>
   <block id="f41a551d63cd5cff04cf3c09ee2c3dea" category="sidebar">SnapCenter를 사용한 SAP HANA 백업 및 복구</block>
   <block id="dd0dec62b557e33c38d24dc3cbaed4bc" category="sidebar">스토리지 복제를 사용한 SAP HANA 재해 복구</block>
   <block id="fceb9e9a7a8e75da09a45b74960f3ce3" category="sidebar">Snap Creator를 통해 SAP HANA 백업 및 복구</block>
@@ -5290,8 +5288,6 @@
   <block id="17f31b52b49dfe7dec5229f7caf638c6" category="list-text">AFF A150, AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900</block>
   <block id="e6c434a39cbdd99e996e35ba917a1f79" category="summary">Cloud Backup for Applications는 NetApp 클라우드 스토리지에서 실행되는 애플리케이션에 데이터 보호 기능을 제공하는 SaaS 솔루션입니다. NetApp BlueXP에서 지원되는 애플리케이션을 위한 클라우드 백업은 애플리케이션 정합성을 보장하고 Azure NetApp Files 기반 SAP HANA를 정책 기반으로 효율적으로 보호합니다. Cloud Backup for Applications는 중앙 집중식 제어 및 감독을 제공하는 동시에, 사용자가 애플리케이션별 백업 및 복원 작업을 관리하는 기능을 위임합니다.</block>
   <block id="68b2531582c9405379a246e2f5612632" category="doc">Cloud Backup for Applications 아키텍처</block>
-  <block id="1e418ab89f193c74121a07ce83abaed4" category="inline-link-macro">이전: Cloud Backup for Applications 아키텍처 개요</block>
-  <block id="d9d3ce81752bc06ac7427df8f9d0dd8d" category="paragraph"><block ref="d9d3ce81752bc06ac7427df8f9d0dd8d" category="inline-link-macro-rx"></block></block>
   <block id="f6fcca3f3d3bfd44d0aa729b3d893d98" category="paragraph">Cloud Backup for Applications는 NetApp BlueXP에서 SaaS로 실행되며 프레임워크 및 UI를 활용합니다. BlueXP 작업 환경 프레임워크는 Azure NetApp Files의 자격 증명을 구성하고 관리하는 데 사용됩니다.</block>
   <block id="b56d64743b38fb4b0973d9110fb21c20" category="paragraph">BlueXP 커넥터는 고객 VNET 내에 배포해야 합니다. NetApp SaaS 구성 요소와 고객 환경 간의 통신은 커넥터를 통해서만 수행됩니다. 이 커넥터는 ANF 관리 API를 사용하여 ANF 스토리지 작업을 실행합니다.</block>
   <block id="9e9b9e3d6624aa7bef29265a2780a193" category="paragraph">HANA 플러그인은 HANA 데이터베이스별 논리를 제공하며 각 HANA 호스트에 구축해야 합니다. HANA 플러그인은 HANA hdbsql 클라이언트와 사용자 저장소 키를 사용하여 HANA 데이터베이스와 통신합니다. 모든 데이터베이스 작업은 BlueXP 커넥터에 의해 트리거됩니다.</block>
@@ -5465,7 +5461,6 @@
   <block id="8fb6836a6a4f22c7090d031fb31467d8" category="inline-link-macro">다음: 비 데이터 볼륨의 스냅샷 기반 백업 작업</block>
   <block id="052102618f8c4535a292e7e8eda937ce" category="paragraph"><block ref="052102618f8c4535a292e7e8eda937ce" category="inline-link-macro-rx"></block></block>
   <block id="731c91555406019fb4ca7b621105abba" category="summary">백업 실행은 모든 데이터 보호 전략에서 중요한 부분입니다. 시스템 장애로부터 복구할 수 있도록 정기적으로 백업이 예약됩니다. 이것이 가장 확실한 사용 사례이지만 백업 및 복구 작업을 가속화하는 데 중요한 다른 SAP 라이프사이클 관리 작업도 있습니다.</block>
-  <block id="51f47ae99b1d73a12860cadd58026d0c" category="doc">백업 및 클론 복제 작업의 사용 사례와 가치를 개괄적으로 설명합니다</block>
   <block id="e97a05d9d17313a2f8bcb989f95b853d" category="inline-link-macro">이전: Azure NetApp Files를 사용한 백업 및 복구</block>
   <block id="ec02aabec7c977a0d1479d4c3756ea39" category="paragraph"><block ref="ec02aabec7c977a0d1479d4c3756ea39" category="inline-link-macro-rx"></block></block>
   <block id="9a8fc8d0db2b6ce4ad7546eec3a993b7" category="paragraph">SAP HANA 시스템 업그레이드는 업그레이드 전에 필요 시 백업을 수행하고, 업그레이드 실패 시 복원 작업이 계획된 전체 다운타임을 크게 줄일 수 있는 경우를 예로 들 수 있습니다. 4TB 데이터베이스의 경우, 스냅샷 기반 백업 및 복원 작업을 통해 계획된 다운타임을 8시간 줄일 수 있습니다.</block>
@@ -5853,4 +5848,15 @@
   <block id="fb4d860c1938626a4cb9b8f66c6eb6f2" category="cell">2023년 3월</block>
   <block id="8e44a3ecd2d34ebd0399052b6ee88e12" category="sidebar">ANF 기반 SAP HANA - 애플리케이션용 클라우드 백업을 사용한 백업 및 복구</block>
   <block id="a412c94443f5ac6c0322b71de9e01398" category="sidebar">신속한 백업 및 클론 복제 작업의 사용 사례와 가치를 나타냅니다</block>
+  <block id="0c955f27cc01753f6caba6b35f81c22b" category="inline-link-macro">이전: Cloud Backup for Applications 개념 및 모범 사례</block>
+  <block id="1d6e2b0c5c8f5ecf276b1c1ae033b52c" category="paragraph"><block ref="1d6e2b0c5c8f5ecf276b1c1ae033b52c" category="inline-link-macro-rx"></block></block>
+  <block id="caf742ad86750136d207a022f2424f96" category="summary">Cloud Backup for Applications를 구성하기 전에 다양한 SAP 시스템의 RTO 및 RPO 요구 사항에 따라 데이터 보호 전략을 정의해야 합니다. 일반적인 접근 방식은 운영, 개발, 테스트 또는 샌드박스 시스템과 같은 시스템 유형을 정의하는 것입니다. 동일한 시스템 유형의 모든 SAP 시스템은 일반적으로 동일한 데이터 보호 매개 변수를 사용합니다.</block>
+  <block id="f28f5248fad899e39a597fa4869c8b78" category="inline-link-macro">이전: ANF 기반 SAP HANA용 Cloud Backup for Applications</block>
+  <block id="158768d66bdd83e626f048a6dff08419" category="paragraph"><block ref="158768d66bdd83e626f048a6dff08419" category="inline-link-macro-rx"></block></block>
+  <block id="1833b1326ace61b7d0db9c7322a816f1" category="inline-link-macro">다음은 Cloud Backup for Applications 개념 및 모범 사례입니다.</block>
+  <block id="94e31554b8b3f5e3703d90f6ca54b3ad" category="paragraph"><block ref="94e31554b8b3f5e3703d90f6ca54b3ad" category="inline-link-macro-rx"></block></block>
+  <block id="709e94314858df04c7357462a0792849" category="inline-link-macro">이전: 백업 및 클론 복제 작업 가속의 활용 사례 및 가치</block>
+  <block id="7d0603f1cd927eedf5cdee93312e268b" category="paragraph"><block ref="7d0603f1cd927eedf5cdee93312e268b" category="inline-link-macro-rx"></block></block>
+  <block id="0f8328591822cd94c86e0d9fa42a479e" category="inline-link-macro">다음 단계: ANF 기반 SAP HANA용 클라우드 백업 애플리케이션</block>
+  <block id="2aa507441d0bdacbf0b3c44eb914612f" category="paragraph"><block ref="2aa507441d0bdacbf0b3c44eb914612f" category="inline-link-macro-rx"></block></block>
 </blocks>

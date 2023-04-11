@@ -4,7 +4,7 @@ permalink: backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-
 keywords: system upgrade, backups, restore 
 summary: 백업 실행은 모든 데이터 보호 전략에서 중요한 부분입니다. 시스템 장애로부터 복구할 수 있도록 정기적으로 백업이 예약됩니다. 이것이 가장 확실한 사용 사례이지만 백업 및 복구 작업을 가속화하는 데 중요한 다른 SAP 라이프사이클 관리 작업도 있습니다. 
 ---
-= 백업 및 클론 복제 작업의 사용 사례와 가치를 개괄적으로 설명합니다
+= 신속한 백업 및 클론 복제 작업의 사용 사례와 가치를 나타냅니다
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
