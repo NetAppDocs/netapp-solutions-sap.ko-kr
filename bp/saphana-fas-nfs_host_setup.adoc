@@ -231,7 +231,7 @@ ONTAP 9를 사용하면 NFS 전송 크기를 최대 1MB까지 구성할 수 있�
 | 공통 매개 변수입니다 | NFSv3 | NFSv4 | ONTAP 9를 사용한 NFS 전송 크기입니다 | ONTAP 8을 사용한 NFS 전송 크기입니다 
 
 
-| rw, bg, hard, timeo = 600, nocatime, | vers = 3, nolock, | vers = 4, MinorVersion = 1, lock | rsize = 1048576, wsize = 262144, | rsize=65536, wsize=65536, 
+| rw, bg, hard, timeo = 600, nocatime, | nfsvers = 3, nolock, | nfsvers = 4.1, 잠금 | rsize = 1048576, wsize = 262144, | rsize=65536, wsize=65536, 
 |===
 
 NOTE: NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.
