@@ -335,6 +335,9 @@ image:saphana_aff_nfs_image17.jpg["오류: 그래픽 이미지가 없습니다"]
 | NFSv4 숫자 ID를 해제합니다 | NFS modify -vserver <vserver_name> -v4-numeric-ids disabled 
 |===
 
+NOTE: 숫자 ID를 비활성화하려면 섹션에 설명된 대로 사용자 관리가 필요합니다 link:saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html["“NFSv4를 위한 SAP HANA 설치 준비”"]
+
+
 NOTE: 섹션에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버("/etc/idmapd.conf") 및 SVM에서 동일한 값으로 설정해야 합니다 link:saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html["“NFSv4를 위한 SAP HANA 설치 준비”"]
 
 

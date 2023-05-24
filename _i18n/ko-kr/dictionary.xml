@@ -5859,4 +5859,6 @@
   <block id="e2aad9960e8d21643cd0c96d6d0231cc" category="cell">nfsvers = 3, nolock,</block>
   <block id="9bb4ef49da8c49be50e8756f6e99e5fa" category="cell">nfsvers = 4.1, 잠금</block>
   <block id="dae81ce43b95196ee53c797d1ddda090" category="cell">nfsvers = 3, nolock</block>
+  <block id="75bdc4f45cfc79b09fa1f15e1cd83b33" category="admonition">번호 없는 ID를 사용하지 않도록 하려면 에 설명된 대로 사용자 관리가 필요합니다 <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
+  <block id="a548c9345f858c0926b5fa0db82b1d29" category="admonition">숫자 ID를 비활성화하려면 섹션에 설명된 대로 사용자 관리가 필요합니다 <block ref="19618adae76246007b68ca646cc14e2b" category="inline-link-macro-rx"></block></block>
 </blocks>
