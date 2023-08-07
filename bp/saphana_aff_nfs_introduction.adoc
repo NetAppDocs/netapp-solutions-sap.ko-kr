@@ -15,11 +15,16 @@ summary: 'NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration
 
 NetApp의 Nils Bauer와 Marco schön
 
-NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 인증된 엔터프라이즈 스토리지 시스템의 특징은 NetApp ONTAP 소프트웨어입니다.
+NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다.
 
 이 인증은 다음 모델에 대해 유효합니다.
 
 * AFF A150, AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900
+* AFF C250, AFF C400, AFF C800
++
+
+NOTE: NetApp AFF C 시리즈에는 NetApp OMTAP 9.13.1 이상이 필요합니다
+
 
 
 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["인증되고 지원되는 SAP HANA 하드웨어 디렉토리"^].
