@@ -19,12 +19,17 @@ NetApp의 Nils Bauer와 Marco Schoen
 
 == 소개
 
-NetApp AFF 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 인증 엔터프라이즈 스토리지 플랫폼의 특징은 NetApp ONTAP 소프트웨어입니다.
+NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다.
 
-인증은 다음 모델에 대해 유효합니다.
+이 인증은 다음 모델에 대해 유효합니다.
 
 * AFF A150, AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800, AFF A900
+* AFF C250, AFF C400, AFF C800
 * ASA AFF A220, ASA AFF A250, ASA AFF A400, ASA AFF A700, ASA AFF A800, ASA AFF A900
++
+
+NOTE: NetApp AFF C-Series에는 NetApp ONTAP 9.13.1 이상이 필요합니다
+
 
 
 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 를 참조하십시오 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["인증되고 지원되는 SAP HANA 하드웨어 디렉토리"^].
