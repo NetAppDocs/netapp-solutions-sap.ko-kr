@@ -25,9 +25,9 @@ SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중
 
 
 
-== NetApp 볼륨 암호화
+== NetApp 볼륨 및 애그리게이트 암호화
 
-NVE(NetApp Volume Encryption) 사용은 SAP HANA에서 지원됩니다.
+SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.
 
 
 

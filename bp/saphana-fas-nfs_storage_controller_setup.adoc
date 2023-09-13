@@ -27,9 +27,9 @@ HDD 기반 구성에서 스토리지 효율성 기능을 사용하도록 설정�
 
 
 
-== NetApp 볼륨 암호화
+== NetApp 볼륨 및 애그리게이트 암호화
 
-NVE(NetApp Volume Encryption) 사용은 SAP HANA에서 지원됩니다.
+SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.
 
 
 

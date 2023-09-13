@@ -345,8 +345,6 @@
   <block id="7c2539ff7a7121e5f40217630b2b7413" category="paragraph"><block ref="7c2539ff7a7121e5f40217630b2b7413" category="inline-link-macro-rx"></block></block>
   <block id="fd18465573ec21a6218982055981f6b1" category="section-title">스토리지 효율성</block>
   <block id="fef2c24f71a084e813005b395f827515" category="paragraph">SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중복제거, 인라인 압축, 인라인 컴팩션이 지원됩니다.</block>
-  <block id="c4b8c29f448328e82ce27062b5fd9c28" category="section-title">NetApp 볼륨 암호화</block>
-  <block id="473b0453336bcd8bf5591681f8f2d0a1" category="paragraph">NVE(NetApp Volume Encryption) 사용은 SAP HANA에서 지원됩니다.</block>
   <block id="8bc14f0cb78851f59e85c1d447c2c99f" category="section-title">서비스 품질</block>
   <block id="7686322155849443f06959615c011bf4" category="paragraph">QoS를 사용하면 공유 사용 컨트롤러에서 특정 SAP HANA 시스템 또는 기타 애플리케이션의 스토리지 처리량을 제한할 수 있습니다. 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다.</block>
   <block id="37464f39e18200cea48c4d9c6761a91b" category="paragraph">사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다.</block>
@@ -576,7 +574,6 @@
   <block id="894de544f0eac1207fa7838f54544a87" category="paragraph"><block ref="894de544f0eac1207fa7838f54544a87" category="inline-link-macro-rx"></block></block>
   <block id="cc9ff39c9f631978557ae00fd8f5865d" category="paragraph">SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중복제거, 인라인 압축, 인라인 컴팩션이 지원됩니다.</block>
   <block id="ed6036f9cee51fdd7e2a091bbae50c50" category="paragraph">HDD 기반 구성에서 스토리지 효율성 기능을 사용하도록 설정하는 것은 지원되지 않습니다.</block>
-  <block id="f884253d5c2cf3e0fbcf27b5bd7fc515" category="section-title">NetApp 볼륨 암호화</block>
   <block id="a662d487b875a4e232a16649f36fb399" category="section-title">서비스 품질</block>
   <block id="6c86cfdf44739a850a7a1248b66cb537" category="paragraph">사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다.</block>
   <block id="7bb98c896519df010b68c8bdb336edc7" category="paragraph">"스냅샷 전용" 계층화 정책을 사용하는 것은 물론 SnapVault 또는 SnapMirror 대상과 같은 백업 대상에서 FabricPool를 일반적으로 사용할 수도 있습니다.</block>
@@ -700,7 +697,6 @@
   <block id="3c08f1e0ce4bad0271e675a198b90eeb" category="paragraph"><block ref="3c08f1e0ce4bad0271e675a198b90eeb" category="inline-link-macro-rx"></block></block>
   <block id="38b9ce28746b740067bec85a2b293e2a" category="paragraph"><block ref="38b9ce28746b740067bec85a2b293e2a" category="inline-link-macro-rx"></block></block>
   <block id="0d3eab0b9e96ff06837e191b39218d16" category="paragraph">HDD 구성에서 스토리지 효율성 기능을 사용하도록 설정하는 것은 지원되지 않습니다.</block>
-  <block id="908c5fb32cc42e93096371afa23e0dce" category="paragraph">SAP HANA에는 NVE(NetApp Volume Encryption) 사용이 지원됩니다.</block>
   <block id="e2a82c831a3a4651879482e858053e83" category="paragraph">QoS를 사용하여 특정 SAP HANA 시스템의 스토리지 처리량을 제한할 수 있습니다. 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다.</block>
   <block id="6897ebb03b24bb6d57001cdf55ad2d30" category="paragraph">사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 성능 값이 낮으며, 일반적으로 운영 시스템의 20% ~ 50% 범위에 있습니다.</block>
   <block id="8469b8e3a88a77acf02664f233b3cb72" category="paragraph">ONTAP 9부터 QoS는 스토리지 볼륨 레벨에 구성되어 있으며 처리량(MBps)과 I/O(IOPS)의 최대값을 사용합니다.</block>
@@ -5864,4 +5860,7 @@
   <block id="fcb7778cf38a196128c87d1b6e20281e" category="paragraph">NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다.</block>
   <block id="7c3d41bb91a832b194d140ed72b101e7" category="list-text">AFF C250, AFF C400, AFF C800</block>
   <block id="326f77b6d7cda2b57e0f8e89a8f89959" category="admonition">NetApp AFF C-Series에는 NetApp ONTAP 9.13.1 이상이 필요합니다</block>
+  <block id="f7d09d43174d21d3203d6472d2543dc2" category="section-title">NetApp 볼륨 및 애그리게이트 암호화</block>
+  <block id="381cfdf4e70ff7173296a764c78e97ae" category="paragraph">SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.</block>
+  <block id="5d10dd356a9d8604eaed291a9dfeb67e" category="section-title">NetApp 볼륨 및 애그리게이트 암호화</block>
 </blocks>
