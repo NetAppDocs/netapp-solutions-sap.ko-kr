@@ -2,41 +2,6 @@
 section: backup
 title: 백업, 복원 및 재해 복구
 entries:
-- title: ANF 기반 SAP HANA - 애플리케이션용 클라우드 백업을 사용한 백업 및 복구
-  type: solutions
-  entries:
-  - title: 개요
-    url: "/backup/anf-cba-overview.html"
-  - title: Azure NetApp Files를 사용한 백업 및 복구
-    url: "/backup/anf-cba-backup-and-recovery-using-azure-netapp-files.html"
-  - title: 신속한 백업 및 클론 복제 작업의 사용 사례와 가치를 나타냅니다
-    url: "/backup/anf-cba-use-cases-and-value-of-accelerated-backup-and-cloning-operations_overview.html"
-  - title: Cloud Backup for Applications 아키텍처
-    url: "/backup/anf-cba-cloud-backup-for-applications-architecture.html"
-  - title: ANF 기반 SAP HANA용 Cloud Backup for Applications
-    url: "/backup/anf-cba-cloud-backup-for-applications-for-sap-hana-on-anf.html"
-  - title: Cloud Backup for Applications 개념 및 모범 사례
-    url: "/backup/anf-cba-cloud-backup-for-applications-concepts-and-best-practices.html"
-  - title: 설치 및 구성 단계 개요
-    url: "/backup/anf-cba-overview-of-installation-and-configuration-steps.html"
-  - title: 백업 정책을 생성합니다
-    url: "/backup/anf-cba-create-backup-policies.html"
-  - title: HANA 데이터베이스의 스냅샷 기반 백업 작업
-    url: "/backup/anf-cba-snapshot-based-backup-operations-of-the-hana-database.html"
-  - title: HANA 데이터베이스의 파일 기반 백업 작업
-    url: "/backup/anf-cba-file-based-backup-operations-of-the-hana-database.html"
-  - title: 데이터가 아닌 볼륨에 대한 스냅샷 기반 백업 작업
-    url: "/backup/anf-cba-snapshot-based-backup-operations-of-non-data-volumes.html"
-  - title: 글로벌 비 데이터 볼륨의 스냅샷 기반 백업 작업
-    url: "/backup/anf-cba-snapshot-based-backup-operations-of-global-non-data-volumes.html"
-  - title: Snapshot 백업으로부터 복원 및 복구
-    url: "/backup/anf-cba-restore-and-recovery-from-snapshot-backup.html"
-  - title: HANA 시스템 복제를 사용한 백업 작업
-    url: "/backup/anf-cba-backup-operations-with-hana-system-replication.html"
-  - title: HANA 다중 호스트 시스템을 사용한 백업 작업
-    url: "/backup/anf-cba-backup-operations-with-hana-multiple-host-systems.html"
-  - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
-    url: "/backup/anf-cba-where-to-find-additional-information-and-version-history.html"
 - title: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구
   type: solutions
   entries:
