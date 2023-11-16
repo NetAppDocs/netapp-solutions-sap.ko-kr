@@ -2787,7 +2787,6 @@
   <block id="4ba3e1c058ef7fff97064b76f2483b24" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 첨부된 백서</block>
   <block id="45bb1f13b573370e5659e113eaa6e2a7" category="paragraph">이 문서에서는 NFS 버전 3(NFSv3) 프로토콜 또는 NFS 버전 4(NFSv4.1) 프로토콜의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
   <block id="bc3bbc9b5df10cfc4c9d9747e9b15e4f" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 를 참조하십시오<block ref="2585df8f0f74fb3d91dc9a930fa3213b" category="inline-link-rx"></block>.</block>
-  <block id="eb08d46fa92fc78a1fd6730ec46042b6" category="list-text">ASA AFF A220, ASA AFF A250, ASA AFF A400, ASA AFF A700, ASA AFF A800, ASA AFF A900</block>
   <block id="97bfb54320c9268725cfbb374a5168fb" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 를 참조하십시오<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>.</block>
   <block id="71eda0c30c9b341a4814ddd0954d1862" category="summary">이 섹션에서는 스토리지 시스템, 자격 증명, 호스트, hdbsql 클라이언트 및 정책을 비롯한 초기 SnapCenter 구성에 대해 설명합니다.</block>
   <block id="4386d3e7902f293404d64c4abe1e295d" category="doc">초기 SnapCenter 구성</block>
@@ -5285,4 +5284,8 @@
   <block id="2976619a79e897d24427ec6796aa4a70" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다.
 이 섹션 내에서 기본 재시도 간격인 10초를 유지합니다.</block>
   <block id="73d4ace7e434b8709f5a930ad845d6d6" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.</block>
+  <block id="724e5b34aefa3c5cafe7d5d30b9a4beb" category="list-text">AFF A150, AFF A250, AFF A400, AFF A800, AFF A900</block>
+  <block id="f24901db79bd7adbcfdc97deb6526be7" category="list-text">ASA A250, ASA A400, ASA A800, ASA A900</block>
+  <block id="7165d8e624155bf7a4889b98927f605c" category="list-text">ASA C250, ASA C400, ASA C800</block>
+  <block id="ba7dc8a883957fda819c429f468dc4d0" category="admonition">NetApp AFF 및 ASA C-Series에는 NetApp ONTAP 9.13.1 이상이 필요합니다</block>
 </blocks>
