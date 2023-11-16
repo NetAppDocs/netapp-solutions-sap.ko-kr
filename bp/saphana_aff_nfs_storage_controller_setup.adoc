@@ -343,17 +343,8 @@ NOTE: 섹션에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버("/etc
 
 NOTE: NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.
 
-SAP HANA 다중 호스트 시스템이 사용되는 경우 다음 표에 나와 있는 것처럼 SVM에서 NFSv4 임대 시간을 설정합니다.
-
-|===
-| 조치 | 명령 
-
-
-| NFSv4 임대 시간을 설정합니다 | 고급 NFS modify -vserver <vserver_name> -v4-lease-seconds 10 set admin을 설정합니다 
-|===
-HANA 2.0 SPS4부터 HANA는 페일오버 동작을 제어하는 매개 변수를 제공합니다. SVM 레벨에서 임대 시간을 설정하는 대신 이러한 HANA 매개 변수를 사용하는 것이 좋습니다.
-
-파라미터는 다음 표와 같이 'nameserver.ini` 내에 있다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.
+호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다 `nameserver.ini` 다음 표와 같습니다.
+이 섹션 내에서 기본 재시도 간격인 10초를 유지합니다.
 
 |===
 | 섹션(nameserver.ini) | 매개 변수 | 값 

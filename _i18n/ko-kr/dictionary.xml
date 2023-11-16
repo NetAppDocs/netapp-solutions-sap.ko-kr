@@ -526,11 +526,6 @@
   <block id="96adb5308418a0e6a16e78f391a5725d" category="cell">NFS modify -vserver &lt;vserver_name&gt; -v4-numeric-ids disabled</block>
   <block id="c480c17814d28d6a9b00fd06a87dee2a" category="inline-link-macro">“NFSv4를 위한 SAP HANA 설치 준비”</block>
   <block id="9fa840f16cd7cf7f80145507faa2a523" category="admonition">섹션에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버("/etc/idmapd.conf") 및 SVM에서 동일한 값으로 설정해야 합니다 <block ref="19618adae76246007b68ca646cc14e2b" category="inline-link-macro-rx"></block></block>
-  <block id="cd2bd9dcb9cd374f1c6be216bae1bdf6" category="paragraph">SAP HANA 다중 호스트 시스템이 사용되는 경우 다음 표에 나와 있는 것처럼 SVM에서 NFSv4 임대 시간을 설정합니다.</block>
-  <block id="b536e6889ef55581986e4e8b1c67319b" category="cell">NFSv4 임대 시간을 설정합니다</block>
-  <block id="a1577ab4439c333a27d3a1daf67efe55" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -v4-lease-seconds 10 set admin을 설정합니다</block>
-  <block id="7ffdb0b76d7e00eb6b452c2e74026dc6" category="paragraph">HANA 2.0 SPS4부터 HANA는 페일오버 동작을 제어하는 매개 변수를 제공합니다. SVM 레벨에서 임대 시간을 설정하는 대신 이러한 HANA 매개 변수를 사용하는 것이 좋습니다.</block>
-  <block id="6db9549748203188275a99dbe3f37e35" category="paragraph">파라미터는 다음 표와 같이 'nameserver.ini` 내에 있다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.</block>
   <block id="58c8eee50f8f52237271f796e3c1123f" category="cell">섹션(nameserver.ini)</block>
   <block id="3ad6e9988864aeae2ef386345946dc6d" category="cell">페일오버</block>
   <block id="af175fe1a76f8f5124de60f5d01ca78b" category="cell">normal_retries(정상 재시도)</block>
@@ -630,9 +625,6 @@
   <block id="d1e1ffed5786862bbb79671233692063" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max-xfer-size 65536 set admin 을 설정합니다</block>
   <block id="4a762e476d9eda379d2de2de4266fb64" category="inline-link-macro">NFSv4를 위한 SAP HANA 설치 준비</block>
   <block id="ad357b093f7cd3e6d382bfe20cd1f2bd" category="admonition">에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버(/'etc/idmapd.conf') 및 SVM에서 동일한 값으로 설정해야 합니다 <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
-  <block id="8a497c5d71c93d9fb0f969b97af6bf05" category="paragraph">SAP HANA 다중 호스트 시스템을 사용하는 경우 다음 표에 나와 있는 것처럼 SVM에서 NFSv4 임대 시간을 설정합니다.</block>
-  <block id="3228e5563c749aee2e3aacd329eadf42" category="cell">NFSv4 임대 시간을 설정합니다.</block>
-  <block id="0a1cdfe3de7f309f6c0b04a185658b15" category="paragraph">HANA 2.0 SPS4부터 HANA는 페일오버 동작을 제어하는 매개 변수를 제공합니다. SVM 레벨에서 임대 시간을 설정하는 대신 이러한 HANA 매개 변수를 사용하는 것이 좋습니다. 파라미터는 다음 표와 같이 'nameserver.ini` 내에 있다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.</block>
   <block id="2888108a4ca4efe1522f5f2c1f4dca5a" category="paragraph"><block ref="2888108a4ca4efe1522f5f2c1f4dca5a" category="inline-link-macro-rx"></block></block>
   <block id="650e7293e887dfe8d6a1e7be568f91f1" category="doc">기록 업데이트</block>
   <block id="3993b517d983222c5b766976180367f0" category="inline-link-macro">Previous(이전): 추가 정보를 찾을 위치.</block>
@@ -5290,4 +5282,7 @@
   <block id="5d10dd356a9d8604eaed291a9dfeb67e" category="section-title">NetApp 볼륨 및 애그리게이트 암호화</block>
   <block id="8e1ca12077e9e911e038655a0c678e91" category="paragraph">첫 번째 쉘프용 최소 12개의 NVMe SSD는 최대 18개의 SAP HANA 호스트를 지원합니다. 완전히 채워진 쉘프는 최대 48개의 SAP HANA 호스트를 지원합니다.</block>
   <block id="664e3eacf73f74d7628f38588ee009f2" category="paragraph">첫 번째 쉘프용 최소 12개의 NVMe SSD는 최대 18개의 SAP HANA 호스트를 지원합니다. 완전히 채워진 쉘프(SSD 24개)는 최대 48개의 SAP HANA 호스트를 지원합니다. AFF A800 시스템의 내부 디스크에도 동일하게 적용됩니다.</block>
+  <block id="2976619a79e897d24427ec6796aa4a70" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다.
+이 섹션 내에서 기본 재시도 간격인 10초를 유지합니다.</block>
+  <block id="73d4ace7e434b8709f5a930ad845d6d6" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.</block>
 </blocks>
