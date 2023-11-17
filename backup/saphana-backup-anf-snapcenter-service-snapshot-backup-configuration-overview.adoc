@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-policy-configuration.html["이전: SnapCenter 서비스 정책 구성"]
-
+[role="lead"]
 SnapCenter 서비스는 다음과 같은 두 가지 스냅샷 백업 작업 유형을 지원합니다.
 
 * Snapshot 작업을 사용하여 SAP HANA 데이터 백업
@@ -40,5 +39,3 @@ SAP 전송 디렉토리와 같은 특정 HANA 시스템과 관련되지 않은 �
 
 
 
-
-link:saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html["다음: SAP HANA 데이터베이스 백업의 백업 구성"]

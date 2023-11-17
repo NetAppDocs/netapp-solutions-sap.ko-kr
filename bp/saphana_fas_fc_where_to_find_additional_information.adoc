@@ -13,8 +13,7 @@ summary: 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문
 :imagesdir: ./../media/
 
 
-link:saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html["이전: SAP HANA 단일 호스트 시스템에 대한 추가 데이터 볼륨 파티션 추가"]
-
+[role="lead"]
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
 
 * VMware vSphere 기반 SAP HANA의 스케일 업 구축을 위한 Best Practice 및 권장 사항
@@ -64,5 +63,3 @@ https://www.netapp.com/us/documentation/index.aspx["https://www.netapp.com/us/do
 http://www.netapp.com/us/solutions/applications/sap/index.aspx["www.netapp.com/us/solutions/applications/sap/index.aspx#sap-hana"^]
 
 
-
-link:saphana_fas_fc_update_history.html["다음: 기록 업데이트."]

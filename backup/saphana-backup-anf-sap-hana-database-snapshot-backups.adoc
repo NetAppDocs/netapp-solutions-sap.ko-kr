@@ -13,8 +13,7 @@ summary: SnapCenter 서비스를 사용하면 데이터베이스 백업이 일�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html["이전: 글로벌 비 데이터 볼륨의 백업 구성."]
-
+[role="lead"]
 SnapCenter 서비스를 사용하면 데이터베이스 백업이 일반적으로 정책 내에 정의된 스케줄을 사용하여 실행됩니다. SnapCenter 서비스 UI 또는 REST API를 사용하여 필요 시 데이터베이스 백업을 수행할 수도 있습니다.
 
 
@@ -101,5 +100,3 @@ image:saphana-backup-anf-image56.png["오류: 그래픽 이미지가 없습니�
 image:saphana-backup-anf-image57.png["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana-backup-anf-file-based-backups-and-block-integrity-check.html["다음: 파일 기반 백업 및 블록 무결성 검사"]

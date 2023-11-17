@@ -13,8 +13,7 @@ summary: 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이�
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_data_protection_overview_overview.html["이전: Azure NetApp Files를 사용한 SAP HANA 재해 복구 개요"]
-
+[role="lead"]
 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이트의 전체 장애로부터 복구할 수 있어야 합니다. 따라서 데이터를 2차 사이트로 전송해야 하며, 사이트 장애 발생 시 필요한 운영 SAP HANA 시스템을 실행하려면 완벽한 인프라가 필요합니다. 애플리케이션의 가용성 요구 사항과 보호하려는 재해 유형에 따라 2개 사이트 또는 3개 사이트 재해 복구 솔루션을 고려해야 합니다.
 
 다음 그림에서는 동일한 Azure 지역 내에서 두 번째 가용성 영역으로 데이터가 동기식으로 복제되는 일반적인 구성을 보여 줍니다. 단거리 주행으로 데이터를 동기식으로 복제하여 RPO가 0이 되도록 할 수 있습니다(일반적으로 HA를 제공하는 데 사용됨).
@@ -139,4 +138,3 @@ image:saphana-dr-anf_image5.png["오류: 그래픽 이미지가 없습니다"]
 
 | RTO 및 RPO에 영향을 주지 않는 DR 테스트 | 예 | 아니요 | 아니요 
 |===
-link:saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html["다음: SAP HANA를 사용한 ANF 지역 간 복제."]

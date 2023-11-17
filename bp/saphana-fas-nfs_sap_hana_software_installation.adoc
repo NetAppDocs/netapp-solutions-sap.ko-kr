@@ -13,7 +13,8 @@ summary: 다음은 SAP HANA용 소프트웨어 설치를 위한 요구사항입�
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_sap_hana_data_volume_size.html["이전: SAP HANA 데이터 볼륨 크기"]
+[role="lead"]
+다음은 SAP HANA용 소프트웨어 설치를 위한 요구사항입니다.
 
 
 
@@ -83,5 +84,3 @@ Enter Installation Path [/hana/shared]:
 ....
 . 설치 도구가 모든 작업자 및 대기 호스트에 선택한 모든 구성 요소를 설치했는지 확인합니다.
 
-
-link:saphana-fas-nfs_adding_additional_data_volume_partitions.html["다음: 추가 데이터 볼륨 파티션 추가."]

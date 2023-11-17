@@ -13,8 +13,7 @@ summary: 이 섹션에서는 두 가지 예제 구성, SS2 및 SS1에 대한 구
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-initial-configuration.html["이전: SnapCenter 초기 구성."]
-
+[role="lead"]
 이 섹션에서는 두 가지 예제 구성의 구성 단계를 설명합니다.
 
 * * SS2. *
@@ -398,5 +397,3 @@ Exit /b 0
 다음 그림에서는 리소스 보호 구성 화면 내에서 정지 후 명령을 보여 줍니다.
 
 image:saphana-br-scs-image77.png["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-br-scs-snapcenter-resource-specific-configuration-for-non-data-volume-backups.html["다음: 비 데이터 볼륨 백업을 위한 SnapCenter 리소스 관련 구성입니다."]

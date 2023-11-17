@@ -13,8 +13,6 @@ summary: 클론 복제된 시스템을 해제하려면 먼저 중지하고 준�
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["이전: SAP LaMa 프로비저닝 워크플로우 - 클론 시스템"]
-
 [role="lead"]
 다음 그림에서는 시스템 제거 워크플로와 함께 실행되는 주요 단계를 보여 줍니다.
 
@@ -54,5 +52,3 @@ image:lama-ansible-image38.png["이 스크린샷은 시스템 제거 워크플�
 image:lama-ansible-image39.png["이 스크린샷은 시스템 제거 워크플로의 로그 페이지를 보여 줍니다."]
 
 
-
-link:lama-ansible-sap-lama-provisioning-workflow-copy-system.html["다음으로, SAP LaMa가 워크플로우-복제본 시스템을 프로비저닝합니다."]

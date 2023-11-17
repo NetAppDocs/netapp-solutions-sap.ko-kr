@@ -13,8 +13,6 @@ summary: 이 문서에서는 샘플 배포 및 워크플로우 실행 중에 다
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-provisioning-workflow-system-refresh.html["이전: AP LaMa 프로비저닝 워크플로우 - 시스템 업데이트."]
-
 [role="lead"]
 이 문서에서는 샘플 배포 및 워크플로우 실행 중에 다음과 같은 공급자 구성 파일, 실행 스크립트 및 Ansible 플레이북을 사용합니다.
 
@@ -518,4 +516,3 @@ ontapservers:
    snapshotpostfix: " _snap_20221115"
    clonepostfix: "_clone_20221115"
 ....
-link:lama-ansible-conclusion.html["다음: 결론."]

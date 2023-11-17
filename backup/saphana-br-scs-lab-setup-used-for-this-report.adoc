@@ -13,8 +13,7 @@ summary: 이 기술 보고서에 사용되는 실습 설정에는 5가지 SAP HA
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-concepts-and-best-practices.html["이전: SnapCenter 개념 및 모범 사례."]
-
+[role="lead"]
 이 기술 보고서에 사용되는 실습 설정에는 5가지 SAP HANA 구성이 포함됩니다.
 
 * MS1. *
@@ -61,5 +60,3 @@ SnapCenter 서버는 HANA 시스템 MS1 및 SS2의 중앙 HANA 플러그인 호�
 다음 그림은 실습 설정을 보여 줍니다.
 
 image:saphana-br-scs-image21.png["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-br-scs-snapcenter-configuration.html["다음: SnapCenter 구성."]

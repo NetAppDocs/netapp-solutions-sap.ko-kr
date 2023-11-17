@@ -13,7 +13,8 @@ summary: 이 섹션에서는 단일 호스트 및 다중 호스트 시스템에 
 :imagesdir: ./../media/
 
 
-link:saphana_aff_nfs_sap_hana_data_volume_size.html["이전: SAP HANA 데이터 볼륨 크기"]
+[role="lead"]
+이 섹션에서는 단일 호스트 및 다중 호스트 시스템에 SAP HANA 소프트웨어를 설치하기 위해 시스템을 구성하는 방법을 설명합니다.
 
 
 
@@ -83,5 +84,3 @@ Enter Installation Path [/hana/shared]:
 ....
 . 설치 도구가 모든 작업자 및 대기 호스트에 선택한 모든 구성 요소를 설치했는지 확인합니다.
 
-
-link:saphana_aff_nfs_adding_additional_data_volume_partitions.html["다음: 추가 데이터 볼륨 파티션 추가."]

@@ -13,8 +13,7 @@ summary: Azure에서 Azure NetApp Files for SAP HANA, Oracle 및 DB2를 사용�
 :imagesdir: ./../media/
 
 
-link:libelle-sc-sap-hana-system-refresh-with-lsc-and-snapcenter.html["이전: LSC 및 SnapCenter를 통해 SAP HANA 시스템 업데이트"]
-
+[role="lead"]
 사용 https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-solution-architectures["SAP HANA용 Azure NetApp Files"^], Oracle 및 DB2 on Azure는 고객에게 기본 Microsoft Azure NetApp Files 서비스와 함께 NetApp ONTAP의 고급 데이터 관리 및 데이터 보호 기능을 제공합니다. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azacsnap-introduction["AzAcSnap"^] SAP HANA 및 Oracle 시스템의 애플리케이션 정합성을 보장하는 NetApp Snapshot 복사본을 생성하기 위한 매우 빠른 SAP 시스템 업데이트 작업의 기반입니다(DB2는 현재 AzAcSnap에서 지원되지 않음).
 
 그런 다음 필요 시 또는 백업 전략의 일부로 정기적으로 생성되는 스냅샷 복사본 백업을 새 볼륨에 효율적으로 클론 복제하여 타겟 시스템을 신속하게 업데이트할 수 있습니다. AzAcSnap은 백업을 생성하고 새 볼륨에 클론을 생성하는 데 필요한 워크플로우를 제공하며 Libelle SystemCopy는 전체 시스템 업데이트에 필요한 사전 및 사후 처리 단계를 수행합니다.
@@ -241,5 +240,3 @@ image:libelle-sc-image38.jpg["오류: 그래픽 이미지가 없습니다"]
 복사 단계 후 LSC는 사후 단계의 정의된 모든 단계를 계속 진행합니다. 시스템 새로 고침 프로세스가 완전히 완료되면 대상 시스템이 다시 가동되고 다시 실행되며 완전히 사용할 수 있습니다. 이 실습 시스템에서 SAP 시스템 업데이트의 총 런타임은 약 25분이었으며, 이 중 복사 단계가 5분 미만으로 사용되었습니다.
 
 image:libelle-sc-image39.jpg["오류: 그래픽 이미지가 없습니다"]
-
-link:libelle-sc-where-to-find-additional-information.html["다음: 추가 정보 및 버전 기록을 찾을 위치."]

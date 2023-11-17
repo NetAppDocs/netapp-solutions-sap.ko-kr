@@ -13,8 +13,7 @@ summary: SnapCenter 구성은 초기 구성과 리소스별 구성의 두 가지
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-lab-setup-used-for-this-report.html["Previous(이전): 이 보고서에 사용된 랩 설정입니다."]
-
+[role="lead"]
 SnapCenter 구성은 다음 두 가지 주요 영역으로 구분할 수 있습니다.
 
 * * 초기 구성. * 개별 SAP HANA 데이터베이스와는 별개로 일반 구성을 다룹니다. 스토리지 시스템, 중앙 HANA 플러그인 호스트 및 정책과 같은 구성으로 리소스에 특정한 구성을 실행할 때 선택됩니다.
@@ -74,5 +73,3 @@ NOTE: 또한 개별 SVM 자격 증명 대신 스토리지 클러스터 자격 �
 
 
 
-
-link:saphana-br-scs-snapcenter-initial-configuration.html["다음: SnapCenter 초기 구성."]

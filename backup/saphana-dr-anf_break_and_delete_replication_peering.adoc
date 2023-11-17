@@ -13,8 +13,7 @@ summary: 재해 복구 시 타겟 호스트에서 읽기 및 쓰기 작업을 �
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_prepare_the_target_host_01.html["Previous(이전): 타겟 호스트를 준비합니다."]
-
+[role="lead"]
 재해 복구 시 타겟 호스트에서 읽기 및 쓰기 작업을 위해 볼륨을 마운트할 수 있도록 타겟 볼륨을 분리해야 합니다.
 
 
@@ -36,5 +35,3 @@ image:saphana-dr-anf_image30.png["오류: 그래픽 이미지가 없습니다"]
 
 
 NOTE: 성능 계층이 낮은 용량 풀을 사용한 경우 이제 필요한 성능을 제공할 수 있는 용량 풀로 볼륨을 이동해야 합니다.
-
-link:saphana-dr-anf_mount_the_volumes_at_the_target_host.html["Next(다음): 타겟 호스트에 볼륨을 마운트합니다."]

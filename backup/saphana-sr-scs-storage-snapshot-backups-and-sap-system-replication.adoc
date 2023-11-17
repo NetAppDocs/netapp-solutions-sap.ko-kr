@@ -13,8 +13,7 @@ summary: 백업 작업은 항상 운영 SAP HANA 호스트에서 수행됩니다
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-sap-hana-system-replication-overview.html["이전: SAP HANA 시스템 복제 개요"]
-
+[role="lead"]
 백업 작업은 항상 운영 SAP HANA 호스트에서 수행됩니다. 백업 작업에 필요한 SQL 명령은 보조 SAP HANA 호스트에서 수행할 수 없습니다.
 
 SAP HANA 백업 작업의 경우 기본 및 보조 SAP HANA 호스트는 단일 엔터티입니다. 이들은 운영 또는 보조 SAP HANA 호스트에서 백업을 생성했는지 여부에 관계없이 동일한 SAP HANA 백업 카탈로그를 공유하고 복원 및 복구에 백업을 사용합니다.
@@ -30,5 +29,3 @@ image:saphana-sr-scs-image3.png["오류: 그래픽 이미지가 없습니다"]
 호스트 2에서 생성된 백업은 스토리지 계층에서 직접 복구할 수 있습니다. 호스트 1에서 생성된 백업을 사용해야 하는 경우 호스트 1 스토리지 볼륨에서 호스트 2 스토리지 볼륨으로 백업을 복제해야 합니다. 정방향 복구는 두 호스트의 로그 백업을 사용합니다.
 
 image:saphana-sr-scs-image4.png["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html["다음: SAP 시스템 복제에 대한 SnapCenter 구성 옵션"]

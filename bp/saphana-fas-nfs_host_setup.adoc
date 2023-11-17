@@ -13,8 +13,7 @@ summary: 이 섹션에서 설명하는 모든 단계는 물리적 서버의 SAP 
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_storage_controller_setup.html["이전: 저장소 컨트롤러 설정."]
-
+[role="lead"]
 이 섹션에서 설명하는 모든 단계는 물리적 서버의 SAP HANA 환경과 VMware vSphere에서 실행되는 SAP HANA 모두에 유효합니다.
 
 
@@ -277,5 +276,3 @@ sapcc-hana-tst-06:/ # cat /etc/fstab
 ....
 . 모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.
 
-
-link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["다음: NFSv4를 위한 SAP HANA 설치 준비"]

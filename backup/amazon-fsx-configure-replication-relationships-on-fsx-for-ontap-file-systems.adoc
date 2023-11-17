@@ -13,8 +13,7 @@ summary: 이 섹션에서는 ONTAP 파일 시스템용 FSx, 피어 SVM, 타겟 �
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-backup-replication-with-snapvault_overview.html["이전: 개요 - SnapVault를 사용한 백업 복제."]
-
+[role="lead"]
 SnapMirror 구성 옵션에 대한 자세한 내용은 의 ONTAP 문서를 참조하십시오 https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-replication-workflow-concept.html["SnapMirror 복제 워크플로우(netapp.com)"^].
 
 * ONTAP 파일 시스템용 소스 FSx: 'FsxId00fa9e3c784b6abbb'
@@ -170,4 +169,3 @@ sapcc-hana-svm:PFX_data_mnt00001
                               Snapmirrored
                                       Idle           -         true    -
 ....
-link:amazon-fsx-add-a-backup-svm-to-snapcenter.html["그런 다음 SnapCenter에 백업 SVM을 추가합니다."]

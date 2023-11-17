@@ -13,8 +13,7 @@ summary: 이 섹션에는 SAP HANA 비 데이터 볼륨의 백업 구성을 수�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["이전: SAP HANA 비 데이터 볼륨의 백업 구성"]
-
+[role="lead"]
 글로벌 비 데이터 볼륨의 백업 구성을 설정하려면 다음 단계를 수행하십시오.
 
 . SAP HANA 시스템 으로 이동하여 추가 를 클릭합니다.
@@ -47,5 +46,3 @@ image:saphana-backup-anf-image44.png["오류: 그래픽 이미지가 없습니�
 image:saphana-backup-anf-image45.png["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["다음: SAP HANA 데이터베이스 Snapshot 백업"]

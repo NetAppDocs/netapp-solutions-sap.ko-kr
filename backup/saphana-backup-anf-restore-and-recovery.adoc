@@ -13,8 +13,7 @@ summary: 이 섹션에서는 HANA MDC 단일 호스트, 단일 테넌트 시스�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-file-based-backups-and-block-integrity-check.html["이전: 파일 기반 백업 및 블록 무결성 검사"]
-
+[role="lead"]
 다음 섹션에서는 HANA MDC 단일 호스트, 단일 테넌트 시스템에 대한 복원 및 복구 워크플로우에 대해 설명합니다. 다중 호스트 시스템의 차이점에 대해 설명합니다.
 
 이 예에서는 수동 복구를 실행하는 도구로 SAP HANA Studio를 보여 줍니다. 복구 작업에 SAP HANA Cockpit 또는 HANA SQL 문을 사용할 수도 있습니다.
@@ -178,5 +177,3 @@ SAP HANA 시스템이 가동되어 실행 중입니다.
 
 
 여러 테넌트가 있는 SAP HANA MDC 시스템의 경우 각 테넌트에 대해 15 ~ 24단계를 반복해야 합니다.
-
-link:saphana-backup-anf-additional-information.html["다음: 추가 정보를 찾을 위치."]

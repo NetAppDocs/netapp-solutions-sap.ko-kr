@@ -13,8 +13,7 @@ summary: 비 데이터 볼륨의 백업은 SnapCenter 서비스의 통합된 부
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-backup-configuration-of-sap-hana-database-backups.html["이전: SAP HANA 데이터베이스 백업의 백업 구성"]
-
+[role="lead"]
 비 데이터 볼륨의 백업은 SnapCenter 서비스의 통합된 부분입니다. 데이터베이스 설치 리소스와 필요한 로그를 계속 사용할 수 있는 경우 데이터베이스 데이터 볼륨을 보호하면 SAP HANA 데이터베이스를 특정 시점으로 복구 및 복구할 수 있습니다.
 
 다른 비 데이터 파일을 복원해야 하는 상황에서 복구하려면 SAP HANA 데이터베이스 백업을 보강하기 위해 이러한 볼륨에 대한 추가 백업 전략을 개발하는 것이 좋습니다. 특정 요구 사항에 따라 비데이터 볼륨의 백업은 예약 빈도 및 보존 설정과 다를 수 있으므로 파일 변경 빈도를 고려해야 합니다. 예를 들어 HANA 볼륨 '/HANA/shared'에는 실행 파일은 물론 SAP HANA 추적 파일도 포함됩니다. SAP HANA 데이터베이스가 업그레이드될 때만 실행 파일이 변경되더라도 SAP HANA의 문제 상황 분석을 지원하기 위해 더 높은 백업 빈도가 필요할 수 있습니다.
@@ -57,5 +56,3 @@ image:saphana-backup-anf-image37.png["오류: 그래픽 이미지가 없습니�
 image:saphana-backup-anf-image38.png["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana-backup-anf-backup-configuration-of-global-non-data-volumes.html["다음: 글로벌 비 데이터 볼륨의 백업 구성"]

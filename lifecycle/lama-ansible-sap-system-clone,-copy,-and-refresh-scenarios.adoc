@@ -13,8 +13,6 @@ summary:
 :imagesdir: ./../media/
 
 
-link:lama-ansible-introduction.html["이전: 소개."]
-
 [role="lead"]
 SAP 시스템 복사라는 용어는 SAP 시스템 클론, SAP 시스템 복제 또는 SAP 시스템 교체와 같은 세 가지 프로세스의 동의어로 사용되는 경우가 많습니다. 워크플로와 사용 사례는 각각 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.
 
@@ -26,5 +24,3 @@ SAP 시스템 복사라는 용어는 SAP 시스템 클론, SAP 시스템 복제 
 다음 그림에서는 시스템 클론, 시스템 복사본 또는 시스템 업데이트 작업 중에 수행해야 하는 주요 단계를 보여 줍니다. 보라색 상자는 NetApp 스토리지 기능을 통합할 수 있는 단계를 나타냅니다. SAP LaMa를 사용하면 세 가지 작업을 모두 완벽하게 자동화할 수 있습니다.
 
 image:lama-ansible-image1.png["이 그래픽은 시스템 클론, 시스템 복사본 및 시스템 새로 고침에 대한 3가지 프로세스 일정을 보여 줍니다."]
-
-link:lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html["다음 사례: 시스템 업데이트, 복사 및 클론 복제 사용 사례"]

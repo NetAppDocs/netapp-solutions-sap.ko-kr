@@ -13,8 +13,7 @@ summary: 다른 SAP HANA 호스트에 생성된 백업에서 복원 작업은 �
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html["이전: 단일 리소스가 있는 SnapCenter 구성"]
-
+[role="lead"]
 다른 SAP HANA 호스트에 생성된 백업에서 복원 작업은 두 SnapCenter 구성 옵션에 대해 유효한 시나리오입니다.
 
 다음 그림에서는 이 섹션에서 설명하는 복원 및 복구 시나리오의 개요를 보여 줍니다.
@@ -80,5 +79,3 @@ stlrx300s8-5:/mnt/tmp # cp -Rp hdb00002.00003/ /hana/data/SSR/mnt00001/
 stlrx300s8-5:/mnt/tmp # cp -Rp hdb00003.00003/ /hana/data/SSR/mnt00001/
 ....
 SAP HANA Studio를 사용한 복구는 섹션에 설명된 대로 수행됩니다 link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html#snapcenter-restore-of-the-valid-backup-only["유효한 백업의 SnapCenter 복구만 가능합니다"].
-
-link:saphana-sr-scs-where-to-find-additional-information_overview.html["다음: 추가 정보를 찾을 위치."]

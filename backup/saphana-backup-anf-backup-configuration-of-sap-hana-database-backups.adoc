@@ -13,8 +13,7 @@ summary: 이 섹션에서는 단일 호스트 SAP HANA MDC 단일 테넌트 시�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-snapshot-backup-configuration-overview.html["이전: SnapCenter 서비스 스냅샷 백업 구성 개요"]
-
+[role="lead"]
 이 섹션에서는 단일 호스트 SAP HANA MDC 단일 테넌트 시스템 PR1의 구성 단계를 설명합니다. 이 단계는 여러 테넌트가 있는 MDC 시스템에서 동일합니다. 단일 컨테이너 또는 다중 호스트 시스템의 차이점은 해당 구성 단계에 반영됩니다.
 
 
@@ -102,5 +101,3 @@ HANA 시스템 개요 화면에는 HANA 시스템과 할당된 정책이 표시�
 image:saphana-backup-anf-image30.png["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana-backup-anf-backup-configuration-of-sap-hana-non-data-volumes.html["다음: SAP HANA 비 데이터 볼륨의 백업 구성"]

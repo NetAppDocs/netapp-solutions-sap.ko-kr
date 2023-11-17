@@ -13,8 +13,7 @@ summary: 이 페이지에서는 SAP 시스템 복제에 대한 구성 옵션을 
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-storage-snapshot-backups-and-sap-system-replication.html["이전: 스토리지 스냅샷 백업 및 SAP 시스템 복제."]
-
+[role="lead"]
 SAP HANA 시스템 복제 환경에서 NetApp SnapCenter 소프트웨어로 데이터 보호를 구성하는 방법에는 두 가지 옵션이 있습니다.
 
 * SAP HANA 호스트 및 SnapCenter 버전 4.6 이상의 자동 검색을 포함하는 SnapCenter 리소스 그룹입니다.
@@ -51,5 +50,3 @@ SnapCenter 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HAN
 NOTE: 일반적으로 SnapCenter 4.6과 함께 리소스 그룹 구성 옵션을 사용하여 HANA 시스템 복제를 사용하도록 설정한 HANA 시스템을 보호하는 것이 좋습니다. 단일 SnapCenter 리소스 구성은 SnapCenter 운영 방식이 중앙 플러그인 호스트를 기반으로 하고 HANA 플러그인을 HANA 데이터베이스 호스트에 배포하지 않는 경우에만 필요합니다.
 
 다음 섹션에서는 두 옵션에 대해 자세히 설명합니다.
-
-link:saphana-sr-scs-snapcenter-4.6-configuration-using-a-resource-group.html["다음: 리소스 그룹을 사용하는 SnapCenter 4.6 구성"]

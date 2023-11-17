@@ -13,8 +13,7 @@ summary: 볼륨 복제를 구성하려면 재해 복구 사이트에서 몇 가�
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_lab_setup.html["이전: 랩 설정."]
-
+[role="lead"]
 볼륨 복제를 구성하려면 재해 복구 사이트에서 몇 가지 준비 단계를 수행해야 합니다.
 
 * NetApp 계정을 사용할 수 있고 소스와 동일한 Azure 구독으로 구성해야 합니다.
@@ -91,5 +90,3 @@ NOTE: 대상 볼륨의 Properties(속성) 화면에서 대상 볼륨 ID를 복�
 image:saphana-dr-anf_image13.png["오류: 그래픽 이미지가 없습니다"]
 
 HANA 공유 및 로그 백업 볼륨에 대해서도 동일한 단계를 수행해야 합니다.
-
-link:saphana-dr-anf_monitoring_anf_cross-region_replication.html["다음: ANF 교차 지역 복제 모니터링."]

@@ -13,13 +13,10 @@ summary: SnapCenter는 애플리케이션 정합성을 보장하는 데이터 �
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-backup-and-recovery-using-amazon-fsx-for-ontap.html["이전: ONTAP용 Amazon FSx를 사용한 백업 및 복구."]
+[role="lead"]
+SnapCenter는 애플리케이션 정합성을 보장하는 데이터 보호를 위한 확장 가능한 유니파이드 플랫폼입니다. SnapCenter는 중앙 집중식 제어 및 감독을 지원하면서 사용자가 애플리케이션별 백업, 복원 및 클론 작업을 관리할 수 있는 기능을 위임합니다. 데이터베이스 및 스토리지 관리자는 SnapCenter를 사용하여 다양한 애플리케이션과 데이터베이스의 백업, 복원, 클론 복제 작업을 관리하는 단일 툴에 대해 알아보십시오.
 
-
-
-== SnapCenter 개요
-
-SnapCenter는 애플리케이션 정합성을 보장하는 데이터 보호를 위한 확장 가능한 유니파이드 플랫폼입니다. SnapCenter는 중앙 집중식 제어 및 감독을 지원하면서 사용자가 애플리케이션별 백업, 복원 및 클론 작업을 관리할 수 있는 기능을 위임합니다. 데이터베이스 및 스토리지 관리자는 SnapCenter를 사용하여 다양한 애플리케이션과 데이터베이스의 백업, 복원, 클론 복제 작업을 관리하는 단일 툴에 대해 알아보십시오. SnapCenter는 NetApp에서 제공하는 Data Fabric의 엔드 포인트 전체에서 데이터를 관리합니다. SnapCenter를 사용하여 사내 환경 간에, 사내 환경과 클라우드 간에, 그리고 프라이빗, 하이브리드 또는 퍼블릭 클라우드 간에 데이터를 복제할 수 있습니다.
+SnapCenter는 NetApp에서 제공하는 Data Fabric의 엔드 포인트 전체에서 데이터를 관리합니다. SnapCenter을 사용하여 온프레미스 환경 간, 온프레미스 환경과 클라우드 간, 프라이빗, 하이브리드 또는 퍼블릭 클라우드 간에 데이터를 복제할 수 있습니다.
 
 
 
@@ -205,5 +202,3 @@ ONTAP 파일 시스템용 FSX:
 
 
 image:amazon-fsx-image8.png["오류: 그래픽 이미지가 없습니다"]
-
-link:amazon-fsx-snapcenter-configuration.html["다음: SnapCenter 구성."]

@@ -13,8 +13,6 @@ summary: 이 섹션에서는 HANA 데이터베이스 H09가 포함된 소스 SAP
 :imagesdir: ./../media/
 
 
-link:lama-ansible-example-implementation.html["이전: 예제 구현."]
-
 [role="lead"]
 다음 그림에서는 시스템 클론 워크플로우에서 실행되는 주요 단계를 보여 줍니다.
 
@@ -84,5 +82,3 @@ image:lama-ansible-image31.png["추가 로그 정보"]
 
 
 워크플로가 완료되면 복제된 SAP 시스템이 준비, 시작 및 사용할 준비가 됩니다.
-
-link:lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html["다음: SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기"]

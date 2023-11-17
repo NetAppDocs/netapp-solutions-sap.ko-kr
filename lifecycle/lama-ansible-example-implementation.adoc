@@ -13,8 +13,6 @@ summary: 시스템 및 스토리지 설정에 사용할 수 있는 옵션이 많
 :imagesdir: ./../media/
 
 
-link:lama-ansible-netapp-sap-lama-integration-using-ansible.html["이전: Ansible을 사용하여 NetApp SAP LaMa 통합"]
-
 시스템 및 스토리지 설정에 사용할 수 있는 옵션이 많기 때문에 예제 구현은 개별 시스템 설정 및 구성 요구 사항을 템플릿으로 사용해야 합니다.
 
 
@@ -119,5 +117,3 @@ image:lama-ansible-image15.png["NetApp 클론 제약 조건 삭제 페이지의 
 소스 시스템에 대한 사용자 지정 프로비저닝 워크플로우를 설정하려면 구성에서 해당 워크플로우를 적용해야 합니다. 해당 사용자 지정 프로비저닝 정의와 함께 * 사용자 지정 프로비저닝 프로세스 사용 * 확인란을 선택해야 합니다.
 
 image:lama-ansible-image16.png["SAP LaMa Configuration  GT, Systems  GT, System Details 화면의 스크린샷 Use Custom Provisioning Process 확인란이 선택되어 있습니다."]
-
-link:lama-ansible-sap-lama-provisioning-workflow-clone-system.html["다음으로, SAP LaMa가 워크플로우 클론 시스템을 프로비저닝합니다."]

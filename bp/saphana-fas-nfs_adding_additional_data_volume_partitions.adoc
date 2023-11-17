@@ -13,7 +13,8 @@ summary: SAP HANA 2.0 SPS4부터 SAP HANA 테넌트 데이터베이스의 데이
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_sap_hana_software_installation.html["이전: SAP HANA 소프트웨어 설치"]SAP HANA 2.0 SPS4부터 SAP HANA 테넌트 데이터베이스의 데이터 볼륨에 대해 두 개 이상의 볼륨을 구성할 수 있는 추가 데이터 볼륨 파티션을 구성할 수 있습니다. 단일 볼륨의 크기 및 성능 제한을 초과하여 확장할 수도 있습니다.
+[role="lead"]
+SAP HANA 2.0 SPS4부터 SAP HANA 테넌트 데이터베이스의 데이터 볼륨에 대해 두 개 이상의 볼륨을 구성할 수 있는 추가 데이터 볼륨 파티션을 구성할 수 있습니다. 단일 볼륨의 크기 및 성능 제한을 초과하여 확장할 수도 있습니다.
 
 
 NOTE: SAP HANA 단일 호스트 및 다중 호스트 시스템에서 데이터 볼륨에 둘 이상의 개별 볼륨을 사용할 수 있습니다. 언제든지 데이터 볼륨 파티션을 추가로 추가할 수 있지만, 그렇게 하려면 SAP HANA 데이터베이스를 다시 시작해야 할 수 있습니다.
@@ -212,5 +213,3 @@ NOTE: 각 볼륨에 서로 다른 TCP 세션을 사용하도록 각 데이터 �
 ALTER SYSTEM ALTER DATAVOLUME ADD PARTITION PATH '/hana/data2/SID/';
 ....
 image:saphana-fas-nfs_image19.jpg["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-fas-nfs_where_to_find_additional_information.html["다음: 추가 정보를 찾을 위치."]

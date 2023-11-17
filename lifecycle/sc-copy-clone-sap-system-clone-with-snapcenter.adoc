@@ -13,8 +13,7 @@ summary: 이 섹션에서는 SAP 시스템 클론 작업에 대한 단계별 설
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["이전: SnapCenter로 SAP HANA 시스템 업데이트"]
-
+[role="lead"]
 이 섹션에서는 SAP 시스템 클론 작업에 대한 단계별 설명을 제공합니다. 이 설명을 통해 복구 시스템을 설정하여 논리적 손상을 해결할 수 있습니다.
 
 
@@ -294,5 +293,3 @@ Filesystem                                                       1K-blocks     U
 192.168.175.117:/SS1_data_mnt00001_Clone_0421220520054605           262144064  3732864 258411200   2% /hana/data/SS1/mnt00001
 ....
 이제 HANA 시스템을 사용할 수 있으며, 예를 들어 복구 시스템으로 사용할 수 있습니다.
-
-link:sc-copy-clone-where-to-find-additional-information.html["다음: 추가 정보 및 버전 기록을 찾을 위치."]

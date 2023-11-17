@@ -13,8 +13,6 @@ summary: 이 장에서는 시스템 클론 워크플로우 및 입력 화면의 
 :imagesdir: ./../media/
 
 
-link:lama-ansible-sap-lama-deprovisioning-workflow-system-destroy.html["이전: SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기"]
-
 [role="lead"]
 다음 그림에서는 시스템 복제 워크플로우에서 실행되는 기본 단계를 보여 줍니다.
 
@@ -57,5 +55,3 @@ image:lama-ansible-image47.png["이 스크린샷은 시스템 세부 정보와 �
 제약 조건이 설정되어 실행을 방해할 수 있으므로 시스템 폐기 프로세스 중에 사전 후크 단계를 실행하려면 수동으로 적용해야 합니다.
 
 image:lama-ansible-image48.png["이 스크린샷은 시스템 세부 정보와 함께 LaMa Systems 화면을 보여 주며 Use Custom Processing Process(사용자 지정 처리 프로세스 사용) 확인란이 선택되어 있습니다."]
-
-link:lama-ansible-sap-lama-provisioning-workflow-system-refresh.html["다음으로, SAP LaMa가 워크플로우-시스템 업데이트를 프로비저닝합니다."]

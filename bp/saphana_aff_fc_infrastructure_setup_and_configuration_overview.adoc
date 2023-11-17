@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana_aff_fc_storage_sizing.html["이전: 스토리지 사이징."]
-
+[role="lead"]
 다음 섹션에서는 SAP HANA 인프라 설정 및 구성 지침을 제공하고 SAP HANA 시스템 설정에 필요한 모든 단계를 설명합니다. 이 섹션에서는 다음 예제 구성을 사용합니다.
 
 * SID가 SS3 및 ONTAP 9.7 이전인 HANA 시스템
@@ -29,5 +28,3 @@ link:saphana_aff_fc_storage_sizing.html["이전: 스토리지 사이징."]
 
 
 
-
-link:saphana_aff_fc_san_fabric_setup.html["다음: SAN 패브릭 설정."]

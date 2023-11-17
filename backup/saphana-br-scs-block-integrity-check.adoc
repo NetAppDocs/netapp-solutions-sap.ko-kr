@@ -13,8 +13,7 @@ summary: SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기�
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-database-backups.html["이전: 데이터베이스 백업."]
-
+[role="lead"]
 SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. SnapCenter는 파일 기반 백업을 백업 유형으로 선택하는 정책을 사용하여 블록 무결성 검사 실행을 지원합니다.
 
 이 정책을 사용하여 백업을 예약할 때 SnapCenter는 시스템 및 테넌트 데이터베이스에 대한 표준 SAP HANA 파일 백업을 생성합니다.
@@ -91,4 +90,3 @@ drwxr-xr-- 4 ss1adm sapsys       4096 Nov 19 05:11 ..
 -rw-r----- 1 ss1adm sapsys     159744 Nov 23 08:46 SnapCenter_SnapCenter_BlockIntegrityCheck_Weekly_11-23-2019_06.00.07.8397_databackup_0_1
 -rw-r----- 1 ss1adm sapsys 1577066496 Nov 23 08:46 SnapCenter_SnapCenter_BlockIntegrityCheck_Weekly_11-23-2019_06.00.07.8397_databackup_1_1
 ....
-link:saphana-br-scs-restore-and-recovery.html["다음: 복원 및 복구."]

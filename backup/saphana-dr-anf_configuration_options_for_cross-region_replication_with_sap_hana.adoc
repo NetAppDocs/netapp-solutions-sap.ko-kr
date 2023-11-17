@@ -13,8 +13,7 @@ summary: 다음 그림에서는 ANF 지역 간 복제를 사용하는 SAP HANA �
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html["이전: SAP HANA를 사용한 ANF 지역 간 복제."]
-
+[role="lead"]
 다음 그림에서는 ANF 지역 간 복제를 사용하는 SAP HANA 시스템에 대한 볼륨 복제 관계를 보여 줍니다. ANF 지역 간 복제를 사용하면 HANA 데이터와 HANA 공유 볼륨을 복제해야 합니다. HANA 데이터 볼륨만 복제되는 경우 일반적인 RPO 값은 하루 범위 내에 있습니다. 낮은 RPO 값이 필요한 경우 정방향 복구를 위해 HANA 로그 백업도 복제해야 합니다.
 
 
@@ -51,4 +50,3 @@ image:saphana-dr-anf_image6.png["오류: 그래픽 이미지가 없습니다"]
 
 | 복구 전달 | 해당 없음 | + 최근 24시간 동안의 로그 + 스냅샷 스케줄(예: 6시간) + | + 최근 24시간 동안의 로그 + 스냅샷 스케줄(예: 6시간) + 
 |===
-link:saphana-dr-anf_requirements_and_best_practices.html["다음은 요구사항 및 모범 사례입니다."]

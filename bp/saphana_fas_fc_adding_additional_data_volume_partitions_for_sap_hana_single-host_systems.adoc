@@ -13,8 +13,7 @@ summary: SAP HANA 2.0 SPS4부터 추가 데이터 볼륨 파티션을 구성할 
 :imagesdir: ./../media/
 
 
-link:saphana_fas_fc_sap_hana_software_installation.html["이전: SAP HANA 소프트웨어 설치"]
-
+[role="lead"]
 SAP HANA 2.0 SPS4부터 추가 데이터 볼륨 파티션을 구성할 수 있습니다. 이 기능을 사용하면 SAP HANA 테넌트 데이터베이스의 데이터 볼륨에 대해 둘 이상의 LUN을 구성하고 단일 LUN의 크기 및 성능 제한을 초과하여 확장할 수 있습니다.
 
 
@@ -120,5 +119,3 @@ ALTER SYSTEM ALTER DATAVOLUME ADD PARTITION PATH '/hana/data2/SID/';
 image:saphana_fas_fc_image28.jpg["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana_fas_fc_where_to_find_additional_information.html["다음: 추가 정보를 찾을 위치."]

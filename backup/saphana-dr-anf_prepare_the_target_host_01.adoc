@@ -13,8 +13,7 @@ summary: 이 섹션에서는 재해 복구 페일오버에 사용되는 서버�
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_disaster_recovery_failover_overview.html["이전: 재해 복구 페일오버."]
-
+[role="lead"]
 이 섹션에서는 재해 복구 페일오버에 사용되는 서버에서 필요한 준비 단계를 설명합니다.
 
 정상 작동 중에 타겟 호스트는 일반적으로 HANA QA 또는 테스트 시스템과 같은 다른 용도로 사용됩니다. 따라서 재해 복구 테스트를 실행할 때는 설명된 단계 중 대부분을 실행해야 합니다. 반면 /etc/fstab, /usr/SAP/sapservices와 같은 관련 구성 파일을 준비하여 구성 파일을 복사하기만 하면 프로덕션에 추가할 수 있습니다. 재해 복구 페일오버 절차를 수행하면 준비된 관련 구성 파일이 올바르게 구성됩니다.
@@ -111,4 +110,3 @@ vm-pr1:~ # cat /etc/fstab
 # HANA file and log backup destination
 10.0.2.4:/hanabackup-sm-dest    /hanabackup nfs   rw,vers=3,hard,timeo=600,rsize=262144,wsize=262144,nconnect=8,bg,noatime,nolock 0 0
 ....
-link:saphana-dr-anf_break_and_delete_replication_peering.html["다음: 복제 피어링을 분리 및 삭제합니다."]

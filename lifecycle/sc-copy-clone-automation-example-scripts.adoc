@@ -13,8 +13,7 @@ summary: 이 문서에서는 SnapCenter 클론 생성 및 클론 삭제 작업�
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html["이전: 스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 운영 워크플로우"]
-
+[role="lead"]
 이 문서에서는 SnapCenter 클론 생성 및 클론 삭제 작업을 더욱 자동화하는 데 두 개의 스크립트를 사용합니다.
 
 * 'sc-system-refresh.sh' 스크립트는 시스템 새로 고침 및 시스템 클론 워크플로우에 사용되어 HANA 데이터 볼륨에 대한 마운트 및 마운트 해제 작업을 실행하고 HANA 데이터베이스의 복구 및 종료 작업을 수행합니다.
@@ -173,4 +172,3 @@ ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
 ....
 CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
 ....
-link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["다음: SnapCenter로 SAP HANA 시스템 업데이트"]

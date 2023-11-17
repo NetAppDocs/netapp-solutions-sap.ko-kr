@@ -13,8 +13,7 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana_aff_fc_architecture.html["이전: 아키텍처."]
-
+[role="lead"]
 다음 섹션에서는 SAP HANA용 스토리지 시스템 사이징에 필요한 성능 및 용량 고려 사항에 대해 간략하게 설명합니다.
 
 
@@ -217,5 +216,3 @@ RAM의 크기, 각 SAP HANA 호스트의 디스크의 순 데이터 크기 및 S
 다음 그림은 사이징 프로세스를 요약합니다.
 
 image:saphana_aff_fc_image8.jpg["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana_aff_fc_infrastructure_setup_and_configuration_overview.html["다음: 인프라 설정 및 구성"]

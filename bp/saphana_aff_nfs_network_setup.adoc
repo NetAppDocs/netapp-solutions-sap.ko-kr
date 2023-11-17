@@ -13,7 +13,8 @@ summary: 이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 �
 :imagesdir: ./../media/
 
 
-link:saphana_aff_nfs_infrastructure_setup_and_configuration_overview.html["이전: 인프라 설정 및 구성."]
+[role="lead"]
+이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 네트워크 설정에 대해 설명합니다.
 
 네트워크를 구성할 때 다음 지침을 따르십시오.
 
@@ -53,5 +54,3 @@ image:saphana_aff_nfs_image11.png["오류: 그래픽 이미지가 없습니다"]
 NOTE: NFS 트래픽에 사용되는 인터페이스에 대해 LRO(Large Receive Offload)를 꺼야 합니다. 기타 모든 네트워크 구성 지침은 SAP HANA의 해당 VMware Best Practice 가이드를 참조하십시오.
 
 image:saphana_aff_nfs_image12.png["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana_aff_nfs_time_synchronization.html["다음: 시간 동기화."]

@@ -13,8 +13,7 @@ summary: SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기�
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-sap-hana-database-snapshot-backups.html["이전: SAP HANA 데이터베이스 Snapshot 백업."]
-
+[role="lead"]
 SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. SnapCenter 서비스는 파일 기반 백업을 백업 유형으로 선택하는 정책을 사용하여 블록 무결성 검사 실행을 지원합니다.
 
 파일 기반 백업은 HANA 데이터 볼륨의 스냅샷 백업뿐 아니라 보조 백업 복사본도 사용하는 것입니다. 이러한 파일 기반 백업을 사용하여 운영 데이터 볼륨이 완전히 손실된 경우 복원 및 복구 작업을 수행할 수 있습니다.
@@ -52,5 +51,3 @@ drwxr-x--- 4 pr1adm sapsys       4096 Jan 31 18:59 ..
 == 파일 기반 백업을 사용한 복구 및 복구
 
 HANA Studio 또는 HANA Cockpit의 표준 HANA 복구 작업을 사용하여 SnapCenter 외부의 파일 기반 백업을 복원 및 복구해야 합니다.
-
-link:saphana-backup-anf-restore-and-recovery.html["다음: 복원 및 복구."]

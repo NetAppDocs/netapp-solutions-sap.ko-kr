@@ -13,8 +13,7 @@ summary: 실습 설정에서는 보조 AWS 가용성 영역에서 ONTAP 파일 �
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-backup-of-non-data-volumes.html["Previous(이전): 비데이터 볼륨의 백업입니다."]
-
+[role="lead"]
 실습 설정에서는 보조 AWS 가용성 영역에서 ONTAP 파일 시스템용 두 번째 FSX를 사용하여 HANA 데이터 볼륨에 대한 백업 복제를 쇼케이스합니다.
 
 장에서 설명한 대로 link:amazon-fsx-snapcenter-architecture.html#data-protection-strategy["“데이터 보호 전략”"]ONTAP 파일 시스템용 운영 FSx의 장애로부터 보호될 수 있도록 다른 가용성 영역의 ONTAP 파일 시스템에 대한 복제 타겟은 두 번째 FSx여야 합니다. 또한 HANA 공유 볼륨을 ONTAP 파일 시스템용 보조 FSx에 복제해야 합니다.
@@ -48,5 +47,3 @@ ONTAP용 FSx 계층에서 실행해야 하는 몇 가지 구성 단계가 있습
 
 
 다음 장에서는 개별 단계에 대해 자세히 설명합니다.
-
-link:amazon-fsx-configure-replication-relationships-on-fsx-for-ontap-file-systems.html["다음: ONTAP 파일 시스템용 FSx에서 복제 관계를 구성합니다."]

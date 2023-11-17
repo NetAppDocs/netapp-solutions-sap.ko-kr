@@ -13,7 +13,8 @@ summary: 다음은 SAP HANA 소프트웨어 설치를 위한 요구사항입니�
 :imagesdir: ./../media/
 
 
-link:saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html["이전: SAP HANA용 I/O 스택 구성"]
+[role="lead"]
+다음은 SAP HANA 소프트웨어 설치를 위한 요구사항입니다.
 
 
 
@@ -143,5 +144,3 @@ Enter Installation Path [/hana/shared]:
 Enter Local Host Name [sapcc-hana-tst-03]:
 ....
 설치 도구가 모든 작업자 및 대기 호스트에 선택한 모든 구성 요소를 설치했는지 확인합니다.
-
-link:saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html["다음: SAP HANA 단일 호스트 시스템을 위한 추가 데이터 볼륨 파티션 추가."]

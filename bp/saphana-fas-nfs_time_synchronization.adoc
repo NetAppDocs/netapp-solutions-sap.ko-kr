@@ -13,8 +13,5 @@ summary: 스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간�
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_network_setup.html["이전: 네트워크 설정."]
-
+[role="lead"]
 스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간에 시간을 동기화해야 합니다. 이렇게 하려면 모든 스토리지 컨트롤러 및 모든 SAP HANA 호스트에 대해 동일한 시간 서버를 설정합니다.
-
-link:saphana-fas-nfs_storage_controller_setup.html["다음: 저장소 컨트롤러 설정."]

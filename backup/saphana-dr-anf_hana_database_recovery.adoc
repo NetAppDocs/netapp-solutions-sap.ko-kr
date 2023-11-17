@@ -13,7 +13,8 @@ summary: 다음은 HANA 데이터베이스 복구를 위한 단계입니다
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_mount_the_new_volumes_at_the_target_host.html["이전: 타겟 호스트에 볼륨을 마운트합니다."]
+[role="lead"]
+다음은 HANA 데이터베이스 복구를 위한 단계입니다
 
 필요한 SAP 서비스를 시작합니다.
 
@@ -196,5 +197,3 @@ Backup '/mnt/log-backup/SYSTEMDB/log_backup_0_0_0_0.1589289811148' successfully 
 시스템 및 테넌트 데이터베이스의 최신 로그 백업 파일에 대해 검사를 실행해야 합니다.
 
 "hdbbackupcheck" 도구에서 최신 로그 백업에 대한 오류를 보고하는 경우 최신 로그 백업 세트를 제거하거나 삭제해야 합니다.
-
-link:saphana-dr-anf_disaster_recovery_failover_overview.html["다음: 재해 복구 페일오버."]

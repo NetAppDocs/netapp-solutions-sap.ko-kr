@@ -13,8 +13,7 @@ summary: 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문
 :imagesdir: ./../media/
 
 
-link:saphana-fas-nfs_adding_additional_data_volume_partitions.html["이전: 추가 데이터 볼륨 파티션 추가."]
-
+[role="lead"]
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
 
 * VMware vSphere 기반 SAP HANA의 스케일 업 구축을 위한 Best Practice 및 권장 사항 http://www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf["www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf"^]
@@ -30,5 +29,3 @@ link:saphana-fas-nfs_adding_additional_data_volume_partitions.html["이전: 추�
 * NetApp FAS 스토리지 시스템 리소스 https://mysupport.netapp.com/info/web/ECMLP2676498.html["https://mysupport.netapp.com/info/web/ECMLP2676498.html"^]
 * SAP HANA 소프트웨어 솔루션 http://www.netapp.com/us/solutions/applications/sap/index.aspx["www.netapp.com/us/solutions/applications/sap/index.aspx#sap-hana"^]
 
-
-link:saphana-fas-nfs_update_history.html["다음: 기록 업데이트."]

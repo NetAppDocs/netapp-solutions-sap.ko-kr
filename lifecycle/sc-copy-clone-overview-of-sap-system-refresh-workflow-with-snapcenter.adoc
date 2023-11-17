@@ -13,8 +13,7 @@ summary: SnapCenter은 기존 스냅샷 백업에서 데이터 세트의 클론�
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-use-cases-for-system-refresh-and-cloning.html["이전: 시스템 업데이트 및 클론 복제 사용 사례"]
-
+[role="lead"]
 SnapCenter은 기존 스냅샷 백업에서 데이터 세트의 클론을 관리할 수 있는 워크플로우를 제공합니다. 클론 복제된 이 데이터 집합인 FlexClone 볼륨을 사용하여 소스 시스템에서 HANA 데이터 볼륨을 신속하게 프로비저닝하고 타겟 시스템에 연결할 수 있습니다. 따라서 QA, 테스트, 샌드박스 또는 교육 시스템의 시스템 업데이트 작업을 실행하는 데 매우 적합합니다.
 
 SnapCenter 클론 복제 워크플로우에서는 스토리지 계층에서 필요한 모든 작업을 처리하며, 스크립트를 사용하여 확장하여 호스트별 및 HANA 데이터베이스별 작업을 실행할 수 있습니다. 이 문서에서는 스크립트를 사용하여 타겟 호스트에서 마운트 및 마운트 해제 작업과 HANA 데이터베이스 복구 및 종료 작업을 실행합니다. 스크립트를 사용하여 추가 자동화를 지원하는 SnapCenter 워크플로우에서는 필요한 모든 HANA 데이터베이스 작업을 처리하지만, 필요한 SAP 사후 처리 단계는 다루지 않습니다. SAP 사후 처리는 수동으로 또는 타사 툴을 사용하여 수행해야 합니다.
@@ -56,5 +55,3 @@ NOTE: 이전에 분할되었던 이전 데이터 볼륨은 스토리지 시스�
 image:sc-copy-clone-image8.png["오류: 그래픽 이미지가 없습니다"]
 
 섹션을 참조하십시오 link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html[""SnapCenter를 통한 SAP HANA 시스템 교체""] 에서는 두 시스템 새로 고침 워크플로우에 대한 자세한 단계별 설명을 제공합니다.
-
-link:sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html["다음: SnapCenter를 사용한 SAP 시스템 복제 워크플로우 개요"]

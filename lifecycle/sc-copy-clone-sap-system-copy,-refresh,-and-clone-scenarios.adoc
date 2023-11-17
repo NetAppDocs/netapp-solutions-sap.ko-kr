@@ -13,8 +13,7 @@ summary: SAP 시스템 복사라는 용어는 SAP 시스템 새로 고침, SAP �
 :imagesdir: ./../media/
 
 
-link:sc-copy-clone-introduction.html["이전: 소개."]
-
+[role="lead"]
 SAP 시스템 복사라는 용어는 SAP 시스템 새로 고침, SAP 시스템 복사 또는 SAP 시스템 클론 작업의 세 가지 다른 프로세스의 동의어로 사용되는 경우가 많습니다. 워크플로와 사용 사례는 각각 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.
 
 * * SAP 시스템 업데이트. * SAP 시스템 새로 고침은 기존 타겟 SAP 시스템을 소스 SAP 시스템의 데이터로 새로 고치는 것입니다. 타겟 시스템은 일반적으로 운영 시스템의 데이터로 업데이트되는 품질 보증 시스템과 같은 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.
@@ -29,5 +28,3 @@ SAP 시스템 복사라는 용어는 SAP 시스템 새로 고침, SAP 시스템 
 NetApp은 Libelle에서도 근무한 바 있습니다 https://www.libelle.com["www.libelle.com"^] SnapCenter 클로닝을 Libelle SystemCopy와 통합하여 SAP 사전 및 사후 처리를 자동화합니다. 에 자세한 솔루션 설명이 나와 있습니다 link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화"^].
 
 image:sc-copy-clone-image2.png["오류: 그래픽 이미지가 없습니다"]
-
-link:sc-copy-clone-use-cases-for-system-refresh-and-cloning.html["다음: 시스템 업데이트 및 클론 복제 사용 사례"]

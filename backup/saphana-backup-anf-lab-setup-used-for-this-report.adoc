@@ -13,10 +13,7 @@ summary: 이 보고서에 사용되는 실습 설정에는 SAP HANA 시스템 PR
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-snapcenter-service-concepts-and-best-practices.html["이전: SnapCenter 서비스 개념 및 모범 사례"]
-
+[role="lead"]
 이 보고서에 사용되는 실습 설정에는 다음 그림과 같이 SAP HANA 시스템 PR1 - SAP HANA 단일 호스트 MDC 단일 테넌트 시스템 및 SnapCenter 서비스 구성 요소가 포함됩니다.
 
 image:saphana-backup-anf-image13.jpg["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-backup-anf-snapcenter-service-policy-configuration.html["다음: SnapCenter 서비스 정책 구성"]

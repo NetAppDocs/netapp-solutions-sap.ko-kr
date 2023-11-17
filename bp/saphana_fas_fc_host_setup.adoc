@@ -13,8 +13,7 @@ summary: 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대�
 :imagesdir: ./../media/
 
 
-link:saphana_fas_fc_sap_hana_storage_connector_api.html["이전: SAP HANA 스토리지 커넥터 API."]
-
+[role="lead"]
 호스트를 설정하기 전에 에서 NetApp SAN Host Utilities를 다운로드해야 합니다 http://mysupport.netapp.com/["NetApp 지원"^] HANA 서버에 설치됩니다. Host Utility 문서에는 사용된 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다.
 
 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대한 정보도 포함되어 있습니다. 이 문서에서는 에 설명된 대로 SLES 15 및 Red Hat Enterprise Linux 7.6 이상에 필요한 구성 단계를 설명합니다 https://library.netapp.com/ecm/ecm_download_file/ECMLP2547958["Linux Host Utilities 7.1 설치 및 설정 가이드"^].
@@ -384,5 +383,3 @@ stlrx300s8-6:/ # cat /etc/fstab
 
 . 파일 시스템을 마운트하려면 각 호스트에서 'mount –a' 명령을 실행합니다.
 
-
-link:saphana_fas_fc_i_o_stack_configuration_for_sap_hana.html["다음: SAP HANA를 위한 I/O 스택 구성"]

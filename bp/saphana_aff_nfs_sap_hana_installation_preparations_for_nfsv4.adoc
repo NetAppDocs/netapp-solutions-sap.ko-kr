@@ -13,8 +13,7 @@ summary: 'NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDA
 :imagesdir: ./../media/
 
 
-link:saphana_aff_nfs_host_setup.html["이전: 호스트 설정."]
-
+[role="lead"]
 NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDAP(Lightweight Directory Access Protocol) 서버와 같은 중앙 사용자 관리 도구 또는 로컬 사용자 계정을 사용하여 이 인증을 수행할 수 있습니다. 다음 섹션에서는 로컬 사용자 계정을 구성하는 방법에 대해 설명합니다.
 
 SAP HANA 소프트웨어 설치가 시작되기 전에 SAP HANA 호스트 및 스토리지 컨트롤러에 관리 사용자 '<sidadm>' 및 'sapsys' 그룹을 수동으로 생성해야 합니다.
@@ -56,4 +55,3 @@ vserver services unix-user create -vserver <vserver> -user <user name> -id <user
 ....
 vserver services unix-user modify -vserver <vserver> -user root -primary-gid 0
 ....
-link:saphana_aff_nfs_i_o_stack_configuration_for_sap_hana.html["다음: SAP HANA를 위한 I/O 스택 구성"]

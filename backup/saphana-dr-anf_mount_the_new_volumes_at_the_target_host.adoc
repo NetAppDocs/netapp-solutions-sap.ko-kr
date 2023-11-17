@@ -13,8 +13,7 @@ summary: 이전에 생성된 /etc/fstab 파일을 기반으로 새 볼륨을 타
 :imagesdir: ./../media/
 
 
-link:saphana-dr-anf_create_new_volumes_based_on_snapshot_backups_at_the_disaster_recovery_site.html["이전: 재해 복구 사이트에서 스냅샷 백업을 기반으로 새 볼륨을 생성합니다."]
-
+[role="lead"]
 이전에 생성된 '/etc/fstab' 파일을 기반으로 새 볼륨을 타겟 호스트에 마운트할 수 있습니다.
 
 ....
@@ -40,4 +39,3 @@ tmpfs                                               1641748        0      164174
 10.0.2.4:/PR1-shared-sm-dest-clone/usr-sap-PR1 107377048320 11204096 107365844224   1% /usr/sap/PR1
 10.0.2.4:/hanabackup-sm-dest-clone             107379429120 35293440 107344135680   1% /hanabackup
 ....
-link:saphana-dr-anf_hana_database_recovery.html["다음: HANA 데이터베이스 복구"]

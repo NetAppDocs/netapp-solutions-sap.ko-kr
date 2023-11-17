@@ -13,8 +13,7 @@ summary: SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는
 :imagesdir: ./../media/
 
 
-link:saphana_aff_fc_host_setup.html["이전: 호스트 설정."]
-
+[role="lead"]
 SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다.
 
 NetApp은 이상적인 가치를 정의하기 위해 성능 테스트를 실시했습니다. 다음 표에는 성능 테스트에서 유추된 최적의 값이 나와 있습니다.
@@ -65,4 +64,3 @@ python setParameter.py -set=SYSTEM/global.ini/fileio/async_read_submit=on
 python setParameter.py -set=SYSTEM/global.ini/fileio/async_write_submit_active=on
 python setParameter.py -set=SYSTEM/global.ini/fileio/async_write_submit_blocks=all
 ....
-link:saphana_aff_fc_sap_hana_software_installation.html["다음: SAP HANA 소프트웨어 설치"]

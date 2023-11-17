@@ -13,8 +13,7 @@ summary: 이 섹션에서는 스토리지 시스템, 자격 증명, 호스트, h
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-snapcenter-configuration.html["이전: SnapCenter 구성."]
-
+[role="lead"]
 초기 구성에는 다음 단계가 포함됩니다.
 
 . 스토리지 시스템 구성
@@ -257,5 +256,3 @@ image:saphana-br-scs-image51.png["오류: 그래픽 이미지가 없습니다"]
 image:saphana-br-scs-image52.png["오류: 그래픽 이미지가 없습니다"]
 
 
-
-link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html["다음: SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다."]

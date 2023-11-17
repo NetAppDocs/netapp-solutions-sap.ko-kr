@@ -13,8 +13,7 @@ summary: SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 
 :imagesdir: ./../media/
 
 
-link:saphana-sr-scs-snapcenter-configuration-options-for-sap-system-replication.html["이전: SAP 시스템 복제에 대한 SnapCenter 구성 옵션"]
-
+[role="lead"]
 SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다. 또한 자동 복원 및 복구 기능은 이제 HANA 시스템 복제 환경에서도 사용할 수 있습니다.
 
 
@@ -161,5 +160,3 @@ image:saphana-sr-scs-image26.png["오류: 그래픽 이미지가 없습니다"]
 SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 참조하십시오 https://www.netapp.com/us/media/tr-4614.pdf["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^].
 
 다른 호스트에서 생성된 백업의 복구 작업은 섹션에 설명되어 있습니다 link:saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html["다른 호스트에서 생성된 백업에서 복구 및 복구"].
-
-link:saphana-sr-scs-snapcenter-configuration-with-a-single-resource.html["다음: 단일 리소스가 있는 SnapCenter 구성"]

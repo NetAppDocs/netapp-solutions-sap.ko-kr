@@ -13,8 +13,6 @@ summary: 이 통합 방식에서는 NetApp 스토리지 관리를 위한 Ansible
 :imagesdir: ./../media/
 
 
-link:lama-ansible-use-cases-for-system-refresh,-copy,-and-cloning.html["이전: 시스템 업데이트, 복사 및 클론 복제 사용 사례"]
-
 [role="lead"]
 이 통합 방식에서는 NetApp 스토리지 관리를 위한 Ansible 플레이북을 사용하여 SAP LaMa 맞춤형 프로비저닝 및 운영 후크를 사용합니다. 다음 그림에서는 LaMa 측 구성과 예제 구현의 해당 구성 요소를 개괄적으로 보여 줍니다.
 
@@ -31,5 +29,3 @@ NetApp Ansible 모듈과 LaMa Provider 정의에 대한 자세한 내용은 다�
 * https://www.ansible.com/integrations/infrastructure/netapp["NetApp Ansible 모듈"^]
 * https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html["SAP LaMa 설명서 – 공급자 정의"^]
 
-
-link:lama-ansible-example-implementation.html["다음은 구현 예입니다."]

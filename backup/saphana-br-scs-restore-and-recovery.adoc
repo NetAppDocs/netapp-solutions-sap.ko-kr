@@ -13,8 +13,7 @@ summary: 다음 섹션에서는 세 가지 시나리오 및 예제 구성의 복
 :imagesdir: ./../media/
 
 
-link:saphana-br-scs-block-integrity-check.html["이전: 블록 무결성 검사"]
-
+[role="lead"]
 다음 섹션에서는 세 가지 시나리오 및 예제 구성의 복원 및 복구 워크플로우에 대해 설명합니다.
 
 * 자동 복원 및 복구:
@@ -534,5 +533,3 @@ SAP HANA 시스템이 가동되어 실행 중입니다.
 NOTE: 여러 테넌트가 있는 SAP HANA MDC 시스템의 경우 각 테넌트에 대해 20–29단계를 반복해야 합니다.
 
 
-
-link:saphana-br-scs-advanced-configuration-and-tuning.html["다음: 고급 구성 및 조정."]

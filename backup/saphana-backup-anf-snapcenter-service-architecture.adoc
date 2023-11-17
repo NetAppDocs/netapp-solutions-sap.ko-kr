@@ -13,8 +13,7 @@ summary: SnapCenter 서비스는 애플리케이션 정합성을 보장하는 �
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-the-netapp-solution.html["이전: NetApp 솔루션"]
-
+[role="lead"]
 SnapCenter 서비스는 애플리케이션 정합성을 보장하는 데이터 보호를 위한 확장 가능한 유니파이드 플랫폼입니다. SnapCenter 서비스는 중앙 집중식 제어 및 감독을 지원하면서 사용자가 애플리케이션별 백업 및 복원 작업을 관리할 수 있도록 하는 기능을 위임합니다.
 
 SnapCenter 서비스는 NetApp Cloud Manager 소프트웨어를 UI로 활용하고 Azure NetApp Files의 자격 증명을 관리합니다. SnapCenter 서비스는 Kubernetes 클러스터 내에서 실행되며 Cloud Manager Connector를 통해 NetApp Cloud Manager와 통신합니다. SnapCenter 서비스는 Azure NetApp Files 관리 API를 사용하여 HANA hdbsql 클라이언트와 Azure NetApp Files 스토리지 작업을 트리거합니다.
@@ -28,5 +27,3 @@ image:saphana-backup-anf-image7.jpg["오류: 그래픽 이미지가 없습니다
 SnapCenter 서비스를 설치하려면 최소 2개의 가상 머신(VM), Cloud Manager Connector용 VM, 비 HA 구성에서 Kubernetes 클러스터를 실행하는 다른 VM이 필요합니다. SnapCenter 서비스가 고가용성(HA) 구성으로 설정된 경우 추가 2개의 VM이 필요합니다.
 
 image:saphana-backup-anf-image8.jpg["오류: 그래픽 이미지가 없습니다"]
-
-link:saphana-backup-anf-snapcenter-service-sap-hana-backup-solution.html["다음으로, SnapCenter 서비스 SAP HANA 백업 솔루션을 살펴보겠습니다."]

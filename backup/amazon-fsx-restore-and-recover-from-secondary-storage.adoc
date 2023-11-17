@@ -13,8 +13,7 @@ summary: 이 섹션에서는 보조 스토리지에서 복원 및 복구하는 �
 :imagesdir: ./../media/
 
 
-link:amazon-fsx-create-a-backup-with-replication.html["이전: 복제를 사용하여 백업을 생성합니다."]
-
+[role="lead"]
 보조 스토리지에서 복원 및 복구하려면 다음 단계를 수행하십시오.
 
 보조 스토리지의 모든 백업 목록을 검색하려면 SnapCenter 토폴로지 보기에서 볼트 사본 을 클릭한 다음 백업을 선택하고 복원 을 클릭합니다.
@@ -26,5 +25,3 @@ image:amazon-fsx-image92.png["오류: 그래픽 이미지가 없습니다"]
 image:amazon-fsx-image93.png["오류: 그래픽 이미지가 없습니다"]
 
 추가 복원 및 복구 단계는 운영 스토리지에서 스냅샷 백업에 대해 이전에 다룬 단계와 동일합니다.
-
-link:amazon-fsx-where-to-find-additional-information.html["다음: 추가 정보 및 버전 기록을 찾을 위치."]
