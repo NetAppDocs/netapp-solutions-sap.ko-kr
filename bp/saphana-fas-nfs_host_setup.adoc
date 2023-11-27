@@ -44,7 +44,7 @@ net.ipv4.tcp_sack = 1
 
 NOTE: SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 을 참조하십시오 https://launchpad.support.sap.com/#/notes/3024346["SAP 메모 3024346"^] (SAP 로그인 필요).
 
-스토리지 연결에 NFSv3을 사용하는 경우 '/etc/modprobe.d/sunrpc.conf'에서 'unrpc.tcp_max_slot_table_entries' 매개 변수를 설정해야 합니다. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.
+를 클릭합니다 `sunrpc.tcp_max_slot_table_entries` 매개 변수는 에서 설정해야 합니다 `/etc/modprobe.d/sunrpc.conf`. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.
 
 ....
 options sunrpc tcp_max_slot_table_entries=128
@@ -55,7 +55,7 @@ options sunrpc tcp_max_slot_table_entries=128
 
 SAP HANA에서 생성되는 워크로드에 대해 각 SAP HANA 호스트에서 추가 커널 및 구성 매개 변수를 조정해야 합니다.
 
-스토리지 연결에 NFSv3을 사용하는 경우, '/etc/modprobe.d/sunrpc.conf'에서 매개 변수 'sunrpc.tcp_max_slot_table_entries'를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.
+를 클릭합니다 `sunrpc.tcp_max_slot_table_entries` 매개 변수는 에서 설정해야 합니다 `/etc/modprobe.d/sunrpc.conf`. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.
 
 ....
 options sunrpc tcp_max_slot_table_entries=128
@@ -236,10 +236,17 @@ ONTAP 9를 사용하면 NFS 전송 크기를 최대 1MB까지 구성할 수 있�
 NOTE: NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.
 
 
-NOTE: 성능 테스트 결과, nconnect=8은 데이터 볼륨에 대해 읽기 좋은 결과를 제공합니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.
+NOTE: 성능 테스트를 통해 그 사실을 알 수 있습니다 `nconnect=4` 특히 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다 `nconnect=2`. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.
 
 
-NOTE: ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.
+NOTE: ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다.
+
+
+NOTE: nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
+세션 슬롯의 양은 <nconnect value> x 64입니다.
+호스트에서 이 작업은 에 의해 인접됩니다
+`echo options nfs max_session_slots= <calculated value> > /etc/modprobe.d/nfsclient.conf`
+그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 link:saphana-fas-nfs_storage_controller_setup.html#nfs-configuration-for-nfsv4["NFSv4에 대한 NFS 구성."]
 
 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
 
@@ -249,10 +256,10 @@ NOTE: ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1�
 +
 ....
 sapcc-hana-tst-06:/ # cat /etc/fstab
-<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 <storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 ....
 . 모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.
 
@@ -262,17 +269,17 @@ sapcc-hana-tst-06:/ # cat /etc/fstab
 . 모든 호스트의 '/etc/fstab' 구성 파일에 필요한 파일 시스템을 추가합니다.
 +
 
-NOTE: 데이터베이스 호스트마다 '/usr/sap/nF2' 파일 시스템이 다릅니다. 다음 예제는 "/nF2_shared/usr-sap-host1"을 보여줍니다.
+NOTE: 를 클릭합니다 `/usr/sap/NF2` 파일 시스템은 데이터베이스 호스트마다 다릅니다. 다음 예는 을 보여줍니다 `/NF2_shared/usr-sap-host1`.
 
 +
 ....
 sapcc-hana-tst-06:/ # cat /etc/fstab
-<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs  rw,nfsvers=4.1,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
-<storage-vif-data02>:/NF2_data_mnt00002 /hana/data/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs  rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data02>:/NF2_data_mnt00002 /hana/data/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
 <storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
 <storage-vif-log02>:/NF2_log_mnt00002 /hana/log/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
-<storage-vif-data02>:/NF2_shared/usr-sap-host1 /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
-<storage-vif-data02>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=8,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data02>:/NF2_shared/usr-sap-host1 /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data02>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
 ....
 . 모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.
 

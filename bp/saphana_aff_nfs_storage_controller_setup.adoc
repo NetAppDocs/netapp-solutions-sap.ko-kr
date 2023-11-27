@@ -332,6 +332,12 @@ image:saphana_aff_nfs_image17.jpg["오류: 그래픽 이미지가 없습니다"]
 
 
 | NFSv4 숫자 ID를 해제합니다 | NFS modify -vserver <vserver_name> -v4-numeric-ids disabled 
+
+
+| NFSv4.x 세션 슬롯의 양을 변경합니다
+  선택 사항 | 고급 설정
+nfs modify -vserver hana-v4.x-session-num-slot <value>
+admin 설정 
 |===
 
 NOTE: 숫자 ID를 비활성화하려면 섹션에 설명된 대로 사용자 관리가 필요합니다 link:saphana_aff_nfs_sap_hana_installation_preparations_for_nfsv4.html["“NFSv4를 위한 SAP HANA 설치 준비”"]

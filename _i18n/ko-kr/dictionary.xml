@@ -786,7 +786,6 @@
   <block id="8740018c375cf2d0f4d463d0bbd4d8d4" category="paragraph">SAP HANA에서 생성되는 워크로드에 따라 각 SAP HANA 호스트의 추가 커널 및 구성 매개 변수를 조정해야 합니다.</block>
   <block id="efcd9df071a570f7c5ed3559b172bce3" category="section-title">SUSE Linux Enterprise Server 12 및 15</block>
   <block id="68d9ac2d7e973e347e878b223355bf31" category="inline-link">SAP 메모 3024346</block>
-  <block id="c60051ea586d490f1e69166ac39409e5" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우 '/etc/modprobe.d/sunrpc.conf'에서 'unrpc.tcp_max_slot_table_entries'를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.</block>
   <block id="179a425489e8da15ef704b42e37645c8" category="section-title">Red Hat Enterprise Linux 7.2 이상에 대한 구성 매개 변수</block>
   <block id="e19cf298e039e5acff1dbe7e98090d84" category="paragraph">SAP HANA에서 생성되는 워크로드에 대해 각 SAP HANA 호스트에서 추가 커널 및 구성 매개 변수를 조정해야 합니다.</block>
   <block id="5491b828c5fede318e582fdb0621d64f" category="paragraph">Red Hat Enterprise Linux 7.2부터 '/etc/sysctl.d' 디렉토리의 구성 파일에서 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
@@ -825,7 +824,6 @@
   <block id="f731bd3074578aba0a3c1b5ab0ca78ee" category="list-text">필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.</block>
   <block id="aff8bbab4f16423ec5907aed644aead6" category="list-text">모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.</block>
   <block id="2555851d01cabd281a371497bed0a9a9" category="list-text">모든 호스트의 '/etc/fstab' 구성 파일에 필요한 파일 시스템을 추가합니다.</block>
-  <block id="4292e3e460b31d735c080ccc8524778e" category="admonition">데이터베이스 호스트마다 '/usr/sap/nF2' 파일 시스템이 다릅니다. 다음 예제는 "/nF2_shared/usr-sap-host1"을 보여줍니다.</block>
   <block id="b89b4b47543b3482418589214b77fa25" category="summary">SAP HANA 호스트는 이중화된 10GbE 또는 더 빠른 네트워크 인프라를 사용하여 스토리지 컨트롤러에 연결됩니다.</block>
   <block id="afcaa068bd76451ec818e7c845c867f4" category="paragraph">FAS 시스템 제품군의 다양한 모델을 스토리지 계층에서 혼합하여 필요에 따라 확장하고 다양한 성능 및 용량 요구사항을 지원할 수 있습니다. 스토리지 시스템에 연결할 수 있는 SAP HANA 호스트의 최대 수는 SAP HANA 성능 요구 사항 및 사용되는 NetApp 컨트롤러 모델에 의해 정의됩니다. 필요한 디스크 쉘프의 수는 SAP HANA 시스템의 용량 및 성능 요구사항에 따라 결정됩니다. 다음 그림에서는 스토리지 HA(고가용성) 쌍에 연결된 8개의 SAP HANA 호스트를 포함하는 예제 구성을 보여 줍니다.</block>
   <block id="f4f82b400d2e9f287534fac8765380bd" category="paragraph"><block ref="f4f82b400d2e9f287534fac8765380bd" category="inline-image-macro-rx" type="image"></block></block>
@@ -942,9 +940,7 @@
   <block id="386b4fc148c87ad6a824fb6645fff9ca" category="paragraph"><block ref="386b4fc148c87ad6a824fb6645fff9ca" category="inline-link-macro-rx"></block></block>
   <block id="e91f856fa9e93a1406d354f1fb9df553" category="summary">이 섹션에서 설명하는 모든 단계는 물리적 서버의 SAP HANA 환경과 VMware vSphere에서 실행되는 SAP HANA 모두에 유효합니다.</block>
   <block id="ebb8355d8accfb697b6808ce518c8666" category="paragraph">SUSE Linux Enterprise Server(SLES) 12 SP1부터 커널 매개 변수는 '/etc/sysctl.d' 디렉토리의 구성 파일에 설정되어야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
-  <block id="fe039cc1acff15ac3ebdef50867dad8e" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우 '/etc/modprobe.d/sunrpc.conf'에서 'unrpc.tcp_max_slot_table_entries' 매개 변수를 설정해야 합니다. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.</block>
   <block id="82740b25df395d68a79118ebc5c4da80" category="section-title">Red Hat Enterprise Linux 7.2 이상에 대한 구성 매개 변수입니다</block>
-  <block id="384d34c5cb85a44702029243289c3645" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우, '/etc/modprobe.d/sunrpc.conf'에서 매개 변수 'sunrpc.tcp_max_slot_table_entries'를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.</block>
   <block id="c2e770dd6d768668395e4b8d3b9291d1" category="paragraph">Red Hat Enterprise Linux 7.2부터 '/etc/sysctl.d' 디렉토리의 구성 파일에서 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
   <block id="67435e0588f5cb039a7fb0f4578e90a7" category="admonition">이 예에서는 SID = NF2인 SAP HANA 데이터베이스를 보여 줍니다.</block>
   <block id="d434026f127f46b1327fb139872c6f31" category="list-text">다중 호스트 시스템의 경우 마운트 지점을 생성하고 모든 작업자 및 대기 호스트에 대한 권한을 설정합니다.</block>
@@ -4425,7 +4421,6 @@
   <block id="ecf911b27dfacab49658bef695c01f50" category="list-text">FAS2720, FAS2750, FAS8300, FAS8700, FAS9000, 및 FAS9500에 대해 설명합니다. SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>.</block>
   <block id="9b340c29d45c75265853d640bc6a1e05" category="list-text">FAS2720, FAS2750, FAS8200, FAS8300, FAS8700, FAS9000, FAS9500</block>
   <block id="8293eb8037b07e6a99273e0e69a21b6f" category="paragraph">SUSE Linux Enterprise Server 12 SP1부터 '/etc/sysctl.d' 디렉토리의 구성 파일에 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.</block>
-  <block id="9f7a362263a005504b84698373ae8acb" category="paragraph">스토리지 연결에 NFSv3을 사용하는 경우, '/etc/modprobe.d/sunrpc.conf'에서 매개 변수 'sunrpc.tcp_max_slot_table_entries 매개 변수를 설정해야 합니다. 파일이 없는 경우 먼저 다음 줄을 추가하여 파일을 만들어야 합니다.</block>
   <block id="6ed4f46c3f6437e250cb69f8684772f4" category="list-text"><block ref="6ed4f46c3f6437e250cb69f8684772f4" category="inline-link-rx"></block></block>
   <block id="24d3ef74df0d2ceedb42c4a4c33104d4" category="list-text"><block ref="24d3ef74df0d2ceedb42c4a4c33104d4" category="inline-link-rx"></block></block>
   <block id="a52e74dbfc20d705ac349fdd5b3d0188" category="list-text"><block ref="a52e74dbfc20d705ac349fdd5b3d0188" category="inline-link-rx"></block></block>
@@ -4437,12 +4432,10 @@
   <block id="537754f62b9e3072d7b143e82ea96f51" category="admonition">SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 자세한 내용은 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="64de99f49b55f96ef81b9f1d7d3ef301" category="admonition">RedHat Enterprise Linux 버전 8.6부터 SAP용 RHEL 시스템 역할(Ansible)을 사용하여 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="a02f77a47cb5c9004f19c8c78d662cd5" category="admonition">SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
-  <block id="8af9dcc6bc45874f6dab0a351794996a" category="admonition">성능 테스트 결과 nconnect=8은 데이터 볼륨에 대해 좋은 읽기 결과를 제공하는 것으로 나타났습니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용할 경우 많은 이점을 얻을 수 있습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
   <block id="b35bcba907dc97a5b6020488961f3307" category="admonition">ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.</block>
   <block id="dbe18498a47f8eb26e80012f0c049b0d" category="paragraph">다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
   <block id="afd4f67ca3483f6b519e8ebc2a53dcea" category="admonition">RedHat Enterprise Linux 버전 8.6부터는 SAP(Ansible)용 RHEL 시스템 역할을 사용하여 이러한 설정을 적용할 수도 있습니다. 을 참조하십시오<block ref="c8345b27d24ece14a320acdc31cc02d7" category="inline-link-rx"></block> (SAP 로그인 필요).</block>
   <block id="e7a66fb065da642109c3abf1481bfcd0" category="paragraph">NFS 버전 및 ONTAP 릴리즈별로 다른 마운트 옵션이 사용됩니다. 다음 파일 시스템이 호스트에 마운트되어야 합니다.</block>
-  <block id="d1805ea655a389bcd86b519f65f01560" category="admonition">성능 테스트 결과, nconnect=8은 데이터 볼륨에 대해 읽기 좋은 결과를 제공합니다. 로그 쓰기의 이점은 nconnect=2 같은 세션 수가 더 적습니다. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
   <block id="6f7cbdc39f9acbcde843e913e06a5bd8" category="summary">클론 복제된 시스템을 해제하려면 먼저 중지하고 준비해야 합니다. 그런 다음 시스템 제거 워크플로를 시작할 수 있습니다.</block>
   <block id="7c4bf45739108965dce4dca9b396f39d" category="doc">SAP LaMa에서 워크플로우 프로비저닝 해제 - 시스템 폐기</block>
   <block id="ce5e3f676f90c441971cc56d6dffe08e" category="paragraph">다음 그림에서는 시스템 제거 워크플로와 함께 실행되는 주요 단계를 보여 줍니다.</block>
@@ -4801,4 +4794,22 @@
   <block id="93f305eb7fa597fc876f2e0744abf06b" category="paragraph">이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 있는 여러 작업으로 구성되며 자동화 수준에 따라 몇 일이 걸릴 수 있습니다.</block>
   <block id="848bda1dea8289263932caf2d35de15b" category="paragraph">이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 있는 여러 작업으로 구성되며 자동화 수준에 따라 몇 일이 걸릴 수 있습니다.</block>
   <block id="c673a1530232358f588ada362c289d7f" category="sidebar">추가 정보를 찾을 수 있는 위치</block>
+  <block id="e08842ba37eacff4f1a5b7fcf9749dc3" category="paragraph">를 클릭합니다<block ref="6f72acaebcb9a0de6696aaf3508a6144" prefix=" " category="inline-code"></block> 매개 변수는 에서 설정해야 합니다<block ref="8ad2bc27658297501e1a64bf77a1fd56" prefix=" " category="inline-code"></block>. 파일이 없으면 다음 줄을 추가하여 먼저 파일을 만들어야 합니다.</block>
+  <block id="b7de930c0dd2d22c43e147a8da62d970" category="admonition">성능 테스트를 통해 그 사실을 알 수 있습니다<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> 특히 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
+  <block id="d7d1e0b01aa98fdaaa388843234520d5" category="admonition">ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다.</block>
+  <block id="953d9b4b8aec5e0f96c90ef8b3d12b68" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
+세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다.
+호스트에서 이 작업은 에 의해 인접됩니다<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
+그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="ab5c20669050c73ba24d89c4b271e9e7" category="inline-link-macro-rx"></block></block>
+  <block id="075d23786d3ed7499b8d563bd41298ef" category="admonition">를 클릭합니다<block ref="68727786e22b015e3091f141273c8e9a" prefix=" " category="inline-code"></block> 파일 시스템은 데이터베이스 호스트마다 다릅니다. 다음 예는 을 보여줍니다<block ref="7b5a8b70c72ff791a6c938600aa48468" prefix=" " category="inline-code"></block>.</block>
+  <block id="61dc8147d5af95ff65e5beeeceb8d669" category="cell">NFSv4.x 세션 슬롯의 양을 변경합니다
+  선택 사항</block>
+  <block id="3a61ec547beefb69b89d0843ea4c03bd" category="cell">고급 설정
+nfs modify -vserver hana-v4.x-session-num-slot &lt;value&gt;
+admin 설정</block>
+  <block id="7de8b31e6597c345c3a3966bd41f80a2" category="admonition">성능 테스트를 통해 그 결과가 나왔습니다<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>. 공유 볼륨은 'nconnect' 옵션을 사용할 경우 많은 이점을 얻을 수 있습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
+  <block id="3efa710e585bff45d9c6786442911c9d" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
+세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다.
+호스트에서 이 작업은 에 의해 인접됩니다<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
+그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="f5e012a6f36bf833f75aec36ff8eee0f" category="inline-link-macro-rx"></block></block>
 </blocks>
