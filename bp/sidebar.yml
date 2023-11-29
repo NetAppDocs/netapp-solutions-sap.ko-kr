@@ -44,8 +44,6 @@ entries:
     url: "/bp/saphana_aff_nfs_storage_sizing.html"
   - title: 인프라 설정 및 구성
     entries:
-    - title: 인프라 설정 및 구성 개요
-      url: "/bp/saphana_aff_nfs_infrastructure_setup_and_configuration_overview.html"
     - title: 네트워크 설정
       url: "/bp/saphana_aff_nfs_network_setup.html"
     - title: 시간 동기화
@@ -77,8 +75,6 @@ entries:
     url: "/bp/saphana-fas-nfs_storage_sizing.html"
   - title: 인프라 설정 및 구성
     entries:
-    - title: 인프라 설정 및 구성 개요
-      url: "/bp/saphana-fas-nfs_infrastructure_setup_and_configuration_overview.html"
     - title: 네트워크 설정
       url: "/bp/saphana-fas-nfs_network_setup.html"
     - title: 시간 동기화
