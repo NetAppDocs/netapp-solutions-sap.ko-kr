@@ -4,7 +4,7 @@ permalink: lifecycle/sc-copy-clone-where-to-find-additional-information.html
 keywords:  
 summary:  
 ---
-= 추가 정보를 찾을 수 있는 위치
+= 추가 정보 및 버전 기록을 찾을 수 있는 위치
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -41,3 +41,21 @@ https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introducti
 http://www.netapp.com/us/solutions/applications/sap/index.aspx["http://www.netapp.com/us/solutions/applications/sap/index.aspx"^]
 
 
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2018년 2월 | 최초 릴리스. 
+
+
+| 버전 2.0 | 2021년 2월 | SnapCenter 4.3 및 향상된 자동화 스크립트를 포함하는 완전한 재작성.
+시스템 업데이트 및 시스템 클론 작업에 대한 새로운 워크플로우 설명 
+
+
+| 버전 3.0 | 2022년 5월 | SnapCenter 4.6 P1에 대한 워크플로가 업데이트되었습니다. 
+|===

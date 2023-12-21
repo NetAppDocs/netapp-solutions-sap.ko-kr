@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: lifecycle/lama-ansible-conclusion.html 
-keywords: conclusion, additional information 
+keywords: conclusion, additional information, version history 
 summary: Ansible과 같은 최신 자동화 프레임워크를 SAP LaMa 프로비저닝 워크플로우에 통합하면 고객은 표준 또는 더 복잡한 인프라 요구사항을 해결할 수 있는 유연한 솔루션을 얻게 됩니다. 
 ---
 = 결론
@@ -67,3 +67,14 @@ https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e
 https://www.netapp.com/support-and-training/documentation/["https://www.netapp.com/support-and-training/documentation/"^]
 
 
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2023년 1월 | 최초 릴리스 
+|===

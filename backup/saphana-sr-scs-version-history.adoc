@@ -1,6 +1,6 @@
 ---
 sidebar: sidebar 
-permalink: backup/saphana-backup-anf-version-history.html 
+permalink: backup/saphana-sr-scs-version-history.html 
 keywords:  
 summary:  
 ---
@@ -13,11 +13,12 @@ summary:
 :imagesdir: ./../media/
 
 
-link:saphana-backup-anf-additional-information.html["Previous(이전): 추가 정보입니다."]
-
 |===
 | 버전 | 날짜 | 문서 버전 기록 
 
 
-| 버전 1.0 | 2021년 10월 | 최초 릴리스. 
+| 버전 1.0 | 2018년 10월 | 초기 버전 
+
+
+| 버전 2.0 | 2022년 1월 | SnapCenter 4.6 HANA 시스템 복제 지원을 포함하는 업데이트 
 |===

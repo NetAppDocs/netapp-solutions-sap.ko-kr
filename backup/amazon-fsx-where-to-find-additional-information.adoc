@@ -37,3 +37,14 @@ https://www.netapp.com/pdf.html?item=/media/17111-tr4667.pdf[]
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html["https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-sr-scs-sap-hana-system-replication-overview.html"^]
 
 
+
+
+
+== 버전 기록
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2022년 5월 | 최초 릴리스. 
+|===

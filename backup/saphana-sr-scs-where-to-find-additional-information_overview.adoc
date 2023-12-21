@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: backup/saphana-sr-scs-where-to-find-additional-information_overview.html 
-keywords: additional information, 
+keywords: additional information, version history 
 summary:  
 ---
 = 추가 정보를 찾을 수 있는 위치

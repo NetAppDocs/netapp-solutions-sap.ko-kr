@@ -33,6 +33,8 @@ entries:
       url: "/bp/saphana_aff_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/saphana_aff_fc_where_to_find_additional_information.html"
+  - title: 기록 업데이트
+    url: "/bp/saphana_aff_fc_update_history.html"
 - title: NFS 구성 가이드가 포함된 NetApp AFF 시스템 기반 SAP HANA
   type: solutions
   entries:
@@ -64,6 +66,8 @@ entries:
       url: "/bp/saphana_aff_nfs_adding_additional_data_volume_partitions.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/saphana_aff_nfs_where_to_find_additional_information.html"
+  - title: 기록 업데이트
+    url: "/bp/saphana_aff_nfs_update_history.html"
 - title: NFS 구성 가이드가 포함된 NetApp FAS 시스템 기반 SAP HANA
   type: solutions
   entries:
@@ -95,6 +99,8 @@ entries:
       url: "/bp/saphana-fas-nfs_adding_additional_data_volume_partitions.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/saphana-fas-nfs_where_to_find_additional_information.html"
+  - title: 기록 업데이트
+    url: "/bp/saphana-fas-nfs_update_history.html"
 - title: FAS 시스템 기반 FCP 구성 가이드
   type: solutions
   entries:
@@ -126,6 +132,8 @@ entries:
       url: "/bp/saphana_fas_fc_adding_additional_data_volume_partitions_for_sap_hana_single-host_systems.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
+  - title: 기록 업데이트
+    url: "/bp/saphana_fas_fc_update_history.html"
 - title: IBM Power Systems 기반 SAP HANA 및 NFS 기반 NetApp AFF 시스템
   url: "/bp/saphana-ibm-aff-nfs_pdf_link.html"
 - title: UNIX 기반 Oracle과 SAP, NetApp ONTAP와 NFS
