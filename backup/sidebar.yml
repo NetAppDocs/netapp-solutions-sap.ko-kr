@@ -66,6 +66,17 @@ entries:
     url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
   - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
+- title: SAP HANA를 위한 BlueXP 백업 및 복구 - 클라우드 오브젝트 스토리지를 백업 대상으로 합니다
+  type: solutions
+  entries:
+  - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 개요
+    url: "/backup/hana-hycl-backup-overview.html"
+  - title: SAP HANA용 BlueXP 백업 및 복구 구성
+    url: "/backup/hana-hycl-backup-conf.html"
+  - title: SAP HANA BlueXP 백업 복원
+    url: "/backup/hana-hycl-backup-restore.html"
+  - title: 추가 정보 및 버전 기록
+    url: "/backup/hana-hycl-backup-info-version.html"
 - title: SnapCenter를 사용한 SAP HANA 시스템 복제 백업 및 복구
   type: solutions
   entries:

@@ -1863,14 +1863,7 @@
   <block id="b45ecd3afcfa865514a59b475de3e93e" category="sidebar">FlexPod SAP 솔루션</block>
   <block id="fcf140abed196b8eba71c45f21312bce" category="sidebar">NetApp 솔루션</block>
   <block id="d648f2a68a54fd1b3329efc3cf24d29c" category="sidebar">법적 고지</block>
-  <block id="0500aa4516d90775e7cd20e0b45fa4ad" category="sidebar">구성 모범 사례</block>
-  <block id="bb5dc731b06d417365e41cb2d0230213" category="sidebar">비디오 데모</block>
-  <block id="d6b9ea32b921a9f56de32062ba4b94f3" category="sidebar">블로그</block>
-  <block id="8625e1de7be14c39b1d14dc03d822497" category="sidebar">도구</block>
-  <block id="1f934c6200615c74e6839ca55ae1e6cf" category="sidebar">백업, 복원 및 재해 복구</block>
   <block id="fa532045e834ec2fac1200964a189516" category="sidebar">라이프사이클 관리</block>
-  <block id="d57e0763c47c99218375572fbdd307a1" category="sidebar">모든 SAP 솔루션</block>
-  <block id="91770f038cd944a1d3b9b347edeb2b10" category="sidebar">새로운 기능</block>
   <block id="91a1838980cefe2d841b83794fd6d4a1" category="sidebar">NetApp 스토리지를 SAP Landscape Management와 통합</block>
   <block id="cd47dd01745339787e4c7300389401f2" category="sidebar">모범 사례</block>
   <block id="88aa48beec8729be73be99084cd76b79" category="sidebar">FCP가 있는 NetApp AFF 시스템 기반 SAP HANA 구성 가이드</block>
@@ -4489,4 +4482,196 @@ IBM Power 기반 Linux용 중앙 플러그인 배포</block>
 시스템 업데이트 및 시스템 클론 작업에 대한 새로운 워크플로우 설명</block>
   <block id="23bb02d00145cbbee811d75260628934" category="cell">SnapCenter 4.6 P1에 대한 워크플로가 업데이트되었습니다.</block>
   <block id="8e070ffcf4d959eabcd3559b9bb17ec6" category="sidebar">추가 정보 및 버전 기록을 찾을 수 있는 위치</block>
+  <block id="2c7a6a1ad3b3855b3dd5766cc2c1b15c" category="summary">이 섹션에서는 BlueXP를 사용하여 SAP HANA 백업을 복원하는 방법을 설명합니다.</block>
+  <block id="8513aa8ec75c0057744a444420581eac" category="doc">SAP HANA BlueXP 백업 복원</block>
+  <block id="630146410475bf00902dbc3588f48b64" category="paragraph">백업으로부터 복원은 클라우드 내의 온프레미스 NetApp ONTAP 기반 스토리지 시스템 또는 NetApp CVO로만 수행할 수 있습니다. 복원은 다음 단계를 수행하여 수행할 수 있습니다.</block>
+  <block id="ae9c703fb18f8c682d52518823ea9112" category="list-text">BlueXP UI에서 * Protection * &gt; * Backup and Recovery * &gt; * Applications * 를 클릭하고 하이브리드를 선택합니다.</block>
+  <block id="16365f9a8d0b7866f7271510a28d1db2" category="list-text"> 필터 기준 * 필드에서 * 유형 * 필터를 선택하고 드롭다운에서 * HANA * 를 선택합니다.</block>
+  <block id="7bff1872092b4daae129c007c84cd996" category="inline-image-macro">hana-hycl-back-image38, 너비=624, 높이=305</block>
+  <block id="14a2a4f505cd6a440ad11540cab0ac21" category="list-text">  복원할 데이터베이스에 해당하는 * View Details * 를 클릭합니다. 를 누릅니다
+<block ref="6f8d75fb488649758851cccdb2cccf08" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5f61ef6ad90ff324226ee7a59e0654e9" category="inline-image-macro">EIN Bild, DAS 텍스트, 스크린샷, 소프트웨어, 컴퓨터 기호 enthält. Automatisch generierte Beschreibung, width=624, height=308</block>
+  <block id="a8da112ff7dee33cb98f2529795ab713" category="list-text">원하는 백업을 선택하고 스토리지 내보내기 를 선택합니다. 를 누릅니다
+<block ref="9aaddfa4a9aab7d77d4d5c4b41b52fa5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="25ea55983026f4468585a3cae84e6791" category="list-text">원하는 옵션을 제공합니다. +
+<block ref="e7942ad51c3862961e4d988dd1f7ab9f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="47abe672471325a3aa63fcd85f6e3367" category="list-text">NAS 환경의 경우 객체 저장소에서 복구된 볼륨을 내보낼 호스트의 FQDN 또는 IP 주소를 지정합니다.</block>
+  <block id="831b20d8b0ff4f1e50aecadcdcdc885d" category="list-text">SAN 환경의 경우 오브젝트 저장소에서 복원된 볼륨의 LUN이 매핑될 호스트의 이니시에이터를 지정합니다.</block>
+  <block id="eee7cd91c87d431eb526192fb8d8f8fa" category="list-text">스냅샷이 아카이브 스토리지에 있는 경우 아카이브 스토리지에서 데이터를 복원하는 우선 순위를 선택합니다.</block>
+  <block id="c309fef296cf37f3a835cb24529d8905" category="list-text">소스 스토리지에 공간이 부족하거나 소스 스토리지가 다운된 경우 * 저장 위치 변경 * 을 선택합니다.</block>
+  <block id="7d7bd9e2f6791a41e19d3f4c2cfbd112" category="list-text"> 저장 위치 변경 * 을 선택하면 대상 볼륨에 접미사를 추가할 수 있습니다. 확인란을 선택하지 않은 경우 기본적으로 *_restore * 가 대상 볼륨에 추가됩니다.  다음 * 을 클릭합니다.</block>
+  <block id="09fbcde15932165bde251a10dbf240e4" category="list-text">저장소 위치 변경 을 선택한 경우 개체 저장소에서 복원된 데이터가 저장소 매핑 페이지에 저장될 대체 저장소 위치 세부 정보를 지정하고 * 다음 * 을 클릭합니다.</block>
+  <block id="c2dc9045e50399390c48484b265865e6" category="inline-image-macro">hana-hycl-back-image41, 너비=624, 높이=309</block>
+  <block id="4be067965fe33fc45487470a504acc33" category="list-text">세부 정보를 검토하고 * 복원 * 을 클릭합니다. 를 누릅니다
+<block ref="3d53ce2d67869523c0b4d4e2b8793ead" category="inline-image-macro-rx" type="image"></block> 를 누릅니다
+ 를 누릅니다
+이 작업은 지정된 호스트에 대해 복구된 백업의 스토리지 내보내기만 수행합니다. 호스트에서 파일 시스템을 수동으로 마운트하고 데이터베이스를 불러와야 합니다. 볼륨을 사용한 후에는 스토리지 관리자가 ONTAP 클러스터에서 볼륨을 삭제할 수 있습니다.</block>
+  <block id="e5c7ac753b7a6121d9687b3fc4c66f25" category="summary">이 섹션에서는 작업 환경을 설정하는 방법, SnapCenter 구성 방법, BlueXP 내에서 SAP HANA 백업을 구성 및 활성화하는 방법을 설명합니다.</block>
+  <block id="bba044fc5fd2c6b6b93f83b61a607e30" category="doc">SAP HANA용 BlueXP 백업 및 복구 구성</block>
+  <block id="84e76e0953f8a5f72d754729d1eaf1ae" category="section-title">BlueXP의 작업 환경을 구축합니다</block>
+  <block id="851847077e55a1429d11ef6bceeb9643" category="paragraph">사내 스토리지 시스템을 작업 환경에 추가합니다.</block>
+  <block id="210e8952dc88c73e56d56a168cfe0616" category="list-text">왼쪽 메뉴에서 * 스토리지 * -&gt; * Canvas * -&gt; * My Working * Environment를 선택합니다.</block>
+  <block id="6e0b32969c38b1fb3a586b9c8bca6d29" category="inline-image-macro">hana-hycl-back-image2, 너비=624, 높이=316</block>
+  <block id="32ae0c18f23bf987a305e455c9bf4aa0" category="list-text">+ 작업 환경 추가 * 를 누릅니다. 를 누릅니다
+<block ref="261aee93707d679c8ff49bd45c5fdb36" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="04c6fea5cff3e4aa7643ec678d204fdc" category="inline-image-macro">EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316</block>
+  <block id="39f551b5282050e99060de22a436c58a" category="list-text">온-프레미스 * 를 선택합니다. 를 누릅니다
+<block ref="979960cde457e31c17b357bad0bff424" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f533acbef1172572a61dbd78994f609f" category="list-text">Discover on-premise ONTAP * 를 선택합니다. 를 누릅니다
+<block ref="fcff6ce23c328c34a47627af2e770b21" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e67b31693fccd64a3bacc0e55452cae2" category="inline-image-macro">hana-hycl-back-image5, 너비=624, 높이=316</block>
+  <block id="c7be70f13b9e16d991fdbdcbd9c13aa3" category="list-text">ONTAP 클러스터의 IP 주소와 암호를 추가하고 * Discover * 를 누릅니다. 를 누릅니다
+<block ref="d3f7db40d516cd6e5bc8ac0f9f7c0499" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bea671570e246847e20efc713c53c69e" category="inline-image-macro">EIN Bild, 다스 디아그람 enthält. Automatisch generierte Beschreibung, width=624, height=316</block>
+  <block id="6f11afbe1eadae3cfe974f3dac60ace1" category="list-text">이제 ONTAP 클러스터를 사용할 수 있습니다. 를 누릅니다
+<block ref="3fa4376934b792a48a60395e9737c899" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6689e50f5e4a08328fa676a7ebb07f17" category="section-title">온프레미스 스토리지 시스템과 오브젝트 스토리지 버킷 간의 관계를 생성합니다</block>
+  <block id="eab79ca7fb49f80130fae7b1656f7ebc" category="inline-link">Amazon S3-Amazon Virtual Private Cloud에 대한 게이트웨이 엔드포인트</block>
+  <block id="53ab440b7f0ec4307a7446fefeb714d9" category="paragraph">온프레미스 스토리지와 S3 버킷 간의 관계는 볼륨에 대한 백업을 생성하거나 애플리케이션 백업을 활성화하여 수행합니다. 기존 사이트 간 VPN을 사용하여 데이터를 사내에서 S3로 전송할 경우 VPC 엔드포인트를 사용해야 하므로 온프레미스 스토리지와 S3 버킷 간의 관계를 생성하는 데 볼륨 백업을 사용해야 합니다. 를 누릅니다
+이 문서를 작성할 때 애플리케이션 백업 워크플로우에서는 S3 버킷을 액세스할 VPC 엔드포인트를 선택할 수 없습니다. 를 누릅니다
+을 참조하십시오<block ref="7f3b31b88f0e42104578f538777bc3e6" category="inline-link-rx"></block> VPC 내에서 S3에 대한 VPC 엔드포인트를 설정하는 방법</block>
+  <block id="4513d4d932152177142c02ca2a383afc" category="paragraph">첫 번째 볼륨 백업을 생성하려면 다음 단계를 수행하십시오.</block>
+  <block id="dd78ee4baa00b09244d3a2f25c867ae5" category="inline-image-macro">hana-hycl-back-image7, 너비=624, 높이=308</block>
+  <block id="e8467bba6a91bfb07a8de17e1fb2cd69" category="list-text">보호 * 를 통해 * 백업 및 복구 * 로 이동하고 * 볼륨 * 을 선택합니다. 를 누릅니다
+<block ref="11225c971b652ee3b6db7fe087c3aa5c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="271dec539afcefba0b81c99e084b109c" category="inline-image-macro">HANA-hycl-back-image8, 너비=624, 높이=309</block>
+  <block id="2789767e88a7ffe9c50b702781a0ea67" category="list-text">백업 활성화 * 버튼을 누릅니다. 를 누릅니다
+<block ref="21f0cf6e7ffcc8ef5c72c49515645074" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b0ea90440a1c4c0ce85aa8e6a6798323" category="inline-image-macro">hana-hycl-back-image9, 너비=624, 높이=304</block>
+  <block id="1d5ec2816de19fe1e154731ece2a18c2" category="list-text">원하는 온프레미스 스토리지 시스템을 선택하고 * Activate Backup * 을 클릭합니다. 를 누릅니다
+<block ref="ca1f10e2c0934df1cc8bd3f38035f292" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="16c981d74d1a7a65432b0b676f94b05d" category="inline-image-macro">hana-hycl-back-image10, 너비=624, 높이=307</block>
+  <block id="f11118f4d924111b34e3aa24dcf3a6c7" category="list-text">백업 * 을 선택합니다. 를 누릅니다
+<block ref="304f4799d1ba6c0574d1c6d6e8bac1d9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3fe7bd8162333cf5226079e598f88f63" category="inline-image-macro">hana-hycl-back-image12, 너비=624, 높이=305</block>
+  <block id="9853cba2a4b299bcb8180627181cd39d" category="list-text">SAP HANA 데이터 파일과 동일한 SVM에 저장된 볼륨을 선택하고 * Next * 를 누릅니다. 이 예에서는 /HANA/shared 볼륨을 선택했습니다. 를 누릅니다
+<block ref="a2dec4d3c1cfb1e66bf38e166a0ccbbc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8de11028ada12771254470b000810e23" category="inline-image-macro">hana-hycl-back-image11, 너비=624, 높이=304</block>
+  <block id="d99dcd56dcb9bfa5a2be73d532bb75b9" category="list-text">* Continue *, 기존 정책이 있는 경우. 를 누릅니다
+<block ref="a6f49816c4334d116e033f526097271b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="eb54efc82bc89a6f6a8a311be7a01d24" category="inline-image-macro">EIN Bild, DAS 텍스트, 소프트웨어, Computersymbol, Webseite enthält. Automatisch generierte Beschreibung, width=624, height=306</block>
+  <block id="386e8a09b1074de806be0b2f336aad28" category="list-text">백업 옵션 * 을 선택하고 원하는 백업 공급자를 선택합니다. 이 예에서는 AWS입니다. 를 누릅니다
+기존 정책에 대한 옵션을 선택된 상태로 유지합니다. 를 누릅니다
+사용하지 않을 옵션의 선택을 취소합니다. 를 누릅니다
+<block ref="e7bd64d80c923ffe89ab853777796206" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="75e71600dc8b519173f07bb53132cfea" category="inline-image-macro">hana-hycl-back-image14, 너비=624, 높이=306</block>
+  <block id="d32f8e0d0c2a754313935c326e667d2a" category="list-text">새 버킷을 만들거나 기존 버킷을 선택하십시오. AWS 계정 설정, regio, 액세스 키 및 비밀 키를 제공합니다. 다음 * 을 누릅니다. 를 누릅니다
+<block ref="7ab51ec82c986777ece3aa7e7dd51a3b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="844815fed3e149f6fc8998b67459b8a9" category="inline-image-macro">hana-hycl-back-image15, 너비=624, 높이=304</block>
+  <block id="e7e7cef436617079061e00d3adade148" category="list-text">온프레미스 스토리지 시스템의 올바른 IPspace를 선택하고 * Privat Endpoint Configuration * 을 선택한 다음 S3의 VPC 엔드포인트를 선택합니다. 다음 * 을 누릅니다. 를 누릅니다
+<block ref="d4748032644bb23292416ca8e3798ab6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a8520b5a7e60b78ae1f8faf41e825735" category="inline-image-macro">hana-hycl-back-image16, 너비=624, 높이=304</block>
+  <block id="53f0db32002266ed051793d338134242" category="list-text">구성을 검토하고 * 백업 활성화 * 를 누릅니다. 를 누릅니다
+<block ref="c6e8f010da631bcf99f948b0ec287f89" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="46694ff89d2e1049db53b085f808204b" category="inline-image-macro">hana-hycl-back-image17, 너비=624, 높이=304</block>
+  <block id="b17076bafc8f7c7433ee7a9ba697bdef" category="list-text">백업이 성공적으로 시작되었습니다. 를 누릅니다
+<block ref="b8c64b043d8234c9a1901ca3cab2d202" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="690e7cac4bb20bc16d03d9e8c2976d36" category="section-title">SnapCenter에서 SAP HANA 시스템 리소스를 구성합니다</block>
+  <block id="6b1682473b222d2b053e1f829a4dfa26" category="inline-image-macro">그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 폭 = 604, 높이 = 156</block>
+  <block id="ec949205c32b4dcbf3d33ae3d2653d23" category="list-text">SAP HANA 시스템이 저장된 SVM(이 예제의 HANA)이 클러스터를 통해 추가되었는지 확인합니다. SVM만 추가된 경우 클러스터를 추가합니다. 를 누릅니다
+<block ref="a21a8efefc66cab38c485ab2857055c4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fa2838d19a717f2eaaa40e2f1f725b14" category="inline-image-macro">그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 너비 = 604, 높이 = 140</block>
+  <block id="015b0ff295262d8372bb8eaf0e7007fa" category="inline-image-macro">hana-hycl-back-image20, 너비 = 167, 높이 = 167</block>
+  <block id="25317da79c7424177b6fe7b2dd75dbe4" category="list-text">일별, 주별 또는 월별 스케줄 유형을 사용하여 스케줄 정책을 정의합니다. 를 누릅니다
+<block ref="4053c2b580ac63fbd3aca168d4d20e18" category="inline-image-macro-rx" type="image"></block>
+<block ref="4bafb2763ffed71cdbba1adf60ba7416" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fc770d11db32177599ce06cc7a281439" category="inline-image-macro">그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 너비 = 604, 높이 = 215</block>
+  <block id="84c8d37516c033f0c33377c3d5233ad4" category="list-text">SAP HANA 시스템에 새 정책을 추가하고 일별 일정을 할당합니다. 를 누릅니다
+<block ref="7adbf922feb3d32be59867cb2db85d53" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f306bf0a63220090651328d0787ebdef" category="inline-image-macro">그래픽 사용자 인터페이스, 애플리케이션, 팀 설명 자동으로 생성됨, 너비 = 604, 높이 = 193</block>
+  <block id="8b7d9c683eee25ba85d1f605aa5bfc73" category="list-text">이 정책으로 구성된 새 백업은 정의된 스케줄에 따라 정책이 실행된 후에 사용할 수 있습니다.
+<block ref="4cdd66955f0a12d8fd4b6c1593da46ce" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="522c073cfbc968ed21bb5b8292358b24" category="section-title">BlueXP 작업 환경에 SnapCenter 추가</block>
+  <block id="63cebe46588c644def8c8d7ad33d7579" category="list-text">왼쪽 메뉴에서 * 보호 * -&gt; * 백업 및 복구 * -&gt; * 애플리케이션 * 을 선택합니다.</block>
+  <block id="9a74817b35b4d995ea09e91b80d35939" category="inline-image-macro">hana-hycl-back-image23, 너비=624, 높이=316</block>
+  <block id="6264d10e208ef10b481b09a42fe5a86f" category="list-text">풀다운 메뉴에서 * Hybrid * 를 선택합니다.  를 누릅니다
+<block ref="fcf6021fe8ae5bbeb957a47b5d9b9c56" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8bb77bc23ab3ed07edf78138920094ec" category="list-text">설정 메뉴에서 * SnapCenter 서버 * 를 선택합니다. 를 누릅니다
+<block ref="8902dcae1fb3265083b9eb7674b0b6be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ae22ae0a7f45fd03327c250b60b315e5" category="list-text">SnapCenter 서버를 등록합니다. 를 누릅니다
+<block ref="30a1a24e8f5b2901c8651c4be47ed542" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f1fa07b4f7836783fffe714d5a32befc" category="inline-image-macro">hana-hycl-back-image26, 너비=624, 높이=315</block>
+  <block id="b99ce945467ef31e44140a5ce69f55c8" category="list-text">SnapCenter 서버 자격 증명을 추가합니다. 를 누릅니다
+<block ref="fabd6e441ab3d52fb0678f20864f7565" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4d57087fb6eb4ef48dd81d74b0599e61" category="inline-image-macro">hana-hycl-back-image27, 너비=624, 높이=316</block>
+  <block id="176b8df3a4f7e0f5f93da577ced34744" category="list-text">SnapCenter 서버가 추가되고 데이터가 검색됩니다. 를 누릅니다
+<block ref="e01a765e34911c9cc45ebf375691f3ad" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f7080c828def0f5f421c804a6a9411cc" category="list-text">검색 작업이 완료되면 SAP HANA 시스템을 사용할 수 있습니다. 를 누릅니다
+<block ref="fc9d404e0e78b01038565097a3352a8e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5a367c49e14aa13d1f3d9dbbc659e2ae" category="section-title">응용 프로그램 백업에 대한 백업 정책 생성</block>
+  <block id="649a9b7aadbc8a5543b6a50f4b67635f" category="inline-image-macro">hana-hycl-back-image29, 너비=624, 높이=316</block>
+  <block id="ee896cd41eabe060c8688c8c3c1ee36c" category="list-text">설정 메뉴에서 * 정책 * 을 선택합니다. 를 누릅니다
+<block ref="185326f0812872280f0adf0e04773ab1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="349ab45b449e8c58be43aa51b5414b97" category="inline-image-macro">hana-hycl-back-image30, 너비=624, 높이=316</block>
+  <block id="ade97387220d3076bec4d7eac0ac1e25" category="list-text">원하는 경우 * 정책 생성 * 을 클릭하여 새 정책을 생성합니다. 를 누릅니다
+<block ref="8975d915951e905f053bb8fc4a552e7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="62a3ac1a1f8d319fbc334f7bb626e92f" category="inline-image-macro">hana-hycl-back-image31, 너비=624, 높이=315</block>
+  <block id="8558fcfb15dbf7f72676ae9e31d472a0" category="list-text">정책 이름과 원하는 SnapMirror 레이블을 제공하고 원하는 옵션을 선택한 후 * Create * 를 누릅니다. 를 누릅니다
+<block ref="c347360112b9c6b6f7e94dade1749c17" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="56a584207272fdc3949d5cfbeddc6890" category="inline-image-macro">hana-hycl-back-image32, 너비=624, 높이=315</block>
+  <block id="4f5cb79b576ac4420d5ab8df8d9b073f" category="list-text">새 정책을 사용할 수 있습니다. 를 누릅니다
+<block ref="2171b65bf9649c04f971325f1509e436" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="01f80398f488785a735c649b98cb461b" category="section-title">Cloud Backup for Applications를 사용하여 SAP HANA 데이터베이스를 보호합니다</block>
+  <block id="76e2dedbbcb80bd757e7f109e362eddf" category="inline-image-macro">너비 = 624, 높이 = 316</block>
+  <block id="5e0cc03833db7c0576f7d24096566189" category="list-text">SAP HANA 시스템의 경우 * 백업 활성화 * 를 선택합니다. 를 누릅니다
+<block ref="2c48b27f819c1f6dce464959272cc8fe" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7f25f783d0e4d4d1fddc6c9c315fd2b5" category="list-text">이전에 생성한 정책을 선택하고 * Next * 를 클릭합니다. 를 누릅니다
+<block ref="c0254b63c0fb085b036886dfba6ccb39" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="301e715cc01e45bb423cb6a66ee55bd7" category="list-text">스토리지 시스템과 커넥터가 미리 구성되어 있으므로 백업이 활성화됩니다. 를 누릅니다
+<block ref="ad1fce9dd6ef995031c85dd49fe04071" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="659017308b6b80ebac0dc21912936c14" category="inline-image-macro">너비 = 624, 높이 = 337</block>
+  <block id="d9835ac927f5890b5c4fa24f03635dbf" category="list-text">작업이 완료되면 시스템이 나열됩니다. 를 누릅니다
+<block ref="681e1ec310d70e08717a083b855d482a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a852f184953f796252263a558df2db56" category="inline-image-macro">hana-hycl-back-image37, 너비=624, 높이=316</block>
+  <block id="f8573bf4cb07bcf6ef97ab079e1bb247" category="list-text">일정 시간이 지나면 SAP HANA 시스템의 세부 정보 보기에 백업이 나열됩니다. 를 누릅니다
+매일 백업이 다음 날에 나열됩니다. 를 누릅니다
+<block ref="dbaf7b11b6fc3181ec1d45bd0df20947" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a0e8aadf9440319ad134e14b8cd7944e" category="paragraph">일부 환경에서는 SnapMirror 소스의 기존 일정 설정을 제거해야 할 수도 있습니다. 이렇게 하려면 소스 ONTAP 시스템에서 다음 명령을 실행하십시오. _snapmirror modify -destination -path &lt;hana-cloud-svm&gt;: &lt;SID_data_mnt00001&gt;_copy -schedule ""_.</block>
+  <block id="3b6e263c9f3e6b5ae82e2961e7499aa8" category="summary">이 기술 보고서에서는 애플리케이션용 NetApp BlueXP Backup nad Recovery를 사용하여 SAP HANA 데이터 보호에 대한 모범 사례를 제공합니다. 이 문서에서는 구성, 백업 작업, 백업 작업, 데이터베이스 작업 등 개념, 구성 권장 사항 및 운영 워크플로우를 복원 작업을 수행할 수 있습니다.</block>
+  <block id="b9a6a76ee21e4b2e63f002e8171e92cb" category="doc">SAP HANA를 위한 BlueXP 백업 및 복구 - 클라우드 오브젝트 스토리지를 백업 대상으로 합니다</block>
+  <block id="b5810ff76e2c858c26eb34fd554d4cd5" category="paragraph">이 문서에서는 NetApp BlueXP를 통해 사내 데이터 저장소에서 클라우드 기반 오브젝트 저장소로 데이터를 보호하기 위해 SAP HANA를 설정하고 구성하는 방법을 설명합니다. 솔루션의 BlueXP 백업 및 복구 부분에 대해 다룹니다. 이 솔루션은 NetApp Snap Center를 사용하는 사내 SAP HANA 백업 솔루션의 향상된 기능으로 SAP HANA 백업을 클라우드 기반 오브젝트 스토리지에 비용 효율적으로 장기간 아카이빙하고 AWS Glacier/Deep Glacier와 같은 아카이브 스토리지에 오브젝트 스토리지를 선택적으로 계층화할 수 있습니다. Microsoft Azure Blob Archive 및 GCP 아카이브 스토리지.</block>
+  <block id="efabc7b5ad8cc75eaf149a7744db8028" category="inline-link">TR-4614: SnapCenter를 사용한 SAP HANA 백업 및 복구(netapp.com)</block>
+  <block id="c321598c956cf1b8a4189a4449a0377e" category="paragraph">사내 SAP HANA 백업 및 복구 솔루션의 설정 및 구성은 에 설명되어 있습니다<block ref="15efad3574df413724673ccbc14e9c64" category="inline-link-rx"></block>.</block>
+  <block id="a9b7843d32f728ea5c5677b7fc14faa1" category="paragraph">이 TR에서는 AWS S3 오브젝트 스토리지를 사용하는 SAP HANA용 BlueXP 백업 및 복구를 통해 온프레미스 SnapCenter 기반 SAP HANA 백업 및 복구 솔루션을 개선하는 방법에 대해서만 설명합니다. AWS S3 대신 Microsoft Azure 및 GCP 오브젝트 스토리지를 사용하는 설정 및 구성은 비슷하지만 이 문서에서는 설명하지 않습니다.</block>
+  <block id="c81a8bcb625915f9445bc27152702a6c" category="section-title">BlueXP 백업 및 복구 아키텍처</block>
+  <block id="51fb7f5abc70e4c20e599e9abea2bc67" category="paragraph">BlueXP 백업 및 복구는 SaaS 솔루션으로, NetApp 온프레미스 스토리지에서 실행되는 애플리케이션의 데이터 보호 기능을 클라우드로 제공합니다. NetApp 스토리지를 사용하여 SAP HANA에 대한 효율적인 애플리케이션 정합성이 보장된 정책 기반 보호를 제공합니다. 또한 BlueXP 백업 및 복구를 통해 중앙 집중식 제어 및 감독을 지원하는 동시에 사용자에게 애플리케이션별 백업 및 복원 작업의 관리 기능을 위임합니다.</block>
+  <block id="71e720aa42f761a270169d7e4f05cb68" category="paragraph">BlueXP 백업 및 복구는 NetApp BlueXP 내에서 SaaS로 실행되며 프레임워크와 UI를 활용합니다. BlueXP 작업 환경 프레임워크는 NetApp ONTAP 기반의 사내 스토리지 및 NetApp SnapCenter Server에 대한 자격 증명을 구성하고 관리하는 데 사용됩니다.</block>
+  <block id="cc9fcc0e20ed73ea1c801ee52f57a449" category="paragraph">BlueXP 커넥터를 고객 가상 네트워크 내에 구축해야 합니다. 사이트 간 VPN 연결과 같이 온-프레미스 환경과 클라우드 환경 간의 연결이 필요합니다. NetApp SaaS 구성 요소와 고객 환경 간의 통신은 커넥터를 통해서만 수행됩니다. 커넥터가 ONTAP 및 SnapCenter 관리 API를 사용하여 스토리지 작업을 실행하고 있습니다.</block>
+  <block id="7335a187a88dba26e1d6b3eb60d0c796" category="paragraph">온프레미스 스토리지와 클라우드 버킷 간의 데이터 전송은 AES 256비트 유휴 암호화, 전송 중 TLS/HTTPS 암호화, CMK(고객 관리 키) 지원으로 엔드 투 엔드 보호를 제공합니다. 를 누릅니다
+백업된 데이터는 변경 및 삭제가 불가능한 WORM 상태로 저장됩니다. 오브젝트 스토리지의 데이터에 액세스하는 유일한 방법은 NetApp CVO를 포함한 NetApp ONTAP 기반 스토리지에 복원하는 것입니다.</block>
+  <block id="41bb765509308cdc44c413e512e52e34" category="inline-image-macro">EIN BILD, DAS 텍스트, 스크린샷, Diagramm, Kreis enthält. Automatisch generierte Beschreibung, width=624, height=450</block>
+  <block id="796b2f89ad255115d9dff26e3177a467" category="paragraph"><block ref="796b2f89ad255115d9dff26e3177a467" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b2bf2bbf7e6b4629b50b4af1483af0ba" category="section-title">설치 및 구성 단계 개요</block>
+  <block id="f3cf1278a15cf0b578a48d8ef6a60523" category="inline-link">SnapCenter 구성(netapp.com)</block>
+  <block id="ca4b776daf9a467ea504999e0a127287" category="paragraph">필요한 설치 및 구성 단계는 세 가지 영역으로 나눌 수 있습니다. 를 누릅니다
+NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 첫 번째 위치에서 SAP HANA용 Snap Center를 설정할 수 있습니다<block ref="bc1347d79ab670cf5ad861e4a7cc0e9b" category="inline-link-rx"></block>.</block>
+  <block id="a63540c81089e8aba203a4ec3fca1e34" category="list-text">NetApp BlueXP 구성 요소의 설치 및 구성</block>
+  <block id="60cb8be07c4c55cabf60de71b7a9b4b2" category="paragraph">데이터 보호 솔루션의 초기 설정 중에 한 번 수행해야 합니다.</block>
+  <block id="d695b2f7d2eff56585ac33b59ae50cde" category="list-text">NetApp SnapCenter의 준비 단계</block>
+  <block id="6d95f48ab62edee63c2cc9fda6615760" category="paragraph">보호해야 하는 각 SAP HANA 데이터베이스에 대해 수행해야 합니다.</block>
+  <block id="c24f27d2fb45abb4ddc4c6dac6b3f9b9" category="list-text">BlueXP 백업 및 복구의 구성 단계</block>
+  <block id="0e7839906008338e5f608eca614e1cc7" category="section-title">NetApp BlueXP 하이브리드 애플리케이션 백업의 설치 및 구성</block>
+  <block id="9293673edeb2321146de2dbe903787cc" category="inline-link">온프레미스 애플리케이션 데이터 보호 | NetApp 설명서</block>
+  <block id="1b21781469d6b56757c78d09d90f83be" category="paragraph">NetApp BlueXP 구성 요소의 설치 및 구성은 에 설명되어 있습니다<block ref="36b413e5ecd6dd30fe4575aa917373d9" category="inline-link-rx"></block>.</block>
+  <block id="c3c6e6b1d05fc3c3c73b5ab9af3ea3ee" category="list-text">에서 BlueXP에 등록하고 NetApp 계정을 설정하십시오<block ref="7dd2072632295c5a9abd61523c46bd40" category="inline-link-rx"></block>.</block>
+  <block id="44de63d2b4a3805e8a143a8425e912c6" category="inline-link">커넥터에 대해 알아보기 | NetApp 문서</block>
+  <block id="bc9a4ad171b5071191568c8006c63dc6" category="list-text">사용자 환경에 BlueXP 커넥터를 배포합니다. 설명은 에서 확인할 수 있습니다<block ref="a6131392110983029d1dff188cde678b" category="inline-link-rx"></block>.</block>
+  <block id="6691a23f272bb7c1d702c8963a326dc0" category="list-text">BlueXP에서 Cloud Backup 라이센스 추가/구매:<block ref="57c4a53c7a746551566c6506aa924ffc" category="inline-link-rx"></block>.</block>
+  <block id="9d76c9e4e9696688d77e71e00214424d" category="list-text">온프레미스 스토리지를 추가하여 BlueXP에 NetApp 온프레미스 환경과 클라우드 대상을 위한 작업 환경을 조성합니다.</block>
+  <block id="55c74f25e19f21b0e03e4642d0363930" category="list-text">온프레미스 스토리지를 AWS S3 버킷에 대한 새로운 오브젝트 저장소 관계를 생성한다.</block>
+  <block id="d497834786aa54c08eaf2f867588d576" category="list-text">SnapCenter에서 SAP HANA 시스템 리소스를 구성합니다.</block>
+  <block id="465f4a123cd3df663bb4b5d781e3755f" category="list-text">작업 환경에 Snap Center를 추가합니다.</block>
+  <block id="87a323c396d1f0b11c5c63017a081d0a" category="list-text">사용자 환경에 대한 정책을 만듭니다.</block>
+  <block id="a33d9e49823debc4eac9a3f6fed5ed4f" category="list-text">SAP HANA 시스템 보호.</block>
+  <block id="2a4e61491419807845d0ce0d6f0b7d25" category="summary">이 섹션에서는 추가 정보를 찾을 수 있는 위치를 나열하고 버전 기록을 보여 줍니다.</block>
+  <block id="b1708148488f2ff73841c4df62f35be1" category="doc">추가 정보 및 버전 기록</block>
+  <block id="5d2dace1bbb099eb2c0c668ec3e8c3b6" category="list-text">NetApp BlueXP 백업 및 복구 제품 설명서 +
+<block ref="2337d886e4f2f876275339e16f80eafd" category="inline-link-rx"></block></block>
+  <block id="b0e216a090ed7d12ab06af852f5fd176" category="list-text">SnapCenter+를 사용한 SAP HANA 백업 및 복구
+<block ref="94fe6fb839269f177c2cb625768421d4" category="inline-link-rx"></block></block>
+  <block id="d7a15f16d93378f9428254d47703abd2" category="cell">2024년 3월</block>
+  <block id="c9dd6bad4c7d561872f2e2d498a990bf" category="inline-link">상호 운용성 매트릭스 툴(IMT)</block>
+  <block id="c5358f17fd6fd13a64169fc38a03495f" category="paragraph">을 참조하십시오<block ref="2a186a9053db553d8a98e2d5f86d7002" category="inline-link-rx"></block> NetApp Support 사이트에서 본 문서에 기술된 제품과 기능 버전이 귀사의 환경에서 지원되는지 확인하십시오. NetApp IMT에는 NetApp이 지원하는 구성을 설계하는 데 사용할 수 있는 제품 구성요소 및 버전이 정의되어 있습니다. 구체적인 결과는 게시된 기술사양과 그에 따른 고객 설치 환경에 따라 달라집니다.</block>
+  <block id="ca996b238b1f32bd7d6b941eb3464b17" category="sidebar">SAP HANA를 위한 BlueXP 백업 및 복구 - 개요</block>
+  <block id="deac54b4ceeb072a80124bd022d78294" category="sidebar">SAP HANA BlueXP 백업 복원</block>
 </blocks>

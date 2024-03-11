@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-hycl-backup-conf.html 
+keywords: BlueXP, SAP HANA, configuration 
+summary: 이 섹션에서는 작업 환경을 설정하는 방법, SnapCenter 구성 방법, BlueXP 내에서 SAP HANA 백업을 구성 및 활성화하는 방법을 설명합니다. 
+---
+= SAP HANA용 BlueXP 백업 및 복구 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./../media/
+
+
+
+
+== BlueXP의 작업 환경을 구축합니다
+
+사내 스토리지 시스템을 작업 환경에 추가합니다.
+
+. 왼쪽 메뉴에서 * 스토리지 * -> * Canvas * -> * My Working * Environment를 선택합니다.
+. + 작업 환경 추가 * 를 누릅니다. 를 누릅니다
+image:hana-hycl-back-image2.jpeg["hana-hycl-back-image2, 너비=624, 높이=316"]
+. 온-프레미스 * 를 선택합니다. 를 누릅니다
+image:hana-hycl-back-image3.jpeg["EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+. Discover on-premise ONTAP * 를 선택합니다. 를 누릅니다
+image:hana-hycl-back-image4.jpeg["EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+. ONTAP 클러스터의 IP 주소와 암호를 추가하고 * Discover * 를 누릅니다. 를 누릅니다
+image:hana-hycl-back-image5.jpeg["hana-hycl-back-image5, 너비=624, 높이=316"]
+. 이제 ONTAP 클러스터를 사용할 수 있습니다. 를 누릅니다
+image:hana-hycl-back-image6.jpeg["EIN Bild, 다스 디아그람 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+
+
+
+
+== 온프레미스 스토리지 시스템과 오브젝트 스토리지 버킷 간의 관계를 생성합니다
+
+온프레미스 스토리지와 S3 버킷 간의 관계는 볼륨에 대한 백업을 생성하거나 애플리케이션 백업을 활성화하여 수행합니다. 기존 사이트 간 VPN을 사용하여 데이터를 사내에서 S3로 전송할 경우 VPC 엔드포인트를 사용해야 하므로 온프레미스 스토리지와 S3 버킷 간의 관계를 생성하는 데 볼륨 백업을 사용해야 합니다. 를 누릅니다
+이 문서를 작성할 때 애플리케이션 백업 워크플로우에서는 S3 버킷을 액세스할 VPC 엔드포인트를 선택할 수 없습니다. 를 누릅니다
+을 참조하십시오 https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html["Amazon S3-Amazon Virtual Private Cloud에 대한 게이트웨이 엔드포인트"] VPC 내에서 S3에 대한 VPC 엔드포인트를 설정하는 방법
+
+첫 번째 볼륨 백업을 생성하려면 다음 단계를 수행하십시오.
+
+. 보호 * 를 통해 * 백업 및 복구 * 로 이동하고 * 볼륨 * 을 선택합니다. 를 누릅니다
+image:hana-hycl-back-image7.jpeg["hana-hycl-back-image7, 너비=624, 높이=308"]
+. 백업 활성화 * 버튼을 누릅니다. 를 누릅니다
+image:hana-hycl-back-image8.jpeg["HANA-hycl-back-image8, 너비=624, 높이=309"]
+. 원하는 온프레미스 스토리지 시스템을 선택하고 * Activate Backup * 을 클릭합니다. 를 누릅니다
+image:hana-hycl-back-image9.jpeg["hana-hycl-back-image9, 너비=624, 높이=304"]
+. 백업 * 을 선택합니다. 를 누릅니다
+image:hana-hycl-back-image10.jpeg["hana-hycl-back-image10, 너비=624, 높이=307"]
+. SAP HANA 데이터 파일과 동일한 SVM에 저장된 볼륨을 선택하고 * Next * 를 누릅니다. 이 예에서는 /HANA/shared 볼륨을 선택했습니다. 를 누릅니다
+image:hana-hycl-back-image12.jpeg["hana-hycl-back-image12, 너비=624, 높이=305"]
+. * Continue *, 기존 정책이 있는 경우. 를 누릅니다
+image:hana-hycl-back-image11.jpeg["hana-hycl-back-image11, 너비=624, 높이=304"]
+. 백업 옵션 * 을 선택하고 원하는 백업 공급자를 선택합니다. 이 예에서는 AWS입니다. 를 누릅니다
+기존 정책에 대한 옵션을 선택된 상태로 유지합니다. 를 누릅니다
+사용하지 않을 옵션의 선택을 취소합니다. 를 누릅니다
+image:hana-hycl-back-image13.jpeg["EIN Bild, DAS 텍스트, 소프트웨어, Computersymbol, Webseite enthält. Automatisch generierte Beschreibung, width=624, height=306"]
+. 새 버킷을 만들거나 기존 버킷을 선택하십시오. AWS 계정 설정, regio, 액세스 키 및 비밀 키를 제공합니다. 다음 * 을 누릅니다. 를 누릅니다
+image:hana-hycl-back-image14.jpeg["hana-hycl-back-image14, 너비=624, 높이=306"]
+. 온프레미스 스토리지 시스템의 올바른 IPspace를 선택하고 * Privat Endpoint Configuration * 을 선택한 다음 S3의 VPC 엔드포인트를 선택합니다. 다음 * 을 누릅니다. 를 누릅니다
+image:hana-hycl-back-image15.jpeg["hana-hycl-back-image15, 너비=624, 높이=304"]
+. 구성을 검토하고 * 백업 활성화 * 를 누릅니다. 를 누릅니다
+image:hana-hycl-back-image16.jpeg["hana-hycl-back-image16, 너비=624, 높이=304"]
+. 백업이 성공적으로 시작되었습니다. 를 누릅니다
+image:hana-hycl-back-image17.jpeg["hana-hycl-back-image17, 너비=624, 높이=304"]
+
+
+
+
+== SnapCenter에서 SAP HANA 시스템 리소스를 구성합니다
+
+. SAP HANA 시스템이 저장된 SVM(이 예제의 HANA)이 클러스터를 통해 추가되었는지 확인합니다. SVM만 추가된 경우 클러스터를 추가합니다. 를 누릅니다
+image:hana-hycl-back-image18.png["그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 폭 = 604, 높이 = 156"]
+. 일별, 주별 또는 월별 스케줄 유형을 사용하여 스케줄 정책을 정의합니다. 를 누릅니다
+image:hana-hycl-back-image19.png["그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 너비 = 604, 높이 = 140"]
+image:hana-hycl-back-image20.jpeg["hana-hycl-back-image20, 너비 = 167, 높이 = 167"]
+. SAP HANA 시스템에 새 정책을 추가하고 일별 일정을 할당합니다. 를 누릅니다
+image:hana-hycl-back-image21.png["그래픽 사용자 인터페이스, 응용 프로그램 설명이 자동으로 생성됨, 너비 = 604, 높이 = 215"]
+. 이 정책으로 구성된 새 백업은 정의된 스케줄에 따라 정책이 실행된 후에 사용할 수 있습니다.
+image:hana-hycl-back-image22.png["그래픽 사용자 인터페이스, 애플리케이션, 팀 설명 자동으로 생성됨, 너비 = 604, 높이 = 193"]
+
+
+
+
+== BlueXP 작업 환경에 SnapCenter 추가
+
+. 왼쪽 메뉴에서 * 보호 * -> * 백업 및 복구 * -> * 애플리케이션 * 을 선택합니다.
+. 풀다운 메뉴에서 * Hybrid * 를 선택합니다.  를 누릅니다
+image:hana-hycl-back-image23.jpeg["hana-hycl-back-image23, 너비=624, 높이=316"]
+. 설정 메뉴에서 * SnapCenter 서버 * 를 선택합니다. 를 누릅니다
+image:hana-hycl-back-image24.jpeg["EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+. SnapCenter 서버를 등록합니다. 를 누릅니다
+image:hana-hycl-back-image25.jpeg["EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+. SnapCenter 서버 자격 증명을 추가합니다. 를 누릅니다
+image:hana-hycl-back-image26.jpeg["hana-hycl-back-image26, 너비=624, 높이=315"]
+. SnapCenter 서버가 추가되고 데이터가 검색됩니다. 를 누릅니다
+image:hana-hycl-back-image27.jpeg["hana-hycl-back-image27, 너비=624, 높이=316"]
+. 검색 작업이 완료되면 SAP HANA 시스템을 사용할 수 있습니다. 를 누릅니다
+image:hana-hycl-back-image28.jpeg["EIN Bild, DAS 텍스트 enthält. Automatisch generierte Beschreibung, width=624, height=316"]
+
+
+
+
+== 응용 프로그램 백업에 대한 백업 정책 생성
+
+. 설정 메뉴에서 * 정책 * 을 선택합니다. 를 누릅니다
+image:hana-hycl-back-image29.jpeg["hana-hycl-back-image29, 너비=624, 높이=316"]
+. 원하는 경우 * 정책 생성 * 을 클릭하여 새 정책을 생성합니다. 를 누릅니다
+image:hana-hycl-back-image30.jpeg["hana-hycl-back-image30, 너비=624, 높이=316"]
+. 정책 이름과 원하는 SnapMirror 레이블을 제공하고 원하는 옵션을 선택한 후 * Create * 를 누릅니다. 를 누릅니다
+image:hana-hycl-back-image31.jpeg["hana-hycl-back-image31, 너비=624, 높이=315"]
+. 새 정책을 사용할 수 있습니다. 를 누릅니다
+image:hana-hycl-back-image32.jpeg["hana-hycl-back-image32, 너비=624, 높이=315"]
+
+
+
+
+== Cloud Backup for Applications를 사용하여 SAP HANA 데이터베이스를 보호합니다
+
+. SAP HANA 시스템의 경우 * 백업 활성화 * 를 선택합니다. 를 누릅니다
+image:hana-hycl-back-image33.jpeg["너비 = 624, 높이 = 316"]
+. 이전에 생성한 정책을 선택하고 * Next * 를 클릭합니다. 를 누릅니다
+image:hana-hycl-back-image34.jpeg["너비 = 624, 높이 = 316"]
+. 스토리지 시스템과 커넥터가 미리 구성되어 있으므로 백업이 활성화됩니다. 를 누릅니다
+image:hana-hycl-back-image35.jpeg["너비 = 624, 높이 = 316"]
+. 작업이 완료되면 시스템이 나열됩니다. 를 누릅니다
+image:hana-hycl-back-image36.jpeg["너비 = 624, 높이 = 337"]
+. 일정 시간이 지나면 SAP HANA 시스템의 세부 정보 보기에 백업이 나열됩니다. 를 누릅니다
+매일 백업이 다음 날에 나열됩니다. 를 누릅니다
+image:hana-hycl-back-image37.jpeg["hana-hycl-back-image37, 너비=624, 높이=316"]
+
+
+일부 환경에서는 SnapMirror 소스의 기존 일정 설정을 제거해야 할 수도 있습니다. 이렇게 하려면 소스 ONTAP 시스템에서 다음 명령을 실행하십시오. _snapmirror modify -destination -path <hana-cloud-svm>: <SID_data_mnt00001>_copy -schedule ""_.
