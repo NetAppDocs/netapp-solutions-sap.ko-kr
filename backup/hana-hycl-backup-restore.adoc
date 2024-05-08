@@ -21,9 +21,9 @@ summary: 이 섹션에서는 BlueXP를 사용하여 SAP HANA 백업을 복원하
 .   복원할 데이터베이스에 해당하는 * View Details * 를 클릭합니다. 를 누릅니다
 image:hana-hycl-back-image38.jpeg["hana-hycl-back-image38, 너비=624, 높이=305"]
 . 원하는 백업을 선택하고 스토리지 내보내기 를 선택합니다. 를 누릅니다
-image:hana-hycl-back-image39.jpeg["EIN Bild, DAS 텍스트, 스크린샷, 소프트웨어, 컴퓨터 기호 enthält. Automatisch generierte Beschreibung, width=624, height=308"]
+image:hana-hycl-back-image39.jpeg["너비 = 624, 높이 = 308"]
 . 원하는 옵션을 제공합니다. +
-image:hana-hycl-back-image40.jpeg["EIN Bild, DAS 텍스트, 스크린샷, 소프트웨어, 컴퓨터 기호 enthält. Automatisch generierte Beschreibung, width=624, height=308"]
+image:hana-hycl-back-image40.jpeg["너비 = 624, 높이 = 308"]
 +
 .. NAS 환경의 경우 객체 저장소에서 복구된 볼륨을 내보낼 호스트의 FQDN 또는 IP 주소를 지정합니다.
 .. SAN 환경의 경우 오브젝트 저장소에서 복원된 볼륨의 LUN이 매핑될 호스트의 이니시에이터를 지정합니다.
