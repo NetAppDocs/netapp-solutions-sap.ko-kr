@@ -26,6 +26,12 @@ HDD 구성에서 스토리지 효율성 기능을 사용하도록 설정하는 �
 
 
 
+== NetApp FlexGroup 볼륨
+
+SAP HANA에는 NetApp FlexGroup 볼륨 사용이 지원되지 않습니다. SAP HANA의 아키텍처로 인해 FlexGroup 볼륨을 사용할 경우 이점이 없으므로 성능 문제가 발생할 수 있습니다.
+
+
+
 == NetApp 볼륨 및 애그리게이트 암호화
 
 SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.

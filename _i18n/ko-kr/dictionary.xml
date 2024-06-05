@@ -4680,4 +4680,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드</block>
   <block id="ef6ac0da06e1bd8eabd965442ae5668d" category="paragraph">Marco schön, NetApp</block>
   <block id="47e4a9a1322865b7fd49caaf0207408a" category="list-text">AFF A150, AFF A250, AFF A400, AFF A70, AFF A800, AFF A900, AFF A90, AFF A1K</block>
+  <block id="a004afbb2c9ff596c570f05cacd1d651" category="section-title">NetApp FlexGroup 볼륨</block>
+  <block id="cfb6b0dd52bfc75b4646448807e41154" category="paragraph">SAP HANA에는 NetApp FlexGroup 볼륨 사용이 지원되지 않습니다. SAP HANA의 아키텍처로 인해 FlexGroup 볼륨을 사용할 경우 이점이 없으므로 성능 문제가 발생할 수 있습니다.</block>
 </blocks>
