@@ -45,17 +45,11 @@
   <block id="cd0aa799857a204938b1d6cabb99618f" category="doc">SAP의 새로운 기능</block>
   <block id="ff0018dfdf641d75e04d581743c81f22" category="paragraph">최신 SAP 솔루션 및 솔루션 자료 개요</block>
   <block id="84f6a50de79d49013e595a0b9fd524e0" category="inline-link-macro">TR-4905: SnapCenter 기반 SAP HANA 백업 및 복구(Azure NetApp Files 서비스 포함)</block>
-  <block id="da322257c020829271a011f2bf2ef3af" category="list-text"><block ref="da322257c020829271a011f2bf2ef3af" category="inline-link-macro-rx"></block></block>
   <block id="48d5e63e9107995e8ea0ce708339c7bd" category="inline-link-macro">TR-4891: Azure NetApp Files를 사용한 SAP HANA 재해 복구</block>
-  <block id="7aa50c591cbe872ef050a10a3796443e" category="list-text"><block ref="7aa50c591cbe872ef050a10a3796443e" category="inline-link-macro-rx"></block></block>
   <block id="8290e539e87b39f4743f2a941a37d00d" category="inline-link-macro">TR-4435: NFS 구성 가이드를 지원하는 NetApp AFF 시스템 기반 SAP HANA</block>
-  <block id="dcf135c7c1ec1f076814d863eae8e3c4" category="list-text"><block ref="dcf135c7c1ec1f076814d863eae8e3c4" category="inline-link-macro-rx"></block></block>
   <block id="91e3a26ea4105ecd20561989c3c58a32" category="inline-link-macro">TR-4290: NFS 구성 가이드가 있는 NetApp FAS 시스템 기반 SAP HANA</block>
-  <block id="a71fa770921bd674dcee08ea9faa63c3" category="list-text"><block ref="a71fa770921bd674dcee08ea9faa63c3" category="inline-link-macro-rx"></block></block>
   <block id="088c8c258db90c09658a39d2839f52b0" category="inline-link-macro">TR-4384: 파이버 채널 프로토콜 구성 가이드를 지원하는 NetApp FAS 시스템 기반 SAP HANA</block>
-  <block id="f41d298f4547e5d08ab439536a1d45a7" category="list-text"><block ref="f41d298f4547e5d08ab439536a1d45a7" category="inline-link-macro-rx"></block></block>
   <block id="0db6b81db5bd35e1eef1e83e154c3cb5" category="inline-link-macro">TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA</block>
-  <block id="c98757f0e8d45370ae0d173f16cb73e3" category="list-text"><block ref="c98757f0e8d45370ae0d173f16cb73e3" category="inline-link-macro-rx"></block></block>
   <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.</block>
   <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">법적 고지</block>
   <block id="6016a2b341113bf496b719905398ecd2" category="section-title">저작권</block>
@@ -4689,4 +4683,161 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="1f934c6200615c74e6839ca55ae1e6cf" category="sidebar">백업, 복원 및 재해 복구</block>
   <block id="d57e0763c47c99218375572fbdd307a1" category="sidebar">모든 SAP 솔루션</block>
   <block id="91770f038cd944a1d3b9b347edeb2b10" category="sidebar">새로운 기능</block>
+  <block id="db5a8e62a598aa08b2923f3210fec1a3" category="summary">이 문서에서는 NetApp ® Snapshot ™ 및 FlexClone ® 기술을 알파카자동화 워크플로우에 통합하는 데 중점을 두고 있습니다.</block>
+  <block id="e7ffc6df7629952bee1f92657458fbac" category="doc">SB-4293: alpaca 및 NetApp SnapCenter를 사용하여 SAP 시스템 복사, 업데이트 및 클론 워크플로우를 자동화합니다</block>
+  <block id="c0c4b60d27032c028c91440e9d3be949" category="section-title">솔루션 개요</block>
+  <block id="86418a2229dc17869377db8ccf58db56" category="paragraph">SAP 시스템 및 솔루션 운영은 매우 복잡합니다. 그러나 SAP를 사용하는 기업의 경우 시스템 및 서비스는 비즈니스 프로세스의 핵심입니다. SAP 시스템 관리자는 시스템 복사 및 새로 고침 작업과 같은 반복적인 일상 운영 작업을 자동화하여 보다 적은 노력으로 더 많은 시스템을 관리하고, 반복 가능한 결과를 도출하며, 인적 오류를 줄일 수 있습니다.</block>
+  <block id="fbcecadd64701c98813e5bc5accb7a85" category="paragraph">Automating Landscape primited - Cloud and Anywhere(알파카) 제품군은 SAP 환경을 세부적으로 감독하고 모니터링할 수 있는 포괄적인 관리 인터페이스입니다. alpaca는 SAP 인프라 운영을 간소화하고 신속히 진행하여 가용성과 투명성을 최적화합니다. 인프라를 비롯하여 전체 환경을 관리하는 데 필요한 포괄적인 툴을 제공하며 서비스 중단, 작업 중지, 정체 등의 이상 징후를 사전에 알립니다. 이 제품군은 멀티 클라우드 시나리오를 포함하여 온프레미스, 하이브리드 및 모든 클라우드 환경에서 원활하게 작동하도록 설계되어 모든 인프라에 대응할 수 있습니다. 이 모듈 기반 프레임워크는 표준 및 일반 SAP 관리 작업은 물론 운영 중단 시 장애 조치와 같은 복잡한 시나리오를 자동화합니다. alpaca는 관리자/전문가, 운영자 및 관리자로서 이러한 전문가에게 높은 수준의 제어 및 자동화를 제공합니다.</block>
+  <block id="9d632cae336dd853f201c88c832e2cb7" category="inline-image-macro">알파카 플랫폼 다이어그램</block>
+  <block id="82020173d38ee27d458fbdf847bfc42e" category="paragraph"><block ref="82020173d38ee27d458fbdf847bfc42e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7323cb77cd037c30e7a9a2a0dc1eacb9" category="paragraph">이 문서에서는 alpaca가 NetApp SnapCenter ® 와 통합되어 스냅샷 기반 백업을 오케스트레이션하고, 복원을 수행하고, FlexClone 볼륨을 만드는 방법에 대해 설명합니다. 이러한 통합을 통해 SAP 관리자는 SAP 시스템의 일상적인 운영 작업을 대폭 가속화할 수 있습니다. NetApp Snapshot, FlexClone 및 SnapRestore ® 기술은 NetApp의 스토리지 기술이 포인터 기반이므로 백업, 복원 및 클론 복제 작업을 가속화합니다. 이 접근 방식은 빠르며 기존 데이터가 아닌 새 데이터와 변경된 데이터만 스토리지 미디어에 기록되어야 하므로 복제 작업 중에 스토리지 오버헤드가 줄어듭니다. 이는 사내 NetApp 스토리지 시스템이든 3대 클라우드 공급자 중 한 곳이든 NetApp 스토리지 솔루션이든 관계없이 마찬가지입니다.</block>
+  <block id="bf8dd94f74c5878ba969abeeef0286d1" category="section-title">대상</block>
+  <block id="a34a4fdc22dc4d566081e48a846fbf5a" category="paragraph">이 문서는 SAP 시스템 복제본을 수동으로 수행했으며 alpaca를 사용하여 이 작업을 자동화하고자 하는 SAP 시스템 관리자를 대상으로 합니다. NetApp SnapCenter에서 오케스트레이션된 NetApp Snapshot 및 FlexClone 기술과 알파카풍을 결합하는 목적은 완전히 자동화된 SAP 시스템 복사본의 기간을 단축하는 것입니다.</block>
+  <block id="3d308ecb8420d2579b7d359b7ad94bb5" category="paragraph">SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 및 SAP 시스템 새로 고침이라는 세 가지 프로세스에 대한 동의어로 자주 사용됩니다. 워크플로우와 사용 사례가 다르므로 각 작업을 구분하는 것이 중요합니다.</block>
+  <block id="622b88e8f99c2f21460dccf5dc97f1d7" category="list-text">* SAP 시스템 클론 *. SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서는 호스트 이름, 인스턴스 번호 및 SID(Secure Identifier)가 동일하게 유지됩니다. 따라서 대상 시스템이 생산 환경과의 통신이 없도록 적절한 네트워크 펜싱을 설정하는 것이 중요합니다.</block>
+  <block id="da4f81a65278754f8234bd6f906c0e40" category="inline-image-macro">SAP 시스템 클론을 보여 주는 이미지입니다</block>
+  <block id="1b937a8a58ab58bc1c61e59ac1b52925" category="paragraph"><block ref="1b937a8a58ab58bc1c61e59ac1b52925" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c363bfedad13dec17e913676bcbc4371" category="list-text">* SAP 시스템 카피 *. SAP 시스템 복제본은 소스 SAP 시스템의 데이터가 포함된 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어, 새 타겟 시스템은 운영 시스템의 데이터가 있는 추가 테스트 시스템이 될 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 대해 다릅니다. 새 시스템이 소스 시스템에서 격리되지 않았습니다.</block>
+  <block id="0317fd7042e1a3bbd1897d5d7f7a2cc6" category="inline-image-macro">SAP 시스템 복제본을 보여 주는 이미지입니다</block>
+  <block id="3f8fbc4328976ab1bb4502f3763520b2" category="paragraph"><block ref="3f8fbc4328976ab1bb4502f3763520b2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0820369f4405acedd8305fd09350a9e9" category="list-text">* SAP 시스템 새로 고침 *. SAP 시스템 새로 고침은 소스 SAP 시스템의 데이터로 기존 타겟 SAP 시스템을 새로 고치는 것입니다. 일반적으로 타겟 시스템은 운영 시스템의 데이터로 새로 고쳐지는 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.</block>
+  <block id="a5c1cb5f56a681e17c4285d9eccac7b1" category="inline-image-macro">SAP 시스템 새로 고침을 보여 주는 이미지입니다</block>
+  <block id="942f47e7ef3ead6cb8f92c69276f36c3" category="paragraph"><block ref="942f47e7ef3ead6cb8f92c69276f36c3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="444724efd6db7acaf8cd0d5c32fcfd71" category="paragraph">비록 세 가지 사용 사례지만 데이터 관리 프로세스는 그대로 유지됩니다. 세 가지 사용 사례에서는 모두 동일한 기본 데이터 관리 기술인 NetApp Snapshot 및 FlexClone을 사용합니다.</block>
+  <block id="8f4c7939e8a42e023939df947aba54f6" category="section-title">솔루션 기술</block>
+  <block id="e664b92ee975da28ca5e768b9a88dd26" category="paragraph">전반적인 솔루션은 다음과 같은 주요 구성 요소로 이루어집니다.</block>
+  <block id="2a4c6f6c82937e9f31385452f76b0a8d" category="list-text">SnapCenter 에이전트 및 SnapCenter 데이터베이스 플러그인이 설치된 SAP 소스 시스템</block>
+  <block id="eafc29f547c05517926b01ee4b438905" category="list-text">SnapCenter 에이전트 및 SnapCenter 데이터베이스 플러그인이 설치된 SAP 대상 시스템</block>
+  <block id="9ab707fdba87d81c6d7c3e949c63b277" category="list-text">SAP 소스 및 SAP 타겟 시스템이 구성된 알파카 시스템입니다</block>
+  <block id="ee9a1ac4f9e7a6bec1deed8ff9c2f8fb" category="list-text">NetApp SnapCenter 서버</block>
+  <block id="5d0a666f7f8f7d38d3fc377ab72d2ac5" category="list-text">NetApp 스토리지 시스템:</block>
+  <block id="55e0c6f2677f63db92df47ec0b324167" category="list-text">물리적 온프레미스 하드웨어: AFF-A, AFF-C, ASA-A, ASA-C 또는 FAS 시리즈</block>
+  <block id="251aab5f02e944d9704621e71f85578b" category="list-text">사내 소프트웨어 정의 스토리지: ONTAP ® Select</block>
+  <block id="f01a2a485dbdb94ed94e78580907767c" category="list-text">NetApp 클라우드 스토리지:</block>
+  <block id="9a5b3a6c19cc79e8803fb4a381f09917" category="list-text">Cloud Volumes ONTAP for AWS, Google Cloud 또는 Azure를 선택합니다</block>
+  <block id="7450cfde7058dc5e1f7909d0280fd7ae" category="list-text">Azure NetApp Files</block>
+  <block id="4d82a1ec1af02725042c8c785564ee7a" category="list-text">NetApp ONTAP용 Amazon FSx</block>
+  <block id="12237a5e9a92287b4283682895d22d2f" category="paragraph">다음 이미지는 알파카서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 것이 통합된 방식을 보여줍니다. 목표는 SnapCenter REST API를 사용하여 통합을 최대한 유연하게 만들어 기존 구성 요소 내에서 이미 수행된 구성 작업의 재사용을 최대한 보장하는 것입니다.</block>
+  <block id="a58f060b570a241814715299c91f3fad" category="inline-image-macro">알파카 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 것이 통합된 방식을 보여주는 이미지</block>
+  <block id="f4ca65fb5c61e96bb0d6eed9c0ca8715" category="paragraph"><block ref="f4ca65fb5c61e96bb0d6eed9c0ca8715" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bf9bdab57c82171f2cc9bcebdc37b2c2" category="section-title">사용 사례 요약</block>
+  <block id="ae1c63d0fd8dbf1fb4e91fd0923187d9" category="paragraph">테스트 또는 교육 목적으로 소스 시스템의 데이터를 대상 시스템에서 사용할 수 있도록 해야 하는 시나리오가 몇 가지 있습니다. 현재 데이터 세트에 대해 테스트 및 교육이 수행되도록 하기 위해 이러한 테스트 및 교육 시스템을 정기적으로 소스 시스템의 데이터로 업데이트해야 합니다. 이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 대한 여러 작업으로 구성되며, 자동화 수준에 따라 며칠이 걸릴 수 있습니다.</block>
+  <block id="18636c25be7e0e796a8ec39fe4f0c60e" category="paragraph">알파카워크플로를 사용하면 운영 속도를 높이고, 작업을 자동화하고, 인프라, 데이터베이스 및 애플리케이션 수준에서 인적 오류를 제거할 수 있습니다. 소스 시스템에서 대상 시스템으로 백업을 복원하는 대신 많은 시간이 소요되며 많은 리소스가 소모됩니다. 이 통합에서는 NetApp Snapshot 및 FlexClone 기술을 사용합니다. 데이터베이스를 가동하는 데 필요한 모든 작업은 몇 시간이 아닌 몇 분 안에 완료됩니다. 클론 복제 프로세스에 필요한 시간은 데이터베이스 크기에 따라 다릅니다. 따라서 매우 큰 시스템도 몇 분 이내에 생성할 수 있습니다. alpaca는 운영 체제, 데이터베이스 수준 및 SAP 후처리 측에서 작업을 자동화하여 실행 시간을 더욱 줄여줍니다.</block>
+  <block id="8ca12d6eeda659345e54817d871b4153" category="paragraph">다음 이미지는 자동화를 사용할 때 운영 효율성이 향상되는 가능성을 보여 줍니다.</block>
+  <block id="19a6f9f39008e36ec42310a1697de210" category="inline-image-macro">자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지</block>
+  <block id="4c6eb0132e4ccfcc9ed228d27e5cfc29" category="paragraph"><block ref="4c6eb0132e4ccfcc9ed228d27e5cfc29" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5005b13528d942f6d5a5d831e88ad106" category="section-title">기술 구성 요소 통합</block>
+  <block id="3b6949e0ff3c710337d9cd603b9c2515" category="paragraph">알파카 워크플로우에서 SnapCenter의 실제 통합은 셸 스크립트를 사용하여 NetApp SnapCenter REST API에 액세스하는 것으로 구성됩니다. 이 REST API 기반 통합 기능은 SAP 소스 시스템의 스냅샷 복사본을 생성하고 FlexClone 볼륨을 생성한 후 SAP 타겟 시스템에 마운트합니다. 스토리지 및 SAP 관리자는 SnapCenter에 의해 트리거되고 SnapCenter 에이전트에 의해 실행되는 스크립트를 개발하여 반복적인 일상 운영 작업을 자동화하는 방법을 알고 있습니다. 느슨하게 결합된 이 아키텍처는 셸 스크립트를 통해 SnapCenter 작업을 트리거하므로 기존 자동화 절차를 재사용하여 엔드 투 엔드 자동화를 위한 워크플로 엔진으로 alpaca를 사용하여 원하는 결과를 빠르게 달성할 수 있습니다.</block>
+  <block id="3ca92e57dea12993b0c6ac16e5820353" category="paragraph">alpaca와 NetApp 데이터 관리 기술을 함께 사용하면 SAP 시스템 관리와 관련된 가장 복잡하고 시간이 많이 소요되는 작업에 필요한 시간과 노력을 크게 줄일 수 있는 강력한 솔루션을 제공할 수 있습니다. 이러한 조합을 통해 시스템 간에 인적 오류가 발생할 수 있는 구성 편차를 방지할 수도 있습니다.</block>
+  <block id="6bf71f730c6c54b2134e90f286791cc7" category="paragraph">시스템 교체, 복사, 복제 및 재해 복구 테스트는 매우 민감한 절차이므로 이러한 솔루션을 구현하면 관리 시간이 오래 걸릴 수 있습니다. 또한 SAP 시스템 관리자가 LOB 직원의 신뢰를 강화할 수 있습니다. 문제 해결 시간을 얼마나 절약할 수 있는지, 테스트 또는 기타 목적으로 시스템을 복사하는 것이 얼마나 쉬운지 알 수 있습니다. 온프레미스, 퍼블릭 클라우드, 하이브리드 클라우드 또는 하이브리드 멀티 클라우드 등 소스 및 타겟 시스템이 운영되는 위치와 상관없이 이 말은 사실입니다.</block>
+  <block id="9c87573265b253410a84d81b471a29e1" category="paragraph">본 문서에 포함된 정보에 대한 자세한 내용은 다음 문서 및 웹 사이트를 참조하십시오.</block>
+  <block id="7c80105b450d2a7097856f0c1a47f684" category="inline-link-macro">알파카</block>
+  <block id="daf59c2df9bdef54e4fcbfb2596f3319" category="list-text"><block ref="daf59c2df9bdef54e4fcbfb2596f3319" category="inline-link-macro-rx"></block></block>
+  <block id="897625d5a9449080791ca6991d9163d6" category="list-text"><block ref="897625d5a9449080791ca6991d9163d6" category="inline-link-macro-rx"></block></block>
+  <block id="2115d0e1d828c5a28a9742411342fc04" category="inline-link-macro">SnapCenter 서버 및 플러그인에 지원되는 REST API</block>
+  <block id="36ac9e3e7c1dda5e31be15c68d614e8a" category="list-text"><block ref="36ac9e3e7c1dda5e31be15c68d614e8a" category="inline-link-macro-rx"></block></block>
+  <block id="c2668ce859de558fa49ef70b7eacbb3b" category="cell">버전 0.1</block>
+  <block id="338602028883e3e3e93d7fad17905696" category="cell">2024년 4월</block>
+  <block id="d40cd11c66986e96040133cd69280e6a" category="cell">1차 초안.</block>
+  <block id="96d7dc7b222d6abde2ea184b5e0fc02b" category="cell">버전 0.2</block>
+  <block id="b61612a45af76461f6f16d12a1e3a473" category="cell">06.2024</block>
+  <block id="8d6c86885133ff76b8d68daf86e29551" category="cell">HTML 형식으로 변환됩니다</block>
+  <block id="2190de7e3e03ad3aa87d37ce1d799634" category="summary">이 문서에서는 Avantra가 NetApp SnapCenter ® 플랫폼과 어떻게 통합되는지 설명합니다.</block>
+  <block id="fc437f8a9ad8cff38c5229c700d66600" category="doc">SB-4294: Avantra 및 NetApp SnapCenter를 사용하여 SAP 시스템 복사, 새로 고침 및 복제 워크플로우 자동화</block>
+  <block id="e85e6812e10c0d3ed470223879ee4a2e" category="paragraph">SAP 시스템 및 솔루션의 운영은 매우 복잡합니다. 그러나 SAP를 사용하는 기업의 경우 이러한 시스템과 서비스는 비즈니스 프로세스의 핵심입니다. SAP 시스템 관리자는 시스템 복사 및 새로 고침 작업과 같은 반복적인 일상 운영 작업을 자동화하여 보다 적은 노력으로 더 많은 시스템을 관리하고, 반복 가능한 결과를 도출하며, 인적 오류를 줄일 수 있습니다.</block>
+  <block id="6b040b255b68d643f860cc0c42d60c26" category="paragraph">이 문서에서는 NetApp ® Snapshot ™ 및 FlexClone ® 기술을 Avantra 자동화 워크플로우에 통합하는 데 중점을 두고 있습니다. Avantra는 IT 운영 및 서비스의 자동화된 관리에 중점을 둔 IT 관리 플랫폼입니다. IT 인프라의 모니터링, 자동화 및 관리를 위한 솔루션을 제공하여 IT 시스템의 효율성과 안정성을 향상합니다. Avantra를 통해 기업은 IT 환경을 사전에 모니터링하고, 문제를 조기에 탐지하고, 문제 해결 또는 시스템 성능 최적화를 위한 자동화된 작업을 수행할 수 있습니다. 이 플랫폼은 일반적으로 다른 IT 관리 툴과 통합되며 클라우드, 사내, 하이브리드 인프라와 같은 다양한 환경에 구축할 수 있습니다.</block>
+  <block id="9290f6edd05ab74ce976da8a1bd79627" category="paragraph">이 문서에서는 Avantra가 NetApp SnapCenter ® 플랫폼과 어떻게 통합되는지 설명합니다. NetApp SnapCenter는 스냅샷 기반 백업을 조정하고 복원을 수행하며 FlexClone 볼륨을 생성하는 데 필요한 툴입니다. 이러한 통합을 통해 SAP 관리자는 NetApp 기술을 사용하여 SAP 시스템의 일상적인 운영 작업 속도를 크게 높일 수 있습니다. Snapshot, FlexClone 및 NetApp SnapRestore ® 소프트웨어는 NetApp 스토리지 기술이 포인터 기반이므로 백업, 복원 및 클론 복제 작업을 가속화합니다. 이 방식은 빠릅니다. 또한 사내 NetApp 스토리지 시스템 또는 3대 클라우드 공급자 중 하나의 NetApp 스토리지 솔루션인지에 관계없이 새 데이터와 변경된 데이터만 스토리지 미디어에 기록되므로 클론 작업 중에 스토리지 오버헤드가 줄어듭니다.</block>
+  <block id="d62c5e03ce9e8ec0422f7decd2dfd9bf" category="paragraph">이 문서는 이전에 SAP 시스템 복제본을 수동으로 수행했으며 Avantra를 사용하여 이 작업을 자동화하고자 하는 SAP 시스템 관리자를 대상으로 합니다. NetApp NetApp SnapCenter로 조정된 Snapshot 및 FlexClone 기술을 Avantra 워크플로우와 결합하려는 목적은 SAP 시스템 복사본의 속도를 완전히 자동화하여 속도를 높이는 것입니다.</block>
+  <block id="75c0f54f014e4ab6e3f22f5cd507650c" category="paragraph">SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 및 SAP 시스템 새로 고침이라는 세 가지 프로세스에 대한 포괄적인 용어로 자주 사용됩니다. 워크플로우와 사용 사례는 서로 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.</block>
+  <block id="ed89e0187c6fe54d2628ba3c924c9c94" category="list-text">* SAP 시스템 클론 *. SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서는 호스트 이름, 인스턴스 번호 및 SID(Secure Identifier)가 동일하게 유지됩니다. 따라서 대상 시스템에 대해 적절한 네트워크 펜싱을 설정하여 운영 환경과 통신이 없는지 확인해야 합니다.</block>
+  <block id="29fa3c48f12e6309c32da9e61f69bd28" category="inline-image-macro">SAP 시스템 클론을 보여 주는 이미지입니다</block>
+  <block id="fb37eef62a9f3eb5c99bffedd0024c1f" category="paragraph"><block ref="fb37eef62a9f3eb5c99bffedd0024c1f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b587c7fd00a525678062695450301092" category="list-text">* SAP 시스템 카피 *. SAP 시스템 복제본은 소스 SAP 시스템의 데이터가 포함된 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어, 타겟 시스템은 운영 시스템의 데이터가 있는 추가 테스트 시스템이 될 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 대해 다릅니다. 새 시스템이 소스 시스템에서 격리되지 않았습니다.</block>
+  <block id="16638dad50a76bca5e7a86dc7294fc2c" category="inline-image-macro">SAP 시스템 복제본을 보여주는 이미지입니다</block>
+  <block id="6393f88818ef94108486ce2601a4732e" category="paragraph"><block ref="6393f88818ef94108486ce2601a4732e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fbd198ef31d57ae3a5f9b9fb5639e948" category="list-text">* SAP 시스템 리프레시. * SAP 시스템 새로 고침은 소스 SAP 시스템의 데이터로 기존 타겟 SAP 시스템을 새로 고치는 것입니다. 일반적으로 타겟 시스템은 운영 시스템의 데이터로 새로 고쳐지는 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템이 서로 다릅니다.</block>
+  <block id="a7d281aa380b84143ba85c264cace3d9" category="inline-image-macro">SAP 시스템 새로 고침을 보여주는 이미지입니다</block>
+  <block id="1036db93beffe95b80fff8d0ba735af9" category="paragraph"><block ref="1036db93beffe95b80fff8d0ba735af9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="59159350e4004274c8676b9d48b16a41" category="paragraph">사용 사례는 3가지입니다. 하지만 데이터 관리 프로세스는 그대로 유지됩니다. 세 가지 사용 사례에서는 모두 동일한 기본 데이터 관리 기술인 NetApp Snapshot 및 FlexClone을 활용합니다.</block>
+  <block id="9f502a9c7a5bc34e196821573f56b625" category="list-text">SnapCenter 에이전트 및 SnapCenter 데이터베이스 플러그인이 설치된 SAP 소스 시스템입니다</block>
+  <block id="03c806031b59c42ed3e4c7683d699982" category="list-text">SnapCenter 에이전트 및 SnapCenter 데이터베이스 플러그인이 설치된 SAP 대상 시스템입니다</block>
+  <block id="14472d6a98b6c5946fee1bdeaaa9d46d" category="list-text">SAP 소스 및 SAP 타겟 시스템이 구성된 Avantra 시스템</block>
+  <block id="c287b1e946c387c0a7339a652e03b5ce" category="list-text">물리적 온프레미스 하드웨어: NetApp AFF A-Series, AFF C-Series, ASA A-Series, ASA C-Series 또는 FAS 시리즈</block>
+  <block id="b0904b80e0af825ba00610ce914a3ac9" category="list-text">사내 소프트웨어 정의 스토리지: NetApp ONTAP ® Select</block>
+  <block id="f61f14ca64e865d9739d260389f4af92" category="list-text">NetApp Cloud Volumes ONTAP ® 를 다운로드하십시오</block>
+  <block id="842a4e33040fe08e0af52e5aaf27c55f" category="list-text">AWS(Amazon FSx for NetApp ONTAP)</block>
+  <block id="fd559ee283f10c8dbc8f698f620ac779" category="paragraph">다음 이미지는 Avantra 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템 및 모든 기능이 통합되는 방식을 보여 줍니다. 목표는 기존 구성 요소 내에서 이미 수행된 구성 작업을 최대한 재사용하기 위해 SnapCenter REST API를 사용하여 최대한 유연하게 통합하는 것이었습니다.</block>
+  <block id="f6482dcb2b1a382097c11d3774a029ac" category="inline-image-macro">Avantra 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 기능이 통합되는 방식을 보여 주는 이미지</block>
+  <block id="32f81f33d6e774f336864df9e87bc44f" category="paragraph"><block ref="32f81f33d6e774f336864df9e87bc44f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3086cba5137fd0545d778e498d9cd6e2" category="paragraph">Avantra 워크플로를 사용하면 인프라, 데이터베이스 및 애플리케이션 수준에서 시간을 단축하고, 운영 작업을 자동화하고, 인적 오류를 제거할 수 있습니다. 소스 시스템에서 대상 시스템으로 백업을 복원하는 대신 많은 시간이 소요되며 많은 리소스가 소모됩니다. 이 통합에서는 NetApp Snapshot 및 FlexClone 기술을 사용합니다. 데이터베이스를 가동하는 데 필요한 모든 작업이 몇 시간이 아닌 몇 분 만에 완료됩니다. 클론 복제 프로세스에 필요한 시간은 데이터베이스 크기에 따라 다릅니다. 따라서 매우 큰 시스템도 몇 분 이내에 생성할 수 있습니다. Avantra는 운영 체제 및 데이터베이스 수준뿐 아니라 SAP 후처리 측면에서도 작업을 자동화함으로써 실행 시간을 더욱 단축합니다.</block>
+  <block id="6a3fec98537c549a047e819f8599d98d" category="paragraph">다음 이미지는 자동화를 사용할 때 운영 효율성이 향상되는 가능성을 보여 줍니다.</block>
+  <block id="4c7048f952442b8f6d998ab516777056" category="paragraph"><block ref="4c7048f952442b8f6d998ab516777056" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7d8c66dbd94dc77e4312c93bd7586097" category="section-title">다양한 기술 구성 요소 통합</block>
+  <block id="878da1642730c1593c6b76bdb0d9fda8" category="paragraph">Avantra 워크플로우에서 SnapCenter의 실제 통합은 JavaScript를 사용하여 NetApp SnapCenter REST API에 액세스하는 것으로 구성됩니다. 이러한 REST API 기반 통합 기능은 SAP 소스 시스템의 스냅샷 복사본을 생성하고 FlexClone 볼륨을 생성한 후 SAP 타겟 시스템에 마운트합니다.</block>
+  <block id="f07c14433779a55a296b481246a75c8e" category="paragraph">스토리지 및 SAP 관리자는 SnapCenter에 의해 트리거되고 SnapCenter 에이전트에 의해 실행되는 스크립트를 개발하기 위해 시간과 노하우를 투자하여 반복적인 일상 운영 작업을 자동화했습니다. SnapCenter 작업을 트리거하기 위해 JavaScript를 사용하는 느슨하게 결합된 이 아키텍처는 엔드 투 엔드 자동화를 위한 워크플로우 엔진으로 Avantra를 사용하여 기존 자동화 절차를 재사용하여 원하는 결과를 빠르게 달성할 수 있도록 지원합니다.</block>
+  <block id="08d13577d2c770db53482bcfe9f627e4" category="paragraph">Avantra와 NetApp 데이터 관리 기술을 함께 사용하면 SAP 시스템 관리와 관련된 가장 복잡하고 시간이 많이 소요되는 작업에 필요한 시간과 노력을 대폭 줄일 수 있는 강력한 솔루션을 제공할 수 있습니다. 이러한 조합을 통해 시스템 간에 인적 오류가 발생할 수 있는 구성 편차를 방지할 수도 있습니다.</block>
+  <block id="cf3525ddd7a64e1adddcca6e929f690e" category="paragraph">시스템 교체, 복사, 복제 및 재해 복구 테스트는 매우 민감한 절차이므로 이러한 솔루션을 구현하면 관리 시간이 오래 걸릴 수 있습니다. 또한 LOB 직원이 SAP 시스템 관리자에게 갖고 있는 신뢰를 강화할 수 있습니다. 즉, 문제 해결 시간을 얼마나 절약할 수 있는지, 테스트 또는 기타 목적으로 시스템을 복사하는 것이 얼마나 쉬운지 알 수 있습니다. 이 솔루션은 온프레미스, 퍼블릭 클라우드, 하이브리드/하이브리드 멀티 클라우드 환경 등 소스 및 타겟 시스템이 운영되는 위치와 상관없이 이러한 이점을 제공합니다.</block>
+  <block id="bf0f42271b1628d48d24ff9e96c0a40d" category="paragraph">이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및 웹 사이트를 참조하십시오.</block>
+  <block id="b97f5ca6428e5b00c71db4299dfc3d6f" category="inline-link-macro">아반트라</block>
+  <block id="2fc4f84f847c8ac3075ea580dfac45a1" category="list-text"><block ref="2fc4f84f847c8ac3075ea580dfac45a1" category="inline-link-macro-rx"></block></block>
+  <block id="bf51eb5d79e16ead1ceda527dda582b6" category="inline-link-macro">SnapCenter 서버 및 플러그인에 지원되는 REST API</block>
+  <block id="857bb4eb3e8e725c7b53c4c49b9f8f61" category="list-text"><block ref="857bb4eb3e8e725c7b53c4c49b9f8f61" category="inline-link-macro-rx"></block></block>
+  <block id="9d04f10ec6d5f74dbca6cec4d7147125" category="cell">03.2024</block>
+  <block id="313d8d29b054407c3e1bee8fe2e46793" category="cell">NetApp 동료의 피드백 통합.</block>
+  <block id="fb4990156c52dedabc6397ade7e76401" category="cell">버전 0.3</block>
+  <block id="21a718b5ebef012a391d552cfaa4536e" category="cell">통합된 요청 변경 사항은 NetApp 브랜딩 준수를 위해 필요합니다</block>
+  <block id="420d57080e1f02fbdb40396ad217482c" category="cell">버전 0.4</block>
+  <block id="e6fe0ae39ed3c7447d6a4da5d99ea3a2" category="summary">이 문서에서는 Ansible Playbook 및 맞춤형 스크립트를 사용하여 온프레미스, 퍼블릭 클라우드 IaaS(서비스형 인프라) 환경 또는 하이브리드 클라우드에 운영되는 NetApp ® 스토리지 시스템을 SAP Landscape Management(LaMa)로 통합하는 데 중점을 둡니다.</block>
+  <block id="566e3b562a12b1ef1896ee777b47ed0c" category="doc">SB-4292: Ansible을 통한 SAP 자동화</block>
+  <block id="1dc246d1e2dc4afc0e866ed9c1e00b34" category="paragraph">이 문서에서는 Ansible Playbook 및 맞춤형 스크립트를 사용하여 온프레미스, 퍼블릭 클라우드 IaaS(서비스형 인프라) 환경 또는 하이브리드 클라우드에 운영되는 NetApp ® 스토리지 시스템을 SAP Landscape Management(LaMa)로 통합하는 데 중점을 둡니다.</block>
+  <block id="375a68bbd8b09c30759cb49ee66744c6" category="paragraph">SAP 시스템은 매우 복잡합니다. 하지만 SAP를 사용하는 기업에게는 이러한 시스템이 비즈니스 프로세스의 핵심입니다. SAP 시스템 관리자는 반복적인 일상 운영 작업을 자동화하여 보다 적은 노력으로 더 많은 시스템을 관리하고, 반복 가능한 결과를 산출하고, 인적 오류를 줄일 수 있습니다.</block>
+  <block id="a54e766cb8511b4b8768f1ba8fef2b0b" category="paragraph">이 문서에서는 Ansible Playbook 및 맞춤형 스크립트를 사용하여 온프레미스, 퍼블릭 클라우드 IaaS(서비스형 인프라) 환경 또는 하이브리드 클라우드에 운영되는 NetApp ® 스토리지 시스템을 SAP Landscape Management(LaMa)로 통합하는 데 중점을 둡니다. 이러한 통합 덕분에 SAP 관리자는 NetApp Snapshot ™ 및 NetApp FlexClone ® 기술을 사용하여 SAP 시스템 업데이트 작업을 더 빠르게 수행할 수 있습니다.</block>
+  <block id="3ed6d491000fa37ba8451c450195b4d8" category="paragraph">이 문서는 Ansible 자동화에 대한 경험이 많지 않은 SAP 시스템 관리자를 대상으로 합니다. Ansible을 시작하고, 첫 번째 플레이북을 실행하고, 첫 번째 SAP LaMa 기반 시스템 업데이트 작업을 구성 및 실행하는 데 도움이 될 것입니다.</block>
+  <block id="0bd125fc3eb80484cd714efb009c33da" category="paragraph">SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 및 SAP 시스템 새로 고침이라는 세 가지 프로세스에 대한 동의어로 자주 사용됩니다. 워크플로우와 사용 사례는 서로 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.</block>
+  <block id="984d103d2ea6cdfaf50c6458b93d5060" category="list-text">* SAP 시스템 클론 *. SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서는 호스트 이름, 인스턴스 번호 및 SID(Secure Identifier)가 동일하게 유지됩니다. 따라서 대상 시스템에 대해 적절한 네트워크 펜싱을 설정하여 운영 환경과 통신이 없는지 확인해야 합니다.</block>
+  <block id="a06496f6b8f5d994759b94c9bc228c07" category="list-text">* SAP 시스템 카피 *. SAP 시스템 복제본은 소스 SAP 시스템의 데이터가 포함된 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어, 새 타겟 시스템은 운영 시스템의 데이터가 있는 추가 테스트 시스템이 될 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.</block>
+  <block id="a4806533200f7204846fc0516880a512" category="list-text">* SAP 시스템 새로 고침 *. SAP 시스템 새로 고침은 소스 SAP 시스템의 데이터로 기존 타겟 SAP 시스템을 새로 고치는 것입니다. 일반적으로 타겟 시스템은 품질 보증 시스템과 같이 운영 시스템의 데이터로 업데이트된 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.</block>
+  <block id="9e5ec677b1b1648311e97cf94e0b2d0e" category="paragraph">다음 이미지는 NetApp 스토리지와 관련된 SAP 시스템 클론 복제, 복사 및 LaMa 워크플로우 단계를 보여줍니다.</block>
+  <block id="f74def37972ee4394be8cad5651663f7" category="inline-image-macro">NetApp 스토리지와 관련된 SAP 시스템 클론 복제, 복사 및 LaMa 워크플로우 단계를 보여주는 이미지</block>
+  <block id="26fa64ddac14c561cb8700ddd04d2768" category="paragraph"><block ref="26fa64ddac14c561cb8700ddd04d2768" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="54881e79c7640a505cefd7ba1f3b20cc" category="list-text">SAP LaMa 시스템</block>
+  <block id="4eebc5ed40ce93bfc87d749fb237b7a3" category="list-text">NetApp 스토리지 시스템입니다</block>
+  <block id="0bbb1b0fa380975becacfe2ebad8efcb" category="list-text">SAP Host Agent가 설치된 Ansible 제어 노드 Red Hat Ansible Automation Platform은 다음과 같은 추가적인 이점을 제공하므로 이 플랫폼을 사용하는 것이 좋습니다.</block>
+  <block id="3a02ab6c19eb5b6b13f624909cbdd908" category="list-text">AI를 사용하여 자동화 작업을 위한 코드 권장 사항을 생성하십시오</block>
+  <block id="9ed57c8ba167159dadbe28961386f0ee" category="list-text">이벤트 중심 자동화로 수동 작업 감소</block>
+  <block id="585e67e2ba5c513b961c51dd9ccc25fd" category="list-text">정의되고 일관되며 휴대성이 뛰어납니다</block>
+  <block id="c2348bd887e6c8f4e4cb3e1ecc4c7168" category="list-text">여러 환경에서 자동화를 확장할 수 있습니다</block>
+  <block id="ba9d2fdcf1098320fd5ab8e8940c1d46" category="list-text">사전 패키지화된 콘텐츠로 자동화를 가속화합니다</block>
+  <block id="ea936622c0742d5330429e7e68527d8a" category="list-text">풍부한 보고 및 관찰 가능성 메트릭으로 자동화를 추적 및 관리합니다</block>
+  <block id="4db35d276f281c64f50cfa4e820ff070" category="list-text">과제, 모듈 및 플레이북 작성</block>
+  <block id="352646e3f8da3248d7552209da6eab5f" category="paragraph">다음 이미지는 SAP LaMa 및 NetApp 스토리지 시스템이 SAP Host Agent에서 실행되는 셸 스크립트로 트리거되는 전용 Ansible 호스트에서 Ansible Playbook을 통해 통합되는 방법을 보여줍니다.</block>
+  <block id="a4afd73c26d98d43a41848b904c8e361" category="inline-image-macro">SAP LaMa 및 NetApp 스토리지 시스템이 SAP Host Agent에서 실행되는 셸 스크립트로 트리거되는 전용 Ansible 호스트에서 Ansible Playbook을 통해 통합되는 방법을 보여주는 이미지</block>
+  <block id="209692e856fceee655a52e1abaa65592" category="paragraph"><block ref="209692e856fceee655a52e1abaa65592" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="385f57610e19e7eac92f41a1dc35251b" category="paragraph">인프라 및 데이터베이스 계층에서 필요한 작업을 가속화하고 자동화하기 위해 SAP LaMa 및 NetApp 클론 복제 워크플로우를 사용할 수 있습니다. SAP LaMa는 소스 시스템에서 대상 시스템으로 백업을 복원하는 대신 NetApp Snapshot 및 FlexClone 기술을 사용하여 다음 그림과 같이 데이터베이스를 시작하는 데 필요한 작업을 몇 시간이 아닌 몇 분 이내에 수행할 수 있습니다. 클론 생성 프로세스에 필요한 시간은 데이터베이스 크기에 따라 달라지지 않으므로 매우 큰 시스템도 몇 분 안에 생성할 수 있습니다. 운영 체제 및 데이터베이스 계층뿐 아니라 SAP 후처리 측에서도 작업을 자동화하여 실행 시간을 더욱 줄일 수 있습니다.</block>
+  <block id="4babb6cd725c24c36d2e3770f6a5f825" category="inline-image-macro">자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지</block>
+  <block id="e9bcb357a56a02c9bd8533df7d0dd0ca" category="paragraph"><block ref="e9bcb357a56a02c9bd8533df7d0dd0ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1b99d3bbfb2ea06147cee599d13b4d4d" category="paragraph">Ansible을 사용하여 SAP LaMa를 NetApp 스토리지 시스템과 통합하려면 Ansible Playbook을 실행할 수 있는 노드가 필요합니다. Ansible Automation Platform을 사용하는 것이 좋습니다. SAP LaMa에서 시작된 이 호스트에서 셸 스크립트 및 Ansible Playbook을 실행하려면 이 서버에서 실행 중인 SAP Host Agent가 필요합니다. SAP Host Agent는 SAP LaMa와의 양방향 통신을 담당하고 실제 플레이북을 트리거하는 셸 스크립트를 실행합니다.</block>
+  <block id="a1350e44a1de9e3b2a31107d1a80273c" category="paragraph">느슨하게 결합된 이 아키텍처는 SAP LaMa와 SAP LaMa 외부에서도 워크플로우를 자유롭게 시작할 수 있게 해줍니다. 플레이북과 해당 논리는 한 번만 구성되어야 하며 다양한 시나리오 및 사용 사례에 사용할 수 있습니다.</block>
+  <block id="992397c8c640ca562524a875b68a5b54" category="paragraph">NetApp, SAP LaMa 및 Ansible 자동화 플랫폼을 결합하면 SAP 시스템 관리와 관련된 가장 복잡하고 시간이 많이 소요되는 작업에 필요한 시간과 노력을 대폭 줄일 수 있는 강력한 솔루션을 제공할 수 있습니다. 이러한 조합을 통해 시스템 간에 인적 오류가 발생할 수 있는 구성 편차를 방지할 수도 있습니다.</block>
+  <block id="c28874e4beb098c91d1e1c3be126df41" category="paragraph">시스템 교체, 복사, 복제 및 재해 복구 테스트는 매우 민감한 절차이므로 이러한 솔루션을 구현하면 관리 시간이 오래 걸릴 수 있습니다. 또한, 테스트 또는 기타 목적으로 시스템을 복사하는 것이 얼마나 쉬운지, 그리고 문제 해결 시간을 얼마나 절약할 수 있는지를 알 수 있으므로 나머지 조직의 SAP 시스템 관리자가 신뢰할 수 있는 역량을 강화할 수 있습니다.</block>
+  <block id="8aadfa67c47b74f799fb7a826a48ba03" category="inline-link-macro">NetApp ONTAP ® 용 Ansible Playbook을 사용하여 진행 중인 1일 및 2일차 운영을 자동화합니다</block>
+  <block id="9f642d22ffdfa2b795d80b29088d3fb0" category="list-text"><block ref="9f642d22ffdfa2b795d80b29088d3fb0" category="inline-link-macro-rx"></block></block>
+  <block id="3ddd20790842649d51a5cc4b6f01db26" category="inline-link-macro">NetApp 관련 Ansible 설명서</block>
+  <block id="f12dd99ccfdacc7ea0c21003056e4741" category="list-text"><block ref="f12dd99ccfdacc7ea0c21003056e4741" category="inline-link-macro-rx"></block></block>
+  <block id="fef9e784fccd2c3b2ebf4bfcd80e0305" category="inline-link-macro">NetApp ONTAP Ansible 모듈 및 전체 설명서</block>
+  <block id="0603ed1da71fc41c57bbabf1699bdbde" category="list-text"><block ref="0603ed1da71fc41c57bbabf1699bdbde" category="inline-link-macro-rx"></block></block>
+  <block id="bdbdb20cc2fc78414e07344a2494b8a4" category="inline-link-macro">Red Hat Ansible 자동화 플랫폼</block>
+  <block id="b4da856a893c686c8e2e2539db5024fe" category="list-text"><block ref="b4da856a893c686c8e2e2539db5024fe" category="inline-link-macro-rx"></block></block>
+  <block id="16734dca3a95bfa535c02733aff6eba1" category="cell">2023년 3월</block>
+  <block id="8badbfef801c8224f9c3f8be1ed7b075" category="cell">01.2024</block>
+  <block id="30f75d5b61876317b00ce9486a8a0160" category="cell">검토 및 일부 사소한 수정</block>
+  <block id="922130bb4d233bc9ae97cdcc043fb765" category="list-text"><block ref="922130bb4d233bc9ae97cdcc043fb765" category="inline-link-macro-rx"></block></block>
+  <block id="b111feeb1a57d6042e16d90fef6de225" category="list-text"><block ref="b111feeb1a57d6042e16d90fef6de225" category="inline-link-macro-rx"></block></block>
+  <block id="497e8a2b3efcb98884dd2467a68d0809" category="list-text"><block ref="497e8a2b3efcb98884dd2467a68d0809" category="inline-link-macro-rx"></block></block>
+  <block id="f4f158efc25013d7991ed21314e14f62" category="list-text"><block ref="f4f158efc25013d7991ed21314e14f62" category="inline-link-macro-rx"></block></block>
+  <block id="5cbfe26b0216d2cab45c3572761c632a" category="list-text"><block ref="5cbfe26b0216d2cab45c3572761c632a" category="inline-link-macro-rx"></block></block>
+  <block id="2d054d2c04367ef468912c670a8d2ce8" category="list-text"><block ref="2d054d2c04367ef468912c670a8d2ce8" category="inline-link-macro-rx"></block></block>
+  <block id="411b5f626e19bcfe479b7a04afe0a756" category="sidebar">Ansible 및 NetApp SnapCenter를 통해 SAP 자동화</block>
+  <block id="286f4dd45534d6e8839dc5cb0fc36cee" category="sidebar">알파카와 NetApp SnapCenter를 사용한 SAP 자동화</block>
+  <block id="314dcde42b7b98639a9e719950095987" category="sidebar">Avantra 및 NetApp SnapCenter를 사용한 SAP 자동화</block>
 </blocks>
