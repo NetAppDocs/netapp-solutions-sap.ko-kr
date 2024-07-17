@@ -33,17 +33,17 @@ entries:
   - title: 소개
     url: "/lifecycle/sc-copy-clone-introduction.html"
   - title: SAP 시스템 복제, 업데이트 및 클론 시나리오
-    url: "/lifecycle/sc-copy-clone-sap-system-copy,-refresh,-and-clone-scenarios.html"
+    url: "/lifecycle/sc-copy-clone-sap-system-copy-refresh-and-clone-scenarios.html"
   - title: 시스템 업데이트 및 클론 복제 사용 사례
     url: "/lifecycle/sc-copy-clone-use-cases-for-system-refresh-and-cloning.html"
+  - title: 지원되는 인프라 및 시나리오
+    url: "/lifecycle/sc-copy-clone-supported-infrastructure-and-scenarios.html"
   - title: SnapCenter를 사용한 SAP 시스템 업데이트 워크플로우 개요
     url: "/lifecycle/sc-copy-clone-overview-of-sap-system-refresh-workflow-with-snapcenter.html"
-  - title: SnapCenter를 사용한 SAP 시스템 복제 워크플로우 개요
-    url: "/lifecycle/sc-copy-clone-overview-of-sap-system-copy-workflow-with-snapcenter.html"
   - title: SnapCenter를 사용한 SAP 시스템 클론 워크플로우 개요
     url: "/lifecycle/sc-copy-clone-overview-of-sap-system-clone-workflow-with-snapcenter.html"
-  - title: 스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 운영 워크플로우
-    url: "/lifecycle/sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html"
+  - title: 스토리지 스냅샷 백업을 사용한 SAP HANA 시스템 업데이트 작업 고려 사항
+    url: "/lifecycle/sc-copy-clone-considerations-for-sap-hana-system-refresh-operations-using-snapshot-backups.html"
   - title: 자동화 스크립트 예
     url: "/lifecycle/sc-copy-clone-automation-example-scripts.html"
   - title: SnapCenter으로 SAP HANA 시스템 업데이트

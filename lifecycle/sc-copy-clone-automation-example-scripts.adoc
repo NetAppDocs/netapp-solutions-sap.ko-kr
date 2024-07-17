@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: lifecycle/sc-copy-clone-automation-example-scripts.html 
-keywords: example script, automation, clone create, clone delete 
-summary: 이 문서에서는 SnapCenter 클론 생성 및 클론 삭제 작업을 더욱 자동화하는 데 두 개의 스크립트를 사용합니다. 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP HANA 데이터베이스 및 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호를 SAP 테스트 시스템의 유연한 프로비저닝과 결합합니다. 
 ---
 = 자동화 스크립트 예
 :hardbreaks:
@@ -13,45 +13,42 @@ summary: 이 문서에서는 SnapCenter 클론 생성 및 클론 삭제 작업�
 :imagesdir: ./../media/
 
 
-[role="lead"]
 이 문서에서는 SnapCenter 클론 생성 및 클론 삭제 작업을 더욱 자동화하는 데 두 개의 스크립트를 사용합니다.
 
-* 'sc-system-refresh.sh' 스크립트는 시스템 새로 고침 및 시스템 클론 워크플로우에 사용되어 HANA 데이터 볼륨에 대한 마운트 및 마운트 해제 작업을 실행하고 HANA 데이터베이스의 복구 및 종료 작업을 수행합니다.
-* 'sc-mount-volume.sh' 스크립트는 시스템 클론 워크플로우에서 HANA 공유 볼륨에 대한 마운트 및 마운트 해제 작업을 실행하는 데 사용됩니다.
+* script.sh는 `sc-system-refresh`SAP HANA 데이터베이스의 복구 및 종료 작업을 실행하는 시스템 새로 고침 및 시스템 클론 워크플로우에 사용됩니다.
+* 이 스크립트는 `sc-mount-volume.sh` 시스템 클론 워크플로우에서 SAP HANA 공유 볼륨에 대한 마운트 및 마운트 해제 작업을 실행하는 데 사용됩니다.
++
+
+NOTE: 예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원하지 않습니다. 이메일을 통해 ng-sapcc@netapp.com 으로 스크립트를 요청할 수 있습니다.
 
 
-
-NOTE: 예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원하지 않습니다. 스크립트를 mailto:ng-sapcc@netapp.com [ng-sapcc@netapp.com^]으로 이메일을 통해 요청할 수 있습니다.
 
 
 
 == 스크립트 sc-system-refresh.sh
 
-예제 스크립트인 'c-system-refresh.sh'는 SAP HANA 데이터 볼륨에 대한 마운트 및 마운트 해제 작업과 복구 및 종료 작업을 실행하는 데 사용됩니다. 다음 그림과 같이 SnapCenter 워크플로우 클론 생성 및 클론 삭제 내의 특정 명령줄 옵션을 사용하여 스크립트를 호출할 수 있습니다.
+예제 스크립트는 `sc-system-refresh.sh` 복구 및 종료 작업을 실행하는 데 사용됩니다. 아래 그림과 같이 SnapCenter 워크플로우 클론 생성 및 클론 삭제 내의 특정 명령줄 옵션을 사용하여 스크립트를 호출합니다.
 
-스크립트는 일반적이며 SID별 구성 파일 및 환경 변수를 사용하여 구성됩니다. 이 구성 파일은 스크립트를 실행할 때 SnapCenter에서 사용할 수 있습니다. 시스템 새로 고침 작업의 타겟 호스트에서 스크립트와 구성 파일을 사용할 수 있어야 합니다. 스크립트가 여러 타겟 호스트에 사용되는 경우 모든 타겟 호스트에서 사용할 수 있도록 스크립트를 제공하는 NFS 공유를 제공할 수 있습니다.
+스크립트는 일반적이며 대상 시스템의 SID와 같은 모든 필수 매개 변수를 읽습니다. 시스템 새로 고침 작업의 대상 호스트에서 스크립트를 사용할 수 있어야 합니다. 대상 시스템에서 사용자 <SID> adm에 대해 hdb 사용자 저장소 키를 구성해야 합니다. 키는 SAP HANA 시스템 데이터베이스에 대한 액세스를 허용하고 복구 작업에 대한 권한을 제공해야 합니다. 키에는 <TARGET-SID> 키 이름이 있어야 합니다.
+
+스크립트는 로그 파일을 `sc-system-refresh-SID.log``실행할 동일한 디렉토리에 기록합니다.
 
 
-NOTE: 현재 버전의 스크립트는 단일 컨테이너, MDC 단일 테넌트 또는 MDC 다중 테넌트 구성을 사용하는 단일 호스트 시스템을 지원합니다. SAP HANA 다중 호스트 시스템은 지원하지 않습니다.
+NOTE: 스크립트의 현재 버전은 단일 호스트 시스템 MDC 단일 테넌트 또는 MDC 다중 테넌트 구성을 지원합니다. SAP HANA 다중 호스트 시스템은 지원하지 않습니다.
 
-
-NOTE: 이 스크립트는 NFS 또는 파이버 채널(FC)을 스토리지 프로토콜로 사용하는 HANA 시스템을 지원합니다.
-
-image:sc-copy-clone-image13.png["오류: 그래픽 이미지가 없습니다"]
+image:sc-copy-clone-image14.png[""]
 
 
 
 === 지원되는 테넌트 복구 작업입니다
 
-섹션을 참조하십시오 link:sc-copy-clone-sap-hana-system-refresh-operation-workflows-using-storage-snapshot-backups.html[""스토리지 스냅샷 백업을 사용하여 SAP HANA 시스템 업데이트 작업 워크플로우""] 타겟 시스템에서 가능한 테넌트 복구 작업은 소스 시스템의 테넌트 구성에 따라 달라집니다. 스크립트 'c-system-refresh.sh'는 다음 표와 같이 소스 시스템 구성에 따라 가능한 모든 테넌트 복구 작업을 지원합니다.
+"스토리지 스냅샷을 사용하여 SAP HANA 시스템 새로 고침 작업 워크플로" 섹션에서 설명한 대로 타겟 시스템에서 가능한 테넌트 복구 작업은 소스 시스템의 테넌트 구성에 따라 다릅니다. 스크립트는 `sc-system-refresh.sh` 모든 테넌트 복구 작업을 지원하며, 이 작업은 아래 표에 나와 있는 것처럼 소스 시스템 구성에 따라 가능합니다.
 
 타겟 시스템에 다른 테넌트 이름이 필요한 경우 복구 작업 후 테넌트의 이름을 수동으로 변경해야 합니다.
 
+[cols="29%,35%,36%"]
 |===
-| HANA 시스템 | 소스 시스템에서 테넌트 구성 | 타겟 시스템에서 테넌트 구성 
-
-
-| 단일 컨테이너 | 해당 없음 | 해당 없음 
+| SAP HANA 시스템 | 소스 시스템에서 테넌트 구성 + | 타겟 시스템에서 테넌트 구성+을 생성합니다 
 
 
 | MDC 단일 테넌트 | 소스 SID와 동일한 소스 테넌트 이름입니다 | 타겟 테넌트 이름이 타겟 SID와 같습니다 
@@ -60,80 +57,18 @@ image:sc-copy-clone-image13.png["오류: 그래픽 이미지가 없습니다"]
 | MDC 단일 테넌트 | 소스 테넌트 이름이 소스 SID와 같지 않습니다 | 타겟 테넌트 이름이 소스 테넌트 이름과 같습니다 
 
 
-| MDC 다중 테넌트 | 모든 테넌트 이름 | 첫 번째 테넌트만 복구되고 소스 테넌트와 이름이 동일합니다. 
+| MDC 다중 테넌트 | 모든 테넌트 이름 | 모든 테넌트가 복구되며 소스 테넌트와 이름이 동일합니다. 
 |===
-
-
-=== SID별 구성 파일
-
-이 스크립트는 구성 파일을 사용하여 몇 가지 대상 시스템별 매개 변수를 구성합니다. 구성 파일에는 SID 관련 파일 이름 'c-system-refresh-SID.cfg'가 있어야 합니다.
-
-
-NOTE: 대상 시스템에 대한 hdbuserstore 키로 구성된 데이터베이스 사용자는 소스 데이터베이스에 있어야 하며 데이터베이스 복구를 허용하는 올바른 권한이 있어야 합니다.
-
-다음 표에는 구성 파일 매개 변수가 나와 있습니다.
-
-|===
-| 매개 변수 |  | 설명 
-
-
-| 키 | 예: QS1KEY | SAP HANA hdbuserstore 키는 타겟 SAP HANA 데이터베이스의 복구 작업에 사용해야 합니다. 대상 호스트의 사용자 <SID> adm에 대해 키를 구성해야 합니다. 
-
-
-| 프로토콜 | NFS 또는 FCP | HANA 데이터베이스 데이터 볼륨을 연결하는 데 사용되는 스토리지 프로토콜입니다. 
-|===
-다음 출력에서는 SAP HANA 시스템의 구성 파일 중 'ID=QS1'이 포함된 예제 파일을 보여 줍니다.
-
-....
-ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh> cat sc-system-refresh-QS1.cfg
-# ---------------------------------------------
-# Target database specific parameters
-# ---------------------------------------------
-# hdbuserstore key, which should be used to connect to the target database
-KEY="QS1KEY"
-# Used storage protocol, NFS or FCP
-PROTOCOL="NFS"
-ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
-....
-
-
-=== SnapCenter 환경 변수
-
-SnapCenter는 타겟 호스트에서 실행되는 스크립트 내에서 사용할 수 있는 환경 변수 집합을 제공합니다. 스크립트는 이러한 변수를 사용하여 관련 구성 설정을 결정합니다.
-
-* 스크립트 변수 "HANA_architecture"는 단일 컨테이너 또는 MDC 시스템에 필요한 복구 작업을 결정하는 데 사용됩니다.
-+
-** HANA_DATABASE_TYPE의 환경 변수
-** 예: mdc\ss1_hana_database_type=multiple_containers'
-
-
-* 복구 작업의 타겟 테넌트 이름을 결정하는 데 스크립트 변수 테넌트_list, source_tenant, source_SID가 사용됩니다.
-+
-** Tenant_database_names 환경 변수에서 파생되었습니다
-** 예: MDC\SM1_Tenant_database_names=TENANT1, TENANT2
-
-
-* 마운트 작업에는 스크립트 변수 'storage, junction_path'가 사용됩니다.
-+
-** Cloned_volumes_mount_path 환경 변수에서 파생됩니다
-** 예를 들면 다음과 같습니다.
-
-
-
-
-....
-CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
-....
 
 
 == 스크립트 sc-mount-volume.sh
 
-예제 스크립트 'sc-mount-volume.sh'는 모든 볼륨에 대해 마운트 및 마운트 해제를 실행하는 데 사용됩니다. 이 스크립트는 SAP HANA 시스템 클론 작업과 함께 HANA 공유 볼륨을 마운트하는 데 사용됩니다. 다음 그림과 같이 SnapCenter 워크플로우 클론 생성 및 클론 삭제 내의 특정 명령줄 옵션을 사용하여 스크립트를 호출할 수 있습니다.
+예제 스크립트는 `sc-mount-volume.sh` 모든 볼륨에 대해 마운트 및 마운트 해제를 실행하는 데 사용됩니다. 이 스크립트는 SAP HANA 시스템 클론 작업을 통해 SAP HANA 공유 볼륨을 마운트하는 데 사용됩니다. 아래 그림과 같이 SnapCenter 워크플로우 클론 생성 및 클론 삭제 내의 특정 명령줄 옵션을 사용하여 스크립트를 호출합니다.
 
 
-NOTE: 이 스크립트는 NFS를 스토리지 프로토콜로 사용하는 HANA 시스템을 지원합니다.
+NOTE: 이 스크립트에서는 NFS를 스토리지 프로토콜로 사용하는 SAP HANA 시스템을 지원합니다.
 
-image:sc-copy-clone-image14.png["오류: 그래픽 이미지가 없습니다"]
+image:sc-copy-clone-image15.png[""]
 
 
 
@@ -141,17 +76,12 @@ image:sc-copy-clone-image14.png["오류: 그래픽 이미지가 없습니다"]
 
 SnapCenter는 타겟 호스트에서 실행되는 스크립트 내에서 사용할 수 있는 환경 변수 집합을 제공합니다. 스크립트는 이러한 변수를 사용하여 관련 구성 설정을 결정합니다.
 
-* 마운트 작업에는 스크립트 변수 'storage, junction_path'가 사용됩니다.
-+
-** Cloned_volumes_mount_path 환경 변수에서 파생됩니다.
-** 예를 들면 다음과 같습니다.
+* 스크립트 변수는 `STORAGE, JUNCTION_PATH` 마운트 작업에 사용됩니다.
+* Cloned_volumes_mount_path 환경 변수에서 파생됩니다.
+* `CLONED_VOLUMES_MOUNT_PATH=${STORAGE}:/${JUNCTION_PATH}`
+* 예를 들면 다음과 같습니다. `CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_shared_Clone_05112206115489411`
 
 
-
-
-....
-CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_shared_Clone_05112206115489411
-....
 
 
 == SnapCenter 환경 변수를 가져오는 스크립트입니다
@@ -161,14 +91,9 @@ CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_shared_Clone_05112206115489411
 ....
 ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh> cat get-env.sh
 #!/bin/bash
-rm /tmp/env-from-sc.txt
 env > /tmp/env-from-sc.txt
 ss1adm@hana-1:/mnt/sapcc-share/SAP-System-Refresh>
 ....
 "env-from-SC.txt" 파일에서 "CLoned_volumes_mount_path" 변수를 찾아 FlexClone 볼륨의 스토리지 시스템 IP 주소와 연결 경로를 가져옵니다.
 
-예를 들면 다음과 같습니다.
-
-....
-CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411
-....
+예를 들면 다음과 같습니다. `CLONED_VOLUMES_MOUNT_PATH=192.168.175.117:/SS1_data_mnt00001_Clone_05112206115489411`

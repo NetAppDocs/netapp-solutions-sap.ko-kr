@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: lifecycle/sc-copy-clone-where-to-find-additional-information.html 
-keywords:  
-summary:  
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP HANA 데이터베이스 및 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호를 SAP 테스트 시스템의 유연한 프로비저닝과 결합합니다. 
 ---
 = 추가 정보 및 버전 기록을 찾을 수 있는 위치
 :hardbreaks:
@@ -13,39 +13,20 @@ summary:
 :imagesdir: ./../media/
 
 
-[role="lead"]
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
 
-* TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구
-+
-https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html"^]
-
-* https://www.netapp.com/us/media/tr-4018.pdf["TR-4018: NetApp ONTAP 시스템을 SAP 환경 관리와 통합"^]
-+
-https://www.netapp.com/us/media/tr-4018.pdf["https://www.netapp.com/us/media/tr-4018.pdf"^]
-
-* https://www.netapp.com/us/media/tr-4646.pdf["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구"^]
-+
-https://www.netapp.com/us/media/tr-4646.pdf["https://www.netapp.com/us/media/tr-4646.pdf"^]
-
-* TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp All Flash FAS 시스템 기반 SAP HANA
-+
-https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html["https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html"^]
-
-* TR-4435: NFS를 포함한 NetApp All Flash FAS 시스템 기반 SAP HANA
-+
-https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html"^]
-
-* NetApp SAP 소프트웨어 솔루션 제품 페이지
-+
-http://www.netapp.com/us/solutions/applications/sap/index.aspx["http://www.netapp.com/us/solutions/applications/sap/index.aspx"^]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/["SAP 비즈니스 애플리케이션 및 SAP HANA 데이터베이스 솔루션(netapp.com)"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html["TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp All Flash FAS 시스템 기반 SAP HANA"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["TR-4435: NFS를 포함한 NetApp All Flash FAS 시스템 기반 SAP HANA"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/amazon-fsx-overview.html["TR-4926: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-introduction.html["TR-4953: Ansible을 사용한 NetApp SAP 환경 관리 통합"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["TR-4929: Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화(netapp.com)"]
+* https://fieldportal.netapp.com/explore/699265?popupstate=%7B%22state%22:%22app.notebook%22,%22srefParams%22:%7B%22source%22:3,%22sourceId%22:968639,%22notebookId%22:2565224,%22assetComponentId%22:2558241%7D%7D["SAP 시스템 복사 및 앰프, #44, Refresh  amp, #44, alpaca 및 NetApp SnapCenter를 통해 복제 워크플로우 자동화"]
+* https://fieldportal.netapp.com/explore/699265?popupstate=%7B%22state%22:%22app.notebook%22,%22srefParams%22:%7B%22source%22:3,%22sourceId%22:968639,%22notebookId%22:2565224,%22assetComponentId%22:2558241%7D%7D["Avantra 및 NetApp SnapCenter를 사용하여 SAP 시스템 복제 및 앰프, #44, Refresh  amp, #44, 복제 워크플로우 자동화"]
 
 
-
-
-
-== 버전 기록
-
+[cols="21%,20%,59%"]
 |===
 | 버전 | 날짜 | 문서 버전 기록 
 
@@ -53,9 +34,15 @@ http://www.netapp.com/us/solutions/applications/sap/index.aspx["http://www.netap
 | 버전 1.0 | 2018년 2월 | 최초 릴리스. 
 
 
-| 버전 2.0 | 2021년 2월 | SnapCenter 4.3 및 향상된 자동화 스크립트를 포함하는 완전한 재작성.
-시스템 업데이트 및 시스템 클론 작업에 대한 새로운 워크플로우 설명 
+| 버전 2.0 | 2021년 2월  a| 
+SnapCenter 4.3 및 향상된 자동화 스크립트를 포함하는 완전한 재작성. + 시스템 업데이트 및 시스템 클론 작업을 위한 새로운 워크플로우 설명입니다.
 
 
-| 버전 3.0 | 2022년 5월 | SnapCenter 4.6 P1에 대한 워크플로가 업데이트되었습니다. 
+
+| 버전 3.0 | 2022년 5월 | SnapCenter 4.6 P1의 변경된 워크플로에 맞게 조정되었습니다 
+
+
+| 버전 4.0 | 2024년 7월  a| 
+문서에서는 NetApp 온프레미스, 클라우드 환경, FSx for ONTAP 및 Azure NetApp Files + 새로운 SnapCenter 5.0 작업 마운트 및 마운트 해제 클론 생성 및 삭제 작업 중에 마운트 및 마운트 해제 + 파이버 채널 SAN에 대한 특정 단계 추가 + Azure NetApp Files+에 대한 특정 단계 추가 및 간소화된 `sc-system-refresh` 스크립트 + 활성화된 SAP HANA에 필요한 단계 포함 볼륨 암호화
+
 |===
