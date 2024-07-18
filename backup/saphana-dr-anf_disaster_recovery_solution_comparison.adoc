@@ -22,7 +22,7 @@ summary: 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이�
 
 이 문서에서는 2개 지역 재해 복구 솔루션의 다양한 구현 옵션에 대해 설명합니다.
 
-image:saphana-dr-anf_image3.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-dr-anf_image3.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -52,7 +52,7 @@ SAP HANA 시스템 복제는 다음 두 가지 모드 중 하나로 작동할 �
 
 다음 그림에서는 SAP HANA 시스템 복제를 보여 줍니다.
 
-image:saphana-dr-anf_image4.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-dr-anf_image4.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -86,7 +86,7 @@ RTO는 주로 재해 복구 사이트에서 HANA 데이터베이스를 시작하
 
 ANF 지역 간 복제를 사용하면 RPO 및 RTO에 영향을 주지 않고 DR 워크플로우를 테스트할 수 있습니다. 볼륨 클론을 생성하여 DR 테스트 서버에 연결하면 됩니다.
 
-image:saphana-dr-anf_image5.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-dr-anf_image5.png[오류: 그래픽 이미지가 없습니다]
 
 
 

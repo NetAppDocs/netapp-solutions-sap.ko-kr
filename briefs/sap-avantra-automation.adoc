@@ -36,17 +36,17 @@ SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 
 * * SAP 시스템 클론 *. SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서는 호스트 이름, 인스턴스 번호 및 SID(Secure Identifier)가 동일하게 유지됩니다. 따라서 대상 시스템에 대해 적절한 네트워크 펜싱을 설정하여 운영 환경과 통신이 없는지 확인해야 합니다.
 
 
-image:sap-avantra-image1.png["SAP 시스템 클론을 보여 주는 이미지입니다"]
+image::sap-avantra-image1.png[SAP 시스템 클론을 보여 주는 이미지입니다]
 
 * * SAP 시스템 카피 *. SAP 시스템 복제본은 소스 SAP 시스템의 데이터가 포함된 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어, 타겟 시스템은 운영 시스템의 데이터가 있는 추가 테스트 시스템이 될 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 대해 다릅니다. 새 시스템이 소스 시스템에서 격리되지 않았습니다.
 
 
-image:sap-avantra-image2.png["SAP 시스템 복제본을 보여주는 이미지입니다"]
+image::sap-avantra-image2.png[SAP 시스템 복제본을 보여주는 이미지입니다]
 
 * * SAP 시스템 리프레시. * SAP 시스템 새로 고침은 소스 SAP 시스템의 데이터로 기존 타겟 SAP 시스템을 새로 고치는 것입니다. 일반적으로 타겟 시스템은 운영 시스템의 데이터로 새로 고쳐지는 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템이 서로 다릅니다.
 
 
-image:sap-avantra-image3.png["SAP 시스템 새로 고침을 보여주는 이미지입니다"]
+image::sap-avantra-image3.png[SAP 시스템 새로 고침을 보여주는 이미지입니다]
 
 사용 사례는 3가지입니다. 하지만 데이터 관리 프로세스는 그대로 유지됩니다. 세 가지 사용 사례에서는 모두 동일한 기본 데이터 관리 기술인 NetApp Snapshot 및 FlexClone을 활용합니다.
 
@@ -77,7 +77,7 @@ image:sap-avantra-image3.png["SAP 시스템 새로 고침을 보여주는 이미
 
 다음 이미지는 Avantra 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템 및 모든 기능이 통합되는 방식을 보여 줍니다. 목표는 기존 구성 요소 내에서 이미 수행된 구성 작업을 최대한 재사용하기 위해 SnapCenter REST API를 사용하여 최대한 유연하게 통합하는 것이었습니다.
 
-image:sap-avantra-image4.png["Avantra 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 기능이 통합되는 방식을 보여 주는 이미지"]
+image::sap-avantra-image4.png[Avantra 서버를 보여 주는 이미지,the NetApp SnapCenter Server,the NetApp storage system]
 
 
 
@@ -89,7 +89,7 @@ Avantra 워크플로를 사용하면 인프라, 데이터베이스 및 애플리
 
 다음 이미지는 자동화를 사용할 때 운영 효율성이 향상되는 가능성을 보여 줍니다.
 
-image:sap-avantra-image5.png["자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지"]
+image::sap-avantra-image5.png[자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지]
 
 
 

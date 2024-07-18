@@ -31,7 +31,7 @@ NetApp, Nils Bauer
 
 다음 그림과 같이 SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션이 SAP HANA 데이터베이스 및 라이프사이클 관리 도구에 통합되어 효율적인 애플리케이션 통합 데이터 보호와 SAP 테스트 시스템의 유연한 프로비저닝을 결합합니다. 이 솔루션은 사내에서 실행하거나 Azure NetApp Files(ANF) 또는 Amazon FSx for NetApp ONTAP(FSx for ONTAP)의 클라우드에서 실행되는 SAP HANA에서 사용할 수 있습니다.
 
-image:sc-copy-clone-image1.png[""]
+image::sc-copy-clone-image1.png[SC 복사 클론 이미지1]
 
 
 

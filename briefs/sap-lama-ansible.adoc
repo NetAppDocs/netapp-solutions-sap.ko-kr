@@ -43,7 +43,7 @@ SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 
 
 다음 이미지는 NetApp 스토리지와 관련된 SAP 시스템 클론 복제, 복사 및 LaMa 워크플로우 단계를 보여줍니다.
 
-image:sap-lama-image1.png["NetApp 스토리지와 관련된 SAP 시스템 클론 복제, 복사 및 LaMa 워크플로우 단계를 보여주는 이미지"]
+image::sap-lama-image1.png[NetApp 스토리지와 관련된 SAP 시스템 클론 복제, 복사 및 LaMa 워크플로우 단계를 보여주는 이미지]
 
 
 
@@ -68,7 +68,7 @@ image:sap-lama-image1.png["NetApp 스토리지와 관련된 SAP 시스템 클론
 
 다음 이미지는 SAP LaMa 및 NetApp 스토리지 시스템이 SAP Host Agent에서 실행되는 셸 스크립트로 트리거되는 전용 Ansible 호스트에서 Ansible Playbook을 통해 통합되는 방법을 보여줍니다.
 
-image:sap-lama-image2.png["SAP LaMa 및 NetApp 스토리지 시스템이 SAP Host Agent에서 실행되는 셸 스크립트로 트리거되는 전용 Ansible 호스트에서 Ansible Playbook을 통해 통합되는 방법을 보여주는 이미지"]
+image::sap-lama-image2.png[SAP LaMa 및 NetApp 스토리지 시스템이 SAP Host Agent에서 실행되는 셸 스크립트로 트리거되는 전용 Ansible 호스트에서 Ansible Playbook을 통해 통합되는 방법을 보여주는 이미지]
 
 
 
@@ -80,7 +80,7 @@ image:sap-lama-image2.png["SAP LaMa 및 NetApp 스토리지 시스템이 SAP Hos
 
 다음 이미지는 자동화를 사용할 때 운영 효율성이 향상되는 가능성을 보여 줍니다.
 
-image:sap-lama-image3.png["자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지"]
+image::sap-lama-image3.png[자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지]
 
 
 

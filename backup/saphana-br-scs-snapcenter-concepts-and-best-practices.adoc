@@ -34,7 +34,7 @@ SnapCenter에서 자동으로 검색된 HANA 데이터베이스 리소스만 자
 
 다음 그림은 종속성을 요약합니다. HANA 구축 옵션에 대한 자세한 내용은 “SAP HANA 플러그인의 구축 옵션” 섹션에서 다룹니다.
 
-image:saphana-br-scs-image9.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image9.png[오류: 그래픽 이미지가 없습니다]
 
 
 NOTE: HANA 및 Linux 플러그인은 현재 인텔 기반 시스템에서만 사용할 수 있습니다. HANA 데이터베이스가 IBM Power Systems에서 실행되는 경우 중앙 HANA 플러그인 호스트를 사용해야 합니다.
@@ -101,7 +101,7 @@ NOTE: HANA 플러그인을 HANA 데이터베이스 호스트에 구축하면 기
 
 SnapCenter 서버는 SAP HANA 플러그인을 통해 SAP HANA 데이터베이스와 통신합니다. SAP HANA 플러그인은 SAP HANA hdbsql 클라이언트 소프트웨어를 사용하여 SAP HANA 데이터베이스에 대한 SQL 명령을 실행합니다. SAP HANA hdbuserstore는 SAP HANA 데이터베이스에 액세스하기 위한 사용자 자격 증명, 호스트 이름 및 포트 정보를 제공하는 데 사용됩니다.
 
-image:saphana-br-scs-image10.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image10.png[오류: 그래픽 이미지가 없습니다]
 
 
 NOTE: hdbuserstore 구성 툴을 포함하는 SAP HANA 플러그인 및 SAP hdbsql 클라이언트 소프트웨어를 동일한 호스트에 함께 설치해야 합니다.
@@ -122,7 +122,7 @@ HANA 플러그인이 SnapCenter 서버에 설치된 경우 SnapCenter 서버 HA�
 
 다음 그림에서는 SnapCenter 서버가 중앙 플러그인 호스트로 사용되는 구성을 보여 줍니다. SAP HANA 플러그인 및 SAP hdbsql 클라이언트 소프트웨어는 SnapCenter 서버에 설치됩니다.
 
-image:saphana-br-scs-image11.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image11.png[오류: 그래픽 이미지가 없습니다]
 
 HANA 플러그인은 네트워크를 통해 hdbclient를 사용하여 관리형 HANA 데이터베이스와 통신할 수 있으므로 개별 HANA 데이터베이스 호스트에 SnapCenter 구성 요소를 설치할 필요가 없습니다. SnapCenter는 모든 사용자 저장소 키가 관리 데이터베이스에 대해 구성된 중앙 HANA 플러그인 호스트를 사용하여 HANA 데이터베이스를 보호할 수 있습니다.
 
@@ -139,7 +139,7 @@ HANA 플러그인은 네트워크를 통해 hdbclient를 사용하여 관리형 
 
 NOTE: 별도의 중앙 플러그인 호스트도 Windows 호스트일 수 있습니다.
 
-image:saphana-br-scs-image12.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image12.png[오류: 그래픽 이미지가 없습니다]
 
 이전 섹션에서 설명한 기능 가용성에 대한 동일한 제한은 별도의 중앙 플러그인 호스트에도 적용됩니다.
 
@@ -151,7 +151,7 @@ image:saphana-br-scs-image12.png["오류: 그래픽 이미지가 없습니다"]
 
 다음 그림에서는 각 SAP HANA 데이터베이스 호스트에 SAP HANA 플러그인이 설치되는 구성을 보여 줍니다.
 
-image:saphana-br-scs-image13.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image13.png[오류: 그래픽 이미지가 없습니다]
 
 HANA 플러그인을 각 개별 HANA 데이터베이스 호스트에 설치하면 자동 검색, 자동 복원, 복구와 같은 모든 기능을 사용할 수 있습니다. 또한 SnapCenter 서버는 HA 구성으로 설정할 수 있습니다.
 
@@ -165,9 +165,9 @@ HANA 플러그인을 각 개별 HANA 데이터베이스 호스트에 설치하�
 
 다음 두 그림에서는 SnapCenter 서버 또는 별도의 Linux 호스트를 중앙 플러그인 호스트로 사용한 혼합 플러그인 구축을 보여 줍니다. 이 두 구축 환경 간의 유일한 차이점은 선택적 HA 구성입니다.
 
-image:saphana-br-scs-image14.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image14.png[오류: 그래픽 이미지가 없습니다]
 
-image:saphana-br-scs-image15.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image15.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -299,7 +299,7 @@ NOTE: 하나 이상의 테넌트가 중지된 경우 SAP는 MDC 시스템에 대
 
 다음 그림에서는 백업 워크플로우의 개요를 보여 줍니다.
 
-image:saphana-br-scs-image16.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image16.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -365,7 +365,7 @@ NOTE: 이 단계는 로그 백업 관리 기능이 비활성화되지 않은 경
 
 다음 그림에서는 다양한 워크플로우와 각 작업의 종속 관계를 간략하게 보여 줍니다. 다음 섹션에서는 다양한 작업에 대해 자세히 설명합니다.
 
-image:saphana-br-scs-image17.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image17.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -534,7 +534,7 @@ HANA 데이터베이스 측면에서 SnapCenter는 두 가지 다른 복원 작�
 * * 수동 복구를 사용하여 리소스를 완료합니다. * 복구 안 함을 선택하면 SnapCenter에서 HANA 데이터베이스를 중지하고 필요한 파일 시스템(마운트 해제, 마운트) 및 복원 작업을 실행합니다. 시스템 및 테넌트 데이터베이스를 수동으로 복구해야 합니다.
 
 
-image:saphana-br-scs-image18.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image18.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -548,7 +548,7 @@ image:saphana-br-scs-image18.png["오류: 그래픽 이미지가 없습니다"]
 
 워크플로는 이전 섹션에서 설명한 것과 같습니다.
 
-image:saphana-br-scs-image19.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image19.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -558,7 +558,7 @@ image:saphana-br-scs-image19.png["오류: 그래픽 이미지가 없습니다"]
 
 수동으로 구성된 HANA 리소스의 경우 다음 그림과 같이 SnapCenter는 수동 복구만 지원합니다. 수동 복구 워크플로는 이전 섹션에서 설명한 것과 동일합니다.
 
-image:saphana-br-scs-image20.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image20.png[오류: 그래픽 이미지가 없습니다]
 
 
 

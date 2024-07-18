@@ -26,9 +26,9 @@ SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 아래 
 
 NOTE: 소스 시스템에서 테넌트 생성, 이름 바꾸기 또는 삭제 작업을 실행하는 즉시 이 구성 플래그가 SAP HANA 데이터베이스에 의해 삭제됩니다. 따라서 구성을 다시 tenant=SID로 되돌려도 플래그를 더 이상 사용할 수 없으며 워크플로 3을 사용한 테넌트 복구에 대한 예외는 더 이상 가능하지 않습니다. 이 경우 옵션 2가 필요한 워크플로입니다.
 
-image:sc-copy-clone-image10.png[""]
+image::sc-copy-clone-image10.png[SC 복사 클론 이미지10]
 
-image:sc-copy-clone-image11.png[""]
+image::sc-copy-clone-image11.png[SC 복사 클론 이미지11]
 
 
 
@@ -46,7 +46,7 @@ SAP HANA 지속성 암호화를 사용하는 경우 대상 시스템에서 SAP H
 
 루트 키를 변경한 경우 항상 루트 키를 백업해야 합니다. backup 명령은 CLI 매개 변수로 DBID를 요구합니다. DBID는 아래 SQL 문을 사용하여 식별할 수 있습니다.
 
-image:sc-copy-clone-image12.png[""]
+image::sc-copy-clone-image12.png[SC 복사 클론 이미지12]
 
 SQL 문 및 추가 설명서는 SAP HANA 관리 가이드 의 다음 단계에 나와 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["루트 키 백업 | SAP 도움말 포털"] 있으며 단일 테넌트 SS1이 있는 HANA 시스템에 필요한 작업을 소스 시스템에서 실행하는 방법을 보여 줍니다.
 
@@ -126,6 +126,6 @@ qs1adm@hana-7:/usr/sap/QS1/HDB11>
 
 앞의 장에서 설명한 대로 시스템 및 모든 테넌트 데이터베이스에 대한 루트 키를 가져오려면 DBID가 필요합니다. 시스템 데이터베이스는 항상 DBID = 0이지만 테넌트 데이터베이스는 다른 DBID를 가질 수 있습니다.
 
-image:sc-copy-clone-image13.png[""]
+image::sc-copy-clone-image13.png[SC 복사 클론 이미지13]
 
 위의 출력은 DBID = 3, DBID = 4인 두 테넌트를 보여줍니다. 타겟 시스템이 아직 DBID가 4인 테넌트를 호스팅하지 않은 경우 루트 키 가져오기가 실패합니다. 이 경우 먼저 시스템 데이터베이스를 복구한 다음 DBID가 4인 테넌트의 키를 가져와야 합니다.

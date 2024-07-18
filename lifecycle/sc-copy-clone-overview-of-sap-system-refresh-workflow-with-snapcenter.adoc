@@ -45,7 +45,7 @@ SnapCenter를 사용한 SAP 시스템 새로 고침 워크플로는 아래 그�
 
 
 
-image:sc-copy-clone-image7.png[""]
+image::sc-copy-clone-image7.png[SC 복사 클론 이미지7]
 
 대부분의 경우 대상 테스트/QA 시스템은 최소 2주 동안 사용됩니다. FlexClone 볼륨이 소스 시스템 볼륨의 스냅샷을 차단하므로 이 스냅샷에는 소스 시스템 볼륨의 블록 변경률에 따라 추가 용량이 필요합니다. 운영 소스 시스템 및 일일 평균 변경률이 20%인 경우 5일 후 차단된 스냅샷이 100%에 도달합니다. 따라서 NetApp은 클론이 운영 소스 시스템을 기반으로 하는 경우 즉시 또는 며칠 후에 FlexClone 볼륨을 분할하는 것이 좋습니다. 클론 분할 작업은 클론 복제된 볼륨의 사용을 차단하지 않으므로 HANA 데이터베이스를 사용하는 동안 언제든지 수행할 수 있습니다.
 
@@ -87,6 +87,6 @@ NOTE: 이전에 분할되었던 이전 데이터 볼륨은 스토리지 시스�
 
 
 
-image:sc-copy-clone-image8.png[""]
+image::sc-copy-clone-image8.png[SC 복사 클론 이미지8]
 
 섹션을 참조하십시오 link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html[""SnapCenter를 통한 SAP HANA 시스템 교체""] 에서는 두 시스템 새로 고침 워크플로우에 대한 자세한 단계별 설명을 제공합니다.

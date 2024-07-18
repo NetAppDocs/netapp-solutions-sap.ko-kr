@@ -28,21 +28,21 @@ summary: 이 섹션에서는 필요 시 Snapshot 백업과 필요 시 블록 무
 
 . 맨 위 행에서 지금 백업 아이콘을 선택하여 필요 시 백업을 시작합니다.
 +
-image:amazon-fsx-image48.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image48.png[오류: 그래픽 이미지가 없습니다]
 
 . 드롭다운 목록에서 백업 정책 LocalSnap을 선택한 다음 Backup을 클릭하여 필요 시 백업을 시작합니다.
 +
-image:amazon-fsx-image49.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image49.png[오류: 그래픽 이미지가 없습니다]
 
 +
-image:amazon-fsx-image50.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image50.png[오류: 그래픽 이미지가 없습니다]
 
 +
 이전 5개 작업의 로그가 Topology(토폴로지) 보기의 맨 아래에 있는 Activity(활동) 영역에 표시됩니다.
 
 . 작업 영역에서 작업의 활동 라인을 클릭하면 작업 세부 정보가 표시됩니다. 로그 보기 를 클릭하여 세부 작업 로그를 열 수 있습니다
 +
-image:amazon-fsx-image51.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image51.png[오류: 그래픽 이미지가 없습니다]
 
 +
 백업이 완료되면 토폴로지 뷰에 새 항목이 표시됩니다. 백업 이름은 섹션에 정의된 스냅샷 이름과 동일한 명명 규칙을 따릅니다 link:amazon-fsx-snapcenter-configuration.html#configure-and-protect-a-hana-resource["“HANA 리소스 구성 및 보호”"]
@@ -51,16 +51,16 @@ image:amazon-fsx-image51.png["오류: 그래픽 이미지가 없습니다"]
 업데이트된 백업 목록을 보려면 토폴로지 뷰를 닫았다가 다시 열어야 합니다.
 
 +
-image:amazon-fsx-image52.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image52.png[오류: 그래픽 이미지가 없습니다]
 
 +
 SAP HANA 백업 카탈로그에서 SnapCenter 백업 이름은 외부 백업 ID(EBID)뿐만 아니라 '설명' 필드로 저장됩니다. 이 그림은 시스템 데이터베이스에 대한 다음 그림과 테넌트 데이터베이스 PFX의 다음 그림에 나와 있습니다.
 
 +
-image:amazon-fsx-image53.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image53.png[오류: 그래픽 이미지가 없습니다]
 
 +
-image:amazon-fsx-image54.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image54.png[오류: 그래픽 이미지가 없습니다]
 
 
 
@@ -82,19 +82,19 @@ sapcc-hana-svm::>
 
 Block 무결성 검사 작업은 BlockIntegrityCheck 정책을 선택하여 Snapshot 백업 작업과 같은 방식으로 실행됩니다. 이 정책을 사용하여 백업을 예약할 때 SnapCenter는 시스템 및 테넌트 데이터베이스에 대한 표준 SAP HANA 파일 백업을 생성합니다.
 
-image:amazon-fsx-image55.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image55.png[오류: 그래픽 이미지가 없습니다]
 
-image:amazon-fsx-image56.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image56.png[오류: 그래픽 이미지가 없습니다]
 
 SnapCenter는 스냅샷 복사본 기반 백업과 같은 방식으로 블록 무결성 검사를 표시하지 않습니다. 대신 요약 카드에는 파일 기반 백업 수와 이전 백업 상태가 표시됩니다.
 
-image:amazon-fsx-image57.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image57.png[오류: 그래픽 이미지가 없습니다]
 
 SAP HANA 백업 카탈로그에는 시스템과 테넌트 데이터베이스 모두에 대한 항목이 표시됩니다. 다음 그림은 시스템 및 테넌트 데이터베이스의 백업 카탈로그에 있는 SnapCenter 블록 무결성 검사를 보여 줍니다.
 
-image:amazon-fsx-image58.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image58.png[오류: 그래픽 이미지가 없습니다]
 
-image:amazon-fsx-image59.png["오류: 그래픽 이미지가 없습니다"]
+image::amazon-fsx-image59.png[오류: 그래픽 이미지가 없습니다]
 
 블록 무결성 검사가 성공적으로 완료되면 표준 SAP HANA 데이터 백업 파일이 생성됩니다. SnapCenter는 파일 기반 데이터 백업 작업을 위해 HANA 데이터베이스로 구성된 백업 경로를 사용합니다.
 

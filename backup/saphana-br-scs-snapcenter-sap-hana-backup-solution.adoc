@@ -81,7 +81,7 @@ NOTE: SnapCenter는 운영 스토리지에서 보존을 처리하고, ONTAP은 �
 
 다음 그림에서는 오프사이트 백업 스토리지의 NFS 마운트에 로그 백업을 기록하는 데이터베이스 및 로그 백업 구성의 개요를 보여 줍니다.
 
-image:saphana-br-scs-image7.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image7.png[오류: 그래픽 이미지가 없습니다]
 
 비 데이터 볼륨의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter는 다음 작업을 수행합니다.
 
@@ -121,4 +121,4 @@ SnapCenter는 다음과 같은 SAP HANA 아키텍처 및 릴리즈를 지원합�
 
 버전 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HANA 시스템의 자동 검색을 지원합니다. 각 호스트는 해당 물리적 IP 주소(호스트 이름)와 스토리지 계층의 개별 데이터 볼륨을 사용하여 구성됩니다. 두 SnapCenter 리소스가 리소스 그룹에 결합되어 SnapCenter는 운영 또는 보조 호스트를 자동으로 식별하며, 그런 다음 필요한 백업 작업을 적절히 실행합니다. SnapCenter로 생성된 스냅샷 및 파일 기반 백업의 보존 관리는 두 호스트 모두에서 수행되므로 이전 백업이 현재 보조 호스트에서도 삭제됩니다. 다음 그림에서는 개략적인 개요를 보여 줍니다. SnapCenter에 HANA 시스템 복제 지원 HANA 시스템의 구성 및 작동에 대한 자세한 설명은 에서 확인할 수 있습니다 https://www.netapp.com/us/media/tr-4719.pdf["TR-4719 SAP HANA 시스템 복제, SnapCenter를 통한 백업 및 복구"^].
 
-image:saphana-br-scs-image8.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image8.png[오류: 그래픽 이미지가 없습니다]

@@ -16,7 +16,7 @@ ANF(SAP HANA on Azure NetApp Files)를 실행하는 고객은 SAP HANA의 기본
 
 포괄적인 재해 복구 정책을 개발하려면 고객은 데이터 보호 및 재해 복구에 필요한 비즈니스 애플리케이션 요구사항과 기술 기능을 이해해야 합니다. 다음 그림에서는 데이터 보호에 대한 개요를 제공합니다.
 
-image:saphana-dr-anf_image2.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-dr-anf_image2.png[오류: 그래픽 이미지가 없습니다]
 
 
 

@@ -19,9 +19,11 @@ summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루�
 
 테스트 또는 교육 목적으로 대상 시스템에서 소스 시스템의 데이터를 사용할 수 있도록 여러 가지 시나리오가 있습니다. 이러한 테스트 및 교육 시스템은 정기적으로 소스 시스템의 데이터를 업데이트하여 테스트 및 교육이 현재 데이터 세트와 함께 수행되도록 해야 합니다. 이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 있는 여러 작업으로 구성되며 자동화 수준에 따라 몇 일이 걸릴 수 있습니다.
 
-image:sc-copy-clone-image3.png[""] SnapCenter 클론 복제 워크플로우를 사용하면 인프라 및 데이터베이스 계층에서 필요한 작업을 가속화하고 자동화할 수 있습니다. SnapCenter은 소스 시스템에서 타겟 시스템으로 백업을 복원하는 대신 NetApp Snapshot 복사본 및 NetApp FlexClone 기술을 사용합니다. 따라서 시작된 SAP HANA 데이터베이스까지 필요한 작업을 몇 시간이 아닌 몇 분 이내에 수행할 수 있습니다. 클론 생성 프로세스에 필요한 시간은 데이터베이스의 크기와 독립적이므로 몇 분 안에 초대형 시스템을 생성할 수 있습니다. 시작 시간은 데이터베이스 크기와 데이터베이스 서버와 스토리지 시스템 간의 연결에 따라 다릅니다.
+image::sc-copy-clone-image3.png[SC 복사 클론 이미지3]
 
-image:sc-copy-clone-image4.png[""]
+SnapCenter 클론 복제 워크플로우를 사용하면 인프라 및 데이터베이스 계층에서 필요한 작업을 더 빠르게 처리하고 자동화할 수 있습니다. SnapCenter은 소스 시스템에서 타겟 시스템으로 백업을 복원하는 대신 NetApp Snapshot 복사본 및 NetApp FlexClone 기술을 사용합니다. 따라서 시작된 SAP HANA 데이터베이스까지 필요한 작업을 몇 시간이 아닌 몇 분 이내에 수행할 수 있습니다. 클론 생성 프로세스에 필요한 시간은 데이터베이스의 크기와 독립적이므로 몇 분 안에 초대형 시스템을 생성할 수 있습니다. 시작 시간은 데이터베이스 크기와 데이터베이스 서버와 스토리지 시스템 간의 연결에 따라 다릅니다.
+
+image::sc-copy-clone-image4.png[SC 복사 클론 이미지4]
 
 시스템 새로 고침 작업의 워크플로는 섹션에 설명되어 있습니다 link:sc-copy-clone-sap-hana-system-refresh-with-snapcenter.html["“SnapCenter로 SAP HANA 시스템 업데이트”"]
 
@@ -37,7 +39,7 @@ SAP 시스템을 복원하는 대신 별도의 복구 시스템에서 문제를 
 
 복구 시스템을 설정할 때는 유연성과 민첩성이 중요합니다. NetApp 스토리지 기반 스냅샷 백업을 사용할 경우 NetApp FlexClone 기술을 사용하여 프로덕션 시스템의 클론을 생성하는 데 일관된 데이터베이스 이미지를 여러 개 사용할 수 있습니다. 파일 기반 백업에서 리디렉션된 복원을 사용하여 복구 시스템을 설정하는 경우 몇 시간이 아니라 몇 초 이내에 FlexClone 볼륨을 생성할 수 있습니다.
 
-image:sc-copy-clone-image5.png[""]
+image::sc-copy-clone-image5.png[SC 복사 클론 이미지5]
 
 복구 시스템 생성 워크플로는 섹션에 설명되어 있습니다 link:sc-copy-clone-sap-system-clone-with-snapcenter.html["“SnapCenter를 사용한 SAP 시스템 복제.”"]
 
@@ -51,7 +53,9 @@ SnapMirror를 통한 스토리지 복제를 사용하면 RTO 및 RPO를 위험�
 
 비동기식 및 동기식 SnapMirror의 재해 복구 테스트에서는 재해 복구 대상에 있는 Snapshot 백업과 FlexClone 볼륨을 사용합니다.
 
-image:sc-copy-clone-image6.png[""] 자세한 단계별 설명은 기술 보고서를 참조하십시오
+image::sc-copy-clone-image6.png[SC 복사 클론 이미지6]
+
+자세한 단계별 설명은 기술 보고서를 참조하십시오
 
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구(netapp.com)"]
 

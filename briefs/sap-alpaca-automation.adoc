@@ -26,7 +26,7 @@ SAP 시스템 및 솔루션 운영은 매우 복잡합니다. 그러나 SAP를 �
 
 Automating Landscape primited - Cloud and Anywhere(알파카) 제품군은 SAP 환경을 세부적으로 감독하고 모니터링할 수 있는 포괄적인 관리 인터페이스입니다. alpaca는 SAP 인프라 운영을 간소화하고 신속히 진행하여 가용성과 투명성을 최적화합니다. 인프라를 비롯하여 전체 환경을 관리하는 데 필요한 포괄적인 툴을 제공하며 서비스 중단, 작업 중지, 정체 등의 이상 징후를 사전에 알립니다. 이 제품군은 멀티 클라우드 시나리오를 포함하여 온프레미스, 하이브리드 및 모든 클라우드 환경에서 원활하게 작동하도록 설계되어 모든 인프라에 대응할 수 있습니다. 이 모듈 기반 프레임워크는 표준 및 일반 SAP 관리 작업은 물론 운영 중단 시 장애 조치와 같은 복잡한 시나리오를 자동화합니다. alpaca는 관리자/전문가, 운영자 및 관리자로서 이러한 전문가에게 높은 수준의 제어 및 자동화를 제공합니다.
 
-image:sap-alpaca-image1.png["알파카 플랫폼 다이어그램"]
+image::sap-alpaca-image1.png[알파카 플랫폼 다이어그램]
 
 이 문서에서는 alpaca가 NetApp SnapCenter ® 와 통합되어 스냅샷 기반 백업을 오케스트레이션하고, 복원을 수행하고, FlexClone 볼륨을 만드는 방법에 대해 설명합니다. 이러한 통합을 통해 SAP 관리자는 SAP 시스템의 일상적인 운영 작업을 대폭 가속화할 수 있습니다. NetApp Snapshot, FlexClone 및 SnapRestore ® 기술은 NetApp의 스토리지 기술이 포인터 기반이므로 백업, 복원 및 클론 복제 작업을 가속화합니다. 이 접근 방식은 빠르며 기존 데이터가 아닌 새 데이터와 변경된 데이터만 스토리지 미디어에 기록되어야 하므로 복제 작업 중에 스토리지 오버헤드가 줄어듭니다. 이는 사내 NetApp 스토리지 시스템이든 3대 클라우드 공급자 중 한 곳이든 NetApp 스토리지 솔루션이든 관계없이 마찬가지입니다.
 
@@ -45,17 +45,17 @@ SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 
 * * SAP 시스템 클론 *. SAP 시스템 클론은 소스 SAP 시스템의 동일한 클론입니다. SAP 시스템 클론은 일반적으로 논리적 손상을 다루거나 재해 복구 시나리오를 테스트하는 데 사용됩니다. 시스템 클론 작업에서는 호스트 이름, 인스턴스 번호 및 SID(Secure Identifier)가 동일하게 유지됩니다. 따라서 대상 시스템이 생산 환경과의 통신이 없도록 적절한 네트워크 펜싱을 설정하는 것이 중요합니다.
 
 
-image:sap-alpaca-image2.png["SAP 시스템 클론을 보여 주는 이미지입니다"]
+image::sap-alpaca-image2.png[SAP 시스템 클론을 보여 주는 이미지입니다]
 
 * * SAP 시스템 카피 *. SAP 시스템 복제본은 소스 SAP 시스템의 데이터가 포함된 새로운 타겟 SAP 시스템의 설정입니다. 예를 들어, 새 타겟 시스템은 운영 시스템의 데이터가 있는 추가 테스트 시스템이 될 수 있습니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 대해 다릅니다. 새 시스템이 소스 시스템에서 격리되지 않았습니다.
 
 
-image:sap-alpaca-image3.png["SAP 시스템 복제본을 보여 주는 이미지입니다"]
+image::sap-alpaca-image3.png[SAP 시스템 복제본을 보여 주는 이미지입니다]
 
 * * SAP 시스템 새로 고침 *. SAP 시스템 새로 고침은 소스 SAP 시스템의 데이터로 기존 타겟 SAP 시스템을 새로 고치는 것입니다. 일반적으로 타겟 시스템은 운영 시스템의 데이터로 새로 고쳐지는 SAP 전송 환경의 일부입니다. 호스트 이름, 인스턴스 번호 및 SID는 소스 시스템과 타겟 시스템에 따라 다릅니다.
 
 
-image:sap-alpaca-image4.png["SAP 시스템 새로 고침을 보여 주는 이미지입니다"]
+image::sap-alpaca-image4.png[SAP 시스템 새로 고침을 보여 주는 이미지입니다]
 
 비록 세 가지 사용 사례지만 데이터 관리 프로세스는 그대로 유지됩니다. 세 가지 사용 사례에서는 모두 동일한 기본 데이터 관리 기술인 NetApp Snapshot 및 FlexClone을 사용합니다.
 
@@ -86,7 +86,7 @@ image:sap-alpaca-image4.png["SAP 시스템 새로 고침을 보여 주는 이미
 
 다음 이미지는 알파카서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 것이 통합된 방식을 보여줍니다. 목표는 SnapCenter REST API를 사용하여 통합을 최대한 유연하게 만들어 기존 구성 요소 내에서 이미 수행된 구성 작업의 재사용을 최대한 보장하는 것입니다.
 
-image:sap-alpaca-image5.png["알파카 서버, NetApp SnapCenter 서버, NetApp 스토리지 시스템, SAP 소스 및 SAP 타겟 시스템, 모든 것이 통합된 방식을 보여주는 이미지"]
+image::sap-alpaca-image5.png[alpaca 서버를 보여 주는 이미지입니다,the NetApp SnapCenter server,the NetApp storage system]
 
 
 
@@ -98,7 +98,7 @@ image:sap-alpaca-image5.png["알파카 서버, NetApp SnapCenter 서버, NetApp 
 
 다음 이미지는 자동화를 사용할 때 운영 효율성이 향상되는 가능성을 보여 줍니다.
 
-image:sap-alpaca-image6.png["자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지"]
+image::sap-alpaca-image6.png[자동화 사용 시 운영 효율성 개선 가능성을 보여 주는 이미지]
 
 
 

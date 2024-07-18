@@ -22,7 +22,7 @@ SnapCenter 구성은 다음 두 가지 주요 영역으로 구분할 수 있습�
 
 다음 그림에서는 구성 구성 요소와 해당 종속성에 대한 개요를 제공합니다. 녹색 상자는 SnapCenter 외부에서 수행해야 하는 구성 단계를 보여 줍니다. 파란색 상자는 SnapCenter GUI를 사용하여 수행한 단계를 보여 줍니다.
 
-image:saphana-br-scs-image22.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image22.png[오류: 그래픽 이미지가 없습니다]
 
 초기 구성에서 다음 구성 요소가 설치 및 구성됩니다.
 

@@ -20,7 +20,7 @@ SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅
 
 SnapCenter는 스냅샷 복사본 기반 백업과 같은 방식으로 블록 무결성 검사를 표시하지 않습니다. 대신 요약 카드에는 파일 기반 백업 수와 이전 백업 상태가 표시됩니다.
 
-image:saphana-br-scs-image94.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image94.png[오류: 그래픽 이미지가 없습니다]
 
 SnapCenter UI에서는 블록 무결성 검사 백업을 삭제할 수 없지만 PowerShell 명령을 사용하여 삭제할 수는 있습니다.
 
@@ -70,7 +70,7 @@ PS C:\Users\scadmin>
 ....
 SAP HANA 백업 카탈로그에는 시스템과 테넌트 데이터베이스 모두에 대한 항목이 표시됩니다. 다음 그림에서는 시스템 데이터베이스의 백업 카탈로그에 있는 SnapCenter 블록 무결성 검사를 보여 줍니다.
 
-image:saphana-br-scs-image95.png["오류: 그래픽 이미지가 없습니다"]
+image::saphana-br-scs-image95.png[오류: 그래픽 이미지가 없습니다]
 
 블록 무결성 검사가 성공적으로 완료되면 표준 SAP HANA 데이터 백업 파일이 생성됩니다. SnapCenter는 파일 기반 데이터 백업 작업을 위해 HANA 데이터베이스에 구성된 백업 경로를 사용합니다.
 

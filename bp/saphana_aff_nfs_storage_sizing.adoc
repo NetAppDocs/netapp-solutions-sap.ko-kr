@@ -214,4 +214,4 @@ RAM의 크기, 각 SAP HANA 호스트의 디스크의 순 데이터 크기 및 S
 
 다음 그림은 사이징 프로세스를 요약합니다.
 
-image:saphana_aff_nfs_image9.jpg["오류: 그래픽 이미지가 없습니다"]
+image::saphana_aff_nfs_image9.jpg[오류: 그래픽 이미지가 없습니다]
