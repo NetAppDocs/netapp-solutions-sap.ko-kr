@@ -21,8 +21,8 @@ SAP 수명 주기 관리를 강조하는 비디오 및 데모 개요
 
 == SAP Lifecycle Management 비디오 및 데모
 
-* link:https://www.netapp.tv/details/25588["SAP 프로젝트의 위험 감소 및 품질 향상"]
-* link:https://www.netapp.tv/details/25595["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"]
-* link:https://www.netapp.tv/details/28400["SnapCenter 사용 사례"]
-* link:https://www.netapp.tv/details/28401["Libelle 및 SnapCenter와 함께 SAP 시스템 복사"]
+* link:https://media.netapp.com/video-detail/eae1f74b-6a01-5021-9d3f-96987aa08600/decrease-risk-and-increase-quality-of-sap-projects["SAP 프로젝트의 위험 감소 및 품질 향상"^]
+* link:https://media.netapp.com/video-detail/c1229d10-fe84-58f1-9cdf-ca3c0f9d9104/ensure-continuity-for-lines-of-business-in-the-face-of-unexpected-events["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"^]
+* link:https://media.netapp.com/video-detail/1c753169-f70d-5f2b-b798-cd09a604541c/snapcenter-use-cases["SnapCenter 사용 사례"^]
+* link:https://media.netapp.com/video-detail/5ed450f9-d66b-53d9-99de-d763ea44566c/sap-system-copy-with-libelle-and-snapcenter["Libelle 및 SnapCenter와 함께 SAP 시스템 복사"^]
 

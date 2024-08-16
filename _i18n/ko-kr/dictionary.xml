@@ -5,29 +5,18 @@
   <block id="2259bdd472d4d2949e3eea23b5e4ef34" category="paragraph">SAP 솔루션에 대한 비디오 및 데모를 간략하게 소개합니다.</block>
   <block id="aa5b0840e871ca382a477398de4a7243" category="section-title">SAP 구성 모범 사례 비디오 및 데모</block>
   <block id="c482c0b5b51f55ba9a7c2dcdee1f4339" category="inline-link-macro">SAP HANA는 NetApp 인프라에서 가장 잘 실행됩니다</block>
-  <block id="1075e5efe982b7b963d04bf347c70828" category="list-text"><block ref="1075e5efe982b7b963d04bf347c70828" category="inline-link-macro-rx"></block></block>
   <block id="442aae40221b985ca5667a9e47a977f6" category="inline-link-macro">Azure NetApp Files 기반 SAP: 개요 및 업데이트</block>
-  <block id="4081a5d960769b62df19b7b2d85d97ce" category="list-text"><block ref="4081a5d960769b62df19b7b2d85d97ce" category="inline-link-macro-rx"></block></block>
   <block id="b3c2b25543d55b6202de3f9de0d4f7ab" category="inline-link-macro">SAP Data Intelligence에 NetApp 블록 및 오브젝트 스토리지 사용</block>
-  <block id="cb5a2e1895e5b5fdd2fa4ca3c1fcdcbf" category="list-text"><block ref="cb5a2e1895e5b5fdd2fa4ca3c1fcdcbf" category="inline-link-macro-rx"></block></block>
   <block id="ed2640c6c02db4ce182af25c797097d8" category="section-title">SAP 백업, 복원 및 재해 복구 비디오 및 데모</block>
   <block id="e96d40a0320cf0061a3275c5aeda86d9" category="inline-link-macro">SAP 애플리케이션의 가용성을 보장하고 다운타임을 최소화합니다</block>
-  <block id="b9866c90c2cb78ad6026a4030e7ffb9c" category="list-text"><block ref="b9866c90c2cb78ad6026a4030e7ffb9c" category="inline-link-macro-rx"></block></block>
   <block id="84ead1de39ae75908e5ae205b8846191" category="inline-link-macro">Azure NetApp Files을 기반으로 SAP HANA에 대한 데이터 보호를 최적화하십시오</block>
-  <block id="6d846c272e002c4456952b49ec920c99" category="list-text"><block ref="6d846c272e002c4456952b49ec920c99" category="inline-link-macro-rx"></block></block>
   <block id="eabc448bcef35b3d5eb92882f22f6f0c" category="inline-link-macro">SAP HANA용 재해 복구 옵션</block>
-  <block id="5821d6a1665e7444f03bfc5b38497072" category="list-text"><block ref="5821d6a1665e7444f03bfc5b38497072" category="inline-link-macro-rx"></block></block>
   <block id="a6c0b9b2156c13772cbe82711c8b07b9" category="inline-link-macro">ANF 및 지역 간 복제를 통한 SAP HANA 재해 복구</block>
-  <block id="63c6ad8a920d440690086fc463cb53e1" category="list-text"><block ref="63c6ad8a920d440690086fc463cb53e1" category="inline-link-macro-rx"></block></block>
   <block id="18c100c6d8f14819ac80ee276eb251a6" category="section-title">SAP Lifecycle Management 비디오 및 데모</block>
   <block id="d67e81d44a24d3d9987a4b28774f0464" category="inline-link-macro">SAP 프로젝트의 위험 감소 및 품질 향상</block>
-  <block id="99cd49471231b4760684c16c9efdf186" category="list-text"><block ref="99cd49471231b4760684c16c9efdf186" category="inline-link-macro-rx"></block></block>
   <block id="5673b57ca1dc3ec2a9c2adcc115e3718" category="inline-link-macro">예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다</block>
-  <block id="36c65cf1e1133dcc86194501c946173e" category="list-text"><block ref="36c65cf1e1133dcc86194501c946173e" category="inline-link-macro-rx"></block></block>
   <block id="5fb4ff4d48cdc2aa80ff2d0945e1a23c" category="inline-link-macro">SnapCenter 사용 사례</block>
-  <block id="f7134e3fe8e51815ce1f2311d62c2501" category="list-text"><block ref="f7134e3fe8e51815ce1f2311d62c2501" category="inline-link-macro-rx"></block></block>
   <block id="36276bf8617d4835834e31d796e6e917" category="inline-link-macro">Libelle 및 SnapCenter와 함께 SAP 시스템 복사</block>
-  <block id="ad89086c301777770abecf557a90299d" category="list-text"><block ref="ad89086c301777770abecf557a90299d" category="inline-link-macro-rx"></block></block>
   <block id="dd39ffa36b8ed682c45520c7d7dc8517" category="summary">SAP 수명 주기 관리를 위한 도구 및 팁</block>
   <block id="9ed86ffbd478752ccf2baab032a8e364" category="doc">SAP 수명 주기 관리 도구</block>
   <block id="08fc5b32a35c491189156ebd21b39ecf" category="paragraph">SAP Lifecycle Management 솔루션 및 솔루션 자료를 위한 툴 개요</block>
@@ -4264,4 +4253,15 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="d8d0cb0916cf7da8496d1f2620d2ee90" category="image-alt">SC 복사 클론 이미지5</block>
   <block id="8302a6667cb8ff0d8296da1e8fed81c3" category="image-alt">SC 복사 클론 이미지6</block>
   <block id="3011dd9126a94f9a666a7fd4dc5610ae" category="paragraph">자세한 단계별 설명은 기술 보고서를 참조하십시오</block>
+  <block id="0a93e03f240cb8b42069573a99818021" category="list-text"><block ref="0a93e03f240cb8b42069573a99818021" category="inline-link-macro-rx"></block></block>
+  <block id="77b50001f65f6144e393afa83a9d4e21" category="list-text"><block ref="77b50001f65f6144e393afa83a9d4e21" category="inline-link-macro-rx"></block></block>
+  <block id="ac94faeb4f3a2c19cbff27de5edf7c3d" category="list-text"><block ref="ac94faeb4f3a2c19cbff27de5edf7c3d" category="inline-link-macro-rx"></block></block>
+  <block id="769a56e6a2d7cc689b61d13a608afdcf" category="list-text"><block ref="769a56e6a2d7cc689b61d13a608afdcf" category="inline-link-macro-rx"></block></block>
+  <block id="34132f76907288db0e5acc88b699349f" category="list-text"><block ref="34132f76907288db0e5acc88b699349f" category="inline-link-macro-rx"></block></block>
+  <block id="a5cf81e748f3b3e6fad26b2e3470f879" category="list-text"><block ref="a5cf81e748f3b3e6fad26b2e3470f879" category="inline-link-macro-rx"></block></block>
+  <block id="3a45e49c1772de2900939131e021fa41" category="list-text"><block ref="3a45e49c1772de2900939131e021fa41" category="inline-link-macro-rx"></block></block>
+  <block id="4d95a1c44f1bef40694360da5b9a600b" category="list-text"><block ref="4d95a1c44f1bef40694360da5b9a600b" category="inline-link-macro-rx"></block></block>
+  <block id="87c8349f2562b9df828a79206981328c" category="list-text"><block ref="87c8349f2562b9df828a79206981328c" category="inline-link-macro-rx"></block></block>
+  <block id="20a0dcae2f540339bbf69dbaa7f0050a" category="list-text"><block ref="20a0dcae2f540339bbf69dbaa7f0050a" category="inline-link-macro-rx"></block></block>
+  <block id="bdd953fb1656612c27158a06dfa9be52" category="list-text"><block ref="bdd953fb1656612c27158a06dfa9be52" category="inline-link-macro-rx"></block></block>
 </blocks>
