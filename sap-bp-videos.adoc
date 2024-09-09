@@ -23,5 +23,4 @@ SAP 구성 Best Practice를 소개하는 비디오 및 데모 개요
 
 * link:https://media.netapp.com/video-detail/71853836-ac06-50bf-a579-01ff36851580/sap-hana-runs-best-on-netapp-infrastructure-brk-1114-2["SAP HANA는 NetApp 인프라에서 가장 잘 실행됩니다"^]
 * link:https://media.netapp.com/video-detail/60bf8c7c-d14d-5463-b839-4e1c8daca1a3/sap-on-azure-netapp-files-overview-and-updates-brk-1453-2["Azure NetApp Files 기반 SAP: 개요 및 업데이트"^]
-* link:https://media.netapp.com/video-detail/ae49e691-f67d-5d1e-97b8-6b81bb4a7bd7/using-netapp-block-and-object-storage-for-sap-data-intelligence["SAP Data Intelligence에 NetApp 블록 및 오브젝트 스토리지 사용"^]
 

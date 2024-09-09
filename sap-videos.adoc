@@ -23,25 +23,19 @@ SAP 솔루션에 대한 비디오 및 데모를 간략하게 소개합니다.
 
 * link:https://media.netapp.com/video-detail/71853836-ac06-50bf-a579-01ff36851580/sap-hana-runs-best-on-netapp-infrastructure-brk-1114-2["SAP HANA는 NetApp 인프라에서 가장 잘 실행됩니다"^]
 * link:https://media.netapp.com/video-detail/60bf8c7c-d14d-5463-b839-4e1c8daca1a3/sap-on-azure-netapp-files-overview-and-updates-brk-1453-2["Azure NetApp Files 기반 SAP: 개요 및 업데이트"^]
-* link:https://media.netapp.com/video-detail/ae49e691-f67d-5d1e-97b8-6b81bb4a7bd7/using-netapp-block-and-object-storage-for-sap-data-intelligence["SAP Data Intelligence에 NetApp 블록 및 오브젝트 스토리지 사용"^]
 
 
 
 
 === SAP 백업, 복원 및 재해 복구 비디오 및 데모
 
-* link:https://media.netapp.com/video-detail/10430dd1-8560-52fa-8f22-a7923582d66a/ensure-sap-application-availability-and-minimize-downtime["SAP 애플리케이션의 가용성을 보장하고 다운타임을 최소화합니다"^]
-* link:https://media.netapp.com/video-detail/5f6f3721-d1d0-5c1d-9ae9-d696eddb91ea/optimize-your-data-protection-for-sap-hana-on-azure-netapp-files["Azure NetApp Files을 기반으로 SAP HANA에 대한 데이터 보호를 최적화하십시오"^]
 * link:https://media.netapp.com/video-detail/6b94b9c3-0862-5da8-8332-5aa1ffe86419/disaster-recovery-options-for-sap-hana["SAP HANA용 재해 복구 옵션"^]
-* link:https://media.netapp.com/video-detail/049d4875-c8ea-5d25-9205-73c16d81177d/sap-hana-disaster-recovery-with-anf-and-cross-region-replication["ANF 및 지역 간 복제를 통한 SAP HANA 재해 복구"^]
 
 
 
 
 == SAP Lifecycle Management 비디오 및 데모
 
-* link:https://media.netapp.com/video-detail/eae1f74b-6a01-5021-9d3f-96987aa08600/decrease-risk-and-increase-quality-of-sap-projects["SAP 프로젝트의 위험 감소 및 품질 향상"^]
 * link:https://media.netapp.com/video-detail/c1229d10-fe84-58f1-9cdf-ca3c0f9d9104/ensure-continuity-for-lines-of-business-in-the-face-of-unexpected-events["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"^]
 * link:https://media.netapp.com/video-detail/1c753169-f70d-5f2b-b798-cd09a604541c/snapcenter-use-cases["SnapCenter 사용 사례"^]
-* link:https://media.netapp.com/video-detail/5ed450f9-d66b-53d9-99de-d763ea44566c/sap-system-copy-with-libelle-and-snapcenter["Libelle 및 SnapCenter와 함께 SAP 시스템 복사"^]
 
