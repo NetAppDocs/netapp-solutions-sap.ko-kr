@@ -39,7 +39,7 @@ SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는
 
 NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 파이버 채널(SAN) 프로토콜을 사용하는 SAP HANA TDI(Tailored Data Center Integration) 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 모든 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 인증된 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.
 
-image::saphana_fas_fc_image1.png[오류: 그래픽 이미지가 없습니다]
+image::saphana_fas_fc_image1.png[사파나 FAS FC 이미지1]
 
 생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
 
@@ -57,7 +57,6 @@ RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데�
 SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.
 
 * https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki"^]
-* http://www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf["VMware vSphere 기반 SAP HANA의 스케일 업 구축을 위한 Best Practice 및 권장 사항"^]
-* http://www.vmware.com/files/pdf/sap-hana-scale-out-deployments-on-vsphere.pdf["VMware vSphere 기반 SAP HANA의 스케일아웃 구축을 위한 모범 사례 및 권장 사항"^]
+* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["VMware vSphere 기반 SAP HANA 모범 사례 및 참조 아키텍처 가이드 를 참조하십시오"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 구성 지침 - SAP One Support Launchpad(로그인 필요)"^]
 

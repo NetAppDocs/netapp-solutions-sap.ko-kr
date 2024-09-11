@@ -18,7 +18,7 @@ summary: 실습 설정에서는 보조 AWS 가용성 영역에서 ONTAP 파일 �
 
 장에서 설명한 대로 link:amazon-fsx-snapcenter-architecture.html#data-protection-strategy["“데이터 보호 전략”"]ONTAP 파일 시스템용 운영 FSx의 장애로부터 보호될 수 있도록 다른 가용성 영역의 ONTAP 파일 시스템에 대한 복제 타겟은 두 번째 FSx여야 합니다. 또한 HANA 공유 볼륨을 ONTAP 파일 시스템용 보조 FSx에 복제해야 합니다.
 
-image::amazon-fsx-image8.png[오류: 그래픽 이미지가 없습니다]
+image::amazon-fsx-image8.png[Amazon FSx 이미지8]
 
 
 

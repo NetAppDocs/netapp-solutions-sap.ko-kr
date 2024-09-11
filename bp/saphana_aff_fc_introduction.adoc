@@ -55,7 +55,7 @@ SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는
 
 NetApp AFF 스토리지 시스템은 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하여 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 단일 호스트 또는 다중 호스트 구성의 HANA 기반 SAP Business Warehouse와 같은 현재 SAP HANA 시나리오에 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. 다음 그림에서는 아키텍처 개요를 보여 줍니다.
 
-image::saphana_aff_fc_image1.png[오류: 그래픽 이미지가 없습니다]
+image::saphana_aff_fc_image1.png[사파나 AFF FC 이미지1]
 
 생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
 
@@ -66,14 +66,13 @@ image::saphana_aff_fc_image1.png[오류: 그래픽 이미지가 없습니다]
 
 = VMware vSphere를 사용하는 SAP HANA
 
-스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 설명되어 있습니다 link:https://review.docs.netapp.com/us-en/netapp-solutions-sap_main/bp/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"].
+스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 link:https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"]설명되어 있습니다.
 
 RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 기반 백업 및 복구와 이를 기반으로 하는 솔루션(예: SAP 시스템 클론 복제)은 구현할 수 없습니다.
 
 SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.
 
 * https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki"^]
-* http://www.vmware.com/files/pdf/SAP_HANA_on_vmware_vSphere_best_practices_guide.pdf["VMware vSphere 기반 SAP HANA의 스케일 업 구축을 위한 Best Practice 및 권장 사항"^]
-* http://www.vmware.com/files/pdf/sap-hana-scale-out-deployments-on-vsphere.pdf["VMware vSphere 기반 SAP HANA의 스케일아웃 구축을 위한 모범 사례 및 권장 사항"^]
+* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["VMware vSphere 기반 SAP HANA 모범 사례 및 참조 아키텍처 가이드 를 참조하십시오"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 구성 지침 - SAP One Support Launchpad(로그인 필요)"^]
 

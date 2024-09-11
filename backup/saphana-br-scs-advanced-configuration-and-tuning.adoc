@@ -119,7 +119,7 @@ hana.property` 구성 파일에 'log_cleanup_disable=Y' 매개 변수를 포함�
 . 'Set-SmConfigSettings - Plugin-hostname <pluginhostname> - PluginCode HANA - configSettings@{"log_cleanup_disable"="Y"}' 명령을 사용하면 IP 또는 호스트 이름으로 지정된 SAP HANA 플러그인 호스트 '<pluginhostname>'에 대한 변경 사항이 구성됩니다(다음 그림 참조).
 
 
-image::saphana-br-scs-image154.jpeg[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image154.jpeg[Saphana br SCS 영상 154]
 
 
 
@@ -127,7 +127,7 @@ image::saphana-br-scs-image154.jpeg[오류: 그래픽 이미지가 없습니다]
 
 SnapCenter는 SAP HANA 플러그인이 가상 환경에 설치되어 있는지 감지합니다. VMware 환경 또는 퍼블릭 클라우드 공급자의 SnapCenter 설치가 이에 해당됩니다. 이 경우 다음 그림과 같이 SnapCenter에서 하이퍼바이저를 구성하는 경고를 표시합니다.
 
-image::saphana-br-scs-image34.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image34.png[Saphana br SCS 영상34]
 
 이 경고를 전역적으로 억제할 수 있습니다. 이 경우 SnapCenter는 가상화된 환경을 인식하지 못하므로 이러한 경고가 표시되지 않습니다.
 
@@ -137,7 +137,7 @@ image::saphana-br-scs-image34.png[오류: 그래픽 이미지가 없습니다]
 . 하이퍼바이저 설정의 경우 모든 호스트에 대해 VM에 iSCSI Direct Attached Disks 또는 NFS를 가지고 있음 을 선택하고 설정을 업데이트합니다.
 
 
-image::saphana-br-scs-image155.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image155.png[Saphana br SCS 영상 155]
 
 
 
@@ -162,7 +162,7 @@ NOTE: 이로 인해 오프사이트 백업 스토리지의 해당 스토리지 �
 
 리소스의 토폴로지 뷰에서 다음 스크린샷과 같이 보조 백업을 선택할 때 SnapCenter는 오프 사이트 백업 스토리지의 백업을 표시합니다. SnapCenter는 새로 고침 아이콘을 사용하여 정리 작업을 실행하여 이 리소스의 백업을 동기화합니다.
 
-image::saphana-br-scs-image156.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image156.png[Saphana br SCS 영상 156]
 
 
 
@@ -173,7 +173,7 @@ SnapCenter는 Windows 작업 스케줄링 메커니즘을 사용하여 모든 �
 . SnapCenter 서버에서 PowerShell 명령 창을 시작합니다.
 . SnapCenter 서버에 대한 연결을 열고 로그인 창에 SnapCenter 관리자 자격 증명을 입력합니다.
 +
-image::saphana-br-scs-image157.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image157.png[Saphana br SCS 영상 157]
 
 . 스케줄을 주별로 변경하려면 cmdlet의 Set-SmSchedule을 사용합니다.
 +
@@ -213,6 +213,6 @@ PS C:\Users\scadmin> Check the configuration using the Windows Task Scheduler.
 ....
 . Windows 작업 스케줄러에서 작업 속성을 확인할 수 있습니다.
 +
-image::saphana-br-scs-image158.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image158.png[Saphana br SCS 영상 158]
 
 

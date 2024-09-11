@@ -37,4 +37,4 @@ ANF 지역 간 복제는 RTO 및 RPO를 위험에 빠뜨리지 않고 재해 복
 
 다음 하위 섹션에서는 이러한 단계에 대해 자세히 설명합니다.
 
-image::saphana-dr-anf_image18.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-dr-anf_image18.png[Saphana DR anf 이미지18]

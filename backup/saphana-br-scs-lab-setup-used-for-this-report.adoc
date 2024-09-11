@@ -59,4 +59,4 @@ SnapCenter 서버는 HANA 시스템 MS1 및 SS2의 중앙 HANA 플러그인 호�
 
 다음 그림은 실습 설정을 보여 줍니다.
 
-image::saphana-br-scs-image21.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image21.png[Saphana br SCS 이미지21]

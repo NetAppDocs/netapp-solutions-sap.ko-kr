@@ -16,8 +16,8 @@ summary: 이 섹션에서는 리소스 보호에 정책을 추가하는 방법�
 [role="lead"]
 다음 그림과 같이 HANA 리소스 보호 구성에 새 정책을 추가해야 합니다.
 
-image::amazon-fsx-image86.png[오류: 그래픽 이미지가 없습니다]
+image::amazon-fsx-image86.png[Amazon FSx 이미지86]
 
 일별 일정은 설정에 정의되어 있습니다.
 
-image::amazon-fsx-image87.png[오류: 그래픽 이미지가 없습니다]
+image::amazon-fsx-image87.png[Amazon FSx 이미지87]

@@ -109,10 +109,10 @@ NOTE: 복구 없음을 선택한 경우 SnapCenter가 종료되고 시스템과 
 NOTE: 운영 스토리지 또는 오프사이트 백업 스토리지에서 복구를 선택할 수 있습니다.
 
 +
-image::saphana-br-scs-image96.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image96.png[Saphana br SCS 영상 96]
 
 +
-image::saphana-br-scs-image97.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image97.png[Saphana br SCS 이미지 97]
 
 . 복원 범위 및 유형을 선택합니다.
 +
@@ -126,19 +126,19 @@ image::saphana-br-scs-image97.png[오류: 그래픽 이미지가 없습니다]
 NOTE: 볼륨 복원 옵션은 NFS를 사용하는 기본 의 복원 작업에만 사용할 수 있습니다.
 
 +
-image::saphana-br-scs-image98.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image98.png[Saphana br SCS 영상 98]
 
 +
 오프사이트 백업 스토리지에서 복구를 위한 복구 유형 옵션입니다.
 
 +
-image::saphana-br-scs-image99.jpeg[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image99.jpeg[Saphana br SCS image99]
 
 +
 Fibre Channel SAN을 사용하는 운영 스토리지에서 복구하기 위한 복구 유형 옵션입니다.
 
 +
-image::saphana-br-scs-image100.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image100.png[Saphana br SCS 이미지100]
 
 . 복구 범위 를 선택하고 로그 백업 및 카탈로그 백업을 위한 위치를 제공합니다.
 +
@@ -146,27 +146,27 @@ image::saphana-br-scs-image100.png[오류: 그래픽 이미지가 없습니다]
 NOTE: SnapCenter는 HANA global.ini 파일의 기본 경로 또는 변경된 경로를 사용하여 로그 및 카탈로그 백업 위치를 미리 채웁니다.
 
 +
-image::saphana-br-scs-image101.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image101.png[Saphana br SCS 이미지 101]
 
 . 선택 사항인 PreRestore 명령을 입력합니다.
 +
-image::saphana-br-scs-image102.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image102.png[Saphana br SCS 영상 102]
 
 . 선택 사항인 post-restore 명령을 입력합니다.
 +
-image::saphana-br-scs-image103.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image103.png[Saphana br SCS 영상103]
 
 . 선택적 이메일 설정을 입력합니다.
 +
-image::saphana-br-scs-image104.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image104.png[Saphana br SCS 영상104]
 
 . 복원 작업을 시작하려면 마침 을 클릭합니다.
 +
-image::saphana-br-scs-image105.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image105.png[Saphana br SCS 영상 105]
 
 . SnapCenter는 복원 및 복구 작업을 실행합니다. 이 예에서는 복원 및 복구 작업의 작업 세부 정보를 보여 줍니다.
 +
-image::saphana-br-scs-image106.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image106.png[Saphana br SCS 영상 106]
 
 
 
@@ -214,7 +214,7 @@ hdbsql SYSTEMDB=>
 ....
 . SnapCenter에서 복구 작업에 사용할 백업을 선택합니다.
 +
-image::saphana-br-scs-image107.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image107.png[Saphana br SCS 이미지 107]
 
 . 복구할 테넌트를 선택합니다.
 +
@@ -222,35 +222,35 @@ image::saphana-br-scs-image107.png[오류: 그래픽 이미지가 없습니다]
 NOTE: SnapCenter는 선택한 백업에 포함된 모든 테넌트의 목록을 표시합니다.
 
 +
-image::saphana-br-scs-image108.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image108.png[Saphana br SCS 영상108]
 
 +
 SnapCenter 4.3에서는 단일 테넌트 복구가 지원되지 않습니다. 복구 안 함 은 미리 선택되어 있으며 변경할 수 없습니다.
 
 +
-image::saphana-br-scs-image109.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image109.png[Saphana br SCS 영상109]
 
 . 선택 사항인 PreRestore 명령을 입력합니다.
 +
-image::saphana-br-scs-image110.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image110.png[Saphana br SCS 영상110]
 
 . 선택 사항인 사후 복원 명령을 입력합니다.
 +
-image::saphana-br-scs-image111.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image111.png[Saphana br SCS 영상 111]
 
 . 선택적 이메일 설정을 입력합니다.
 +
-image::saphana-br-scs-image112.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image112.png[Saphana br SCS 영상112]
 
 . 복원 작업을 시작하려면 마침 을 클릭합니다.
 +
-image::saphana-br-scs-image113.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image113.png[사파나 br SCS image113]
 
 +
 복구 작업은 SnapCenter에서 실행합니다. 이 예에서는 복원 작업의 작업 세부 정보를 보여 줍니다.
 
 +
-image::saphana-br-scs-image114.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image114.png[Saphana br SCS 영상114]
 
 +
 
@@ -290,44 +290,44 @@ sm1adm@hana-2:/usr/sap/SM1/HDB00>
 ....
 . HANA Studio로 복구를 시작합니다.
 +
-image::saphana-br-scs-image115.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image115.png[Saphana br SCS 영상 115]
 
 . 테넌트를 선택합니다.
 +
-image::saphana-br-scs-image116.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image116.png[Saphana br SCS 이미지 116]
 
 . 복구 유형을 선택합니다.
 +
-image::saphana-br-scs-image117.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image117.png[Saphana br SCS 영상117]
 
 . 백업 카탈로그 위치를 제공합니다.
 +
-image::saphana-br-scs-image118.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image118.png[Saphana br SCS 영상118]
 
 +
-image::saphana-br-scs-image119.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image119.png[Saphana br SCS 영상119]
 
 +
 백업 카탈로그 내에서 복원된 백업은 녹색 아이콘으로 강조 표시됩니다. 외부 백업 ID는 이전에 SnapCenter에서 선택한 백업 이름을 표시합니다.
 
 . 녹색 아이콘이 있는 항목을 선택하고 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image120.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image120.png[Saphana br SCS 영상120]
 
 . 로그 백업 위치를 제공합니다.
 +
-image::saphana-br-scs-image121.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image121.png[Saphana br SCS 영상 121]
 
 . 필요에 따라 다른 설정을 선택합니다.
 +
-image::saphana-br-scs-image122.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image122.png[Saphana br SCS 이미지 122]
 
 . 테넌트 복구 작업을 시작합니다.
 +
-image::saphana-br-scs-image123.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image123.png[Saphana br SCS 영상 123]
 
 +
-image::saphana-br-scs-image124.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image124.png[Saphana br SCS 영상124]
 
 
 
@@ -381,26 +381,26 @@ NOTE: FC를 사용하는 SAP HANA 다중 호스트 설정에서는 데이터베�
 
 . SAP HANA Studio에서 시스템 데이터베이스 복구 옵션을 선택하여 시스템 데이터베이스 복구를 시작합니다.
 +
-image::saphana-br-scs-image125.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image125.png[Saphana br SCS 영상 125]
 
 . 확인 을 클릭하여 SAP HANA 데이터베이스를 종료합니다.
 +
-image::saphana-br-scs-image126.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image126.png[Saphana br SCS 영상126]
 
 +
 SAP HANA 시스템이 종료되고 복구 마법사가 시작됩니다.
 
 . 복구 유형을 선택하고 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image127.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image127.png[Saphana br SCS 영상127]
 
 . 백업 카탈로그 위치를 입력하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image128.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image128.png[Saphana br SCS image128]
 
 . 사용 가능한 백업 목록은 백업 카탈로그 콘텐츠를 기반으로 표시됩니다. 필요한 백업을 선택하고 외부 백업 ID를 기록합니다. 이 예에서는 가장 최근 백업입니다.
 +
-image::saphana-br-scs-image129.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image129.png[Saphana br SCS 영상129]
 
 . 모든 데이터 볼륨을 마운트 해제합니다.
 +
@@ -417,7 +417,7 @@ NOTE: FC를 사용하는 SAP HANA 다중 호스트 설정에서는 마운트 해
 
 . SnapCenter GUI에서 리소스 토폴로지 뷰를 선택하고 복구할 백업을 선택합니다. 이 예에서는 가장 최근의 기본 백업입니다. 복원 아이콘을 클릭하여 복원을 시작합니다.
 +
-image::saphana-br-scs-image130.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image130.png[Saphana br SCS 이미지130]
 
 +
 SnapCenter 복원 마법사가 시작됩니다.
@@ -427,38 +427,38 @@ SnapCenter 복원 마법사가 시작됩니다.
 볼륨 기반 복원을 사용하려면 Complete Resource(리소스 완료) 를 선택합니다.
 
 +
-image::saphana-br-scs-image131.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image131.png[Saphana br SCS 이미지11]
 
 . 모든 파일에 단일 파일 SnapRestore 작업을 사용하려면 파일 레벨 및 모두 를 선택합니다.
 +
-image::saphana-br-scs-image132.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image132.png[Saphana br SCS 이미지132]
 
 +
 
 NOTE: SAP HANA 다중 호스트 시스템의 파일 레벨 복구를 수행하려면 모든 볼륨을 선택합니다.
 
 +
-image::saphana-br-scs-image133.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image133.png[Saphana br SCS 이미지13]
 
 . (선택 사항) 중앙 HANA 플러그인 호스트에서 실행되는 SAP HANA 플러그인에서 실행해야 하는 명령을 지정합니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image134.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image134.png[Saphana br SCS 영상14]
 
 . 선택적 명령을 지정하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image135.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image135.png[사파나 br SCS image135]
 
 . SnapCenter가 상태 이메일과 작업 로그를 전송할 수 있도록 알림 설정을 지정합니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image136.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image136.png[Saphana br SCS 이미지16]
 
 . 요약을 검토하고 Finish(마침) 를 클릭하여 복원을 시작합니다.
 +
-image::saphana-br-scs-image137.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image137.png[Saphana br SCS 이미지17]
 
 . 복원 작업이 시작되고 작업 창에서 로그 라인을 두 번 클릭하여 작업 로그를 표시할 수 있습니다.
 +
-image::saphana-br-scs-image138.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image138.png[Saphana br SCS 이미지 138]
 
 . 복원 프로세스가 완료될 때까지 기다립니다. 각 데이터베이스 호스트에서 모든 데이터 볼륨을 마운트합니다. 이 예에서는 하나의 볼륨만 데이터베이스 호스트에 다시 마운트해야 합니다.
 +
@@ -467,63 +467,63 @@ mount /hana/data/SP1/mnt00001
 ....
 . SAP HANA Studio로 이동하고 새로 고침 을 클릭하여 사용 가능한 백업 목록을 업데이트합니다. SnapCenter로 복구된 백업은 백업 목록에 녹색 아이콘과 함께 표시됩니다. 백업을 선택하고 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image139.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image139.png[Saphana br SCS image139]
 
 . 로그 백업의 위치를 제공합니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image140.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image140.png[Saphana br SCS image140]
 
 . 필요에 따라 다른 설정을 선택합니다. Delta 백업 사용 이 선택되어 있지 않은지 확인합니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image141.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image141.png[Saphana br SCS 이미지 141]
 
 . 복구 설정을 검토하고 마침 을 클릭합니다.
 +
-image::saphana-br-scs-image142.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image142.png[Saphana br SCS 영상 142]
 
 . 복구 프로세스가 시작됩니다. 시스템 데이터베이스 복구가 완료될 때까지 기다립니다.
 +
-image::saphana-br-scs-image143.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image143.png[Saphana br SCS 영상13]
 
 . SAP HANA Studio에서 시스템 데이터베이스의 항목을 선택하고 Backup Recovery - Recover Tenant Database를 시작합니다.
 +
-image::saphana-br-scs-image144.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image144.png[Saphana br SCS 영상14]
 
 . 복구할 테넌트를 선택하고 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image145.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image145.png[Saphana br SCS 영상 145]
 
 . 복구 유형을 지정하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image146.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image146.png[Saphana br SCS 영상 146]
 
 . 백업 카탈로그 위치를 확인하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image147.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image147.png[Saphana br SCS 영상17]
 
 . 테넌트 데이터베이스가 오프라인 상태인지 확인합니다. 계속하려면 확인을 클릭하십시오.
 +
-image::saphana-br-scs-image148.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image148.png[Saphana br SCS 이미지 148]
 
 . 시스템 데이터베이스 복구 전에 데이터 볼륨 복구가 수행되었으므로 테넌트 백업을 즉시 사용할 수 있습니다. 녹색으로 강조 표시된 백업을 선택하고 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image149.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image149.png[Saphana br SCS 이미지 149]
 
 . 로그 백업 위치를 확인하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image150.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image150.png[Saphana br SCS 영상 150]
 
 . 필요에 따라 다른 설정을 선택합니다. Delta 백업 사용 이 선택되어 있지 않은지 확인합니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image151.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image151.png[Saphana br SCS 영상 151]
 
 . Finish를 클릭하여 복구 설정을 검토하고 테넌트 데이터베이스의 복구 프로세스를 시작합니다.
 +
-image::saphana-br-scs-image152.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image152.png[Saphana br SCS 영상 152]
 
 . 복구가 완료되고 테넌트 데이터베이스가 시작될 때까지 기다립니다.
 +
-image::saphana-br-scs-image153.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image153.png[Saphana br SCS 이미지153]
 
 +
 SAP HANA 시스템이 가동되어 실행 중입니다.

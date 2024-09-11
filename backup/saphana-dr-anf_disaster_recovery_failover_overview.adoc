@@ -32,4 +32,4 @@ summary: 로그 백업 복제가 재해 복구 설정의 일부인지 여부에 
 
 다음 부절에서는 이러한 단계에 대해 자세히 설명하고 다음 그림은 재해 복구 테스트를 보여 줍니다.
 
-image::saphana-dr-anf_image26.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-dr-anf_image26.png[사파나 DR anf image26]

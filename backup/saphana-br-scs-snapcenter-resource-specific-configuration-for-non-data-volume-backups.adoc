@@ -28,15 +28,15 @@ SnapCenter 비 데이터 볼륨 백업을 사용하면 SAP HANA 데이터베이�
 
 . 리소스 탭에서 비 데이터 볼륨 을 선택하고 SAP HANA 데이터베이스 추가 를 클릭합니다.
 +
-image::saphana-br-scs-image78.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image78.png[Saphana br SCS 영상 78]
 
 . SAP HANA 데이터베이스 추가 대화 상자의 리소스 유형 목록에서 비 데이터 볼륨을 선택합니다. 리소스에 사용할 리소스 및 관련 SID와 SAP HANA 플러그인 호스트의 이름을 지정한 후 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image79.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image79.png[Saphana br SCS 영상 79]
 
 . SVM과 스토리지 볼륨을 스토리지 설치 공간으로 추가하고 Next를 클릭합니다.
 +
-image::saphana-br-scs-image80.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image80.png[Saphana br SCS image80]
 
 . 요약 단계에서 마침 을 클릭하여 설정을 저장합니다.
 . 필요한 모든 비 데이터 볼륨에 대해 이 단계를 반복합니다.
@@ -49,7 +49,7 @@ NOTE: 비 데이터 볼륨 리소스에 대한 데이터 보호는 SAP HANA 데�
 다음 그림에서는 구성되지 않은 데이터 볼륨 리소스 목록을 보여 줍니다.
 
 +
-image::saphana-br-scs-image81.png[오류: 그래픽 이미지가 없습니다]
+image::saphana-br-scs-image81.png[Saphana br SCS 영상 81]
 
 
 
