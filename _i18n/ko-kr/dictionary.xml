@@ -157,10 +157,8 @@
   <block id="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link"><block ref="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link-rx"></block></block>
   <block id="3710f13cc62644ea40b0af38f0b1198e" category="paragraph"><block ref="3710f13cc62644ea40b0af38f0b1198e" category="inline-link-rx"></block></block>
   <block id="6137d44b5191549a06e7bea8ffd942d3" category="inline-link"><block ref="6137d44b5191549a06e7bea8ffd942d3" category="inline-link-rx"></block></block>
-  <block id="62658c7987e92cf3967ab8bdd1e66d18" category="paragraph"><block ref="62658c7987e92cf3967ab8bdd1e66d18" category="inline-link-rx"></block></block>
   <block id="c67ddee39e41dfe63b7c798d76514143" category="list-text">TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구</block>
   <block id="1ffb329e128f9f021221cb333667e643" category="inline-link"><block ref="1ffb329e128f9f021221cb333667e643" category="inline-link-rx"></block></block>
-  <block id="026a8e661ca1c91258a93024c126a529" category="paragraph"><block ref="026a8e661ca1c91258a93024c126a529" category="inline-link-rx"></block></block>
   <block id="c54847a2046020d06d345fd8b61fc169" category="list-text">NetApp 문서화 센터</block>
   <block id="1f97b7a68d0268791593f9152a2471f4" category="list-text">SAP HANA 소프트웨어 솔루션</block>
   <block id="7fd01fa95033c040ddfe882c5258bda9" category="paragraph">=:hardwaturs::nofooter::icons:linkattrs::imagesdir:./../media/</block>
@@ -1680,7 +1678,6 @@
   <block id="b39fd9047d2089b24c418d3512b8c903" category="paragraph">SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다. 또한 자동 복원 및 복구 기능은 이제 HANA 시스템 복제 환경에서도 사용할 수 있습니다.</block>
   <block id="6a24c6a18054ecbcf8919b90f4ff5eb8" category="section-title">HANA 시스템 복제 환경의 SnapCenter 4.6 구성</block>
   <block id="ef7979296ea2465331699c64e5450ad0" category="paragraph">다음 그림은 이 장에 사용된 랩 설정을 보여 줍니다. HANA 시스템 복제를 통해 2개의 HANA 호스트, 즉 HANA-3 및 HANA-4가 구성되었습니다.</block>
-  <block id="3ca4a9c5f67351b7924bb2876dc1e870" category="paragraph">백업 및 복구 작업을 실행하는 데 필요한 권한이 있는 데이터베이스 사용자 “SnapCenter”가 HANA 시스템 데이터베이스에 대해 생성되었습니다(참조)<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>)를 클릭합니다. 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.</block>
   <block id="3719dabf545d56e27391b4c1bb73b944" category="paragraph">개괄적인 관점에서 다음 단계를 수행하여 SnapCenter 내에서 HANA 시스템 복제를 설정해야 합니다.</block>
   <block id="bc1873525b8d9ae5c49626cd6b47592c" category="list-text">기본 및 보조 호스트에 HANA 플러그인을 설치합니다. 자동 검색이 실행되고 각 운영 호스트 또는 보조 호스트에 대해 HANA 시스템 복제 상태가 감지됩니다.</block>
   <block id="3b7407b92790f4d78d820c6ebd3e159d" category="list-text">SnapCenter 'configure database'를 실행하고 hdbuserstore 키를 제공한다. 추가 자동 검색 작업이 실행됩니다.</block>
@@ -1714,7 +1711,6 @@
   <block id="dc89ca90a524118bdb23dfe95009d16c" category="paragraph">SnapCenter 4.6은 두 HANA 호스트 모두에서 Snapshot 백업, 블록 무결성 검사 작업, HANA 백업 카탈로그 항목 및 로그 백업(비활성화되지 않은 경우)에 대한 보존을 관리하므로 현재 어떤 호스트가 기본 호스트인지 보조 호스트인지 여부는 중요하지 않습니다. 현재 운영 호스트 또는 보조 호스트에서 삭제 작업이 필요한지 여부에 관계없이 HANA 카탈로그에 있는 백업(데이터 및 로그) 및 항목은 정의된 보존 기간을 기준으로 삭제됩니다. 즉, Takeover 작업을 수행하거나 복제를 반대 방향으로 구성하는 경우에는 수동 개입이 필요하지 않습니다.</block>
   <block id="b622880d7effd20d409afc8f9d337338" category="paragraph">SnapVault 복제가 데이터 보호 전략의 일부인 경우 섹션에 설명된 대로 특정 시나리오에 대해 수동 작업이 필요합니다 <block ref="d418ccf14dbb0e729818939bd00e84be" category="inline-xref-macro-rx"></block>.</block>
   <block id="6db8f8c174516b1dc5a1f3305fe43190" category="paragraph">다음 그림에서는 두 사이트 모두에서 여러 테이크오버가 실행되고 스냅샷 백업이 생성된 시나리오를 보여 줍니다. 현재 상태의 호스트 HANA-3은 기본 호스트이며 최신 백업은 호스트 HANA-3에서 생성된 T4입니다. 복원 및 복구 작업을 수행해야 하는 경우 SnapCenter에서 T1 및 T4 백업을 복원 및 복구에 사용할 수 있습니다. 호스트 HANA-4(T2, T3)에서 생성된 백업은 SnapCenter를 사용하여 복구할 수 없습니다. 이러한 백업은 복구를 위해 HANA-3의 데이터 볼륨으로 수동으로 복사해야 합니다.</block>
-  <block id="801b7a55bf3ed44abb2d821602e1c449" category="paragraph">SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 참조하십시오<block ref="f91ad5f72ca89ecac47641fa01cbfa5f" category="inline-link-rx"></block>.</block>
   <block id="50ff1d24fad3646f6fdf9aea77002929" category="inline-link-macro">다른 호스트에서 생성된 백업에서 복구 및 복구</block>
   <block id="6f14e8618cb532fa598b498e9c3fc455" category="paragraph">다른 호스트에서 생성된 백업의 복구 작업은 섹션에 설명되어 있습니다 <block ref="383e6e7e7573de7f2a0f06e6daaee412" category="inline-link-macro-rx"></block>.</block>
   <block id="1fd25d525832cdf3655a067856ae6010" category="summary">SnapCenter 리소스는 HANA 시스템 복제 환경의 가상 IP 주소(호스트 이름)로 구성됩니다. 이 접근 방식을 통해 SnapCenter는 호스트 1과 호스트 2가 운영 호스트인지에 관계없이 항상 운영 호스트와 통신합니다.</block>
@@ -1733,7 +1729,6 @@
   <block id="32423786e97f4f83fdc90f030727503b" category="paragraph">다음 그림은 랩 설정과 필요한 SnapCenter 구성의 개요를 보여 줍니다.</block>
   <block id="c1968668fc5cbc2c5e8b49c18c362b55" category="paragraph">어떤 SAP HANA 호스트가 기본이고 하나의 호스트가 다운된 경우에도 백업 작업을 수행하려면 SnapCenter SAP HANA 플러그인을 중앙 플러그인 호스트에 구축해야 합니다. 연구소 설정에서 SnapCenter 서버를 중앙 플러그인 호스트로 사용했고 SnapCenter 서버에 SAP HANA 플러그인을 배포했습니다.</block>
   <block id="bd5c6333eef324e59a3de18aa6e29173" category="paragraph">백업 작업을 수행하기 위해 HANA 데이터베이스에서 사용자가 생성되었습니다. SAP HANA 플러그인이 설치된 SnapCenter 서버에서 사용자 저장소 키를 구성했습니다. 사용자 저장소 키에는 SAP HANA 시스템 복제 호스트('SR-VIP')의 가상 IP 주소가 포함됩니다.</block>
-  <block id="5a2cdf3fb46c8f521d96d7e7bc4c9b2f" category="paragraph">SAP HANA 플러그인 구축 옵션 및 사용자 저장소 구성에 대한 자세한 내용은 기술 보고서 TR-4614:<block ref="ec9daba0660d1e2512cb8193f8c16297" category="inline-link-rx"></block>.</block>
   <block id="d7e2061a39f4790783431f1963349b9b" category="paragraph">SnapCenter에서는 이전에 구성한 사용자 저장소 키와 SnapCenter 서버를 "hdbsql" 통신 호스트로 사용하여 다음 그림과 같이 자원을 구성합니다.</block>
   <block id="2a64b18e126555fa2ca4e7fb0bf3bc37" category="paragraph">다음 그림에서 볼 수 있듯이, 두 SAP HANA 호스트의 데이터 볼륨은 스토리지 설치 공간 구성에 포함됩니다.</block>
   <block id="90323af735fbe3861cb8bc49a36914b1" category="paragraph">앞에서 설명한 것처럼 SnapCenter는 백업이 생성된 위치를 알지 못합니다. 따라서 SnapCenter 백업 워크플로우에 사전 백업 스크립트를 추가하여 현재 기본 SAP HANA 호스트인 호스트를 식별하는 것이 좋습니다. 다음 그림과 같이 백업 워크플로우에 추가된 SQL 문을 사용하여 이 ID를 수행할 수 있습니다.</block>
@@ -2320,7 +2315,6 @@
   <block id="e990b5c5b90ded5db7b3ca93365a81e5" category="list-text">SnapCenter를 사용하여 리소스 그룹 레벨에서 생성된 리소스의 백업을 삭제하면 리소스 그룹의 모든 리소스에 대해 이 백업이 삭제됩니다. 백업을 삭제하는 경우 SnapCenter 리포지토리에서 백업을 삭제하고 스토리지 스냅샷 복사본을 삭제해야 합니다.</block>
   <block id="b565830d52dbf51243943462fb70fe59" category="list-text">리소스 그룹의 주요 활용 사례는 고객이 SnapCenter를 사용하여 생성한 백업을 SAP Landscape Management를 사용한 시스템 클론 생성에 사용하고자 하는 경우입니다. 이 내용은 다음 섹션에서 설명합니다.</block>
   <block id="ba5da7a68f8cd5eca48e3df6086a98c0" category="section-title">SnapCenter와 SAP 환경 관리 함께 사용</block>
-  <block id="2a728bce1ee3f9b0668ed8945b2f39dd" category="paragraph">SAP LaMa(SAP Landscape Management)를 사용하면 사내 데이터 센터와 클라우드에서 실행되는 시스템에서 복잡한 SAP 시스템 환경을 관리할 수 있습니다. SAP LaMa를 NetApp SSC(Storage Services Connector)와 함께 사용하면 Snapshot 및 FlexClone 기술을 사용하여 SAP 시스템 클론 복제, 복사, 업데이트 사용 사례에 대한 클론 복제 및 복제와 같은 스토리지 작업을 실행할 수 있습니다. 따라서 필요한 SAP 사후 처리를 포함하여 스토리지 복제 기술을 기반으로 SAP 시스템 복사를 완전히 자동화할 수 있습니다. SAP LaMa용 NetApp 솔루션에 대한 자세한 내용은 를 참조하십시오<block ref="0fb87918d74d379028390fd706baf741" category="inline-link-rx"></block>.</block>
   <block id="35e271fbf0a1d067faf29bb2e12cf833" category="paragraph">NetApp SSC와 SAP LaMa는 NetApp SSC를 통해 온디맨드 Snapshot 복사본을 직접 생성할 수 있지만, SnapCenter를 사용하여 생성된 Snapshot 복사본도 활용할 수 있습니다. SnapCenter 백업을 SAP LaMa를 사용한 시스템 클론 및 복사 작업의 기반으로 활용하려면 다음과 같은 사전 요구 사항이 충족되어야 합니다.</block>
   <block id="55fb179ba0dbaef14f4ae67701ba967c" category="list-text">SAP LaMa를 사용하려면 모든 볼륨을 백업에 포함해야 합니다. 여기에는 SAP HANA 데이터, 로그 및 공유 볼륨이 포함됩니다.</block>
   <block id="a45b79d50cacf7594adf94e98d02fe12" category="list-text">모든 스토리지 스냅샷 이름은 동일해야 합니다.</block>
@@ -2381,7 +2375,6 @@
   <block id="5b969ece692bee20925041517740d2fc" category="list-text">SAP HANA 멀티 테넌트 - 데이터베이스 컨테이너(MDC) 다중 테넌트: SAP HANA 2.0 SPS4 이상</block>
   <block id="6c176e9f73681cb91e72213cd5479748" category="section-title">SnapCenter 4.6 개선 사항</block>
   <block id="04c675594bfdb975329fb2cae491292b" category="inline-link">TR-4719 SAP HANA 시스템 복제, SnapCenter를 통한 백업 및 복구</block>
-  <block id="aae76d22bc3f2bf6ef22eac2524e307a" category="paragraph">버전 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HANA 시스템의 자동 검색을 지원합니다. 각 호스트는 해당 물리적 IP 주소(호스트 이름)와 스토리지 계층의 개별 데이터 볼륨을 사용하여 구성됩니다. 두 SnapCenter 리소스가 리소스 그룹에 결합되어 SnapCenter는 운영 또는 보조 호스트를 자동으로 식별하며, 그런 다음 필요한 백업 작업을 적절히 실행합니다. SnapCenter로 생성된 스냅샷 및 파일 기반 백업의 보존 관리는 두 호스트 모두에서 수행되므로 이전 백업이 현재 보조 호스트에서도 삭제됩니다. 다음 그림에서는 개략적인 개요를 보여 줍니다. SnapCenter에 HANA 시스템 복제 지원 HANA 시스템의 구성 및 작동에 대한 자세한 설명은 에서 확인할 수 있습니다<block ref="38177f415a52ec30f36bcda7961c5014" category="inline-link-rx"></block>.</block>
   <block id="72180d0307c0939e956b5a3f8f96bbcb" category="summary">이 섹션에서는 SAP HANA 리소스 구성 및 구축과 관련된 SnapCenter 개념 및 모범 사례에 대해 설명합니다.</block>
   <block id="50414ea6d37e50fb2a4f48ddf4085157" category="doc">SnapCenter 개념 및 모범 사례</block>
   <block id="d14a18b64c59033d7b1fea72542be464" category="section-title">SAP HANA 리소스 구성 옵션 및 개념</block>
@@ -4054,7 +4047,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="862c3e3761bf683136ee838de2c0c203" category="paragraph">복구 시스템을 설정할 때는 유연성과 민첩성이 중요합니다. NetApp 스토리지 기반 스냅샷 백업을 사용할 경우 NetApp FlexClone 기술을 사용하여 프로덕션 시스템의 클론을 생성하는 데 일관된 데이터베이스 이미지를 여러 개 사용할 수 있습니다. 파일 기반 백업에서 리디렉션된 복원을 사용하여 복구 시스템을 설정하는 경우 몇 시간이 아니라 몇 초 이내에 FlexClone 볼륨을 생성할 수 있습니다.</block>
   <block id="2792124a69a48ece7030f9b29701007b" category="paragraph">효과적인 재해 복구 전략에는 필요한 워크플로우를 테스트해야 합니다. 테스트는 전략이 제대로 작동하는지 여부와 내부 문서화가 충분한지 여부를 보여 줍니다. 또한 관리자가 필요한 절차를 교육할 수 있습니다.</block>
   <block id="0ca7de0d8a3d9d654f0a2d183f1c4aef" category="inline-link">TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구(netapp.com)</block>
-  <block id="80020ad1d665e32a8c5ddfadfd1c3415" category="paragraph"><block ref="80020ad1d665e32a8c5ddfadfd1c3415" category="inline-link-rx"></block></block>
   <block id="acbd601ce9bb8719c9759926bade423c" category="paragraph"><block ref="acbd601ce9bb8719c9759926bade423c" category="inline-link-rx"></block></block>
   <block id="4b3309d5f0ac80977c53b53f174cf02b" category="inline-link">SAP 비즈니스 애플리케이션 및 SAP HANA 데이터베이스 솔루션(netapp.com)</block>
   <block id="3726ec9ff4cd44edb2e6ef5e5bb1d348" category="list-text"><block ref="3726ec9ff4cd44edb2e6ef5e5bb1d348" category="inline-link-rx"></block></block>
@@ -4659,4 +4651,12 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="6395037f7750d6be6aff988267257e55" category="image-alt">리벨 SC 영상20</block>
   <block id="bfdb49dd2a171da3c1e099a90033ad1a" category="image-alt">리벨 SC 영상21</block>
   <block id="5c20e498e2f91b0f0ef90fcd469db559" category="image-alt">리벨 SC 영상22</block>
+  <block id="292ed8e9851502aa4feb9eef4c6dbb13" category="paragraph">SAP LaMa(SAP Landscape Management)를 사용하면 사내 데이터 센터와 클라우드에서 실행되는 시스템에서 복잡한 SAP 시스템 환경을 관리할 수 있습니다. SAP LaMa를 NetApp SSC(Storage Services Connector)와 함께 사용하면 Snapshot 및 FlexClone 기술을 사용하여 SAP 시스템 클론 복제, 복사, 업데이트 사용 사례에 대한 클론 복제 및 복제와 같은 스토리지 작업을 실행할 수 있습니다. 따라서 필요한 SAP 사후 처리를 포함하여 스토리지 복제 기술을 기반으로 SAP 시스템 복사를 완전히 자동화할 수 있습니다. SAP LaMa를 위한 NetApp의 솔루션에 대한 자세한 내용은 를 참조하십시오<block ref="f5cd59812ce597d8b57d775862213a16" category="inline-link-rx"></block>.</block>
+  <block id="d5e4b2586a8501ff7c2a392297c5cd32" category="paragraph">버전 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HANA 시스템의 자동 검색을 지원합니다. 각 호스트는 해당 물리적 IP 주소(호스트 이름)와 스토리지 계층의 개별 데이터 볼륨을 사용하여 구성됩니다. 두 SnapCenter 리소스가 리소스 그룹에 결합되어 SnapCenter는 운영 또는 보조 호스트를 자동으로 식별하며, 그런 다음 필요한 백업 작업을 적절히 실행합니다. SnapCenter로 생성된 스냅샷 및 파일 기반 백업의 보존 관리는 두 호스트 모두에서 수행되므로 이전 백업이 현재 보조 호스트에서도 삭제됩니다. 다음 그림에서는 개략적인 개요를 보여 줍니다. SnapCenter에서 HANA 시스템 복제 지원 HANA 시스템의 구성 및 운영에 대한 자세한 설명은 에서 확인할 수 있습니다<block ref="cfe50e5b56f8a98ece306a69e546da3e" category="inline-link-rx"></block>.</block>
+  <block id="327e1549c6e9c105d7e59532ef1fba1f" category="paragraph">백업 및 복구 작업을 실행하는 데 필요한 Privileges가 있는 HANA 시스템 데이터베이스용 데이터베이스 사용자 "SnapCenter"가 생성되었습니다(참조<block ref="f70d28502828defa3eb13d3b730673fb" category="inline-link-rx"></block>). 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.</block>
+  <block id="b6bdc022b54b8889f22ced290e380f7f" category="paragraph">SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를<block ref="7d612f806d1e07d1f3292801524311f8" category="inline-link-rx"></block>참조하십시오.</block>
+  <block id="b28e30b0b029ff7eb11d8b2655e78dba" category="paragraph">SAP HANA 플러그인 배포 옵션 및 사용자 저장소 구성에 대한 자세한 내용은 기술 보고서 TR-4614:<block ref="f70d28502828defa3eb13d3b730673fb" category="inline-link-rx"></block></block>
+  <block id="74aaeb9485407660c737f5870ea94649" category="paragraph"><block ref="74aaeb9485407660c737f5870ea94649" category="inline-link-rx"></block></block>
+  <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
+  <block id="bc83c6be4c9eaece698b7eb18b8517a0" category="paragraph"><block ref="bc83c6be4c9eaece698b7eb18b8517a0" category="inline-link-rx"></block></block>
 </blocks>

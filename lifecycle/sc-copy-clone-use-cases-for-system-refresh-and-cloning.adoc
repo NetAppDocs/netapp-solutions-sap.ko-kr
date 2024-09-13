@@ -57,6 +57,6 @@ image::sc-copy-clone-image6.png[SC 복사 클론 이미지6]
 
 자세한 단계별 설명은 기술 보고서를 참조하십시오
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-dr-sr_pdf_link.html["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구(netapp.com)"]
+https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구(netapp.com)"]
 
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-dr-anf_data_protection_overview_overview.html["TR-4891: Azure NetApp Files를 사용한 SAP HANA 재해 복구"]

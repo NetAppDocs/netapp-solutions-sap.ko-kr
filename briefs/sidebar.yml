@@ -5,9 +5,9 @@ entries:
 - title: SAP HANA 라이프사이클 관리
   url: "/briefs/saphana-lm-sb_pdf_link.html"
 - title: SAP HANA 백업 및 복구
-  url: https://www.netapp.com/us/media/sb-3965.pdf
+  url: https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf
 - title: SAP HANA 재해 복구
-  url: https://www.netapp.com/us/media/sb-3968.pdf
+  url: https://www.netapp.com/pdf.html?item=/media/6998-sb-3968pdf.pdf
 - title: Ansible 및 NetApp SnapCenter를 통해 SAP 자동화
   url: "/briefs/sap-lama-ansible.html"
 - title: 알파카와 NetApp SnapCenter를 사용한 SAP 자동화

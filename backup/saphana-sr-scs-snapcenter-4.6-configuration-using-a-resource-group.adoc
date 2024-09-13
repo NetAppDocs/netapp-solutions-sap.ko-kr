@@ -22,7 +22,7 @@ SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템
 
 다음 그림은 이 장에 사용된 랩 설정을 보여 줍니다. HANA 시스템 복제를 통해 2개의 HANA 호스트, 즉 HANA-3 및 HANA-4가 구성되었습니다.
 
-백업 및 복구 작업을 실행하는 데 필요한 권한이 있는 데이터베이스 사용자 “SnapCenter”가 HANA 시스템 데이터베이스에 대해 생성되었습니다(참조) https://www.netapp.com/us/media/tr-4614.pdf["SnapCenter를 사용한 SAP HANA 백업 및 복구"^])를 클릭합니다. 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.
+백업 및 복구 작업을 실행하는 데 필요한 Privileges가 있는 HANA 시스템 데이터베이스용 데이터베이스 사용자 "SnapCenter"가 생성되었습니다(참조 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"^]). 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.
 
 ....
 ss2adm@hana- 3: / > hdbuserstore set SS2KEY hana- 3:33313 SNAPCENTER <password>
@@ -157,6 +157,6 @@ SnapVault 복제가 데이터 보호 전략의 일부인 경우 섹션에 설명
 
 image::saphana-sr-scs-image26.png[사파나 SR SCS 영상26]
 
-SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 참조하십시오 https://www.netapp.com/us/media/tr-4614.pdf["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^].
+SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^]참조하십시오.
 
 다른 호스트에서 생성된 백업의 복구 작업은 섹션에 설명되어 있습니다 link:saphana-sr-scs-restore-and-recovery-from-a-backup-created-at-the-other-host.html["다른 호스트에서 생성된 백업에서 복구 및 복구"].

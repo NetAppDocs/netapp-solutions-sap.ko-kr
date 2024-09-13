@@ -54,7 +54,7 @@ image::saphana-sr-scs-image30.png[사파나 SR SCS 이미지30]
 ....
 hdbuserstore.exe -u SYSTEM set SSRKEY ssr-vip:31013 SNAPCENTER <password>
 ....
-SAP HANA 플러그인 구축 옵션 및 사용자 저장소 구성에 대한 자세한 내용은 기술 보고서 TR-4614: https://www.netapp.com/us/media/tr-4614.pdf["SnapCenter를 사용한 SAP HANA 백업 및 복구"^].
+SAP HANA 플러그인 배포 옵션 및 사용자 저장소 구성에 대한 자세한 내용은 기술 보고서 TR-4614: https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"^]
 
 SnapCenter에서는 이전에 구성한 사용자 저장소 키와 SnapCenter 서버를 "hdbsql" 통신 호스트로 사용하여 다음 그림과 같이 자원을 구성합니다.
 
