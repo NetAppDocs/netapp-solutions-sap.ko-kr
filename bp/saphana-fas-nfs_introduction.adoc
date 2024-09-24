@@ -14,7 +14,7 @@ NetApp FAS 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서
 
 이 인증은 현재 다음 모델에만 유효합니다.
 
-* FAS2750, FAS2820, FAS8300, FAS8700 및 FAS9500 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["인증되고 지원되는 SAP HANA 하드웨어 디렉토리"^].
+* FAS2750, FAS2820, FAS8300, FAS8700, FAS70, FAS9500, FAS90 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["인증되고 지원되는 SAP HANA 하드웨어 디렉토리"^].
 
 
 이 문서에서는 NFS 버전 3(NFSv3) 프로토콜 또는 NFS 버전 4(NFSv4.1) 프로토콜의 ONTAP 구성 요구사항에 대해 설명합니다.
