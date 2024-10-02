@@ -10,7 +10,7 @@ summary: SAP HANA 2.0 SPS4부터 추가 데이터 볼륨 파티션을 구성할 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -116,6 +116,6 @@ stlrx300s8-6:/ # chmod –R 777 /hana/data2/SS3
 ALTER SYSTEM ALTER DATAVOLUME ADD PARTITION PATH '/hana/data2/SID/';
 ....
 +
-image::saphana_fas_fc_image28.jpg[Saphana FAS fc 이미지 28]
+image:saphana_fas_fc_image28.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 

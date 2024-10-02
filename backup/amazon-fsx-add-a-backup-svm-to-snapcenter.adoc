@@ -10,7 +10,7 @@ summary: 이 섹션에서는 SnapCenter에 SVM 백업을 추가하는 방법을 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,14 +18,14 @@ SnapCenter에 SVM 백업을 추가하려면 다음 단계를 수행하십시오.
 
 . SnapVault 타겟 볼륨이 SnapCenter에 있는 SVM을 구성합니다.
 +
-image::amazon-fsx-image76.png[Amazon FSx 이미지76]
+image:amazon-fsx-image76.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 기타 옵션 창에서 All Flash FAS를 플랫폼으로 선택하고 2차 를 선택합니다.
 +
-image::amazon-fsx-image77.png[Amazon FSx 이미지 77]
+image:amazon-fsx-image77.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
 이제 SnapCenter에서 SVM을 사용할 수 있습니다.
 
-image::amazon-fsx-image78.png[Amazon FSx 이미지 78]
+image:amazon-fsx-image78.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

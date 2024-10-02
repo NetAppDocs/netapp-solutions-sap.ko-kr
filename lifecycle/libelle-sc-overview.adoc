@@ -10,8 +10,13 @@ summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP AnyDB 및 SAP HANA 데이터베이스에 통합되어 있습니다. 또한, NetApp은 SAP 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호와 유연한 SAP 테스트 시스템 프로비저닝을 결합합니다.
+
+저자:
 
 Holger Zecha, Tobias Brandl, NetApp Franz Die그루버, Libelle
 

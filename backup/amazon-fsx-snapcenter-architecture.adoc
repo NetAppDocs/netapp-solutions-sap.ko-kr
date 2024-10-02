@@ -10,7 +10,7 @@ summary: SnapCenter는 애플리케이션 정합성을 보장하는 데이터 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -24,7 +24,7 @@ SnapCenter는 NetApp에서 제공하는 Data Fabric의 엔드 포인트 전체�
 
 SnapCenter에는 SnapCenter 서버, Windows용 SnapCenter 플러그인 패키지 및 Linux용 SnapCenter 플러그인 패키지가 포함되어 있습니다. 각 패키지에는 다양한 애플리케이션 및 인프라 구성요소를 위한 SnapCenter용 플러그인이 포함되어 있습니다.
 
-image::amazon-fsx-image5.png[Amazon FSx 이미지5]
+image:amazon-fsx-image5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -66,7 +66,7 @@ SnapCenter는 운영 스토리지에서 보존을 처리하고, ONTAP용 FSx는 
 
 다음 그림에서는 SnapCenter 백업 및 보존 관리 작업의 개요를 보여 줍니다.
 
-image::amazon-fsx-image6.png[Amazon FSx 이미지6]
+image:amazon-fsx-image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter은 다음과 같은 작업을 수행합니다.
 
@@ -94,7 +94,7 @@ SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할
 
 다음 그림은 ONTAP용 FSx에서 SAP HANA를 위한 일반적인 백업 아키텍처를 보여줍니다. HANA 시스템은 AWS 가용성 영역 1에 있으며 동일한 가용성 영역 내에서 ONTAP 파일 시스템용 FSx를 사용합니다. 스냅샷 백업 작업은 HANA 데이터베이스의 데이터와 공유 볼륨에 대해 실행됩니다. 3-5일 동안 유지되는 로컬 스냅샷 백업 외에도 장기 보존을 위해 오프사이트 스토리지에도 백업이 복제됩니다. 오프사이트 백업 스토리지는 다른 AWS 가용성 영역에 있는 ONTAP 파일 시스템용 두 번째 FSx입니다. HANA 데이터 및 공유 볼륨의 백업은 SnapVault를 통해 ONTAP 파일 시스템용 두 번째 FSx로 복제되며 2-3주 동안 유지됩니다.
 
-image::amazon-fsx-image7.png[Amazon FSx 이미지7]
+image:amazon-fsx-image7.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SnapCenter를 구성하기 전에 다양한 SAP 시스템의 RTO 및 RPO 요구 사항에 따라 데이터 보호 전략을 정의해야 합니다.
 
@@ -201,4 +201,4 @@ ONTAP 파일 시스템용 FSX:
 * ONTAP 파일 시스템용 두 번째 FSx에 복제된 HANA 데이터 볼륨입니다
 
 
-image::amazon-fsx-image8.png[Amazon FSx 이미지8]
+image:amazon-fsx-image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

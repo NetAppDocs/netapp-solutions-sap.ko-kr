@@ -3,7 +3,6 @@ section: bp
 title: 모범 사례
 entries:
 - title: FCP가 있는 NetApp AFF 시스템 기반 SAP HANA 구성 가이드
-  type: solutions
   entries:
   - title: 소개
     url: "/bp/saphana_aff_fc_introduction.html"
@@ -36,7 +35,6 @@ entries:
   - title: 기록 업데이트
     url: "/bp/saphana_aff_fc_update_history.html"
 - title: NFS 구성 가이드가 포함된 NetApp AFF 시스템 기반 SAP HANA
-  type: solutions
   entries:
   - title: 소개
     url: "/bp/saphana_aff_nfs_introduction.html"
@@ -69,7 +67,6 @@ entries:
   - title: 기록 업데이트
     url: "/bp/saphana_aff_nfs_update_history.html"
 - title: NFS 구성 가이드가 포함된 NetApp FAS 시스템 기반 SAP HANA
-  type: solutions
   entries:
   - title: 소개
     url: "/bp/saphana-fas-nfs_introduction.html"
@@ -102,7 +99,6 @@ entries:
   - title: 기록 업데이트
     url: "/bp/saphana-fas-nfs_update_history.html"
 - title: FAS 시스템 기반 FCP 구성 가이드
-  type: solutions
   entries:
   - title: 소개
     url: "/bp/saphana_fas_fc_introduction.html"

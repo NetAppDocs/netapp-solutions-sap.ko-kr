@@ -10,7 +10,7 @@ summary: 이 섹션에서는 SAP HANA 리소스 구성 및 구축과 관련된 S
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -34,7 +34,7 @@ SnapCenter에서 자동으로 검색된 HANA 데이터베이스 리소스만 자
 
 다음 그림은 종속성을 요약합니다. HANA 구축 옵션에 대한 자세한 내용은 “SAP HANA 플러그인의 구축 옵션” 섹션에서 다룹니다.
 
-image::saphana-br-scs-image9.png[Saphana br SCS 영상9]
+image:saphana-br-scs-image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 NOTE: HANA 및 Linux 플러그인은 현재 인텔 기반 시스템에서만 사용할 수 있습니다. HANA 데이터베이스가 IBM Power Systems에서 실행되는 경우 중앙 HANA 플러그인 호스트를 사용해야 합니다.
@@ -73,7 +73,7 @@ NOTE: 여러 테넌트가 포함된 HANA MDC 시스템은 자동 검색을 지�
 모든 HANA 아키텍처에 대해 HANA 리소스를 수동으로 구성할 수 있지만 중앙 HANA 플러그인 호스트가 필요합니다. 중앙 플러그인 호스트는 SnapCenter 서버 자체 또는 별도의 Linux 또는 Windows 호스트일 수 있습니다.
 
 
-NOTE: HANA 플러그인을 HANA 데이터베이스 호스트에 구축하면 기본적으로 리소스가 자동으로 검색됩니다. 예를 들어, 활성화된 HANA 시스템 복제가 있는 데이터베이스 호스트 및 자동 검색이 지원되지 않는 SnapCenter 릴리스 < 4.6과 같이 플러그인을 배포할 수 있도록 개별 호스트에 대해 자동 검색을 비활성화할 수 있습니다. 자세한 내용은 섹션을 참조하십시오 link:saphana-br-scs-advanced-configuration-and-tuning.html#disable-auto-discovery-on-the-HANA-plug-in-host["“HANA 플러그인 호스트에서 자동 검색을 사용하지 않도록 설정합니다.”"]
+NOTE: HANA 플러그인을 HANA 데이터베이스 호스트에 구축하면 기본적으로 리소스가 자동으로 검색됩니다. 예를 들어, 활성화된 HANA 시스템 복제가 있는 데이터베이스 호스트 및 자동 검색이 지원되지 않는 SnapCenter 릴리스 < 4.6과 같이 플러그인을 배포할 수 있도록 개별 호스트에 대해 자동 검색을 비활성화할 수 있습니다. 자세한 내용은 섹션을 참조하십시오 link:saphana-br-scs-advanced-configuration-and-tuning.html#disable-auto["“HANA 플러그인 호스트에서 자동 검색을 사용하지 않도록 설정합니다.”"]
 
 다음 표에는 수동 HANA 리소스 구성에 지원되는 HANA 구성이 나와 있습니다.
 
@@ -101,7 +101,7 @@ NOTE: HANA 플러그인을 HANA 데이터베이스 호스트에 구축하면 기
 
 SnapCenter 서버는 SAP HANA 플러그인을 통해 SAP HANA 데이터베이스와 통신합니다. SAP HANA 플러그인은 SAP HANA hdbsql 클라이언트 소프트웨어를 사용하여 SAP HANA 데이터베이스에 대한 SQL 명령을 실행합니다. SAP HANA hdbuserstore는 SAP HANA 데이터베이스에 액세스하기 위한 사용자 자격 증명, 호스트 이름 및 포트 정보를 제공하는 데 사용됩니다.
 
-image::saphana-br-scs-image10.png[사파나 br SCS 영상10]
+image:saphana-br-scs-image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 NOTE: hdbuserstore 구성 툴을 포함하는 SAP HANA 플러그인 및 SAP hdbsql 클라이언트 소프트웨어를 동일한 호스트에 함께 설치해야 합니다.
@@ -122,7 +122,7 @@ HANA 플러그인이 SnapCenter 서버에 설치된 경우 SnapCenter 서버 HA�
 
 다음 그림에서는 SnapCenter 서버가 중앙 플러그인 호스트로 사용되는 구성을 보여 줍니다. SAP HANA 플러그인 및 SAP hdbsql 클라이언트 소프트웨어는 SnapCenter 서버에 설치됩니다.
 
-image::saphana-br-scs-image11.png[Saphana br SCS 영상11]
+image:saphana-br-scs-image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 HANA 플러그인은 네트워크를 통해 hdbclient를 사용하여 관리형 HANA 데이터베이스와 통신할 수 있으므로 개별 HANA 데이터베이스 호스트에 SnapCenter 구성 요소를 설치할 필요가 없습니다. SnapCenter는 모든 사용자 저장소 키가 관리 데이터베이스에 대해 구성된 중앙 HANA 플러그인 호스트를 사용하여 HANA 데이터베이스를 보호할 수 있습니다.
 
@@ -139,7 +139,7 @@ HANA 플러그인은 네트워크를 통해 hdbclient를 사용하여 관리형 
 
 NOTE: 별도의 중앙 플러그인 호스트도 Windows 호스트일 수 있습니다.
 
-image::saphana-br-scs-image12.png[Saphana br SCS 영상12]
+image:saphana-br-scs-image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 이전 섹션에서 설명한 기능 가용성에 대한 동일한 제한은 별도의 중앙 플러그인 호스트에도 적용됩니다.
 
@@ -151,7 +151,7 @@ image::saphana-br-scs-image12.png[Saphana br SCS 영상12]
 
 다음 그림에서는 각 SAP HANA 데이터베이스 호스트에 SAP HANA 플러그인이 설치되는 구성을 보여 줍니다.
 
-image::saphana-br-scs-image13.png[Saphana br SCS 영상13]
+image:saphana-br-scs-image13.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 HANA 플러그인을 각 개별 HANA 데이터베이스 호스트에 설치하면 자동 검색, 자동 복원, 복구와 같은 모든 기능을 사용할 수 있습니다. 또한 SnapCenter 서버는 HA 구성으로 설정할 수 있습니다.
 
@@ -165,9 +165,9 @@ HANA 플러그인을 각 개별 HANA 데이터베이스 호스트에 설치하�
 
 다음 두 그림에서는 SnapCenter 서버 또는 별도의 Linux 호스트를 중앙 플러그인 호스트로 사용한 혼합 플러그인 구축을 보여 줍니다. 이 두 구축 환경 간의 유일한 차이점은 선택적 HA 구성입니다.
 
-image::saphana-br-scs-image14.png[Saphana br SCS 영상14]
+image:saphana-br-scs-image14.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
-image::saphana-br-scs-image15.png[사파나 br SCS 영상15]
+image:saphana-br-scs-image15.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -299,7 +299,7 @@ NOTE: 하나 이상의 테넌트가 중지된 경우 SAP는 MDC 시스템에 대
 
 다음 그림에서는 백업 워크플로우의 개요를 보여 줍니다.
 
-image::saphana-br-scs-image16.png[Saphana br SCS 영상16]
+image:saphana-br-scs-image16.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -365,7 +365,7 @@ NOTE: 이 단계는 로그 백업 관리 기능이 비활성화되지 않은 경
 
 다음 그림에서는 다양한 워크플로우와 각 작업의 종속 관계를 간략하게 보여 줍니다. 다음 섹션에서는 다양한 작업에 대해 자세히 설명합니다.
 
-image::saphana-br-scs-image17.png[Saphana br SCS 이미지17]
+image:saphana-br-scs-image17.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -404,7 +404,7 @@ SnapCenter 리포지토리의 보조 스토리지에서 이러한 변경 내용�
 
 NOTE: 또한 리소스의 토폴로지 뷰에서 새로 고침 버튼을 클릭하여 개별 리소스에 대해 정리 작업을 수동으로 트리거할 수도 있습니다.
 
-정리 작업의 스케줄을 조정하는 방법 또는 수동 새로 고침을 트리거하는 방법에 대한 자세한 내용은 섹션을 참조하십시오 link:saphana-br-scs-advanced-configuration-and-tuning.html#change-scheduling-frequency-of-backup-synchronization-with-off-site-backup-storage["“오프 사이트 백업 스토리지와 백업 동기화 예약 빈도를 변경합니다.”"]
+정리 작업의 일정을 조정하는 방법 또는 수동 새로 고침을 실행하는 방법에 대한 자세한 내용은 섹션을 참조하십시오 link:saphana-br-scs-advanced-configuration-and-tuning.html#change-schedule["“오프 사이트 백업 스토리지와 백업 동기화 예약 빈도를 변경합니다.”"]
 
 
 
@@ -434,7 +434,7 @@ NOTE: SnapCenter는 SnapCenter에서 생성한 백업의 하우스키핑만 처�
 
 NOTE: 정책 구성에서 필요 시 백업에 대해 보존 정책이 정의되어 있더라도 필요에 따라 다른 백업을 실행할 때만 관리 작업이 수행됩니다. 따라서 일반적으로 SnapCenter에서 필요 시 백업을 수동으로 삭제하여 SAP HANA 백업 카탈로그에서 해당 백업도 삭제되며 로그 백업 정리 정돈이 이전의 주문형 백업을 기반으로 하는지 확인해야 합니다.
 
-로그 백업 보존 관리는 기본적으로 설정됩니다. 필요한 경우 섹션에 설명된 대로 비활성화할 수 있습니다 link:saphana-br-scs-advanced-configuration-and-tuning.html#disable-auto-discovery-on-the-HANA-plug-in-host["“HANA 플러그인 호스트에서 자동 검색을 사용하지 않도록 설정합니다.”"]
+로그 백업 보존 관리는 기본적으로 설정됩니다. 필요한 경우 섹션에 설명된 대로 비활성화할 수 있습니다 link:saphana-br-scs-advanced-configuration-and-tuning.html#disable-auto["“HANA 플러그인 호스트에서 자동 검색을 사용하지 않도록 설정합니다.”"]
 
 
 
@@ -534,7 +534,7 @@ HANA 데이터베이스 측면에서 SnapCenter는 두 가지 다른 복원 작�
 * * 수동 복구를 사용하여 리소스를 완료합니다. * 복구 안 함을 선택하면 SnapCenter에서 HANA 데이터베이스를 중지하고 필요한 파일 시스템(마운트 해제, 마운트) 및 복원 작업을 실행합니다. 시스템 및 테넌트 데이터베이스를 수동으로 복구해야 합니다.
 
 
-image::saphana-br-scs-image18.png[Saphana br SCS 영상18]
+image:saphana-br-scs-image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -548,7 +548,7 @@ image::saphana-br-scs-image18.png[Saphana br SCS 영상18]
 
 워크플로는 이전 섹션에서 설명한 것과 같습니다.
 
-image::saphana-br-scs-image19.png[Saphana br SCS 이미지19]
+image:saphana-br-scs-image19.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -558,7 +558,7 @@ image::saphana-br-scs-image19.png[Saphana br SCS 이미지19]
 
 수동으로 구성된 HANA 리소스의 경우 다음 그림과 같이 SnapCenter는 수동 복구만 지원합니다. 수동 복구 워크플로는 이전 섹션에서 설명한 것과 동일합니다.
 
-image::saphana-br-scs-image20.png[Saphana br SCS 영상20]
+image:saphana-br-scs-image20.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 

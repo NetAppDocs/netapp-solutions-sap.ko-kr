@@ -10,7 +10,7 @@ summary: 기본적으로 SAP HANA는 SAP HANA 서비스당 하나의 데이터 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

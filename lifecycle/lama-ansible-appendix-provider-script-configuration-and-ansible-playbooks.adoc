@@ -10,7 +10,7 @@ summary: 이 문서에서는 샘플 배포 및 워크플로우 실행 중에 다
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

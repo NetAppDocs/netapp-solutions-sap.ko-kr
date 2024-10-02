@@ -10,7 +10,7 @@ summary: 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

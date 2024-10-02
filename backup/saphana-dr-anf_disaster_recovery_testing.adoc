@@ -10,6 +10,8 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
+이 섹션은 ANF(Azure NetApp Files)에서 SAP HANA의 재해 복구 테스트에 대해 간략하게 설명합니다.

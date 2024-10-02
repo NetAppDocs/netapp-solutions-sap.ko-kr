@@ -10,7 +10,7 @@ summary: 비 데이터 볼륨의 백업은 SnapCenter 및 SAP HANA 플러그인�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -30,46 +30,46 @@ SnapCenter 비 데이터 볼륨 백업을 사용하면 SAP HANA 데이터베이�
 
 . Resources 탭에서 Non-Data-Volume을 선택하고 Add SAP HANA Database를 클릭합니다.
 +
-image::amazon-fsx-image60.png[Amazon FSx 이미지 60]
+image:amazon-fsx-image60.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . SAP HANA 데이터베이스 추가 대화 상자의 리소스 유형 목록에서 비 데이터 볼륨을 선택합니다. 리소스에 사용할 리소스 이름, 관련 SID 및 SAP HANA 플러그인 호스트를 지정한 후 다음 을 클릭합니다.
 +
-image::amazon-fsx-image61.png[Amazon FSx 이미지 61]
+image:amazon-fsx-image61.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . SVM과 스토리지 볼륨을 스토리지 설치 공간으로 추가하고 Next를 클릭합니다.
 +
-image::amazon-fsx-image62.png[Amazon FSx 이미지 62]
+image:amazon-fsx-image62.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 설정을 저장하려면 요약 단계에서 마침을 클릭합니다.
 +
-image::amazon-fsx-image63.png[Amazon FSx 이미지63]
+image:amazon-fsx-image63.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 이제 새로운 비 데이터 볼륨이 SnapCenter에 추가됩니다. 새 리소스를 두 번 클릭하여 리소스 보호를 실행합니다.
 
 +
-image::amazon-fsx-image64.png[Amazon FSx 이미지 64]
+image:amazon-fsx-image64.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 리소스 보호는 HANA 데이터베이스 리소스로 앞에서 설명한 것과 같은 방식으로 수행됩니다.
 
 . 이제 Backup Now(지금 백업) 를 클릭하여 백업을 실행할 수 있습니다.
 +
-image::amazon-fsx-image65.png[Amazon FSx 이미지65]
+image:amazon-fsx-image65.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 정책을 선택하고 백업 작업을 시작합니다.
 +
-image::amazon-fsx-image66.png[Amazon FSx 이미지66]
+image:amazon-fsx-image66.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
 SnapCenter 작업 로그에는 개별 워크플로 단계가 표시됩니다.
 
-image::amazon-fsx-image67.png[Amazon FSx 이미지67]
+image:amazon-fsx-image67.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 이제 새 백업이 비 데이터 볼륨 리소스의 리소스 보기에 표시됩니다.
 
-image::amazon-fsx-image68.png[Amazon FSx 이미지 68]
+image:amazon-fsx-image68.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -119,38 +119,38 @@ SnapCenter를 사용하면 단일 테넌트가 있는 HANA 단일 호스트 MDC 
 
 . SnapCenter에서 복구 작업에 사용할 백업을 선택합니다.
 +
-image::amazon-fsx-image69.png[Amazon FSx 이미지 69]
+image:amazon-fsx-image69.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 복원 범위 및 유형을 선택합니다.
 +
 HANA MDC 단일 테넌트 시스템의 표준 시나리오는 볼륨 복원과 함께 전체 리소스를 사용하는 것입니다. 여러 테넌트가 있는 HANA MDC 시스템의 경우 단일 테넌트만 복원하려고 할 수 있습니다. 단일 테넌트 복원에 대한 자세한 내용은 을 참조하십시오 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-restore-and-recovery.html["복원 및 복구(netapp.com)"^].
 
 +
-image::amazon-fsx-image70.png[Amazon FSx 이미지 70]
+image:amazon-fsx-image70.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 복구 범위 를 선택하고 로그 백업 및 카탈로그 백업을 위한 위치를 제공합니다.
 +
 SnapCenter는 HANA global.ini 파일의 기본 경로 또는 변경된 경로를 사용하여 로그 및 카탈로그 백업 위치를 미리 채웁니다.
 
 +
-image::amazon-fsx-image71.png[Amazon FSx 이미지 71]
+image:amazon-fsx-image71.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 선택 사항인 사전 복원 명령을 입력합니다.
 +
-image::amazon-fsx-image72.png[Amazon FSx 이미지72]
+image:amazon-fsx-image72.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 선택 사항인 post-restore 명령을 입력합니다.
 +
-image::amazon-fsx-image73.png[Amazon FSx 이미지 73]
+image:amazon-fsx-image73.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 복원 및 복구 작업을 시작하려면 마침 을 클릭합니다.
 +
-image::amazon-fsx-image74.png[Amazon FSx 이미지 74]
+image:amazon-fsx-image74.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 SnapCenter는 복원 및 복구 작업을 실행합니다. 이 예에서는 복원 및 복구 작업의 작업 세부 정보를 보여 줍니다.
 
 +
-image::amazon-fsx-image75.png[Amazon FSx 이미지 75]
+image:amazon-fsx-image75.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 

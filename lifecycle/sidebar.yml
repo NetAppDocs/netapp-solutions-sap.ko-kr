@@ -3,7 +3,6 @@ section: lifecycle
 title: 라이프사이클 관리
 entries:
 - title: Ansible을 사용한 NetApp SAP Landscape Management 통합
-  type: solutions
   entries:
   - title: 소개
     url: "/lifecycle/lama-ansible-introduction.html"
@@ -28,7 +27,6 @@ entries:
   - title: 결론
     url: "/lifecycle/lama-ansible-conclusion.html"
 - title: SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화
-  type: solutions
   entries:
   - title: 소개
     url: "/lifecycle/sc-copy-clone-introduction.html"
@@ -53,7 +51,6 @@ entries:
   - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
     url: "/lifecycle/sc-copy-clone-where-to-find-additional-information.html"
 - title: Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화
-  type: solutions
   entries:
   - title: 개요
     url: "/lifecycle/libelle-sc-overview.html"

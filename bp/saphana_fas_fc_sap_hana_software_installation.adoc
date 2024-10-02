@@ -10,7 +10,7 @@ summary: 다음은 SAP HANA 소프트웨어 설치를 위한 요구사항입니�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

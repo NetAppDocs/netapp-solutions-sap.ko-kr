@@ -10,7 +10,7 @@ summary: 이 섹션에서는 재해 복구 페일오버에 사용되는 서버�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

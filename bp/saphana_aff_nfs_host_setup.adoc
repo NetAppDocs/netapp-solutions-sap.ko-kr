@@ -10,7 +10,7 @@ summary: 이 섹션에 설명된 모든 호스트 설정 단계는 물리적 서
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

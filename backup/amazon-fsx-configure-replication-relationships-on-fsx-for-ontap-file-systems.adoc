@@ -10,7 +10,7 @@ summary: 이 섹션에서는 ONTAP 파일 시스템용 FSx, 피어 SVM, 타겟 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

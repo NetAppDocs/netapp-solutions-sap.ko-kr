@@ -10,7 +10,7 @@ summary: 이전에 생성된 /etc/fstab 파일을 기반으로 새 볼륨을 타
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

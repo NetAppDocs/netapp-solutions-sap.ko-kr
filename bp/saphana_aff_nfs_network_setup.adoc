@@ -10,7 +10,7 @@ summary: 이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -33,7 +33,7 @@ summary: 이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 �
 
 스토리지 계층에서 MTU 크기가 9000인 브로드캐스트 도메인이 구성되어 있으며 필요한 모든 물리적 인터페이스가 이 브로드캐스트 도메인에 추가됩니다. 이 접근 방식은 이러한 물리적 인터페이스를 동일한 페일오버 그룹에 자동으로 할당합니다. 이러한 물리적 인터페이스에 할당된 모든 논리 인터페이스(LIF)가 이 페일오버 그룹에 추가됩니다.
 
-image::saphana_aff_nfs_image10.png[Saphana AFF NFS 이미지10]
+image:saphana_aff_nfs_image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 일반적으로 서버와 스토리지 시스템(예: LACP(Link Aggregation Control Protocol) 및 ifgroup)에서 HA 인터페이스 그룹을 사용할 수도 있습니다. HA 인터페이스 그룹을 사용하면 그룹 내의 모든 인터페이스 간에 로드가 균등하게 분산되는지 확인합니다. 부하 분산은 네트워크 스위치 인프라의 기능에 따라 달라집니다.
 
@@ -46,11 +46,11 @@ NOTE: SAP HANA 호스트 수와 사용된 연결 속도에 따라 활성 물리�
 
 이 솔루션에서 NFS를 통해 데이터베이스의 성능 크리티컬 데이터 및 로그 볼륨을 비롯한 SAP HANA 인스턴스에 대한 모든 데이터가 제공되므로 적절한 네트워크 설계와 구성이 매우 중요합니다. 전용 스토리지 네트워크를 사용하여 SAP HANA 노드 간 통신 및 사용자 액세스 트래픽과 NFS 트래픽을 분리합니다. 각 SAP HANA 노드에는 최소 10GB의 대역폭으로 이중화된 전용 네트워크 연결이 필요합니다. 더 높은 대역폭도 지원됩니다. 이 네트워크는 네트워크 전환 및 컴퓨팅을 통해 스토리지 계층에서 VMware vSphere에 호스팅된 게스트 운영 체제까지 엔드 투 엔드를 확장해야 합니다. 물리적 스위칭 인프라 외에도 VDS(VMware Distributed Switch)를 사용하여 하이퍼바이저 계층에서 네트워크 트래픽의 적절한 성능과 관리 효율성을 제공합니다.
 
-image::saphana_aff_nfs_image11.png[Saphana AFF NFS 이미지11]
+image:saphana_aff_nfs_image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 위의 그림에 표시된 것처럼 각 SAP HANA 노드는 VMware 분산 스위치에서 전용 포트 그룹을 사용합니다. 이 포트 그룹을 사용하면 ESX 호스트에 있는 물리적 네트워크 인터페이스 카드(NIC)의 QoS(서비스 품질)와 전용 할당을 향상시킬 수 있습니다. NIC 장애 시 HA 기능을 유지하면서 전용 물리적 NIC를 사용하려면 전용 물리적 NIC가 활성 업링크로 구성됩니다. 추가 NIC는 SAP HANA 포트 그룹의 팀 구성 및 페일오버 설정에서 대기 업링크로 구성됩니다. 또한 물리적 스위치와 가상 스위치에서 점보 프레임(MTU 9,000)을 사용하도록 설정해야 합니다. 또한 서버, 스위치 및 스토리지 시스템의 스토리지 트래픽에 사용되는 모든 이더넷 포트에서 흐름 제어를 끕니다. 다음 그림에서는 이러한 구성의 예를 보여 줍니다.
 
 
 NOTE: NFS 트래픽에 사용되는 인터페이스에 대해 LRO(Large Receive Offload)를 꺼야 합니다. 기타 모든 네트워크 구성 지침은 SAP HANA의 해당 VMware Best Practice 가이드를 참조하십시오.
 
-image::saphana_aff_nfs_image12.png[Saphana AFF NFS 이미지12]
+image:saphana_aff_nfs_image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

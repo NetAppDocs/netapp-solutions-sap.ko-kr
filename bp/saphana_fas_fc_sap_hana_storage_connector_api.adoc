@@ -10,7 +10,7 @@ summary: 스토리지 커넥터는 페일오버 기능이 있는 다중 호스�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

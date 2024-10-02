@@ -2,7 +2,6 @@
 indexpage:
   title: SAP 비즈니스 애플리케이션 및 SAP HANA 데이터베이스 솔루션
   summary: NetApp은 SAP 및 SAP HANA에 대한 광범위한 기술 보고서, 검증된 설계, 비디오, 블로그 및 솔루션 요약 정보를 제공합니다.
-  keywords: netapp, solutions, sap, hana
   lead: NetApp은 SAP 및 SAP HANA에 대한 광범위한 기술 보고서, 검증된 설계, 비디오, 블로그 및 솔루션 요약 정보를 제공합니다.
   tiles:
   - title: 구성 모범 사례

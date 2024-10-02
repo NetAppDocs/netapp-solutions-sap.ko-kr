@@ -10,7 +10,7 @@ summary: 이 섹션에서는 두 가지 예제 구성, SS2 및 SS1에 대한 구
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -48,7 +48,7 @@ NOTE: 필요한 권한은 백업 관리자, 카탈로그 읽기, 데이터베이
 
 NOTE: SAP HANA MDC 시스템의 경우 시스템 데이터베이스와 테넌트 데이터베이스에 대한 모든 백업 명령이 시스템 데이터베이스를 사용하여 실행되므로 시스템 데이터베이스에 사용자를 생성해야 합니다.
 
-image::saphana-br-scs-image53.png[Saphana br SCS 영상53]
+image:saphana-br-scs-image53.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SAP HANA 플러그인 및 SAP hdbsql 클라이언트가 설치된 HANA 플러그인 호스트에서 사용자 저장소 키를 구성해야 합니다.
 
@@ -163,17 +163,17 @@ SnapCenter에서 복제 업데이트를 관리하기 전에 초기 데이터 전
 
 NOTE: SnapCenter에서 SnapVault 업데이트를 트리거하므로 관계 일정을 없음으로 설정해야 합니다.
 
-image::saphana-br-scs-image54.png[Saphana br SCS 영상 54]
+image:saphana-br-scs-image54.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 그림에서는 보호 정책을 보여 줍니다. 보호 관계에 사용되는 보호 정책은 SnapMirror 레이블과 보조 스토리지의 백업 보존을 정의합니다. 이 예에서는 사용된 레이블이 매일, 그리고 잔상이 5로 설정되어 있습니다.
 
 
-NOTE: 생성되는 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다. 자세한 내용은 “ 를 참조하십시오<<SnapVault 복제를 사용한 일일 스냅샷 백업 정책>>.”
+NOTE: 생성되는 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다. 자세한 내용은 을 link:saphana-br-scs-snapcenter-initial-configuration.html#snapshot-policy["SnapVault 복제를 사용한 일일 스냅샷 백업 정책"]참조하십시오.
 
 
 NOTE: 오프 사이트 백업 스토리지의 백업 보존은 정책에 정의되어 있으며 ONTAP에서 제어합니다.
 
-image::saphana-br-scs-image55.png[Saphana br SCS 영상 55]
+image:saphana-br-scs-image55.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -203,18 +203,18 @@ SAP HANA 시스템의 경우 SID는 SS2입니다.
 hdbuserstore 키는 HANA 데이터베이스 SS2에 대해 구성된 키와 일치해야 합니다. 이 예에서는 SS2KEY 입니다.
 
 +
-image::saphana-br-scs-image56.png[Saphana br SCS 영상 56]
+image:saphana-br-scs-image56.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 
 NOTE: SAP HANA 다중 호스트 시스템의 경우 다음 그림과 같이 모든 호스트에 대한 hdbuserstore 키가 포함되어야 합니다. SnapCenter는 목록의 첫 번째 키와 연결을 시도하며, 첫 번째 키가 작동하지 않는 경우 다른 키를 계속 사용합니다. 이 기능은 작업자 및 대기 호스트가 있는 다중 호스트 시스템에서 HANA 페일오버를 지원하는 데 필요합니다.
 
 +
-image::saphana-br-scs-image57.png[Saphana br SCS 이미지 57]
+image:saphana-br-scs-image57.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 .. 스토리지 시스템(SVM) 및 볼륨 이름에 필요한 데이터를 선택합니다.
 +
-image::saphana-br-scs-image58.png[Saphana br SCS 영상 58]
+image:saphana-br-scs-image58.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 
@@ -225,16 +225,16 @@ NOTE: Fibre Channel SAN 구성의 경우 LUN도 선택해야 합니다.
 NOTE: SAP HANA 다중 호스트 시스템의 경우 다음 그림과 같이 SAP HANA 시스템의 모든 데이터 볼륨을 선택해야 합니다.
 
 +
-image::saphana-br-scs-image59.png[Saphana br SCS 영상 59]
+image:saphana-br-scs-image59.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 리소스 구성의 요약 화면이 표시됩니다.
 
 .. Finish를 클릭하여 SAP HANA 데이터베이스를 추가합니다.
 +
-image::saphana-br-scs-image60.png[Saphana br SCS 영상 60]
+image:saphana-br-scs-image60.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
-.. 리소스 구성이 완료되면 " 섹션에 설명된 대로 리소스 보호 구성을 수행합니다<<리소스 보호 구성>>.”
+.. 리소스 구성이 완료되면 섹션에 설명된 대로 리소스 보호 구성을 link:saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#resource-protection["리소스 보호 구성"]수행합니다.
 
 
 
@@ -251,17 +251,17 @@ NOTE: SAP HANA 플러그인에는 Java 64비트 버전 1.8이 필요합니다. S
 . 호스트 탭에서 추가 를 클릭합니다.
 . 호스트 정보를 제공하고 설치할 SAP HANA 플러그인을 선택합니다. 제출 을 클릭합니다.
 +
-image::saphana-br-scs-image61.png[Saphana br SCS 영상 61]
+image:saphana-br-scs-image61.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 지문을 확인합니다.
 +
-image::saphana-br-scs-image62.png[Saphana br SCS 영상 62]
+image:saphana-br-scs-image62.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 HANA 플러그인 및 Linux 플러그인 설치가 자동으로 시작됩니다. 설치가 완료되면 호스트의 상태 열에 실행 중 이 표시됩니다. 또한 화면에는 Linux 플러그인이 HANA 플러그인과 함께 설치되는 것으로 표시됩니다.
 
 +
-image::saphana-br-scs-image63.png[Saphana br SCS 영상63]
+image:saphana-br-scs-image63.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 플러그인 설치 후 HANA 리소스의 자동 검색 프로세스가 자동으로 시작됩니다. 자원 화면에서 새 자원이 생성되고 빨간색 자물쇠 아이콘으로 잠금 상태로 표시됩니다.
@@ -272,21 +272,21 @@ image::saphana-br-scs-image63.png[Saphana br SCS 영상63]
 NOTE: 자원 새로 고침 을 클릭하여 자원 화면에서 자동 검색 프로세스를 수동으로 트리거할 수도 있습니다.
 
 +
-image::saphana-br-scs-image64.png[Saphana br SCS 영상64입니다]
+image:saphana-br-scs-image64.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . HANA 데이터베이스에 대한 사용자 저장소 키를 제공합니다.
 +
-image::saphana-br-scs-image65.png[Saphana br SCS 영상65]
+image:saphana-br-scs-image65.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 테넌트 데이터 및 스토리지 설치 공간 정보가 검색되는 2단계 자동 검색 프로세스가 시작됩니다.
 
 . 세부 정보 를 클릭하여 리소스 토폴로지 뷰에서 HANA 리소스 구성 정보를 검토합니다.
 +
-image::saphana-br-scs-image66.png[Saphana br SCS 이미지66]
+image:saphana-br-scs-image66.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
-image::saphana-br-scs-image67.png[Saphana br SCS 영상67]
+image:saphana-br-scs-image67.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 +
 리소스 구성이 완료되면 다음 섹션에 설명된 대로 리소스 보호 구성을 실행해야 합니다.
@@ -318,41 +318,41 @@ NOTE: 사용자 지정 스냅샷 복사본 이름을 사용하여 어떤 정책 
 NOTE: 정책 구성에서 필요 시 백업에 대해 보존 정책이 정의되어 있더라도 필요에 따라 다른 백업을 실행할 때만 관리 작업이 수행됩니다. 따라서 일반적으로 SnapCenter에서 필요 시 백업을 수동으로 삭제하여 SAP HANA 백업 카탈로그에서 해당 백업도 삭제하며 로그 백업 관리 기능이 이전 주문형 백업을 기반으로 하지 않는지 확인해야 합니다.
 
 +
-image::saphana-br-scs-image68.png[Saphana br SCS 영상 68]
+image:saphana-br-scs-image68.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
 . 응용 프로그램 설정 페이지에서 특정 설정을 할 필요가 없습니다. 다음 을 클릭합니다.
 +
-image::saphana-br-scs-image69.png[Saphana br SCS 영상 69]
+image:saphana-br-scs-image69.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 리소스에 추가할 정책을 선택합니다.
 +
-image::saphana-br-scs-image70.png[Saphana br SCS 영상70입니다]
+image:saphana-br-scs-image70.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . LocalSnap 정책의 스케줄을 정의합니다(이 예에서는 4시간마다).
 +
-image::saphana-br-scs-image71.png[Saphana br SCS 영상 71]
+image:saphana-br-scs-image71.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . LocalSnapAndSnapVault 정책의 일정을 정의합니다(이 예제에서는 하루에 한 번).
 +
-image::saphana-br-scs-image72.png[Saphana br SCS 이미지72]
+image:saphana-br-scs-image72.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 블록 무결성 검사 정책의 일정을 정의합니다(이 예에서는 일주일에 한 번).
 +
-image::saphana-br-scs-image73.png[Saphana br SCS 영상 73]
+image:saphana-br-scs-image73.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 이메일 알림에 대한 정보를 제공합니다.
 +
-image::saphana-br-scs-image74.png[Saphana br SCS image74 를 참조하십시오]
+image:saphana-br-scs-image74.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 요약 페이지에서 마침 을 클릭합니다.
 +
-image::saphana-br-scs-image75.png[Saphana br SCS 이미지 75]
+image:saphana-br-scs-image75.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 이제 토폴로지 페이지에서 필요 시 백업을 생성할 수 있습니다. 예약된 백업은 구성 설정에 따라 실행됩니다.
 +
-image::saphana-br-scs-image76.png[Saphana br SCS 영상76]
+image:saphana-br-scs-image76.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -396,4 +396,4 @@ Exit /b 0
 
 다음 그림에서는 리소스 보호 구성 화면 내에서 정지 후 명령을 보여 줍니다.
 
-image::saphana-br-scs-image77.png[Saphana br SCS image77 을 참조하십시오]
+image:saphana-br-scs-image77.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

@@ -8,9 +8,10 @@ summary: NetApp FAS 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 �
 :allow-uri-read: 
 
 
-Marco Schoen, NetApp을 참조하십시오
-
+[role="lead"]
 NetApp FAS 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 인증 엔터프라이즈 스토리지 플랫폼은 NetApp ONTAP 운영 체제를 기반으로 합니다.
+
+Marco Schoen, NetApp을 참조하십시오
 
 인증은 다음 모델에 대해 유효합니다.
 
@@ -26,9 +27,9 @@ NOTE: 이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 �
 
 NFS 및 NetApp AFF 시스템을 사용하는 FAS 시스템의 구성 가이드는 다음 링크를 사용하여 찾을 수 있습니다.
 
-* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
-* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]
+* link:saphana_aff_fc_introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"^]
+* link:saphana-fas-nfs_introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
+* link:saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]
 
 
 SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 관련 Linux 커널 종속성에 대해서는 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오 https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA 지원 운영 체제"^].
@@ -39,7 +40,7 @@ SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는
 
 NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 파이버 채널(SAN) 프로토콜을 사용하는 SAP HANA TDI(Tailored Data Center Integration) 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 모든 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 인증된 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.
 
-image::saphana_fas_fc_image1.png[사파나 FAS FC 이미지1]
+image:saphana_fas_fc_image1.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
 
@@ -50,7 +51,7 @@ image::saphana_fas_fc_image1.png[사파나 FAS FC 이미지1]
 
 == VMware vSphere를 사용하는 SAP HANA
 
-스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 설명되어 있습니다 https://docs.netapp.com/us-en/netapp-solutions_main/ent-apps-db/saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^].
+스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 link:saphana_aff_nfs_introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]설명되어 있습니다.
 
 RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 기반 백업 및 복구와 이를 기반으로 하는 솔루션(예: SAP 시스템 클론 복제)은 구현할 수 없습니다.
 

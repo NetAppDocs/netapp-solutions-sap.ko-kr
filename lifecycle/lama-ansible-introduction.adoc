@@ -10,13 +10,13 @@ summary: 'SAP LaMa(Landscape Management)를 사용하면 SAP 시스템 관리자
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
-
-Michael Schlosser, NetApp Nils Bauer
 
 [role="lead"]
 SAP LaMa(Landscape Management)를 사용하면 SAP 시스템 관리자가 전체 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 비롯한 SAP 시스템 작업을 자동화할 수 있습니다.
+
+저자: 마이클 슐로스 서, 닐스 바우어, NetApp
 
 NetApp은 SAP LaMa가 SAP LaMa Automation Studio를 통해 NetApp Snapshot 및 FlexClone과 같은 기술에 액세스할 수 있도록 다양한 Ansible 모듈을 제공합니다. 이러한 기술을 통해 SAP 시스템의 클론 복제, 복사 및 업데이트 작업을 간소화 및 가속화할 수 있습니다.
 

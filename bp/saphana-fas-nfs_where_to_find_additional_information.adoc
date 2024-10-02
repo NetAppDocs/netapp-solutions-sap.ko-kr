@@ -10,7 +10,7 @@ summary: 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

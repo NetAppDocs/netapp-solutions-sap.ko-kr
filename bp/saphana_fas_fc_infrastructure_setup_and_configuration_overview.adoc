@@ -10,7 +10,7 @@ summary: 다음 섹션에서는 SAP HANA 인프라 설정 및 구성 지침을 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

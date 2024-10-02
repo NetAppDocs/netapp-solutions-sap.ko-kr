@@ -10,7 +10,7 @@ summary: 이 섹션에서는 LSC를 NetApp SnapCenter와 통합하는 방법을 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -49,7 +49,7 @@ SAP 고객은 아래 그림에서 녹색으로 표시된 수동 단계가 시간
 
 다음 그림에서는 일반적인 SnapCenter 기반 SAP 시스템 업데이트 절차를 간략하게 보여 줍니다.
 
-image::libelle-sc-image1.png[리벨 SC 영상1]
+image:libelle-sc-image1.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -61,27 +61,27 @@ image::libelle-sc-image1.png[리벨 SC 영상1]
 * 스토리지 백엔드는 아래 이미지와 같이 SnapCenter에서 올바르게 구성해야 합니다.
 
 
-image::libelle-sc-image2.png[리벨 SC 영상2]
+image:libelle-sc-image2.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 두 이미지는 SnapCenter 에이전트와 SAP HANA 플러그인이 각 데이터베이스 서버에 로컬로 설치되는 표준 설치에 대해 설명합니다.
 
 SnapCenter 에이전트와 적절한 데이터베이스 플러그인이 소스 데이터베이스에 설치되어 있어야 합니다.
 
-image::libelle-sc-image3.png[리벨 SC 영상3]
+image:libelle-sc-image3.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SnapCenter 에이전트와 적절한 데이터베이스 플러그인이 타겟 데이터베이스에 설치되어 있어야 합니다.
 
-image::libelle-sc-image4.png[리벨 SC 영상4]
+image:libelle-sc-image4.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 이미지는 SnapCenter 에이전트, SAP HANA 플러그인 및 SAP HANA 데이터베이스 클라이언트가 중앙 서버(예: SnapCenter 서버)에 설치되어 여러 SAP HANA 시스템을 환경 내에서 관리하는 중앙 통신 호스트 배포를 나타냅니다.
 
 중앙 통신 호스트에 SnapCenter 에이전트, SAP HANA 데이터베이스 플러그인 및 HANA 데이터베이스 클라이언트가 설치되어 있어야 합니다.
 
-image::libelle-sc-image5.png[리벨 SC 영상5]
+image:libelle-sc-image5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 스냅샷 복사본이 성공적으로 생성되도록 소스 데이터베이스의 백업을 SnapCenter에서 올바르게 구성해야 합니다.
 
-image::libelle-sc-image6.png[리벨 SC 영상6]
+image:libelle-sc-image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SAP 환경에 LSC 마스터 및 LSC 작업자가 설치되어 있어야 합니다. 이 배포에서는 SnapCenter 서버에 LSC 마스터를 설치하고 대상 SAP 데이터베이스 서버에 LSC 작업자를 설치했으며, 이 경우 새로 고침해야 합니다. 자세한 내용은 다음 절 “ 를 참조하십시오<<랩 설정>>.”
 
@@ -107,7 +107,7 @@ SAP 환경에 LSC 마스터 및 LSC 작업자가 설치되어 있어야 합니�
 
 다음 그림에서는 SnapCenter 에이전트와 데이터베이스 플러그인이 소스 및 대상 데이터베이스 서버에 로컬로 설치된 표준 설치를 보여 줍니다. 랩 설정에서 SAP HANA 플러그인을 설치했습니다. 또한 LSC 작업자는 대상 서버에도 설치되어 있습니다. 단순화 및 가상 서버 수를 줄이기 위해 SnapCenter 서버에 LSC 마스터를 설치했습니다. 여러 구성 요소 간의 통신은 다음 그림에 나와 있습니다.
 
-image::libelle-sc-image7.png[리벨 SC 영상7]
+image:libelle-sc-image7.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -115,7 +115,7 @@ image::libelle-sc-image7.png[리벨 SC 영상7]
 
 다음 그림은 중앙 통신 호스트를 사용한 설정을 보여 줍니다. 이 구성에서는 SnapCenter 에이전트와 SAP HANA 플러그인 및 HANA 데이터베이스 클라이언트가 전용 서버에 설치되었습니다. 이 설정에서는 SnapCenter 서버를 사용하여 중앙 통신 호스트를 설치합니다. 또한 LSC 작업자가 대상 서버에 다시 설치되었습니다. 단순화 및 가상 서버 수를 줄이기 위해 SnapCenter 서버에 LSC 마스터를 설치하기로 결정했습니다. 서로 다른 구성 요소 간의 통신은 아래 그림에 나와 있습니다.
 
-image::libelle-sc-image8.png[리벨 SC 영상8]
+image:libelle-sc-image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -126,9 +126,9 @@ LSC 설치의 주요 구성 요소는 세 가지입니다.
 * * LSC 마스터. * 이름에서 알 수 있듯이 Libelle 기반 시스템 사본의 자동 워크플로를 제어하는 마스터 구성 요소입니다. 데모 환경에서 LSC 마스터는 SnapCenter 서버에 설치되었습니다.
 * * LSC 작업자 * LSC 작업자는 Libelle 소프트웨어의 일부이며 일반적으로 대상 SAP 시스템에서 실행되며 자동 시스템 복제에 필요한 스크립트를 실행합니다. 데모 환경에서 LSC 작업자는 대상 SAP HANA 애플리케이션 서버에 설치되었습니다.
 * * LSC 위성. * LSC 위성은 추가 스크립트를 실행해야 하는 타사 시스템에서 실행되는 Libelle 소프트웨어의 일부입니다. LSC 마스터는 또한 LSC 위성 시스템의 역할을 동시에 수행할 수 있습니다.
-+
-먼저 다음 이미지에 표시된 것처럼 LSC 내의 모든 관련 시스템을 정의했습니다::
 
+
+먼저 다음 이미지와 같이 LSC 내의 모든 관련 시스템을 정의했습니다.
 
 * * 172.30.15.35. * SAP 소스 시스템과 SAP HANA 소스 시스템의 IP 주소입니다.
 * * 172.30.15.3. * 이 구성에 대한 LSC 마스터 및 LSC 위성 시스템의 IP 주소입니다. SnapCenter 서버에 LSC 마스터를 설치했기 때문에 SnapCenter 4.x PowerShell cmdlet은 SnapCenter 서버 설치 중에 설치되었기 때문에 이 Windows 호스트에서 이미 사용할 수 있습니다. 이 시스템에 대해 LSC 위성 역할을 활성화하고 이 호스트에서 모든 SnapCenter PowerShell cmdlet을 실행하기로 결정했습니다. 다른 시스템을 사용하는 경우 SnapCenter 설명서에 따라 이 호스트에 SnapCenter PowerShell cmdlet을 설치해야 합니다.
@@ -139,7 +139,7 @@ IP 주소 대신 호스트 이름 또는 정규화된 도메인 이름을 사용
 
 다음 이미지는 마스터, 작업자, 위성, SAP 소스, SAP 타겟의 LSC 구성을 보여 줍니다. 소스 데이터베이스 및 타겟 데이터베이스
 
-image::libelle-sc-image9.png[리벨 SC 영상9]
+image:libelle-sc-image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 기본 통합을 위해 중앙 통신 호스트를 사용하여 구성 단계를 표준 설치 및 설치로 다시 분리해야 합니다.
 
@@ -151,11 +151,11 @@ image::libelle-sc-image9.png[리벨 SC 영상9]
 
 다음 이미지는 복사 단계의 LSC 작업 구성을 보여줍니다.
 
-image::libelle-sc-image10.png[리벨 SC 영상10]
+image:libelle-sc-image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 이미지는 'ntap_system_clone' 프로세스의 구성을 보여줍니다. PowerShell 스크립트를 실행하므로 위성 시스템에서 이 Windows PowerShell 스크립트가 실행됩니다. 이 경우 위성 시스템 역할을 하는 LSC 마스터가 설치된 SnapCenter 서버입니다.
 
-image::libelle-sc-image11.png[리벨 SC 영상11]
+image:libelle-sc-image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 LSC는 스냅샷 복사본, 클론 복제 및 복구 작업이 성공적으로 수행되었는지 여부를 알고 있어야 하므로 적어도 두 개의 반환 코드 유형을 정의해야 합니다. 한 코드는 스크립트를 성공적으로 실행하기 위한 것으로, 다른 코드는 다음 이미지와 같이 스크립트를 실행하지 못한 것입니다.
 
@@ -163,11 +163,11 @@ LSC는 스냅샷 복사본, 클론 복제 및 복구 작업이 성공적으로 �
 * 실행이 실패한 경우 스크립트에서 표준으로 "LSC:ERROR"를 작성해야 합니다.
 
 
-image::libelle-sc-image12.png[리벨 SC 영상12]
+image:libelle-sc-image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 이미지는 소스 데이터베이스 시스템에서 스냅샷 기반 백업을 실행하고 타겟 데이터베이스 시스템에서 클론을 실행하기 위해 실행해야 하는 PowerShell 스크립트의 일부입니다. 스크립트는 완전하지 않습니다. 이 스크립트는 LSC와 SnapCenter 간의 통합이 어떻게 보이는지 그리고 얼마나 쉽게 설정할 수 있는지를 보여 줍니다.
 
-image::libelle-sc-image13.png[리벨 SC 영상13]
+image:libelle-sc-image13.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 이 스크립트는 LSC 마스터(위성 시스템이기도 함)에서 실행되므로 SnapCenter 서버의 LSC 마스터는 SnapCenter에서 백업 및 클론 생성 작업을 실행할 수 있는 적절한 권한이 있는 Windows 사용자로 실행되어야 합니다. 사용자에게 적절한 권한이 있는지 확인하려면 SnapCenter UI에서 스냅샷 복사본과 클론을 실행할 수 있어야 합니다.
 
@@ -183,11 +183,11 @@ SnapCenter 서버 자체에서 LSC 마스터 및 LSC 위성을 실행할 필요�
 * * NTAP_MNT_RECOVER_CP. * 이 작업은 대상 SAP 시스템과 SAP HANA 데이터베이스를 중지하고 이전 볼륨을 마운트 해제한 다음 이전 작업 'NTAP_SYSTEM_CLONE_CP'에서 전달된 매개 변수를 기반으로 새로 생성된 스토리지 클론 볼륨을 마운트합니다. 그런 다음 타겟 SAP HANA 데이터베이스가 복원되고 복구됩니다.
 
 
-image::libelle-sc-image14.png[리벨 SC 영상14]
+image:libelle-sc-image14.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 이미지는 'NTAP_system_clone_cp' 작업의 구성을 보여 줍니다. 위성 시스템에서 실행되는 Windows PowerShell 스크립트입니다. 이 경우 위성 시스템은 LSC 마스터가 설치된 SnapCenter 서버입니다.
 
-image::libelle-sc-image15.png[리벨 SC 영상15]
+image:libelle-sc-image15.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 LSC는 스냅샷 복사 및 클론 생성 작업이 성공했는지 여부를 알고 있어야 하므로, 아래 이미지에 표시된 대로 스크립트 성공적인 실행을 위한 반환 코드 하나와 스크립트 실행 실패를 위한 반환 코드 두 개 이상의 반환 코드 유형을 정의해야 합니다.
 
@@ -195,11 +195,11 @@ LSC는 스냅샷 복사 및 클론 생성 작업이 성공했는지 여부를 �
 * 실행이 실패한 경우 스크립트에서 표준으로 "LSC: ERROR"를 작성해야 합니다.
 
 
-image::libelle-sc-image16.png[리벨 SC 영상16]
+image:libelle-sc-image16.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 이미지는 중앙 통신 호스트에서 SnapCenter 에이전트를 사용하여 스냅샷 복사본과 클론을 실행하기 위해 실행해야 하는 PowerShell 스크립트의 일부를 보여 줍니다. 이 스크립트는 완전하지 않습니다. 이 스크립트는 LSC와 SnapCenter 간의 통합이 어떻게 보이는지 그리고 얼마나 쉽게 설정할 수 있는지를 보여 주는 데 사용됩니다.
 
-image::libelle-sc-image17.png[리벨 SC 영상17]
+image:libelle-sc-image17.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 앞서 언급했듯이 타겟 서버에 클론 볼륨을 마운트하려면 다음 작업 "NTAP_MNT_RECOVER_CP"에 클론 볼륨의 이름을 넘겨야 합니다. 복제 볼륨의 이름은 접합 경로라고도 하며 변수 '$JunctionPath'에 저장됩니다. 이후 LSC 작업에 대한 핸드오버는 사용자 정의 LSC 변수를 통해 이루어집니다.
 
@@ -210,7 +210,7 @@ echo $JunctionPath > $_task(current, custompath1)_$
 
 다음 그림은 'NTAP_MNT_RECOVER_CP' 작업의 구성을 보여 줍니다. Linux 셸 스크립트를 실행하려고 하므로 대상 데이터베이스 시스템에서 실행되는 명령 스크립트입니다.
 
-image::libelle-sc-image18.png[리벨 SC 영상18]
+image:libelle-sc-image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 LSC는 클론 볼륨을 마운트하고 타겟 데이터베이스를 복원 및 복구했는지 여부를 알고 있어야 하므로 적어도 두 개의 반환 코드 유형을 정의해야 합니다. 한 코드는 스크립트를 성공적으로 실행하기 위한 것으로, 다음 그림과 같이 한 코드는 스크립트의 실패한 실행을 위한 것입니다.
 
@@ -218,7 +218,7 @@ LSC는 클론 볼륨을 마운트하고 타겟 데이터베이스를 복원 및 
 * 실행이 실패한 경우 스크립트에서 표준으로 "LSC: ERROR"를 작성해야 합니다.
 
 
-image::libelle-sc-image19.png[리벨 SC 영상19]
+image:libelle-sc-image19.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 그림에서는 타겟 데이터베이스를 중지하고, 이전 볼륨을 마운트 해제하고, 클론 볼륨을 마운트하고, 타겟 데이터베이스를 복구 및 복구하는 데 사용되는 Linux Shell 스크립트의 일부를 보여 줍니다. 이전 작업에서 교차점 경로는 LSC 변수에 기록되었습니다. 다음 명령은 이 LSC 변수를 읽고 Linux Shell 스크립트의 '$JunctionPath' 변수에 값을 저장합니다.
 
@@ -230,7 +230,7 @@ JunctionPath=$_include($_task(NTAP_SYSTEM_CLONE_CP, custompath1)_$, 1, 1)_$
 ....
 hn6adm ALL=(root) NOPASSWD:/usr/local/bin/H06/central_plugin_host_wrapper_script.sh
 ....
-image::libelle-sc-image20.png[리벨 SC 영상20]
+image:libelle-sc-image20.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -240,8 +240,8 @@ image::libelle-sc-image20.png[리벨 SC 영상20]
 
 다음 그림은 표준 설치에서 "ntap"_'system'_'clone' 작업을 보여줍니다. 보시다시피 스냅샷 복사본과 클론을 생성하고 타겟 데이터베이스 서버에 클론 볼륨을 마운트하며 타겟 데이터베이스를 복원 및 복구하는 데 약 14분이 걸렸습니다. 놀랍게도 Snapshot 및 NetApp FlexClone 기술을 사용하면 소스 데이터베이스의 크기에 관계없이 이 작업의 기간이 거의 동일하게 유지됩니다.
 
-image::libelle-sc-image21.png[리벨 SC 영상21]
+image:libelle-sc-image21.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 그림은 중앙 통신 호스트를 사용할 때 ntap_system_clone_cp와 ntap_mnt_recovery_cp의 두 가지 작업을 보여 줍니다. 보시다시피 스냅샷 복사본, 클론 생성, 타겟 데이터베이스 서버에 클론 볼륨 마운트, 타겟 데이터베이스 복원 및 복구에 약 12분이 걸렸습니다. 표준 설치를 사용할 때 이러한 단계를 수행하는 데 필요한 시간이 동일하거나 더 적습니다. 또한 Snapshot 및 NetApp FlexClone 기술을 사용하면 소스 데이터베이스의 크기에 관계없이 이러한 작업을 빠르고 일관되게 완료할 수 있습니다.
 
-image::libelle-sc-image22.png[리벨 SC 영상22]
+image:libelle-sc-image22.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

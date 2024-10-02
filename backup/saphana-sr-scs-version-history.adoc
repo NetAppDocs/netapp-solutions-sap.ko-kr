@@ -10,8 +10,11 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+버전 기록:
 
 |===
 | 버전 | 날짜 | 문서 버전 기록 

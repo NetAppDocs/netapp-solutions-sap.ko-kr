@@ -8,8 +8,9 @@ summary: 이 문서에서는 고객과 파트너에게 Windows 환경에서 Micr
 :allow-uri-read: 
 
 
-Marco Schoen, NetApp을 참조하십시오
-
+[role="lead"]
 이 문서에서는 고객과 파트너에게 Windows 환경에서 Microsoft SQL Server에서 실행되는 SAP Business Suite 솔루션을 지원하기 위해 NetApp ONTAP을 구축하는 모범 사례를 제공합니다.
+
+Marco Schoen, NetApp을 참조하십시오
 
 link:https://www.netapp.com/media/16865-tr-4467.pdf["https://www.netapp.com/media/16865-tr-4467.pdf"]

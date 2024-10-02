@@ -13,13 +13,14 @@ summary: TR-4757은 SAP 애플리케이션 및 SAP HANA 구축에 Azure NetApp F
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
-Bernd Herth, Tobias Brandl, Nils Bauer, NetApp
-
-MS의 게르 반 테링겐(Geert van Teylingen)
-
+[role="lead"]
 TR-4757은 SAP 애플리케이션 및 SAP HANA 구축에 Azure NetApp Files를 사용하는 모범 사례를 제공합니다. 또한 SAP 공유 파일 시스템의 다양한 사용 사례에 대해 자세히 설명합니다. 이 문서에서는 SAP 애플리케이션용 NetApp Cloud Volumes ONTAP과 SAP HANA의 구축을 활용하는 모범 사례를 제공합니다. 여기에는 SAP 공유 파일 시스템의 다양한 사용 사례와 Cloud Volumes ONTAP 기반 SAP HANA의 특정 성능 고려사항이 포함됩니다.
+
+저자:
+
+베르트 헤르스, 토비아스 브랜들, 닐스 바우어, NetApp 윌 브래튼, 거트 반 티링겐, 마이크로소프트
 
 link:https://www.netapp.com/pdf.html?item=/media/17126-tr4757pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17126-tr4757pdf.pdf"]

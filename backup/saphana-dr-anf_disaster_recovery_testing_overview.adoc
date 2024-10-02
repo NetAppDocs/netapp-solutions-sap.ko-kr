@@ -10,7 +10,7 @@ summary: 효과적인 재해 복구 전략을 구현하려면 필요한 워크�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -37,4 +37,4 @@ ANF 지역 간 복제는 RTO 및 RPO를 위험에 빠뜨리지 않고 재해 복
 
 다음 하위 섹션에서는 이러한 단계에 대해 자세히 설명합니다.
 
-image::saphana-dr-anf_image18.png[Saphana DR anf 이미지18]
+image:saphana-dr-anf_image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

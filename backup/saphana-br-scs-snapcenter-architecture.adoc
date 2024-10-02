@@ -10,7 +10,7 @@ summary: SnapCenter는 애플리케이션 정합성을 보장하는 데이터 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -28,4 +28,4 @@ SnapCenter 맞춤형 플러그인을 사용하면 동일한 SnapCenter 인터페
 
 다음 그림은 SnapCenter 구성 요소를 보여 줍니다.
 
-image::saphana-br-scs-image6.png[Saphana br SCS 영상6]
+image:saphana-br-scs-image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

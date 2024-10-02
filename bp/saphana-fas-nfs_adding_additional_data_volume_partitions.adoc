@@ -10,7 +10,7 @@ summary: SAP HANA 2.0 SPS4부터 SAP HANA 테넌트 데이터베이스의 데이
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -212,4 +212,4 @@ NOTE: 각 볼륨에 서로 다른 TCP 세션을 사용하도록 각 데이터 �
 ....
 ALTER SYSTEM ALTER DATAVOLUME ADD PARTITION PATH '/hana/data2/SID/';
 ....
-image::saphana-fas-nfs_image19.jpg[Saphana FAS NFS 이미지 19]
+image:saphana-fas-nfs_image19.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

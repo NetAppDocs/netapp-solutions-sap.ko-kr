@@ -10,7 +10,7 @@ summary: 'SAP HANA 호스트는 이중화된 10GbE 또는 더 빠른 네트워�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -22,11 +22,11 @@ AFF 시스템 제품군의 다양한 모델을 스토리지 계층에서 혼합�
 
 다음 그림에서는 스토리지 HA(고가용성) 쌍에 연결된 8개의 SAP HANA 호스트를 포함하는 예제 구성을 보여 줍니다.
 
-image::saphana_aff_nfs_image2.png[Saphana AFF NFS 이미지2]
+image:saphana_aff_nfs_image2.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 다음 그림에서는 VMware vSphere를 가상화 계층으로 사용하는 예를 보여 줍니다.
 
-image::saphana_aff_nfs_image3.jpg[Saphana AFF NFS 이미지3]
+image:saphana_aff_nfs_image3.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 아키텍처는 두 가지 차원에서 확장할 수 있습니다.
 
@@ -36,11 +36,11 @@ image::saphana_aff_nfs_image3.jpg[Saphana AFF NFS 이미지3]
 
 다음 그림에서는 스토리지 컨트롤러에 더 많은 SAP HANA 호스트가 연결되는 구성의 예를 보여 줍니다. 이 예에서는 16개의 SAP HANA 호스트의 용량 및 성능 요구사항을 충족하기 위해 더 많은 디스크 쉘프가 필요합니다. 총 처리량 요구사항에 따라 스토리지 컨트롤러에 10GbE 또는 더 빠른 연결을 추가해야 합니다.
 
-image::saphana_aff_nfs_image4.png[Saphana AFF NFS 이미지4]
+image:saphana_aff_nfs_image4.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 구축된 AFF 시스템과 별도로, 다음 그림과 같이 인증된 스토리지 컨트롤러를 추가하여 SAP HANA 환경을 확장할 수도 있습니다.
 
-image::saphana_aff_nfs_image5.png[Saphana AFF NFS 이미지5]
+image:saphana_aff_nfs_image5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -54,7 +54,7 @@ NetApp SnapMirror 기술을 사용하면 하나의 스토리지 시스템에 생
 
 다음 그림과 같이 NFS 마운트를 사용하여 데이터베이스 로그를 보조 스토리지에 직접 백업할 수 있습니다.
 
-image::saphana_aff_nfs_image6.jpg[Saphana AFF NFS 이미지6]
+image:saphana_aff_nfs_image6.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 스토리지 기반 Snapshot 백업은 기존의 파일 기반 백업에 비해 상당한 이점을 제공합니다. 이러한 이점에는 다음이 포함됩니다(이에 국한되지 않음).
 
@@ -91,7 +91,7 @@ DR 사이트의 서버를 정상 운영 중에 개발/테스트 시스템으로 
 
 두 복제 방법 모두 RPO 및 RTO에 영향을 주지 않고 DR 워크플로우 테스트를 실행할 수 있도록 지원합니다. FlexClone 볼륨은 스토리지에 생성되며 DR 테스트 서버에 연결됩니다.
 
-image::saphana_aff_nfs_image7.png[Saphana AFF NFS 이미지7]
+image:saphana_aff_nfs_image7.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 동기식 복제는 StrictSync 모드를 제공합니다. 어떤 이유로든 보조 스토리지에 대한 쓰기가 완료되지 않으면 애플리케이션 입출력이 실패하여 운영 스토리지 시스템과 보조 스토리지 시스템이 동일한지 확인합니다. SnapMirror 관계가 InSync 상태로 되돌아간 후에만 기본 애플리케이션에 대한 애플리케이션 입출력이 재개됩니다. 운영 스토리지에 장애가 발생할 경우 데이터 손실 없이 페일오버 후 보조 스토리지에서 애플리케이션 입출력을 재개할 수 있습니다. StrictSync 모드에서는 RPO가 항상 0입니다.
 
@@ -101,4 +101,4 @@ image::saphana_aff_nfs_image7.png[Saphana AFF NFS 이미지7]
 
 다음 그림에서는 솔루션에 대한 대략적인 개요를 보여 줍니다. 각 사이트의 스토리지 클러스터는 로컬 고가용성을 제공하며 운영 워크로드에 사용됩니다. 각 사이트의 데이터는 다른 위치에 동기식으로 복제되며, 재해 페일오버 시 사용할 수 있습니다.
 
-image::saphana_aff_nfs_image8.png[Saphana AFF NFS 이미지8]
+image:saphana_aff_nfs_image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

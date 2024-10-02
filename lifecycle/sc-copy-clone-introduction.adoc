@@ -10,20 +10,21 @@ summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 :firstname: ---
 :author: ---
 :authorinitials: -
 :authors: ---
 
 
-NetApp, Nils Bauer
+[role="lead"]
+오늘날의 역동적인 비즈니스 환경에서 기업은 지속적인 혁신을 제공하고 변화하는 시장에 신속하게 대응해야 합니다. 이러한 경쟁 상황에서 업무 프로세스에서 더 큰 유연성을 구현하는 기업은 시장 요구에 보다 효율적으로 적응할 수 있습니다.
+
+저자: 닐스 바우어, NetApp
 
 
 
 == 소개
-
-오늘날의 역동적인 비즈니스 환경에서 기업은 지속적인 혁신을 제공하고 변화하는 시장에 신속하게 대응해야 합니다. 이러한 경쟁 상황에서 업무 프로세스에서 더 큰 유연성을 구현하는 기업은 시장 요구에 보다 효율적으로 적응할 수 있습니다.
 
 변화하는 시장 요구도 정기적인 통합, 변경 및 업데이트가 필요한 회사의 SAP 환경에 영향을 미칩니다. IT 부서는 더 적은 리소스로 더 짧은 기간에 걸쳐 이러한 변경 사항을 구현해야 합니다. 이러한 변경 사항을 배포할 때 위험을 최소화하려면 프로덕션 환경에서 실제 데이터를 포함하는 추가 SAP 시스템이 필요한 철저한 테스트와 교육이 필요합니다.
 
@@ -31,7 +32,7 @@ NetApp, Nils Bauer
 
 다음 그림과 같이 SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션이 SAP HANA 데이터베이스 및 라이프사이클 관리 도구에 통합되어 효율적인 애플리케이션 통합 데이터 보호와 SAP 테스트 시스템의 유연한 프로비저닝을 결합합니다. 이 솔루션은 사내에서 실행하거나 Azure NetApp Files(ANF) 또는 Amazon FSx for NetApp ONTAP(FSx for ONTAP)의 클라우드에서 실행되는 SAP HANA에서 사용할 수 있습니다.
 
-image::sc-copy-clone-image1.png[SC 복사 클론 이미지1]
+image:sc-copy-clone-image1.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 

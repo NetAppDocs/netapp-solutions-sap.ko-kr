@@ -10,11 +10,12 @@ summary: TR-4719에서는 NetApp SnapCenter 기술과 SAP HANA 플러그인을 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+TR-4719에서는 NetApp SnapCenter 기술과 SAP HANA 플러그인을 사용하여 SAP HANA 시스템 복제 환경의 백업 및 복구를 수행하는 방법을 설명합니다.
 
 NetApp, Nils Bauer
-
-TR-4719에서는 NetApp SnapCenter 기술과 SAP HANA 플러그인을 사용하여 SAP HANA 시스템 복제 환경의 백업 및 복구를 수행하는 방법을 설명합니다.
 
 link:https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf"]

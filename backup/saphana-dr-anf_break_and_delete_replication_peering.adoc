@@ -10,7 +10,7 @@ summary: 재해 복구 시 타겟 호스트에서 읽기 및 쓰기 작업을 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,15 +21,15 @@ NOTE: HANA 데이터 볼륨의 경우 AzAcSnap을 통해 생성된 최신 HANA �
 
 다음 두 스크린샷은 HANA 데이터 볼륨에 대한 분리 및 삭제 피어링 작업을 보여 줍니다. 로그 백업과 HANA 공유 볼륨에도 동일한 작업을 수행해야 합니다.
 
-image::saphana-dr-anf_image27.png[Saphana DR anf 이미지27]
+image:saphana-dr-anf_image27.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
-image::saphana-dr-anf_image28.png[사파나 DR anf image28]
+image:saphana-dr-anf_image28.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 복제 피어링을 삭제했으므로 볼륨을 최신 HANA 스냅샷 백업으로 되돌릴 수 있습니다. 피어링을 삭제하지 않으면 복원 볼륨 선택이 회색으로 표시되고 선택할 수 없습니다. 다음 두 스크린샷은 볼륨 복원 작업을 보여 줍니다.
 
-image::saphana-dr-anf_image29.png[Saphana DR anf image29 를 참조하십시오]
+image:saphana-dr-anf_image29.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
-image::saphana-dr-anf_image30.png[사파나 DR anf image30]
+image:saphana-dr-anf_image30.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 볼륨 복원 작업 후 데이터 볼륨은 일관된 HANA 스냅샷 백업을 기반으로 하며, 이제 포워드 복구 작업을 실행하는 데 사용할 수 있습니다.
 

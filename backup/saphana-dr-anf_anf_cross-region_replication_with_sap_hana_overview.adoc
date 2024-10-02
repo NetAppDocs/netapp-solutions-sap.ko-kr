@@ -10,8 +10,10 @@ summary: 지역 간 복제에 대한 애플리케이션 독립적 정보는 다�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
-지역 간 복제에 대한 애플리케이션 독립적 정보는 에서 찾을 수 있습니다 https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files 설명서 | Microsoft 문서"^] 개념 및 방법 가이드 섹션을 참조하십시오.
+지역 간 복제에 대한 애플리케이션 관련 정보는 다음 위치에서 찾을 수 있습니다.
+
+link:https://docs.microsoft.com/en-us/azure/azure-netapp-files/["Azure NetApp Files 설명서 | Microsoft 문서"^] 개념 및 사용 방법 가이드 섹션

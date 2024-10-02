@@ -8,7 +8,10 @@ summary:
 :allow-uri-read: 
 
 
-=:hardwaturs::nofooter::icons:linkattrs::imagesdir:./../media/
+=:hardbreak::nofooter::icons:font:linkattrs::imagesdir:../media/
+
+[role="lead"]
+NFS 프로토콜을 사용하는 NetApp AFF 기반 SAP HANA
 
 |===
 |  |  |  

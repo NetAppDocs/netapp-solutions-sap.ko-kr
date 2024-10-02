@@ -10,6 +10,8 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
+[role="lead"]
+이 문서에서는 NetApp FAS 시스템 및 NFS의 인프라 설정 및 구성에 대해 설명합니다.

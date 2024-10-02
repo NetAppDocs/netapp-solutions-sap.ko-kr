@@ -10,7 +10,7 @@ summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -82,11 +82,11 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 
 HDD를 사용할 경우 다음 그림과 같이 최대 2개의 DS2246 디스크 쉘프 또는 4개의 DS224C 디스크 쉘프를 하나의 SAS 스택에 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다.
 
-image::saphana_fas_fc_image10.png[사파나 FAS FC 이미지10]
+image:saphana_fas_fc_image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 SSD를 사용할 경우, 다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. DS224C 디스크 쉘프를 사용하면 4중 경로 SAS 케이블도 사용할 수 있지만 필수는 아닙니다.
 
-image::saphana_fas_fc_image11.png[Saphana FAS fc 이미지11]
+image:saphana_fas_fc_image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -100,7 +100,7 @@ image::saphana_fas_fc_image11.png[Saphana FAS fc 이미지11]
 
 다음 그림에서는 8개의 SAP HANA 호스트에 대한 구성을 보여 줍니다. 각 스토리지 컨트롤러에 4개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 하나씩, 두 개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트는 4 × 10 = 40개의 데이터 디스크(HDD)로 구성됩니다.
 
-image::saphana_fas_fc_image12.png[Saphana FAS fc 이미지12]
+image:saphana_fas_fc_image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -110,7 +110,7 @@ image::saphana_fas_fc_image12.png[Saphana FAS fc 이미지12]
 
 다음 그림에서는 ADPv2로 구성된 12Gb SAS 쉘프에서 실행 중인 12개의 SAP HANA 호스트 구성을 보여 줍니다. 각 스토리지 컨트롤러에 6개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 2개씩, 4개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트에는 디스크 11개와 데이터 9개, 패리티 디스크 파티션 2개가 구성되어 있습니다. 각 컨트롤러에 대해 2개의 스페어 파티션을 사용할 수 있습니다.
 
-image::saphana_fas_fc_image13.jpg[사파나 FAS FC 이미지13]
+image:saphana_fas_fc_image13.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -124,13 +124,13 @@ SAP HANA 데이터베이스를 사용하는 다중 호스트 SAP 환경에는 �
 
 스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 4개('fc_ * _ *)의 스크린샷을 보여 줍니다.
 
-image::saphana_fas_fc_image14.jpeg[Saphana FAS fc 이미지14]
+image:saphana_fas_fc_image14.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 ONTAP 9.8 System Manager를 사용하여 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.
 
 다음 그림은 ONTAP 9.8 System Manager를 사용한 SVM 및 LIF 생성을 보여 줍니다.
 
-image::saphana_fas_fc_image15.jpeg[사파나 FAS FC 이미지15]
+image:saphana_fas_fc_image15.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -138,7 +138,7 @@ image::saphana_fas_fc_image15.jpeg[사파나 FAS FC 이미지15]
 
 FCP 포트 세트는 특정 igroup에서 사용할 LIF를 정의하는 데 사용됩니다. 일반적으로 HANA 시스템에 대해 생성된 모든 LIF는 동일한 포트 세트에 배치됩니다. 다음 그림에서는 이미 생성되어 있는 4개의 LIF가 포함된 32g이라는 포트 세트 구성을 보여 줍니다.
 
-image::saphana_fas_fc_image16.jpeg[Saphana FAS FC 이미지16]
+image:saphana_fas_fc_image16.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 NOTE: ONTAP 9.8에서는 포트 세트가 필요하지 않지만 명령줄을 통해 생성하고 사용할 수 있습니다.
@@ -164,7 +164,7 @@ NOTE: 'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA
 
 다음 그림에서는 SS3_HANA의 이니시에이터 목록을 보여 줍니다. igroup은 서버의 모든 WWPN을 포함하며 스토리지 컨트롤러의 포트 세트에 할당됩니다.
 
-image::saphana_fas_fc_image17.jpeg[Saphana FAS FC 이미지17]
+image:saphana_fas_fc_image17.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -175,7 +175,7 @@ image::saphana_fas_fc_image17.jpeg[Saphana FAS FC 이미지17]
 
 NOTE: SAP HANA 시스템에 고가용성(HA) 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.
 
-image::saphana_fas_fc_image18.jpg[Saphana FAS FC 이미지18]
+image:saphana_fas_fc_image18.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 각 SAP HANA 호스트마다 데이터 볼륨, 로그 볼륨 및 '/HANA/shared'에 대한 볼륨이 구성됩니다. 다음 표에는 4개의 SAP HANA 단일 호스트 시스템이 포함된 구성의 예가 나와 있습니다.
 
@@ -254,7 +254,7 @@ NOTE: 설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 �
 
 NOTE: SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러를 하나만 사용하는 경우, 데이터 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수 있습니다.
 
-image::saphana_fas_fc_image19.jpg[Saphana FAS fc 이미지19]
+image:saphana_fas_fc_image19.jpg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 각 SAP HANA 호스트에 대해 데이터 볼륨과 로그 볼륨이 생성됩니다. '/HANA/Shared' 볼륨은 SAP HANA 시스템의 모든 호스트에서 사용됩니다. 다음 그림에서는 4+1 다중 호스트 SAP HANA 시스템의 예제 구성을 보여 줍니다.
 
@@ -380,38 +380,38 @@ NetApp OnCommand System Manager를 사용하여 스토리지 볼륨 및 LUN을 �
 
 . NetApp ONTAP 시스템 관리자에서 LUN 생성 마법사를 시작합니다.
 +
-image::saphana_fas_fc_image20.jpeg[Saphana FAS FC 이미지20]
+image:saphana_fas_fc_image20.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . LUN 이름을 입력하고 LUN 유형을 선택한 다음 LUN 크기를 입력합니다.
 +
-image::saphana_fas_fc_image21.jpeg[Saphana FAS fc 이미지21]
+image:saphana_fas_fc_image21.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 볼륨 이름과 호스팅 애그리게이트를 입력합니다.
 +
-image::saphana_fas_fc_image22.jpeg[Saphana FAS fc 이미지22]
+image:saphana_fas_fc_image22.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . LUN을 매핑할 igroup을 선택합니다.
 +
-image::saphana_fas_fc_image23.jpeg[사파나 FAS FC 이미지23]
+image:saphana_fas_fc_image23.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . QoS 설정을 제공합니다.
 +
-image::saphana_fas_fc_image24.jpeg[Saphana FAS fc 이미지24]
+image:saphana_fas_fc_image24.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 요약 페이지에서 다음 을 클릭합니다.
 +
-image::saphana_fas_fc_image25.jpeg[Saphana FAS fc 이미지25]
+image:saphana_fas_fc_image25.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 완료 페이지에서 마침 을 클릭합니다.
 +
-image::saphana_fas_fc_image26.jpeg[Saphana FAS fc 이미지26]
+image:saphana_fas_fc_image26.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 . 각 LUN에 대해 2단계부터 7단계까지 반복합니다.
 +
 다음 그림에서는 2+1 다중 호스트 설정을 위해 생성해야 하는 모든 LUN의 요약을 보여 줍니다.
 
 +
-image::saphana_fas_fc_image27.jpeg[Saphana FAS fc 이미지27]
+image:saphana_fas_fc_image27.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 

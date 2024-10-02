@@ -10,7 +10,7 @@ summary: SAP HANA 1.0 SPS10부터 SAP는 입출력 동작을 조정하고 사용
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

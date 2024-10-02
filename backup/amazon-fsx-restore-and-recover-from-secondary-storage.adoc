@@ -10,7 +10,7 @@ summary: 이 섹션에서는 보조 스토리지에서 복원 및 복구하는 �
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,10 +18,10 @@ summary: 이 섹션에서는 보조 스토리지에서 복원 및 복구하는 �
 
 보조 스토리지의 모든 백업 목록을 검색하려면 SnapCenter 토폴로지 보기에서 볼트 사본 을 클릭한 다음 백업을 선택하고 복원 을 클릭합니다.
 
-image::amazon-fsx-image92.png[Amazon FSx 이미지92]
+image:amazon-fsx-image92.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 복구 대화 상자에 보조 위치가 표시됩니다.
 
-image::amazon-fsx-image93.png[Amazon FSx 이미지 93]
+image:amazon-fsx-image93.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 추가 복원 및 복구 단계는 운영 스토리지에서 스냅샷 백업에 대해 이전에 다룬 단계와 동일합니다.

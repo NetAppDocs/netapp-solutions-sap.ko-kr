@@ -10,7 +10,7 @@ summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

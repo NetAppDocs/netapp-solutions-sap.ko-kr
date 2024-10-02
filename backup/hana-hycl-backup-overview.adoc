@@ -10,8 +10,11 @@ summary: 이 기술 보고서에서는 애플리케이션용 NetApp BlueXP Backu
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
+
+[role="lead"]
+이 기술 보고서에서는 애플리케이션용 NetApp BlueXP Backup nad Recovery를 사용하여 SAP HANA 데이터 보호에 대한 모범 사례를 제공합니다. 이 문서에서는 구성, 백업 작업, 백업 작업, 데이터베이스 작업 등 개념, 구성 권장 사항 및 운영 워크플로우를 복원 작업을 수행할 수 있습니다.
 
 
 
@@ -36,7 +39,7 @@ BlueXP 커넥터를 고객 가상 네트워크 내에 구축해야 합니다. �
 사내 스토리지와 클라우드 버킷 간의 데이터 전송은 AES 256비트 유휴 암호화, 전송 중 TLS/HTTPS 암호화, CMK(고객 관리 키) 지원으로 엔드 투 엔드 보호를 실현합니다. 를 누릅니다
 백업된 데이터를 변경 및 삭제가 불가능한 WORM 상태로 저장할 수 있습니다. 오브젝트 스토리지의 데이터에 액세스하는 유일한 방법은 NetApp CVO를 포함한 NetApp ONTAP 기반 스토리지에 복원하는 것입니다.
 
-image::hana-hycl-back-image1.png[아인빌딩,624,450]
+image:hana-hycl-back-image1.png["EIN BILD, DAS 텍스트, 스크린샷, Diagramm, Kreis enthält. Automatisch generierte Beschreibung, width=624, height=450"]
 
 
 

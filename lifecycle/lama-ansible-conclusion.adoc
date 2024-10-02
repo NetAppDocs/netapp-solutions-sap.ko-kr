@@ -10,7 +10,7 @@ summary: Ansible과 같은 최신 자동화 프레임워크를 SAP LaMa 프로�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

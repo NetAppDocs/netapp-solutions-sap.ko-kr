@@ -10,7 +10,7 @@ summary: 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -22,7 +22,7 @@ summary: 포괄적인 재해 복구 솔루션을 통해 고객은 운영 사이�
 
 이 문서에서는 2개 지역 재해 복구 솔루션의 다양한 구현 옵션에 대해 설명합니다.
 
-image::saphana-dr-anf_image3.png[사파나 DR anf image3]
+image:saphana-dr-anf_image3.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -52,7 +52,7 @@ SAP HANA 시스템 복제는 다음 두 가지 모드 중 하나로 작동할 �
 
 다음 그림에서는 SAP HANA 시스템 복제를 보여 줍니다.
 
-image::saphana-dr-anf_image4.png[사파나 DR anf image4]
+image:saphana-dr-anf_image4.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -80,13 +80,13 @@ ANF 교차 지역 복제는 비동기 데이터 복제를 사용하는 재해 �
 
 RTO는 주로 재해 복구 사이트에서 HANA 데이터베이스를 시작하고 데이터를 메모리로 로드하는 데 걸리는 시간에 따라 달라집니다. 데이터가 1000MB/s의 처리량으로 읽혀지는 것으로 가정하면 1TB의 데이터를 로드하는 데 약 18분이 걸립니다. 복제 구성에 따라 정방향 복구도 필요하며 전체 RTO 값에 추가됩니다.
 
-다양한 구성 옵션에 대한 자세한 내용은 장을 참조하십시오 link:ent-apps-db/saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html["SAP HANA를 통한 지역 간 복제를 위한 구성 옵션"].
+다양한 구성 옵션에 대한 자세한 내용은 장을 link:saphana-dr-anf_anf_cross-region_replication_with_sap_hana_overview.html["SAP HANA를 통한 지역 간 복제를 위한 구성 옵션"]참조하십시오.
 
 재해 복구 사이트의 서버는 정상 운영 중에 개발/테스트 시스템으로 사용할 수 있습니다. 재해가 발생할 경우 개발/테스트 시스템을 종료하고 DR 운영 서버로 시작해야 합니다.
 
 ANF 지역 간 복제를 사용하면 RPO 및 RTO에 영향을 주지 않고 DR 워크플로우를 테스트할 수 있습니다. 볼륨 클론을 생성하여 DR 테스트 서버에 연결하면 됩니다.
 
-image::saphana-dr-anf_image5.png[사파나 DR anf image5]
+image:saphana-dr-anf_image5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 

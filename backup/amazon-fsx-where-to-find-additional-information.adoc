@@ -10,7 +10,7 @@ summary:
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -22,11 +22,11 @@ https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html[]
 
 * SnapCenter 리소스 페이지를 참조하십시오
 +
-https://www.netapp.com/us/documentation/snapcenter-software.aspx["https://www.netapp.com/us/documentation/snapcenter-software.aspx"^]
+https://www.netapp.com/us/documentation/snapcenter-software.aspx["https://www.netapp.com/us/documentation/snapcenter-software.aspx"]
 
 * SnapCenter 소프트웨어 설명서
 +
-https://docs.netapp.com/us-en/snapcenter/index.html["https://docs.netapp.com/us-en/snapcenter/index.html"^]
+https://docs.netapp.com/us-en/snapcenter/index.html["https://docs.netapp.com/us-en/snapcenter/index.html"]
 
 * TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화
 +

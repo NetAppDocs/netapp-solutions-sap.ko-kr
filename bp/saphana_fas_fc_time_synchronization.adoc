@@ -10,7 +10,7 @@ summary: 스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간�
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]

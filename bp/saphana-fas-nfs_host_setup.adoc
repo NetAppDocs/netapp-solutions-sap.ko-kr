@@ -10,7 +10,7 @@ summary: 이 섹션에서 설명하는 모든 단계는 물리적 서버의 SAP 
 :nofooter: 
 :icons: font
 :linkattrs: 
-:imagesdir: ./../media/
+:imagesdir: ../media/
 
 
 [role="lead"]
