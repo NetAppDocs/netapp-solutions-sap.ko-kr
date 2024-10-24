@@ -399,17 +399,12 @@
   <block id="8ec2236fd6ed4715167a8899b66d149b" category="paragraph">다음 표에 나열된 NFS 옵션을 확인하여 모든 스토리지 컨트롤러에서 설정해야 합니다. 이 표에 나와 있는 일부 명령의 경우 고급 권한 모드로 전환해야 합니다.</block>
   <block id="d696a6a2b32bd5b7e510d3c088fce207" category="cell">NFSv3을 사용하도록 설정합니다</block>
   <block id="d9a7640ac46e3f8cf9816a8ab8caaabb" category="cell">NFS modify -vserver &lt;vserver-name&gt; v3.0 활성화</block>
-  <block id="c59b6b6ccda30b7d9580c4a3fb9a1be4" category="cell">ONTAP 9: NFS TCP 최대 전송 크기를 1MB로 설정합니다</block>
   <block id="88a84b59bbf7c31014bc6e5332d54d69" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max -xfer-size 1048576 set admin 을 설정합니다</block>
-  <block id="387cbcbc68932c744bec8dc8c31a465c" category="cell">ONTAP 8: NFS 읽기 및 쓰기 크기를 64KB로 설정합니다</block>
-  <block id="07532d41432e61e5d8242e7babd2070c" category="cell">고급 NFS modify -vserver &lt;vserver-name&gt;-v3-tcp-max-read-size 65536 nfs modify -vserver &lt;vserver-name&gt;-v3-tcp-max-write-size 65536 set admin 을 설정합니다</block>
   <block id="4b3b3fba259d5ac2ca622fa9160b1fb5" category="section-title">NFSv4에 대한 NFS 구성</block>
   <block id="c8542833574cfec9920af77661a766e0" category="paragraph">다음 표에 나열된 NFS 옵션을 확인하여 모든 SVM에서 설정해야 합니다.</block>
   <block id="5c87e78153c1f2e2e2b534049bdc60f9" category="paragraph">이 표의 일부 명령에 대해서는 고급 권한 모드로 전환해야 합니다.</block>
   <block id="70f982c83fe296db3a8fc01d6800eeb5" category="cell">NFSv4를 설정합니다</block>
   <block id="b78ad1fd79e9fc7773f87edda4742199" category="cell">NFS modify -vserver &lt;vserver-name&gt; -v4.1이 활성화되었습니다</block>
-  <block id="4e11d437a84608405c1cba53cb335989" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max -xfer-size 1048576 set admin 을 설정합니다</block>
-  <block id="9d4c39bb98c40111c9c2cda962a5051a" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max-xfer-size 65536 set admin 을 설정합니다</block>
   <block id="ddf50f4def54fc42e1e3c48d60dc6360" category="cell">NFSv4 ACL(액세스 제어 목록) 해제</block>
   <block id="77fd2d8c2c348207e3e8aa8833c161c4" category="cell">NFS modify -vserver &lt;vserver_name&gt; -v4.1 -acl disabled</block>
   <block id="75a14711dc56291ed980640b0097eeda" category="cell">NFSv4 도메인 ID를 설정합니다</block>
@@ -502,7 +497,6 @@
   <block id="7b0c54ca1e88f6ef7461709ba20843e4" category="paragraph">표시된 명령 중 일부의 경우 ONTAP 내의 고급 권한 모드로 전환해야 합니다.</block>
   <block id="214d7b06b7a82576ad3cc8dda3a23b58" category="paragraph">일부 명령의 경우 ONTAP 내의 고급 권한 모드로 전환해야 합니다.</block>
   <block id="b4a26338e6b2855edb75ec84606be72f" category="cell">NFS modify -vserver &lt;vserver-name&gt; -v4.1이 활성화되었습니다</block>
-  <block id="d1e1ffed5786862bbb79671233692063" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max-xfer-size 65536 set admin 을 설정합니다</block>
   <block id="4a762e476d9eda379d2de2de4266fb64" category="inline-link-macro">NFSv4를 위한 SAP HANA 설치 준비</block>
   <block id="ad357b093f7cd3e6d382bfe20cd1f2bd" category="admonition">에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버(/'etc/idmapd.conf') 및 SVM에서 동일한 값으로 설정해야 합니다 <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
   <block id="650e7293e887dfe8d6a1e7be568f91f1" category="doc">기록 업데이트</block>
@@ -1819,7 +1813,6 @@
   <block id="4bb12dc6461f1d5fa4e11ed67fdeef9e" category="sidebar">SAP HANA 시스템 복제 개요</block>
   <block id="152277675a8ef46c12f1dc91f2f53ede" category="paragraph">SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="a3976abaebe3520fd66c465c4d7747d7" category="inline-link-rx"></block>.</block>
   <block id="18cab9085e2115741cf08f1964299a5a" category="paragraph">이 문서에서는 NFS 프로토콜 버전 3(NFSv3) 또는 NFS 프로토콜 버전 4(NFSv4.1)의 ONTAP 구성 요구사항에 대해 설명합니다.</block>
-  <block id="e678bbdfe53ad933277605d32601cebe" category="admonition">NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.</block>
   <block id="c16b7b6c06ec01825313e31feb82c6d2" category="cell">rsize = 1048576, wsize = 262144</block>
   <block id="5f99a6ad54bfd8d0c68c8cc9f709365b" category="inline-link">SAP Note 1900823</block>
   <block id="8e473bb8179de06c9675fded85db8531" category="paragraph">SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다<block ref="7c7e574e6ad6c7603298dd899482269f" category="inline-link-rx"></block> 백서.</block>
@@ -3479,10 +3472,6 @@
   <block id="93f305eb7fa597fc876f2e0744abf06b" category="paragraph">이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 있는 여러 작업으로 구성되며 자동화 수준에 따라 몇 일이 걸릴 수 있습니다.</block>
   <block id="b7de930c0dd2d22c43e147a8da62d970" category="admonition">성능 테스트를 통해 그 사실을 알 수 있습니다<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> 특히 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>. 공유 볼륨은 'nconnect' 옵션을 사용하는 것이 좋습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
   <block id="d7d1e0b01aa98fdaaa388843234520d5" category="admonition">ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다.</block>
-  <block id="953d9b4b8aec5e0f96c90ef8b3d12b68" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
-세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다.
-호스트에서 이 작업은 에 의해 인접됩니다<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
-그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="ab5c20669050c73ba24d89c4b271e9e7" category="inline-link-macro-rx"></block></block>
   <block id="075d23786d3ed7499b8d563bd41298ef" category="admonition">를 클릭합니다<block ref="68727786e22b015e3091f141273c8e9a" prefix=" " category="inline-code"></block> 파일 시스템은 데이터베이스 호스트마다 다릅니다. 다음 예는 을 보여줍니다<block ref="7b5a8b70c72ff791a6c938600aa48468" prefix=" " category="inline-code"></block>.</block>
   <block id="61dc8147d5af95ff65e5beeeceb8d669" category="cell">NFSv4.x 세션 슬롯의 양을 변경합니다
   선택 사항</block>
@@ -3490,10 +3479,6 @@
 nfs modify -vserver hana-v4.x-session-num-slot &lt;value&gt;
 admin 설정</block>
   <block id="7de8b31e6597c345c3a3966bd41f80a2" category="admonition">성능 테스트를 통해 그 결과가 나왔습니다<block ref="6ad27604f562c1a2600540bd7f1094d4" prefix=" " category="inline-code"></block> 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다<block ref="b3e16d81f1f84d087c55c1815a58a64c" prefix=" " category="inline-code"></block>. 공유 볼륨은 'nconnect' 옵션을 사용할 경우 많은 이점을 얻을 수 있습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.</block>
-  <block id="3efa710e585bff45d9c6786442911c9d" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
-세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다.
-호스트에서 이 작업은 에 의해 인접됩니다<block ref="0e1f4d10d02df866bcbb3247ad4ee7bd" prefix=" " category="inline-code"></block>
-그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="f5e012a6f36bf833f75aec36ff8eee0f" category="inline-link-macro-rx"></block></block>
   <block id="093a45d87b6b8692e6c9a73c1a04c137" category="doc">추가 정보 및 버전 기록을 찾을 수 있는 위치</block>
   <block id="e66b5a3c6799dcc5dd4039a58085fb38" category="cell">2017년 9월</block>
   <block id="3258056add985fc8ba4192b41052b298" category="list-text">“고급 구성 및 조정” 섹션이 추가되었습니다.</block>
@@ -4777,4 +4762,11 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="f3ba50f9922c89d4b36c50fe66685be2" category="list-text"><block ref="f3ba50f9922c89d4b36c50fe66685be2" category="inline-link-macro-rx"></block></block>
   <block id="7ac1c0d7efdd5bfa24d4e579673e3de4" category="list-text"><block ref="7ac1c0d7efdd5bfa24d4e579673e3de4" category="inline-link-macro-rx"></block></block>
   <block id="273ade22ee82ef60099b9d4c39bb9dc0" category="list-text"><block ref="273ade22ee82ef60099b9d4c39bb9dc0" category="inline-link-macro-rx"></block></block>
+  <block id="526eb260d8cd870801391fead2b6a810" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 NFSv4.x 세션 슬롯의 양은 다음 규칙에 따라 조정해야 합니다. 세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다. 호스트에서 재부팅이 완료된<block ref="1f544d9bef8ddb99793e0436d6362920" prefix=" " category="inline-code"></block> 후 종료됩니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="ab5c20669050c73ba24d89c4b271e9e7" category="inline-link-macro-rx"></block></block>
+  <block id="d315ad62620c6c170565a626312e362d" category="cell">NFS TCP 최대 전송 크기를 1MB로 설정합니다</block>
+  <block id="8a92011f99cb9f446b19032c2d76f759" category="admonition">워크로드가 서로 다른 공유 환경에서 최대 NFS TCP 전송 크기를 262144로 설정합니다</block>
+  <block id="42a7703e0bc31f6ec72a6e40780ff36a" category="cell">NFSv4.x 세션 슬롯의 양을 변경할 수 있습니다(선택 사항)</block>
+  <block id="cae93577fd94d0fe06d63305e6bfbe50" category="admonition">pNFS를 사용하도록 설정하고 사용할 수 있습니다.</block>
+  <block id="924eac7fb01f1080c8a2e57261e50702" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 NFSv4.x 세션 슬롯의 양은 다음 규칙에 따라 조정해야 합니다. 세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다. 호스트에서 재부팅이 완료된<block ref="1f544d9bef8ddb99793e0436d6362920" prefix=" " category="inline-code"></block> 후 종료됩니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="f5e012a6f36bf833f75aec36ff8eee0f" category="inline-link-macro-rx"></block></block>
+  <block id="dface3e0fc3485feea995027b8e0fd8a" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max-xfer-size 1048576 set admin 을 설정합니다</block>
 </blocks>

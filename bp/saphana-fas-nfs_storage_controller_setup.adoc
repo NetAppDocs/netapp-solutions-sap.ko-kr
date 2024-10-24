@@ -289,9 +289,7 @@ image:saphana-fas-nfs_image18.jpg["입력/출력 대화 상자 또는 작성된 
 | 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify –vserver <vserver-name> -volume <volname> -snapshot-policy none 
 
 
-| SID_shared 볼륨을 제외하고 액세스 시간 업데이트를 비활성화합니다  a| 
-고급 vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin을 설정합니다
-
+| SID_shared 볼륨을 제외하고 액세스 시간 업데이트를 비활성화합니다 | 고급 vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin을 설정합니다 
 |===
 
 
@@ -308,15 +306,11 @@ image:saphana-fas-nfs_image18.jpg["입력/출력 대화 상자 또는 작성된 
 | NFSv3을 사용하도록 설정합니다 | NFS modify -vserver <vserver-name> v3.0 활성화 
 
 
-| ONTAP 9: NFS TCP 최대 전송 크기를 1MB로 설정합니다  a| 
-고급 NFS modify -vserver <vserver_name> -tcp-max -xfer-size 1048576 set admin 을 설정합니다
-
-
-
-| ONTAP 8: NFS 읽기 및 쓰기 크기를 64KB로 설정합니다  a| 
-고급 NFS modify -vserver <vserver-name>-v3-tcp-max-read-size 65536 nfs modify -vserver <vserver-name>-v3-tcp-max-write-size 65536 set admin 을 설정합니다
-
+| NFS TCP 최대 전송 크기를 1MB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max -xfer-size 1048576 set admin 을 설정합니다 
 |===
+
+NOTE: 워크로드가 서로 다른 공유 환경에서 최대 NFS TCP 전송 크기를 262144로 설정합니다
+
 
 
 == NFSv4에 대한 NFS 구성
@@ -332,10 +326,7 @@ image:saphana-fas-nfs_image18.jpg["입력/출력 대화 상자 또는 작성된 
 | NFSv4를 설정합니다 | NFS modify -vserver <vserver-name> -v4.1이 활성화되었습니다 
 
 
-| ONTAP 9: NFS TCP 최대 전송 크기를 1MB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max -xfer-size 1048576 set admin 을 설정합니다 
-
-
-| ONTAP 8: NFS 읽기 및 쓰기 크기를 64KB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max-xfer-size 65536 set admin 을 설정합니다 
+| NFS TCP 최대 전송 크기를 1MB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max -xfer-size 1048576 set admin 을 설정합니다 
 
 
 | NFSv4 ACL(액세스 제어 목록) 해제 | NFS modify -vserver <vserver_name> -v4.1 -acl disabled 
@@ -353,11 +344,13 @@ image:saphana-fas-nfs_image18.jpg["입력/출력 대화 상자 또는 작성된 
 | NFSv4 숫자 ID를 해제합니다 | NFS modify -vserver <vserver_name> -v4-numeric-ids disabled 
 
 
-| NFSv4.x 세션 슬롯의 양을 변경합니다
-  선택 사항 | 고급 설정
+| NFSv4.x 세션 슬롯의 양을 변경할 수 있습니다(선택 사항) | 고급 설정
 nfs modify -vserver hana-v4.x-session-num-slot <value>
 admin 설정 
 |===
+
+NOTE: 워크로드가 서로 다른 공유 환경에서 최대 NFS TCP 전송 크기를 262144로 설정합니다
+
 
 NOTE: 번호 없는 ID를 사용하지 않도록 하려면 에 설명된 대로 사용자 관리가 필요합니다 link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4를 위한 SAP HANA 설치 준비"]
 
@@ -365,7 +358,7 @@ NOTE: 번호 없는 ID를 사용하지 않도록 하려면 에 설명된 대로 
 NOTE: 에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버(/'etc/idmapd.conf') 및 SVM에서 동일한 값으로 설정해야 합니다 link:saphana-fas-nfs_sap_hana_installation_preparations_for_nfsv4.html["NFSv4를 위한 SAP HANA 설치 준비"]
 
 
-NOTE: NFSV4.1을 사용 중인 경우 pNFS를 사용하고 사용할 수 있습니다.
+NOTE: pNFS를 사용하도록 설정하고 사용할 수 있습니다.
 
 호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다 `nameserver.ini` 다음 표와 같습니다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.
 

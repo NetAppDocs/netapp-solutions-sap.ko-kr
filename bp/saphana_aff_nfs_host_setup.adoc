@@ -62,7 +62,7 @@ net.core.wmem_max = 16777216
 net.ipv4.tcp_rmem = 4096 131072 16777216
 net.ipv4.tcp_wmem = 4096 16384  16777216
 net.core.netdev_max_backlog = 300000
-net.ipv4.tcp_slow_start_after_idle=0
+net.ipv4.tcp_slow_start_after_idle = 0
 net.ipv4.tcp_no_metrics_save = 1
 net.ipv4.tcp_moderate_rcvbuf = 1
 net.ipv4.tcp_window_scaling = 1
@@ -238,11 +238,8 @@ NOTE: 성능 테스트를 통해 그 결과가 나왔습니다 `nconnect=4` 데�
 NOTE: ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.
 
 
-NOTE: nconnect가 NFSv4.x와 함께 사용되는 경우 다음 규칙에 따라 NFSv4.x 세션 슬롯의 양을 조정해야 합니다.
-세션 슬롯의 양은 <nconnect value> x 64입니다.
-호스트에서 이 작업은 에 의해 인접됩니다
-`echo options nfs max_session_slots= <calculated value> > /etc/modprobe.d/nfsclient.conf`
-그런 다음 다시 부팅합니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 link:saphana_aff_nfs_storage_controller_setup.html#nfs-configuration-for-nfsv4["NFSv4에 대한 NFS 구성."]
+NOTE: nconnect가 NFSv4.x와 함께 사용되는 경우 NFSv4.x 세션 슬롯의 양은 다음 규칙에 따라 조정해야 합니다. 세션 슬롯의 양은 <nconnect value> x 64입니다. 호스트에서 재부팅이 완료된
+`echo options nfs max_session_slots=<calculated value> > /etc/modprobe.d/nfsclient.conf` 후 종료됩니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 link:saphana_aff_nfs_storage_controller_setup.html#nfs-configuration-for-nfsv4["NFSv4에 대한 NFS 구성."]
 
 다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
 
