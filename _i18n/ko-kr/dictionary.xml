@@ -106,7 +106,6 @@
   <block id="9ffcf0639aa6ab06ceced36736b5807d" category="paragraph">SAP HANA 소프트웨어 설치는 단일 호스트 시스템을 위한 추가 준비가 필요하지 않습니다.</block>
   <block id="8e74883ab7ca2d81b61cfaad2ddf19d2" category="section-title">다중 호스트 시스템에 설치합니다</block>
   <block id="2c5a7a5ceaf9ad774a81a7201b4dd250" category="paragraph">다중 호스트 시스템에 SAP HANA를 설치하려면 다음 단계를 수행하십시오.</block>
-  <block id="5a5457353a8426b7deea1f3ab1b9725a" category="list-text">SAP 'hdbclm' 설치 툴을 사용하여 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. addhosts 옵션을 사용하여 두 번째 작업자('APCC-HANA-tst-07')와 대기 호스트('APCC-HANA-tst-08')를 추가합니다.</block>
   <block id="9659639598149d1609e9fcde405a759f" category="list-text">설치 도구가 모든 작업자 및 대기 호스트에 선택한 모든 구성 요소를 설치했는지 확인합니다.</block>
   <block id="2ad2e055e24d21da5d30dba91f44d731" category="summary">이 섹션에서는 단일 호스트 및 다중 호스트 시스템에 SAP HANA를 설치하는 데 필요한 준비를 설명합니다.</block>
   <block id="3e1a84486a34f2de53acbb9a76a7dacc" category="section-title">단일 호스트 시스템에 설치합니다</block>
@@ -118,7 +117,6 @@
   <block id="3daf48572816497403ca0d7b3ca79c5c" category="list-text">데이터 및 로그 파티션의 WWID를 추가합니다. WWID는 '/etc/multipath.conf' 파일에 구성된 별칭 이름과 일치해야 합니다.</block>
   <block id="c5e7e01683b04809035115f6c4c7e4aa" category="paragraph">다음 출력에서는 SID(시스템 식별자)가 SS3인 2+1 다중 호스트 설정의 예를 보여 줍니다.</block>
   <block id="f206fb31ca322606be1acbaecf34f9fa" category="paragraph">Linux LVM을 사용하는 경우 필요한 구성은 다릅니다. 다음 예에서는 SID = FC5인 2+1 다중 호스트 설정을 보여 줍니다.</block>
-  <block id="0eb184ead31411795a6c716a0d38caf4" category="admonition">준비된 global.ini` 파일이 저장된 디렉토리는 'storage_cfg' CLI 옵션('--storage_cfg=/hana/shared')에 포함되어 있습니다.</block>
   <block id="e698d9fadd050973bab2f9f855248cca" category="admonition">사용 중인 OS 버전에 따라 SAP HANA 데이터베이스를 설치하기 전에 Python 2.7을 설치해야 할 수 있습니다.</block>
   <block id="af4ba9ef9ab9bd07d7c649c6d51dfa19" category="summary">SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다.</block>
   <block id="044185db5eecc41b1eff832a2449939e" category="doc">SAP HANA용 I/O 스택 구성</block>
@@ -950,7 +948,6 @@
   <block id="bb69fd52b05309d22618c8df73c8950e" category="admonition">다음 설치 절차는 SAP HANA 1.0 SPS12 이상을 기반으로 합니다.</block>
   <block id="89a99a898a74d4f2ff80a5aa417e1639" category="paragraph">설치를 시작하기 전에 설치 프로세스 중에 SAP 스토리지 커넥터를 사용할 수 있도록 global.ini` 파일을 만듭니다. SAP 스토리지 커넥터는 설치 프로세스 중에 작업자 호스트에 필요한 파일 시스템을 마운트합니다. global.ini` 파일은 모든 호스트에서 액세스할 수 있는 파일 시스템('/hana/shared/sid' 파일 시스템 등)에서 사용할 수 있어야 합니다.</block>
   <block id="0e0c950ebceebc20ac07965f3d63f754" category="paragraph">LVM을 사용하는 경우 필요한 구성은 다릅니다. 아래 예는 SID = FC5로 2 + 1 다중 호스트 설정을 보여줍니다.</block>
-  <block id="617127e0171267994816fcd2ebf41ca9" category="paragraph">SAP 'hdblcm' 설치 툴을 사용하여 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. addhosts 옵션을 사용하여 두 번째 작업자(sapcc-hana-tst-04)와 대기 호스트(sapcc-hana-tst-05)를 추가합니다. 준비된 global.ini` 파일이 저장된 디렉토리는 'storage_cfg' CLI 옵션('--storage_cfg=/hana/shared')에 포함되어 있다. 사용 중인 OS 버전에 따라 SAP HANA 데이터베이스를 설치하기 전에 PHyton 2.7을 설치해야 할 수도 있습니다.</block>
   <block id="3a8abeead42ccd286a7d0cbd4af82313" category="cell">2014년 4월</block>
   <block id="4d07a3bdc1f6c260f91eff5a8c4732c0" category="cell">2014년 8월</block>
   <block id="4b0b2617da1a441d88f736d71d3ac092" category="cell">디스크 사이징 선택 업데이트 및 SSD 구성 추가 Red Hat Enterprise Linux OS 구성 추가 SAP HANA 스토리지 커넥터 정보 추가 VMware 구성에 대한 정보 추가</block>
@@ -4769,4 +4766,7 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="cae93577fd94d0fe06d63305e6bfbe50" category="admonition">pNFS를 사용하도록 설정하고 사용할 수 있습니다.</block>
   <block id="924eac7fb01f1080c8a2e57261e50702" category="admonition">nconnect가 NFSv4.x와 함께 사용되는 경우 NFSv4.x 세션 슬롯의 양은 다음 규칙에 따라 조정해야 합니다. 세션 슬롯의 양은 &lt;nconnect value&gt; x 64입니다. 호스트에서 재부팅이 완료된<block ref="1f544d9bef8ddb99793e0436d6362920" prefix=" " category="inline-code"></block> 후 종료됩니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 <block ref="f5e012a6f36bf833f75aec36ff8eee0f" category="inline-link-macro-rx"></block></block>
   <block id="dface3e0fc3485feea995027b8e0fd8a" category="cell">고급 NFS modify -vserver &lt;vserver_name&gt; -tcp-max-xfer-size 1048576 set admin 을 설정합니다</block>
+  <block id="9adaadfddff33c2daa546229f2809747" category="list-text">SAP 설치 도구를 사용하여<block ref="b0aa3e7cad7b6222087aedbd4c799832" prefix=" " category="inline-code"></block> 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. 옵션을 사용하여<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block> 두 번째 작업자<block ref="d6075976fde6718b25d21e4894d5d07d" prefix="(" category="inline-code"></block>) 및 대기 호스트를 <block ref="7e4282317c0dcc7ce1f24f047b09f466" prefix="(" category="inline-code"></block>추가합니다.</block>
+  <block id="dc6dd758c7cbed933fdee36ba03835f9" category="admonition">준비된 파일이 저장된 디렉토리는<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block> CLI 옵션에 포함되어<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block><block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block> 있습니다.)</block>
+  <block id="b5b2eafc66ebc94cfb50a26c15cf1f52" category="paragraph">SAP 설치 도구를 사용하여<block ref="e57381f2a2aa941f8d88ba956c77d978" prefix=" " category="inline-code"></block> 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. 옵션을 사용하여<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block> 두 번째 작업자(sapcc-hana-tst-06)와 대기 호스트(sapcc-hana-tst-07)를 추가합니다. 준비된 파일이 저장된<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block> 디렉토리는<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block> CLI 옵션에 <block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>포함됩니다.) 사용 중인 OS 버전에 따라 SAP HANA 데이터베이스를 설치하기 전에 PHyton 2.7을 설치해야 할 수도 있습니다.</block>
 </blocks>
