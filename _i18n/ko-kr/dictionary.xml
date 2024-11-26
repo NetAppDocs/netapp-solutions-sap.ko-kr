@@ -739,7 +739,6 @@
   <block id="2cb03e71b30b5ad997f5080619a60d31" category="section-title">MetroCluster 기반의 스토리지 복제</block>
   <block id="8a29e11272dc9f6e89fdfd8d07e0a808" category="paragraph">다음 그림에서는 솔루션에 대한 대략적인 개요를 보여 줍니다. 각 사이트의 스토리지 클러스터는 로컬 고가용성을 제공하며 운영 워크로드에 사용됩니다. 각 사이트의 데이터는 다른 위치에 동기식으로 복제되며, 재해 페일오버가 있을 경우 사용할 수 있습니다.</block>
   <block id="4f0141ecc04bee7dc293f8992542b4bd" category="summary">NetApp FAS 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 인증 엔터프라이즈 스토리지 플랫폼은 NetApp ONTAP 운영 체제를 기반으로 합니다.</block>
-  <block id="3582e9217fbd3de24b2e5ecfb0fc97b4" category="paragraph">NetApp의 Nils Bauer와 Marco Schoen</block>
   <block id="e4509a748ae3ce7cb528662f2f9f7e10" category="paragraph">인증은 다음 모델에 대해 유효합니다.</block>
   <block id="42eb56ae1e83db3afce70f056a668205" category="inline-link">인증되고 지원되는 SAP HANA 하드웨어 디렉토리</block>
   <block id="b448d121930edfc4a956027d7533c403" category="paragraph">이 문서에서는 FCP(파이버 채널 프로토콜)를 사용하는 FAS 구성에 대해 설명합니다.</block>
@@ -1085,9 +1084,6 @@
   <block id="092e6a6bc4923c6cfc72d214ce390535" category="paragraph">NetApp은 ONTAP System Manager 9.7 이하 버전 내에서 SAP HANA용 애플리케이션 마법사를 자동화하여 볼륨 및 LUN 프로비저닝 프로세스를 크게 간소화합니다. SAP HANA의 NetApp 모범 사례에 따라 볼륨 및 LUN을 자동으로 생성 및 구성합니다.</block>
   <block id="0c71c668e5ae926e6d75aa8bbbc09dd2" category="paragraph">'sanlun' 툴을 사용하여 다음 명령을 실행하여 각 SAP HANA 호스트의 WWPN(Worldwide Port Name)을 확인하십시오.</block>
   <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.</block>
-  <block id="3b02abc3a7dd4095cd8ef946e6bd6dd0" category="paragraph">다음 단계에서는 SID SS3을 사용하는 2+1 다중 호스트 HANA 시스템 구성을 보여 줍니다.</block>
-  <block id="ce30bd2bdaee34467dfdf55ea753e7ba" category="list-text">System Manager에서 SAP HANA용 애플리케이션 프로비저닝 마법사를 시작하고 필요한 정보를 제공합니다. 모든 호스트의 모든 이니시에이터(WWPN)를 추가해야 합니다.</block>
-  <block id="16307583508372b498160c0e90dba4d0" category="list-text">스토리지가 성공적으로 프로비저닝되었는지 확인합니다.</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑</block>
   <block id="6204c72c80408db453e7fea0b62d2e36" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9.8과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
   <block id="d595b9142c1fd0d3ea19c8cd10165661" category="list-text">시스템 FC5에 속하는 모든 서버에 대한 이니시에이터 그룹을 생성합니다.</block>
@@ -3441,7 +3437,6 @@
   <block id="75bdc4f45cfc79b09fa1f15e1cd83b33" category="admonition">번호 없는 ID를 사용하지 않도록 하려면 에 설명된 대로 사용자 관리가 필요합니다 <block ref="7cbf1992917906c8f8c329ad679d4886" category="inline-link-macro-rx"></block></block>
   <block id="a548c9345f858c0926b5fa0db82b1d29" category="admonition">숫자 ID를 비활성화하려면 섹션에 설명된 대로 사용자 관리가 필요합니다 <block ref="19618adae76246007b68ca646cc14e2b" category="inline-link-macro-rx"></block></block>
   <block id="fcb7778cf38a196128c87d1b6e20281e" category="paragraph">NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다.</block>
-  <block id="7c3d41bb91a832b194d140ed72b101e7" category="list-text">AFF C250, AFF C400, AFF C800</block>
   <block id="326f77b6d7cda2b57e0f8e89a8f89959" category="admonition">NetApp AFF C-Series에는 NetApp ONTAP 9.13.1 이상이 필요합니다</block>
   <block id="f7d09d43174d21d3203d6472d2543dc2" category="section-title">NetApp 볼륨 및 애그리게이트 암호화</block>
   <block id="381cfdf4e70ff7173296a764c78e97ae" category="paragraph">SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.</block>
@@ -3588,12 +3583,10 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="89579d729fbef030eb0080e68e88f112" category="paragraph">하나의 NVMe SSD(데이터)에서 최대 5개의 SAP HANA 호스트를 지원합니다.
 SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다.
 AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
-  <block id="aa73ef84825182521094d3998757610f" category="list-text">AFF A150, AFF A250, AFF A400, AFF A70, AFF A800, AFF A90, AFF A900, AFF A1K</block>
   <block id="9c485d8d0a0f2d60633001b05d342eed" category="doc">NFS가 포함된 NetApp FAS 시스템의 SAP HANA 구성 가이드</block>
   <block id="b7bda169ccba06e8cbcf02ba0fab5928" category="doc">파이버 채널 프로토콜을 포함한 NetApp FAS 시스템 기반 SAP HANA 구성 가이드 를 참조하십시오</block>
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드</block>
   <block id="ef6ac0da06e1bd8eabd965442ae5668d" category="paragraph">Marco schön, NetApp</block>
-  <block id="47e4a9a1322865b7fd49caaf0207408a" category="list-text">AFF A150, AFF A250, AFF A400, AFF A70, AFF A800, AFF A900, AFF A90, AFF A1K</block>
   <block id="a004afbb2c9ff596c570f05cacd1d651" category="section-title">NetApp FlexGroup 볼륨</block>
   <block id="cfb6b0dd52bfc75b4646448807e41154" category="paragraph">SAP HANA에는 NetApp FlexGroup 볼륨 사용이 지원되지 않습니다. SAP HANA의 아키텍처로 인해 FlexGroup 볼륨을 사용할 경우 이점이 없으므로 성능 문제가 발생할 수 있습니다.</block>
   <block id="0500aa4516d90775e7cd20e0b45fa4ad" category="sidebar">구성 모범 사례</block>
@@ -4525,8 +4518,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="03595684b4248a265a5f7e534bd92c49" category="paragraph"><block ref="03595684b4248a265a5f7e534bd92c49" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ade510803f2b9aad765372451fd52da2" category="paragraph"><block ref="ade510803f2b9aad765372451fd52da2" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b2bc3f5a45ad0103150eddb5c0947895" category="paragraph"><block ref="b2bc3f5a45ad0103150eddb5c0947895" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="faa4100dbfa2cef1a0c4e0c3db26e5fc" category="paragraph"><block ref="faa4100dbfa2cef1a0c4e0c3db26e5fc" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c464883cb94a3fba7db930a07cb34811" category="paragraph"><block ref="c464883cb94a3fba7db930a07cb34811" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd082d270e30712a5d973de884f7b9f" category="paragraph"><block ref="4cd082d270e30712a5d973de884f7b9f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="017e522349a0ff07067400d6b880e9df" category="paragraph">=:hardbreak::nofooter::icons:font:linkattrs::imagesdir:../media/</block>
   <block id="2267b0943e951c31d5f31c288b6bfbe6" category="paragraph">NFS 프로토콜을 사용하는 NetApp AFF 기반 SAP HANA</block>
@@ -4769,4 +4760,7 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="9adaadfddff33c2daa546229f2809747" category="list-text">SAP 설치 도구를 사용하여<block ref="b0aa3e7cad7b6222087aedbd4c799832" prefix=" " category="inline-code"></block> 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. 옵션을 사용하여<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block> 두 번째 작업자<block ref="d6075976fde6718b25d21e4894d5d07d" prefix="(" category="inline-code"></block>) 및 대기 호스트를 <block ref="7e4282317c0dcc7ce1f24f047b09f466" prefix="(" category="inline-code"></block>추가합니다.</block>
   <block id="dc6dd758c7cbed933fdee36ba03835f9" category="admonition">준비된 파일이 저장된 디렉토리는<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block> CLI 옵션에 포함되어<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block><block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block> 있습니다.)</block>
   <block id="b5b2eafc66ebc94cfb50a26c15cf1f52" category="paragraph">SAP 설치 도구를 사용하여<block ref="e57381f2a2aa941f8d88ba956c77d978" prefix=" " category="inline-code"></block> 작업자 호스트 중 하나에서 다음 명령을 실행하여 설치를 시작합니다. 옵션을 사용하여<block ref="9676c5ff8ed94e9d3ceba55f16dde62f" prefix=" " category="inline-code"></block> 두 번째 작업자(sapcc-hana-tst-06)와 대기 호스트(sapcc-hana-tst-07)를 추가합니다. 준비된 파일이 저장된<block ref="09c9689230344c41364f0fa22da928c6" prefix=" " category="inline-code"></block> 디렉토리는<block ref="1611b9881f1a590d33bbbcfdd9c55ca7" prefix=" " category="inline-code"></block> CLI 옵션에 <block ref="1b723e0f23eac7863dadd5b0b02436e4" prefix="(" category="inline-code"></block>포함됩니다.) 사용 중인 OS 버전에 따라 SAP HANA 데이터베이스를 설치하기 전에 PHyton 2.7을 설치해야 할 수도 있습니다.</block>
+  <block id="1a808aae97e904d2d0d8b853c60fa475" category="list-text">AFF A150, AFF A20, AFF A250, AFF A30, AFF A400, AFF A50, AFF A70, AFF A1K, AFF A90, AFF A900, AFF A800</block>
+  <block id="19fe8eb256f35b3d5110d29e652ce432" category="list-text">AFF C250, AFF C30, AFF C400, AFF C60, AFF C800, AFF C80</block>
+  <block id="968cad2bf5c711dad5ccd0efa3e1ff9f" category="list-text">AFF A150, AFF A20, AFF A250, AFF A30, AFF A400, AFF A50, AFF A70, AFF A1K, AFF A900, AFF A90, AFF A800</block>
 </blocks>

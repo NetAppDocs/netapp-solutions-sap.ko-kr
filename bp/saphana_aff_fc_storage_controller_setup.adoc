@@ -369,17 +369,6 @@ host1 ...... WWPN:2100000e1e163701
 
 NOTE: 'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.
 
-다음 단계에서는 SID SS3을 사용하는 2+1 다중 호스트 HANA 시스템 구성을 보여 줍니다.
-
-. System Manager에서 SAP HANA용 애플리케이션 프로비저닝 마법사를 시작하고 필요한 정보를 제공합니다. 모든 호스트의 모든 이니시에이터(WWPN)를 추가해야 합니다.
-+
-image:saphana_aff_fc_image18.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
-
-. 스토리지가 성공적으로 프로비저닝되었는지 확인합니다.
-
-
-image:saphana_aff_fc_image19.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
-
 
 
 == CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑
@@ -396,7 +385,8 @@ vol create -volume FC5_data_mnt00002  -aggregate aggr2_2 -size 1200g -snapshot-p
 vol create -volume FC5_data2_mnt00001 -aggregate aggr1_2 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
 vol create -volume FC5_log2_mnt00002  -aggregate aggr2_2 -size 280g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
 vol create -volume FC5_log2_mnt00001  -aggregate aggr1_1 -size 280g -snapshot-policy none -foreground true -encrypt false  -space-guarantee none
-vol create -volume FC5_data2_mnt00002  -aggregate aggr2_1 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee nonevol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false  -space-guarantee none
+vol create -volume FC5_data2_mnt00002  -aggregate aggr2_1 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
+vol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false  -space-guarantee none
 ....
 . 모든 LUN을 생성합니다.
 +
