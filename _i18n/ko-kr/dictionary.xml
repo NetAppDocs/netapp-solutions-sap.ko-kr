@@ -4,8 +4,6 @@
   <block id="293e9d744a4c2a3dfc4088f7b8aa25d5" category="doc">SAP 솔루션 비디오 및 데모</block>
   <block id="2259bdd472d4d2949e3eea23b5e4ef34" category="paragraph">SAP 솔루션에 대한 비디오 및 데모를 간략하게 소개합니다.</block>
   <block id="aa5b0840e871ca382a477398de4a7243" category="section-title">SAP 구성 모범 사례 비디오 및 데모</block>
-  <block id="c482c0b5b51f55ba9a7c2dcdee1f4339" category="inline-link-macro">SAP HANA는 NetApp 인프라에서 가장 잘 실행됩니다</block>
-  <block id="442aae40221b985ca5667a9e47a977f6" category="inline-link-macro">Azure NetApp Files 기반 SAP: 개요 및 업데이트</block>
   <block id="ed2640c6c02db4ce182af25c797097d8" category="section-title">SAP 백업, 복원 및 재해 복구 비디오 및 데모</block>
   <block id="eabc448bcef35b3d5eb92882f22f6f0c" category="inline-link-macro">SAP HANA용 재해 복구 옵션</block>
   <block id="18c100c6d8f14819ac80ee276eb251a6" category="section-title">SAP Lifecycle Management 비디오 및 데모</block>
@@ -52,7 +50,6 @@
   <block id="4de557ac24bd2fc25bd82bba339024b6" category="inline-link-macro">MaxDB, DB2, ASE용 SnapCenter 맞춤형 플러그인</block>
   <block id="0a01ff5d4ad68f1f814d0d67480b3b30" category="list-text"><block ref="0a01ff5d4ad68f1f814d0d67480b3b30" category="inline-link-macro-rx"></block></block>
   <block id="5a19cb1f3722bd59393efe7cbc853747" category="summary">NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 인증된 엔터프라이즈 스토리지 시스템의 특징은 NetApp ONTAP 소프트웨어입니다.</block>
-  <block id="ccc35786789b66e9752e6f8cde933754" category="paragraph">NetApp의 Nils Bauer와 Marco schön</block>
   <block id="af01ac16ca42b9b924b834a3199131e9" category="paragraph">이 인증은 다음 모델에 대해 유효합니다.</block>
   <block id="130c9ce9d2909449cb229a98c66f9d29" category="inline-link">인증되고 지원되는 SAP HANA 하드웨어 디렉토리</block>
   <block id="a08e3f55ac1bf243274ee454a477749b" category="admonition">이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.</block>
@@ -86,7 +83,6 @@
   <block id="244d98fed97800c3bc8073163dc1e3b2" category="inline-link">SAP HANA 스토리지 요구사항</block>
   <block id="ff3f1e894014f4c26eac8cab49b8a0f4" category="section-title">VMware vSphere를 사용하는 SAP HANA</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 기본 옵션은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 호스트 및 스토리지의 구성이 물리적 호스트와 VM 간에 차이가 없습니다.</block>
-  <block id="35eb3c62d099b5d5e6334b74d5b2bcff" category="paragraph">NFS 데이터 저장소와 NFS의 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다. 또한, SAP 시스템 클로닝과 같이 NetApp SnapCenter과 이를 기반으로 한 솔루션에서 조율된 스냅샷 기반 백업 및 복구 기능을 구현할 수 없습니다.</block>
   <block id="f7fbf8be79b2dbbf7cca7d63ea2aaa3e" category="paragraph">이 문서에서는 게스트 OS에서 직접 NFS 마운트를 사용한 권장 설정에 대해 설명합니다.</block>
   <block id="5363a1e8e1763bb11c4b91b2868d5584" category="paragraph">SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.</block>
   <block id="f02780ddcfc1bddf0683bf8de02155d5" category="inline-link-macro">VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki</block>
@@ -747,7 +743,6 @@
   <block id="5f6e041a9634120ceb1ee084f6acde8a" category="inline-link">SAP Note 2235581 – SAP HANA 지원 운영 체제</block>
   <block id="1800d8919a8de7dbf0bdd4d4ef0a94f4" category="paragraph">SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 관련 Linux 커널 종속성에 대해서는 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오<block ref="362348e4aadbc3b1dc4fa3ddcce8fb65" category="inline-link-rx"></block>.</block>
   <block id="324c1541e14a4687bde362da7f340662" category="paragraph">NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 파이버 채널(SAN) 프로토콜을 사용하는 SAP HANA TDI(Tailored Data Center Integration) 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 모든 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 인증된 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.</block>
-  <block id="2119e51f96366de40a69723f79096b89" category="paragraph">RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 기반 백업 및 복구와 이를 기반으로 하는 솔루션(예: SAP 시스템 클론 복제)은 구현할 수 없습니다.</block>
   <block id="5ab9c3d59a0ecc9e30a1f938039d0ecf" category="summary">NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDAP(Lightweight Directory Access Protocol) 서버와 같은 중앙 사용자 관리 도구 또는 로컬 사용자 계정을 사용하여 이 인증을 수행할 수 있습니다.</block>
   <block id="e3a77a70624c57f3f0e2fc7075e4f75f" category="doc">NFSv4를 위한 SAP HANA 설치 준비</block>
   <block id="7f5e79baae33aa1aca5c990882a844cb" category="paragraph">NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDAP(Lightweight Directory Access Protocol) 서버와 같은 중앙 사용자 관리 도구 또는 로컬 사용자 계정을 사용하여 이 인증을 수행할 수 있습니다. 다음 섹션에서는 로컬 사용자 계정을 구성하는 방법에 대해 설명합니다.</block>
@@ -1143,7 +1138,6 @@
   <block id="fdb63fa26dfca812f4f453ca18a829c7" category="section-title">SAP HANA 맞춤형 데이터 센터 통합</block>
   <block id="c2798d82f6c464fd30d247919005bc5b" category="paragraph">NetApp FAS 스토리지 컨트롤러는 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하는 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 SAP Business Warehouse on HANA와 같은 기존 SAP HANA 시나리오에 단일 호스트 또는 다중 호스트 구성으로 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. 아키텍처 개요는 다음 그림을 참조하십시오.</block>
   <block id="cd67947f6f1984974a5e507afaa2222d" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 물리적 호스트와 VM 간에 호스트 및 스토리지 구성이 달라지지 않습니다.</block>
-  <block id="3e0badc46d16811661a7977c8991b3ea" category="paragraph">NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 복사본 기반 백업 및 복구 기능과 SAP 시스템 클론 복제와 같은 이를 기반으로 하는 솔루션은 구현할 수 없습니다.</block>
   <block id="e9bacaae9e45a23fffabf2e649f09b75" category="cell">초기 버전</block>
   <block id="053aaab3b6a6f68ce7ea49ba7b9f8fee" category="cell">새로운 NetApp 스토리지 시스템 및 디스크 쉘프 ONTAP 9 새로운 OS 릴리즈(SLES12 SP1 및 RHEL 7.2)의 새로운 SAP HANA 릴리즈</block>
   <block id="4b94bef311266eb7014c7ca918108710" category="cell">새로운 NetApp 스토리지 시스템 새로운 OS 릴리즈(SLES12 SP3 및 RHEL 7.4) 추가 업데이트 SAP HANA 2.0 SPS3</block>
@@ -3990,8 +3984,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="30dac510a408bf8be8dd4336d96b482f" category="cell">SnapCenter 4.6 P1의 변경된 워크플로에 맞게 조정되었습니다</block>
   <block id="f66bc2df80ac37f354b591907be92e18" category="cell">2024년 7월</block>
   <block id="17fb9a63c15de98fb13578ff5b945b03" category="paragraph">문서에서는 NetApp 온프레미스, 클라우드 환경, FSx for ONTAP 및 Azure NetApp Files + 새로운 SnapCenter 5.0 작업 마운트 및 마운트 해제 클론 생성 및 삭제 작업 중에 마운트 및 마운트 해제 + 파이버 채널 SAN에 대한 특정 단계 추가 + Azure NetApp Files+에 대한 특정 단계 추가 및 간소화된<block ref="d8eec050302627350eb082c264bec8f6" prefix=" " category="inline-code"></block> 스크립트 + 활성화된 SAP HANA에 필요한 단계 포함 볼륨 암호화</block>
-  <block id="0a93e03f240cb8b42069573a99818021" category="list-text"><block ref="0a93e03f240cb8b42069573a99818021" category="inline-link-macro-rx"></block></block>
-  <block id="77b50001f65f6144e393afa83a9d4e21" category="list-text"><block ref="77b50001f65f6144e393afa83a9d4e21" category="inline-link-macro-rx"></block></block>
   <block id="a5cf81e748f3b3e6fad26b2e3470f879" category="list-text"><block ref="a5cf81e748f3b3e6fad26b2e3470f879" category="inline-link-macro-rx"></block></block>
   <block id="87c8349f2562b9df828a79206981328c" category="list-text"><block ref="87c8349f2562b9df828a79206981328c" category="inline-link-macro-rx"></block></block>
   <block id="20a0dcae2f540339bbf69dbaa7f0050a" category="list-text"><block ref="20a0dcae2f540339bbf69dbaa7f0050a" category="inline-link-macro-rx"></block></block>
@@ -4763,4 +4755,7 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="1a808aae97e904d2d0d8b853c60fa475" category="list-text">AFF A150, AFF A20, AFF A250, AFF A30, AFF A400, AFF A50, AFF A70, AFF A1K, AFF A90, AFF A900, AFF A800</block>
   <block id="19fe8eb256f35b3d5110d29e652ce432" category="list-text">AFF C250, AFF C30, AFF C400, AFF C60, AFF C800, AFF C80</block>
   <block id="968cad2bf5c711dad5ccd0efa3e1ff9f" category="list-text">AFF A150, AFF A20, AFF A250, AFF A30, AFF A400, AFF A50, AFF A70, AFF A1K, AFF A900, AFF A90, AFF A800</block>
+  <block id="54652d040ebb810c360684ca8e231a52" category="paragraph">NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다.</block>
+  <block id="7d631f41ea82e4581ac749b6874d885a" category="paragraph">RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다.</block>
+  <block id="efd1d0d586a27578c98f10496d441cd4" category="paragraph">NFS 데이터 저장소와 NFS의 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다.</block>
 </blocks>

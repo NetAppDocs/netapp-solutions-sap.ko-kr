@@ -11,7 +11,7 @@ summary: 'NetApp FAS 제품군은 TDI(Tailored Data Center Integration) 프로�
 [role="lead"]
 NetApp FAS 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 인증된 엔터프라이즈 스토리지 시스템의 특징은 NetApp ONTAP 소프트웨어입니다.
 
-NetApp의 Nils Bauer와 Marco schön
+Marco schön, NetApp
 
 이 인증은 현재 다음 모델에만 유효합니다.
 
@@ -81,7 +81,7 @@ image:saphana-fas-nfs_image1.png["입력/출력 대화 상자 또는 작성된 �
 
 스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 물리적 호스트와 VM 간에 호스트 및 스토리지 구성이 달라지지 않습니다.
 
-NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다. 또한, SnapCenter에서 조율된 스냅샷 복사본 기반 백업 및 복구 기능과 SAP 시스템 클론 복제와 같은 이를 기반으로 하는 솔루션은 구현할 수 없습니다.
+NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다.
 
 이 문서에서는 게스트 OS에서 직접 NFS 마운트를 사용한 권장 설정에 대해 설명합니다.
 
