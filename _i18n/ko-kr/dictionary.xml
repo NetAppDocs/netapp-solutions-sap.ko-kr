@@ -572,9 +572,6 @@
   <block id="e9fc49c5c730458783a8ccd4b98a94c5" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 4개('fc_ * _ *)의 스크린샷을 보여 줍니다.</block>
   <block id="34cf3cce20e89b361817cb8171e434a6" category="paragraph">ONTAP 9.8 System Manager를 사용하여 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
   <block id="d5b418c423bd08ad0961e2eb57962d5a" category="paragraph">다음 그림은 ONTAP 9.8 System Manager를 사용한 SVM 및 LIF 생성을 보여 줍니다.</block>
-  <block id="fd32c02d4b7251741240b397ff65496a" category="section-title">FCP 포트 집합</block>
-  <block id="1031bd6cfd51714668c70d35fdf12489" category="paragraph">FCP 포트 세트는 특정 igroup에서 사용할 LIF를 정의하는 데 사용됩니다. 일반적으로 HANA 시스템에 대해 생성된 모든 LIF는 동일한 포트 세트에 배치됩니다. 다음 그림에서는 이미 생성되어 있는 4개의 LIF가 포함된 32g이라는 포트 세트 구성을 보여 줍니다.</block>
-  <block id="825d239e42d5cc598eb01f3b672bc521" category="admonition">ONTAP 9.8에서는 포트 세트가 필요하지 않지만 명령줄을 통해 생성하고 사용할 수 있습니다.</block>
   <block id="6651fd2f7a600a31e0103b2ff23752ca" category="section-title">이니시에이터 그룹</block>
   <block id="517f95ae0c03c21432632bd009cdff0d" category="paragraph">igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.</block>
   <block id="3f87e8b9731d5a43155ef27ca0b567af" category="paragraph">'sanlun' 툴을 사용하여 각 SAP HANA 호스트의 WWPN을 얻으려면 다음 명령을 실행합니다.</block>
@@ -1058,8 +1055,6 @@
   <block id="9edbcb82e27829dd83ad8ddf87b121c5" category="paragraph">새 SVM을 생성하는 동안 QoS 프로필이 자동으로 생성되어 할당된다면, SVM에서 자동으로 생성된 프로필을 제거하여 SAP HANA에서 필요한 성능 보장:</block>
   <block id="5d32d4572d40717acaf8b9ef008f4901" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 8개('fc_ *_ *')의 스크린샷을 보여 줍니다.</block>
   <block id="ad0e46aa05fcef2f37453adf0ef136ec" category="paragraph">ONTAP 9.8 System Manager를 사용하여 SVM을 생성하는 동안 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
-  <block id="934baa69e76d9725b7833c87e6c67cba" category="paragraph">FCP 포트 세트는 특정 이니시에이터 그룹에서 사용할 LIF를 정의하는 데 사용됩니다. 일반적으로 HANA 시스템에 대해 생성된 모든 LIF는 동일한 포트 세트에 배치됩니다. 다음 그림에서는 이미 생성되어 있는 4개의 LIF가 포함된 32g이라는 포트 세트 구성을 보여 줍니다.</block>
-  <block id="ba21da193047a8b196b8513f3735ad5c" category="admonition">ONTAP 9.8에서는 포트 세트가 필요하지 않지만 명령줄을 통해 생성하고 사용할 수 있습니다.</block>
   <block id="2cd30dd459c96f8423572cfd0315dd72" category="paragraph">다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log_mnt00001'은 컨트롤러 B에 구성됩니다 각 볼륨 내에서 단일 LUN이 구성됩니다.</block>
   <block id="a2ab47e506561509501f3015dfd353bb" category="admonition">SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨과 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.</block>
   <block id="bf2694976353bf0fd87866d930f0f42d" category="paragraph">다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다.</block>
@@ -3438,7 +3433,6 @@
   <block id="2976619a79e897d24427ec6796aa4a70" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다.
 이 섹션 내에서 기본 재시도 간격인 10초를 유지합니다.</block>
   <block id="73d4ace7e434b8709f5a930ad845d6d6" category="paragraph">호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다<block ref="46649585ec21482ae2e5fcac30c7dcae" prefix=" " category="inline-code"></block> 다음 표와 같습니다. 이 섹션 내에서 기본 재시도 간격을 10초로 유지합니다.</block>
-  <block id="7165d8e624155bf7a4889b98927f605c" category="list-text">ASA C250, ASA C400, ASA C800</block>
   <block id="ba7dc8a883957fda819c429f468dc4d0" category="admonition">NetApp AFF 및 ASA C-Series에는 NetApp ONTAP 9.13.1 이상이 필요합니다</block>
   <block id="b5816060ccee493fc8a2946c9d33de20" category="paragraph">NetApp Snapshot 기술을 사용하여 몇 분 내에 데이터베이스 백업을 생성할 수 있습니다.</block>
   <block id="5cd519503ff0d358e76b5be6e9b7d14e" category="paragraph">스냅샷 복사본은 스토리지 플랫폼에서 물리적 데이터 블록을 이동하지 않으므로 스냅샷 복사본을 만드는 데 필요한 시간은 데이터베이스의 크기와 상관없습니다. 또한 스냅샷 기술을 사용해도 라이브 SAP 시스템의 성능에는 영향을 주지 않습니다. 따라서 최대 대화 상자나 일괄 작업 기간을 고려하지 않고 스냅샷 복사본 생성을 예약할 수 있습니다. SAP 및 NetApp 고객은 일반적으로 하루 동안 여러 온라인 Snapshot 백업을 예약합니다. 예를 들어, 6시간마다 공통된 환경을 의미합니다. 이러한 스냅샷 백업은 일반적으로 장기 보존을 위해 더 저렴한 스토리지로 계층화되거나 제거되기 전에 운영 스토리지 시스템에서 3~5일 동안 보관됩니다.</block>
@@ -4024,11 +4018,8 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="74aaeb9485407660c737f5870ea94649" category="paragraph"><block ref="74aaeb9485407660c737f5870ea94649" category="inline-link-rx"></block></block>
   <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
   <block id="bc83c6be4c9eaece698b7eb18b8517a0" category="paragraph"><block ref="bc83c6be4c9eaece698b7eb18b8517a0" category="inline-link-rx"></block></block>
-  <block id="43f4de9c790b46b4e976d930374377ea" category="list-text">FAS2750, FAS2820, FAS8300, FAS8700, FAS70, FAS9500, FAS90 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>.</block>
   <block id="a36cfc2690f8671748f584abb16bdd04" category="cell">새로운 스토리지 시스템</block>
-  <block id="df23cd28bc74a571210f66246272e69f" category="list-text">ASA A250, ASA A400, ASA A70, ASA A800, ASA A900, ASA A90, ASA A1K</block>
   <block id="0fba9f2a3fbb4cfbaed44806cd9933a2" category="cell">새로운 스토리지 시스템(ASA A-Series)</block>
-  <block id="6b31c1796a51111b23246e86a060d273" category="list-text">FAS2750, FAS2820, FAS8300, FAS8700, FAS70, FAS9500, FAS90</block>
   <block id="5e8f0f670e38fbdf628b0883f946934f" category="inline-image-macro">입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림</block>
   <block id="085efbf60b3725eeb0ee8ff55a22a221" category="paragraph"><block ref="085efbf60b3725eeb0ee8ff55a22a221" category="inline-image-macro-rx" type="image"></block></block>
   <block id="07d652acdae0a73446e157f933c39530" category="paragraph"><block ref="07d652acdae0a73446e157f933c39530" category="inline-image-macro-rx" type="image"></block></block>
@@ -4507,7 +4498,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="5a053d099bd71f6622608db75861b1e5" category="paragraph"><block ref="5a053d099bd71f6622608db75861b1e5" category="inline-image-macro-rx" type="image"></block></block>
   <block id="98388228afa94a728226d844929284de" category="paragraph"><block ref="98388228afa94a728226d844929284de" category="inline-image-macro-rx" type="image"></block></block>
   <block id="cfd97e0a15391e975214c5503e96d423" category="paragraph"><block ref="cfd97e0a15391e975214c5503e96d423" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="03595684b4248a265a5f7e534bd92c49" category="paragraph"><block ref="03595684b4248a265a5f7e534bd92c49" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ade510803f2b9aad765372451fd52da2" category="paragraph"><block ref="ade510803f2b9aad765372451fd52da2" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b2bc3f5a45ad0103150eddb5c0947895" category="paragraph"><block ref="b2bc3f5a45ad0103150eddb5c0947895" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4cd082d270e30712a5d973de884f7b9f" category="paragraph"><block ref="4cd082d270e30712a5d973de884f7b9f" category="inline-image-macro-rx" type="image"></block></block>
@@ -4552,7 +4542,6 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="17170cd9736b0e2a3d8f78d16953b327" category="paragraph"><block ref="17170cd9736b0e2a3d8f78d16953b327" category="inline-image-macro-rx" type="image"></block></block>
   <block id="09f7121854e4295fd6f96bdc2d4acb8c" category="paragraph"><block ref="09f7121854e4295fd6f96bdc2d4acb8c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="9a54eb14eb1b0ca1cf8ecb90dd6622cf" category="paragraph"><block ref="9a54eb14eb1b0ca1cf8ecb90dd6622cf" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6746b37c7a3b79f38aca9f144e491303" category="paragraph"><block ref="6746b37c7a3b79f38aca9f144e491303" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b1c9f17a28c7142387820fd5a82c9b6e" category="paragraph"><block ref="b1c9f17a28c7142387820fd5a82c9b6e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="333255d2c26de498b8eb10dcfa6381fb" category="paragraph"><block ref="333255d2c26de498b8eb10dcfa6381fb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0f4ac82fd0de794eae50e4e7545b6b84" category="paragraph"><block ref="0f4ac82fd0de794eae50e4e7545b6b84" category="inline-image-macro-rx" type="image"></block></block>
@@ -4758,4 +4747,12 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="54652d040ebb810c360684ca8e231a52" category="paragraph">NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다.</block>
   <block id="7d631f41ea82e4581ac749b6874d885a" category="paragraph">RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다.</block>
   <block id="efd1d0d586a27578c98f10496d441cd4" category="paragraph">NFS 데이터 저장소와 NFS의 VVOL 데이터 저장소도 지원됩니다. 두 옵션 모두 운영 활용 사례를 위해 데이터 저장소 내에 SAP HANA 데이터 또는 로그 볼륨을 하나만 저장해야 합니다.</block>
+  <block id="cb1774d583cd49c1e7fc03a9172f09d9" category="list-text">FAS2750, FAS2820, FAS8300, FAS50, FAS8700, FAS70, FAS9500, FAS90 SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 에서 확인할 수 있습니다<block ref="b94cf00a6e18ec3712e81f808581c042" category="inline-link-rx"></block>.</block>
+  <block id="68a4c90b9b4251c2e6c62854e0f0e383" category="cell">새 스토리지 시스템 및 부 업데이트</block>
+  <block id="6cc5c9e930ea3d3b8bff4367c60ceea4" category="cell">2025년 2월</block>
+  <block id="15cd132980dad32e9c3c529955721df9" category="cell">새로운 스토리지 시스템</block>
+  <block id="4433e4b3b7ec2b20f062036b1b011af7" category="list-text">ASA A250, ASA A20, ASA A30, ASA A400, ASA A50, ASA A70, ASA A800, ASA A900, ASA A90, ASA A1K</block>
+  <block id="2134d42f2b0f54791bb238214fdc5110" category="list-text">ASA C250, ASA C30, ASA C400, ASA C60, ASA C800, ASA C80</block>
+  <block id="a10922577a9bcbf85b1a7a9d8e7de5aa" category="cell">2024년 11월</block>
+  <block id="53bab281b7eb6692b17a4b65d99e2188" category="list-text">FAS2750, FAS2820, FAS8300, FAS50, FAS8700, FAS70, FAS9500, FAS90</block>
 </blocks>

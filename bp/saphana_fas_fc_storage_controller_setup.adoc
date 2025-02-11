@@ -134,17 +134,6 @@ image:saphana_fas_fc_image15.jpeg["입력/출력 대화 상자 또는 작성된 
 
 
 
-== FCP 포트 집합
-
-FCP 포트 세트는 특정 igroup에서 사용할 LIF를 정의하는 데 사용됩니다. 일반적으로 HANA 시스템에 대해 생성된 모든 LIF는 동일한 포트 세트에 배치됩니다. 다음 그림에서는 이미 생성되어 있는 4개의 LIF가 포함된 32g이라는 포트 세트 구성을 보여 줍니다.
-
-image:saphana_fas_fc_image16.jpeg["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
-
-
-NOTE: ONTAP 9.8에서는 포트 세트가 필요하지 않지만 명령줄을 통해 생성하고 사용할 수 있습니다.
-
-
-
 == 이니시에이터 그룹
 
 igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.
