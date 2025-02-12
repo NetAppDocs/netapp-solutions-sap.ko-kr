@@ -267,7 +267,6 @@
   <block id="bdf2df4b25ef7731104da665fef6a0bc" category="section-title">NVMe(100GbE) 디스크 쉘프</block>
   <block id="c95631e026846b434e73e4f8b624c435" category="paragraph">각 NS224 NVMe 디스크 쉘프는 컨트롤러당 2개의 100GbE 포트를 사용하여 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. 애그리게이트 구성 장에서 설명한 ADPv2도 NS224 디스크 쉘프에 사용됩니다. 다음 그림은 NVMe 드라이브와 디스크 쉘프 연결을 보여 줍니다.</block>
   <block id="10ae1f9130fbbe975a644b0f325c6b31" category="section-title">애그리게이트 구성</block>
-  <block id="03513f35519e245e0d372c52a62dc871" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 드라이브 기술(SAS SSD 또는 NVMe SSD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다. AFF A200 시리즈 시스템의 경우 데이터 애그리게이트 하나가 충분합니다.</block>
   <block id="f1c8039bfd9034e917c3ee25c37b6e80" category="paragraph">다음 이미지는 ADPv2로 구성된 12Gb SAS 쉘프에서 실행 중인 12개의 SAP HANA 호스트 구성을 보여줍니다. 각 스토리지 컨트롤러에 6개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 2개씩, 4개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트에는 디스크 11개와 데이터 9개, 패리티 디스크 파티션 2개가 구성되어 있습니다. 각 컨트롤러에 대해 2개의 스페어 파티션을 사용할 수 있습니다.</block>
   <block id="99897c39b8224cf5a25fe9c6f599b3a7" category="section-title">SVM 구성</block>
   <block id="b37f183111116179ae8b8190b10de385" category="paragraph">SAP HANA 데이터베이스를 사용하는 여러 SAP 환경에서 단일 SVM을 사용할 수 있습니다. 필요한 경우 회사 내의 서로 다른 팀에서 SVM을 관리하는 경우 각 SAP 환경에 SVM을 할당할 수 있습니다.</block>
@@ -282,10 +281,7 @@
   <block id="d577a779ffdacd409ec756e191be8c6b" category="cell">40GbE</block>
   <block id="797c6d8f4bdab58ccf0409871daa900d" category="cell">100GeE</block>
   <block id="29350e56cf985cc1c3055886a585be16" category="cell">물리적 포트당 최대 로그 또는 데이터 볼륨 마운트 수입니다</block>
-  <block id="c81e728d9d4c2f636f067f89cc14862c" category="cell">2</block>
-  <block id="1679091c5a880faf6fb5e6087eb1b2dc" category="cell">6</block>
   <block id="c20ad4d76fe97759aa27a0c99bff6710" category="cell">12</block>
-  <block id="1ff1de774005f8da13f42943881c655f" category="cell">24</block>
   <block id="4f405e1a75e4b7b8ec6f50946f0734fc" category="admonition">다른 SAP HANA 호스트 간에 하나의 LIF를 공유하려면 데이터 또는 로그 볼륨을 다른 LIF에 다시 마운트해야 합니다. 이렇게 변경하면 볼륨이 다른 스토리지 컨트롤러로 이동될 경우 성능 저하가 발생하지 않습니다.</block>
   <block id="ea4399c89609128e15e361a718a71f5a" category="paragraph">개발 및 테스트 시스템에서는 물리적 네트워크 인터페이스에서 더 많은 데이터와 볼륨 마운트 또는 LIF를 사용할 수 있습니다.</block>
   <block id="93dc7819b20008ad7611ec3405b515ef" category="paragraph">운영, 개발, 테스트 시스템의 경우 '/HANA/공유' 파일 시스템은 데이터 또는 로그 볼륨과 동일한 LIF를 사용할 수 있습니다.</block>
@@ -844,7 +840,6 @@
   <block id="53186c8561352a2df976925dcabf62f0" category="paragraph">다음 표에는 디스크 쉘프당 지원되는 SAP HANA 호스트 수가 요약되어 있습니다.</block>
   <block id="f1ae15f6fd143c9e1276af68c06658c7" category="cell">12GB SAS 쉘프(DS224C)는 SSD 12개와 ADPv2가 절반 로드되어 있습니다</block>
   <block id="67daefa02c71a745373981700ce5c943" category="admonition">이 계산은 사용되는 스토리지 컨트롤러와 무관합니다. 디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.</block>
-  <block id="336d2fc2904f8210c02f37eb24f92eca" category="admonition">디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.</block>
   <block id="1d8d1934499ced39732f5c5099083c6b" category="paragraph">SAP 성능 테스트 툴을 사용하여 다른 워크로드에 이미 사용 중인 기존 스토리지 컨트롤러에서 SAP HANA 호스트를 추가로 실행할 수 있는지 확인해야 합니다. SAP 애플리케이션 서버를 SAP HANA 데이터베이스와 동일한 스토리지 컨트롤러 및/또는 Aggregate에 안전하게 배치할 수 있습니다.</block>
   <block id="fac3c55a3cdc98c6d08b96c048885f29" category="section-title">성능 테스트 도구 구성</block>
   <block id="918724fe4fec0578cd9e798f8152194e" category="paragraph">SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다. SAP 성능 테스트 툴을 사용하여 스토리지 성능을 테스트하는 경우 이러한 매개 변수를 SAP의 성능 테스트 툴에 대해서도 설정해야 합니다.</block>
@@ -964,8 +959,6 @@
   <block id="82d9f02aa4638adac22e7bc4604d9e25" category="admonition">최신 Linux 커널에는 이 단계가 필요하지 않습니다. 경고 메시지는 무시해도 됩니다.</block>
   <block id="c51b24aaab462fd7294e78e8c4e9e241" category="summary">이 섹션에서는 SAP HANA 호스트에 대한 전용 스토리지 네트워크 설정에 대해 설명합니다.</block>
   <block id="8e07acfd1437feec339a101261f3d33e" category="list-text">VMware 설정에서 실행 중인 각 가상 머신에 전용 VMXNET3 네트워크 어댑터를 할당해야 합니다. 추가 요구 사항은 "소개"에 언급된 관련 문서를 참조하십시오.</block>
-  <block id="44597b05bc198603e6227f2548462391" category="paragraph">스토리지 계층에서는 각 SAP HANA 호스트에 10Gb 처리량을 제공하도록 4개의 활성 연결이 구성됩니다. 또한 각 스토리지 컨트롤러에 하나의 스페어 인터페이스가 구성됩니다.</block>
-  <block id="3054a5405dd4f286779b953b08fbeacf" category="paragraph">일반적으로 서버와 스토리지 시스템(예: LACP(Link Aggregation Control Protocol) 및 ifgroup)에서 HA 인터페이스 그룹을 사용할 수도 있습니다. HA 인터페이스 그룹을 사용하면 그룹 내의 모든 인터페이스 간에 로드가 균등하게 분산되는지 확인합니다. 부하 분산은 네트워크 스위치 인프라의 기능에 따라 달라집니다.</block>
   <block id="0e9b7a6bc69692a6125fb9b457a42e62" category="admonition">SAP HANA 호스트 수와 사용된 연결 속도에 따라 활성 물리적 포트의 수가 달라집니다. 자세한 내용은 섹션을 참조하십시오 <block ref="53f775602a3eaa10214452e4a87da1ea" category="inline-link-macro-rx"></block>.</block>
   <block id="970db5841ccfee51a6e5d4efea5c84f3" category="paragraph">이 솔루션에서 NFS를 통해 데이터베이스의 성능 크리티컬 데이터 및 로그 볼륨을 비롯한 SAP HANA 인스턴스에 대한 모든 데이터가 제공되므로 적절한 네트워크 설계와 구성이 매우 중요합니다. 전용 스토리지 네트워크를 사용하여 SAP HANA 노드 간 통신 및 사용자 액세스 트래픽과 NFS 트래픽을 분리합니다. 각 SAP HANA 노드에는 최소 10GB의 대역폭으로 이중화된 전용 네트워크 연결이 필요합니다. 더 높은 대역폭도 지원됩니다. 이 네트워크는 네트워크 전환 및 컴퓨팅을 통해 스토리지 계층에서 VMware vSphere에 호스팅된 게스트 운영 체제까지 엔드 투 엔드를 확장해야 합니다. 물리적 스위칭 인프라 외에도 VDS(VMware Distributed Switch)를 사용하여 하이퍼바이저 계층에서 네트워크 트래픽의 적절한 성능과 관리 효율성을 제공합니다.</block>
   <block id="60777d420c292249b3947e8807f44971" category="paragraph">위의 그림에 표시된 것처럼 각 SAP HANA 노드는 VMware 분산 스위치에서 전용 포트 그룹을 사용합니다. 이 포트 그룹을 사용하면 ESX 호스트에 있는 물리적 네트워크 인터페이스 카드(NIC)의 QoS(서비스 품질)와 전용 할당을 향상시킬 수 있습니다. NIC 장애 시 HA 기능을 유지하면서 전용 물리적 NIC를 사용하려면 전용 물리적 NIC가 활성 업링크로 구성됩니다. 추가 NIC는 SAP HANA 포트 그룹의 팀 구성 및 페일오버 설정에서 대기 업링크로 구성됩니다. 또한 물리적 스위치와 가상 스위치에서 점보 프레임(MTU 9,000)을 사용하도록 설정해야 합니다. 또한 서버, 스위치 및 스토리지 시스템의 스토리지 트래픽에 사용되는 모든 이더넷 포트에서 흐름 제어를 끕니다. 다음 그림에서는 이러한 구성의 예를 보여 줍니다.</block>
@@ -1008,7 +1001,6 @@
   <block id="02e9c064fb16f4d7c921173e0ea3e1d4" category="summary">SAP HANA 호스트는 이중화된 10GbE 또는 더 빠른 네트워크 인프라를 사용하여 스토리지 컨트롤러에 연결됩니다. SAP HANA 호스트와 스토리지 컨트롤러 간의 데이터 통신은 NFS 프로토콜을 기반으로 합니다. 스위치 또는 네트워크 인터페이스 카드(NIC) 장애가 발생할 경우 내결함성이 있는 SAP HANA 호스트-스토리지 연결을 제공하려면 이중 스위칭 인프라가 필요합니다.</block>
   <block id="9ebc0606dc606ba3c824288cbcec4b6a" category="paragraph">스위치는 호스트 레벨에서 단일 논리 엔터티로 표시되도록 포트 채널을 통해 개별 포트 성능을 통합할 수 있습니다.</block>
   <block id="ec7778649625767bca80e5172b3215f8" category="paragraph">다음 그림에서는 스토리지 HA(고가용성) 쌍에 연결된 8개의 SAP HANA 호스트를 포함하는 예제 구성을 보여 줍니다.</block>
-  <block id="b2ff8e71e9e5aa43773ccdafa2b95737" category="paragraph">다음 그림에서는 VMware vSphere를 가상화 계층으로 사용하는 예를 보여 줍니다.</block>
   <block id="f000fef8626763ce732cc75182f80de1" category="list-text">스토리지 컨트롤러가 현재 SAP HANA 주요 성능 지표(KPI)를 충족할 만큼 충분한 성능을 제공한다면 기존 스토리지에 추가 SAP HANA 호스트 및 스토리지 용량을 연결합니다.</block>
   <block id="af0b30d5f97bb5800d0d429f5f501e85" category="paragraph">다음 그림에서는 스토리지 컨트롤러에 더 많은 SAP HANA 호스트가 연결되는 구성의 예를 보여 줍니다. 이 예에서는 16개의 SAP HANA 호스트의 용량 및 성능 요구사항을 충족하기 위해 더 많은 디스크 쉘프가 필요합니다. 총 처리량 요구사항에 따라 스토리지 컨트롤러에 10GbE 또는 더 빠른 연결을 추가해야 합니다.</block>
   <block id="014f96dd954f0cad52c8dd1e4a0f6c0c" category="paragraph">구축된 AFF 시스템과 별도로, 다음 그림과 같이 인증된 스토리지 컨트롤러를 추가하여 SAP HANA 환경을 확장할 수도 있습니다.</block>
@@ -1046,15 +1038,10 @@
   <block id="5ed0e891e8b990c7168739eb02edd6a3" category="list-text">에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다.<block ref="19f0aba2b822910f53ba3966ee7c8d59" category="inline-xref-macro-rx"></block>있습니다."</block>
   <block id="f9a28c46fbd1f4dfd78367e2b160714f" category="list-text">"Clustered Data ONTAP 8.3.1에서 설명하는 대로 스토리지 가상 시스템(SVM)을<block ref="7c58f6887f41bcea1635c2c18a7a4529" category="inline-xref-macro-rx"></block>있습니다."</block>
   <block id="9629532b191c2dfd3156fe8e116bbe3b" category="list-text">"에 설명된 대로 논리 인터페이스(LIF) 생성<block ref="fc903155b67a1626f9032f79a26da71f" category="inline-xref-macro-rx"></block>있습니다."</block>
-  <block id="a8d79b07ead85e8a39ae801f57769490" category="list-text">""에 설명된 대로 포트 세트를 생성합니다.<block ref="8a161b601c7edc91c1d11775d753aa89" category="inline-xref-macro-rx"></block>있습니다."</block>
   <block id="2630ee9d2d6404a0be197b5cefef0514" category="section-title">SAS 기반 디스크 쉘프</block>
-  <block id="678c0ed398bb044c2e5a9c21044b8bf5" category="paragraph">다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러 간에 균등하게 분산되어야 합니다. ADPv2는 ONTAP 9 및 새 DS224C 디스크 쉘프에 사용됩니다.</block>
   <block id="dd253c07b5e479b9a57c4dff19990513" category="section-title">NVMe(100GbE) 기반 디스크 쉘프</block>
-  <block id="ffd4979e43c842f7c83880611de780c8" category="paragraph">다음 그림과 같이 각 NS224 NVMe 데스크 쉘프는 컨트롤러당 2개의 100GbE 포트로 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. ADPv2는 NS224 디스크 쉘프에도 사용됩니다.</block>
-  <block id="825e04b1728be563d50e2a0cc23bf6ca" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다. AFF A200 시리즈 시스템의 경우 데이터 애그리게이트 하나가 충분합니다.</block>
   <block id="9edbcb82e27829dd83ad8ddf87b121c5" category="paragraph">새 SVM을 생성하는 동안 QoS 프로필이 자동으로 생성되어 할당된다면, SVM에서 자동으로 생성된 프로필을 제거하여 SAP HANA에서 필요한 성능 보장:</block>
   <block id="5d32d4572d40717acaf8b9ef008f4901" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 8개('fc_ *_ *')의 스크린샷을 보여 줍니다.</block>
-  <block id="ad0e46aa05fcef2f37453adf0ef136ec" category="paragraph">ONTAP 9.8 System Manager를 사용하여 SVM을 생성하는 동안 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
   <block id="2cd30dd459c96f8423572cfd0315dd72" category="paragraph">다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log_mnt00001'은 컨트롤러 B에 구성됩니다 각 볼륨 내에서 단일 LUN이 구성됩니다.</block>
   <block id="a2ab47e506561509501f3015dfd353bb" category="admonition">SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨과 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.</block>
   <block id="bf2694976353bf0fd87866d930f0f42d" category="paragraph">다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다.</block>
@@ -3566,11 +3553,6 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="35fb81d7bc669beabd5887c5308a5374" category="paragraph">온프레미스 스토리지와 S3 버킷 간의 관계는 볼륨에 대한 백업을 생성하거나 애플리케이션 백업을 활성화하여 수행합니다. 온프레미스의 데이터를 S3로 전송하는 데 기존 사이트 간 VPN을 사용해야 하는 경우 VPC 엔드포인트를 사용해야 하므로 온프레미스 스토리지와 S3 버킷 간의 관계를 생성하는 데 볼륨 백업을 사용해야 합니다. 를 누릅니다
 이 문서를 작성할 때 애플리케이션 백업 워크플로우에서는 S3 버킷을 액세스할 VPC 엔드포인트를 선택할 수 없습니다. 를 누릅니다
 을 참조하십시오<block ref="7f3b31b88f0e42104578f538777bc3e6" category="inline-link-rx"></block> VPC 내에서 S3에 대한 VPC 엔드포인트를 설정하는 방법</block>
-  <block id="da23b0ab6fe420fd37a4807b59fb7b31" category="paragraph">하나의 NVMe SSD(데이터)에서 최대 5개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다.
-AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
-  <block id="89579d729fbef030eb0080e68e88f112" category="paragraph">하나의 NVMe SSD(데이터)에서 최대 5개의 SAP HANA 호스트를 지원합니다.
-SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다.
-AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
   <block id="9c485d8d0a0f2d60633001b05d342eed" category="doc">NFS가 포함된 NetApp FAS 시스템의 SAP HANA 구성 가이드</block>
   <block id="b7bda169ccba06e8cbcf02ba0fab5928" category="doc">파이버 채널 프로토콜을 포함한 NetApp FAS 시스템 기반 SAP HANA 구성 가이드 를 참조하십시오</block>
   <block id="a56f5f8ccd94f38be4e8a0f1faf81823" category="doc">NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드</block>
@@ -4489,40 +4471,20 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="d8e5cd74c27d4d7983b9d2c8bdeca1a1" category="paragraph"><block ref="d8e5cd74c27d4d7983b9d2c8bdeca1a1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b7842d6a27abd5170ad4d41cb2353297" category="paragraph">이 문서에서는 NetApp AFF 시스템 및 파이버 채널에 대한 인프라 설정 및 구성에 대해 설명합니다.</block>
   <block id="265ae4ad07ae6dd3140cd976e6e96a15" category="paragraph"><block ref="265ae4ad07ae6dd3140cd976e6e96a15" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5eb58939cb873509ebfcc65c7adea6d4" category="paragraph"><block ref="5eb58939cb873509ebfcc65c7adea6d4" category="inline-image-macro-rx" type="image"></block></block>
   <block id="df25c29fe304d621328adc844c5cd0b3" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 <block ref="f5dc5aad2d2f4cc08999d09836f8c4b2" category="inline-link-macro-rx"></block>설명되어 있습니다.</block>
   <block id="d15ad4b07c5673286f82b8c9b4fccc92" category="inline-xref">LUN을 이니시에이터 그룹에 매핑합니다</block>
   <block id="1b04aaa74da094dd7c2677d2996e8bc4" category="list-text">" 생성 "에 설명된 대로 애그리게이트 내에 이니시에이터 그룹, 볼륨 및 LUN을<block ref="c8187094a239e1291b967555c8a5ba6c" category="inline-xref-macro-rx"></block> 생성합니다.</block>
-  <block id="f44ac0aaf36d976691573c32c1579d56" category="paragraph"><block ref="f44ac0aaf36d976691573c32c1579d56" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b889efa45187481da0b584b1f08b611d" category="paragraph"><block ref="b889efa45187481da0b584b1f08b611d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="5a053d099bd71f6622608db75861b1e5" category="paragraph"><block ref="5a053d099bd71f6622608db75861b1e5" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="98388228afa94a728226d844929284de" category="paragraph"><block ref="98388228afa94a728226d844929284de" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cfd97e0a15391e975214c5503e96d423" category="paragraph"><block ref="cfd97e0a15391e975214c5503e96d423" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="ade510803f2b9aad765372451fd52da2" category="paragraph"><block ref="ade510803f2b9aad765372451fd52da2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b2bc3f5a45ad0103150eddb5c0947895" category="paragraph"><block ref="b2bc3f5a45ad0103150eddb5c0947895" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4cd082d270e30712a5d973de884f7b9f" category="paragraph"><block ref="4cd082d270e30712a5d973de884f7b9f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="017e522349a0ff07067400d6b880e9df" category="paragraph">=:hardbreak::nofooter::icons:font:linkattrs::imagesdir:../media/</block>
   <block id="2267b0943e951c31d5f31c288b6bfbe6" category="paragraph">NFS 프로토콜을 사용하는 NetApp AFF 기반 SAP HANA</block>
   <block id="a0988dbd97f9cd1d119f39a16c3e8fe2" category="paragraph"><block ref="a0988dbd97f9cd1d119f39a16c3e8fe2" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="0c36eb3b2e8bcf854cb838cadf16d690" category="paragraph"><block ref="0c36eb3b2e8bcf854cb838cadf16d690" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f85ec47d30c38b9521054a2e1dd01d54" category="paragraph"><block ref="f85ec47d30c38b9521054a2e1dd01d54" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="f14fa4ed2f8cc9f02e0f0bc794bbc9db" category="paragraph"><block ref="f14fa4ed2f8cc9f02e0f0bc794bbc9db" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4a40cf994804509601c31a8fabe7487f" category="paragraph"><block ref="4a40cf994804509601c31a8fabe7487f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="168753ba1c857224e6d2c4d6e7832d22" category="paragraph"><block ref="168753ba1c857224e6d2c4d6e7832d22" category="inline-image-macro-rx" type="image"></block></block>
   <block id="80d1a2a3304ad91fb33c08a071649f65" category="paragraph"><block ref="80d1a2a3304ad91fb33c08a071649f65" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b9dfea2f38da456216fb821bdace0099" category="paragraph"><block ref="b9dfea2f38da456216fb821bdace0099" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1061c8a586da3d6a249f18df930dc33a" category="paragraph">이 문서에서는 NetApp AFF 시스템 및 NFS의 인프라 설정 및 구성에 대해 설명합니다.</block>
   <block id="c0c285f4d23d22653eba8dc9a75078b0" category="paragraph"><block ref="c0c285f4d23d22653eba8dc9a75078b0" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2b7898e27791b39210843e42a3af13e3" category="paragraph"><block ref="2b7898e27791b39210843e42a3af13e3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5238942ad77c3b1f94a61d3640c23e97" category="paragraph"><block ref="5238942ad77c3b1f94a61d3640c23e97" category="inline-image-macro-rx" type="image"></block></block>
   <block id="bc6f4f64c41295649568c9b08222f2c3" category="paragraph"><block ref="bc6f4f64c41295649568c9b08222f2c3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c55f68c7fa3064bc905d3ae3a6a0a59d" category="list-text">"" 및 "<block ref="886d8674ea6944dd32bd390cb48bc80e" category="inline-xref-macro-rx"></block>"에 설명된 대로 애그리게이트 내에 볼륨을<block ref="7f2f76d537cb5c15ae301f069af9489f" category="inline-xref-macro-rx"></block> 생성합니다.</block>
-  <block id="a7d4e198585e99565ae20fd5e1e25648" category="paragraph"><block ref="a7d4e198585e99565ae20fd5e1e25648" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1e564b5720d139afce5fbfa4d8305102" category="paragraph"><block ref="1e564b5720d139afce5fbfa4d8305102" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="220d6df1b080b254062b992d2864257d" category="paragraph"><block ref="220d6df1b080b254062b992d2864257d" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b13f29a99399127f7c53673ae7d83d6e" category="paragraph"><block ref="b13f29a99399127f7c53673ae7d83d6e" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="4c4c735b4b06f5c8b4f22ab089500abe" category="paragraph"><block ref="4c4c735b4b06f5c8b4f22ab089500abe" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="6e663089bc56d8ba3af7495ef74018db" category="paragraph"><block ref="6e663089bc56d8ba3af7495ef74018db" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0f067126ab39c0af9790685c5bc83bf3" category="paragraph"><block ref="0f067126ab39c0af9790685c5bc83bf3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b726daf8a2adf210c59b7ef834090339" category="paragraph"><block ref="b726daf8a2adf210c59b7ef834090339" category="inline-image-macro-rx" type="image"></block></block>
   <block id="c8ad86db51ea3fec014b3b92b80c4f2e" category="paragraph"><block ref="c8ad86db51ea3fec014b3b92b80c4f2e" category="inline-image-macro-rx" type="image"></block></block>
@@ -4755,4 +4717,63 @@ AFF A800, AFF A70 및 AFF A90 시스템의 내부 NVMe 디스크에도 동일하
   <block id="2134d42f2b0f54791bb238214fdc5110" category="list-text">ASA C250, ASA C30, ASA C400, ASA C60, ASA C800, ASA C80</block>
   <block id="a10922577a9bcbf85b1a7a9d8e7de5aa" category="cell">2024년 11월</block>
   <block id="53bab281b7eb6692b17a4b65d99e2188" category="list-text">FAS2750, FAS2820, FAS8300, FAS50, FAS8700, FAS70, FAS9500, FAS90</block>
+  <block id="eccbc87e4b5ce2fe28308fd9f2a7baf3" category="cell">3</block>
+  <block id="c9f0f895fb98ab9159f51fd0297e236d" category="cell">8</block>
+  <block id="34173cb38f07f89ddbebc2ac9128303f" category="cell">30</block>
+  <block id="c2be09c4548a0a3d6590431051156ecc" category="inline-image-macro">스토리지 HA 쌍에 8개의 SAP HANA 호스트 연결</block>
+  <block id="57b2c63155fecfb21c53a82e0a192a2b" category="paragraph"><block ref="57b2c63155fecfb21c53a82e0a192a2b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="445dc01d838477256a3f7c6ec4051a70" category="inline-image-macro">스토리지 HA 쌍에 연결된 추가 SAP HANA 호스트</block>
+  <block id="2aeef15c3419fd9cc9d6690eb125715e" category="paragraph"><block ref="2aeef15c3419fd9cc9d6690eb125715e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6119ba4f9580ccfa3f0a3d3f871870ff" category="inline-image-macro">스토리지 HA 쌍 추가</block>
+  <block id="0349c380e002d982103ec0fc460cd07f" category="paragraph"><block ref="0349c380e002d982103ec0fc460cd07f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c4d3f7817a7843faa1dc4bee9f2303ff" category="list-text">SID가 SS3인 HANA 시스템</block>
+  <block id="d6b8648b9a763d4fa670f413b105dec7" category="list-text">Linux LVM(Logical Volume Manager)을 사용하는 SID=FC5인 HANA 시스템</block>
+  <block id="238ec08371f09e874d0f1002aee0caeb" category="inline-image-macro">2개의 스토리지 컨트롤러에 연결된 SAP HANA 호스트</block>
+  <block id="74f3ad2825ea13022492793fb7f63a79" category="paragraph"><block ref="74f3ad2825ea13022492793fb7f63a79" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="15e40c72ba936fd4cbb64210e15725a1" category="paragraph">다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러 간에 균등하게 분산되어야 합니다. ADPv2는 ONTAP 9 및 DS224C 디스크 쉘프에 사용됩니다.</block>
+  <block id="2f4edbf818ed882e067d16f9f1c932da" category="inline-image-macro">DS224C 디스크 쉘프 연결</block>
+  <block id="ddb7d2fa5d4fd45c1a6001d8cbba792c" category="paragraph"><block ref="ddb7d2fa5d4fd45c1a6001d8cbba792c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f8c9ad3e9065af52a42b05407f475c98" category="paragraph">각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. ADPv2는 NS224 디스크 쉘프에도 사용됩니다.</block>
+  <block id="39b270995b65c0f50a8535f49f84aa61" category="inline-image-macro">NS224 NVMe 디스크 쉘프 연결</block>
+  <block id="dac87f657c075eb6a448486fda4b18e4" category="paragraph"><block ref="dac87f657c075eb6a448486fda4b18e4" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0dee623c3a47708547aff95df6dc16df" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다.</block>
+  <block id="6f1ace73b19ea95862049cef5bc4fabb" category="admonition">2024년 8월 이후에 출시된 ASA 시스템은 이 단계가 자동으로 수행되므로 필요하지 않습니다</block>
+  <block id="f4c9620796b063803a52bf4cb0bdc63b" category="paragraph"><block ref="f4c9620796b063803a52bf4cb0bdc63b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c63c34bc75852acd26eac087d69564e1" category="inline-image-macro">논리 인터페이스 오버뷰</block>
+  <block id="442b4694b4e23c4c8aab5817606d4a8f" category="paragraph"><block ref="442b4694b4e23c4c8aab5817606d4a8f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="775282e39d26408a21d5eaa1c485e361" category="paragraph">ONTAP System Manager로 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
+  <block id="ca4b4ab28b402042c5530cc0059c6af3" category="inline-image-macro">SVM 생성</block>
+  <block id="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="paragraph"><block ref="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0c2fd995ece5cfe7704d5109986e3b0e" category="paragraph"><block ref="0c2fd995ece5cfe7704d5109986e3b0e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2376775a32e0fa313efe0917b1bd9cfc" category="paragraph"><block ref="2376775a32e0fa313efe0917b1bd9cfc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="062ce9ed8e9b3c25669e46aba83faa4c" category="admonition">2024년 8월 이후에 출시된 ASA 시스템은 _lun create_ 중에 자동으로 수행되므로 이 단계가 필요하지 않습니다</block>
+  <block id="962f559368bb8c770c0eb510490d6a70" category="admonition">2024년 8월 이후에 출시된 ASA 시스템의 경로로만 LUN 이름을 제공하십시오. 이는 아래의 _lun map_명령에도 적용됩니다. 또한 _-space-reserve_및 _-space-allocation_ 옵션을 사용할 수 없습니다.</block>
+  <block id="871d39fd458463703004f24c503c7812" category="paragraph">하나의 NVMe SSD(데이터)는 사용 중인 특정 NVMe 디스크에 따라 최대 2/5개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다. AFF 및 ASA 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
+  <block id="b80edeac5a9d51784b1a139f183acc83" category="inline-image-macro">SAP HANA 사이징 프로세스</block>
+  <block id="4bb4fae3b6ea53d3f376bbd619714543" category="paragraph"><block ref="4bb4fae3b6ea53d3f376bbd619714543" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f2ed1b2a99c0f64ca0cfcd6111d7ec4c" category="inline-image-macro">스토리지 고가용성(HA) 페어에 8개의 SAP HANA 호스트 연결</block>
+  <block id="831843b9e12aadd42880c9ec56bd509a" category="paragraph"><block ref="831843b9e12aadd42880c9ec56bd509a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d788d47338c59792d717e9540a6664ef" category="inline-image-macro">기존 스토리지 컨트롤러 HA 쌍에 대한 추가 SAP HANA 호스트</block>
+  <block id="1630763019d92de5939da85faf4ad16c" category="paragraph"><block ref="1630763019d92de5939da85faf4ad16c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4f056ce2074ba16ee637d64fdef647a7" category="inline-image-macro">추가 HA 쌍이 추가되었습니다</block>
+  <block id="afd2c3367e4b9e93007759798ae8b0c0" category="paragraph"><block ref="afd2c3367e4b9e93007759798ae8b0c0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4d9c2ddc20521fa24e033c096807f43d" category="paragraph">다음 그림은 10GbE 네트워크를 사용하여 스토리지 컨트롤러 HA 쌍에 연결된 4개의 SAP HANA 호스트를 보여 주는 예입니다. 각 SAP HANA 호스트에는 중복 Fabric에 대한 Active-Active 연결이 있습니다.</block>
+  <block id="e7c118cc09590a9a288c67a4b302b904" category="paragraph">스토리지 계층에서는 각 SAP HANA 호스트에 10Gb 처리량을 제공하도록 4개의 활성 연결이 구성됩니다. 스토리지 계층에서 MTU 크기가 9000인 브로드캐스트 도메인이 구성되어 있으며 필요한 모든 물리적 인터페이스가 이 브로드캐스트 도메인에 추가됩니다. 이 접근 방식은 이러한 물리적 인터페이스를 동일한 페일오버 그룹에 자동으로 할당합니다. 이러한 물리적 인터페이스에 할당된 모든 논리 인터페이스(LIF)가 이 페일오버 그룹에 추가됩니다.</block>
+  <block id="fa9e73ef22bb3dbfc0d7dfadf5b21281" category="inline-image-macro">네트워크 개요</block>
+  <block id="1f4afde3d41b82108694e4fb06f46b87" category="paragraph"><block ref="1f4afde3d41b82108694e4fb06f46b87" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5cc69351dc44fc813914fdaa909dbc3e" category="paragraph">일반적으로 서버(본드) 및 스토리지 시스템(예: 링크 통합 제어 프로토콜(LACP) 및 ifgroup)에서 HA 인터페이스 그룹을 사용하는 것이 좋습니다. HA 인터페이스 그룹을 사용하면 그룹 내의 모든 인터페이스 간에 로드가 균등하게 분산되는지 확인합니다. 부하 분산은 네트워크 스위치 인프라의 기능에 따라 달라집니다.</block>
+  <block id="6c3a3847a37cd097bd01d4da5604f5ec" category="inline-image-macro">SAS 쉘프 연결</block>
+  <block id="9a0eda3f9d8233b1fa9f3da649f3f69a" category="paragraph"><block ref="9a0eda3f9d8233b1fa9f3da649f3f69a" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ad5e5ab57510595b28c8e0eccf58ded8" category="inline-image-macro">MVMe 디스크 쉘프 연결</block>
+  <block id="a1868e70c540a5e45ad58185a99b3769" category="paragraph"><block ref="a1868e70c540a5e45ad58185a99b3769" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="06622e356c3be6dc8c45370761d20660" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 드라이브 기술(SAS SSD 또는 NVMe SSD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다.</block>
+  <block id="91e0d52ee3c1820ee8386d18f6a91bd0" category="inline-image-macro">애그리게이트 구성</block>
+  <block id="da814dd6671cb64a7483f4c29eac56a3" category="paragraph"><block ref="da814dd6671cb64a7483f4c29eac56a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d63145bc3309abf0009436530805ac13" category="inline-image-macro">볼륨 구성 SAP HANA 단일 호스트</block>
+  <block id="4e37fc2061f3eb4a5c883256f7abd270" category="paragraph"><block ref="4e37fc2061f3eb4a5c883256f7abd270" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2f57ad2489363e64804b354244f0c7b8" category="inline-image-macro">볼륨 구성 SAP HANA 다중 호스트</block>
+  <block id="67723885e8b8dec5641fd9b65c05a445" category="paragraph"><block ref="67723885e8b8dec5641fd9b65c05a445" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="de3a0b5c28d9158410e205fdf4dd72f2" category="paragraph">하나의 NVMe SSD(데이터)는 사용된 NVMe 디스크에 따라 최대 2/5개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다. AFF 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
+  <block id="a1498fba486158dfd616e2bc1f205275" category="admonition">디스크 쉘프를 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 크기는 증가하지 않습니다.</block>
+  <block id="57c187411855aa330625e6e0331a74b7" category="paragraph"><block ref="57c187411855aa330625e6e0331a74b7" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
