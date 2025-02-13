@@ -65,11 +65,13 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 
 다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 섹션에서는 스토리지 하드웨어가 설정되어 있고 ONTAP 소프트웨어가 이미 설치되어 있다고 가정합니다. 또한 스토리지 FCP 포트를 SAN 패브릭에 이미 연결할 수 있어야 합니다.
 
-. "에 설명된 대로 디스크 쉘프 구성이 올바른지 확인합니다.<<디스크 쉘프 연결>>있습니다."
-. 에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다.<<애그리게이트 구성>>있습니다."
-. "Clustered Data ONTAP 8.3.1에서 설명하는 대로 스토리지 가상 시스템(SVM)을<<스토리지 가상 머신 구성>>있습니다."
-. "에 설명된 대로 논리 인터페이스(LIF) 생성<<논리 인터페이스 구성>>있습니다."
-. " 생성 "에 설명된 대로 애그리게이트 내에 이니시에이터 그룹, 볼륨 및 LUN을<<Creating LUNs,LUN을 이니시에이터 그룹에 매핑합니다>> 생성합니다.
+. 에 설명된 대로 디스크 쉘프의 구성이 올바른지 확인합니다<<디스크 쉘프 연결>>.
+. 에 설명된 대로 필요한 애그리게이트를 생성하고 <<애그리게이트 구성>>구성합니다.
+. 에 설명된 대로 스토리지 가상 머신(SVM)을 <<스토리지 가상 머신 구성>>생성합니다.
+. 에 설명된 대로 논리 인터페이스(LIF)를 <<논리 인터페이스 구성>>생성합니다.
+. 섹션 링크에 설명된 대로 HANA 서버의 WWN(Worldwide Name)으로 이니시에이터 그룹(igroup)을 생성합니다. saphana_FAS_fc_storage_controller_setup.html#initiator-groups.<<이니시에이터 그룹>>
+. 및 섹션에 설명된 대로 애그리게이트 내에 볼륨 및 LUN을 생성합니다 <<SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성>><<SAP HANA 다중 호스트 시스템을 위한 볼륨 및 LUN 구성>>
+. 에 설명된 대로 애그리게이트 내에 이니시에이터 그룹, 볼륨 및 LUN을 <<#lun_create,LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑>>생성합니다.
 
 
 
@@ -123,9 +125,9 @@ vserver modify -vserver <svm-name> -qos-policy-group none
 
 == 논리 인터페이스 구성
 
-스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 8개('fc_ *_ *')의 스크린샷을 보여 줍니다.
+스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 SVM에 구성된 8개 LIF의 스크린샷을 보여줍니다.
 
-image:saphana_aff_fc_image13a.png["논리 인터페이스 오버뷰"]
+image:saphana_aff_fc_image13a.png["논리 인터페이스 개요"]
 
 ONTAP System Manager로 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.
 
@@ -134,6 +136,30 @@ image:saphana_aff_fc_image14a.png["SVM 생성"]
 
 NOTE: 2024년 8월 이후에 출시된 ASA 시스템은 이 단계가 자동으로 수행되므로 필요하지 않습니다
 
+
+
+== 이니시에이터 그룹
+
+igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.
+
+'sanlun' 툴을 사용하여 각 SAP HANA 호스트의 WWPN을 얻으려면 다음 명령을 실행합니다.
+
+....
+stlrx300s8-6:~ # sanlun fcp show adapter
+/sbin/udevadm
+/sbin/udevadm
+
+host0 ...... WWPN:2100000e1e163700
+host1 ...... WWPN:2100000e1e163701
+....
+
+NOTE: 이 `sanlun` 툴은 NetApp Host Utilities의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 섹션을 참조하십시오 link:saphana_aff_fc_host_setup.html["호스트 설정."]
+
+이니시에이터 그룹은 ONTAP 클러스터의 CLI를 사용하여 생성할 수 있습니다.
+
+....
+lun igroup create -igroup <igroup name> -protocol fcp -ostype linux -initiator <list of initiators> -vserver <SVM name>
+....
 
 
 == SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성
@@ -330,7 +356,7 @@ NOTE: 설명된 구성에서 사용자 SIDadm의 기본 홈 디렉토리가 저�
 
 
 
-== 볼륨 옵션
+=== 볼륨 옵션
 
 다음 표에 나열된 볼륨 옵션을 확인하여 모든 SVM에서 설정해야 합니다.
 
@@ -345,27 +371,16 @@ NOTE: 설명된 구성에서 사용자 SIDadm의 기본 홈 디렉토리가 저�
 |===
 
 
-=== LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑
+== LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑
 
-NetApp ONTAP System Manager를 사용하여 스토리지 볼륨 및 LUN을 생성하고 서버에 매핑할 수 있습니다.
+NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.
 
-NetApp은 ONTAP System Manager 9.7 이하 버전 내에서 SAP HANA용 애플리케이션 마법사를 자동화하여 볼륨 및 LUN 프로비저닝 프로세스를 크게 간소화합니다. SAP HANA의 NetApp 모범 사례에 따라 볼륨 및 LUN을 자동으로 생성 및 구성합니다.
-
-'sanlun' 툴을 사용하여 다음 명령을 실행하여 각 SAP HANA 호스트의 WWPN(Worldwide Port Name)을 확인하십시오.
-
-....
-stlrx300s8-6:~ # sanlun fcp show adapter
-/sbin/udevadm
-/sbin/udevadm
-host0 ...... WWPN:2100000e1e163700
-host1 ...... WWPN:2100000e1e163701
-....
 
 NOTE: 'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.
 
 
 
-== CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑
+=== CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑
 
 이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9.8과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.
 

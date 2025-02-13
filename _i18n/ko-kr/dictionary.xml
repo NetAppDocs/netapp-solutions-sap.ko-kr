@@ -265,7 +265,6 @@
   <block id="9b62b24b8d9ba375e94ccacca94fc52d" category="paragraph">다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. ADPv2는 ONTAP 9 및 DS224C 디스크 쉘프에 사용됩니다.</block>
   <block id="03ec21b0d762028e928e8b7603d1b5a0" category="admonition">DS224C 디스크 쉘프를 사용하면 4중 경로 SAS 케이블도 사용할 수 있지만 필수는 아닙니다.</block>
   <block id="bdf2df4b25ef7731104da665fef6a0bc" category="section-title">NVMe(100GbE) 디스크 쉘프</block>
-  <block id="c95631e026846b434e73e4f8b624c435" category="paragraph">각 NS224 NVMe 디스크 쉘프는 컨트롤러당 2개의 100GbE 포트를 사용하여 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. 애그리게이트 구성 장에서 설명한 ADPv2도 NS224 디스크 쉘프에 사용됩니다. 다음 그림은 NVMe 드라이브와 디스크 쉘프 연결을 보여 줍니다.</block>
   <block id="10ae1f9130fbbe975a644b0f325c6b31" category="section-title">애그리게이트 구성</block>
   <block id="f1c8039bfd9034e917c3ee25c37b6e80" category="paragraph">다음 이미지는 ADPv2로 구성된 12Gb SAS 쉘프에서 실행 중인 12개의 SAP HANA 호스트 구성을 보여줍니다. 각 스토리지 컨트롤러에 6개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 2개씩, 4개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트에는 디스크 11개와 데이터 9개, 패리티 디스크 파티션 2개가 구성되어 있습니다. 각 컨트롤러에 대해 2개의 스페어 파티션을 사용할 수 있습니다.</block>
   <block id="99897c39b8224cf5a25fe9c6f599b3a7" category="section-title">SVM 구성</block>
@@ -550,31 +549,15 @@
   <block id="5a5237a6a98f8795e5ef541300be3602" category="admonition">FabricPool를 사용하여 운영 스토리지의 스냅샷 복사본을 계층화하거나 백업 대상에서 FabricPool를 사용하면 데이터베이스의 복원 및 복구 또는 시스템 클론 생성, 복구 시스템과 같은 기타 작업에 필요한 시간이 변경됩니다. 전체 수명 주기 관리 전략을 계획할 때 이 기능을 사용하는 동안 SLA가 여전히 충족되는지 확인하십시오.</block>
   <block id="d25223f4065ca21361aff2e7cdc61203" category="section-title">스토리지를 구성합니다</block>
   <block id="562283819997e7573d7ef1bcd25f02e9" category="paragraph">다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 단계를 시작하기 전에 스토리지 하드웨어 설정, ONTAP 소프트웨어 설치 및 스토리지 FCP 포트의 SAN 패브릭 연결을 완료합니다.</block>
-  <block id="2cb20ba4c0eb0eb9f98e21ec7aca47f3" category="list-text">섹션에 설명된 대로 SAS 스택 구성이 올바른지 확인합니다 <block ref="7f61bd8ed95dde5d117ac18e531c2392" category="inline-link-macro-rx"></block></block>
-  <block id="3e99cd10c9ef85534f3816fe698acf36" category="list-text">섹션에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다 <block ref="1eb0235695db5698c097351f88f0747b" category="inline-link-macro-rx"></block></block>
-  <block id="e8bb33c4475cdd668aa10b272a23134c" category="list-text">섹션에 설명된 대로 SVM(스토리지 가상 시스템)을 생성합니다 <block ref="d13b32bfc05b789abfa54d62f28177c3" category="inline-link-macro-rx"></block></block>
-  <block id="e8edc3c35ca6d470bb586a19c4ba2a77" category="list-text">섹션에 설명된 대로 논리 인터페이스(LIF)를 생성합니다 <block ref="304794730509f6f33e41081c9ea9ada6" category="inline-link-macro-rx"></block></block>
-  <block id="247671c13d2daa0ebab96556f7a23c0f" category="inline-link-macro">FCP 포트 집합.</block>
-  <block id="0641e7ab6ca260dd1687ed64f731567d" category="list-text">섹션에 설명된 대로 FCP 포트 세트를 생성합니다 <block ref="80e993b4c7204adfd3e99dcfc8b61878" category="inline-link-macro-rx"></block></block>
-  <block id="eb0ef7e6e2bb01610d7af0b64d45f273" category="inline-link-macro">이니시에이터 그룹</block>
-  <block id="f737bc3e8b1df8cd01c46b1f8bad3991" category="list-text">섹션에 설명된 대로 HANA 서버의 WWN(Worldwide Name)이 포함된 이니시에이터 그룹(igroup)을 생성합니다 <block ref="3616ae8884995c0f6d38b378a7c408ce" category="inline-link-macro-rx"></block></block>
   <block id="3dc0bb550ffeb410b2cbe908abda2020" category="inline-link-macro">SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성</block>
-  <block id="5480184205f8be2fc64d333da844de90" category="inline-link-macro">SAP HANA 다중 호스트 시스템을 위한 볼륨 및 LUN 구성</block>
-  <block id="2c6aedb572dccc5a20423edb6df1e593" category="list-text">섹션에 설명된 대로 애그리게이트 내에 볼륨 및 LUN을 생성합니다 <block ref="19ba03664bebb02274f7bd74909fcde5" category="inline-link-macro-rx"></block> 및 <block ref="8ca29b6ed94f0b5f4fd7893d15f21ff7" category="inline-link-macro-rx"></block></block>
   <block id="b7483c1a479d4fef5cff97bd81ff277b" category="paragraph">SSD를 사용할 경우, 다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. DS224C 디스크 쉘프를 사용하면 4중 경로 SAS 케이블도 사용할 수 있지만 필수는 아닙니다.</block>
   <block id="fbd0736dc070b8c1ab4ca37b6ff6a1c2" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다. FAS 2000 시리즈 시스템의 경우 한 개의 데이터 집합만으로도 충분합니다.</block>
-  <block id="5739a58e7053e7fb6bd6f313b759b5fd" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)과 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. FAS2000 시리즈 시스템의 경우 데이터 애그리게이트 하나가 충분합니다.</block>
   <block id="15780b309192b18b065fdcb3276b82b6" category="paragraph">SAP HANA 데이터베이스를 사용하는 다중 호스트 SAP 환경에는 단일 SVM이 사용될 수 있습니다. 회사 내의 서로 다른 팀에서 관리되는 경우 필요에 따라 SVM을 각 SAP 환경에 할당할 수도 있습니다. 이 문서의 스크린샷과 명령 출력에는 HANA라는 SVM이 사용됩니다.</block>
-  <block id="e9fc49c5c730458783a8ccd4b98a94c5" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 4개('fc_ * _ *)의 스크린샷을 보여 줍니다.</block>
-  <block id="34cf3cce20e89b361817cb8171e434a6" category="paragraph">ONTAP 9.8 System Manager를 사용하여 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
-  <block id="d5b418c423bd08ad0961e2eb57962d5a" category="paragraph">다음 그림은 ONTAP 9.8 System Manager를 사용한 SVM 및 LIF 생성을 보여 줍니다.</block>
   <block id="6651fd2f7a600a31e0103b2ff23752ca" category="section-title">이니시에이터 그룹</block>
   <block id="517f95ae0c03c21432632bd009cdff0d" category="paragraph">igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.</block>
   <block id="3f87e8b9731d5a43155ef27ca0b567af" category="paragraph">'sanlun' 툴을 사용하여 각 SAP HANA 호스트의 WWPN을 얻으려면 다음 명령을 실행합니다.</block>
   <block id="bc7b122f8c7d1a7a700fe37744267ae2" category="inline-link-macro">호스트 설정.</block>
   <block id="64a7d37bc5bbadc99e0094b3d4046ae2" category="admonition">'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 섹션을 참조하십시오 <block ref="0b358a640d1236c691cca4bd6fb10205" category="inline-link-macro-rx"></block></block>
-  <block id="0cac098cb7f23089be44b592277de000" category="paragraph">다음 그림에서는 SS3_HANA의 이니시에이터 목록을 보여 줍니다. igroup은 서버의 모든 WWPN을 포함하며 스토리지 컨트롤러의 포트 세트에 할당됩니다.</block>
-  <block id="4ca4e2a0d4e5c589a8ad70a95925a37a" category="paragraph">다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1'_data'_mnt00001'이 컨트롤러 A에 구성되어 있고 볼륨 'sid1'_'log'_'mnt00001'이 컨트롤러 B에 구성되어 있습니다 각 볼륨 내에서 단일 LUN이 구성됩니다.</block>
   <block id="2c8d2683acd00fc6b7bdbecbc4077a74" category="admonition">SAP HANA 시스템에 고가용성(HA) 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.</block>
   <block id="4a6aff734b6925db0b295309b406bb09" category="paragraph">각 SAP HANA 호스트마다 데이터 볼륨, 로그 볼륨 및 '/HANA/shared'에 대한 볼륨이 구성됩니다. 다음 표에는 4개의 SAP HANA 단일 호스트 시스템이 포함된 구성의 예가 나와 있습니다.</block>
   <block id="7a1a0bd259dd739b7d810124fe9f4440" category="paragraph">다음 표에는 단일 호스트 시스템의 마운트 지점 구성 예가 나와 있습니다.</block>
@@ -586,7 +569,6 @@
   <block id="867844c1d35f4b67a56a71e776d4a8ad" category="cell">/HANA/log/SID1/mnt00001</block>
   <block id="ab07e4bbf6e507a26a731683320de6e3" category="cell">SID1_shared</block>
   <block id="d8ee68f6803fad6b40fde1bf30891d5c" category="cell">/HANA/공유/SID1</block>
-  <block id="05ba29e62de470cece1f33d7d960bebc" category="admonition">설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 저장된 '/usr/sap/sID1' 디렉토리가 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서는 모든 파일 시스템이 중앙 스토리지에 있도록 '/usr/SAP/SID1' 디렉토리에 대한 'ID1'_ 공유 볼륨 내에 추가 LUN을 생성하는 것이 좋습니다.</block>
   <block id="8d4e658f528a31efe4237fe11774716f" category="section-title">Linux LVM을 사용하여 SAP HANA 단일 호스트 시스템에 대한 볼륨 및 LUN 구성</block>
   <block id="4f2eb711021dab33e5ff7c3395979045" category="paragraph">Linux LVM을 사용하여 성능을 향상하고 LUN 크기 제한을 해결할 수 있습니다. LVM 볼륨 그룹의 서로 다른 LUN은 서로 다른 애그리게이트와 다른 컨트롤러에 저장해야 합니다. 다음 표에서는 볼륨 그룹당 2개의 LUN에 대한 예를 보여 줍니다.</block>
   <block id="414644d9944d8acf448d00964757d116" category="admonition">여러 LUN에 LVM을 사용하여 SAP HANA KPI를 충족할 필요는 없습니다. 단일 LUN 설정으로 필요한 KPI를 충족합니다.</block>
@@ -599,7 +581,6 @@
   <block id="45cf28b4bb0bed9fa061ae20911813ad" category="cell">LV:SID1_LOG_mnt00001-vol</block>
   <block id="0a0eb6344c43262455dfef7dd783c9a2" category="cell">LUN: SID1_SHARED</block>
   <block id="b25b558581b55b9f2fe2ef166b8c7153" category="section-title">SAP HANA 다중 호스트 시스템을 위한 볼륨 및 LUN 구성</block>
-  <block id="b63455a0893e3fe36b2f2d95447d0b75" category="paragraph">다음 그림에서는 4+1 다중 호스트 SAP HANA 시스템의 볼륨 구성을 보여 줍니다. 각 SAP HANA 호스트의 데이터 볼륨 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 ID _ Data _ mnt00001은 컨트롤러 A에 구성되고 볼륨 ID _ "log" _ "mnt00001"은 컨트롤러 B에 구성됩니다 각 볼륨 내에 하나의 LUN이 구성됩니다.</block>
   <block id="159562ba9c8d36ce5afba352e4de35a9" category="paragraph">'/HANA/Shared' 볼륨은 모든 HANA 호스트에서 액세스할 수 있어야 하므로 NFS를 사용하여 내보내집니다. '/HANA/공유' 파일 시스템에 대한 특정 성능 KPI가 없더라도 NetApp은 10Gb 이더넷 연결을 사용할 것을 권장합니다.</block>
   <block id="11862afda87479323583a609effa0913" category="admonition">SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러를 하나만 사용하는 경우, 데이터 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수 있습니다.</block>
   <block id="ebcead3815b9e992a87a9c31a4be99fe" category="paragraph">각 SAP HANA 호스트에 대해 데이터 볼륨과 로그 볼륨이 생성됩니다. '/HANA/Shared' 볼륨은 SAP HANA 시스템의 모든 호스트에서 사용됩니다. 다음 그림에서는 4+1 다중 호스트 SAP HANA 시스템의 예제 구성을 보여 줍니다.</block>
@@ -616,7 +597,6 @@
   <block id="11b774b700c0644e1f4311df2fcb05be" category="cell">LUN: SID_log_mnt00004</block>
   <block id="b7db253f6e3bac8aad3ab6a0941fb70d" category="cell">볼륨: SID_shared</block>
   <block id="7e81644459f05c7fe5ef716463a0b0fd" category="cell">NFS 및 /etc/fstab 항목을 사용하여 모든 호스트에 마운트됩니다</block>
-  <block id="db7586f46a08d4a865d9fcc187eccdc6" category="admonition">설명된 구성에서 사용자 SIDadm의 기본 홈 디렉토리가 저장되는 '/usr/sap/sid' 디렉토리는 각 HANA 호스트의 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서는 각 데이터베이스 호스트가 중앙 스토리지에 모든 파일 시스템을 포함할 수 있도록 '/usr/sap/sid' 파일 시스템에 대한 ''ID'_'공유' 볼륨에 4개의 하위 디렉토리를 추가로 생성하는 것이 좋습니다.</block>
   <block id="c054b3fc8b39c77b600c774805522378" category="section-title">Linux LVM을 사용하여 SAP HANA 다중 호스트 시스템을 위한 볼륨 및 LUN 구성</block>
   <block id="ea15b968cdc22cb1b865eba6daa0eae0" category="paragraph">Linux LVM을 사용하여 성능을 향상하고 LUN 크기 제한을 해결할 수 있습니다. LVM 볼륨 그룹의 서로 다른 LUN은 서로 다른 애그리게이트와 다른 컨트롤러에 저장해야 합니다. 다음 표에서는 2 + 1 SAP HANA 다중 호스트 시스템에 대해 볼륨 그룹당 2개의 LUN을 보여 줍니다.</block>
   <block id="7e819a8bd73b862fc9b80deb044fa7da" category="admonition">LVM을 사용하여 여러 LUN을 결합하여 SAP HANA KPI를 충족할 필요는 없습니다. 단일 LUN 설정으로 필요한 KPI를 충족합니다.</block>
@@ -631,23 +611,10 @@
   <block id="711212cf75d514aac51d33222c3265b1" category="cell">LV:SID_DATA_mnt00002-vol</block>
   <block id="57d1d1afeed57e5be9d3694589233736" category="cell">LV:SID_LOG_mnt00002-vol</block>
   <block id="b61595b5b7b716bd6b8bd21e4fa4a3bf" category="cell">/HANA/공유</block>
-  <block id="df6802a99a754c5978954aef9c7f4784" category="admonition">설명된 구성에서 사용자 SIDadm의 기본 홈 디렉토리가 저장되는 '/usr/sap/sid' 디렉토리는 각 HANA 호스트의 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서는 각 데이터베이스 호스트가 중앙 스토리지에 모든 파일 시스템을 포함할 수 있도록 '/usr/sap/sid' 파일 시스템에 대한 ''ID'_'공유' 볼륨에 4개의 하위 디렉토리를 추가로 생성하는 것이 좋습니다.</block>
   <block id="941ad2feba868268ee283fe1886c4440" category="paragraph">다음 표에 나열된 볼륨 옵션을 확인하여 모든 SVM에서 설정해야 합니다.</block>
   <block id="203165a49e3a391bdbc44e3a05d54279" category="cell">ONTAP 9</block>
   <block id="b9c48200eb9eba714e3c88803e97b4ce" category="section-title">LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑</block>
-  <block id="f0f3c94fb860d8ed677a7fd92098c982" category="paragraph">NetApp OnCommand System Manager를 사용하여 스토리지 볼륨 및 LUN을 생성하고 이 볼륨을 서버의 igroup에 매핑할 수 있습니다.</block>
-  <block id="628f62b19dac88e4e877b52b00325d1c" category="paragraph">다음 단계에서는 SID SS3을 사용하는 2+1 다중 호스트 HANA 시스템 구성을 보여 줍니다.</block>
-  <block id="99576f0b50cbef6a3dc3e755211ba4df" category="list-text">NetApp ONTAP 시스템 관리자에서 LUN 생성 마법사를 시작합니다.</block>
-  <block id="cc3bbd3870b19b5988056892345656f8" category="list-text">LUN 이름을 입력하고 LUN 유형을 선택한 다음 LUN 크기를 입력합니다.</block>
-  <block id="19cca4c2caf04d464b286b57631c5cf3" category="list-text">볼륨 이름과 호스팅 애그리게이트를 입력합니다.</block>
-  <block id="3e7bbfdb3982e2648add19277beb4be0" category="list-text">LUN을 매핑할 igroup을 선택합니다.</block>
-  <block id="f78e3cdb43aaa763020ac7b127b79352" category="list-text">QoS 설정을 제공합니다.</block>
-  <block id="59cd39f269f7e809ddc94cf9eb25d4fc" category="list-text">요약 페이지에서 다음 을 클릭합니다.</block>
-  <block id="de93591f8d085ca64b0997731f1a32d8" category="list-text">완료 페이지에서 마침 을 클릭합니다.</block>
-  <block id="1f0d5a0003e2a9d29d9bdbdb42528453" category="list-text">각 LUN에 대해 2단계부터 7단계까지 반복합니다.</block>
-  <block id="a0e202053c694786bc442dd83a386ff7" category="paragraph">다음 그림에서는 2+1 다중 호스트 설정을 위해 생성해야 하는 모든 LUN의 요약을 보여 줍니다.</block>
   <block id="77656454768235b0e1954805bd92d9c9" category="section-title">CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 igroup에 매핑</block>
-  <block id="90242878213f2eef96eb3fcc1d8e3ad6" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9.8과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
   <block id="c48caf1c739d7975abd91d926cd56982" category="list-text">필요한 볼륨을 모두 생성합니다.</block>
   <block id="8e5c1549db5f0e31853b6809f7049388" category="list-text">모든 LUN을 생성합니다.</block>
   <block id="d21a66a2fd717a4acd6dd449ecac4839" category="list-text">시스템 FC5에 속하는 모든 서버에 대한 igroup을 생성합니다.</block>
@@ -818,10 +785,8 @@
   <block id="7d7894f31c9b83146d2bc22185ed5db0" category="cell">rsize=65536, wsize=65536,</block>
   <block id="ae2c578e6abfee06e6c468fd4e7cb392" category="paragraph">시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.</block>
   <block id="912023f4eba0bf223e908e20d22ff92f" category="paragraph">다음 섹션에서는 SAP HANA 인프라 설정 및 구성 지침을 제공하고 SAP HANA 시스템 설정에 필요한 모든 단계를 설명합니다. 이 섹션에서는 다음 예제 구성을 사용합니다.</block>
-  <block id="5f817989cf0f93d4a14f30644d1994e2" category="list-text">SID가 SS3 및 ONTAP 9.7 이전인 HANA 시스템</block>
   <block id="e7f4f805e4b2edf4e5d40f8db1e51fd5" category="list-text">SAP HANA 단일 및 다중 호스트</block>
   <block id="0bad0fb3efdfa0349f059e6510652363" category="list-text">SAP HANA 다중 파티션을 사용하는 SAP HANA 단일 호스트</block>
-  <block id="273f733be4b4eee98578fce71ccc7a70" category="list-text">SID가 있는 HANA 시스템 = FC5 및 ONTAP 9.8, Linux LVM(Logical Volume Manager) 사용</block>
   <block id="47c97f5b5374f82578ea21329859f8cb" category="summary">스토리지 커넥터는 페일오버 기능이 있는 다중 호스트 환경에서만 필요합니다.</block>
   <block id="cfb64066e9063f57ad27ccf9e4e06e87" category="doc">SAP HANA 스토리지 커넥터 API</block>
   <block id="143f136fe7528a58d8f5256ccaa89109" category="paragraph">스토리지 커넥터는 페일오버 기능이 있는 다중 호스트 환경에서만 필요합니다. 다중 호스트 설정에서 SAP HANA 데이터베이스 호스트가 대기 호스트로 페일오버할 수 있도록 SAP HANA는 고가용성 기능을 제공합니다. 이 경우 장애가 발생한 호스트의 LUN을 액세스하고 대기 호스트에서 사용합니다. 스토리지 커넥터는 한 번에 하나의 데이터베이스 호스트만 스토리지 파티션에 액세스할 수 있도록 하는 데 사용됩니다.</block>
@@ -1034,14 +999,9 @@
   <block id="0b70acc9e842036e1675b7fd08e43ff6" category="admonition">FabricPool를 사용하여 운영 스토리지의 스냅샷 복사본을 계층화하거나 백업 대상에서 FabricPool를 사용하면 데이터베이스의 복원 및 복구 또는 시스템 클론 생성, 복구 시스템과 같은 기타 작업에 필요한 시간이 변경됩니다. 전체 수명 주기 관리 전략을 계획할 때 이 기능을 사용하는 동안 SLA가 여전히 충족되는지 확인하십시오.</block>
   <block id="2ac3f8b0b798078f242ae9b0249081bc" category="paragraph">FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데 적합한 옵션입니다. 백업을 이동하면 SAP HANA 데이터베이스를 복구하는 데 필요한 시간이 달라집니다. 따라서 복구를 위해 정기적으로 필요한 로그 백업을 로컬 고속 스토리지 계층에 배치하는 값으로 계층화-최소-냉각-일 옵션을 설정해야 합니다.</block>
   <block id="c2cd71459709a9b877c06b5e5f772f9d" category="paragraph">다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 섹션에서는 스토리지 하드웨어가 설정되어 있고 ONTAP 소프트웨어가 이미 설치되어 있다고 가정합니다. 또한 스토리지 FCP 포트를 SAN 패브릭에 이미 연결할 수 있어야 합니다.</block>
-  <block id="5130b49486508cbe5c2d0b023d415091" category="list-text">"에 설명된 대로 디스크 쉘프 구성이 올바른지 확인합니다.<block ref="039cb3f1d3f19b24b2d3e1a57595e88d" category="inline-xref-macro-rx"></block>있습니다."</block>
-  <block id="5ed0e891e8b990c7168739eb02edd6a3" category="list-text">에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다.<block ref="19f0aba2b822910f53ba3966ee7c8d59" category="inline-xref-macro-rx"></block>있습니다."</block>
-  <block id="f9a28c46fbd1f4dfd78367e2b160714f" category="list-text">"Clustered Data ONTAP 8.3.1에서 설명하는 대로 스토리지 가상 시스템(SVM)을<block ref="7c58f6887f41bcea1635c2c18a7a4529" category="inline-xref-macro-rx"></block>있습니다."</block>
-  <block id="9629532b191c2dfd3156fe8e116bbe3b" category="list-text">"에 설명된 대로 논리 인터페이스(LIF) 생성<block ref="fc903155b67a1626f9032f79a26da71f" category="inline-xref-macro-rx"></block>있습니다."</block>
   <block id="2630ee9d2d6404a0be197b5cefef0514" category="section-title">SAS 기반 디스크 쉘프</block>
   <block id="dd253c07b5e479b9a57c4dff19990513" category="section-title">NVMe(100GbE) 기반 디스크 쉘프</block>
   <block id="9edbcb82e27829dd83ad8ddf87b121c5" category="paragraph">새 SVM을 생성하는 동안 QoS 프로필이 자동으로 생성되어 할당된다면, SVM에서 자동으로 생성된 프로필을 제거하여 SAP HANA에서 필요한 성능 보장:</block>
-  <block id="5d32d4572d40717acaf8b9ef008f4901" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 HANA SVM에 구성된 LIF 8개('fc_ *_ *')의 스크린샷을 보여 줍니다.</block>
   <block id="2cd30dd459c96f8423572cfd0315dd72" category="paragraph">다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log_mnt00001'은 컨트롤러 B에 구성됩니다 각 볼륨 내에서 단일 LUN이 구성됩니다.</block>
   <block id="a2ab47e506561509501f3015dfd353bb" category="admonition">SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨과 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.</block>
   <block id="bf2694976353bf0fd87866d930f0f42d" category="paragraph">다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다.</block>
@@ -1057,9 +1017,6 @@
   <block id="fb98d6eb62d89d96b064be4fe17f583e" category="paragraph">Linux LVM을 사용하여 성능을 향상하고 LUN 크기 제한을 해결할 수 있습니다. LVM 볼륨 그룹의 서로 다른 LUN은 서로 다른 애그리게이트와 다른 컨트롤러에 저장해야 합니다.</block>
   <block id="3ba3509b7579ef045ff4c77476c7cf11" category="admonition">LVM을 사용하여 여러 LUN을 결합하여 SAP HANA KPI를 충족할 필요는 없습니다. 단일 LUN 설정으로 필요한 KPI를 충족합니다.</block>
   <block id="f7be036cddf21af55fc52689e1f3055b" category="paragraph">다음 표에서는 2 + 1 SAP HANA 다중 호스트 시스템에 대해 볼륨 그룹당 2개의 LUN을 보여 줍니다.</block>
-  <block id="c2e3c2f5e5887a87fcfac0e555a07a70" category="paragraph">NetApp ONTAP System Manager를 사용하여 스토리지 볼륨 및 LUN을 생성하고 서버에 매핑할 수 있습니다.</block>
-  <block id="092e6a6bc4923c6cfc72d214ce390535" category="paragraph">NetApp은 ONTAP System Manager 9.7 이하 버전 내에서 SAP HANA용 애플리케이션 마법사를 자동화하여 볼륨 및 LUN 프로비저닝 프로세스를 크게 간소화합니다. SAP HANA의 NetApp 모범 사례에 따라 볼륨 및 LUN을 자동으로 생성 및 구성합니다.</block>
-  <block id="0c71c668e5ae926e6d75aa8bbbc09dd2" category="paragraph">'sanlun' 툴을 사용하여 다음 명령을 실행하여 각 SAP HANA 호스트의 WWPN(Worldwide Port Name)을 확인하십시오.</block>
   <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑</block>
   <block id="6204c72c80408db453e7fea0b62d2e36" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9.8과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
@@ -4472,8 +4429,6 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="b7842d6a27abd5170ad4d41cb2353297" category="paragraph">이 문서에서는 NetApp AFF 시스템 및 파이버 채널에 대한 인프라 설정 및 구성에 대해 설명합니다.</block>
   <block id="265ae4ad07ae6dd3140cd976e6e96a15" category="paragraph"><block ref="265ae4ad07ae6dd3140cd976e6e96a15" category="inline-image-macro-rx" type="image"></block></block>
   <block id="df25c29fe304d621328adc844c5cd0b3" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 <block ref="f5dc5aad2d2f4cc08999d09836f8c4b2" category="inline-link-macro-rx"></block>설명되어 있습니다.</block>
-  <block id="d15ad4b07c5673286f82b8c9b4fccc92" category="inline-xref">LUN을 이니시에이터 그룹에 매핑합니다</block>
-  <block id="1b04aaa74da094dd7c2677d2996e8bc4" category="list-text">" 생성 "에 설명된 대로 애그리게이트 내에 이니시에이터 그룹, 볼륨 및 LUN을<block ref="c8187094a239e1291b967555c8a5ba6c" category="inline-xref-macro-rx"></block> 생성합니다.</block>
   <block id="017e522349a0ff07067400d6b880e9df" category="paragraph">=:hardbreak::nofooter::icons:font:linkattrs::imagesdir:../media/</block>
   <block id="2267b0943e951c31d5f31c288b6bfbe6" category="paragraph">NFS 프로토콜을 사용하는 NetApp AFF 기반 SAP HANA</block>
   <block id="a0988dbd97f9cd1d119f39a16c3e8fe2" category="paragraph"><block ref="a0988dbd97f9cd1d119f39a16c3e8fe2" category="inline-image-macro-rx" type="image"></block></block>
@@ -4502,19 +4457,8 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="f354441147ead38889b9adc2d2ebc209" category="paragraph"><block ref="f354441147ead38889b9adc2d2ebc209" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3b3a2ed3db2363af1fc4a4d9670fd4f1" category="paragraph"><block ref="3b3a2ed3db2363af1fc4a4d9670fd4f1" category="inline-image-macro-rx" type="image"></block></block>
   <block id="17170cd9736b0e2a3d8f78d16953b327" category="paragraph"><block ref="17170cd9736b0e2a3d8f78d16953b327" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="09f7121854e4295fd6f96bdc2d4acb8c" category="paragraph"><block ref="09f7121854e4295fd6f96bdc2d4acb8c" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9a54eb14eb1b0ca1cf8ecb90dd6622cf" category="paragraph"><block ref="9a54eb14eb1b0ca1cf8ecb90dd6622cf" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="b1c9f17a28c7142387820fd5a82c9b6e" category="paragraph"><block ref="b1c9f17a28c7142387820fd5a82c9b6e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="333255d2c26de498b8eb10dcfa6381fb" category="paragraph"><block ref="333255d2c26de498b8eb10dcfa6381fb" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0f4ac82fd0de794eae50e4e7545b6b84" category="paragraph"><block ref="0f4ac82fd0de794eae50e4e7545b6b84" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="90b7952d58371e6e80dd8de6a3fdfbe3" category="paragraph"><block ref="90b7952d58371e6e80dd8de6a3fdfbe3" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="2822f342ff1cb87976a56cf25e779720" category="paragraph"><block ref="2822f342ff1cb87976a56cf25e779720" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="3a407eeb3893336fec56bf117effa682" category="paragraph"><block ref="3a407eeb3893336fec56bf117effa682" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="19cc205454278321478fd56e121c7e64" category="paragraph"><block ref="19cc205454278321478fd56e121c7e64" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="134e0717b473bfec3645ee01fc4a8ac8" category="paragraph"><block ref="134e0717b473bfec3645ee01fc4a8ac8" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="acf62ff4ff0cbb8add92380207b42eab" category="paragraph"><block ref="acf62ff4ff0cbb8add92380207b42eab" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="a288ecd6c12c39c5e25b0ff9e03d9781" category="paragraph"><block ref="a288ecd6c12c39c5e25b0ff9e03d9781" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="9aa9c82f479fb021778c193743374792" category="paragraph"><block ref="9aa9c82f479fb021778c193743374792" category="inline-image-macro-rx" type="image"></block></block>
   <block id="4895fae809dc9415884ff295e6dc343c" category="paragraph"><block ref="4895fae809dc9415884ff295e6dc343c" category="inline-image-macro-rx" type="image"></block></block>
   <block id="82020173d38ee27d458fbdf847bfc42e" category="paragraph"><block ref="82020173d38ee27d458fbdf847bfc42e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="1b937a8a58ab58bc1c61e59ac1b52925" category="paragraph"><block ref="1b937a8a58ab58bc1c61e59ac1b52925" category="inline-image-macro-rx" type="image"></block></block>
@@ -4714,7 +4658,6 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="6cc5c9e930ea3d3b8bff4367c60ceea4" category="cell">2025년 2월</block>
   <block id="15cd132980dad32e9c3c529955721df9" category="cell">새로운 스토리지 시스템</block>
   <block id="4433e4b3b7ec2b20f062036b1b011af7" category="list-text">ASA A250, ASA A20, ASA A30, ASA A400, ASA A50, ASA A70, ASA A800, ASA A900, ASA A90, ASA A1K</block>
-  <block id="2134d42f2b0f54791bb238214fdc5110" category="list-text">ASA C250, ASA C30, ASA C400, ASA C60, ASA C800, ASA C80</block>
   <block id="a10922577a9bcbf85b1a7a9d8e7de5aa" category="cell">2024년 11월</block>
   <block id="53bab281b7eb6692b17a4b65d99e2188" category="list-text">FAS2750, FAS2820, FAS8300, FAS50, FAS8700, FAS70, FAS9500, FAS90</block>
   <block id="eccbc87e4b5ce2fe28308fd9f2a7baf3" category="cell">3</block>
@@ -4739,8 +4682,6 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="0dee623c3a47708547aff95df6dc16df" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다.</block>
   <block id="6f1ace73b19ea95862049cef5bc4fabb" category="admonition">2024년 8월 이후에 출시된 ASA 시스템은 이 단계가 자동으로 수행되므로 필요하지 않습니다</block>
   <block id="f4c9620796b063803a52bf4cb0bdc63b" category="paragraph"><block ref="f4c9620796b063803a52bf4cb0bdc63b" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c63c34bc75852acd26eac087d69564e1" category="inline-image-macro">논리 인터페이스 오버뷰</block>
-  <block id="442b4694b4e23c4c8aab5817606d4a8f" category="paragraph"><block ref="442b4694b4e23c4c8aab5817606d4a8f" category="inline-image-macro-rx" type="image"></block></block>
   <block id="775282e39d26408a21d5eaa1c485e361" category="paragraph">ONTAP System Manager로 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
   <block id="ca4b4ab28b402042c5530cc0059c6af3" category="inline-image-macro">SVM 생성</block>
   <block id="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="paragraph"><block ref="bc0b4db5e6b23fdaed6f5246d05d6ef8" category="inline-image-macro-rx" type="image"></block></block>
@@ -4776,4 +4717,32 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="de3a0b5c28d9158410e205fdf4dd72f2" category="paragraph">하나의 NVMe SSD(데이터)는 사용된 NVMe 디스크에 따라 최대 2/5개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다. AFF 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.</block>
   <block id="a1498fba486158dfd616e2bc1f205275" category="admonition">디스크 쉘프를 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 크기는 증가하지 않습니다.</block>
   <block id="57c187411855aa330625e6e0331a74b7" category="paragraph"><block ref="57c187411855aa330625e6e0331a74b7" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a2ef5d14ae5c3accf7291e39163d1ebd" category="paragraph">각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다.</block>
+  <block id="ef8d203413a4aabe57527556e0ef5fcb" category="paragraph"><block ref="ef8d203413a4aabe57527556e0ef5fcb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="7165d8e624155bf7a4889b98927f605c" category="list-text">ASA C250, ASA C400, ASA C800</block>
+  <block id="5c93db5d513dfbb32e85b013261b5aa8" category="list-text">에 설명된 대로 디스크 쉘프의 구성이 올바른지 확인합니다<block ref="039cb3f1d3f19b24b2d3e1a57595e88d" category="inline-xref-macro-rx"></block>.</block>
+  <block id="cf0ea9a7f661e4a10ff9e179d0893564" category="list-text">에 설명된 대로 필요한 애그리게이트를 생성하고 <block ref="19f0aba2b822910f53ba3966ee7c8d59" category="inline-xref-macro-rx"></block>구성합니다.</block>
+  <block id="07701c9e659f97922638b5c031983241" category="list-text">에 설명된 대로 스토리지 가상 머신(SVM)을 <block ref="7c58f6887f41bcea1635c2c18a7a4529" category="inline-xref-macro-rx"></block>생성합니다.</block>
+  <block id="9a7dedbc9b05dfef2c16b4468bbc6d42" category="list-text">에 설명된 대로 논리 인터페이스(LIF)를 <block ref="fc903155b67a1626f9032f79a26da71f" category="inline-xref-macro-rx"></block>생성합니다.</block>
+  <block id="28ca26b2e529e14a76ea5110c86754a9" category="list-text">섹션 링크에 설명된 대로 HANA 서버의 WWN(Worldwide Name)으로 이니시에이터 그룹(igroup)을 생성합니다. saphana_FAS_fc_storage_controller_setup.html#initiator-groups.<block ref="a30a5bc4156d5efb64f9f758389889ed" category="inline-xref-macro-rx"></block></block>
+  <block id="19ba1063c16e7c812dbc730c7b311fe3" category="list-text">및 섹션에 설명된 대로 애그리게이트 내에 볼륨 및 LUN을 생성합니다 <block ref="bfb3c32baceb2da1ad938639f9cbbec7" category="inline-xref-macro-rx"></block><block ref="f548228b37a81cf44c9b87a39dde5526" category="inline-xref-macro-rx"></block></block>
+  <block id="60854433c32fa17fb43290a0ff0f9bbc" category="inline-xref">LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑</block>
+  <block id="6b956c5cf886997a7f843e2e2d8232c0" category="list-text">에 설명된 대로 애그리게이트 내에 이니시에이터 그룹, 볼륨 및 LUN을 <block ref="68c2cc914170ccda4959086c516bc67e" category="inline-xref-macro-rx"></block>생성합니다.</block>
+  <block id="629b1434b46fe9fd8b49baa3b0226daf" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 SVM에 구성된 8개 LIF의 스크린샷을 보여줍니다.</block>
+  <block id="f2a5a64a9782e57f69edcf500c263407" category="inline-image-macro">논리 인터페이스 개요</block>
+  <block id="23f2cbd88aede07dbc46cb6cec53ff8d" category="paragraph"><block ref="23f2cbd88aede07dbc46cb6cec53ff8d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cac5f586686db9133e81224aafcc705a" category="admonition">이<block ref="3a8e4afa851609127d534b04e7d29c08" prefix=" " category="inline-code"></block> 툴은 NetApp Host Utilities의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 섹션을 참조하십시오 <block ref="e70bab6b19799c51a40061ff57517656" category="inline-link-macro-rx"></block></block>
+  <block id="65b9726e3ebe1a441202c9bf3f553bf8" category="paragraph">이니시에이터 그룹은 ONTAP 클러스터의 CLI를 사용하여 생성할 수 있습니다.</block>
+  <block id="919eb574abc6bef1fb42921ca23d3583" category="paragraph">NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.</block>
+  <block id="235dfb4bd58f5a92d4712e433e88456c" category="paragraph">각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. 애그리게이트 구성 장에서 설명한 ADPv2도 NS224 디스크 쉘프에 사용됩니다.</block>
+  <block id="b9d115fd1443e1fee32e7a7fa3d39e70" category="paragraph">일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)과 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다.</block>
+  <block id="7ec35ad49c18b3a6ac9a59e0f61272ff" category="paragraph">스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 SVM에 구성된 8개 LIF의 스크린샷을 보여줍니다.</block>
+  <block id="0adbb60b92d050e36477305b1ca4b7e1" category="paragraph"><block ref="0adbb60b92d050e36477305b1ca4b7e1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ddef20c528ad3796675320c130ce0e9b" category="paragraph">ONTAP 9 System Manager를 사용하여 SVM을 생성할 때 필요한 물리적 FCP 포트를 모두 선택할 수 있으며 물리적 포트당 하나의 LIF가 자동으로 생성됩니다.</block>
+  <block id="8df6e0f7aa1113d05b7847dae27cf647" category="paragraph">다음 그림에서는 ONTAP System Manager를 사용하여 SVM 및 LIF를 생성하는 방법을 보여 줍니다.</block>
+  <block id="fa1f57a7da43e8241d1a111b118395b1" category="paragraph"><block ref="fa1f57a7da43e8241d1a111b118395b1" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="09ca73f01b169a4b7a327768898bf71c" category="paragraph">다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨이<block ref="aaef8ff6bbc08e9efaddebd078c4777c" prefix=" " category="inline-code"></block> 컨트롤러 A에 구성되고 볼륨은<block ref="eedd0dd4abbe982364bb7aa4dc29237b" prefix=" " category="inline-code"></block> 컨트롤러 B에 구성됩니다. 각 볼륨 내에서는 단일 LUN이 구성됩니다.</block>
+  <block id="102c21391acced3e67ae185a05909bc8" category="admonition">설명된 구성을 사용하면<block ref="e049803e41fabe0f53c4ead4b0f14350" prefix=" " category="inline-code"></block> 사용자 SIDadm의 기본 홈 디렉토리가 저장되는 디렉토리가 각 HANA 호스트의 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서 NetApp는 각 데이터베이스 호스트에 모든 파일 시스템이 중앙 스토리지에 있도록 파일 시스템의 볼륨에<block ref="e049803e41fabe0f53c4ead4b0f14350" prefix=" " category="inline-code"></block> 4개의 하위 디렉토리를 추가로 생성하는 것이 좋습니다<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block>.</block>
+  <block id="dd3925da178560a888f5c0d4bd90dc73" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
+  <block id="952239c31e0fbf4511610dae4cbe22be" category="paragraph">하나의 NVMe SSD(데이터)에서 최대 2개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다.</block>
 </blocks>
