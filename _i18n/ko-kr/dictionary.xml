@@ -86,11 +86,9 @@
   <block id="f7fbf8be79b2dbbf7cca7d63ea2aaa3e" category="paragraph">이 문서에서는 게스트 OS에서 직접 NFS 마운트를 사용한 권장 설정에 대해 설명합니다.</block>
   <block id="5363a1e8e1763bb11c4b91b2868d5584" category="paragraph">SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.</block>
   <block id="f02780ddcfc1bddf0683bf8de02155d5" category="inline-link-macro">VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki</block>
-  <block id="181fc43b08ba57214c4bbd2448ec470d" category="list-text"><block ref="181fc43b08ba57214c4bbd2448ec470d" category="inline-link-macro-rx"></block></block>
   <block id="685faeffbf3c0039314a5071b5798f2c" category="inline-link-macro">VMware vSphere 기반 SAP HANA의 스케일 업 구축을 위한 Best Practice 및 권장 사항</block>
   <block id="6a3ba410820602029c0289b87ca24a63" category="inline-link-macro">VMware vSphere 기반 SAP HANA의 스케일아웃 구축을 위한 모범 사례 및 권장 사항</block>
   <block id="ab1b1647c4e88f4d70b589d5781012ca" category="inline-link-macro">2161991 - VMware vSphere 구성 지침 - SAP One Support Launchpad(로그인 필요)</block>
-  <block id="302092b20c647fa4f675ff96913675f9" category="list-text"><block ref="302092b20c647fa4f675ff96913675f9" category="inline-link-macro-rx"></block></block>
   <block id="888a97817eb269434426d56de56528fa" category="summary">기본적으로 SAP HANA는 SAP HANA 서비스당 하나의 데이터 볼륨만 사용합니다. 파일 시스템의 최대 파일 크기 제한으로 인해 최대 데이터 볼륨 크기를 제한하는 것이 좋습니다.</block>
   <block id="c7c8b48fd23d939958d032aa4f897d35" category="doc">SAP HANA 데이터 볼륨 크기</block>
   <block id="2313d7e75b1293ec19e67b10399a5b36" category="paragraph">자동으로 설정하려면 '[지속성]' 섹션의 global.ini` 에서 다음 매개변수를 설정합니다.</block>
@@ -1018,7 +1016,6 @@
   <block id="f7be036cddf21af55fc52689e1f3055b" category="paragraph">다음 표에서는 2 + 1 SAP HANA 다중 호스트 시스템에 대해 볼륨 그룹당 2개의 LUN을 보여 줍니다.</block>
   <block id="a86be254d15f1254d56b97c8755a5b77" category="admonition">'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.</block>
   <block id="8c4751bd2d7d17062a8b536388ba69bc" category="section-title">CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 이니시에이터 그룹에 매핑</block>
-  <block id="6204c72c80408db453e7fea0b62d2e36" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9.8과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
   <block id="d595b9142c1fd0d3ea19c8cd10165661" category="list-text">시스템 FC5에 속하는 모든 서버에 대한 이니시에이터 그룹을 생성합니다.</block>
   <block id="f987b1e962233a1893b72bf1d65f3a21" category="list-text">모든 LUN을 생성된 이니시에이터 그룹에 매핑합니다.</block>
   <block id="77856469e4786d81c487dfc174833e29" category="summary">TR-4757은 SAP 애플리케이션 및 SAP HANA 구축에 Azure NetApp Files를 사용하는 모범 사례를 제공합니다. 또한 SAP 공유 파일 시스템의 다양한 사용 사례에 대해 자세히 설명합니다. 이 문서에서는 SAP 애플리케이션용 NetApp Cloud Volumes ONTAP과 SAP HANA의 구축을 활용하는 모범 사례를 제공합니다. 여기에는 SAP 공유 파일 시스템의 다양한 사용 사례와 Cloud Volumes ONTAP 기반 SAP HANA의 특정 성능 고려사항이 포함됩니다.</block>
@@ -3921,8 +3918,6 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="20a0dcae2f540339bbf69dbaa7f0050a" category="list-text"><block ref="20a0dcae2f540339bbf69dbaa7f0050a" category="inline-link-macro-rx"></block></block>
   <block id="b0be0a2f6c57f7c66aa9ab049763af3a" category="paragraph">SnapCenter를 사용한 SAP HANA 백업 및 복구 솔루션에 대한 자세한 내용은 를 참조하십시오.<block ref="7d612f806d1e07d1f3292801524311f8" category="inline-link-rx"></block></block>
   <block id="c2107d876323ca6269d87dd4ef892a8a" category="paragraph">SAP HANA 재해 복구 솔루션에 대한 자세한 내용은 를 참조하십시오<block ref="22d31f63af3553980c791e5bf538fbdd" category="inline-link-rx"></block>.</block>
-  <block id="78439f11ea8c9762eac371e8475447aa" category="inline-link">VMware vSphere 기반 SAP HANA 모범 사례 및 참조 아키텍처 가이드 를 참조하십시오</block>
-  <block id="52d5e1f1eef3e549b479feffef1c376c" category="list-text"><block ref="52d5e1f1eef3e549b479feffef1c376c" category="inline-link-rx"></block></block>
   <block id="1b70ac0a972fddf1e1a33e6ed9df49c7" category="cell">2022년 9월</block>
   <block id="3c3691e44e6ff923dc83662b2f7e1001" category="cell">새로운 OS - 릴리스</block>
   <block id="6d6bbe0ff14c220c87649b72d24ad927" category="cell">2023년 8월</block>
@@ -4748,4 +4743,7 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="c9f801c3b76e183b280276e75a8ebaea" category="list-text">VMware vSphere 기반 SAP HANA 모범 사례 가이드 를 참조하십시오</block>
   <block id="838491807b9e9689bc796a7e547fe188" category="inline-link"><block ref="838491807b9e9689bc796a7e547fe188" category="inline-link-rx"></block></block>
   <block id="b61d59281011f2681050ce1756929d77" category="paragraph"><block ref="b61d59281011f2681050ce1756929d77" category="inline-link-rx"></block></block>
+  <block id="22c7eb5619fc26c433125aab7cfd57af" category="list-text"><block ref="22c7eb5619fc26c433125aab7cfd57af" category="inline-link-rx"></block></block>
+  <block id="d8cb082280c9ef193a28bdb60d8e9779" category="list-text"><block ref="d8cb082280c9ef193a28bdb60d8e9779" category="inline-link-rx"></block></block>
+  <block id="147a64bd742e2d54a7d7a7f133c3561c" category="paragraph">이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.</block>
 </blocks>

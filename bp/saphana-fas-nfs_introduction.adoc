@@ -87,7 +87,7 @@ NFS 데이터 저장소 또는 NFS를 지원하는 VVOL 데이터 저장소도 �
 
 SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.
 
-* https://wiki.scn.sap.com/wiki/display/VIRTUALIZATION/SAP+HANA+on+VMware+vSphere["VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki"^]
-* https://core.vmware.com/resource/sap-hana-vmware-vsphere-best-practices-and-reference-architecture-guide#introduction["VMware vSphere 기반 SAP HANA 모범 사례 및 참조 아키텍처 가이드 를 참조하십시오"^]
+* https://help.sap.com/docs/SUPPORT_CONTENT/virtualization/3362185751.html["VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki"^]
+* https://www.vmware.com/docs/sap_hana_on_vmware_vsphere_best_practices_guide-white-paper["VMware vSphere 기반 SAP HANA 모범 사례 가이드 를 참조하십시오"^]
 * https://launchpad.support.sap.com/["2161991 - VMware vSphere 구성 지침 - SAP One Support Launchpad(로그인 필요)"^]
 
