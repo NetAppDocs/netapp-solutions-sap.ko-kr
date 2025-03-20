@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-system-refresh.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SAP 시스템 새로 고침 작업
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+클론 복제 작업은 운영 사이트 또는 2차 스토리지에서 실행할 수 있습니다.
+
+클론 복제된 볼륨은 HANA 정합성 보장 그룹에 포함되지 않으며 SnapMirror 액티브 동기화를 통해 복제되지 않습니다.
+
+시스템 업데이트 워크플로우에 대한 자세한 내용은 다음 웹 사이트를 참조하십시오. https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"]

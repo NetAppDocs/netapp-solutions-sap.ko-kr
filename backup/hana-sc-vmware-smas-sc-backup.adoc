@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-backup.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SnapCenter 백업 작업
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+각 백업 작업에 대해 SnapCenter는 VMware 측에서 검색을 수행하고 운영 사이트를 감지합니다. 스토리지 페일오버가 있는 경우 SnapCenter는 리소스에 대한 백업이 실행되는 즉시 새 운영 사이트를 감지합니다.
+
+image:sc-saphana-vmware-smas-image31.png[""]
+
+
+
+== 토폴로지 뷰
+
+토폴로지 보기 내에 SnapCenter는 소스 및 대상 스토리지 클러스터의 백업을 모두 보여 줍니다.
+
+image:sc-saphana-vmware-smas-image32.png[""]
+
+image:sc-saphana-vmware-smas-image33.png[""]
+
+보조 스토리지에서 개수 번호를 클릭하면 현재 관계 및 복제 방향이 표시됩니다. 원본은 항상 현재 운영 사이트입니다. 스토리지 페일오버 후 운영 사이트가 변경되고 그에 따라 디스플레이가 조정됩니다. 모든 백업은 현재 운영 사이트인 스토리지 시스템에 따라 항상 동일한 관계를 갖습니다.
+
+image:sc-saphana-vmware-smas-image34.png[""]
+
+
+
+== 스토리지 시스템의 스냅샷
+
+SnapCenter에서 생성된 스냅샷 백업은 두 스토리지 시스템의 두 HANA 데이터 볼륨에서 사용할 수 있습니다. ONTAP은 일관성 그룹 레벨에 추가 스냅샷을 생성하며, 다른 모든 HANA 볼륨에서도 사용할 수 있습니다.
+
+아래 그림에서는 A700 클러스터에 있는 HANA 데이터 볼륨의 스냅샷을 보여 줍니다.
+
+image:sc-saphana-vmware-smas-image35.png[""]
+
+아래 그림에는 A800 클러스터에 있는 HANA 데이터 볼륨의 스냅샷이 나와 있습니다.
+
+image:sc-saphana-vmware-smas-image36.png[""]

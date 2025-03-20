@@ -1,0 +1,53 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-example-config.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= 구성 개요 예
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+[role="lead"]
+실습 설정에서는 두 ESX 호스트가 두 스토리지 클러스터에 모두 액세스할 수 있는 단일 액세스 구성을 사용합니다. 다음 섹션에서는 균일 액세스 구성에 대해 설명하고 비균일 설정의 차이점에 대해서도 설명합니다.
+
+image:sc-saphana-vmware-smas-image1.png[""]
+
+
+
+== 소프트웨어 버전
+
+[cols="50%,50%"]
+|===
+| 소프트웨어 | 버전 
+
+
+| ONTAP | A700: 9.15.1P7, A800: 9.16.1RC1 
+
+
+| vSphere 클라이언트 | 8.0.3 
+
+
+| ESXi | 8.0.3 
+
+
+| vSphere용 SnapCenter 플러그인 | 6.0.1 
+
+
+| 리눅스 OS | SAP 15 SP5용 SLES 
+
+
+| SAP HANA를 참조하십시오 | 2.0 SPS8입니다 
+
+
+| SnapCenter | 6.0.1 
+|===

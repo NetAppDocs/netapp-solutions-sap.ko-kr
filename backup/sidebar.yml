@@ -64,6 +64,33 @@ entries:
     url: "/backup/saphana-br-scs-advanced-configuration-and-tuning.html"
   - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
     url: "/backup/saphana-br-scs-where-to-find-additional-information.html"
+- title: SnapCenter, SnapMirror active sync 및 VMware Metro Storage Cluster를 통한 SAP
+    HANA 데이터 보호 및 고가용성
+  entries:
+  - title: 이 문서의 범위
+    url: "/backup/hana-sc-vmware-smas-scope.html"
+  - title: SAP HANA 고가용성 개요
+    url: "/backup/hana-sc-vmware-smas-hana-ha.html"
+  - title: 구성 개요 예
+    url: "/backup/hana-sc-vmware-smas-example-config.html"
+  - title: HANA 시스템 프로비저닝 및 설치
+    url: "/backup/hana-sc-vmware-smas-hana-install.html"
+  - title: SnapMirror 활성 동기화 구성입니다
+    url: "/backup/hana-sc-vmware-smas-smas-config.html"
+  - title: SnapCenter 구성
+    url: "/backup/hana-sc-vmware-smas-sc-config.html"
+  - title: SnapCenter 백업 작업
+    url: "/backup/hana-sc-vmware-smas-sc-backup.html"
+  - title: SnapCenter 복원 및 복구
+    url: "/backup/hana-sc-vmware-smas-sc-restore.html"
+  - title: SAP 시스템 새로 고침 작업
+    url: "/backup/hana-sc-vmware-smas-sc-system-refresh.html"
+  - title: SnapCenter 비데이터 볼륨
+    url: "/backup/hana-sc-vmware-smas-sc-non-data-vols.html"
+  - title: 페일오버 시나리오
+    url: "/backup/hana-sc-vmware-smas-failover-scenarios.html"
+  - title: 추가 정보 및 버전 기록
+    url: "/backup/hana-sc-vmware-smas-additional-info.html"
 - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 클라우드 오브젝트 스토리지를 백업 대상으로 합니다
   entries:
   - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 개요

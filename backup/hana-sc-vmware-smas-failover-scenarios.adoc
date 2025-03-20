@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-failover-scenarios.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= 페일오버 시나리오
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+
+
+== 균일 액세스 설정
+
+균일한 액세스 구성에서는 Fibre Channel SAN이 두 사이트 전체에 걸쳐 확장됩니다. 두 사이트의 ESX 호스트가 두 데이터 세트의 복제본에 모두 액세스할 수 있습니다. 정상 작동 중에 HANA 시스템을 실행하는 ESX 호스트는 이니시에이터 그룹 구성의 근접 설정에 따라 데이터의 로컬 복사본에 액세스합니다. 각 ESX 호스트에는 로컬 복제본에 대한 최적화된 활성 경로와 미러링된 복제본에 대한 최적화되지 않은 활성 경로가 있습니다.
+
+
+
+=== 정상 작동
+
+정상 작동 중에 HANA 시스템은 ESX 호스트 ESX-1의 활성 최적화 경로를 기반으로 로컬 복제본에서 읽기 및 쓰기를 수행합니다. 각 백업 작업에서 SnapCenter는 복제 관계에 대한 현재 운영 사이트를 감지하고 기본 사이트에 대해 백업 작업을 실행합니다. 스냅샷은 미러링된 복사본에 복제되며 두 사이트에서 모두 사용할 수 있습니다. SnapCenter 복원 작업은 운영 사이트에서 실행됩니다.
+
+image:sc-saphana-vmware-smas-image42.png[""]
+
+
+
+=== 스토리지 오류입니다
+
+사이트 1의 스토리지 시스템에 장애가 발생하면 HANA 시스템은 사이트 2의 미러링된 복사본에 액세스하여 작업을 계속합니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
+
+image:sc-saphana-vmware-smas-image43.png[""]
+
+
+
+=== 사이트 장애
+
+사이트 장애가 발생하면 HANA VM과 SnapCenter 및 SnapCenter for VMware 플러그인 VM이 vSphere HA를 사용하여 보조 사이트의 ESX 호스트로 페일오버됩니다. HANA 데이터베이스를 시작해야 하고 두 번째 사이트에서 미러링된 복사본에 액세스할 수 있습니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
+
+image:sc-saphana-vmware-smas-image44.png[""]
+
+
+
+== 비균일 액세스 설정
+
+비균일 액세스 구성에서는 Fibre Channel SAN이 두 사이트 간에 확장되지 않습니다. 각 사이트의 각 ESX 호스트는 데이터 세트의 로컬 복제본만 액세스할 수 있습니다.
+
+
+
+=== 정상 작동
+
+정상 작동 중에 HANA 시스템은 로컬 복제본에서 읽기 및 쓰기를 수행합니다. 각 백업 작업에서 SnapCenter는 복제 관계에 대한 현재 운영 사이트를 감지하고 기본 사이트에 대해 백업 작업을 실행합니다. 스냅샷은 미러링된 복사본에 복제되며 두 사이트에서 모두 사용할 수 있습니다. SnapCenter 복원 작업은 운영 사이트에서 실행됩니다.
+
+image:sc-saphana-vmware-smas-image45.png[""]
+
+
+
+=== 스토리지 오류입니다
+
+스토리지 장애가 발생하면 SnapCenter 및 SnapCenter for VMware 플러그인 VM과 HANA VM이 vSphere HA를 사용하는 보조 사이트의 ESX 호스트로 페일오버됩니다. HANA 데이터베이스를 시작해야 하고 두 번째 사이트에서 미러링된 복사본에 액세스할 수 있습니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
+
+image:sc-saphana-vmware-smas-image46.png[""]
+
+
+
+=== 사이트 장애
+
+스토리지 장애와 동일합니다.
+
+image:sc-saphana-vmware-smas-image47.png[""]
+
+
+
+=== HANA VM 또는 운영 사이트 재배치
+
+HANA VM이 다른 ESX 호스트로 재배치되고 스토리지의 운영 사이트가 동일하게 유지되면 SnapCenter를 사용한 복구 작업이 실패합니다. SnapCenter는 운영 사이트를 사용하여 복구 작업을 실행하므로 클론은 왼쪽에 생성되고 HANA VM은 오른쪽에 실행됩니다. 사이트 간에 데이터 경로가 없기 때문에 SnapCenter는 데이터를 복사하지 않습니다.
+
+이 문제를 해결하려면 VM과 운영 측의 재배치가 함께 수행되는지 확인하거나 SnapCenter를 사용하여 복원 작업을 수행하기 전에 운영 사이트를 장애 조치해야 합니다.
+
+image:sc-saphana-vmware-smas-image48.png[""]

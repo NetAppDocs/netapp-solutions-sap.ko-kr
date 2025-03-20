@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-scope.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery 
+summary:  
+---
+= SnapCenter, SnapMirror active sync 및 VMware Metro Storage Cluster를 통한 SAP HANA 데이터 보호 및 고가용성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:firstname: ---
+:author: ---
+:authorinitials: -
+:authors: ---
+
+
+[role="lead"]
+이 문서에서는 HANA 스토리지 리소스를 위한 고가용성 솔루션으로 SnapMirror Active Sync와 결합된 VMware 환경에서 SnapCenter를 통한 데이터 보호에 대한 모범 사례를 제공합니다.
+
+저자: 닐스 바우어, NetApp
+
+
+
+== 이 문서의 범위
+
+이 문서는 전체 환경을 설정하는 방법을 단계별로 설명하는 것이 아니라 다음과 관련된 개념과 관련 세부 사항을 다룹니다.
+
+* VMware VMFS를 사용한 SAP HANA 시스템 설정
+* SAP HANA에 대한 SnapMirror 액티브 동기화 구성입니다
+* VMFS를 사용하는 VMware 기반 HANA에 대한 SnapCenter 구성
+* SnapMirror 활성 동기화에 대한 SnapCenter 구성
+* VMware 기반 HANA 및 SnapMirror 액티브 동기화에서 SnapCenter 운영
+
+
+아래 그림과 같이 SnapMirror 활성 동기화의 균일한 액세스 설정을 사용하는 vMSC(VMware Metro Storage Cluster) 구성에 중점을 두겠습니다. 단, 베어 메탈과 비균일 액세스 구성도 간략히 살펴보겠습니다.
+
+image:sc-saphana-vmware-smas-image1.png[""]

@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmware-smas-sc-non-data-vols.html 
+keywords: SAP HANA, VMware, SnapMirror active sync, SnapCenter, backup and recovery, non-data volumes 
+summary:  
+---
+= SnapCenter 비데이터 볼륨
+:allow-uri-read: 
+
+
+'''
+리소스가 SnapCenter에서 수동으로 구성되고 자동 검색되지 않는 경우 SnapCenter는 VMware 및 SnapMirror 활성 동기화를 인식하지 못합니다. 따라서 SnapCenter에서 기본적으로 지원되지 않습니다.
+
+HANA 공유와 같이 데이터 볼륨이 아닌 볼륨의 경우 추가 수동 단계를 고려할 때 SnapCenter를 사용하여 백업 및 복원 작업을 수행할 수 있습니다.
+
+
+
+== SnapCenter에 구성된 스토리지 시스템의 장애입니다
+
+SnapCenter에 구성된 스토리지 시스템에 장애가 발생하면 SnapCenter는 자동으로 다른 스토리지 시스템으로 전환되지 않습니다. 백업 및 복원 작업에 볼륨의 미러링된 복사본이 사용되도록 데이터 볼륨 리소스가 아닌 리소스를 수동으로 조정해야 합니다.
+
+image:sc-saphana-vmware-smas-image39.png[""]
+
+
+
+== 백업 작업
+
+SnapCenter가 HANA 공유 볼륨에 대한 SnapMirror 액티브 동기화 구성을 인식하지 못하더라도 스냅샷이 두 사이트에 복제됩니다.
+
+image:sc-saphana-vmware-smas-image40.png[""]
+
+image:sc-saphana-vmware-smas-image41.png[""]
+
+
+
+== 복원 작업
+
+복원의 경우 SnapCenter는 VMware의 특정 단계를 제외한 모든 볼륨 복원을 실행합니다. 일반적으로 Linux 호스트에서 HANA 공유 볼륨을 마운트 해제하고 데이터 저장소의 연결을 끊은 다음 볼륨 복구를 수행하고 데이터 저장소를 다시 연결한 다음 Linux 호스트에 파일 시스템을 마운트해야 합니다. 수동 작업으로 HANA VM을 중지하고 SnapCenter를 사용하여 HANA 공유 볼륨을 복원한 다음 VM을 다시 시작할 수 있습니다.
