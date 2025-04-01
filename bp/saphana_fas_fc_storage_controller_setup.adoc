@@ -40,13 +40,36 @@ SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encrypt
 
 == 서비스 품질
 
-QoS를 사용하여 특정 SAP HANA 시스템의 스토리지 처리량을 제한할 수 있습니다. 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다.
+QoS를 사용하면 공유 컨트롤러에서 특정 SAP HANA 시스템 또는 SAP 이외의 애플리케이션에 대한 스토리지 처리량을 제한할 수 있습니다.
 
-사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 성능 값이 낮으며, 일반적으로 운영 시스템의 20% ~ 50% 범위에 있습니다.
 
-ONTAP 9부터 QoS는 스토리지 볼륨 레벨에 구성되어 있으며 처리량(MBps)과 I/O(IOPS)의 최대값을 사용합니다.
 
-대규모 쓰기 I/O는 스토리지 시스템에 가장 큰 성능 영향을 미칩니다. 따라서 QoS 처리량 제한은 데이터 및 로그 볼륨에서 해당 쓰기 SAP HANA 스토리지 성능 KPI 값의 백분율로 설정해야 합니다.
+=== 운영 및 개발/테스트
+
+한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다. 사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다. 대규모 쓰기 I/O는 스토리지 시스템에 가장 큰 성능 영향을 미칩니다. 따라서 QoS 처리량 제한은 데이터 및 로그 볼륨에서 해당 쓰기 SAP HANA 스토리지 성능 KPI 값의 백분율로 설정해야 합니다.
+
+
+
+=== 공유 환경
+
+또 다른 사용 사례는 쓰기가 많은 워크로드의 처리량을 제한하는 것이며, 특히 이러한 워크로드가 지연 시간에 민감한 쓰기 워크로드에 영향을 미치지 않도록 하는 것입니다. 이러한 환경에서는 개별 스토리지 오브젝트의 최대 처리량을 지정된 값으로 제한하기 위해 비공유 처리량 상한 QoS 그룹 정책을 각 SVM(Storage Virtual Machine) 내의 각 LUN에 적용하는 것이 좋습니다. 따라서 단일 워크로드가 다른 워크로드에 부정적인 영향을 미칠 수 있는 가능성이 줄어듭니다.
+
+이렇게 하려면 각 SVM에 대해 ONTAP 클러스터의 CLI를 사용하여 그룹 정책을 생성해야 합니다.
+
+....
+qos policy-group create -policy-group <policy-name> -vserver <vserver name> -max-throughput 1000MB/s -is-shared false
+....
+SVM 내의 각 LUN에 적용됩니다. 아래는 SVM 내의 모든 기존 LUN에 정책 그룹을 적용하는 예입니다.
+
+....
+lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
+....
+이 작업은 모든 SVM에 대해 수행해야 합니다. 각 SVM의 QoS 경찰 그룹 이름은 달라야 합니다. 새 LUN의 경우 정책을 직접 적용할 수 있습니다.
+
+....
+lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
+....
+지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_fas_fc_host_setup.html#create-lvm-volume-groups-and-logical-volumes["호스트 설정"] 제공합니다.
 
 
 
