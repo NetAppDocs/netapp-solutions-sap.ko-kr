@@ -5024,4 +5024,5 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="1b1a359afcdc7d3b5156dabdbc04c722" category="inline-link">호스트 설정</block>
   <block id="322630da5c020002ea6c6dfc2396c673" category="paragraph">지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를<block ref="7f291c93e7fce14b4b50c2889ae65744" category="inline-link-rx"></block> 제공합니다.</block>
   <block id="c0aedfa1d11f1ac6604f6074cceedad5" category="paragraph">지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를<block ref="0de73849e815beed4975575411863ee0" category="inline-link-rx"></block> 제공합니다.</block>
+  <block id="00baa41e1729865cdcf0dd167c42a103" category="admonition">이 제한은 읽기에도 적용됩니다. 따라서 SAP HANA 데이터베이스 시작 시간 및 백업에 필요한 SLA를 충족하기 위해 충분한 LUN을 사용하십시오.</block>
 </blocks>
