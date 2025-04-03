@@ -10,11 +10,10 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
+
+[role="lead"]
+이 문서에서는 이 솔루션의 장애 조치 시나리오를 중점적으로 설명합니다.
 
 
 
@@ -28,7 +27,7 @@ summary:
 
 정상 작동 중에 HANA 시스템은 ESX 호스트 ESX-1의 활성 최적화 경로를 기반으로 로컬 복제본에서 읽기 및 쓰기를 수행합니다. 각 백업 작업에서 SnapCenter는 복제 관계에 대한 현재 운영 사이트를 감지하고 기본 사이트에 대해 백업 작업을 실행합니다. 스냅샷은 미러링된 복사본에 복제되며 두 사이트에서 모두 사용할 수 있습니다. SnapCenter 복원 작업은 운영 사이트에서 실행됩니다.
 
-image:sc-saphana-vmware-smas-image42.png[""]
+image:sc-saphana-vmware-smas-image42.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -36,7 +35,7 @@ image:sc-saphana-vmware-smas-image42.png[""]
 
 사이트 1의 스토리지 시스템에 장애가 발생하면 HANA 시스템은 사이트 2의 미러링된 복사본에 액세스하여 작업을 계속합니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
 
-image:sc-saphana-vmware-smas-image43.png[""]
+image:sc-saphana-vmware-smas-image43.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -44,7 +43,7 @@ image:sc-saphana-vmware-smas-image43.png[""]
 
 사이트 장애가 발생하면 HANA VM과 SnapCenter 및 SnapCenter for VMware 플러그인 VM이 vSphere HA를 사용하여 보조 사이트의 ESX 호스트로 페일오버됩니다. HANA 데이터베이스를 시작해야 하고 두 번째 사이트에서 미러링된 복사본에 액세스할 수 있습니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
 
-image:sc-saphana-vmware-smas-image44.png[""]
+image:sc-saphana-vmware-smas-image44.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -58,7 +57,7 @@ image:sc-saphana-vmware-smas-image44.png[""]
 
 정상 작동 중에 HANA 시스템은 로컬 복제본에서 읽기 및 쓰기를 수행합니다. 각 백업 작업에서 SnapCenter는 복제 관계에 대한 현재 운영 사이트를 감지하고 기본 사이트에 대해 백업 작업을 실행합니다. 스냅샷은 미러링된 복사본에 복제되며 두 사이트에서 모두 사용할 수 있습니다. SnapCenter 복원 작업은 운영 사이트에서 실행됩니다.
 
-image:sc-saphana-vmware-smas-image45.png[""]
+image:sc-saphana-vmware-smas-image45.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -66,7 +65,7 @@ image:sc-saphana-vmware-smas-image45.png[""]
 
 스토리지 장애가 발생하면 SnapCenter 및 SnapCenter for VMware 플러그인 VM과 HANA VM이 vSphere HA를 사용하는 보조 사이트의 ESX 호스트로 페일오버됩니다. HANA 데이터베이스를 시작해야 하고 두 번째 사이트에서 미러링된 복사본에 액세스할 수 있습니다. 운영 사이트가 보조 사이트로 전환되고 SnapCenter가 이제 새 기본 사이트에서 백업 및 복원 작업을 실행합니다.
 
-image:sc-saphana-vmware-smas-image46.png[""]
+image:sc-saphana-vmware-smas-image46.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -74,7 +73,7 @@ image:sc-saphana-vmware-smas-image46.png[""]
 
 스토리지 장애와 동일합니다.
 
-image:sc-saphana-vmware-smas-image47.png[""]
+image:sc-saphana-vmware-smas-image47.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -84,4 +83,4 @@ HANA VM이 다른 ESX 호스트로 재배치되고 스토리지의 운영 사이
 
 이 문제를 해결하려면 VM과 운영 측의 재배치가 함께 수행되는지 확인하거나 SnapCenter를 사용하여 복원 작업을 수행하기 전에 운영 사이트를 장애 조치해야 합니다.
 
-image:sc-saphana-vmware-smas-image48.png[""]
+image:sc-saphana-vmware-smas-image48.png["논의 중인 내용을 보여 주는 그림"]

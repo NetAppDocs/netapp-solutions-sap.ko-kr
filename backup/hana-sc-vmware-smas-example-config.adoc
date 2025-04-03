@@ -20,7 +20,7 @@ summary:
 [role="lead"]
 실습 설정에서는 두 ESX 호스트가 두 스토리지 클러스터에 모두 액세스할 수 있는 단일 액세스 구성을 사용합니다. 다음 섹션에서는 균일 액세스 구성에 대해 설명하고 비균일 설정의 차이점에 대해서도 설명합니다.
 
-image:sc-saphana-vmware-smas-image1.png[""]
+image:sc-saphana-vmware-smas-image1.png["논의 중인 내용을 보여 주는 그림"]
 
 
 

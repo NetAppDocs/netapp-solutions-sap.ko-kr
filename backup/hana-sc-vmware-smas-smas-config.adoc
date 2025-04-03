@@ -11,11 +11,10 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
+
+[role="lead"]
+이 문서에서는 이 솔루션에 필요한 구성 단계를 설명합니다.
 
 
 
@@ -25,9 +24,9 @@ summary:
 
 ONTAP 중재자는 두 스토리지 클러스터에서 모두 사용 가능하고 구성되어야 합니다.
 
-image:sc-saphana-vmware-smas-image10.png[""]
+image:sc-saphana-vmware-smas-image10.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image11.png[""]
+image:sc-saphana-vmware-smas-image11.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -41,7 +40,7 @@ ONTAP 설명서에서는 https://docs.netapp.com/us-en/ontap/snapmirror-active-s
 
 HANA 시스템 복제의 경우 정합성 보장 그룹에 개별 HANA 시스템에서 사용하는 모든 볼륨(데이터, 로그 및 공유)이 포함되어야 합니다. 일관성 그룹에 속해야 하는 볼륨은 동일한 SVM에 저장해야 합니다. 운영 체제 이미지는 자체 정합성 보장 그룹이 있는 별도의 볼륨에 저장할 수 있습니다. 아래 그림에서는 두 개의 HANA 시스템을 사용하는 구성 예를 보여 줍니다.
 
-image:sc-saphana-vmware-smas-image12.png[""]
+image:sc-saphana-vmware-smas-image12.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -51,9 +50,9 @@ image:sc-saphana-vmware-smas-image12.png[""]
 
 근접 설정을 사용하여 어느 ESX 호스트가 어느 스토리지 클러스터에 근접하는지 정의했습니다. 이 경우 A700은 ESX-1에 가까우며 A800은 ESX-2에 가깝습니다.
 
-image:sc-saphana-vmware-smas-image13.png[""]
+image:sc-saphana-vmware-smas-image13.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image14.png[""]
+image:sc-saphana-vmware-smas-image14.png["논의 중인 내용을 보여 주는 그림"]
 
 
 NOTE: 비균일 액세스 설정의 경우 ESX-2에 대한 SAN 연결이 없으므로 운영 스토리지 클러스터(A700)의 이니시에이터 그룹에는 ESX-1 호스트의 이니시에이터만 포함되어야 합니다. 또한 ESX-2 호스트의 이니시에이터만 포함하는 두 번째 스토리지 클러스터(A800)에 다른 이니시에이터 그룹을 구성해야 합니다. 근접 구성과 이니시에이터 그룹 복제가 필요하지 않습니다.
@@ -62,7 +61,7 @@ NOTE: 비균일 액세스 설정의 경우 ESX-2에 대한 SAN 연결이 없으�
 
 == ONTAP System Manager로 보호 구성
 
-image:sc-saphana-vmware-smas-image15.png[""]
+image:sc-saphana-vmware-smas-image15.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -75,11 +74,11 @@ image:sc-saphana-vmware-smas-image15.png[""]
 
 NOTE: 비균일 액세스 설정에서는 두 번째 스토리지 클러스터에 별도의 이니시에이터 그룹을 구성해야 하므로 이니시에이터 그룹을 복제해서는 안 됩니다.
 
-image:sc-saphana-vmware-smas-image16.png[""]
+image:sc-saphana-vmware-smas-image16.png["논의 중인 내용을 보여 주는 그림"]
 
 근접 설정을 클릭하여 이니시에이터 그룹 설정에서 이전에 수행한 구성을 검토할 수 있습니다.
 
-image:sc-saphana-vmware-smas-image17.png[""]
+image:sc-saphana-vmware-smas-image17.png["논의 중인 내용을 보여 주는 그림"]
 
 대상 스토리지 클러스터를 구성하고 "관계 초기화"를 활성화해야 합니다.
 
@@ -89,11 +88,11 @@ image:sc-saphana-vmware-smas-image17.png[""]
 
 A700 스토리지 클러스터(소스)에서 새로운 관계가 나열되어 있습니다.
 
-image:sc-saphana-vmware-smas-image18.png[""]
+image:sc-saphana-vmware-smas-image18.png["논의 중인 내용을 보여 주는 그림"]
 
 A800 스토리지 클러스터(대상)에 새로운 관계와 복제 상태가 나열됩니다.
 
-image:sc-saphana-vmware-smas-image19.png[""]
+image:sc-saphana-vmware-smas-image19.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -118,4 +117,4 @@ SnapMirror 활성 동기화는 한 사이트를 "소스"로 간주하고 다른 
 
 NOTE: 소스와 대상은 SVM 또는 스토리지 클러스터에 연결되지 않지만 복제 관계마다 다를 수 있습니다.
 
-image:sc-saphana-vmware-smas-image20.png[""]
+image:sc-saphana-vmware-smas-image20.png["논의 중인 내용을 보여 주는 그림"]

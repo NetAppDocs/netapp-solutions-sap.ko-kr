@@ -11,12 +11,9 @@ summary:
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:firstname: ---
-:author: ---
-:authorinitials: -
-:authors: ---
 
 
+[role="lead"]
 본 문서의 시작 부분에서 설명한 대로 VMFS 및 SnapMirror 활성 동기화와 함께 VMware를 사용하는 HANA 환경에 대한 Best Practice를 제공하는 것이 이 문서의 목적입니다. 이 특정 솔루션과 관련된 세부 사항 및 중요한 단계만 다루며 일반적인 SnapCenter 개념에 대해서는 설명하지 않습니다. SnapCenter에 대한 이러한 개념 및 기타 추가 정보는 다음 사이트에서 확인할 수 있습니다.
 
 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
@@ -62,11 +59,11 @@ SnapMirror 액티브 동기화를 관리하고 모니터링하려면 REST API에
 ....
 <add key="IsRestEnabledForStorageConnection" value="true">
 ....
-image:sc-saphana-vmware-smas-image21.png[""]
+image:sc-saphana-vmware-smas-image21.png["논의 중인 내용을 보여 주는 그림"]
 
 매개 변수를 변경한 후 SnapCenter SMCore 서비스를 다시 시작해야 합니다.
 
-image:sc-saphana-vmware-smas-image22.png[""]
+image:sc-saphana-vmware-smas-image22.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -74,9 +71,9 @@ image:sc-saphana-vmware-smas-image22.png[""]
 
 SnapCenter에 대해 REST API를 활성화한 후에 스토리지 시스템을 추가할 수 있다. 개별 SVM이 아닌 두 스토리지 클러스터를 추가해야 합니다.
 
-image:sc-saphana-vmware-smas-image23.png[""]
+image:sc-saphana-vmware-smas-image23.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image24.png[""]
+image:sc-saphana-vmware-smas-image24.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -89,11 +86,11 @@ SnapCenter의 리소스가 가상화된 VMware 환경에서 실행 중인 경우
 
 NOTE: vSphere를 호스트 유형으로 선택할 수 있는 호스트 추가 워크플로우 중에 자격 증명을 설정해야 합니다.
 
-image:sc-saphana-vmware-smas-image25.png[""]
+image:sc-saphana-vmware-smas-image25.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image26.png[""]
+image:sc-saphana-vmware-smas-image26.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image27.png[""]
+image:sc-saphana-vmware-smas-image27.png["논의 중인 내용을 보여 주는 그림"]
 
 
 NOTE: SnapCenter for vSphere 플러그인 자체에는 추가 구성이 필요하지 않습니다.
@@ -112,7 +109,7 @@ NOTE: 특별한 요구 사항이 없습니다. 플러그인 배포 및 자동 �
 ....
 volume show -vserver <vs> -volume <vol> -fields smbc-consensus,is-smbc-master
 ....
-image:sc-saphana-vmware-smas-image28.png[""]
+image:sc-saphana-vmware-smas-image28.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -120,9 +117,9 @@ image:sc-saphana-vmware-smas-image28.png[""]
 
 SnapMirror 활성 동기화로 보호되는 리소스에 사용되는 정책은 SnapCenter에서 SnapMirror 업데이트 작업을 트리거하지 않더라도 SnapMirror 복제를 사용하여 구성해야 합니다.
 
-image:sc-saphana-vmware-smas-image29.png[""]
+image:sc-saphana-vmware-smas-image29.png["논의 중인 내용을 보여 주는 그림"]
 
-image:sc-saphana-vmware-smas-image30.png[""]
+image:sc-saphana-vmware-smas-image30.png["논의 중인 내용을 보여 주는 그림"]
 
 
 

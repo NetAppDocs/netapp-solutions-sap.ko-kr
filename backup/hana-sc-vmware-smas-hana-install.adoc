@@ -26,14 +26,14 @@ summary:
 
 아래 그림에서는 HANA 시스템의 스토리지 및 데이터 저장소 구성을 보여 줍니다. HANA 시스템의 각 파일 시스템에 대해 전용 볼륨, LUN, 데이터 저장소를 구성해야 합니다. 여러 HANA 시스템 또는 다른 워크로드 간에 데이터 저장소를 공유해서는 안 됩니다.
 
-image:sc-saphana-vmware-smas-image5.png[""]
+image:sc-saphana-vmware-smas-image5.png["논의 중인 내용을 보여 주는 그림"]
 
 HANA 시스템의 3가지 LUN(HANA++_++데이터++++SMA, HANA++_++로그+++++ SAM 및 HANA++_++공유++_++SMA)과 OS 이미지 및 SnapCenter 구성 요소용 LUN이 A700 스토리지 클러스터에 모두 프로비저닝되었습니다.
 
 
 NOTE: HANA 시스템의 모든 볼륨을 동일한 SVM에서 프로비저닝해야 합니다. 나중에 설명하는 SnapMirror 액티브 동기화 구성에서는 3개의 HANA 볼륨 모두에 대해 일관성 그룹을 생성하므로 볼륨이 동일한 SVM에 있어야 합니다. 인프라 볼륨은 다른 정합성 보장 그룹에 속하게 되므로 다른 SVM에 속할 수 있습니다.
 
-image:sc-saphana-vmware-smas-image6.png[""]
+image:sc-saphana-vmware-smas-image6.png["논의 중인 내용을 보여 주는 그림"]
 
 랩 설정에서 이니시에이터 그룹을 구성하고 위의 LUN을 A700 스토리지 시스템에 가까운 ESX-1 호스트에 매핑해야 합니다.
 
@@ -43,7 +43,7 @@ image:sc-saphana-vmware-smas-image6.png[""]
 
 이전에 프로비저닝한 LUN 3개를 사용하여 HANA 시스템용 데이터 저장소 3개를 생성했습니다. 또한 인프라스트럭처 LUN을 사용하여 인프라스트럭처 데이터 저장소를 생성했습니다.
 
-image:sc-saphana-vmware-smas-image7.png[""]
+image:sc-saphana-vmware-smas-image7.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -57,7 +57,7 @@ image:sc-saphana-vmware-smas-image7.png[""]
 
 HANA VM에 새 디스크 3개가 추가되었으며, 각 디스크는 HANA 시스템용으로 생성된 데이터 저장소 중 하나에 들어 있습니다.
 
-image:sc-saphana-vmware-smas-image8.png[""]
+image:sc-saphana-vmware-smas-image8.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
@@ -67,7 +67,7 @@ DISK.EnableUUID 매개 변수를 추가하고 true로 설정해야 합니다. �
 
 매개 변수를 추가하려면 먼저 VM을 중지해야 합니다.
 
-image:sc-saphana-vmware-smas-image9.png[""]
+image:sc-saphana-vmware-smas-image9.png["논의 중인 내용을 보여 주는 그림"]
 
 기능은 아래 명령으로 확인할 수 있습니다.
 
