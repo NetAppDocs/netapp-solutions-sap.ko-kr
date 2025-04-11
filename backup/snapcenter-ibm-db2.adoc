@@ -1,0 +1,341 @@
+---
+sidebar: sidebar 
+permalink: backup/snapcenter-ibm-db2.html 
+keywords: SAP, snapcenter, IBM DB2, database, backup, restore 
+summary: 이 문서에서는 SAP 환경에서 사용되는 IBM DB2 데이터베이스에 대한 SnapCenter 통합 세부 사항에 대해 설명합니다. 
+---
+= IBM DB2 데이터베이스용 SnapCenter 통합
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 문서에서는 SAP 환경에서 사용되는 IBM DB2 데이터베이스에 대한 SnapCenter 통합 세부 사항에 대해 설명합니다.
+
+
+
+== 소개
+
+이 문서는 전체 환경을 설정하는 방법을 단계별로 설명하는 것이 아니라 다음과 관련된 개념과 관련 세부 사항을 다룹니다.
+
+* 구성 개요 예
+* 샘플 레이아웃
+* DB2 데이터베이스 보호
+* DB2 데이터베이스 복원 및 복구
+
+
+저자: 마이클 슐로스 서, NetApp
+
+
+
+== 구성 개요 예
+
+Azure 플랫폼에서 실행되는 SAP 시스템용 SnapCenter DB2 플러그인 구현 예
+
+
+NOTE: 이 구현에서는 필요한 최소 볼륨 구성에 대해 설명합니다.
+
+또는 여기에 설명된 볼륨 구조를 link:https://techcommunity.microsoft.com/blog/sapapplications/db2-installation-guide-on-anf/3709437["MS 기술 커뮤니티 블로그"]사용할 수도 있습니다.
+
+image:sc-ibm-db2-image01.png["IBM DB2를 사용한 예제 구현 다이어그램"]
+
+
+
+== 데모 환경
+
+
+
+=== 소프트웨어 버전
+
+[cols="50%, 50%"]
+|===
+| * 소프트웨어 * | * 버전 * 
+
+
+| 리눅스 OS | SAP 15 SP5용 SLES 
+
+
+| 제공합니다 | SAP NetWeaver 7.5 
+
+
+| DB2를 참조하십시오 | 10.5.0.7 
+
+
+| SnapCenter | 6.1 
+|===
+
+
+=== DB2 볼륨 설계
+
+DB2 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃을 사용해야 합니다. 예제 구성은 <SID>:D01을 사용합니다.
+
+[cols="20%, 20%, 30%, 30%"]
+|===
+| * 볼륨 이름 * | * 볼륨의 디렉토리(qtree) * | * 서버의 탑재 지점 * | * 설명 * 
+
+
+| <SID>-sapdb2 를 참조하십시오 | db2를 참조하십시오 | /db2 를 참조하십시오 |  
+
+
+|  |  | /DB2/<SID> 를 참조하십시오 | DB2 관련 파일의 상위 디렉토리입니다 
+
+
+|  |  | /DB2/DB2 <sid> 를 참조하십시오 | 사용자 DB2 <sid> 및 DB2 소프트웨어의 홈 디렉토리입니다 
+
+
+|  |  | /db2/<SID>/db2dump 를 참조하십시오 | DB2 진단 로그 및 덤프 파일 
+
+
+|  |  | /DB2/<SID>/backup을 선택합니다 | 백업 dlocation(다른 볼륨에 배치될 수 있음) 
+
+
+|  |  | /DB2/<SID>/log_arch 를 참조하십시오 | 오프라인 재실행 로그(다른 볼륨에 배치될 수 있음 - 스냅샷이 트리거됨) 
+
+
+|  |  | /db2/<SID>/log_dir 을 참조하십시오 | 온라인 재실행 로그(다른 볼륨에 배치될 수 있음 - 스냅샷이 트리거됨) 
+
+
+|  | <sid> 관리자 | /home/<sid> adm | 사용자 <sid> adm의 홈 디렉토리 
+
+
+|  | SAP <sid> 를 참조하십시오 | /home/SAP <sid> 를 선택합니다 | 사용자 SAP <sid>의 홈 디렉토리입니다 
+
+
+|  | 삽트랜스 | /usr/sap/trans 를 선택합니다 | 전송 디렉터리 
+
+
+|  | usrsap <SID> 를 참조하십시오 | /usr/SAP/<SID> 를 참조하십시오 | usr SAP 를 참조하십시오 
+
+
+|  | Sapmnt <SID> 를 참조하십시오 | /sapmnt/<SID> 를 참조하십시오 | SAP 글로벌 호스트 책임자 
+
+
+| <SID> - 데이터 | sapdata1를 참조하십시오 | /DB2/<SID>/sapdata1 을 참조하십시오 | DB 데이터 
+
+
+|  | sapdata2를 참조하십시오 | /DB2/<SID>/sapdata2 를 참조하십시오 | DB 데이터 
+
+
+|  | sapdata3를 참조하십시오 | /DB2/<SID>/sapdata3 을 참조하십시오 | DB 데이터 
+
+
+|  | sapdata4를 참조하십시오 | /DB2/<SID>/sapdata4 를 참조하십시오 | DB 데이터 
+
+
+|  | saptmp1를 참조하십시오 | /db2/<SID>/saptmp1 을 참조하십시오 | DB 임시 파일 
+
+
+|  | saptmp2를 참조하십시오 | /DB2/<SID>/saptmp2 를 참조하십시오 | DB 임시 파일 
+
+
+|  | saptmp3를 참조하십시오 | /DB2/<SID>/saptmp3 를 참조하십시오 | DB 임시 파일 
+
+
+|  | saptmp4를 참조하십시오 | /DB2/<SID>/saptmp4 를 참조하십시오 | DB 임시 파일 
+
+
+|  | DB2 <sid>입니다 | /DB2/<SID>/DB2 <sid> 를 참조하십시오 | 인스턴스 파일 
+|===
+DB2 플러그인에 대해 자동 검색이 기본적으로 설정되어 있기 때문에 다음 파일 경로와 일치하는 볼륨에 대한 스냅샷이 생성됩니다.
+
+image:sc-ibm-db2-image02.png["데이터베이스 파일 경로의 스크린샷"]
+
+
+
+=== 데이터베이스 D01을 보호하는 단계
+
+* 샘플 레이아웃에 따라 파일 배포를 확인합니다
+* 호스트에 대한 사전 요구 사항 확인(VM-d01)
+* 데이터베이스의 사전 요구 사항 확인(D01)
+* 호스트에 SnapCenter 에이전트 구축/설치(vm-d01)
+* SnapCenter 인스턴스 리소스 구성을 생성합니다
+
+
+
+
+=== 호스트에 대한 사전 요구 사항
+
+자세한 최신 정보는 다음 웹 사이트에서 확인할 수 있습니다.
+
+* https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html[]
+* https://docs.netapp.com/us-en/snapcenter/protect-db2/prerequisites-for-using-snapcenter-plug-in-for-ibm-db2.html[]
+
+
+호스트를 추가하고 Linux용 플러그인 패키지를 설치하기 전에 모든 요구 사항을 완료해야 합니다.
+
+* iSCSI를 사용하는 경우 iSCSI 서비스가 실행 중이어야 합니다.
+* 루트 또는 루트 이외의 사용자에 대해 암호 기반 인증을 사용하거나 SSH 키 기반 인증을 사용할 수 있습니다.
+* Unix 파일 시스템용 SnapCenter 플러그인은 루트가 아닌 사용자가 설치할 수 있습니다. 그러나 비루트 사용자에 대한 sudo 권한을 구성하여 플러그인 프로세스를 설치하고 시작해야 합니다. 플러그인을 설치하면 프로세스가 루트가 아닌 효과적인 사용자로 실행됩니다.
+* 설치 사용자에 대해 인증 모드를 Linux로 사용하여 자격 증명을 생성합니다.
+* Linux 호스트에 Java 11을 설치해야 합니다.
+* Linux 호스트에 인증된 Java 11 버전만 설치했는지 확인합니다
+* Java 다운로드에 대한 자세한 내용은 모든 운영 체제에 대한 Java 다운로드를 참조하십시오
+* 플러그인 설치를 위한 기본 셸로 bash가 있어야 합니다.
+
+
+
+
+=== 데이터베이스 사전 요구 사항 – 로깅 및 백업을 사용하도록 설정합니다
+
+
+NOTE: 오프라인 로그를 사용하려면 데이터베이스의 오프라인 전체 백업이 필요합니다. 일반적으로 생산성 시스템에 이미 활성화되어 있습니다.
+
+* 백업 및 log_arch에 대한 디렉토리 생성(/DB2/D01/backup, /Sybase/D01/log_arch)
+* logarchmeth1 활성화(os-user db2d01)
++
+** logarchmeth1 disk:/db2/d01/log_arch/를 사용하여 d01에 대한 DB2 업데이트 db cfg
+
+
+* 오프라인 백업 생성(os-user db2d01)
++
+** db2stop 하중
+** db2start 관리자 모드 제한된 액세스
+** DB2 백업 DB D01을 /DB2/D01/backup으로
+** DB2 활성화 DB D01
+
+
+
+
+
+
+=== 호스트 VM-d01에 SnapCenter 에이전트를 배포합니다
+
+자세한 내용은 에서 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter 설명서"]확인할 수 있습니다.
+
+IBM DB2 및 Unix 파일 시스템 플러그인을 선택합니다.
+
+image:sc-ibm-db2-image03.png["IBM DB2 및 Unix 파일 시스템 플러그인 추가 스크린샷"]
+
+
+NOTE: 설치 후 호스트에서 데이터베이스 검색이 트리거됩니다.
+
+image:sc-ibm-db2-image04.png["호스트에서 데이터베이스 검색 스크린 샷"]
+
+
+
+=== 데이터베이스 D01에 대한 리소스 구성을 만듭니다
+
+검색된 리소스 D01을 선택합니다
+
+image:sc-ibm-db2-image05.png["호스트에서 데이터베이스 검색 스크린 샷"]
+
+스냅샷 이름을 구성합니다
+
+image:sc-ibm-db2-image06.png["스냅샷 이름 구성 대화 상자 스크린샷"]
+
+특정 애플리케이션 설정이 필요하지 않으며 필요에 따라 정책 및 알림 설정을 구성합니다.
+
+image:sc-ibm-db2-image07.png["정책 및 알림 설정 구성 스크린샷"]
+
+구성을 완료합니다.
+
+
+
+==== 시스템 D01을 복구할 시퀀스
+
+. SAP 시스템 D01 중지(데이터베이스 포함)
+. SnapCenter 백업 복원(볼륨 D01-데이터)
++
+.. 파일 시스템을 마운트 해제합니다
+.. 볼륨 복원
+.. 파일 시스템 마운트
+.. 데이터베이스를 미러 DB로 초기화
+
+
+. 데이터베이스 D01 복구(DB2 롤포워드 사용)
+. SAP 시스템 D01을 시작합니다
+
+
+
+
+=== 데이터베이스 D01을 복구합니다
+
+* 호스트 vm-d01에서 SAP 시스템 + DB D01을 중지합니다
++
+** 사용자 d01adm: stopsap
+
+
+* 백업을 복원합니다
++
+** SnapCenter GUI: 복원을 위해 필요한 백업을 선택합니다
++
+image:sc-ibm-db2-image08.png["복원할 백업을 선택하기 위한 SnapCenter GUI 스크린샷"]
+
+** ANF 배포의 경우 전체 리소스만 사용할 수 있습니다
++
+image:sc-ibm-db2-image09.png["복원할 백업을 선택하기 위한 SnapCenter GUI 스크린샷"]
+
+
+
+
+
+요약이 표시되고 Finish(마침)를 누르면 실제 복구가 시작됩니다.
+
+image:sc-ibm-db2-image10.png["복구용 백업에 대한 요약 스크린 샷"]
+
+
+NOTE: "db2inidb d01 as mirror"는 SnapCenter 복원 워크플로우의 일부로 수행됩니다.
+
+* 복구 상태 데이터베이스 D01 확인(사용자 db2d01)
++
+** DB2 롤포워드 DB D01 쿼리 상태입니다
+
+
+* 필요에 따라 데이터베이스 복구 – 여기서 손실 없는 복구가 시작됩니다(사용자 db2d01).
++
+** DB2 롤포워드 DB D01 to end of logs
+
+
+* 데이터베이스 복구 및 온라인 데이터베이스 D01 중지(사용자 db2d01)
++
+** DB2 롤포워드 DB D01 중지
+
+
+* SAP 시스템 시작(사용자 d01adm)
++
+** 스타트샵
+
+
+
+
+
+
+== 추가 정보 및 버전 기록
+
+다음 녹화 데모를 사용하여 문서를 지원할 수 있습니다.
+
+.설치 및 구성 DB2 플러그인, DB2 데이터베이스 백업
+video::66c87afd-ca53-4af1-8bd8-b2b900c1fb0f[panopto,width=360]
+.DB2 데이터베이스 복원 및 복구
+video::3a82e561-e5a2-4a23-9465-b2b900c1fac5[panopto,width=360]
+이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
+
+* link:https://techcommunity.microsoft.com/blog/sapapplications/db2-installation-guide-on-anf/3709437["ANF에 DB2 기반 SAP 설치 Azure"]
+* link:https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html["플러그인에 대한 SnapCenter 필수 구성 요소"]
+* link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter 플러그인 설치"]
+* link:https://docs.netapp.com/us-en/snapcenter/protect-db2/snapcenter-plug-in-for-ibm-db2-overview.html["SnapCenter DB2 플러그인 설명서"]
+* SAP 메모(로그인 필요)
++
+** 83000-DB2/390: 백업 및 복구 옵션: https://me.sap.com/notes/83000[]
+** 594301-DB6: 관리 도구 및 분할 미러: https://me.sap.com/notes/594301[]
+
+
+* NetApp 제품 설명서: https://www.netapp.com/support-and-training/documentation/[]
+* NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보: https://docs.netapp.com/us-en/netapp-solutions-sap[]
+
+
+
+
+=== 버전 기록
+
+[cols="25 %, 25%, 50%"]
+|===
+| * 버전 * | * 날짜 * | * 문서 버전 기록 * 
+
+
+| 버전 1.0 | 2025년 4월 | 초기 버전 – 백업/복구 DB2 데이터베이스 
+|===

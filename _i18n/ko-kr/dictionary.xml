@@ -5029,4 +5029,384 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="ccc685f61d9aa4b750fdd8658835ff94" category="paragraph"><block ref="ccc685f61d9aa4b750fdd8658835ff94" category="inline-image-macro-rx" type="image"></block></block>
   <block id="34db90278e7f1203022d19ec5b665010" category="paragraph"><block ref="34db90278e7f1203022d19ec5b665010" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5da5dde9720b315379e70b4177434a18" category="paragraph"><block ref="5da5dde9720b315379e70b4177434a18" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="27e52c3fb5eeac301ef7551fbbc844ca" category="summary">이 문서에서는 SAP 환경에서 사용되는 IBM DB2 데이터베이스에 대한 SnapCenter 통합 세부 사항에 대해 설명합니다.</block>
+  <block id="f2ce65fcc640e16d86d90a9043a03a3b" category="doc">IBM DB2 데이터베이스용 SnapCenter 통합</block>
+  <block id="ec0faed5ff7ebe2f0706a4c39e2c4c2c" category="list-text">샘플 레이아웃</block>
+  <block id="ef7b844ca6d6a2602dafe3134fb1ca72" category="list-text">DB2 데이터베이스 보호</block>
+  <block id="4e31e49d4100c6ba14450837d92d461f" category="list-text">DB2 데이터베이스 복원 및 복구</block>
+  <block id="a00f0fd59cca7f07f0cea6ac706a0e5c" category="paragraph">저자: 마이클 슐로스 서, NetApp</block>
+  <block id="473b1d9bd40c12221ea0f6cae1597325" category="paragraph">Azure 플랫폼에서 실행되는 SAP 시스템용 SnapCenter DB2 플러그인 구현 예</block>
+  <block id="12b39368d55e98f888e35df7746fb72c" category="admonition">이 구현에서는 필요한 최소 볼륨 구성에 대해 설명합니다.</block>
+  <block id="12cd71728e50a3902fcece65460e4ebf" category="inline-link-macro">MS 기술 커뮤니티 블로그</block>
+  <block id="fbcc308403cd96b6411f668e18f06800" category="paragraph">또는 여기에 설명된 볼륨 구조를 <block ref="ba61e08a88d29c2a10a488be3b39cf04" category="inline-link-macro-rx"></block>사용할 수도 있습니다.</block>
+  <block id="da244bb6adce2e1c672dfd628fb7dd34" category="inline-image-macro">IBM DB2를 사용한 예제 구현 다이어그램</block>
+  <block id="e62cf247ea7ec708a2ad9230ea442925" category="paragraph"><block ref="e62cf247ea7ec708a2ad9230ea442925" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="3b3baef4e7ae79cabecf02ebeed0c59d" category="section-title">데모 환경</block>
+  <block id="7eef23b11d6e87eee968a9bef33fd707" category="cell">* 소프트웨어 *</block>
+  <block id="45cc01ab5f209e8760027e9c30097025" category="cell">* 버전 *</block>
+  <block id="999bc6b18351bbe817d26f559ba408ae" category="cell">제공합니다</block>
+  <block id="6d249e1baba83ae640bbeec81e7c3615" category="cell">SAP NetWeaver 7.5</block>
+  <block id="c890515f1055143925ae4fb85b86ec70" category="cell">DB2를 참조하십시오</block>
+  <block id="948d557ffdaf25b2c6b7be9ddd53ec00" category="cell">10.5.0.7</block>
+  <block id="d6eb82c324cab2f36e345863fad95090" category="cell">6.1</block>
+  <block id="8cfac113a293def38718f860d9847f61" category="section-title">DB2 볼륨 설계</block>
+  <block id="4637ee103bf2e775e15a469132b5bb9e" category="paragraph">DB2 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃을 사용해야 합니다. 예제 구성은 &lt;SID&gt;:D01을 사용합니다.</block>
+  <block id="9a888b0c74b941393528812eb1316d03" category="cell">* 볼륨 이름 *</block>
+  <block id="f899d776dc67e9dcee2f4121b4bba535" category="cell">* 볼륨의 디렉토리(qtree) *</block>
+  <block id="e672228e961994874c51cca0ee312ede" category="cell">* 서버의 탑재 지점 *</block>
+  <block id="9bdc480955b350f1fe8089392ad36cbe" category="cell">* 설명 *</block>
+  <block id="31d84945c9682550a825076c467153b5" category="cell">&lt;SID&gt;-sapdb2 를 참조하십시오</block>
+  <block id="ea95a7d80f83fc61f9f153f2638ea853" category="cell">db2를 참조하십시오</block>
+  <block id="7e26510de272b089b386a86ccbf587b6" category="cell">/db2 를 참조하십시오</block>
+  <block id="534a3af3843cec27238cd2a795da097e" category="cell">/DB2/&lt;SID&gt; 를 참조하십시오</block>
+  <block id="dd821c245ff7dc009d80ebb64af5731f" category="cell">DB2 관련 파일의 상위 디렉토리입니다</block>
+  <block id="8fd86b7aadd5e9b03497bf120891978b" category="cell">/DB2/DB2 &lt;sid&gt; 를 참조하십시오</block>
+  <block id="79df651c0a05c7844b2d00a3d89305ad" category="cell">사용자 DB2 &lt;sid&gt; 및 DB2 소프트웨어의 홈 디렉토리입니다</block>
+  <block id="15a05a936e7e6e3f58e6fbc1511a6e81" category="cell">/db2/&lt;SID&gt;/db2dump 를 참조하십시오</block>
+  <block id="b3a15b9def11128e8b2026efc6c3d072" category="cell">DB2 진단 로그 및 덤프 파일</block>
+  <block id="e997b2cd0b797de69fb2c7d8ffffca3c" category="cell">/DB2/&lt;SID&gt;/backup을 선택합니다</block>
+  <block id="64eb203ca6b490c12ed7667283c124a6" category="cell">백업 dlocation(다른 볼륨에 배치될 수 있음)</block>
+  <block id="7d096ea4f92dc98b3097737a8b5181a6" category="cell">/DB2/&lt;SID&gt;/log_arch 를 참조하십시오</block>
+  <block id="6f492fcb3cdd8aace41d6904c24b3bc5" category="cell">오프라인 재실행 로그(다른 볼륨에 배치될 수 있음 - 스냅샷이 트리거됨)</block>
+  <block id="4aea0cb6e5c006ddd53a70c12b56fdd0" category="cell">/db2/&lt;SID&gt;/log_dir 을 참조하십시오</block>
+  <block id="2270a43500f9a14bb91dab8efd360ef3" category="cell">온라인 재실행 로그(다른 볼륨에 배치될 수 있음 - 스냅샷이 트리거됨)</block>
+  <block id="bbf57e51fef1ff26dad896beca3f7e87" category="cell">&lt;sid&gt; 관리자</block>
+  <block id="2da342b3dda8e03159bbffaefb0d4c8b" category="cell">/home/&lt;sid&gt; adm</block>
+  <block id="698ad4b403eed82197a9bf2952ebcf6f" category="cell">사용자 &lt;sid&gt; adm의 홈 디렉토리</block>
+  <block id="25b707f15524f486786dd6cf01c22073" category="cell">SAP &lt;sid&gt; 를 참조하십시오</block>
+  <block id="a861d753fb632d3aa7894413728b31bc" category="cell">/home/SAP &lt;sid&gt; 를 선택합니다</block>
+  <block id="96d9f98b47736d5b212d67691e5ed26f" category="cell">사용자 SAP &lt;sid&gt;의 홈 디렉토리입니다</block>
+  <block id="07c219d49a1979ef373138dd06f5ad96" category="cell">삽트랜스</block>
+  <block id="82fccaf357ca5c791314eaf3a6944474" category="cell">/usr/sap/trans 를 선택합니다</block>
+  <block id="b838e6c5bd60b36ebeaaab72caed45fa" category="cell">전송 디렉터리</block>
+  <block id="be4c2a2a5d126229964628d446efbb8f" category="cell">usrsap &lt;SID&gt; 를 참조하십시오</block>
+  <block id="c01ff4fdf7388e360b42bc0e64a0a80d" category="cell">/usr/SAP/&lt;SID&gt; 를 참조하십시오</block>
+  <block id="756508efab6e0d1bc2dc4fee92cac4c5" category="cell">usr SAP 를 참조하십시오</block>
+  <block id="4a7c0df05ccef9cc1dc8697f985fd620" category="cell">Sapmnt &lt;SID&gt; 를 참조하십시오</block>
+  <block id="5a098fa2529c8679c4e8fc1738f1da9d" category="cell">/sapmnt/&lt;SID&gt; 를 참조하십시오</block>
+  <block id="026549168c7a2bb8161cfb74d480263a" category="cell">SAP 글로벌 호스트 책임자</block>
+  <block id="3505690b5481050b39a2b9670d03515f" category="cell">&lt;SID&gt; - 데이터</block>
+  <block id="c787761c1a756dd43a957c5e2c583389" category="cell">sapdata1를 참조하십시오</block>
+  <block id="4f0c7b90b273f14a8619b86e13dd9ca9" category="cell">/DB2/&lt;SID&gt;/sapdata1 을 참조하십시오</block>
+  <block id="483c4c7bd72d57048ff3744af95fc494" category="cell">DB 데이터</block>
+  <block id="065951937bf4428ca6fb06582f598edd" category="cell">sapdata2를 참조하십시오</block>
+  <block id="0b40cbe6e00bd32ab25fa62693b43c0a" category="cell">/DB2/&lt;SID&gt;/sapdata2 를 참조하십시오</block>
+  <block id="665d47691ba149a5bec2082999149594" category="cell">sapdata3를 참조하십시오</block>
+  <block id="4f7a702472576e4342b1e74200918229" category="cell">/DB2/&lt;SID&gt;/sapdata3 을 참조하십시오</block>
+  <block id="8285444aa5840d99f8550da86ffa63a5" category="cell">sapdata4를 참조하십시오</block>
+  <block id="b818a2f692219a659b3df706806dbbe1" category="cell">/DB2/&lt;SID&gt;/sapdata4 를 참조하십시오</block>
+  <block id="0bbf1b8adc2733d08c166b57dd640cd5" category="cell">saptmp1를 참조하십시오</block>
+  <block id="eae9762e5cfdc29394389a973ba509c7" category="cell">/db2/&lt;SID&gt;/saptmp1 을 참조하십시오</block>
+  <block id="64166c815cb9bcbf7f48c602e9e96f51" category="cell">DB 임시 파일</block>
+  <block id="e20f53264436638f3fb4a5fba1747e7e" category="cell">saptmp2를 참조하십시오</block>
+  <block id="3510de8e86604adfbef947b90a1c45ee" category="cell">/DB2/&lt;SID&gt;/saptmp2 를 참조하십시오</block>
+  <block id="682655157fb73f8c2be7e18600c66215" category="cell">saptmp3를 참조하십시오</block>
+  <block id="cb594ac1e19e0800c21774554c937620" category="cell">/DB2/&lt;SID&gt;/saptmp3 를 참조하십시오</block>
+  <block id="11b94078dbe191b06347286767e4081a" category="cell">saptmp4를 참조하십시오</block>
+  <block id="a63099b6993198420aa5ae00b810ce02" category="cell">/DB2/&lt;SID&gt;/saptmp4 를 참조하십시오</block>
+  <block id="70c057283d21e800806e65930d57dd49" category="cell">DB2 &lt;sid&gt;입니다</block>
+  <block id="33661a49a40bfa2f45c04c0fb17bd4fa" category="cell">/DB2/&lt;SID&gt;/DB2 &lt;sid&gt; 를 참조하십시오</block>
+  <block id="27913215df8cddaf9d03dc16f87f321e" category="cell">인스턴스 파일</block>
+  <block id="40cb4b2d8d5816e1f0184321618fbd12" category="paragraph">DB2 플러그인에 대해 자동 검색이 기본적으로 설정되어 있기 때문에 다음 파일 경로와 일치하는 볼륨에 대한 스냅샷이 생성됩니다.</block>
+  <block id="bd496227fb0e5b76b69f3b4e68518afe" category="inline-image-macro">데이터베이스 파일 경로의 스크린샷</block>
+  <block id="5758fa0e46506a3a69a20fedf21759bf" category="paragraph"><block ref="5758fa0e46506a3a69a20fedf21759bf" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="9a81c153454f0f6f7d8579cc34ee5234" category="section-title">데이터베이스 D01을 보호하는 단계</block>
+  <block id="9a0270e05c38e9a7d1ac8d978974e340" category="list-text">샘플 레이아웃에 따라 파일 배포를 확인합니다</block>
+  <block id="86c6e3d68127f421e9ef698d11cc75ed" category="list-text">호스트에 대한 사전 요구 사항 확인(VM-d01)</block>
+  <block id="33f7664c941a3d9b3d28bbcb4c812758" category="list-text">데이터베이스의 사전 요구 사항 확인(D01)</block>
+  <block id="47fe320168def34402834656016c2220" category="list-text">호스트에 SnapCenter 에이전트 구축/설치(vm-d01)</block>
+  <block id="ce63ea422e33d0794813d24821f1dcc3" category="list-text">SnapCenter 인스턴스 리소스 구성을 생성합니다</block>
+  <block id="7559741220811236735f363b93a31049" category="section-title">호스트에 대한 사전 요구 사항</block>
+  <block id="bca10cb4cf9094843c7355adeba6eac9" category="paragraph">자세한 최신 정보는 다음 웹 사이트에서 확인할 수 있습니다.</block>
+  <block id="e1b0bca9c4cdbfdc55a42c6370c32016" category="list-text"><block ref="e1b0bca9c4cdbfdc55a42c6370c32016" category="inline-link-rx"></block></block>
+  <block id="286c51b67f871ee890090f0b93e51a87" category="list-text"><block ref="286c51b67f871ee890090f0b93e51a87" category="inline-link-rx"></block></block>
+  <block id="4800367b8851abf8ad87e97df37414a2" category="paragraph">호스트를 추가하고 Linux용 플러그인 패키지를 설치하기 전에 모든 요구 사항을 완료해야 합니다.</block>
+  <block id="8dd7d2aae8c4a449ae4eb17577d64964" category="list-text">iSCSI를 사용하는 경우 iSCSI 서비스가 실행 중이어야 합니다.</block>
+  <block id="2e1961167c1057a818d6fff279cd9778" category="list-text">루트 또는 루트 이외의 사용자에 대해 암호 기반 인증을 사용하거나 SSH 키 기반 인증을 사용할 수 있습니다.</block>
+  <block id="fed1505389358193273003d88a5d4e8b" category="list-text">Unix 파일 시스템용 SnapCenter 플러그인은 루트가 아닌 사용자가 설치할 수 있습니다. 그러나 비루트 사용자에 대한 sudo 권한을 구성하여 플러그인 프로세스를 설치하고 시작해야 합니다. 플러그인을 설치하면 프로세스가 루트가 아닌 효과적인 사용자로 실행됩니다.</block>
+  <block id="45d6e373e26981f8611297351f3acd1f" category="list-text">설치 사용자에 대해 인증 모드를 Linux로 사용하여 자격 증명을 생성합니다.</block>
+  <block id="129fdeda5a8637916b3b579b072e4eaa" category="list-text">Linux 호스트에 Java 11을 설치해야 합니다.</block>
+  <block id="d1ea7cd127db6778a24937199f9b7686" category="list-text">Linux 호스트에 인증된 Java 11 버전만 설치했는지 확인합니다</block>
+  <block id="9285703bdbff8eccacde8c66953002ab" category="list-text">Java 다운로드에 대한 자세한 내용은 모든 운영 체제에 대한 Java 다운로드를 참조하십시오</block>
+  <block id="225638f404e1ccbeb997a0f1c9c04f5c" category="list-text">플러그인 설치를 위한 기본 셸로 bash가 있어야 합니다.</block>
+  <block id="5bb507af45f0fd81d1f1caabc686314b" category="section-title">데이터베이스 사전 요구 사항 – 로깅 및 백업을 사용하도록 설정합니다</block>
+  <block id="c09daa85b259d9f7648c6fbc39ed25ca" category="admonition">오프라인 로그를 사용하려면 데이터베이스의 오프라인 전체 백업이 필요합니다. 일반적으로 생산성 시스템에 이미 활성화되어 있습니다.</block>
+  <block id="96789433eac5e3944ca0d800fc85486e" category="list-text">백업 및 log_arch에 대한 디렉토리 생성(/DB2/D01/backup, /Sybase/D01/log_arch)</block>
+  <block id="956d0c05682b3bc3cb93899562e10f67" category="list-text">logarchmeth1 활성화(os-user db2d01)</block>
+  <block id="94ef65514f807d19bdb88718b99c02fe" category="list-text">logarchmeth1 disk:/db2/d01/log_arch/를 사용하여 d01에 대한 DB2 업데이트 db cfg</block>
+  <block id="5e00eadfc1b5e7463a17c56b72d5f181" category="list-text">오프라인 백업 생성(os-user db2d01)</block>
+  <block id="179cbd0252387fd4435d78ae06e787b2" category="list-text">db2stop 하중</block>
+  <block id="7ebce8853c97c81f4e553e7b1dc0ca96" category="list-text">db2start 관리자 모드 제한된 액세스</block>
+  <block id="622fcf6018c9ebf916f7c5cb383db1d7" category="list-text">DB2 백업 DB D01을 /DB2/D01/backup으로</block>
+  <block id="132ac58d4e1fac6434f811d92132baab" category="list-text">DB2 활성화 DB D01</block>
+  <block id="9fec43604f51a0651fe36635eb132bd7" category="section-title">호스트 VM-d01에 SnapCenter 에이전트를 배포합니다</block>
+  <block id="d5c9b73d439aa92ef011ebf02237c888" category="inline-link-macro">SnapCenter 설명서</block>
+  <block id="3a633c1034368fc3855a16dd076fbf74" category="paragraph">자세한 내용은 에서 <block ref="29e7bd256c94454af51a7602a8b13056" category="inline-link-macro-rx"></block>확인할 수 있습니다.</block>
+  <block id="b9ea14491630eed38c34384a444e82ae" category="paragraph">IBM DB2 및 Unix 파일 시스템 플러그인을 선택합니다.</block>
+  <block id="35b8a19cf7d821dfa7b8a737f99c48ec" category="inline-image-macro">IBM DB2 및 Unix 파일 시스템 플러그인 추가 스크린샷</block>
+  <block id="a2f6986a884997444723c59680789f03" category="paragraph"><block ref="a2f6986a884997444723c59680789f03" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6695ed7c4dc6e7742c1d1d038a25f676" category="admonition">설치 후 호스트에서 데이터베이스 검색이 트리거됩니다.</block>
+  <block id="fd48bbf17291907d730e2522d1a85bc5" category="inline-image-macro">호스트에서 데이터베이스 검색 스크린 샷</block>
+  <block id="7f069b03dc5ca3b8f62d29589f4511be" category="paragraph"><block ref="7f069b03dc5ca3b8f62d29589f4511be" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1296bb39d2d57c6cc10bc8b7676917e8" category="section-title">데이터베이스 D01에 대한 리소스 구성을 만듭니다</block>
+  <block id="8330f0a2b7e6f6014bf360706b2bf776" category="paragraph">검색된 리소스 D01을 선택합니다</block>
+  <block id="64cebb4358b84bfd80d6579d778f0dcc" category="paragraph"><block ref="64cebb4358b84bfd80d6579d778f0dcc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="da91a3254aca6de315b2373021256929" category="paragraph">스냅샷 이름을 구성합니다</block>
+  <block id="e84fae071a8e78d1fb7a744b24cc5570" category="inline-image-macro">스냅샷 이름 구성 대화 상자 스크린샷</block>
+  <block id="3069aeaf5ccf52d1a3cda1b52aeb70d6" category="paragraph"><block ref="3069aeaf5ccf52d1a3cda1b52aeb70d6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="486fc7232baeaac232c34da92814b735" category="paragraph">특정 애플리케이션 설정이 필요하지 않으며 필요에 따라 정책 및 알림 설정을 구성합니다.</block>
+  <block id="b3e9c346af65ea78931895ae0ed7f82c" category="inline-image-macro">정책 및 알림 설정 구성 스크린샷</block>
+  <block id="55274b856cef4df2e84f634090d352eb" category="paragraph"><block ref="55274b856cef4df2e84f634090d352eb" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="623c2f695c43944368233cdcd5112fa6" category="paragraph">구성을 완료합니다.</block>
+  <block id="62157a3f9b3e302e2af1a8ae18fa9f72" category="section-title">시스템 D01을 복구할 시퀀스</block>
+  <block id="816afd57aef5575fc9bbdc88bc26ddc4" category="list-text">SAP 시스템 D01 중지(데이터베이스 포함)</block>
+  <block id="6786f06988fe239916a81108eb0a0c69" category="list-text">SnapCenter 백업 복원(볼륨 D01-데이터)</block>
+  <block id="0e2495c75bf156696de96e63614ac7a7" category="list-text">파일 시스템을 마운트 해제합니다</block>
+  <block id="ec6cf5d30900bcc6f82f3eb5c23d8c37" category="list-text">볼륨 복원</block>
+  <block id="53497eb2c626ef9f24d9de1007a5a90b" category="list-text">파일 시스템 마운트</block>
+  <block id="d0c9247901ac4a52c58033d856dddbff" category="list-text">데이터베이스를 미러 DB로 초기화</block>
+  <block id="3291c9695e2f7dd58cdd755c2c2e393a" category="list-text">데이터베이스 D01 복구(DB2 롤포워드 사용)</block>
+  <block id="91ed7fe4c36ec693747f406ea94d23af" category="list-text">SAP 시스템 D01을 시작합니다</block>
+  <block id="11dab2657295441ca871a59b243ec1a0" category="section-title">데이터베이스 D01을 복구합니다</block>
+  <block id="4df9343790098c76f2411a45b066901e" category="list-text">호스트 vm-d01에서 SAP 시스템 + DB D01을 중지합니다</block>
+  <block id="a25c1c8c4de0276c08c8234ab3b708ce" category="list-text">사용자 d01adm: stopsap</block>
+  <block id="6b57c8193bf71b9818408e839220a139" category="list-text">백업을 복원합니다</block>
+  <block id="1452732860e76c518c037e770ed085dd" category="list-text">SnapCenter GUI: 복원을 위해 필요한 백업을 선택합니다</block>
+  <block id="679f60d183f669fb2ca68c72c3316c6b" category="inline-image-macro">복원할 백업을 선택하기 위한 SnapCenter GUI 스크린샷</block>
+  <block id="1c169de9b3a145e2e063671d59b50af5" category="paragraph"><block ref="1c169de9b3a145e2e063671d59b50af5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ac7ddb192c30c1078e57e0342a5062fc" category="list-text">ANF 배포의 경우 전체 리소스만 사용할 수 있습니다</block>
+  <block id="7931bab6bc0927ffc59532f7984bbd0d" category="paragraph"><block ref="7931bab6bc0927ffc59532f7984bbd0d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f13df4ad54f0c2b31657833f05881004" category="paragraph">요약이 표시되고 Finish(마침)를 누르면 실제 복구가 시작됩니다.</block>
+  <block id="f8efcbfafcbabb8a7f35baf81e1a1d01" category="inline-image-macro">복구용 백업에 대한 요약 스크린 샷</block>
+  <block id="60ca3833d5c084c52db489b55e75ce1c" category="paragraph"><block ref="60ca3833d5c084c52db489b55e75ce1c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2c2aadbaa97afd661ab97f8cbdd12d10" category="admonition">"db2inidb d01 as mirror"는 SnapCenter 복원 워크플로우의 일부로 수행됩니다.</block>
+  <block id="3924f610d9938ce01769afe331519cb3" category="list-text">복구 상태 데이터베이스 D01 확인(사용자 db2d01)</block>
+  <block id="f7d697eda5d7d5408cd061092fce3503" category="list-text">DB2 롤포워드 DB D01 쿼리 상태입니다</block>
+  <block id="26f1cfe3b5f012c83d58eb78e3dd6bab" category="list-text">필요에 따라 데이터베이스 복구 – 여기서 손실 없는 복구가 시작됩니다(사용자 db2d01).</block>
+  <block id="808d84098ee3a2c0ff76deab40d1c2fa" category="list-text">DB2 롤포워드 DB D01 to end of logs</block>
+  <block id="0e7f22e930a9154acae7551b5123ad69" category="list-text">데이터베이스 복구 및 온라인 데이터베이스 D01 중지(사용자 db2d01)</block>
+  <block id="3fb30e7509d0e9bbf3b116bb39f7c95c" category="list-text">DB2 롤포워드 DB D01 중지</block>
+  <block id="b6e8958390494acbc53d1196bd948204" category="list-text">SAP 시스템 시작(사용자 d01adm)</block>
+  <block id="d85cd1065b480106e7535dc478664dc7" category="list-text">스타트샵</block>
+  <block id="447970b435b84887a5470043a2eedc24" category="paragraph">다음 녹화 데모를 사용하여 문서를 지원할 수 있습니다.</block>
+  <block id="48acd28f9ce67afbe3fe3d84dd852d8f" category="video-title">설치 및 구성 DB2 플러그인, DB2 데이터베이스 백업</block>
+  <block id="834fcc01f78a95063fed805a018f7769" category="video-title">DB2 데이터베이스 복원 및 복구</block>
+  <block id="2dcfe53d3362a6931b5721d7c46f91b4" category="inline-link-macro">ANF에 DB2 기반 SAP 설치 Azure</block>
+  <block id="23bd21aaf1bfee84bb68aac8e897d1ec" category="list-text"><block ref="23bd21aaf1bfee84bb68aac8e897d1ec" category="inline-link-macro-rx"></block></block>
+  <block id="991cec96960ff6372703208927785cbd" category="inline-link-macro">플러그인에 대한 SnapCenter 필수 구성 요소</block>
+  <block id="6b48a347db8166414731f4502394c924" category="list-text"><block ref="6b48a347db8166414731f4502394c924" category="inline-link-macro-rx"></block></block>
+  <block id="27402574bb9402b54c301114f164ebb2" category="inline-link-macro">SnapCenter 플러그인 설치</block>
+  <block id="fe09e9c39b636255ab5de9f96a18b14b" category="list-text"><block ref="fe09e9c39b636255ab5de9f96a18b14b" category="inline-link-macro-rx"></block></block>
+  <block id="ab8523e2f3333d22d15b6d6ebf19221e" category="inline-link-macro">SnapCenter DB2 플러그인 설명서</block>
+  <block id="32a05a4bb6b637b6299d25c7f836d5d2" category="list-text"><block ref="32a05a4bb6b637b6299d25c7f836d5d2" category="inline-link-macro-rx"></block></block>
+  <block id="916cccec2fcddffb90024152bd9a22ba" category="list-text">SAP 메모(로그인 필요)</block>
+  <block id="45af776ab4c832d294cff3edde6c8360" category="list-text">83000-DB2/390: 백업 및 복구 옵션:<block ref="1f0fcc94b117dadffa7a2d1ba26a8490" category="inline-link-rx"></block></block>
+  <block id="ae32a4ebf5c4235fd1aeabe2187af8fc" category="list-text">594301-DB6: 관리 도구 및 분할 미러:<block ref="2312bb0b28f7812dba2cdde94e9f73c6" category="inline-link-rx"></block></block>
+  <block id="4bf308994c1ed9e12dfc8091e1be97d9" category="list-text">NetApp 제품 설명서:<block ref="9d25e96cb4da17ca8bcf663a18812ece" category="inline-link-rx"></block></block>
+  <block id="3d93f23f1857b91249aeb46281325bb9" category="list-text">NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보:<block ref="275e41234bd9820755d1021988b4d48e" category="inline-link-rx"></block></block>
+  <block id="5edbe8c55546db896b55871b44a39263" category="cell">* 날짜 *</block>
+  <block id="c2259d06d49b65de5c037d65c1cc79b2" category="cell">* 문서 버전 기록 *</block>
+  <block id="42ce83dc3f5ef22d986311b267a5ac20" category="cell">2025년 4월</block>
+  <block id="09ba040f5df18abbd4604e53ff4afd84" category="cell">초기 버전 – 백업/복구 DB2 데이터베이스</block>
+  <block id="048272e99fdf9fe71a8896827dbae3c0" category="summary">이 문서에서는 SAP 환경에서 사용되는 SAP ASE 데이터베이스에 대한 SnapCenter 통합 세부 사항에 대해 설명합니다.</block>
+  <block id="6b84a3bc8a409a71d17a2fcbad7053b8" category="doc">SAP ASE 데이터베이스용 SnapCenter 통합</block>
+  <block id="8401e75b01ba6fa918a576426555c04a" category="list-text">SAP ASE 인스턴스 보호</block>
+  <block id="90111ff53c4535a9a6b7bca16dfd2401" category="list-text">SAP ASE 인스턴스 복원 및 복구</block>
+  <block id="f96ed43c45e02c1d0034d3c5c173b8e8" category="paragraph">Azure 플랫폼에서 실행되는 SAP 시스템용 SnapCenter ASE 플러그인의 예 구현.</block>
+  <block id="8275585a5f5a60f1cc7ed3ded973f327" category="admonition">이 구현에서는 필요한 최소 볼륨 구성에 대해 설명합니다. 데이터 덤프 백업 및 로그 덤프 백업은 SAP Note 1588316에 따라 구성됩니다.</block>
+  <block id="87d0a3216ca308da450ea688cc418ff4" category="inline-link-macro">MS 기술 커뮤니티 블로그</block>
+  <block id="e30d84b931733cca553a4e2b056c9718" category="paragraph">또는 여기에 설명된 볼륨 구조를 <block ref="0023ecb2db8d73de3cf4e469cdb5e1a5" category="inline-link-macro-rx"></block>사용할 수도 있습니다.</block>
+  <block id="7db2cb298cd95506358dd06177b04700" category="inline-image-macro">사용된 데모 환경을 강조하는 그림</block>
+  <block id="0f1747ea369cc4076ba2cc3993432abc" category="paragraph"><block ref="0f1747ea369cc4076ba2cc3993432abc" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="cdee3d093954e7eef1d1def2838f1f3a" category="cell">SAP ASE를 참조하십시오</block>
+  <block id="13406bf13d82eeafb3b40b18c91daece" category="cell">16.0 SP04 PL06 HF1</block>
+  <block id="bfe962199aac9ebfade24320adc2691b" category="section-title">ASE 볼륨 설계</block>
+  <block id="000c1e0d40d661b2c06c011004e154d9" category="paragraph">SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃 을 사용해야 합니다. 예제 구성은 &lt;SID&gt;:A01을 사용합니다.</block>
+  <block id="34bee2ba966455e53875dcd856764cf2" category="cell">&lt;SID&gt; - 사파제</block>
+  <block id="7a0260097c41fcc0f116e761f1026332" category="cell">Sybase</block>
+  <block id="2381f633e71aa671f008e66e64aa960b" category="cell">/Sybase 를 선택합니다</block>
+  <block id="97d651e6d9f634c271e5557333ae8d35" category="cell">ASE 관련 파일의 상위 디렉토리</block>
+  <block id="8ff4caaea7ce0dab63dd3043133f5d4d" category="cell">/Sybase/&lt;SID&gt;/backups 를 참조하십시오</block>
+  <block id="67960c0ae6009f7b7bd326a083d87377" category="cell">데이터 덤프 백업(다른 볼륨에 배치될 수 있음)</block>
+  <block id="550162b6cb14b7b942f7267b1729be29" category="cell">/Sybase/&lt;SID&gt;/log_archives 를 참조하십시오</block>
+  <block id="36d391cc2500d8cc788a23d6ed534955" category="cell">로그 덤프 백업(다른 볼륨에 배치될 수 있음)</block>
+  <block id="c6baf29718d3f6f328e1b0a8b40a37da" category="cell">&lt;SID&gt; - 데이터 로그</block>
+  <block id="95fcb1619f5e8f3197478302f5b93b87" category="cell">sapdata_1를 참조하십시오</block>
+  <block id="003b52815fdc226d19f036fa3876c8b6" category="cell">/SYBASE/&lt;SID&gt;/SAPDATA_1</block>
+  <block id="21e459d2a210b040cccf8c6172fb2f00" category="cell">DB 데이터(SID)</block>
+  <block id="92f85b1bd0a4aebea166b0d13e288f80" category="cell">saplog_1를 참조하십시오</block>
+  <block id="9cb30ddd45ecd9416a87cdc0a7908343" category="cell">/Sybase/&lt;SID&gt;/saplog_1</block>
+  <block id="a9d027f27d25721466ddf8fffd5f388c" category="cell">DB 로그(SID)</block>
+  <block id="fb04d57956c94c6ecf71bd9b53cafaae" category="cell">흡열온도</block>
+  <block id="eeaa36876c33a85b0f3824abf2dbad33" category="cell">/Sybase/&lt;SID&gt;/saptemp 를 선택합니다</block>
+  <block id="392c10a58461b01912e39fb9c75ea817" category="cell">PSAPTEMP(사전 설정</block>
+  <block id="3ef65f7b9e51ab27fa837dba76c1f25a" category="cell">시스템 보안</block>
+  <block id="e71d86e8d3d7d02672723a43b5b947c1" category="cell">/Sybase/&lt;SID&gt;/sybsecurity 를 선택합니다</block>
+  <block id="02ad3495b1e50a5f6280ee917cc15efa" category="cell">Sybase 보안 DB</block>
+  <block id="c58a7294b002c3d6399667d55932ca93" category="cell">시스템</block>
+  <block id="b5549becb81e070362e65d347125f3b2" category="cell">/Sybase/&lt;SID&gt;/sybsystem을 선택합니다</block>
+  <block id="d575be3aed56fddf35af4e6dfbfafc27" category="cell">Sybase 시스템 DB</block>
+  <block id="b4399480b1acfdf1353494ce4f306568" category="cell">시스템 온도</block>
+  <block id="28dbd03d200b8924a94286e818c9ea10" category="cell">/Sybase/&lt;SID&gt;/sybtemp 를 선택합니다</block>
+  <block id="93ac7fbe9004ed4ebb53ce345474ffa8" category="cell">Sybase 시스템 DB - Temp</block>
+  <block id="471a9be95dfa241e5bf39e303f5a53b6" category="cell">sapdiag를 선택합니다</block>
+  <block id="81e861c9d8739bcf1ee9590ec5c98ed6" category="cell">/Sybase/&lt;SID&gt;/sapdiag 를 참조하십시오</block>
+  <block id="2ae763a05f4307578b710bd273b22ebd" category="cell">'saptools' 데이터베이스</block>
+  <block id="1e3359ff48a9bf93ce05e8221b5f9fc7" category="section-title">데이터베이스 A01을 보호하는 단계</block>
+  <block id="63c7c9a11cf9f3320a8b03edcd0bb3d3" category="list-text">호스트(VM-A01)의 사전 요구 사항 확인</block>
+  <block id="2a724788217d7e99620121403f7ec1b7" category="list-text">데이터베이스의 사전 요구 사항 확인(A01)</block>
+  <block id="9bf7ca2d0dda306ce7f51ca3af9d83e2" category="list-text">호스트에 SnapCenter 에이전트 배포/설치(VM-A01)</block>
+  <block id="6c92285fa6d3e827b198d120ea3ac674" category="inline-link-macro">여기</block>
+  <block id="422dc1c7aa9fc1d19cf44df1acbaf925" category="paragraph">자세한 최신 정보가 제공될 수 <block ref="b31005d5a625ab242194ebb7f4843882" category="inline-link-macro-rx"></block>있습니다.</block>
+  <block id="c7bbc1c3f4ce465ac86c6def6aa2e810" category="list-text">백업 및 log_archives에 대한 디렉토리 생성(/Sybase/A01/backups, /Sybase/A01/log_archives)</block>
+  <block id="a7e66d589f3f50cff457fac187f177c5" category="list-text">데이터베이스 A01에 연결(OS-사용자 syba01)</block>
+  <block id="667761e3e0d6887d2cc1bda8fa69b73f" category="list-text">isql-S A01-U sapsa-X-w 1024</block>
+  <block id="063d82e54f4551852204f9ad1bc5a382" category="list-text">SAP Note 1588316에 따라 데이터에 대한 덤프 구성(A01DB)을 생성합니다</block>
+  <block id="13429c175e7673f5c7eda3dca112fb78" category="list-text">master를 사용합니다</block>
+  <block id="34d1f91fb2e514b8576fab1a75a89a6b" category="list-text">이동</block>
+  <block id="c8ae55807dd7df265de61b46ba8d4dbe" category="list-text">Exec SP_config_dump@config_name='A01DB', @stripe_dir='/sybase/a01/backups', @compression='101', @verify='header'</block>
+  <block id="e01c941839fc7d01d3a81fee8ce5c3f0" category="list-text">SAP Note 1588316에 따라 로그에 대한 덤프 구성(A01LOG)을 생성합니다</block>
+  <block id="485318a14883612c2f1de46de2f487f1" category="list-text">SP_config_dump@config_name='A01LOG', @stripe_dir='/sybase/a01/log_archives', @compression='101', @verify='header'</block>
+  <block id="206731b1458254be46a024bf901e0522" category="list-text">데이터베이스 A01에 대해 전체 로깅을 활성화합니다</block>
+  <block id="39247d6e41eb100898fb3b1a2364114e" category="list-text">SP_dboption a01, 'trunc log on chkpt', false입니다</block>
+  <block id="96ceb753c0a377c92ad1e221d9641c1d" category="list-text">SP_dboption A01, '모두 전체 로깅', 'TRUE'</block>
+  <block id="c025485eae5bde859ea018121cbd62c1" category="list-text">SP_dboption A01, '덤프 전송 시퀀스 강제 적용', 'TRUE'</block>
+  <block id="d658901cc9e2ac30b9d89213df5ee7c5" category="list-text">데이터베이스 덤프 백업을 사용하여 로그 덤프 백업을 활성화합니다</block>
+  <block id="343cf6a81ce43dd7f9f74d4528c9c339" category="list-text">config='A01DB'를 사용하여 데이터베이스 A01 덤프</block>
+  <block id="c277e3c6dfc07bd8ea02dff494a1d274" category="list-text">로그 덤프</block>
+  <block id="b1e76779deb99368f17b934d2714f080" category="list-text">config='A01LOG'를 사용하여 트랜잭션 A01 덤프</block>
+  <block id="718fef5e818207fc5faf769133a9d1ac" category="list-text">SAP Note 1588316에 따라 일반 로그 백업이 구성되어 있는지 확인합니다</block>
+  <block id="5aee402eaf0a4ab653841701c52ddfa0" category="section-title">선택 사항 – 전용 데이터베이스 사용자를 생성합니다</block>
+  <block id="51e130c4750b38ec3d89d3985c597933" category="paragraph">SAP 환경의 경우 사용자 sapsa를 사용할 수 있습니다.</block>
+  <block id="0daad5d6690de03566ec10706323e3e9" category="list-text">사용자를 생성합니다</block>
+  <block id="c7e9d1181d494814a2d110faeb190b94" category="list-text">&lt;password&gt; 암호를 사용하여 로그인 백업을 생성합니다</block>
+  <block id="fdbffd1a7c8cf59d0847b653982d873f" category="list-text">사용자에게 권한/역할을 할당합니다</block>
+  <block id="b1abcb7f7c33e1a82bd2f7488e439df2" category="list-text">백업에 역할 sa_role, sso_role, oper_role, sSybase_ts_role을 부여합니다</block>
+  <block id="fffdd9228fa28e3d5f0ab709f9c51c92" category="section-title">호스트 VM-A01에 SnapCenter 에이전트를 배포합니다</block>
+  <block id="17bcfd0ce80849145fcae272c3073ed6" category="paragraph">SAP ASE 및 Unix File Systems Plugins를 선택합니다.</block>
+  <block id="e53bb8d8a1e0b4b32f829be09ad36762" category="inline-image-macro">호스트 추가 대화 상자 스크린 샷</block>
+  <block id="acca9221dcefb315b8b1b4bf389e15b3" category="paragraph"><block ref="acca9221dcefb315b8b1b4bf389e15b3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2c98176d904449d2adc5d23a31a7c375" category="section-title">데이터베이스 A01에 대한 SnapCenter 인스턴스 리소스 구성을 생성합니다</block>
+  <block id="a36650e58db1b909efccef9064bdffaa" category="paragraph">리소스 -&gt; SAP ASE -&gt; 리소스 추가</block>
+  <block id="5c9a1bdda8593f1e12622a4a40be53e2" category="inline-image-macro">호스트 리소스 세부 정보 추가 대화 상자 스크린 샷</block>
+  <block id="5bdaba367a5127ac9faca28b92601e0e" category="paragraph"><block ref="5bdaba367a5127ac9faca28b92601e0e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dddc00803e5eec31fdd3e73f7b3bda63" category="admonition">암호에 특수 문자가 포함된 경우 백슬래시로 마스킹해야 합니다. 예: Test!123! -&gt; 테스트\!123\!</block>
+  <block id="0f80339fee7af36494724f100fa1b298" category="paragraph"><block ref="c70fe733883ae564246c8c95a562793a" category="inline-image-macro-rx" type="image"></block> <block ref="e4d81f8c1bad0c167b65b878413682b0" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d522f9ffd8420f78fb398b61cfcf6b61" category="admonition">에서 볼륨 설계를 사용하는 경우<block ref="0023ecb2db8d73de3cf4e469cdb5e1a5" category="inline-link-macro-rx"></block>.</block>
+  <block id="56855831be7a1bb8c1559951423245d6" category="paragraph">volumes/vol &lt;SID&gt; Sybase, /vol &lt;SID&gt; data 및 /vol &lt;SID&gt; log를 Storage Footprint로 구성해야 합니다</block>
+  <block id="b6260cf3a73129eca5cad5d8725639ef" category="paragraph">다음 리소스 설정 사용자 지정 키-값 쌍을 만들어야 합니다(최소).</block>
+  <block id="11a632a5a413b2b5ea3750ad2d9d9598" category="inline-image-macro">리소스 설정 사용자 지정 키-값 쌍 대화 상자의 스크린 샷</block>
+  <block id="0d52a1e343b85460d4430d8fe28a1b06" category="paragraph"><block ref="0d52a1e343b85460d4430d8fe28a1b06" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f841a697ec4008a662dbd87a8f456b42" category="paragraph">다음 표에는 Sybase 플러그인 매개 변수가 나열되어 있고, 해당 설정이 제공되며, 에 대한 설명이 나와 있습니다.</block>
+  <block id="1243bb65d9566a6d540f765e10dcd146" category="cell">* 파라미터 *</block>
+  <block id="6a9433367cb8ed2838f8d46c7dd21f11" category="cell">* 설정 *</block>
+  <block id="f14c276c07197ebef1394a5a219087a1" category="cell">* 설명 *</block>
+  <block id="5b00a3c4e4d7e5113c17f1cd4ed0a251" category="cell">Sybase_ISQL_CMD</block>
+  <block id="8df27c24b6eaf41bcf190d923045378d" category="cell">예: /opt/Sybase/OCS-15__0/bin/isql-X</block>
+  <block id="f2f2fee1f06dd71c704fbc6000a528ab" category="cell">isql 명령의 경로를 정의합니다. 사용 가능한 옵션:<block ref="763ff236fd49c579bfce336892c2759d" category="inline-link-rx"></block></block>
+  <block id="64351137a517d0ca934c2b86eee9675b" category="cell">Sybase_USER입니다</block>
+  <block id="c56f5648d4c0e137f9de3dfc7a54d55b" category="cell">사용자 이름</block>
+  <block id="5a4a293be7914085f58e2bf2270ee0b3" category="cell">isql 명령을 실행할 수 있는 운영 체제 사용자를 지정합니다. 이 매개 변수는 UNIX에 필요합니다. 이 매개 변수는 Snap Creator Agentstart 및 stop 명령(일반적으로 루트 사용자)을 실행하는 사용자와 isql 명령을 실행하는 사용자가 다른 경우 필요합니다.</block>
+  <block id="cbea20ef19e65a6d7816edf35c606308" category="cell">Sybase_server를 참조하십시오</block>
+  <block id="a9a2c88955eda13e180455da3b7ce94f" category="cell">data_server_name</block>
+  <block id="99023927bcfcfd9d0d7d8bc17ca5f819" category="cell">Sybase 데이터 서버 이름(isql 명령의 -S 옵션)을 지정합니다. 예: A01</block>
+  <block id="f3c063a3270fe692a7554ecd77108549" category="cell">Sybase_databases(Sybase 데이터베이스</block>
+  <block id="49b805efdee9543bf933cbdaf44e88eb" category="cell">db_name: user_name/password</block>
+  <block id="1d3991a4e28c10d1e4921e9aeece15a6" category="cell">백업할 인스턴스 내의 데이터베이스를 나열합니다. 마스터 데이터베이스가 추가됩니다. 예: DBATest2:sa/53616c7404351e. +All이라는 이름의 데이터베이스를 사용하면 데이터베이스 자동 검색이 사용되며 sybsystemdb, sybsystempros 및 temdb 데이터베이스는 제외됩니다. 예: + All:sa/53616c71a6351e 암호화된 암호는 ntap_pwd_protection 매개 변수가 설정된 경우 지원됩니다.</block>
+  <block id="ea5b6b066484400736ebd6d01383ab07" category="cell">Sybase_databases_exclude를 선택합니다</block>
+  <block id="24e8d17701309eab9a46949f1eab03b1" category="cell">db_name입니다</block>
+  <block id="55fe692c769f13f5b6ee2dda865ad64d" category="cell">All 구문을 사용하는 경우 데이터베이스를 제외할 수 있습니다. 세미콜론으로 구분된 목록(예: pubs2;test_db1)을 사용하여 여러 데이터베이스를 지정할 수 있습니다</block>
+  <block id="cb595d25d18096c8ff698bc74c19a106" category="cell">Sybase_Tran_dump</block>
+  <block id="5d42605e018c0a31e55f67caf36d20fd" category="cell">db_name: directory_path</block>
+  <block id="1ac0084e3e1f354250967f0f719fe341" category="cell">스냅샷 복사본을 생성한 후 Sybase 트랜잭션 덤프를 수행할 수 있습니다. 예: pubs2:/sybasedumps/pubs2 트랜잭션 덤프가 필요한 각 데이터베이스를 지정해야 합니다.</block>
+  <block id="e48ebe9c56fd413872056d2ea877f906" category="cell">Sybase_Tran_dump_format</block>
+  <block id="313cd648590f4c79c6d1e1c10c5aef76" category="cell">%S_%D_%T. CMN</block>
+  <block id="40105874dd0b793808ef635cbddfd446" category="cell">덤프 명명 규칙을 지정할 수 있습니다. 다음 키를 지정할 수 있습니다.%S=SYBASE_SERVER%D=SYBASE_DABASE%T=UNIQUE TIMESTAMP 여기 표시된 예는 다음과 같습니다.%S_%D_%T.log</block>
+  <block id="1663c45679303f56792e3727ef91fb00" category="cell">Sybase_Tran_dump_compress</block>
+  <block id="dd4cc36e5ee02a7982f7c80b58ce22e3" category="cell">(예/아니요)</block>
+  <block id="aa282c218f8de50d8c07e673a3efba9b" category="cell">기본 Sybase 트랜잭션 덤프 압축을 설정하거나 해제합니다.</block>
+  <block id="2c27e6763625498e55312a132bc3d46c" category="cell">Sybase</block>
+  <block id="ae7636891c062bb81143f59119afafb7" category="cell">예: /Sybase</block>
+  <block id="cab4531e6a5d295253641118de633747" category="cell">Sybase 설치 위치를 지정합니다.</block>
+  <block id="0a40e150a4b2ba86a9f227ab2e340101" category="cell">sSybase_manifest</block>
+  <block id="44b3ace265fe49c623da13fcbf3d4695" category="cell">예: A01:/Sybase/A01/sapdiag</block>
+  <block id="0fee590c69692bfeabde30d46e060dfc" category="cell">매니페스트 파일을 배치해야 하는 위치와 함께 매니페스트 파일을 만들 데이터베이스를 지정합니다.</block>
+  <block id="4971d917f319072c5a8c27035b04f9d1" category="cell">Sybase_manifest_format</block>
+  <block id="800c3aaa4ed5765af077a4fd281607bf" category="cell">%S__%D_.manifest 예: %S_%D_.manifest</block>
+  <block id="44ad1cbfd1d8db9d47172ca1030c45fb" category="cell">매니페스트 파일 명명 규칙을 지정할 수 있습니다. 다음 키를 지정할 수 있습니다. %S=SYBASE_SERVER%D=SYBASE_DATABASE의 데이터베이스</block>
+  <block id="007d080f3e7133036769892befcdecbe" category="cell">Sybase_manifest_delete를 선택합니다</block>
+  <block id="3e694eb78d4d924354d3003ec21b5aa1" category="cell">스냅샷 복사본이 생성된 후 매니페스트를 삭제할 수 있도록 합니다. 매니페스트 파일은 항상 백업에서 사용할 수 있도록 스냅샷 복사본에서 캡처되어야 합니다.</block>
+  <block id="76674a5c76cb1c68992f1b8b8832b7a0" category="cell">Sybase_EXCLUDE_tempdb입니다</block>
+  <block id="b6b7714b8342524ea9c1e80f43417e09" category="cell">사용자가 생성한 임시 데이터베이스를 자동으로 제외하도록 설정합니다.</block>
+  <block id="22c3e60dda32a397204c57fc27acda8e" category="section-title">시스템 A01을 복구하는 순서</block>
+  <block id="dc91cbdd99890b23cf8e77f3b523ec10" category="list-text">SAP 시스템 A01(데이터베이스 포함)을 중지하고 sapinit를 중지합니다</block>
+  <block id="96e0ef6bada3e35f827c28acc315e808" category="list-text">파일 시스템 마운트 해제</block>
+  <block id="c60f16a72ba7cfddfac2e1dbf5f40d45" category="list-text">볼륨 복구 A01-datalog(SnapCenter 사용)</block>
+  <block id="838b36bde2291fca9d871f6fcab8be44" category="list-text">파일 시스템 마운트</block>
+  <block id="6137e37a5885d90eb0ac7cf888a5d2c7" category="list-text">데이터베이스 A01을 시작합니다(SAP Note 1887068에 따라 자동 온라인 상태를 방지하고 데이터베이스를 복구 가능한 상태로 유지하기 위해 –q 옵션을 사용).</block>
+  <block id="21d17a5ee18728a81aa088d18c24ee77" category="list-text">BackupServer A01을 시작합니다</block>
+  <block id="6c4f8619e91dbc892fe5105a556a4475" category="list-text">온라인 데이터베이스 saptools, sybsecurity, sybmgmtdb</block>
+  <block id="8ab35c1252ac2b355dd0075f743b23f4" category="list-text">데이터베이스 A01 복구(isql 사용)</block>
+  <block id="f46e8f1975ffffc40f0de8dfa6a57926" category="list-text">온라인 데이터베이스 A01</block>
+  <block id="9d7255aa22c8bb6c89d8a8cbe33ac4f3" category="list-text">SAP 시스템 A01의 sapinit를 시작합니다</block>
+  <block id="c0ed127324e97f318c161cc8520a5247" category="section-title">인스턴스 A01을 복구합니다</block>
+  <block id="7b1e9066cef0caf29601e456f8506344" category="list-text">호스트 VM-A01에서 SAP 시스템 + DB A01을 중지합니다</block>
+  <block id="94388a9dd48e6d94cb7abbd8c533de13" category="list-text">사용자 a01adm: stopsap</block>
+  <block id="32d9da06ca252a0fdb2b6e925b5d499d" category="list-text">사용자 루트: /etc/init.d/sapinit stop</block>
+  <block id="d4f34dfc47fb963b67ab9ed55f350447" category="list-text">사용자 루트: umount -a -t nfs</block>
+  <block id="f01af0d16f12f2b868deef38b6209609" category="inline-image-macro">Select Required Backup for Restore 대화 상자 스크린 샷</block>
+  <block id="d49075162f901ea4622e600aa91de5a5" category="paragraph"><block ref="d49075162f901ea4622e600aa91de5a5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b42b7a52cff89edbddbe4be7d7205378" category="paragraph"><block ref="b42b7a52cff89edbddbe4be7d7205378" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a423820050e5f46f36fc1327c48bb00c" category="inline-link-macro">볼륨 되돌리기</block>
+  <block id="ac982be345b6d6c694cc959a3be81042" category="admonition">전체 리소스를 선택하면 볼륨 기반 스냅 복원(VBSR)이 트리거됩니다. Azure 내에서 IT를 라고 <block ref="10b20588aa12150bf8ab4282b1ad89cc" category="inline-link-macro-rx"></block>합니다.</block>
+  <block id="ae6bfd9134039fc38306b500f181ae54" category="inline-image-macro">스냅숏에 대한 중요한 메시지 스크린샷</block>
+  <block id="09a821f7985f625502cd7570b8109c5b" category="paragraph"><block ref="09a821f7985f625502cd7570b8109c5b" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="c7e811158a8bf3a36519dfb1b03d6594" category="admonition">다른 구축 유형(예: 온프레미스 ANF)의 경우 SFSR(Single File Snap Restore) 작업을 오케스트레이션할 수 있습니다. File Level(파일 레벨)을 선택하고 해당 Volume(볼륨)을 선택하고 "All(모두)"을 선택합니다. 다음 스크린샷을 참조하십시오.</block>
+  <block id="836cd106056cddb1cb12770ce199f4bc" category="inline-image-macro">파일 레벨 스냅샷 선택 스크린샷</block>
+  <block id="03ea504d9d91015356cd846a5fb336a2" category="paragraph"><block ref="03ea504d9d91015356cd846a5fb336a2" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="bfdf5efcc3e42f260229813559cf78b2" category="inline-image-macro">스냅샷 복구 요약 스크린 샷</block>
+  <block id="7909030f74c6404738bed90ef5312d0c" category="paragraph"><block ref="7909030f74c6404738bed90ef5312d0c" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="ddc6e4c56d490457b2807db132950771" category="list-text">파일 시스템 마운트(VM-A01)</block>
+  <block id="d77b57a63ab8eaff9cc1da11a538179f" category="list-text">사용자 루트: mount-a-t NFS</block>
+  <block id="de7ffd3333b7854d5f5d63faebec0c7e" category="list-text">데이터베이스 A01 + BackupServer를 시작합니다</block>
+  <block id="bd61ba14cc9992a52d53c1649007b50f" category="list-text">run_a01 및 add -q\ 수정(SAP Note 1887068 참조)</block>
+  <block id="0ea31d20db4af0a1b7f55b3dfd0408a8" category="list-text">사용자 syba01: run_a01&amp;</block>
+  <block id="cfdf8709565909fee52efd2b8ada2800" category="list-text">사용자 syba01: run_a01_bs&amp;</block>
+  <block id="99f2d082c49f5fd0e481706159ecfa4c" category="list-text">온라인 데이터베이스 saptools, sybsecurity, sybmgmtdb</block>
+  <block id="6ef4181346562481fc58f15f50f04a08" category="list-text">사용자 syba01: isql-S A01-U sapsa-X-w 1024</block>
+  <block id="cc764b54b873d92b806f0639f7a3f22b" category="list-text">온라인 데이터베이스 saptools</block>
+  <block id="865a234c767735f76f2827c60f85abd1" category="list-text">온라인 데이터베이스 sybsecurity</block>
+  <block id="902eb517c20f52988915334bc496cfc8" category="list-text">온라인 데이터베이스 sybmgmtdb</block>
+  <block id="bc1ff6b3db2095ea203daf4929eb73a3" category="list-text">데이터베이스 A01을 복구합니다</block>
+  <block id="bbb2920b6e94fe76efed0e4d9bb7e488" category="list-text">SP_DUMP_HISTORY(트랜잭션 로그 덤프 표시)</block>
+  <block id="2e3264bee5c3799d9908279f68b22a4a" category="list-text">필요에 따라 트랜잭션 로그 덤프를 로드합니다. 자세한 내용은 다음 문서를 참조하십시오.<block ref="ef6cbe686159c9b75cbe40ffe259de26" category="inline-link-rx"></block></block>
+  <block id="511ea467526ed43b8ab12e89c9facbe2" category="list-text">예: '/Sybase/A01/log_archives/A01.Tran.20250207.140248.6.000'에서 Tran A01을 로드합니다.</block>
+  <block id="57685292aeeae0d936e02f3b8c79ea3e" category="list-text">run_A01에서 -q를 제거합니다</block>
+  <block id="9d2845b5f6e8a1c9185ddca9866823d6" category="list-text">SAP 시스템을 시작합니다</block>
+  <block id="fd5462a5ba0a3afe8cb39f11792e6c0a" category="list-text">사용자 루트: /etc/init.d/sapinit start</block>
+  <block id="c130926d6616542217bb82934bb3882a" category="list-text">사용자 a01adm: startsap</block>
+  <block id="0481b5d3f8326ffcd87b030484af3d32" category="section-title">정지 vs 준비</block>
+  <block id="9bc5a761c922ebff2efbd814b1b18b65" category="paragraph">https://help.sap.com/docs/SAP_ASE/4e870f06a15b4bbeb237cca890000421/d9d3ce996bdd415693cdb17663bfc0e3.html?locale=en-US&amp;version=16.0.2.0[SAP 도움말 페이지]에 있는 문서를 참조하십시오.</block>
+  <block id="16050ac4ff4ee27ec88b2273d800069d" category="inline-image-macro">SAP 도움말 페이지 콘텐츠 스크린샷</block>
+  <block id="0f7c5358d5b88100058060ed5afb2ac6" category="paragraph"><block ref="0f7c5358d5b88100058060ed5afb2ac6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f06c8ac7e1db032e3c742c956fbdcd67" category="paragraph">SnapCenter SAP ASE 플러그인은 데이터베이스 정지 명령을 사용하지만 prepare 명령으로 대체할 수 있습니다. 필요한 경우 Sybase.pm에서 473, 475, 479, 481, 673, 675 라인을 변경해야 합니다. 예</block>
+  <block id="042b389bcb10221db2bebdd7761bc4f7" category="inline-image-macro">데이터베이스 정지 명령 스크린 샷</block>
+  <block id="ef7e48da0a3de2cfd57a9a9d8786dccd" category="paragraph"><block ref="ef7e48da0a3de2cfd57a9a9d8786dccd" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="46f2faba494f69f6e11941be04d5eef3" category="section-title">녹화된 데모</block>
+  <block id="22089ff3e2f698bd47ecc1e972ed96b8" category="video-title">설치 및 구성 ASE 플러그인, ASE 데이터베이스 백업</block>
+  <block id="80e1f722ca644623f0957c1529c9e936" category="video-title">ASE 데이터베이스의 복원 및 복구</block>
+  <block id="802889ba8e68d06ab223337c1108b438" category="section-title">외부 문서</block>
+  <block id="9f4daa4772f9607a111c8202ad41d9a5" category="inline-link-macro">ANF에 SAP 설치 Azure</block>
+  <block id="3fa66eb74457ea2fc821f138385c7519" category="list-text"><block ref="3fa66eb74457ea2fc821f138385c7519" category="inline-link-macro-rx"></block></block>
+  <block id="811ec2a3ed919b3da3e6b8fce4d91abc" category="inline-link-macro">Sybase InfoCenter - isql</block>
+  <block id="798ef01f4a0a22aa92264b8c67766d0c" category="list-text"><block ref="798ef01f4a0a22aa92264b8c67766d0c" category="inline-link-macro-rx"></block></block>
+  <block id="1ebaf9b920afffe58a30e658da6e1414" category="inline-link-macro">Sybase InfoCenter - 트랜잭션 로그 덤프 로드</block>
+  <block id="c5f913a10f9f276b3b9c2ee2b70671ad" category="list-text"><block ref="c5f913a10f9f276b3b9c2ee2b70671ad" category="inline-link-macro-rx"></block></block>
+  <block id="0af20cbeca939760d181deee6b404c63" category="list-text">1887068-SYB:SAP ASE를 사용하여 외부 백업 및 복구 사용:<block ref="ab4914ef849f1de520395e48bffb8b16" category="inline-link-rx"></block></block>
+  <block id="75e06b88ecfdc2f489b785e3b13d2b13" category="list-text">1618817 - SYB: SAP ASE 데이터베이스 서버(UNIX) 복구 방법:<block ref="4034096a300ed131652b69eb35a0eb3e" category="inline-link-rx"></block></block>
+  <block id="64d669e71de00ac85ee378745f531872" category="list-text">1585981-SYB: SAP ASE의 복구 성능 보장:<block ref="4c89d5c78712c3629963f4741a089c28" category="inline-link-rx"></block></block>
+  <block id="5691b76e0c9ec6a7b8b2d9062ed04d20" category="list-text">1588316-SYB:자동 데이터베이스 및 로그 백업 구성:<block ref="27fffb2c3ac126d513ed8eb62fc0c072" category="inline-link-rx"></block></block>
+  <block id="649c133bd78c9a4db2ae6b6cc125afc9" category="list-text">NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보:<block ref="275e41234bd9820755d1021988b4d48e" category="inline-link-rx"></block></block>
+  <block id="ebbef4ff98690d25d6060ddc932670b0" category="cell">초기 버전 – 백업/복구 ASE 데이터베이스</block>
+  <block id="7b4b03f44ad3853577dba2a8cb0ea413" category="video-title">설치 ASE 플러그인, 구성 ASE 플러그인, ASE 데이터베이스 백업</block>
 </blocks>

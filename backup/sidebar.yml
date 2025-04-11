@@ -173,3 +173,7 @@ entries:
   url: "/backup/saphana-commvault_pdf_link.html"
 - title: NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구
   url: "/backup/saphana-san_pdf_link.html"
+- title: SAP ASE 데이터베이스용 SnapCenter 통합
+  url: "/backup/snapcenter-sap-ase.html"
+- title: IBM DB2 데이터베이스용 SnapCenter 통합
+  url: "/backup/snapcenter-ibm-db2.html"
