@@ -700,10 +700,8 @@
   <block id="5ab9c3d59a0ecc9e30a1f938039d0ecf" category="summary">NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDAP(Lightweight Directory Access Protocol) 서버와 같은 중앙 사용자 관리 도구 또는 로컬 사용자 계정을 사용하여 이 인증을 수행할 수 있습니다.</block>
   <block id="e3a77a70624c57f3f0e2fc7075e4f75f" category="doc">NFSv4를 위한 SAP HANA 설치 준비</block>
   <block id="7f5e79baae33aa1aca5c990882a844cb" category="paragraph">NFS 버전 4 이상의 경우 사용자 인증이 필요합니다. LDAP(Lightweight Directory Access Protocol) 서버와 같은 중앙 사용자 관리 도구 또는 로컬 사용자 계정을 사용하여 이 인증을 수행할 수 있습니다. 다음 섹션에서는 로컬 사용자 계정을 구성하는 방법에 대해 설명합니다.</block>
-  <block id="3e0be3ed453ef480d348366ac9692e0b" category="paragraph">SAP HANA 소프트웨어 설치가 시작되기 전에 SAP HANA 호스트 및 스토리지 컨트롤러에 관리 사용자 '&lt;sidadm&gt;' 및 'sapsys' 그룹을 수동으로 생성해야 합니다.</block>
   <block id="cbec60dce8dfbeca522952f14d38d3b1" category="section-title">SAP HANA 호스트</block>
   <block id="6f99ed415d7b5330cfe770dc1088f66b" category="paragraph">존재하지 않는 경우 SAP HANA 호스트에 'sapsys' 그룹을 생성해야 합니다. 스토리지 컨트롤러의 기존 그룹 ID와 충돌하지 않는 고유한 그룹 ID를 선택해야 합니다.</block>
-  <block id="7bafe155f78e1791271552be40c162f4" category="paragraph">사용자 '&lt;sidadm&gt;'이(가) SAP HANA 호스트에 생성됩니다. 스토리지 컨트롤러의 기존 사용자 ID와 충돌하지 않는 고유한 ID를 선택해야 합니다.</block>
   <block id="8f35838ad2fe64a0c17ff23449515d26" category="paragraph">다중 호스트 SAP HANA 시스템의 경우 모든 SAP HANA 호스트에서 사용자 및 그룹 ID가 동일해야 합니다. 그룹 및 사용자는 소스 시스템에서 다른 모든 SAP HANA 호스트로 영향을 받는 '/etc/group' 및 '/etc/passwd'의 행을 복사하여 다른 SAP HANA 호스트에 생성됩니다.</block>
   <block id="2fa0eba92353ea7e1816fcc916b31030" category="admonition">NFSv4 도메인은 모든 Linux 서버("/etc/idmapd.conf") 및 SVM에서 동일한 값으로 설정해야 합니다. Linux 호스트에 대한 파일 '/etc/idmapd.conf'에서 도메인 매개 변수 "Domain=&lt;domain-name&gt;"을 설정합니다.</block>
   <block id="c16fea4c59b7f6d7ce28e4f656eb58f6" category="paragraph">NFS IDMAPD 서비스를 활성화하고 시작합니다.</block>
@@ -912,7 +910,6 @@
   <block id="1ab89c4e611ba31faab0f6bdb2081951" category="cell">SAP HANA 2.0 SPS4 이후에 여러 데이터 파티션 기능을 사용할 수 있게 되었습니다</block>
   <block id="cdd33367f29c689bcb60e79e248c660e" category="cell">ONTAP 9.8부터 NFSv4.1에 대한 nconnect 지원 새로운 운영 체제 릴리스 새로운 SAP HANA 버전</block>
   <block id="6ed1463e8ca682ff7a3d60ed388dcefe" category="cell">호스트 네트워크 설정 변경 및 기타 사소한 변경 사항</block>
-  <block id="766c3ec7b91d6121d225b55cf37f9e60" category="paragraph">아직 없는 경우 SAP HANA 호스트에 'sys' 그룹을 생성해야 합니다. 스토리지 컨트롤러의 기존 그룹 ID와 충돌하지 않는 고유한 그룹 ID를 선택합니다.</block>
   <block id="96affa74630cd326f32e3a646b2bf9ad" category="admonition">NFSv4 도메인은 모든 Linux 서버 및 SVM에서 동일한 값으로 설정해야 합니다. Linux 호스트의 파일 '/etc/idmapd.conf'에서 도메인 매개 변수 "domain=&lt;domain_name&gt;""을 설정합니다.</block>
   <block id="90c5b46276106ab7121fe824091fdfde" category="paragraph">NFS idmapd 서비스를 설정하고 시작합니다.</block>
   <block id="82d9f02aa4638adac22e7bc4604d9e25" category="admonition">최신 Linux 커널에는 이 단계가 필요하지 않습니다. 경고 메시지는 무시해도 됩니다.</block>
@@ -5409,4 +5406,8 @@ NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처
   <block id="649c133bd78c9a4db2ae6b6cc125afc9" category="list-text">NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보:<block ref="275e41234bd9820755d1021988b4d48e" category="inline-link-rx"></block></block>
   <block id="ebbef4ff98690d25d6060ddc932670b0" category="cell">초기 버전 – 백업/복구 ASE 데이터베이스</block>
   <block id="7b4b03f44ad3853577dba2a8cb0ea413" category="video-title">설치 ASE 플러그인, 구성 ASE 플러그인, ASE 데이터베이스 백업</block>
+  <block id="6d6e2198d3b7635ccb9480a805db5475" category="paragraph"> 관리 사용자<block ref="f1770ad185fb295659ec2c9813d05f31" prefix=" " category="inline-code"></block><block ref="45a97e94fe5e2d9ac461ae04e25474ab" prefix="," category="inline-code"></block>SAP HANA 소프트웨어 설치를 시작하기 전에 SAP HANA 호스트 및 스토리지 컨트롤러에 및<block ref="d2c4ba56a16c77e9f8b02c0e67ddab49" prefix=" " category="inline-code"></block> 그룹을 수동으로 생성해야 합니다.</block>
+  <block id="0c8bebe236646d373f29581e17ec5c73" category="paragraph">SAP HANA 호스트에서 사용자<block ref="f1770ad185fb295659ec2c9813d05f31" prefix=" " category="inline-code"></block> 및<block ref="45a97e94fe5e2d9ac461ae04e25474ab" prefix=" " category="inline-code"></block> 이 생성됩니다. 스토리지 컨트롤러의 기존 사용자 ID와 충돌하지 않는 고유한 ID를 선택해야 합니다.</block>
+  <block id="c3edf19e9cb8e20c8545cc3279f2d388" category="paragraph">다중 호스트 SAP HANA 시스템의 경우 모든 SAP HANA 호스트에서 사용자 및 그룹 ID가 동일해야 합니다. 그룹 및 사용자는 영향을 받는 라인을<block ref="c5068b7c2b1707f8939b283a2758a691" prefix=" " category="inline-code"></block> 소스 시스템에서 다른 모든 SAP HANA 호스트로 복사하여 다른 SAP HANA 호스트에<block ref="8cd4f87abbd9addd26d3a8c86730f48b" prefix=" " category="inline-code"></block> 생성됩니다.</block>
+  <block id="176e74803d5c3f1e178b5783467512c1" category="paragraph">사용자 ID 및 그룹 ID는 SAP HANA 호스트와 스토리지 컨트롤러에서 동일해야 합니다. 스토리지 클러스터에서 다음 명령을 입력하여 그룹과 사용자를 생성합니다.</block>
 </blocks>
