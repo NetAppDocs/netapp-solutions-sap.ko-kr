@@ -130,9 +130,3 @@ entries:
     url: "/bp/saphana_fas_fc_where_to_find_additional_information.html"
   - title: 기록 업데이트
     url: "/bp/saphana_fas_fc_update_history.html"
-- title: IBM Power Systems 기반 SAP HANA 및 NFS 기반 NetApp AFF 시스템
-  url: "/bp/saphana-ibm-aff-nfs_pdf_link.html"
-- title: UNIX 기반 Oracle과 SAP, NetApp ONTAP와 NFS
-  url: "/bp/sap-oracle-snapman_pdf_link.html"
-- title: ONTAP를 사용하는 Windows 기반 Microsoft SQL Server와 SAP
-  url: "/bp/sap-sqls-sc_pdf_link.html"

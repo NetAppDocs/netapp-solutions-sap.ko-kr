@@ -167,12 +167,8 @@ entries:
       url: "/backup/saphana-dr-anf_update_history.html"
 - title: 스토리지 복제를 사용한 SAP HANA 재해 복구
   url: "/backup/saphana-dr-sr_pdf_link.html"
-- title: Snap Creator를 통해 SAP HANA 백업 및 복구
-  url: "/backup/saphana-bandr-sc_pdf_link.html"
 - title: NetApp 스토리지 및 Commvault 소프트웨어를 사용한 SAP HANA 백업 및 복구
   url: "/backup/saphana-commvault_pdf_link.html"
-- title: NetApp All SAN 어레이 기반 SAP HANA - 최신 SAN, 데이터 보호 및 재해 복구
-  url: "/backup/saphana-san_pdf_link.html"
 - title: SAP ASE 데이터베이스용 SnapCenter 통합
   url: "/backup/snapcenter-sap-ase.html"
 - title: IBM DB2 데이터베이스용 SnapCenter 통합
