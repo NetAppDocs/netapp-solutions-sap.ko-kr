@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-config-cross-region-replication.html 
+keywords: configuration, options, cross, region, replication, sap, hana, azure 
+summary: 다음 그림에서는 ANF 지역 간 복제를 사용하는 SAP HANA 시스템에 대한 볼륨 복제 관계를 보여 줍니다. 
+---
+= SAP HANA를 사용한 지역 간 복제를 위한 구성 옵션입니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+다음 그림에서는 ANF 지역 간 복제를 사용하는 SAP HANA 시스템에 대한 볼륨 복제 관계를 보여 줍니다. ANF 지역 간 복제를 사용하면 HANA 데이터와 HANA 공유 볼륨을 복제해야 합니다. HANA 데이터 볼륨만 복제되는 경우 일반적인 RPO 값은 하루 범위 내에 있습니다. 낮은 RPO 값이 필요한 경우 정방향 복구를 위해 HANA 로그 백업도 복제해야 합니다.
+
+
+NOTE: 이 문서에 사용된 “로그 백업”이라는 용어는 로그 백업과 HANA 백업 카탈로그 백업을 포함합니다. 복구 작업을 실행하려면 HANA 백업 카탈로그가 필요합니다.
+
+
+NOTE: 다음은 HANA 데이터베이스에 초점을 맞춘 설명과 랩 설정입니다. 예를 들어 SAP 전송 디렉토리가 HANA 공유 볼륨과 동일한 방식으로 보호되고 복제되는 등 다른 공유 파일이 있습니다.
+
+로그 백업을 사용하여 HANA 세이브 포인트 복구를 사용하거나 포워드 복구를 사용하려면 운영 사이트에서 HANA 데이터 볼륨에 대해 애플리케이션 정합성이 보장되는 데이터 Snapshot 백업을 생성해야 합니다. 예를 들어 ANF 백업 도구 AzAcSnap을 사용하여 이 작업을 수행할 수 있습니다(참조) https://docs.microsoft.com/en-us/azure/azure-netapp-files/azacsnap-introduction["Azure NetApp Files | Microsoft Docs에서 Azure Application Consistent Snapshot 도구란 무엇입니까"^])를 클릭합니다. 그런 다음 기본 사이트에서 생성된 스냅샷 백업이 DR 사이트로 복제됩니다.
+
+재해 페일오버의 경우 복제 관계가 끊어지고, 볼륨이 DR 운영 서버에 마운트되어야 하며, HANA 데이터베이스는 마지막 HANA 세이브 포인트로 복구되거나 복제된 로그 백업을 사용하여 정방향 복구로 복구되어야 합니다. 이 장에서는 link:hana-dr-anf-failover-overview.html["재해 복구 페일오버"]필요한 단계에 대해 설명합니다.
+
+다음 그림은 지역 간 복제를 위한 HANA 구성 옵션을 보여 줍니다.
+
+image:saphana-dr-anf_image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+현재 버전의 Cross-Region Replication에서는 고정된 스케줄만 선택할 수 있으며 실제 복제 업데이트 시간은 사용자가 정의할 수 없습니다. 사용 가능한 스케줄은 매일, 매시간 및 매 10분입니다. 이러한 스케줄 옵션을 사용하면 RPO 요구 사항에 따라 두 가지 구성이 적합합니다. 즉, 로그 백업 복제를 사용하지 않는 데이터 볼륨 복제 및 다른 스케줄을 사용하는 로그 백업 복제(시간별 또는 매 10분). 달성 가능한 최저 RPO는 약 20분입니다. 다음 표에는 구성 옵션과 그에 따른 RPO 및 RTO 값이 요약되어 있습니다.
+
+|===
+|  | 데이터 볼륨 복제 | 데이터 및 로그 백업 볼륨 복제 | 데이터 및 로그 백업 볼륨 복제 
+
+
+| CRR 스케줄 데이터 볼륨입니다 | 매일 | 매일 | 매일 
+
+
+| CRR 스케줄 로그 백업 볼륨입니다 | 해당 없음 | 매시간 | 10분 
+
+
+| 최대 RPO | 24시간 + 스냅샷 스케줄(예: 6시간) + | 1시간 | 2 x 10분 
+
+
+| 최대 RTO | 주로 HANA 시작 시간에 의해 정의됩니다 | HANA 시작 시간 + 복구 시간 + | HANA 시작 시간 + 복구 시간 + 
+
+
+| 복구 전달 | 해당 없음 | + 최근 24시간 동안의 로그 + 스냅샷 스케줄(예: 6시간) + | + 최근 24시간 동안의 로그 + 스냅샷 스케줄(예: 6시간) + 
+|===

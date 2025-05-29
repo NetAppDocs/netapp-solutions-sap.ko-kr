@@ -1,0 +1,399 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-br-scs-resource-config-hana-database-backups.html 
+keywords: resource-specific, backup user, hdbuserstore, off-site backup storage, automatic discovery, fibre channel SAN 
+summary: 이 섹션에서는 두 가지 예제 구성, SS2 및 SS1에 대한 구성 단계를 설명합니다. 
+---
+= SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에서는 두 가지 예제 구성의 구성 단계를 설명합니다.
+
+* * SS2. *
++
+** 스토리지 액세스를 위해 NFS를 사용하는 단일 호스트 SAP HANA MDC 단일 테넌트 시스템
+** 리소스는 SnapCenter에서 수동으로 구성됩니다.
+** 로컬 스냅샷 백업을 생성하고 주별 파일 기반 백업을 사용하여 SAP HANA 데이터베이스에 대한 블록 무결성 검사를 수행하도록 리소스를 구성합니다.
+
+
+* * SS1. *
++
+** 스토리지 액세스를 위해 NFS를 사용하는 단일 호스트 SAP HANA MDC 단일 테넌트 시스템
+** 리소스가 SnapCenter에서 자동으로 검색됩니다.
+** 로컬 스냅샷 백업을 생성하고, SnapVault를 사용하여 오프 사이트 백업 스토리지로 복제하며, 주간 파일 기반 백업을 사용하여 SAP HANA 데이터베이스에 대한 블록 무결성 검사를 수행하도록 리소스를 구성합니다.
+
+
+
+
+SAN 연결, 단일 컨테이너 또는 다중 호스트 시스템의 차이점은 해당 구성 또는 워크플로우 단계에 반영됩니다.
+
+
+
+== SAP HANA 백업 사용자 및 hdbuserstore 구성
+
+SnapCenter를 사용하여 백업 작업을 실행하려면 HANA 데이터베이스에 전용 데이터베이스 사용자를 구성하는 것이 좋습니다. 두 번째 단계에서는 이 백업 사용자에 대해 SAP HANA 사용자 저장소 키가 구성되고 이 사용자 저장소 키는 SnapCenter SAP HANA 플러그인 구성에 사용됩니다.
+
+다음 그림에서는 백업 사용자를 생성하는 데 사용할 수 있는 SAP HANA Studio를 보여 줍니다.
+
+
+NOTE: 필요한 권한은 백업 관리자, 카탈로그 읽기, 데이터베이스 백업 관리자, 데이터베이스 복구 운영자 등의 HANA 2.0 SPS5 릴리즈에서 변경되었습니다. 이전 릴리즈의 경우 백업 관리자 및 카탈로그 읽기에 충분합니다.
+
+
+NOTE: SAP HANA MDC 시스템의 경우 시스템 데이터베이스와 테넌트 데이터베이스에 대한 모든 백업 명령이 시스템 데이터베이스를 사용하여 실행되므로 시스템 데이터베이스에 사용자를 생성해야 합니다.
+
+image:saphana-br-scs-image53.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SAP HANA 플러그인 및 SAP hdbsql 클라이언트가 설치된 HANA 플러그인 호스트에서 사용자 저장소 키를 구성해야 합니다.
+
+
+
+=== 중앙 HANA 플러그인 호스트로 사용되는 SnapCenter 서버의 Userstore 구성입니다
+
+SAP HANA 플러그인 및 SAP hdbsql 클라이언트가 Windows에 설치되어 있으면 로컬 시스템 사용자가 hdbsql 명령을 실행하고 리소스 구성에서 기본적으로 구성됩니다. 시스템 사용자가 로그온 사용자가 아니므로 다른 사용자와 "-u<사용자>" 옵션을 사용하여 사용자 저장소 구성을 수행해야 합니다.
+
+....
+hdbuserstore.exe -u SYSTEM set <key> <host>:<port> <database user> <password>
+....
+
+NOTE: 먼저 SAP HANA hdbclient 소프트웨어를 Windows 호스트에 설치해야 합니다.
+
+
+
+=== 중앙 HANA 플러그인 호스트로 사용되는 별도의 Linux 호스트에 대한 Userstore 구성
+
+SAP HANA 플러그인 및 SAP hdbsql 클라이언트가 별도의 Linux 호스트에 설치되어 있는 경우, 리소스 구성에 정의된 사용자로 사용자 저장소 구성에 다음 명령을 사용합니다.
+
+....
+hdbuserstore set <key> <host>:<port> <database user> <password>
+....
+
+NOTE: SAP HANA hdbclient 소프트웨어는 먼저 Linux 호스트에 설치해야 합니다.
+
+
+
+=== HANA 데이터베이스 호스트에 대한 Userstore 구성
+
+SAP HANA 플러그인이 HANA 데이터베이스 호스트에 구축된 경우, '<sid>adm' 사용자를 사용하는 사용자 저장소 구성에 다음 명령을 사용합니다.
+
+....
+hdbuserstore set <key> <host>:<port> <database user> <password>
+....
+
+NOTE: SnapCenter는 "<sid>adm" 사용자를 사용하여 HANA 데이터베이스와 통신합니다. 따라서 데이터베이스 호스트의 <'id>adm' 사용자를 사용하여 사용자 저장소 키를 구성해야 합니다.
+
+
+NOTE: 일반적으로 SAP HANA hdbsql 클라이언트 소프트웨어는 데이터베이스 서버 설치와 함께 설치됩니다. 그렇지 않으면 hdbclient를 먼저 설치해야 합니다.
+
+
+
+=== HANA 시스템 아키텍처에 따라 Userstore를 구성합니다
+
+SAP HANA MDC 단일 테넌트 설정에서 포트 '3<instanceNo>13'은 시스템 데이터베이스에 대한 SQL 액세스를 위한 표준 포트이며 hdbuserstore 구성에 사용해야 합니다.
+
+SAP HANA 단일 컨테이너 설정의 경우 인덱스 서버에 대한 SQL 액세스를 위한 표준 포트인 포트 '3<instanceNo>15'가 hdbuserstore 구성에 사용되어야 합니다.
+
+SAP HANA 다중 호스트 설정의 경우 모든 호스트에 대한 사용자 저장소 키를 구성해야 합니다. SnapCenter는 제공된 각 키를 사용하여 데이터베이스에 연결을 시도하므로 SAP HANA 서비스를 다른 호스트로 페일오버하는 것과 독립적으로 작동할 수 있습니다.
+
+
+
+=== Userstore 구성 예
+
+실습 설정에서는 혼합 SAP HANA 플러그인 구축이 사용됩니다. HANA 플러그인은 일부 HANA 시스템용 SnapCenter Server에 설치되며 다른 시스템용 개별 HANA 데이터베이스 서버에 구축됩니다.
+
+* SAP HANA 시스템 SS1, MDC 단일 테넌트, 인스턴스 00 *
+
+HANA 플러그인은 데이터베이스 호스트에 구축되어 있습니다. 따라서 데이터베이스 호스트에서 ss1adm 사용자를 사용하여 키를 구성해야 합니다.
+
+....
+hana-1:/ # su - ss1adm
+ss1adm@hana-1:/usr/sap/SS1/HDB00>
+ss1adm@hana-1:/usr/sap/SS1/HDB00>
+ss1adm@hana-1:/usr/sap/SS1/HDB00> hdbuserstore set SS1KEY hana-1:30013 SnapCenter password
+ss1adm@hana-1:/usr/sap/SS1/HDB00> hdbuserstore list
+DATA FILE       : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.DAT
+KEY FILE        : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.KEY
+KEY SS1KEY
+  ENV : hana-1:30013
+  USER: SnapCenter
+KEY SS1SAPDBCTRLSS1
+  ENV : hana-1:30015
+  USER: SAPDBCTRL
+ss1adm@hana-1:/usr/sap/SS1/HDB00>
+....
+* SAP HANA 시스템 MS1, 다중 호스트 MDC 단일 테넌트, 인스턴스 00 *
+
+HANA 다중 호스트 시스템의 경우 중앙 플러그인 호스트가 필요합니다. NetApp의 설치에서는 SnapCenter 서버를 사용했습니다. 따라서 SnapCenter 서버에서 사용자 저장소 구성을 수행해야 합니다.
+
+....
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST1 hana-4:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST2 hana-5:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST3 hana-6:30013 SNAPCENTER password
+C:\Program Files\sap\hdbclient>hdbuserstore.exe -u SYSTEM list
+DATA FILE       : C:\ProgramData\.hdb\SNAPCENTER-43\S-1-5-18\SSFS_HDB.DAT
+KEY FILE        : C:\ProgramData\.hdb\SNAPCENTER-43\S-1-5-18\SSFS_HDB.KEY
+KEY MS1KEYHOST1
+  ENV : hana-4:30013
+  USER: SNAPCENTER
+KEY MS1KEYHOST2
+  ENV : hana-5:30013
+  USER: SNAPCENTER
+KEY MS1KEYHOST3
+  ENV : hana-6:30013
+  USER: SNAPCENTER
+KEY SS2KEY
+  ENV : hana-3:30013
+  USER: SNAPCENTER
+C:\Program Files\sap\hdbclient>
+....
+
+
+== 오프 사이트 백업 스토리지에 대한 데이터 보호 구성
+
+SnapCenter에서 복제 업데이트를 관리하기 전에 초기 데이터 전송뿐만 아니라 데이터 보호 관계의 구성을 실행해야 합니다.
+
+다음 그림에서는 SAP HANA 시스템 SS1에 대해 구성된 보호 관계를 보여 줍니다. 이 예에서는 SVM의 "HANA-primary"에서 소스 볼륨 S1을 SVM의 "HANA-backup"과 타겟 볼륨 S1과 "S1데이터_mnt00001_dest"로 복제합니다.
+
+
+NOTE: SnapCenter에서 SnapVault 업데이트를 트리거하므로 관계 일정을 없음으로 설정해야 합니다.
+
+image:saphana-br-scs-image54.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+다음 그림에서는 보호 정책을 보여 줍니다. 보호 관계에 사용되는 보호 정책은 SnapMirror 레이블과 보조 스토리지의 백업 보존을 정의합니다. 이 예에서는 사용된 레이블이 매일, 그리고 잔상이 5로 설정되어 있습니다.
+
+
+NOTE: 생성되는 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다. 자세한 내용은 을 link:hana-br-scs-snapcenter-initial-config.html#snapshot-policy["SnapVault 복제를 사용한 일일 스냅샷 백업 정책"]참조하십시오.
+
+
+NOTE: 오프 사이트 백업 스토리지의 백업 보존은 정책에 정의되어 있으며 ONTAP에서 제어합니다.
+
+image:saphana-br-scs-image55.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== 수동 HANA 리소스 구성
+
+이 섹션에서는 SAP HANA 리소스 SS2 및 MS1의 수동 구성에 대해 설명합니다.
+
+* SS2는 단일 호스트 MDC 단일 테넌트 시스템입니다
+* MS1은 다중 호스트 MDC 단일 테넌트 시스템입니다.
++
+.. 리소스 탭에서 SAP HANA 를 선택하고 SAP HANA 데이터베이스 추가 를 클릭합니다.
+.. SAP HANA 데이터베이스 구성에 대한 정보를 입력하고 Next를 클릭합니다.
++
+이 예에서는 다중 테넌트 데이터베이스 컨테이너 에서 리소스 유형을 선택합니다.
+
++
+
+NOTE: HANA 단일 컨테이너 시스템의 경우 단일 컨테이너 리소스 유형을 선택해야 합니다. 다른 모든 구성 단계는 동일합니다.
+
++
+SAP HANA 시스템의 경우 SID는 SS2입니다.
+
++
+이 예에서 HANA 플러그인 호스트는 SnapCenter 서버입니다.
+
++
+hdbuserstore 키는 HANA 데이터베이스 SS2에 대해 구성된 키와 일치해야 합니다. 이 예에서는 SS2KEY 입니다.
+
++
+image:saphana-br-scs-image56.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+
+NOTE: SAP HANA 다중 호스트 시스템의 경우 다음 그림과 같이 모든 호스트에 대한 hdbuserstore 키가 포함되어야 합니다. SnapCenter는 목록의 첫 번째 키와 연결을 시도하며, 첫 번째 키가 작동하지 않는 경우 다른 키를 계속 사용합니다. 이 기능은 작업자 및 대기 호스트가 있는 다중 호스트 시스템에서 HANA 페일오버를 지원하는 데 필요합니다.
+
++
+image:saphana-br-scs-image57.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+.. 스토리지 시스템(SVM) 및 볼륨 이름에 필요한 데이터를 선택합니다.
++
+image:saphana-br-scs-image58.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+
+NOTE: Fibre Channel SAN 구성의 경우 LUN도 선택해야 합니다.
+
++
+
+NOTE: SAP HANA 다중 호스트 시스템의 경우 다음 그림과 같이 SAP HANA 시스템의 모든 데이터 볼륨을 선택해야 합니다.
+
++
+image:saphana-br-scs-image59.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+리소스 구성의 요약 화면이 표시됩니다.
+
+.. Finish를 클릭하여 SAP HANA 데이터베이스를 추가합니다.
++
+image:saphana-br-scs-image60.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+.. 리소스 구성이 완료되면 섹션에 설명된 대로 리소스 보호 구성을 link:hana-br-scs-resource-config-hana-database-backups.html#resource-protection["리소스 보호 구성"]수행합니다.
+
+
+
+
+
+
+== HANA 데이터베이스 자동 검색
+
+이 섹션에서는 SAP HANA 리소스 SS1(NFS가 포함된 단일 호스트 MDC 단일 테넌트 시스템)의 자동 검색에 대해 설명합니다. 설명된 모든 단계는 HANA 단일 컨테이너, HANA MDC 다중 테넌트 시스템 및 파이버 채널 SAN을 사용하는 HANA 시스템에서 동일합니다.
+
+
+NOTE: SAP HANA 플러그인에는 Java 64비트 버전 1.8이 필요합니다. SAP HANA 플러그인을 배포하려면 먼저 Java를 호스트에 설치해야 합니다.
+
+. 호스트 탭에서 추가 를 클릭합니다.
+. 호스트 정보를 제공하고 설치할 SAP HANA 플러그인을 선택합니다. 제출 을 클릭합니다.
++
+image:saphana-br-scs-image61.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 지문을 확인합니다.
++
+image:saphana-br-scs-image62.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+HANA 플러그인 및 Linux 플러그인 설치가 자동으로 시작됩니다. 설치가 완료되면 호스트의 상태 열에 실행 중 이 표시됩니다. 또한 화면에는 Linux 플러그인이 HANA 플러그인과 함께 설치되는 것으로 표시됩니다.
+
++
+image:saphana-br-scs-image63.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+플러그인 설치 후 HANA 리소스의 자동 검색 프로세스가 자동으로 시작됩니다. 자원 화면에서 새 자원이 생성되고 빨간색 자물쇠 아이콘으로 잠금 상태로 표시됩니다.
+
+. 를 선택하고 리소스를 클릭하여 구성을 계속합니다.
++
+
+NOTE: 자원 새로 고침 을 클릭하여 자원 화면에서 자동 검색 프로세스를 수동으로 트리거할 수도 있습니다.
+
++
+image:saphana-br-scs-image64.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. HANA 데이터베이스에 대한 사용자 저장소 키를 제공합니다.
++
+image:saphana-br-scs-image65.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+테넌트 데이터 및 스토리지 설치 공간 정보가 검색되는 2단계 자동 검색 프로세스가 시작됩니다.
+
+. 세부 정보 를 클릭하여 리소스 토폴로지 뷰에서 HANA 리소스 구성 정보를 검토합니다.
++
+image:saphana-br-scs-image66.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+image:saphana-br-scs-image67.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+리소스 구성이 완료되면 다음 섹션에 설명된 대로 리소스 보호 구성을 실행해야 합니다.
+
+
+
+
+
+== 리소스 보호 구성
+
+이 섹션에서는 리소스 보호 구성에 대해 설명합니다. 리소스 보호 구성은 리소스가 자동으로 검색되었는지 아니면 수동으로 구성되었는지에 관계없이 동일합니다. 또한 모든 HANA 아키텍처, 단일 또는 다중 호스트, 단일 컨테이너 또는 MDC 시스템에서 동일합니다.
+
+. 자원 탭에서 자원을 두 번 클릭합니다.
+. 스냅샷 복사본에 대한 사용자 지정 이름 형식을 구성합니다.
++
+
+NOTE: 사용자 지정 스냅샷 복사본 이름을 사용하여 어떤 정책 및 일정 유형의 백업이 생성되었는지 쉽게 확인할 것을 권장합니다. 스냅샷 복사본 이름에 스케줄 유형을 추가하면 예약된 백업과 필요 시 백업을 구분할 수 있습니다. 필요 시 백업을 위한 스케줄 이름은 비어 있고 예약된 백업에는 시간별, 매일, 매주 등이 있습니다.
+
++
+다음 그림에 나와 있는 구성에서는 백업 및 스냅샷 복사본 이름의 형식이 다음과 같습니다.
+
++
+** 예약된 시간별 백업:'napCenter_LocalSnap_hourly_<time_stamp>'
+** 예약된 일일 백업:'snapcenter_LocalSnapAndSnapVault_Daily_<time_stamp>'
+** 필요 시 시간별 백업:'napCenter_LocalSnap_<time_stamp>'
+** 필요 시 일일 백업:'snapcenter_LocalSnapAndSnapVault_<time_stamp>'
++
+
+NOTE: 정책 구성에서 필요 시 백업에 대해 보존 정책이 정의되어 있더라도 필요에 따라 다른 백업을 실행할 때만 관리 작업이 수행됩니다. 따라서 일반적으로 SnapCenter에서 필요 시 백업을 수동으로 삭제하여 SAP HANA 백업 카탈로그에서 해당 백업도 삭제하며 로그 백업 관리 기능이 이전 주문형 백업을 기반으로 하지 않는지 확인해야 합니다.
+
++
+image:saphana-br-scs-image68.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+. 응용 프로그램 설정 페이지에서 특정 설정을 할 필요가 없습니다. 다음 을 클릭합니다.
++
+image:saphana-br-scs-image69.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 리소스에 추가할 정책을 선택합니다.
++
+image:saphana-br-scs-image70.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. LocalSnap 정책의 스케줄을 정의합니다(이 예에서는 4시간마다).
++
+image:saphana-br-scs-image71.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. LocalSnapAndSnapVault 정책의 일정을 정의합니다(이 예제에서는 하루에 한 번).
++
+image:saphana-br-scs-image72.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 블록 무결성 검사 정책의 일정을 정의합니다(이 예에서는 일주일에 한 번).
++
+image:saphana-br-scs-image73.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 이메일 알림에 대한 정보를 제공합니다.
++
+image:saphana-br-scs-image74.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 요약 페이지에서 마침 을 클릭합니다.
++
+image:saphana-br-scs-image75.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 이제 토폴로지 페이지에서 필요 시 백업을 생성할 수 있습니다. 예약된 백업은 구성 설정에 따라 실행됩니다.
++
+image:saphana-br-scs-image76.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+
+
+== 파이버 채널 SAN 환경에 대한 추가 구성 단계
+
+HANA 릴리즈 및 HANA 플러그인 구축에 따라 SAP HANA 시스템에서 파이버 채널 및 XFS 파일 시스템을 사용하는 환경에는 추가 구성 단계가 필요합니다.
+
+
+NOTE: 이러한 추가 구성 단계는 SnapCenter에서 수동으로 구성된 HANA 리소스에만 필요합니다. 또한 HANA 1.0 릴리스 및 SPS2까지의 HANA 2.0 릴리스에만 필요합니다.
+
+SAP HANA에서 HANA 백업 세이브 포인트가 SnapCenter에 의해 트리거되면 SAP HANA는 각 테넌트 및 데이터베이스 서비스의 스냅샷 ID 파일을 마지막 단계로 기록합니다(예: '/HANA/data/SID/mnt00001/hdb00001/snapshot_DataBackup_0_1'). 이러한 파일은 스토리지의 데이터 볼륨에 포함되어 있으므로 스토리지 스냅샷 복사본의 일부입니다. 이 파일은 백업이 복원되는 상황에서 복구를 수행할 때 필수입니다. Linux 호스트에서 XFS 파일 시스템의 메타데이터 캐싱으로 인해 스토리지 계층에서 파일이 즉시 표시되지 않습니다. 메타데이터 캐싱을 위한 표준 XFS 구성은 30초입니다.
+
+
+NOTE: HANA 2.0 SPS3을 통해 SAP는 메타데이터 캐싱이 문제가 되지 않도록 이러한 Snapshot ID 파일의 쓰기 작업을 동기식으로 변경했습니다.
+
+
+NOTE: SnapCenter 4.3에서 HANA 플러그인을 데이터베이스 호스트에 구축하면 Linux 플러그인이 스토리지 스냅샷이 트리거되기 전에 호스트에서 파일 시스템 플러시 작업을 실행합니다. 이 경우에는 메타데이터 캐싱에 문제가 되지 않습니다.
+
+SnapCenter에서는 XFS 메타데이터 캐시가 디스크 계층으로 플러시될 때까지 대기하는 "postquiesce" 명령을 구성해야 합니다.
+
+메타데이터 캐싱의 실제 구성은 다음 명령을 사용하여 확인할 수 있습니다.
+
+....
+stlrx300s8-2:/ # sysctl -A | grep xfssyncd_centisecs
+fs.xfs.xfssyncd_centisecs = 3000
+....
+"fs.xfs.xfssyncd_centisec" 매개 변수의 값의 두 배인 대기 시간을 사용하는 것이 좋습니다. 기본값은 30초이므로 sleep 명령을 60초로 설정합니다.
+
+SnapCenter 서버를 중앙 HANA 플러그인 호스트로 사용하는 경우 배치 파일을 사용할 수 있습니다. 배치 파일의 내용은 다음과 같습니다.
+
+....
+@echo off
+waitfor AnyThing /t 60 2>NUL
+Exit /b 0
+....
+배치 파일은 'C:\Program Files\NetApp\Wait60Sec.bat'와 같이 저장할 수 있습니다. 리소스 보호 구성에서 배치 파일을 정지 후 명령으로 추가해야 합니다.
+
+별도의 Linux 호스트를 중앙 HANA 플러그인 호스트로 사용하는 경우 SnapCenter UI에서 '/bin/sleep 60' 명령을 사후 정지 명령으로 구성해야 합니다.
+
+다음 그림에서는 리소스 보호 구성 화면 내에서 정지 후 명령을 보여 줍니다.
+
+image:saphana-br-scs-image77.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

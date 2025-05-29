@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-overview-of-sys-clone-wf-sc.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP HANA 데이터베이스 및 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호를 SAP 테스트 시스템의 유연한 프로비저닝과 결합합니다. 
+---
+= SnapCenter를 사용한 SAP 시스템 클론 워크플로우 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이전 섹션에서 설명한 것처럼 SnapCenter는 기존 Snapshot 백업에서 데이터 세트의 클론을 관리할 수 있으며 이러한 데이터 세트를 타겟 시스템으로 신속하게 프로비저닝할 수 있습니다. 복구 시스템을 재설정하고 다른 운영 데이터 세트를 선택해야 하는 경우가 많기 때문에 논리적 손상을 해결하기 위해 운영 데이터를 복구 시스템에 유연하고 민첩한 방식으로 프로비저닝하는 것이 매우 중요합니다. FlexClone 기술은 프로비저닝 프로세스를 단축하고 용량을 크게 절감해 줍니다. 복구 시스템은 일반적으로 짧은 시간에만 사용되기 때문입니다.
+
+아래 그림에는 SnapCenter를 사용하는 SAP 시스템 클론 작업에 필요한 단계가 요약되어 있습니다.
+
+. 타겟 호스트를 준비합니다.
+. SAP HANA 공유 볼륨에 대한 SnapCenter 클론 생성 워크플로우를 생성합니다.
+. SAP HANA 서비스 시작
+. 데이터베이스 복구를 포함한 SAP HANA 데이터 볼륨에 대한 SnapCenter 클론 생성 워크플로우
+. 이제 SAP HANA 시스템을 복구 시스템으로 사용할 수 있습니다.
+
+
+시스템이 더 이상 필요하지 않은 경우 다음 단계를 수행하여 정리 프로세스를 수행합니다.
+
+. 데이터베이스 종료를 포함한 SAP HANA 데이터 볼륨에 대한 SnapCenter 클론 삭제 워크플로우(자동화 스크립트 사용 시)
+. SAP HANA 서비스 중지
+. SAP HANA 공유 볼륨에 대한 SnapCenter 클론 삭제 워크플로우
+
+
+
+NOTE: 시스템을 다른 스냅샷 백업으로 재설정해야 하는 경우 6단계와 4단계만으로 충분합니다. SAP HANA 공유 볼륨을 새로 고칠 필요가 없습니다.
+
+image:sc-copy-clone-image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+이 섹션에서는 link:sc-copy-clone-sys-clone-with-sc.html[""SnapCenter를 사용한 SAP 시스템 클론""]시스템 클론 워크플로우에 대한 자세한 단계별 설명을 제공합니다.

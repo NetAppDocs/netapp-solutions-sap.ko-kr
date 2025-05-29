@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-add-policy-to-resource-protection.html 
+keywords: policy, resource, protection, hana, daily schedule 
+summary: 이 섹션에서는 리소스 보호에 정책을 추가하는 방법에 대해 설명합니다. 
+---
+= 리소스 보호에 정책을 추가합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+다음 그림과 같이 HANA 리소스 보호 구성에 새 정책을 추가해야 합니다.
+
+image:amazon-fsx-image86.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+일별 일정은 설정에 정의되어 있습니다.
+
+image:amazon-fsx-image87.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

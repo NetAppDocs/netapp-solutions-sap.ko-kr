@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-br-scs-database-backups.html 
+keywords: sap hana studio, on-demand backup, replication 
+summary: SnapCenter에서 데이터베이스 백업은 일반적으로 각 HANA 데이터베이스의 리소스 보호 구성 내에 정의된 일정을 사용하여 실행됩니다. 필요 시 데이터베이스 백업은 SnapCenter GUI, PowerShell 명령줄 또는 REST API를 사용하여 수행할 수 있습니다. 
+---
+= 데이터베이스 백업
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapCenter에서 데이터베이스 백업은 일반적으로 각 HANA 데이터베이스의 리소스 보호 구성 내에 정의된 일정을 사용하여 실행됩니다.
+
+필요 시 데이터베이스 백업은 SnapCenter GUI, PowerShell 명령줄 또는 REST API를 사용하여 수행할 수 있습니다.
+
+
+
+== SAP HANA Studio에서 SnapCenter 백업 식별
+
+SnapCenter 리소스 토폴로지에는 SnapCenter를 사용하여 생성된 백업 목록이 표시됩니다. 다음 그림에서는 운영 스토리지에서 사용할 수 있는 백업을 보여 주고 최신 백업을 보여 줍니다.
+
+image:saphana-br-scs-image82.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SAP HANA MDC 시스템용 스토리지 스냅샷 복사본을 사용하여 백업을 수행할 때 데이터 볼륨의 스냅샷 복사본이 생성됩니다. 이 데이터 볼륨에는 시스템 데이터베이스의 데이터와 모든 테넌트 데이터베이스의 데이터가 포함됩니다. SAP HANA는 이러한 물리적 아키텍처를 반영하기 위해 SnapCenter에서 스냅샷 백업을 트리거할 때마다 내부적으로 시스템 데이터베이스와 모든 테넌트 데이터베이스를 함께 백업합니다. 따라서 SAP HANA 백업 카탈로그에 여러 개의 개별 백업 항목이 생성됩니다. 시스템 데이터베이스의 경우 한 개, 테넌트 데이터베이스당 한 개.
+
+
+NOTE: SAP HANA 단일 컨테이너 시스템의 경우 데이터베이스 볼륨에는 단일 데이터베이스만 포함되고 SAP HANA의 백업 카탈로그에는 하나의 항목만 있습니다.
+
+SAP HANA 백업 카탈로그에서 SnapCenter 백업 이름은 외부 백업 ID(EBID)뿐만 아니라 '설명' 필드로 저장됩니다. 이 내용은 시스템 데이터베이스에 대한 다음 스크린샷과 테넌트 데이터베이스 SS1의 스크린샷 뒤에 나와 있습니다. 두 그림 모두 설명 필드와 EBID에 저장된 SnapCenter 백업 이름을 강조 표시합니다.
+
+
+NOTE: HANA 2.0 SPS4(버전 40 및 41) 릴리즈에서는 스냅샷 기반 백업의 백업 크기가 항상 0으로 표시됩니다. 이 문제는 개정판 42로 수정되었습니다. 자세한 내용은 SAP 노트 를 참조하십시오 https://launchpad.support.sap.com/["https://launchpad.support.sap.com/#/notes/2795010"^].
+
+image:saphana-br-scs-image83.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+image:saphana-br-scs-image84.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+NOTE: SnapCenter는 자체 백업만 인식합니다. SAP HANA Studio와 같이 생성된 추가 백업은 SAP HANA 카탈로그에 표시되지만 SnapCenter에는 표시되지 않습니다.
+
+
+
+== 스토리지 시스템에서 SnapCenter 백업 식별
+
+스토리지 계층의 백업을 보려면 NetApp OnCommand 시스템 관리자를 사용하여 SVM — 볼륨 보기에서 데이터베이스 볼륨을 선택합니다. 아래쪽 Snapshot 복사본 탭에는 볼륨의 스냅샷 복사본이 표시됩니다. 다음 스크린샷은 운영 스토리지에서 데이터베이스 볼륨 S1과 Data_mnt00001 중 사용 가능한 백업을 보여 줍니다. 강조 표시된 백업은 이전 이미지에서 SnapCenter 및 SAP HANA Studio에 표시된 백업이며 동일한 명명 규칙을 사용합니다.
+
+image:saphana-br-scs-image85.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+다음 스크린샷은 보조 스토리지 시스템에서 복제 타겟 볼륨 "HANA_SA1_DATA_mnt00001_dest"에 대해 사용 가능한 백업을 보여 줍니다.
+
+image:saphana-br-scs-image86.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== 운영 스토리지의 온디맨드 데이터베이스 백업
+
+. 자원 보기에서 자원을 선택하고 라인을 두 번 클릭하여 토폴로지 뷰로 전환합니다.
++
+리소스 토폴로지 뷰에서는 SnapCenter를 사용하여 생성된 사용 가능한 모든 백업에 대한 개요를 제공합니다. 이 보기의 상단 영역에는 백업 토폴로지가 표시되고, 운영 스토리지(로컬 복사본)의 백업 및 사용 가능한 경우 오프사이트 백업 스토리지(볼트 사본)에 백업이 표시됩니다.
+
++
+image:saphana-br-scs-image86.5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 맨 위 행에서 지금 백업 아이콘을 선택하여 필요 시 백업을 시작합니다. 드롭다운 목록에서 백업 정책 LocalSnap을 선택한 다음 Backup을 클릭하여 필요 시 백업을 시작합니다.
++
+image:saphana-br-scs-image87.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
++
+그러면 백업 작업이 시작됩니다. 토폴로지 보기 아래의 활동 영역에 이전 5개 작업의 로그가 표시됩니다. 백업이 완료되면 토폴로지 뷰에 새 항목이 표시됩니다. 백업 이름은 섹션에 정의된 스냅샷 이름과 동일한 명명 규칙을 따릅니다 link:hana-br-scs-resource-config-hana-database-backups.html#resource-protection["“리소스 보호 구성”"]
+
++
+
+NOTE: 업데이트된 백업 목록을 보려면 토폴로지 뷰를 닫았다가 다시 열어야 합니다.
+
++
+image:saphana-br-scs-image88.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 작업 영역에서 작업의 활동 라인을 클릭하면 작업 세부 정보가 표시됩니다. 로그 보기 를 클릭하여 세부 작업 로그를 열 수 있습니다.
++
+image:saphana-br-scs-image89.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. SAP HANA Studio에서 새 백업이 백업 카탈로그에 표시됩니다. SnapCenter에서 동일한 백업 이름은 백업 카탈로그의 주석 및 EBID 필드에도 사용됩니다.
+
+
+
+
+== SnapVault 복제를 통한 주문형 데이터베이스 백업
+
+. 자원 보기에서 자원을 선택하고 라인을 두 번 클릭하여 토폴로지 뷰로 전환합니다.
+. 맨 위 행에서 지금 백업 아이콘을 선택하여 필요 시 백업을 시작합니다. 드롭다운 목록에서 백업 정책 "LocalSnapAndSnapVault"를 선택한 다음 백업을 클릭하여 필요 시 백업을 시작합니다.
++
+image:saphana-br-scs-image90.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 작업 영역에서 작업의 활동 라인을 클릭하면 작업 세부 정보가 표시됩니다.
++
+image:saphana-br-scs-image91.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 백업이 완료되면 토폴로지 뷰에 새 항목이 표시됩니다. 백업 이름은 섹션에 정의된 스냅샷 이름과 동일한 명명 규칙을 따릅니다 link:hana-br-scs-resource-config-hana-database-backups.html#resource-protection["“리소스 보호 구성”"]
++
+
+NOTE: 업데이트된 백업 목록을 보려면 토폴로지 뷰를 닫았다가 다시 열어야 합니다.
+
++
+image:saphana-br-scs-image92.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. 볼트 복사본을 선택하면 보조 스토리지의 백업이 표시됩니다. 복제된 백업의 이름은 기본 스토리지의 백업 이름과 동일합니다.
++
+image:saphana-br-scs-image93.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+. SAP HANA Studio에서 새 백업이 백업 카탈로그에 표시됩니다. SnapCenter에서 동일한 백업 이름은 백업 카탈로그의 주석 및 EBID 필드에도 사용됩니다.
+

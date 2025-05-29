@@ -1,0 +1,49 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-backup-replication-with-snapvault-overview.html 
+keywords: overview, configuration, 
+summary: 실습 설정에서는 보조 AWS 가용성 영역에서 ONTAP 파일 시스템용 두 번째 FSX를 사용하여 HANA 데이터 볼륨에 대한 백업 복제를 쇼케이스합니다. 
+---
+= 개요 - SnapVault를 사용한 백업 복제
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+실습 설정에서는 보조 AWS 가용성 영역에서 ONTAP 파일 시스템용 두 번째 FSX를 사용하여 HANA 데이터 볼륨에 대한 백업 복제를 쇼케이스합니다.
+
+장에서 설명한 대로 link:fsxn-snapcenter-architecture.html#data-protection-strategy["“데이터 보호 전략”"]기본 FSx for ONTAP 파일 시스템의 장애로부터 복제 대상이 다른 가용성 영역의 두 번째 FSx for ONTAP 파일 시스템이어야 합니다. 또한 HANA 공유 볼륨을 ONTAP 파일 시스템용 보조 FSx에 복제해야 합니다.
+
+image:amazon-fsx-image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+=== 구성 단계 개요
+
+ONTAP용 FSx 계층에서 실행해야 하는 몇 가지 구성 단계가 있습니다. 이 작업은 NetApp Cloud Manager 또는 FSx for ONTAP 명령줄에서 수행할 수 있습니다.
+
+. ONTAP 파일 시스템용 피어 FSx ONTAP 파일 시스템용 FSX를 통해 상호 복제가 가능하도록 해야 합니다.
+. 피어 SVM: SVM을 피어링하여 상호 간에 복제가 가능해야 합니다.
+. 타겟 볼륨을 생성합니다. 볼륨 유형 DP를 사용하여 타겟 SVM에서 볼륨을 생성합니다. 복제 타겟 볼륨으로 사용하려면 유형 DP가 필요합니다.
+. SnapMirror 정책을 생성합니다. 이는 "볼트" 유형으로 복제에 대한 정책을 생성하는 데 사용됩니다.
++
+.. 정책에 규칙을 추가합니다. 이 규칙에는 SnapMirror 레이블 및 보조 사이트의 백업 보존이 포함되어 있습니다. 나중에 SnapCenter 정책에서 동일한 SnapMirror 레이블을 구성해야 SnapCenter에서 이 레이블을 포함하는 소스 볼륨에서 스냅샷 백업을 생성할 수 있습니다.
+
+
+. SnapMirror 관계를 생성합니다. 소스 볼륨과 타겟 볼륨 간의 복제 관계를 정의하고 정책을 연결합니다.
+. SnapMirror를 초기화합니다. 그러면 전체 소스 데이터가 타겟 볼륨으로 전송되는 초기 복제가 시작됩니다.
+
+
+볼륨 복제 구성이 완료되면 다음과 같이 SnapCenter에서 백업 복제를 구성해야 합니다.
+
+. SnapCenter에 타겟 SVM을 추가합니다.
+. 스냅샷 백업 및 SnapVault 복제를 위한 새 SnapCenter 정책을 생성합니다.
+. HANA 리소스 보호에 정책을 추가합니다.
+. 이제 새 정책을 사용하여 백업을 실행할 수 있습니다.
+
+
+다음 장에서는 개별 단계에 대해 자세히 설명합니다.

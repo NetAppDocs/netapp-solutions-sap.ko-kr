@@ -22,7 +22,7 @@ summary: 이 기술 보고서에서는 애플리케이션용 NetApp BlueXP Backu
 
 이 문서에서는 NetApp BlueXP를 통해 사내 데이터 저장소에서 클라우드 기반 오브젝트 저장소로 데이터를 보호하기 위해 SAP HANA를 설정하고 구성하는 방법을 설명합니다. 솔루션의 BlueXP 백업 및 복구 부분에 대해 다룹니다. 이 솔루션은 NetApp Snap Center를 사용하는 사내 SAP HANA 백업 솔루션의 향상된 기능으로 SAP HANA 백업을 클라우드 기반 오브젝트 스토리지에 비용 효율적으로 장기간 아카이빙하고 AWS Glacier/Deep Glacier와 같은 아카이브 스토리지에 오브젝트 스토리지를 선택적으로 계층화할 수 있습니다. Microsoft Azure Blob Archive 및 GCP 아카이브 스토리지.
 
-온프레미스 SAP HANA 백업 및 복구 솔루션의 설정 및 구성에 대한 자세한 내용은 에 나와 있습니다 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html#the-netapp-solution["TR-4614: SnapCenter를 사용한 SAP HANA 백업 및 복구(netapp.com)"].
+온프레미스 SAP HANA 백업 및 복구 솔루션의 설정 및 구성에 대한 자세한 내용은 에 나와 있습니다.link:hana-br-scs-overview.html#the-netapp-solution["TR-4614: SnapCenter를 사용한 SAP HANA 백업 및 복구(netapp.com)"]
 
 이 TR에서는 AWS S3 오브젝트 스토리지를 사용하는 SAP HANA용 BlueXP 백업 및 복구를 통해 온프레미스 SnapCenter 기반 SAP HANA 백업 및 복구 솔루션을 개선하는 방법에 대해서만 설명합니다. AWS S3 대신 Microsoft Azure 및 GCP 오브젝트 스토리지를 사용하는 설정 및 구성은 비슷하지만 이 문서에서는 설명하지 않습니다.
 
@@ -45,8 +45,7 @@ image:hana-hycl-back-image1.png["EIN BILD, DAS 텍스트, 스크린샷, Diagramm
 
 == 설치 및 구성 단계 개요
 
-필요한 설치 및 구성 단계는 세 가지 영역으로 나눌 수 있습니다. 를 누릅니다
-NetApp 스냅 센터에서 SAP HANA 백업 구성을 구성해야 합니다. 처음부터 Snap Center for SAP HANA를 설정하는 방법은 을 참조하십시오 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-configuration.html["SnapCenter 구성(netapp.com)"].
+필요한 설치 및 구성 단계는 세 가지 영역으로 나눌 수 있습니다. + 사전 요구 사항은 NetApp 스냅 센터에서 SAP HANA 백업 구성이 구성되었다는 것입니다. 처음부터 Snap Center for SAP HANA를 설정하는 방법은 을 참조하십시오link:hana-br-scs-snapcenter-config.html["SnapCenter 구성(netapp.com)"].
 
 . NetApp BlueXP 구성 요소의 설치 및 구성
 +

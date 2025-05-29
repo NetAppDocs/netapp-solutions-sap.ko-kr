@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-fas-fc-io-stack-configuration.html 
+keywords: i, o, stack, configuration, sap, hana, fas, fc 
+summary: SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다. 
+---
+= SAP HANA용 I/O 스택 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다.
+
+NetApp은 이상적인 가치를 정의하기 위해 성능 테스트를 실시했습니다. 다음 표에는 성능 테스트에서 유추된 최적의 값이 나와 있습니다.
+
+|===
+| 매개 변수 | 값 
+
+
+| max_parallel_io_requests | 128 
+
+
+| Async_read_submit입니다 | 켜짐 
+
+
+| Async_write_submit_active입니다 | 켜짐 
+
+
+| Async_write_submit_blocks입니다 | 모두 
+|===
+SAP HANA 1.0 ~ SPS12의 경우 SAP Note에 설명된 대로 SAP HANA 데이터베이스 설치 중에 이러한 매개 변수를 설정할 수 있습니다 https://launchpad.support.sap.com/["2267798 – hdbparam을 사용하여 설치하는 동안 SAP HANA 데이터베이스 구성"^].
+
+또는 "hdbparam" 프레임워크를 사용하여 SAP HANA 데이터베이스 설치 후 매개 변수를 설정할 수 있습니다.
+
+....
+SS3adm@stlrx300s8-6:/usr/sap/SS3/HDB00> hdbparam --paramset fileio.max_parallel_io_requests=128
+SS3adm@stlrx300s8-6:/usr/sap/SS3/HDB00> hdbparam --paramset fileio.async_write_submit_active=on
+SS3adm@stlrx300s8-6:/usr/sap/SS3/HDB00> hdbparam --paramset fileio.async_read_submit=on
+SS3adm@stlrx300s8-6:/usr/sap/SS3/HDB00> hdbparam --paramset fileio.async_write_submit_blocks=all
+....
+SAP HANA 2.0부터 hdbparam은 더 이상 사용되지 않으며 매개 변수가 global.ini` 파일로 이동되었습니다. 매개 변수는 SQL 명령 또는 SAP HANA Studio를 사용하여 설정할 수 있습니다. 자세한 내용은 SAP 노트 를 참조하십시오 https://launchpad.support.sap.com/["2399079 - HANA 2에서 hdbparam 제거"^]. 이 파라미터는 global.ini` 파일에서도 설정할 수 있다.
+
+....
+SS3adm@stlrx300s8-6:/usr/sap/SS3/SYS/global/hdb/custom/config> cat global.ini
+…
+[fileio]
+async_read_submit = on
+async_write_submit_active = on
+max_parallel_io_requests = 128
+async_write_submit_blocks = all
+…
+....
+SAP HANA 2.0 SPS5 이상을 사용할 경우, 'etParameter.py'의 cript를 사용하여 위에서 언급한 매개 변수를 설정할 수 있습니다.
+
+....
+fc5adm@sapcc-hana-tst-03:/usr/sap/FC5/HDB00/exe/python_support>
+python setParameter.py -set=SYSTEM/global.ini/fileio/max_parallel_io_requests=128
+python setParameter.py -set=SYSTEM/global.ini/fileio/async_read_submit=on
+python setParameter.py -set=SYSTEM/global.ini/fileio/async_write_submit_active=on
+python setParameter.py -set=SYSTEM/global.ini/fileio/async_write_submit_blocks=all
+....

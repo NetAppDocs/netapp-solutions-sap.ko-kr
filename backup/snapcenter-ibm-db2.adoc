@@ -325,7 +325,7 @@ video::3a82e561-e5a2-4a23-9465-b2b900c1fac5[panopto,width=360]
 
 
 * NetApp 제품 설명서: https://www.netapp.com/support-and-training/documentation/[]
-* NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보: https://docs.netapp.com/us-en/netapp-solutions-sap[]
+* link:../index.html["NetApp SAP 솔루션 - 활용 사례, 모범 사례 및 이점에 대한 정보"]
 
 
 

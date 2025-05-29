@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-fas-nfs-update-history.html 
+keywords:  
+summary:  
+---
+= 기록 업데이트
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 솔루션의 원래 게시 이후 다음과 같은 기술적 변경 사항이 있습니다.
+
+[cols="25,50"]
+|===
+| 날짜 | 업데이트 요약 
+
+
+| 2014년 4월 | 초기 버전 
+
+
+| 2014년 8월 | 디스크 사이징 선택 업데이트 및 SSD 구성 추가 Red Hat Enterprise Linux OS 구성 추가 SAP HANA 스토리지 커넥터 정보 추가 VMware 구성에 대한 정보 추가 
+
+
+| 2014년 11월 | 스토리지 사이징 섹션 업데이트 
+
+
+| 2015년 1월 | 업데이트된 스토리지 커넥터 API 섹션이 애그리게이트 및 볼륨 구성을 업데이트했습니다 
+
+
+| 2015년 3월 | SAP HANA SPS9에 대한 새로운 STONITH 구현이 추가되어 컴퓨팅 노드 설정 및 HANA 설치 섹션이 추가됨 
+
+
+| 2015년 10월 | SAP HANA 및 HWVAL > SPS10에 대한 cDOT 업데이트 sysctl 매개 변수에 포함된 I/O 매개 변수에 대한 NFSv4 지원 추가 
+
+
+| 2016년 3월 | /hana/shared update sysctl 매개 변수에 대한 업데이트된 용량 사이징 마운트 옵션입니다 
+
+
+| 2017년 2월 | 새로운 NetApp 스토리지 시스템 및 디스크 쉘프 40GbE 신규 OS 릴리즈(SUSE Linux Enterprise Server12 SP1 및 Red Hat Enterprise Linux 7.2)에 대한 ONTAP 9 지원의 새로운 기능 새로운 SAP HANA 릴리스 
+
+
+| 2017년 7월 | 사소한 업데이트 
+
+
+| 2018년 9월 | 새로운 NetApp 스토리지 시스템 새로운 OS 릴리즈(SUSE Linux Enterprise Server 12 SP3 및 Red Hat Enterprise Linux 7.4), SAP HANA 2.0 SPS3의 사소한 변경사항 추가 
+
+
+| 2019년 9월 | 새로운 OS 릴리스(SUSE Linux Enterprise Server 12 SP4, SUSE Linux Enterprise Server 15 및 Red Hat Enterprise Linux 7.6) MAX Data 볼륨 크기는 경미한 변경 사항이 적용됩니다 
+
+
+| 2019년 12월 | 새로운 NetApp 스토리지 시스템 새로운 OS 릴리스 SUSE Linux Enterprise Server 15 SP1 
+
+
+| 2020년 3월 | NFSv3 신규 OS 릴리스 Red Hat Enterprise Linux 8에 대한 nconnect 지원 
+
+
+| 2020년 5월 | SAP HANA 2.0 SPS4 이후에 여러 데이터 파티션 기능을 사용할 수 있게 되었습니다 
+
+
+| 2020년 6월 | 선택적 기능 Minor 업데이트에 대한 추가 정보입니다 
+
+
+| 2020년 12월 | ONTAP 9.8부터 NFSv4.1에 대한 nconnect 지원 새로운 운영 체제 릴리스 새로운 SAP HANA 버전 
+
+
+| 2021년 2월 | 호스트 네트워크 설정 변경 및 기타 사소한 변경 사항 
+
+
+| 2021년 4월 | VMware vSphere 관련 정보가 추가되었습니다 
+
+
+| 2022년 9월 | 새로운 OS - 릴리스 
+
+
+| 2023년 12월 | 호스트 설정 업데이트 수정된 nconnect 설정에 NFSv4.1 세션에 대한 정보가 추가되었습니다 
+
+
+| 2024년 9월 | 새 스토리지 시스템 및 부 업데이트 
+
+
+| 2025년 2월 | 새로운 스토리지 시스템 
+|===

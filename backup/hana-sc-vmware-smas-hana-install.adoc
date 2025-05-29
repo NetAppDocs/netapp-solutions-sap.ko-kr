@@ -18,7 +18,7 @@ summary:
 
 
 [role="lead"]
-이 장에서는 VMFS를 사용한 VMware 설정과 관련된 SAP HANA 시스템의 설치 및 구성에 대해 설명합니다. 일반적인 추가 모범 사례는 에서 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/saphana_aff_fc_introduction.html#sap-hana-tailored-data-center-integration["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"]확인할 수 있습니다.
+이 장에서는 VMFS를 사용한 VMware 설정과 관련된 SAP HANA 시스템의 설치 및 구성에 대해 설명합니다. 일반적인 추가 모범 사례는 에서 link:../bp/hana-aff-fc-introduction.html#sap-hana-tailored-data-center-integration["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"]확인할 수 있습니다.
 
 
 
@@ -234,7 +234,7 @@ NOTE: 설명된 구성을 사용하면 /usr/sap/sma 디렉토리가 OS VMDK에 �
 
 시스템 데이터베이스 사용자에 대한 사용자 저장소를 만들어야 하며, 이 저장소는 SnapCenter에서 사용해야 합니다. 통신 포트에 맞게 HANA 인스턴스 번호를 설정해야 합니다. 설치 인스턴스 번호 "00"이 사용됩니다.
 
-자세한 설명은 에서 확인할 수 있습니다 https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-snapcenter-resource-specific-configuration-for-sap-hana-database-backups.html#sap-hana-backup-user-and-hdbuserstore-configuration["SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다"]
+자세한 설명은 에서 확인할 수 있습니다 link:hana-br-scs-resource-config-hana-database-backups.html#sap-hana-backup-user-and-hdbuserstore-configuration["SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다"]
 
 ....
 smaadm@hana-1:/usr/sap/SMA/HDB00> hdbuserstore set SMAKEY hana-1:30013 SNAPCENTER <password>

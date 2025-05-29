@@ -1,0 +1,218 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-fas-nfs-storage-sizing.html 
+keywords: storage, sizing, sap, hana, fas, nfs, performance, considerations, mixed, workloads, process, capacity 
+summary: 다음 섹션에서는 SAP HANA용 스토리지 시스템 사이징에 필요한 성능 및 용량 고려 사항에 대해 간략하게 설명합니다. 
+---
+= 스토리지 사이징
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+다음 섹션에서는 SAP HANA용 스토리지 시스템 사이징에 필요한 성능 및 용량 고려 사항에 대해 간략하게 설명합니다.
+
+
+NOTE: 적절한 규모의 스토리지 환경을 구축할 수 있도록 NetApp 또는 NetApp 파트너 세일즈 담당자에게 문의하십시오.
+
+
+
+== 성능 고려 사항
+
+SAP는 데이터베이스 호스트 및 SAP HANA 데이터베이스를 사용하는 애플리케이션의 메모리 크기와 관계없이 모든 운영 SAP HANA 환경에 유효한 정적 스토리지 KPI 세트를 정의했습니다. 이러한 KPI는 단일 호스트, 다중 호스트, HANA 기반 Business Suite, HANA 기반 Business Warehouse, S/4HANA 및 BW/4HANA 환경에 대해 유효합니다. 따라서 현재의 성능 사이징 방식은 스토리지 시스템에 연결된 활성 SAP HANA 호스트의 수에 따라서만 달라집니다.
+
+
+NOTE: 스토리지 성능 KPI는 운영 SAP HANA 시스템에만 필요하지만 모든 HANA 시스템에 구현할 수 있습니다.
+
+SAP는 스토리지에 연결된 활성 SAP HANA 호스트에 대한 스토리지 시스템의 성능을 검증하는 데 사용되는 성능 테스트 툴을 제공합니다.
+
+NetApp은 테스트 및 사전 정의했지만, 특정 스토리지 모델에 연결할 수 있는 SAP HANA 호스트의 최대 수를 테스트하는 동시에 운영 기반 SAP HANA 시스템에 필요한 스토리지 KPI를 충족했습니다.
+
+
+NOTE: 인증된 FAS 제품군의 스토리지 컨트롤러는 다른 디스크 유형 또는 디스크 백 엔드 솔루션과 함께 SAP HANA에도 사용할 수 있습니다. 그러나 NetApp에서 지원하고 SAP HANA TDI 성능 KPI를 충족해야 합니다. NSE(NetApp 스토리지 암호화) 및 NetApp FlexArray 기술이 그 예입니다.
+
+이 문서에서는 SAS HDD 및 SSD(Solid State Drive)에 대한 디스크 사이징에 대해 설명합니다.
+
+
+
+=== HDD를 지원합니다
+
+SAP의 스토리지 성능 KPI를 이행하려면 SAP HANA 노드당 최소 10개의 데이터 디스크(10K RPM SAS)가 필요합니다.
+
+
+NOTE: 이 계산은 데이터베이스의 용량 요구사항과 사용된 스토리지 컨트롤러 및 디스크 쉘프와 무관합니다. 디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.
+
+
+
+=== 솔리드 스테이트 드라이브
+
+SSD의 경우 데이터 디스크 수는 스토리지 컨트롤러에서 SSD 쉘프에 대한 SAS 연결 처리량에 따라 결정됩니다.
+
+SAP 성능 테스트 툴을 실행하여 단일 디스크 쉘프에서 실행 가능한 최대 SAP HANA 호스트 수와 SAP HANA 호스트당 필요한 최소 SSD 수를 확인했습니다. 이 테스트에서는 호스트의 실제 스토리지 용량 요구 사항을 고려하지 않습니다. 또한 필요한 실제 스토리지 구성을 결정하기 위해 용량 요구 사항도 계산해야 합니다.
+
+* SSD 24개가 포함된 12Gb SAS 디스크 쉘프(DS224C)는 디스크 쉘프가 12Gb에 연결된 경우 최대 14개의 SAP HANA 호스트를 지원합니다.
+* 24개의 SSD가 포함된 6Gb SAS 디스크 쉘프(DS2246)는 최대 4개의 SAP HANA 호스트를 지원합니다.
+
+
+SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다.
+
+다음 표에는 디스크 쉘프당 지원되는 SAP HANA 호스트 수가 요약되어 있습니다.
+
+|===
+|  | 6Gb SAS 쉘프(DS2246)가 24개 SSD와 함께 완전히 로드됩니다 | 12GB SAS 쉘프(DS224C)가 24개의 SSD로 완전히 로드됩니다 
+
+
+| 디스크 쉘프당 최대 SAP HANA 호스트 수 | 4 | 14 
+|===
+
+NOTE: 이 계산은 사용되는 스토리지 컨트롤러와 무관합니다. 디스크 셸프를 더 추가해도 스토리지 컨트롤러가 지원할 수 있는 SAP HANA 호스트의 최대 수는 증가하지 않습니다.
+
+
+
+== 혼합 워크로드
+
+동일한 스토리지 컨트롤러 또는 동일한 스토리지 애그리게이트에서 실행되는 SAP HANA 및 기타 애플리케이션 워크로드가 지원됩니다. 그러나 SAP HANA 워크로드를 다른 모든 애플리케이션 워크로드와 분리하는 것이 NetApp 모범 사례입니다.
+
+SAP HANA 워크로드 및 기타 애플리케이션 워크로드를 동일한 스토리지 컨트롤러 또는 동일한 Aggregate에 구축할 수도 있습니다. 그렇다면 혼합 워크로드 환경 내에서 SAP HANA에 적절한 성능을 사용할 수 있는지 확인해야 합니다. 또한, NetApp은 QoS(서비스 품질) 매개 변수를 사용하여 이러한 다른 애플리케이션이 미칠 수 있는 영향을 규제하고 SAP HANA 애플리케이션의 처리량을 보장하는 것이 좋습니다.
+
+SAP 성능 테스트 툴을 사용하여 다른 워크로드에 이미 사용 중인 기존 스토리지 컨트롤러에서 SAP HANA 호스트를 추가로 실행할 수 있는지 확인해야 합니다. SAP 애플리케이션 서버를 SAP HANA 데이터베이스와 동일한 스토리지 컨트롤러 및/또는 Aggregate에 안전하게 배치할 수 있습니다.
+
+
+
+== 용량 고려 사항
+
+SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다 https://launchpad.support.sap.com/#/notes/1900823["SAP Note 1900823"^] 첨부된 백서
+
+
+NOTE: 여러 SAP HANA 시스템을 사용하는 전체 SAP 환경의 용량 사이징은 NetApp의 SAP HANA 스토리지 사이징 툴을 사용하여 결정해야 합니다. 적절한 규모의 스토리지 환경을 위한 스토리지 사이징 프로세스를 검증하려면 NetApp 또는 NetApp 파트너 세일즈 담당자에게 문의하십시오.
+
+
+
+== 성능 테스트 도구 구성
+
+SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다. SAP 성능 테스트 툴을 사용하여 스토리지 성능을 테스트하는 경우에도 이러한 매개 변수를 설정해야 합니다.
+
+NetApp은 최적의 값을 정의하기 위해 성능 테스트를 실시했습니다. 다음 표에는 SAP 성능 테스트 도구의 구성 파일 내에서 설정해야 하는 매개 변수가 나와 있습니다.
+
+|===
+| 매개 변수 | 값 
+
+
+| max_parallel_io_requests | 128 
+
+
+| Async_read_submit입니다 | 켜짐 
+
+
+| Async_write_submit_active입니다 | 켜짐 
+
+
+| Async_write_submit_blocks입니다 | 모두 
+|===
+SAP 테스트 툴 구성에 대한 자세한 내용은 을 참조하십시오 https://service.sap.com/sap/support/notes/1943937["SAP 노트 1943937"^] HWCCT(SAP HANA 1.0) 및 의 경우 https://launchpad.support.sap.com/["SAP 메모 2493172"^] HCMT/HCOT용(SAP HANA 2.0).
+
+다음 예제는 HCMT/HCOT 실행 계획에 대해 변수를 설정하는 방법을 보여줍니다.
+
+....
+…{
+         "Comment": "Log Volume: Controls whether read requests are submitted asynchronously, default is 'on'",
+         "Name": "LogAsyncReadSubmit",
+         "Value": "on",
+         "Request": "false"
+      },
+      {
+         "Comment": "Data Volume: Controls whether read requests are submitted asynchronously, default is 'on'",
+         "Name": "DataAsyncReadSubmit",
+         "Value": "on",
+         "Request": "false"
+      },
+      {
+         "Comment": "Log Volume: Controls whether write requests can be submitted asynchronously",
+         "Name": "LogAsyncWriteSubmitActive",
+         "Value": "on",
+         "Request": "false"
+      },
+      {
+         "Comment": "Data Volume: Controls whether write requests can be submitted asynchronously",
+         "Name": "DataAsyncWriteSubmitActive",
+         "Value": "on",
+         "Request": "false"
+      },
+      {
+         "Comment": "Log Volume: Controls which blocks are written asynchronously. Only relevant if AsyncWriteSubmitActive is 'on' or 'auto' and file system is flagged as requiring asynchronous write submits",
+         "Name": "LogAsyncWriteSubmitBlocks",
+         "Value": "all",
+         "Request": "false"
+      },
+      {
+         "Comment": "Data Volume: Controls which blocks are written asynchronously. Only relevant if AsyncWriteSubmitActive is 'on' or 'auto' and file system is flagged as requiring asynchronous write submits",
+         "Name": "DataAsyncWriteSubmitBlocks",
+         "Value": "all",
+         "Request": "false"
+      },
+      {
+         "Comment": "Log Volume: Maximum number of parallel I/O requests per completion queue",
+         "Name": "LogExtMaxParallelIoRequests",
+         "Value": "128",
+         "Request": "false"
+      },
+      {
+         "Comment": "Data Volume: Maximum number of parallel I/O requests per completion queue",
+         "Name": "DataExtMaxParallelIoRequests",
+         "Value": "128",
+         "Request": "false"
+      }, …
+....
+이러한 변수는 테스트 구성에 사용해야 합니다. 일반적으로 SAP가 HCMT/HCOT 도구와 함께 제공하는 사전 정의된 실행 계획이 있는 경우입니다. 다음 4K 로그 쓰기 테스트의 예는 실행 계획에서 가져온 것입니다.
+
+....
+…
+      {
+         "ID": "D664D001-933D-41DE-A904F304AEB67906",
+         "Note": "File System Write Test",
+         "ExecutionVariants": [
+            {
+               "ScaleOut": {
+                  "Port": "${RemotePort}",
+                  "Hosts": "${Hosts}",
+                  "ConcurrentExecution": "${FSConcurrentExecution}"
+               },
+               "RepeatCount": "${TestRepeatCount}",
+               "Description": "4K Block, Log Volume 5GB, Overwrite",
+               "Hint": "Log",
+               "InputVector": {
+                  "BlockSize": 4096,
+                  "DirectoryName": "${LogVolume}",
+                  "FileOverwrite": true,
+                  "FileSize": 5368709120,
+                  "RandomAccess": false,
+                  "RandomData": true,
+                  "AsyncReadSubmit": "${LogAsyncReadSubmit}",
+                  "AsyncWriteSubmitActive": "${LogAsyncWriteSubmitActive}",
+                  "AsyncWriteSubmitBlocks": "${LogAsyncWriteSubmitBlocks}",
+                  "ExtMaxParallelIoRequests": "${LogExtMaxParallelIoRequests}",
+                  "ExtMaxSubmitBatchSize": "${LogExtMaxSubmitBatchSize}",
+                  "ExtMinSubmitBatchSize": "${LogExtMinSubmitBatchSize}",
+                  "ExtNumCompletionQueues": "${LogExtNumCompletionQueues}",
+                  "ExtNumSubmitQueues": "${LogExtNumSubmitQueues}",
+                  "ExtSizeKernelIoQueue": "${ExtSizeKernelIoQueue}"
+               }
+            }, …
+....
+
+
+== 스토리지 사이징 프로세스 개요
+
+HANA 호스트당 디스크 수와 각 스토리지 모델의 SAP HANA 호스트 밀도는 SAP 성능 테스트 툴을 통해 결정되었습니다.
+
+사이징 프로세스에는 운영 및 비운영 SAP HANA 호스트 수, 각 호스트의 RAM 크기, 스토리지 기반 Snapshot 복사본의 백업 보존과 같은 세부 정보가 필요합니다. SAP HANA 호스트 수에 따라 스토리지 컨트롤러 및 필요한 디스크 수가 결정됩니다.
+
+RAM의 크기, 각 SAP HANA 호스트의 디스크의 순 데이터 크기 및 Snapshot 복사본 백업 보존 기간은 용량 사이징 중에 입력으로 사용됩니다.
+
+다음 그림은 사이징 프로세스를 요약합니다.
+
+image:saphana-fas-nfs_image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

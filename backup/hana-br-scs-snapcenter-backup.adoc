@@ -1,0 +1,124 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-br-scs-snapcenter-backup.html 
+keywords: solution components, supported releases, configuration, enhancements 
+summary: 이 섹션에는 구성 요소, 지원되는 SAP HANA 릴리즈 및 구성, 이 솔루션에 사용된 SnapCenter 4.6 개선 사항이 나와 있습니다. 
+---
+= SnapCenter SAP HANA 백업 솔루션
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에는 구성 요소, 지원되는 SAP HANA 릴리즈 및 구성, 이 솔루션에 사용된 SnapCenter 4.6 개선 사항이 나와 있습니다.
+
+
+
+== 솔루션 구성 요소
+
+SAP HANA용 SnapCenter 백업 솔루션은 다음과 같은 영역을 다룹니다.
+
+* 스토리지 기반 Snapshot 복사본으로 SAP HANA 데이터 백업:
++
+** 백업 스케줄링
+** 보존 관리
+** SAP HANA 백업 카탈로그 관리
+
+
+* 스토리지 기반 Snapshot 복사본으로 데이터를 비볼륨(예: '/HANA/공유') 백업:
++
+** 백업 스케줄링
+** 보존 관리
+
+
+* 오프 사이트 백업 또는 재해 복구 위치로 복제:
++
+** SAP HANA 데이터 Snapshot 백업
+** 비 데이터 볼륨
+** 오프사이트 백업 스토리지에서 보존 관리가 구성됩니다
+** SAP HANA 백업 카탈로그 관리
+
+
+* 파일 기반 백업을 사용한 데이터베이스 블록 무결성 검사:
++
+** 백업 스케줄링
+** 보존 관리
+** SAP HANA 백업 카탈로그 관리
+
+
+* HANA 데이터베이스 로그 백업의 보존 관리:
++
+** 데이터 백업 보존에 기반한 보존 관리
+** SAP HANA 백업 카탈로그 관리
+
+
+* HANA 데이터베이스 자동 검색
+* 자동 복원 및 복구
+* SAP HANA 멀티 테넌트 데이터베이스 컨테이너(MDC) 시스템을 사용한 단일 테넌트 복원 작업
+
+
+데이터베이스 데이터 파일 백업은 SnapCenter에서 SAP HANA용 플러그인과 함께 실행됩니다. 이 플러그인은 운영 스토리지 시스템에 생성된 스냅샷 복사본이 SAP HANA 데이터베이스의 일관된 이미지를 기반으로 생성되도록 SAP HANA 데이터베이스 백업 저장 지점을 트리거합니다.
+
+SnapCenter를 사용하면 SnapVault 또는 NetApp SnapMirror를 사용하여 정합성이 보장된 데이터베이스 이미지를 오프 사이트 백업 또는 재해 복구 위치로 복제할 수 있습니다. 피처. 일반적으로 기본 및 오프사이트 백업 스토리지의 백업에 대해 서로 다른 보존 정책이 정의됩니다. SnapCenter는 운영 스토리지의 보존을 처리하며, ONTAP는 오프 사이트 백업 스토리지의 보존을 처리합니다.
+
+또한 SnapCenter를 사용하면 모든 SAP HANA 관련 리소스를 완벽하게 백업할 수 있으며, 스토리지 기반 Snapshot 복사본과 함께 SAP HANA 플러그인을 통해 데이터가 아닌 모든 볼륨을 백업할 수 있습니다. 개별 보존 및 보호 정책을 사용할 수 있도록 데이터베이스 데이터 백업과 별도로 비데이터 볼륨을 예약할 수 있습니다.
+
+SAP HANA 데이터베이스는 로그 백업을 자동으로 실행합니다. 복구 지점 목표에 따라 로그 백업의 저장 위치에 대한 몇 가지 옵션이 있습니다.
+
+* 로그 백업은 NetApp MetroCluster HA(고가용성) 및 재해 복구 스토리지 소프트웨어를 사용하여 데이터를 두 번째 위치에 동기식으로 미러링하는 스토리지 시스템에 기록됩니다.
+* 로그 백업 대상은 동일한 기본 스토리지 시스템에 구성한 다음 SnapMirror를 사용하여 보조 스토리지에 동기 또는 비동기적으로 복제할 수 있습니다.
+* 로그 백업 대상은 데이터베이스 백업이 SnapVault로 복제되는 동일한 오프사이트 백업 스토리지에 구성할 수 있습니다. 이 구성을 사용하면 오프 사이트 백업 스토리지에 로그 백업을 기록할 수 있도록 운영 스토리지의 가용성 요구 사항과 같은 가용성 요구 사항이 있습니다.
+
+
+SAP는 블록 무결성 검사를 실행하기 위해 스토리지 기반 스냅샷 백업을 주간 파일 기반 백업과 결합할 것을 권장합니다. 블록 무결성 검사는 SnapCenter 내에서 실행할 수 있습니다. 구성 가능한 보존 정책을 기반으로 SnapCenter는 운영 스토리지, 로그 파일 백업 및 SAP HANA 백업 카탈로그에서 데이터 파일 백업의 하우스키핑을 관리합니다.
+
+
+NOTE: SnapCenter는 운영 스토리지에서 보존을 처리하고, ONTAP은 보조 백업 보존을 관리합니다.
+
+다음 그림에서는 오프사이트 백업 스토리지의 NFS 마운트에 로그 백업을 기록하는 데이터베이스 및 로그 백업 구성의 개요를 보여 줍니다.
+
+image:saphana-br-scs-image7.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+비 데이터 볼륨의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter는 다음 작업을 수행합니다.
+
+. 비 데이터 볼륨의 스토리지 스냅샷 복사본 생성
+. 구성된 경우 데이터 볼륨에 대한 SnapVault 또는 SnapMirror 업데이트 실행
+. 정의된 보존 정책을 기반으로 운영 스토리지에서 스토리지 스냅샷 복사본 삭제
+
+
+SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter은 다음과 같은 작업을 수행합니다.
+
+. 지속성 계층에서 일관된 이미지를 생성하기 위한 SAP HANA 백업 세이브 포인트 생성
+. 데이터 볼륨의 스토리지 스냅샷 복사본 생성:
+. SAP HANA 백업 카탈로그에 스토리지 Snapshot 백업을 등록합니다.
+. SAP HANA 백업 저장 지점의 릴리즈입니다.
+. 구성된 경우 데이터 볼륨에 대한 SnapVault 또는 SnapMirror 업데이트 실행
+. 정의된 보존 정책을 기반으로 운영 스토리지에서 스토리지 스냅샷 복사본 삭제
+. 기본 또는 오프사이트 백업 스토리지에 백업이 더 이상 존재하지 않는 경우 SAP HANA 백업 카탈로그 항목 삭제
+. 보존 정책을 기반으로 백업을 삭제하거나 수동으로 삭제할 때마다 SnapCenter는 가장 오래된 데이터 백업보다 오래된 모든 로그 백업을 삭제합니다. 로그 백업은 파일 시스템과 SAP HANA 백업 카탈로그에서 삭제됩니다.
+
+
+
+
+== 지원되는 SAP HANA 릴리즈 및 구성
+
+SnapCenter Cloud Volumes ONTAP는 NFS 또는 FC 연결 NetApp 스토리지 시스템(AFF 및 FAS)을 사용하는 SAP HANA 단일 호스트 및 다중 호스트 구성은 물론, NFS를 사용하는 AWS, Azure, Google Cloud Platform 및 AWS FSx ONTAP에서 실행되는 SAP HANA 시스템도 지원합니다.
+
+SnapCenter는 다음과 같은 SAP HANA 아키텍처 및 릴리즈를 지원합니다.
+
+* SAP HANA 단일 컨테이너: SAP HANA 1.0 SPS12
+* SAP HANA 멀티 테넌트 - 데이터베이스 컨테이너(MDC) 단일 테넌트: SAP HANA 2.0 SPS3 이상
+* SAP HANA 멀티 테넌트 - 데이터베이스 컨테이너(MDC) 다중 테넌트: SAP HANA 2.0 SPS4 이상
+
+
+
+
+== SnapCenter 4.6 개선 사항
+
+버전 4.6부터 SnapCenter는 HANA 시스템 복제 관계에 구성된 HANA 시스템의 자동 검색을 지원합니다. 각 호스트는 해당 물리적 IP 주소(호스트 이름)와 스토리지 계층의 개별 데이터 볼륨을 사용하여 구성됩니다. 두 SnapCenter 리소스가 리소스 그룹에 결합되어 SnapCenter는 운영 또는 보조 호스트를 자동으로 식별하며, 그런 다음 필요한 백업 작업을 적절히 실행합니다. SnapCenter로 생성된 스냅샷 및 파일 기반 백업의 보존 관리는 두 호스트 모두에서 수행되므로 이전 백업이 현재 보조 호스트에서도 삭제됩니다. 다음 그림에서는 개략적인 개요를 보여 줍니다. SnapCenter에서 HANA 시스템 복제 지원 HANA 시스템의 구성 및 운영에 대한 자세한 설명은 에서 확인할 수 있습니다 https://www.netapp.com/pdf.html?item=/media/17030-tr4719pdf.pdf["TR-4719 SAP HANA 시스템 복제, SnapCenter를 통한 백업 및 복구"^].
+
+image:saphana-br-scs-image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

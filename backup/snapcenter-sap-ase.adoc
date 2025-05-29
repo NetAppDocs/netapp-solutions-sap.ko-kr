@@ -440,7 +440,7 @@ video::0aba8433-e0d0-4c40-be0a-b2b900c1fb54[panopto,width=360]
 ** 1585981-SYB: SAP ASE의 복구 성능 보장: https://me.sap.com/notes/1585981/E[]
 ** 1588316-SYB:자동 데이터베이스 및 로그 백업 구성: https://me.sap.com/notes/1588316/E[]
 ** NetApp 제품 설명서: https://www.netapp.com/support-and-training/documentation/[]
-** NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보: https://docs.netapp.com/us-en/netapp-solutions-sap[]
+** link:../index.html["NetApp SAP 솔루션 – 활용 사례, 모범 사례 및 이점에 대한 정보"]
 
 
 

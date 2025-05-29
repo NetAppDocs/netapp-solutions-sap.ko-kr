@@ -121,7 +121,7 @@ alpaca와 NetApp 데이터 관리 기술을 함께 사용하면 SAP 시스템 �
 본 문서에 포함된 정보에 대한 자세한 내용은 다음 문서 및 웹 사이트를 참조하십시오.
 
 * link:https://pcg.io/de/sap/alpaca/["알파카"]
-* link:https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화"]
+* link:../lifecycle/sc-copy-clone-introduction.html["SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화"]
 * link:https://docs.netapp.com/us-en/snapcenter/sc-automation/reference_supported_rest_apis.html["SnapCenter 서버 및 플러그인에 지원되는 REST API"]
 
 

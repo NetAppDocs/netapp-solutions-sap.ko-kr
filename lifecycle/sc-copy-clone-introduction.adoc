@@ -65,10 +65,10 @@ SAP HANA용 플러그인을 갖춘 NetApp SnapCenter는 애플리케이션 정�
 
 SAP 테스트 시스템의 완전 자동화된 엔드 투 엔드 프로비저닝은 타사 툴과 NetApp 기능의 통합을 통해 수행할 수 있습니다. 자세한 내용은 다음 웹 사이트를 참조하십시오.
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/lama-ansible-introduction.html["TR-4953: Ansible을 사용한 NetApp SAP 환경 관리 통합"]
+link:lama-ansible-introduction.html["TR-4953: Ansible을 사용한 NetApp SAP 환경 관리 통합"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/libelle-sc-overview.html["TR-4929: Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화(netapp.com)"]
+link:libelle-sc-overview.html["TR-4929: Libelle SystemCopy를 사용하여 SAP 시스템 복사 작업 자동화(netapp.com)"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/briefs/sap-alpaca-automation.html#solution-overview["SAP 시스템 복사 및 앰프, #44, Refresh  amp, #44, alpaca 및 NetApp SnapCenter를 통해 복제 워크플로우 자동화"]
+link:../briefs/sap-alpaca-automation.html#solution-overview["SAP 시스템 복사 및 앰프, #44, Refresh  amp, #44, alpaca 및 NetApp SnapCenter를 통해 복제 워크플로우 자동화"]
 
-https://docs.netapp.com/us-en/netapp-solutions-sap/briefs/sap-avantra-automation.html#solution-overview["Avantra 및 NetApp SnapCenter를 사용하여 SAP 시스템 복제 및 앰프, #44, Refresh  amp, #44, 복제 워크플로우 자동화"]
+link:../briefs/sap-avantra-automation.html#solution-overview["Avantra 및 NetApp SnapCenter를 사용하여 SAP 시스템 복제 및 앰프, #44, Refresh  amp, #44, 복제 워크플로우 자동화"]

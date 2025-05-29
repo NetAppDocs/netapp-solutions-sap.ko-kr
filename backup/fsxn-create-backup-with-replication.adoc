@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: backup/fsxn-create-backup-with-replication.html 
+keywords: backup, local snapshot, copy 
+summary: 이 섹션에서는 복제를 사용하여 백업을 생성하는 방법에 대해 설명합니다. 
+---
+= 복제를 사용하여 백업을 생성합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+백업은 로컬 스냅샷 복사본과 같은 방식으로 생성됩니다.
+
+복제를 사용하여 백업을 생성하려면 백업 복제를 포함하는 정책을 선택하고 백업 을 클릭합니다.
+
+image:amazon-fsx-image88.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SnapCenter 작업 로그 내에서 SnapVault 업데이트 작업을 시작하는 보조 업데이트 단계를 볼 수 있습니다. 소스 볼륨에서 타겟 볼륨으로 변경된 블록 복제
+
+image:amazon-fsx-image89.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+ONTAP 파일 시스템용 FSx에서 소스 볼륨의 스냅샷은 SnapCenter 정책에 구성된 것처럼 SnapMirror 레이블 "SnapCenter"를 사용하여 생성됩니다.
+
+....
+FsxId00fa9e3c784b6abbb::> snapshot show -vserver sapcc-hana-svm -volume PFX_data_mnt00001 -fields snapmirror-label
+vserver        volume            snapshot                                                    snapmirror-label
+-------------- ----------------- ----------------------------------------------------------- ----------------
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_03-31-2022_13.10.26.5482 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_03-31-2022_14.00.05.2023 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_04-05-2022_08.00.06.3380 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_04-05-2022_14.00.01.6482 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_04-14-2022_20.00.05.0316 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_04-28-2022_08.00.06.3629 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnap_Hourly_04-28-2022_14.00.01.7275 -
+sapcc-hana-svm PFX_data_mnt00001 SnapCenter_hana-1_LocalSnapAndSnapVault_Daily_04-28-2022_16.21.41.5853
+                                                                                             snapcenter
+8 entries were displayed.
+....
+타겟 볼륨에 동일한 이름의 스냅샷 복사본이 생성됩니다.
+
+....
+FsxId05f7f00af49dc7a3e::> snapshot show -vserver sapcc-backup-target-zone5 -volume PFX_data_mnt00001 -fields snapmirror-label
+vserver                   volume            snapshot                                                               snapmirror-label
+------------------------- ----------------- ---------------------------------------------------------------------- ----------------
+sapcc-backup-target-zone5 PFX_data_mnt00001 SnapCenter_hana-1_LocalSnapAndSnapVault_Daily_04-28-2022_16.21.41.5853 snapcenter
+FsxId05f7f00af49dc7a3e::>
+....
+새로운 스냅샷 백업도 HANA 백업 카탈로그에 나와 있습니다.
+
+image:amazon-fsx-image90.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SnapCenter에서 토폴로지 뷰에서 볼트 복사를 클릭하여 복제된 백업을 나열할 수 있습니다.
+
+image:amazon-fsx-image91.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

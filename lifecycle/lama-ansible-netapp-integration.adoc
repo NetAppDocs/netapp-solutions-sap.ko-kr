@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/lama-ansible-netapp-integration.html 
+keywords: integration, lama, ansible, 
+summary: 이 통합 방식에서는 NetApp 스토리지 관리를 위한 Ansible 플레이북을 사용하여 SAP LaMa 맞춤형 프로비저닝 및 운영 후크를 사용합니다. 다음 그림에서는 LaMa 측 구성과 예제 구현의 해당 구성 요소를 개괄적으로 보여 줍니다. 
+---
+= Ansible을 사용하여 NetApp SAP LaMa 통합
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 통합 방식에서는 NetApp 스토리지 관리를 위한 Ansible 플레이북을 사용하여 SAP LaMa 맞춤형 프로비저닝 및 운영 후크를 사용합니다. 다음 그림에서는 LaMa 측 구성과 예제 구현의 해당 구성 요소를 개괄적으로 보여 줍니다.
+
+image:lama-ansible-image6.png["SAP LaMa, Ansible Control Node, NetApp Storage라는 레이블이 붙은 세 개의 상자가 있는 매우 복잡한 이미지입니다. 각 상자에는 각 레벨에서 수행되는 각 프로세스 단계가 포함되어 있습니다."]
+
+Ansible 제어 노드 역할을 하는 중앙 호스트는 SAP LaMa의 요청을 실행하고 Ansible 플레이북을 사용하여 NetApp 스토리지 운영을 트리거하는 데 사용됩니다. SAP LaMa에 대한 통신 게이트웨이로 호스트를 사용할 수 있도록 SAP 호스트 에이전트 구성 요소가 이 호스트에 설치되어 있어야 합니다.
+
+LaMa Automation Studio 내에서 Ansible 호스트의 SAP 호스트 에이전트에 등록된 공급자가 정의됩니다. Host Agent 구성 파일은 요청된 작업에 따라 명령줄 매개 변수 집합을 사용하여 SAP LaMa에서 호출되는 셸 스크립트를 가리킵니다.
+
+LaMa Automation Studio 내에서 사용자 지정 프로비저닝과 사용자 지정 후크는 프로비저닝 중에 스토리지 클론 생성 작업을 실행하고, 시스템 프로비저닝 해제 시 정리 작업을 실행하도록 정의됩니다. 그런 다음 Ansible 제어 노드의 셸 스크립트가 해당하는 Ansible 플레이북을 실행하여 스냅샷 및 FlexClone 작업을 트리거하고 프로비저닝 해제 워크플로우에서 클론을 삭제합니다.
+
+NetApp Ansible 모듈과 LaMa Provider 정의에 대한 자세한 내용은 다음 사이트에서 확인할 수 있습니다.
+
+* https://www.ansible.com/integrations/infrastructure/netapp["NetApp Ansible 모듈"^]
+* https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/bf6b3e43340a4cbcb0c0f3089715c068.html["SAP LaMa 설명서 – 공급자 정의"^]
+

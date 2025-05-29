@@ -1,0 +1,276 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-nfs-host-setup.html 
+keywords: SUSE Linux Enterprise Server, configuration, mount points, LaMa 
+summary: 이 섹션에 설명된 모든 호스트 설정 단계는 물리적 서버의 SAP HANA 환경과 VMware vSphere에서 실행되는 SAP HANA 모두에 대해 유효합니다. 
+---
+= 호스트 설정
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에 설명된 모든 호스트 설정 단계는 물리적 서버의 SAP HANA 환경과 VMware vSphere에서 실행되는 SAP HANA 모두에 대해 유효합니다.
+
+
+
+== SUSE Linux Enterprise Server의 구성 매개 변수입니다
+
+SAP HANA에서 생성되는 워크로드에 따라 각 SAP HANA 호스트의 추가 커널 및 구성 매개 변수를 조정해야 합니다.
+
+
+
+=== SUSE Linux Enterprise Server 12 및 15
+
+SUSE Linux Enterprise Server 12 SP1부터 '/etc/sysctl.d' 디렉토리의 구성 파일에 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.
+
+....
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 131072 16777216
+net.ipv4.tcp_wmem = 4096 16384  16777216
+net.core.netdev_max_backlog = 300000
+net.ipv4.tcp_slow_start_after_idle=0
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_sack = 1
+sunrpc.tcp_max_slot_table_entries = 128
+....
+
+NOTE: SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값을 설정할 수 있습니다. 자세한 내용은 을 참조하십시오 https://launchpad.support.sap.com/#/notes/3024346["SAP 메모 3024346"^] (SAP 로그인 필요).
+
+....
+
+....
+
+
+== Red Hat Enterprise Linux 7.2 이상에 대한 구성 매개 변수
+
+SAP HANA에서 생성되는 워크로드에 대해 각 SAP HANA 호스트에서 추가 커널 및 구성 매개 변수를 조정해야 합니다.
+
+Red Hat Enterprise Linux 7.2부터 '/etc/sysctl.d' 디렉토리의 구성 파일에서 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.
+
+....
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 131072 16777216
+net.ipv4.tcp_wmem = 4096 16384  16777216
+net.core.netdev_max_backlog = 300000
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_sack = 1
+sunrpc.tcp_max_slot_table_entries = 128
+....
+
+NOTE: RedHat Enterprise Linux 버전 8.6부터 SAP용 RHEL 시스템 역할(Ansible)을 사용하여 설정을 적용할 수도 있습니다. 을 참조하십시오 https://launchpad.support.sap.com/#/notes/3024346["SAP 메모 3024346"^] (SAP 로그인 필요).
+
+
+
+== /HANA/공유 볼륨에 하위 디렉토리를 생성합니다
+
+
+NOTE: 다음 예에서는 SID = NF2인 SAP HANA 데이터베이스를 보여 줍니다.
+
+필요한 하위 디렉터리를 만들려면 다음 작업 중 하나를 수행합니다.
+
+* 단일 호스트 시스템의 경우, '/hana/shared' 볼륨을 마운트하고 '공유' 및 'usr-sap' 하위 디렉토리를 만듭니다.
+
+
+....
+sapcc-hana-tst-06:/mnt # mount <storage-hostname>:/NF2_shared /mnt/tmp
+sapcc-hana-tst-06:/mnt # cd /mnt/tmp
+sapcc-hana-tst-06:/mnt/tmp # mkdir shared
+sapcc-hana-tst-06:/mnt/tmp # mkdir usr-sap
+sapcc-hana-tst-06:/mnt/tmp # cd ..
+sapcc-hana-tst-06:/mnt # umount /mnt/tmp
+....
+* 다중 호스트 시스템의 경우, '/hana/shared' 볼륨을 마운트하고 각 호스트의 '공유' 및 'usr-sap' 하위 디렉토리를 만듭니다.
++
+예제 명령은 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
+
+
+
+....
+sapcc-hana-tst-06:/mnt # mount <storage-hostname>:/NF2_shared /mnt/tmp
+sapcc-hana-tst-06:/mnt # cd /mnt/tmp
+sapcc-hana-tst-06:/mnt/tmp # mkdir shared
+sapcc-hana-tst-06:/mnt/tmp # mkdir usr-sap-host1
+sapcc-hana-tst-06:/mnt/tmp # mkdir usr-sap-host2
+sapcc-hana-tst-06:/mnt/tmp # mkdir usr-sap-host3
+sapcc-hana-tst-06:/mnt/tmp # cd ..
+sapcc-hana-tst-06:/mnt # umount /mnt/tmp
+....
+
+
+== 마운트 지점을 생성합니다
+
+
+NOTE: 다음 예에서는 SID = NF2인 SAP HANA 데이터베이스를 보여 줍니다.
+
+필요한 마운트 지점 디렉토리를 생성하려면 다음 작업 중 하나를 수행합니다.
+
+* 단일 호스트 시스템의 경우 마운트 지점을 생성하고 데이터베이스 호스트에 대한 권한을 설정합니다.
+
+
+....
+sapcc-hana-tst-06:/ # mkdir -p /hana/data/NF2/mnt00001
+sapcc-hana-tst-06:/ # mkdir -p /hana/log/NF2/mnt00001
+sapcc-hana-tst-06:/ # mkdir -p /hana/shared
+sapcc-hana-tst-06:/ # mkdir -p /usr/sap/NF2
+
+sapcc-hana-tst-06:/ # chmod –R 777 /hana/log/NF2
+sapcc-hana-tst-06:/ # chmod –R 777 /hana/data/NF2
+sapcc-hana-tst-06:/ # chmod -R 777 /hana/shared
+sapcc-hana-tst-06:/ # chmod -R 777 /usr/sap/NF2
+....
+* 다중 호스트 시스템의 경우 마운트 지점을 생성하고 모든 작업자 및 대기 호스트에 대한 권한을 설정합니다. 다음 명령 예는 2+1 다중 호스트 HANA 시스템에 대한 것입니다.
++
+** 첫 번째 작업자 호스트:
+
+
+
+
+....
+sapcc-hana-tst-06:~ # mkdir -p /hana/data/NF2/mnt00001
+sapcc-hana-tst-06:~ # mkdir -p /hana/data/NF2/mnt00002
+sapcc-hana-tst-06:~ # mkdir -p /hana/log/NF2/mnt00001
+sapcc-hana-tst-06:~ # mkdir -p /hana/log/NF2/mnt00002
+sapcc-hana-tst-06:~ # mkdir -p /hana/shared
+sapcc-hana-tst-06:~ # mkdir -p /usr/sap/NF2
+
+sapcc-hana-tst-06:~ # chmod -R 777 /hana/log/NF2
+sapcc-hana-tst-06:~ # chmod -R 777 /hana/data/NF2
+sapcc-hana-tst-06:~ # chmod -R 777 /hana/shared
+sapcc-hana-tst-06:~ # chmod -R 777 /usr/sap/NF2
+....
+* 보조 작업자 호스트:
+
+
+....
+sapcc-hana-tst-07:~ # mkdir -p /hana/data/NF2/mnt00001
+sapcc-hana-tst-07:~ # mkdir -p /hana/data/NF2/mnt00002
+sapcc-hana-tst-07:~ # mkdir -p /hana/log/NF2/mnt00001
+sapcc-hana-tst-07:~ # mkdir -p /hana/log/NF2/mnt00002
+sapcc-hana-tst-07:~ # mkdir -p /hana/shared
+sapcc-hana-tst-07:~ # mkdir -p /usr/sap/NF2
+
+sapcc-hana-tst-07:~ # chmod -R 777 /hana/log/NF2
+sapcc-hana-tst-07:~ # chmod -R 777 /hana/data/NF2
+sapcc-hana-tst-07:~ # chmod -R 777 /hana/shared
+sapcc-hana-tst-07:~ # chmod -R 777 /usr/sap/NF2
+....
+* 대기 호스트:
+
+
+....
+sapcc-hana-tst-08:~ # mkdir -p /hana/data/NF2/mnt00001
+sapcc-hana-tst-08:~ # mkdir -p /hana/data/NF2/mnt00002
+sapcc-hana-tst-08:~ # mkdir -p /hana/log/NF2/mnt00001
+sapcc-hana-tst-08:~ # mkdir -p /hana/log/NF2/mnt00002
+sapcc-hana-tst-08:~ # mkdir -p /hana/shared
+sapcc-hana-tst-08:~ # mkdir -p /usr/sap/NF2
+
+sapcc-hana-tst-08:~ # chmod -R 777 /hana/log/NF2
+sapcc-hana-tst-08:~ # chmod -R 777 /hana/data/NF2
+sapcc-hana-tst-08:~ # chmod -R 777 /hana/shared
+sapcc-hana-tst-08:~ # chmod -R 777 /usr/sap/NF2
+....
+
+
+== 파일 시스템을 마운트합니다
+
+NFS 버전 및 ONTAP 릴리즈별로 다른 마운트 옵션을 사용해야 합니다. 다음 파일 시스템이 호스트에 마운트되어야 합니다.
+
+* '/HANA/data/SID/mnt0000 *'
+* '/HANA/log/SID/mnt0000 *'
+* '/hana/shared
+* '/usr/sap/sid'
+
+
+다음 표에는 단일 호스트 및 다중 호스트 SAP HANA 데이터베이스의 다양한 파일 시스템에 사용해야 하는 NFS 버전이 나와 있습니다.
+
+|===
+| 파일 시스템 | SAP HANA 단일 호스트 | SAP HANA 다중 호스트 
+
+
+| /HANA/data/SID/mnt0000 * | NFSv3 또는 NFSv4 | NFSv4 
+
+
+| /HANA/log/SID/mnt0000 * | NFSv3 또는 NFSv4 | NFSv4 
+
+
+| /HANA/공유 | NFSv3 또는 NFSv4 | NFSv3 또는 NFSv4 
+
+
+| /usr/sap/sid | NFSv3 또는 NFSv4 | NFSv3 또는 NFSv4 
+|===
+다음 표에는 다양한 NFS 버전 및 ONTAP 릴리즈의 마운트 옵션이 나와 있습니다. 공통 매개 변수는 NFS 및 ONTAP 버전과 무관합니다.
+
+
+NOTE: SAP LaMa를 사용하려면 /usr/sap/sid 디렉토리가 로컬이어야 합니다. 따라서 SAP LaMa를 사용하는 경우 /usr/sap/sid에 대한 NFS 볼륨을 마운트하지 마십시오.
+
+NFSv3의 경우 소프트웨어나 서버 장애 발생 시 NFS 잠금 정리 작업을 방지하려면 NFS 잠금을 해제해야 합니다.
+
+ONTAP 9를 사용하면 NFS 전송 크기를 최대 1MB까지 구성할 수 있습니다. 특히, 스토리지 시스템에 40GbE 또는 더 빠른 연결을 사용하여 예상 처리량 값을 얻으려면 전송 크기를 1MB로 설정해야 합니다.
+
+|===
+| 공통 매개 변수입니다 | NFSv3 | NFSv4 | ONTAP 9를 사용한 NFS 전송 크기입니다 | ONTAP 8을 사용한 NFS 전송 크기입니다 
+
+
+| rw, bg, hard, timeo = 600, nocatime | nfsvers = 3, nolock | nfsvers = 4.1, 잠금 | rsize = 1048576, wsize = 262144 | rsize=65536, wsize=65536 
+|===
+
+NOTE: NFSv3을 사용하여 읽기 성능을 향상시키려면 SUSE Linux Enterprise Server 12 SP4 이상 및 RedHat Enterprise Linux(RHEL) 8.3 이상에서 사용할 수 있는 "nconnect=n" 마운트 옵션을 사용하는 것이 좋습니다.
+
+
+NOTE: 성능 테스트를 통해 그 결과가 나왔습니다 `nconnect=4` 데이터 볼륨에 대해 양호한 읽기 결과를 제공합니다. 로그 쓰기는 과 같은 세션 수가 낮을 때 도움이 될 수 있습니다 `nconnect=2`. 공유 볼륨은 'nconnect' 옵션을 사용할 경우 많은 이점을 얻을 수 있습니다. NFS 서버의 첫 번째 마운트(IP 주소)는 사용 중인 세션의 양을 정의합니다. 동일한 IP 주소에 추가로 마운트해도 nconnect에 다른 값을 사용하더라도 이 값은 변경되지 않습니다.
+
+
+NOTE: ONTAP 9.8 및 SUSE SLES15SP2 또는 RedHat RHEL 8.4 이상부터 NFSv4.1용 nconnect 옵션을 지원합니다. 자세한 내용은 Linux 공급업체 설명서를 참조하십시오.
+
+
+NOTE: nconnect가 NFSv4.x와 함께 사용되는 경우 NFSv4.x 세션 슬롯의 양은 다음 규칙에 따라 조정해야 합니다. 세션 슬롯의 양은 <nconnect value> x 64입니다. 호스트에서 재부팅이 완료된
+`echo options nfs max_session_slots=<calculated value> > /etc/modprobe.d/nfsclient.conf` 후 종료됩니다. 서버 측 값도 조정되어야 하며 에 설명된 대로 세션 슬롯 수를 설정해야 합니다 link:hana-aff-nfs-storage-controller-setup.html#nfs-configuration-for-nfsv4["NFSv4에 대한 NFS 구성."]
+
+다음 예에서는 NFSv3 사용 시 SID=NF2, 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K인 단일 호스트 SAP HANA 데이터베이스를 보여 줍니다. 시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
+
+. 필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.
++
+....
+sapcc-hana-tst-06:/ # cat /etc/fstab
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=3,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/usr-sap /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data01>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+....
+. 모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.
+
+
+다음 예에서는 데이터 및 로그 파일 시스템에 NFSv4.1을 사용하고 "/HANA/공유" 및 "/usr/SAP/NF2" 파일 시스템에 대해 NFSv3을 사용하는 SID=NF2인 다중 호스트 SAP HANA 데이터베이스를 보여 줍니다. 읽기의 경우 1MB NFS 전송, 쓰기의 경우 256K가 사용됩니다.
+
+. 모든 호스트의 '/etc/fstab' 구성 파일에 필요한 파일 시스템을 추가합니다.
++
+
+NOTE: 를 클릭합니다 `/usr/sap/NF2` 파일 시스템은 데이터베이스 호스트마다 다릅니다. 다음 예는 을 보여줍니다 `/NF2_shared/usr-sap-host1`.
+
++
+....
+stlrx300s8-5:/ # cat /etc/fstab
+<storage-vif-data01>:/NF2_data_mnt00001 /hana/data/NF2/mnt00001 nfs  rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data02>:/NF2_data_mnt00002 /hana/data/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-log01>:/NF2_log_mnt00001 /hana/log/NF2/mnt00001 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-log02>:/NF2_log_mnt00002 /hana/log/NF2/mnt00002 nfs rw,nfsvers=4.1,hard,timeo=600,nconnect=2,rsize=1048576,wsize=262144,bg,noatime,lock 0 0
+<storage-vif-data02>:/NF2_shared/usr-sap-host1 /usr/sap/NF2 nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+<storage-vif-data02>:/NF2_shared/shared /hana/shared nfs rw,nfsvers=3,hard,timeo=600,nconnect=4,rsize=1048576,wsize=262144,bg,noatime,nolock 0 0
+....
+. 모든 호스트에 파일 시스템을 마운트하려면 'mount –a'를 실행합니다.
+

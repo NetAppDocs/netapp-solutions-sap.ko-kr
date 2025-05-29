@@ -24,8 +24,7 @@ summary: 이 섹션에서는 추가 정보를 찾을 수 있는 위치를 나열
 
 * NetApp BlueXP 백업 및 복구 제품 설명서 +
 https://docs.netapp.com/us-en/bluexp-backup-recovery/concept-protect-app-data-to-cloud.html["온프레미스 애플리케이션 데이터 보호 | NetApp 설명서"]
-* SnapCenter+를 사용한 SAP HANA 백업 및 복구
-https://docs.netapp.com/us-en/netapp-solutions-sap/backup/saphana-br-scs-overview.html#the-netapp-solution[]
+* link:hana-br-scs-overview.html#the-netapp-solution["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
 
 
 

@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-testing-overview.html 
+keywords: disaster, recovery, strategy, workflow, testing, internal, documentation 
+summary: 효과적인 재해 복구 전략을 구현하려면 필요한 워크플로우를 테스트해야 합니다. 테스트는 전략이 제대로 작동하는지 여부와 내부 문서화가 충분한지 여부를 보여 주며, 관리자가 필요한 절차를 교육할 수도 있습니다. 
+---
+= 재해 복구 테스트
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+효과적인 재해 복구 전략을 구현하려면 필요한 워크플로우를 테스트해야 합니다. 테스트는 전략이 제대로 작동하는지 여부와 내부 문서화가 충분한지 여부를 보여 주며, 관리자가 필요한 절차를 교육할 수도 있습니다.
+
+ANF 지역 간 복제는 RTO 및 RPO를 위험에 빠뜨리지 않고 재해 복구 테스트를 수행할 수 있도록 합니다. 데이터 복제를 중단하지 않고 재해 복구 테스트를 수행할 수 있습니다.
+
+재해 복구 테스트 워크플로우는 ANF 기능 세트를 활용하여 재해 복구 타겟의 기존 Snapshot 백업을 기반으로 새 볼륨을 생성합니다. 을 참조하십시오 https://docs.microsoft.com/en-us/azure/azure-netapp-files/snapshots-introduction["Azure NetApp Files 스냅샷의 작동 방식 | Microsoft 문서"^].
+
+로그 백업 복제가 재해 복구 설정의 일부인지 여부에 따라 재해 복구 단계가 약간 다릅니다. 이 섹션에서는 데이터 백업 전용 복제 및 로그 백업 볼륨 복제와 결합된 데이터 볼륨 복제에 대한 재해 복구 테스트에 대해 설명합니다.
+
+재해 복구 테스트를 수행하려면 다음 단계를 수행하십시오.
+
+. 타겟 호스트를 준비합니다.
+. 재해 복구 사이트에서 Snapshot 백업을 기반으로 새 볼륨을 생성합니다.
+. 타겟 호스트에 새 볼륨을 마운트합니다.
+. HANA 데이터베이스 복구
++
+** 데이터 볼륨 복구만 가능합니다.
+** 복제된 로그 백업을 사용하여 복구를 전달합니다.
+
+
+
+
+다음 하위 섹션에서는 이러한 단계에 대해 자세히 설명합니다.
+
+image:saphana-dr-anf_image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]

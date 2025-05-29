@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-infra-setup-config.html 
+keywords:  
+summary:  
+---
+= 인프라 설정 및 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 문서에서는 NetApp AFF 시스템 및 파이버 채널에 대한 인프라 설정 및 구성에 대해 설명합니다.

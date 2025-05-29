@@ -4,35 +4,58 @@ indexpage:
   summary: NetApp은 SAP 및 SAP HANA에 대한 광범위한 기술 보고서, 검증된 설계, 비디오, 블로그 및 솔루션 요약 정보를 제공합니다.
   lead: NetApp은 SAP 및 SAP HANA에 대한 광범위한 기술 보고서, 검증된 설계, 비디오, 블로그 및 솔루션 요약 정보를 제공합니다.
   tiles:
-  - title: 구성 모범 사례
+  - title: SAP HANA 온프레미스(프로토콜 지원)
     links:
-    - title: 비디오 및 데모
-      url: sap-bp-videos.html
-    - title: 블로그
-      url: sap-bp-blogs.html
-    - title: 도구
-      url: sap-bp-tools.html
-  - title: 백업, 복원 및 재해 복구
+    - title: 파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA
+      url: bp/hana-aff-fc-introduction.html
+    - title: NFS 구성 가이드가 포함된 NetApp AFF 시스템 기반 SAP HANA
+      url: bp/hana-aff-nfs-introduction.html
+    - title: NFS가 포함된 NetApp FAS 시스템의 SAP HANA 구성 가이드
+      url: bp/hana-fas-nfs-introduction.html
+    - title: 파이버 채널 프로토콜을 포함한 NetApp FAS 시스템 기반 SAP HANA 구성 가이드 를 참조하십시오
+      url: bp/hana-fas-fc-introduction.html
+  - title: 온프레미스 SAP HANA
     links:
-    - title: 비디오 및 데모
-      url: sap-dr-videos.html
-    - title: 블로그
-      url: sap-dr-blogs.html
-    - title: 도구
-      url: sap-dr-tools.html
-  - title: 라이프사이클 관리
+    - title: SnapCenter, SnapMirror active sync 및 VMware Metro Storage Cluster를 통한
+        SAP HANA 데이터 보호 및 고가용성
+      url: backup/hana-sc-vmware-smas-scope.html
+    - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 클라우드 오브젝트 스토리지를 백업 대상으로 합니다
+      url: backup/hana-hycl-backup-overview.html
+    - title: 스토리지 복제를 사용한 SAP HANA 재해 복구
+      url: backup/hana-dr-sr-pdf-link.html
+    - title: LSC 및 SnapCenter를 통해 SAP HANA 시스템 업데이트
+      url: lifecycle/libelle-sc-hana-sys-refresh-lsc-sc.html
+    - title: Ansible을 사용한 NetApp SAP Landscape Management 통합
+      url: lifecycle/lama-ansible-introduction.html
+  - title: Azure NetApp Files 기반 SAP HANA
     links:
-    - title: 비디오 및 데모
-      url: sap-lcm-videos.html
-    - title: 블로그
-      url: sap-lcm-blogs.html
-    - title: 도구
-      url: sap-lcm-tools.html
-  - title: 모든 SAP 솔루션
+    - title: Azure NetApp Files을 사용한 SAP HANA 재해 복구
+      url: backup/hana-dr-anf-data-protection-overview.html
+    - title: LSC, AzAcSnap 및 Azure NetApp Files를 통해 SAP HANA 시스템 업데이트
+      url: lifecycle/libelle-sc-hana-sys-refresh-lsc-azacsnap-anf.html
+    - title: Azure NetApp Files with SnapCenter의 SAP HANA 데이터 보호(블로그 및 비디오)
+      url: https://techcommunity.microsoft.com/blog/sapapplications/sap-hana-data-protection-on-azure-netapp-files-with-snapcenter/3510031
+    - title: Azure NetApp Files with SnapCenter에서 SAP 시스템 업데이트 및 클로닝 작업(블로그 및 비디오)
+      url: https://techcommunity.microsoft.com/blog/sapapplications/sap-system-refresh-and-cloning-operations-on-azure-netapp-files-with-snapcenter/4356389
+    - title: Azure NetApp Files 기반 SAP 사이징 툴
+      url: https://azure.github.io/azure-netapp-files/sap-calc
+  - title: FSx for ONTAP 기반 SAP HANA
     links:
-    - title: 새로운 기능
-      url: sap-whatsnew.html
-    - title: 비디오 및 데모
-      url: sap-videos.html
-    - title: 블로그
-      url: sap-blogs.html
+    - title: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구
+      url: backup/fsxn-overview.html
+    - title: FSx for ONTAP 사이징 툴 기반 SAP
+      url: https://tco.solutions.netapp.com/sapfsxtco/
+  - title: SnapCenter(플랫폼 독립적)
+    links:
+    - title: SnapCenter를 사용한 SAP HANA 백업 및 복구
+      url: backup/hana-br-scs-overview.html
+    - title: SAP HANA 시스템 복제 - SnapCenter를 사용한 백업 및 복구
+      url: backup/hana-sr-scs-system-replication-overview.html
+    - title: SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화
+      url: lifecycle/sc-copy-clone-introduction.html
+    - title: SAP ASE 데이터베이스용 SnapCenter 통합
+      url: backup/snapcenter-sap-ase.html
+    - title: IBM DB2 데이터베이스용 SnapCenter 통합
+      url: backup/snapcenter-ibm-db2.html
+    - title: SAP MaxDB 데이터베이스용 SnapCenter 통합
+      url: backup/snapcenter-sap-maxdb.html

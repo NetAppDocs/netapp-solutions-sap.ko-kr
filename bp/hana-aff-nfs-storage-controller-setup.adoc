@@ -1,0 +1,376 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-nfs-storage-controller-setup.html 
+keywords: storage, controller, efficiency, volume encryption, quality of service, qos, fabricpool, DS224C, svm, configuration 
+summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
+---
+= 스토리지 컨트롤러 설정
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다.
+
+
+
+== 스토리지 효율성
+
+SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중복제거, 인라인 압축, 인라인 컴팩션이 지원됩니다.
+
+
+
+== NetApp FlexGroup 볼륨
+
+SAP HANA에는 NetApp FlexGroup 볼륨 사용이 지원되지 않습니다. SAP HANA의 아키텍처로 인해 FlexGroup 볼륨을 사용할 경우 이점이 없으므로 성능 문제가 발생할 수 있습니다.
+
+
+
+== NetApp 볼륨 및 애그리게이트 암호화
+
+SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.
+
+
+
+== 서비스 품질
+
+QoS를 사용하면 공유 사용 컨트롤러에서 특정 SAP HANA 시스템 또는 기타 애플리케이션의 스토리지 처리량을 제한할 수 있습니다. 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다.
+
+사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다.
+
+ONTAP 9부터 QoS는 스토리지 볼륨 레벨에 구성되어 있으며 처리량(MBps)과 I/O 양(IOPS)에 대해 최대 값을 사용합니다.
+
+대규모 쓰기 I/O는 스토리지 시스템에 가장 큰 성능 영향을 미칩니다. 따라서 QoS 처리량 제한은 데이터 및 로그 볼륨에서 해당 쓰기 SAP HANA 스토리지 성능 KPI 값의 백분율로 설정해야 합니다.
+
+
+
+== NetApp FabricPool를 참조하십시오
+
+SAP HANA 시스템의 액티브 운영 파일 시스템에 NetApp FabricPool 기술을 사용하면 안 됩니다. 여기에는 데이터 및 로그 영역을 위한 파일 시스템과 '/HANA/공유' 파일 시스템이 포함됩니다. 따라서 특히 SAP HANA 시스템을 시작할 때 성능을 예측할 수 없습니다.
+
+"스냅샷 전용" 계층화 정책을 사용하는 것은 물론 NetApp SnapVault 또는 SnapMirror 대상 같은 백업 대상에서 FabricPool를 일반적으로 사용할 수도 있습니다.
+
+
+NOTE: FabricPool를 사용하여 운영 스토리지의 스냅샷 복사본을 계층화하거나 백업 대상에서 FabricPool를 사용하면 데이터베이스의 복원 및 복구 또는 시스템 클론 생성, 복구 시스템과 같은 기타 작업에 필요한 시간이 변경됩니다. 전체 수명 주기 관리 전략을 계획할 때 이 기능을 사용하는 동안 SLA가 여전히 충족되는지 확인하십시오.
+
+FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데 적합한 옵션입니다. 백업을 이동하면 SAP HANA 데이터베이스를 복구하는 데 필요한 시간이 달라집니다. 따라서 "dediing-minimum-cooling-days" 옵션을 로컬 고속 스토리지 계층에 복구를 위해 정기적으로 필요한 로그 백업을 배치하는 값으로 설정해야 합니다.
+
+
+
+== 스토리지 구성
+
+다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 섹션에서는 스토리지 하드웨어가 설정되어 있고 ONTAP 소프트웨어가 이미 설치되어 있다고 가정합니다. 또한 스토리지 포트(10GbE 이상)와 네트워크 간의 연결이 이미 구성되어 있어야 합니다.
+
+. "에 설명된 대로 디스크 쉘프 구성이 올바른지 확인합니다.<<디스크 쉘프 연결>>있습니다."
+. 에 설명된 대로 필요한 애그리게이트를 생성하고 구성합니다.<<애그리게이트 구성>>있습니다."
+. "Clustered Data ONTAP 8.3.1에서 설명하는 대로 스토리지 가상 시스템(SVM)을<<SVM 구성>>있습니다."
+. "에 설명된 대로 LIF 생성<<LIF 구성>>있습니다."
+. "" 및 "<<SAP HANA 다중 호스트 시스템을 위한 볼륨 구성>>"에 설명된 대로 애그리게이트 내에 볼륨을<<SAP HANA 단일 호스트 시스템을 위한 볼륨 구성>> 생성합니다.
+. 에 설명된 대로 필요한 볼륨 옵션을 설정합니다.<<볼륨 옵션>>있습니다."
+. 의 설명대로 NFSv3에 필요한 옵션 설정<<NFSv3용 NFS 구성>>"또는 NFSv4의 경우 에 설명된 대로<<NFSv4에 대한 NFS 구성>>있습니다."
+. 볼륨을 네임스페이스에 마운트하고 " 에 설명된 대로 엑스포트 정책을 설정합니다.<<볼륨을 네임스페이스에 마운트하고 엑스포트 정책을 설정합니다>>있습니다."
+
+
+
+
+== 디스크 쉘프 연결
+
+
+
+=== SAS 디스크 쉘프
+
+다음 그림과 같이 하나의 SAS 스택에 최대 하나의 디스크 쉘프를 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. ADPv2는 ONTAP 9 및 DS224C 디스크 쉘프에 사용됩니다.
+
+
+NOTE: DS224C 디스크 쉘프를 사용하면 4중 경로 SAS 케이블도 사용할 수 있지만 필수는 아닙니다.
+
+image:saphana_aff_nfs_image13.png["SAS 쉘프 연결"]
+
+
+
+=== NVMe(100GbE) 디스크 쉘프
+
+각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. 애그리게이트 구성 장에서 설명한 ADPv2도 NS224 디스크 쉘프에 사용됩니다.
+
+image:saphana_aff_nfs_image14a.png["MVMe 디스크 쉘프 연결"]
+
+
+
+== 애그리게이트 구성
+
+일반적으로 사용되는 디스크 쉘프 또는 드라이브 기술(SAS SSD 또는 NVMe SSD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다.
+
+다음 이미지는 ADPv2로 구성된 12Gb SAS 쉘프에서 실행 중인 12개의 SAP HANA 호스트 구성을 보여줍니다. 각 스토리지 컨트롤러에 6개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 2개씩, 4개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트에는 디스크 11개와 데이터 9개, 패리티 디스크 파티션 2개가 구성되어 있습니다. 각 컨트롤러에 대해 2개의 스페어 파티션을 사용할 수 있습니다.
+
+image:saphana_aff_nfs_image15a.png["애그리게이트 구성"]
+
+
+
+== SVM 구성
+
+SAP HANA 데이터베이스를 사용하는 여러 SAP 환경에서 단일 SVM을 사용할 수 있습니다. 필요한 경우 회사 내의 서로 다른 팀에서 SVM을 관리하는 경우 각 SAP 환경에 SVM을 할당할 수 있습니다.
+
+새 SVM을 생성하는 동안 QoS 프로필이 자동으로 생성되어 할당된다면, SVM에서 자동으로 생성된 프로필을 제거하여 SAP HANA에서 필요한 성능 지원:
+
+....
+vserver modify -vserver <svm-name> -qos-policy-group none
+....
+
+
+== LIF 구성
+
+SAP HANA 운영 시스템의 경우 SAP HANA 호스트에서 데이터 볼륨과 로그 볼륨을 마운트하려면 서로 다른 LIF를 사용해야 합니다. 따라서 LIF가 두 개 이상 필요합니다.
+
+서로 다른 SAP HANA 호스트의 데이터 및 로그 볼륨 마운트는 동일한 LIF를 사용하거나 각 마운트마다 개별 LIF를 사용하여 물리적 스토리지 네트워크 포트를 공유할 수 있습니다.
+
+다음 표에는 물리적 인터페이스당 최대 데이터 및 로그 볼륨 마운트 양이 나와 있습니다.
+
+|===
+| 이더넷 포트 속도 | 10GbE | 25GbE | 40GbE | 100GeE 
+
+
+| 물리적 포트당 최대 로그 또는 데이터 볼륨 마운트 수입니다 | 3 | 8 | 12 | 30 
+|===
+
+NOTE: 다른 SAP HANA 호스트 간에 하나의 LIF를 공유하려면 데이터 또는 로그 볼륨을 다른 LIF에 다시 마운트해야 합니다. 이렇게 변경하면 볼륨이 다른 스토리지 컨트롤러로 이동될 경우 성능 저하가 발생하지 않습니다.
+
+개발 및 테스트 시스템에서는 물리적 네트워크 인터페이스에서 더 많은 데이터와 볼륨 마운트 또는 LIF를 사용할 수 있습니다.
+
+운영, 개발, 테스트 시스템의 경우 '/HANA/공유' 파일 시스템은 데이터 또는 로그 볼륨과 동일한 LIF를 사용할 수 있습니다.
+
+
+
+== SAP HANA 단일 호스트 시스템을 위한 볼륨 구성
+
+다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log_mnt00001'은 컨트롤러 B에 구성됩니다
+
+
+NOTE: SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러를 하나만 사용하는 경우, 데이터 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수 있습니다.
+
+
+NOTE: 데이터와 로그 볼륨이 동일한 컨트롤러에 저장된 경우 서버에서 스토리지로의 액세스는 두 가지 LIF로 수행되어야 합니다. 하나는 데이터 볼륨에 액세스하는 LIF로, 다른 하나는 로그 볼륨에 액세스하는 LIF입니다.
+
+image:saphana_aff_nfs_image16a.png["볼륨 구성 SAP HANA 단일 호스트"]
+
+각 SAP HANA 호스트마다 데이터 볼륨, 로그 볼륨 및 '/HANA/shared'에 대한 볼륨이 구성됩니다. 다음 표에서는 단일 호스트 SAP HANA 시스템에 대한 구성 예를 보여 줍니다.
+
+|===
+| 목적 | 컨트롤러 A의 애그리게이트 1 | 컨트롤러 A의 애그리게이트 2 | 컨트롤러 B의 애그리게이트 1 | 컨트롤러 b에서 애그리게이트 2 
+
+
+| 시스템 SID1의 데이터, 로그 및 공유 볼륨 | 데이터 볼륨: SID1_DATA_mnt00001 | 공유 볼륨: SID1_shared | – | 로그 볼륨: SID1_LOG_mnt00001 
+
+
+| 시스템 SID2의 데이터, 로그 및 공유 볼륨 | – | 로그 볼륨: SID2_LOG_mnt00001 | 데이터 볼륨: SID2_DATA_mnt00001 | 공유 볼륨: SID2_shared 
+
+
+| 시스템 SID3의 데이터, 로그 및 공유 볼륨 | 공유 볼륨: SID3_SHARED | 데이터 볼륨: SID3_DATA_mnt00001 | 로그 볼륨: SID3_LOG_mnt00001 | – 
+
+
+| 시스템 SID4의 데이터, 로그 및 공유 볼륨 | 로그 볼륨: SID4_LOG_mnt00001 | – | 공유 볼륨: SID4_shared | 데이터 볼륨: SID4_DATA_mnt00001 
+|===
+다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다. 중앙 스토리지에 'sidadm' 사용자의 홈 디렉토리를 배치하려면 'sid_shared' 볼륨에서 '/usr/sap/sid' 파일 시스템을 마운트해야 합니다.
+
+|===
+| 접합 경로 | 디렉토리 | HANA 호스트의 마운트 지점 
+
+
+| SID_DATA_mnt00001 |  | /HANA/data/SID/mnt00001 
+
+
+| SID_LOG_mnt00001 |  | /HANA/log/SID/mnt00001 
+
+
+| SID_공유됨 | usr-SAP 공유 | /usr/sap/sid/hana/shared/ 
+|===
+
+
+== SAP HANA 다중 호스트 시스템을 위한 볼륨 구성
+
+다음 그림은 4+1 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 호스트의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data1_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log1_mnt00001'은 컨트롤러 B에 구성됩니다
+
+
+NOTE: SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.
+
+
+NOTE: 데이터와 로그 볼륨이 동일한 컨트롤러에 저장된 경우 서버에서 스토리지로의 액세스는 두 가지 LIF로 수행해야 합니다. LIF는 데이터 볼륨에 액세스하는 LIF와 로그 볼륨에 액세스하는 LIF입니다.
+
+image:saphana_aff_nfs_image17a.png["볼륨 구성 SAP HANA 다중 호스트"]
+
+각 SAP HANA 호스트에 대해 데이터 볼륨과 로그 볼륨이 생성됩니다. '/HANA/Shared' 볼륨은 SAP HANA 시스템의 모든 호스트에서 사용됩니다. 다음 표에서는 4개의 활성 호스트가 있는 다중 호스트 SAP HANA 시스템에 대한 구성 예를 보여 줍니다.
+
+|===
+| 목적 | 컨트롤러 A의 애그리게이트 1 | 컨트롤러 A의 애그리게이트 2 | 컨트롤러 B의 애그리게이트 1 | 컨트롤러 B의 애그리게이트 2 
+
+
+| 노드 1의 데이터 및 로그 볼륨 | 데이터 볼륨: SID_DATA_mnt00001 | – | 로그 볼륨: SID_LOG_mnt00001 | – 
+
+
+| 노드 2의 데이터 및 로그 볼륨 | 로그 볼륨: SID_LOG_mnt00002 | – | 데이터 볼륨: SID_DATA_mnt00002 | – 
+
+
+| 노드 3의 데이터 및 로그 볼륨 | – | 데이터 볼륨: SID_DATA_mnt00003 | – | 로그 볼륨: SID_LOG_mnt00003 
+
+
+| 노드 4의 데이터 및 로그 볼륨 | – | 로그 볼륨: SID_LOG_mnt00004 | – | 데이터 볼륨: SID_DATA_mnt00004 
+
+
+| 모든 호스트에 대한 공유 볼륨입니다 | 공유 볼륨: SID_shared |  |  |  
+|===
+다음 표에는 4개의 활성 SAP HANA 호스트가 있는 다중 호스트 시스템의 구성 및 마운트 지점이 나와 있습니다. 각 호스트의 'sidadm' 사용자의 홈 디렉토리를 중앙 스토리지에 배치하기 위해 'sid_shared' 볼륨에서 /usr/sap/sid' 파일 시스템이 마운트된다.
+
+|===
+| 접합 경로 | 디렉토리 | SAP HANA 호스트의 마운트 지점 | 참고 
+
+
+| SID_DATA_mnt00001 | – | /HANA/data/SID/mnt00001 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_LOG_mnt00001 | – | /HANA/log/SID/mnt00001 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_DATA_mnt00002 | – | /HANA/data/SID/mnt00002 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_LOG_mnt00002 | – | /HANA/log/SID/mnt00002 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_DATA_mnt00003 | – | /HANA/data/SID/mnt00003 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_LOG_mnt00003 | – | /HANA/log/SID/mnt00003 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_DATA_mnt00004 | – | /HANA/data/SID/mnt00004 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_LOG_mnt00004 | – | /HANA/log/SID/mnt00004 | 모든 호스트에 마운트되었습니다 
+
+
+| SID_공유됨 | 공유됨 | /HANA/공유/SID | 모든 호스트에 마운트되었습니다 
+
+
+| SID_공유됨 | usr-SAP-host1 | /usr/sap/sid | 호스트 1에 마운트되었습니다 
+
+
+| SID_공유됨 | usr-SAP-host2 | /usr/sap/sid | 호스트 2에 마운트되었습니다 
+
+
+| SID_공유됨 | usr-SAP-host3 | /usr/sap/sid | 호스트 3에 마운트되었습니다 
+
+
+| SID_공유됨 | usr-SAP-host4 | /usr/sap/sid | 호스트 4에 마운트되었습니다 
+
+
+| SID_공유됨 | usr-SAP-host5 | /usr/sap/sid | 호스트 5에 마운트되었습니다 
+|===
+
+
+== 볼륨 옵션
+
+모든 SVM에서 다음 표에 나열된 볼륨 옵션을 확인하고 설정해야 합니다. 일부 명령의 경우 ONTAP 내의 고급 권한 모드로 전환해야 합니다.
+
+|===
+| 조치 | 명령 
+
+
+| 스냅샷 디렉토리 표시를 해제합니다 | vol modify -vserver <vserver-name> -volume <volname> -snapdir -access false 
+
+
+| 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify –vserver <vserver-name> -volume <volname> -snapshot-policy none 
+
+
+| SID_shared 볼륨을 제외하고 액세스 시간 업데이트를 비활성화합니다 | 고급 vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin을 설정합니다 
+|===
+
+
+== NFSv3용 NFS 구성
+
+다음 표에 나열된 NFS 옵션을 확인하여 모든 스토리지 컨트롤러에서 설정해야 합니다. 이 표에 나와 있는 일부 명령의 경우 고급 권한 모드로 전환해야 합니다.
+
+|===
+| 조치 | 명령 
+
+
+| NFSv3을 사용하도록 설정합니다 | NFS modify -vserver <vserver-name> v3.0 활성화 
+
+
+| NFS TCP 최대 전송 크기를 1MB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin 을 설정합니다 
+|===
+
+NOTE: 워크로드가 서로 다른 공유 환경에서 최대 NFS TCP 전송 크기를 262144로 설정합니다
+
+
+
+== NFSv4에 대한 NFS 구성
+
+다음 표에 나열된 NFS 옵션을 확인하여 모든 SVM에서 설정해야 합니다.
+
+이 표의 일부 명령에 대해서는 고급 권한 모드로 전환해야 합니다.
+
+|===
+| 조치 | 명령 
+
+
+| NFSv4를 설정합니다 | NFS modify -vserver <vserver-name> -v4.1이 활성화되었습니다 
+
+
+| NFS TCP 최대 전송 크기를 1MB로 설정합니다 | 고급 NFS modify -vserver <vserver_name> -tcp-max-xfer-size 1048576 set admin 을 설정합니다 
+
+
+| NFSv4 ACL(액세스 제어 목록) 해제 | NFS modify -vserver <vserver_name> -v4.1 -acl disabled 
+
+
+| NFSv4 도메인 ID를 설정합니다 | NFS modify -vserver <vserver_name> -v4-id-domain <domain-name> 
+
+
+| NFSv4 읽기 위임을 해제합니다 | NFS modify -vserver <vserver_name> -v4.1 -read-delegation disabled 
+
+
+| NFSv4 쓰기 위임을 해제합니다 | NFS modify -vserver <vserver_name> -v4.1 -write-delegation disabled 
+
+
+| NFSv4 숫자 ID를 해제합니다 | NFS modify -vserver <vserver_name> -v4-numeric-ids disabled 
+
+
+| NFSv4.x 세션 슬롯의 양을 변경합니다
+  선택 사항 | 고급 설정
+nfs modify -vserver hana-v4.x-session-num-slot <value>
+admin 설정 
+|===
+
+NOTE: 워크로드가 서로 다른 공유 환경에서 최대 NFS TCP 전송 크기를 262144로 설정합니다
+
+
+NOTE: 숫자 ID를 비활성화하려면 섹션에 설명된 대로 사용자 관리가 필요합니다 link:hana-aff-nfs-install-prep-nfsv4.html["“NFSv4를 위한 SAP HANA 설치 준비”"]
+
+
+NOTE: (`/etc/idmapd.conf`섹션 에 설명된 대로 NFSv4 도메인 ID는 모든 Linux 서버 및 SVM에서 동일한 값으로 설정해야 합니다 link:hana-aff-nfs-install-prep-nfsv4.html["“NFSv4를 위한 SAP HANA 설치 준비”"]
+
+
+NOTE: pNFS를 사용하도록 설정하고 사용할 수 있습니다.
+
+호스트 자동 페일오버가 있는 SAP HANA 다중 호스트 시스템을 사용하는 경우 페일오버 매개 변수를 내에서 조정해야 합니다 `nameserver.ini` 다음 표와 같습니다.
+이 섹션 내에서 기본 재시도 간격인 10초를 유지합니다.
+
+|===
+| 섹션(nameserver.ini) | 매개 변수 | 값 
+
+
+| 페일오버 | normal_retries(정상 재시도) | 9 
+
+
+| Distributed_Watchdog입니다 | deactivation_retries(비활성화 재시도 | 11 
+
+
+| Distributed_Watchdog입니다 | takeover_retries를 선택합니다 | 9 
+|===
+
+
+== 볼륨을 네임스페이스에 마운트하고 엑스포트 정책을 설정합니다
+
+볼륨이 생성되면 볼륨을 네임스페이스에 마운트해야 합니다. 이 문서에서는 접합 경로 이름이 볼륨 이름과 같다고 가정합니다. 기본적으로 볼륨은 기본 정책으로 내보내집니다. 필요한 경우 엑스포트 정책을 적용할 수 있습니다.

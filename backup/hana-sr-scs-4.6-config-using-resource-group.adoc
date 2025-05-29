@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sr-scs-4.6-config-using-resource-group.html 
+keywords: resource group, configuration, discovery, retention management 
+summary: SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다. 
+---
+= 리소스 그룹을 사용한 SnapCenter 4.6 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapCenter 4.6은 HANA 시스템 복제를 사용하여 구성된 HANA 시스템에 대한 자동 검색을 지원합니다. SnapCenter 4.6에는 백업 작업 중에 기본 및 보조 HANA 호스트를 식별하는 논리가 포함되어 있으며 두 HANA 호스트 모두에서 보존 관리를 처리합니다. 또한 자동 복원 및 복구 기능은 이제 HANA 시스템 복제 환경에서도 사용할 수 있습니다.
+
+
+
+== HANA 시스템 복제 환경의 SnapCenter 4.6 구성
+
+다음 그림은 이 장에 사용된 랩 설정을 보여 줍니다. HANA 시스템 복제를 통해 2개의 HANA 호스트, 즉 HANA-3 및 HANA-4가 구성되었습니다.
+
+백업 및 복구 작업을 실행하는 데 필요한 Privileges가 있는 HANA 시스템 데이터베이스용 데이터베이스 사용자 "SnapCenter"가 생성되었습니다(참조link:hana-br-scs-overview.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"^]). 위의 데이터베이스 사용자를 사용하여 두 호스트에서 HANA 사용자 저장소 키를 구성해야 합니다.
+
+....
+ss2adm@hana- 3: / > hdbuserstore set SS2KEY hana- 3:33313 SNAPCENTER <password>
+....
+....
+ss2adm@hana- 4:/ > hdbuserstore set SS2KEY hana-4:33313 SNAPCENTER <password>
+....
+개괄적인 관점에서 다음 단계를 수행하여 SnapCenter 내에서 HANA 시스템 복제를 설정해야 합니다.
+
+. 기본 및 보조 호스트에 HANA 플러그인을 설치합니다. 자동 검색이 실행되고 각 운영 호스트 또는 보조 호스트에 대해 HANA 시스템 복제 상태가 감지됩니다.
+. SnapCenter 'configure database'를 실행하고 hdbuserstore 키를 제공한다. 추가 자동 검색 작업이 실행됩니다.
+. 두 호스트를 포함하여 리소스 그룹을 생성하고 보호를 구성합니다.
+
+
+image:saphana-sr-scs-image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+두 HANA 호스트에 SnapCenter HANA 플러그인을 설치하면 다른 자동 검색 리소스와 동일하게 SnapCenter 리소스 보기에 HANA 시스템이 표시됩니다. SnapCenter 4.6부터 HANA 시스템 복제(사용/사용 안 함, 운영/보조) 상태를 표시하는 추가 열이 표시됩니다.
+
+image:saphana-sr-scs-image7.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+리소스를 클릭하면 SnapCenter가 HANA 시스템에 대한 HANA 사용자 저장소 키를 요청합니다.
+
+image:saphana-sr-scs-image8.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+추가 자동 검색 단계가 실행되고 SnapCenter에서 리소스 세부 정보를 표시합니다. SnapCenter 4.6에서는 시스템 복제 상태와 보조 서버가 이 보기에 나열됩니다.
+
+image:saphana-sr-scs-image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+두 번째 HANA 리소스에 대해 동일한 단계를 수행한 후 자동 검색 프로세스가 완료되고 두 HANA 리소스가 모두 SnapCenter에 구성됩니다.
+
+image:saphana-sr-scs-image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+HANA 시스템 복제 지원 시스템의 경우 두 HANA 리소스를 모두 포함하여 SnapCenter 리소스 그룹을 구성해야 합니다.
+
+image:saphana-sr-scs-image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+호스트 이름, 정책 및 일정이 포함되어야 하는 스냅샷 이름에 사용자 지정 이름 형식을 사용하는 것이 좋습니다.
+
+image:saphana-sr-scs-image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+두 HANA 호스트를 리소스 그룹에 모두 추가해야 합니다.
+
+image:saphana-sr-scs-image13.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+리소스 그룹에 대해 정책 및 일정이 구성됩니다.
+
+
+NOTE: 정책에 정의된 보존은 두 HANA 호스트 간에 사용됩니다. 예를 들어 정책에서 보존 기간이 10인 경우 두 호스트의 백업 합계가 백업 삭제 기준으로 사용됩니다. SnapCenter는 현재 운영 호스트 또는 보조 호스트에서 생성된 가장 오래된 백업을 독립적으로 삭제합니다.
+
+image:saphana-sr-scs-image14.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+이제 리소스 그룹 구성이 완료되고 백업을 실행할 수 있습니다.
+
+image:saphana-sr-scs-image15.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+image:saphana-sr-scs-image16.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== Snapshot 백업 작업
+
+리소스 그룹의 백업 작업이 실행될 때 SnapCenter는 운영 호스트인 호스트를 식별하며 운영 호스트에서만 백업을 트리거합니다. 즉, 기본 호스트의 데이터 볼륨만 스냅샷을 만듭니다. 이 예에서 HANA-3은 현재 운영 호스트이며 이 호스트에서 백업이 실행됩니다.
+
+image:saphana-sr-scs-image17.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SnapCenter 작업 로그에는 현재 운영 호스트 HANA-3에서 백업 실행 및 ID 작업이 표시됩니다.
+
+image:saphana-sr-scs-image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+이제 기본 HANA 리소스에 스냅샷 백업이 생성되었습니다. 백업 이름에 포함된 호스트 이름은 HANA-3으로 표시됩니다.
+
+image:saphana-sr-scs-image19.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+동일한 스냅샷 백업도 HANA 백업 카탈로그에 표시됩니다.
+
+image:saphana-sr-scs-image20.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+테이크오버 작업이 실행되면 SnapCenter 백업이 추가로 이전 2차 호스트(HANA-4)를 운영 호스트로 식별하고 백업 작업이 HANA-4에서 실행됩니다. 다시 한 번 말씀드리지만 새로운 기본 호스트(HANA-4)의 데이터 볼륨만 스냅샷을 사용합니다.
+
+
+NOTE: SnapCenter 식별 로직은 HANA 호스트가 1차-2차 관계에 있거나 HANA 호스트 중 하나가 오프라인인 시나리오만 다룹니다.
+
+image:saphana-sr-scs-image21.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SnapCenter 작업 로그에는 현재 운영 호스트 HANA-4에서 백업 실행 및 ID 작업이 표시됩니다.
+
+image:saphana-sr-scs-image22.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+이제 기본 HANA 리소스에 스냅샷 백업이 생성되었습니다. 백업 이름에 포함된 호스트 이름은 HANA-4로 표시됩니다.
+
+image:saphana-sr-scs-image23.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+동일한 스냅샷 백업도 HANA 백업 카탈로그에 표시됩니다.
+
+image:saphana-sr-scs-image24.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== 파일 기반 백업을 사용한 블록 무결성 검사 작업
+
+SnapCenter 4.6은 파일 기반 백업을 사용한 블록 무결성 검사 작업에 대해 스냅샷 백업 작업에 대해 설명된 것과 동일한 논리를 사용합니다. SnapCenter는 현재 운영 HANA 호스트를 식별하고 이 호스트에 대한 파일 기반 백업을 실행합니다. 또한 두 호스트 모두에서 보존 관리가 수행되므로 현재 운영 중인 호스트에 관계없이 가장 오래된 백업이 삭제됩니다.
+
+
+
+== SnapVault 복제
+
+테이크오버와 현재 운영 호스트인 HANA 호스트에 대해 독립적인 수동 개입 없이 투명한 백업 작업을 허용하려면 두 호스트의 데이터 볼륨에 대해 SnapVault 관계를 구성해야 합니다. SnapCenter는 각 백업이 실행될 때마다 현재 운영 호스트에 대한 SnapVault 업데이트 작업을 실행합니다.
+
+
+NOTE: 보조 호스트에 대한 테이크오버가 오랫동안 수행되지 않으면 보조 호스트에서 첫 번째 SnapVault 업데이트에 대해 변경된 블록 수가 높아집니다.
+
+SnapVault 타겟의 보존 관리는 ONTAP에서 SnapCenter 외부에서 관리하므로 두 HANA 호스트 모두에서 보존을 처리할 수 없습니다. 따라서 인수 전에 생성된 백업은 이전 보조 백업에서 백업 작업과 함께 삭제되지 않습니다. 이러한 백업은 이전의 기본 백업이 다시 기본 백업이 될 때까지 유지됩니다. 이러한 백업이 로그 백업의 보존 관리를 차단하지 않도록 하려면 SnapVault 타겟 또는 HANA 백업 카탈로그 내에서 수동으로 삭제해야 합니다.
+
+
+NOTE: 하나의 스냅샷 복사본이 동기화 지점으로 차단되므로 모든 SnapVault 스냅샷 복사본을 정리할 수 없습니다. 최신 스냅샷 복사본도 삭제해야 하는 경우 SnapVault 복제 관계를 삭제해야 합니다. 이 경우 HANA 백업 카탈로그에서 백업을 삭제하여 로그 백업 보존 관리를 차단 해제하는 것이 좋습니다.
+
+image:saphana-sr-scs-image25.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== 보존 관리
+
+SnapCenter 4.6은 두 HANA 호스트 모두에서 Snapshot 백업, 블록 무결성 검사 작업, HANA 백업 카탈로그 항목 및 로그 백업(비활성화되지 않은 경우)에 대한 보존을 관리하므로 현재 어떤 호스트가 기본 호스트인지 보조 호스트인지 여부는 중요하지 않습니다. 현재 운영 호스트 또는 보조 호스트에서 삭제 작업이 필요한지 여부에 관계없이 HANA 카탈로그에 있는 백업(데이터 및 로그) 및 항목은 정의된 보존 기간을 기준으로 삭제됩니다. 즉, Takeover 작업을 수행하거나 복제를 반대 방향으로 구성하는 경우에는 수동 개입이 필요하지 않습니다.
+
+SnapVault 복제가 데이터 보호 전략의 일부인 경우 섹션에 설명된 대로 특정 시나리오에 대해 수동 상호 작용이 필요합니다 link:#snapvault-replication["SnapVault 복제"]
+
+
+
+== 복원 및 복구
+
+다음 그림에서는 두 사이트 모두에서 여러 테이크오버가 실행되고 스냅샷 백업이 생성된 시나리오를 보여 줍니다. 현재 상태의 호스트 HANA-3은 기본 호스트이며 최신 백업은 호스트 HANA-3에서 생성된 T4입니다. 복원 및 복구 작업을 수행해야 하는 경우 SnapCenter에서 T1 및 T4 백업을 복원 및 복구에 사용할 수 있습니다. 호스트 HANA-4(T2, T3)에서 생성된 백업은 SnapCenter를 사용하여 복구할 수 없습니다. 이러한 백업은 복구를 위해 HANA-3의 데이터 볼륨으로 수동으로 복사해야 합니다.
+
+image:saphana-sr-scs-image26.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SnapCenter 4.6 리소스 그룹 구성에 대한 복구 및 복구 작업은 자동 검색된 비 시스템 복제 설정과 동일합니다. 복구 및 자동 복구를 위한 모든 옵션을 사용할 수 있습니다. 자세한 내용은 기술 보고서를 link:hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^]참조하십시오.
+
+다른 호스트에서 생성된 백업의 복구 작업은 섹션에 설명되어 link:hana-sr-scs-restore-recovery-other-host-backup.html["다른 호스트에서 생성된 백업에서 복구 및 복구"]있습니다.

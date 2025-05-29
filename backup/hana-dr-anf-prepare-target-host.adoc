@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-dr-anf-prepare-target-host.html 
+keywords: prepare, target, host, sap, hana, azure, log, volume, users, ports, configure, file, system 
+summary: 이 섹션에서는 재해 복구 페일오버에 사용되는 서버에서 필요한 준비 단계를 설명합니다. 
+---
+= 타겟 호스트를 준비합니다
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에서는 재해 복구 페일오버에 사용되는 서버에서 필요한 준비 단계를 설명합니다.
+
+정상 작동 중에 타겟 호스트는 일반적으로 HANA QA 또는 테스트 시스템과 같은 다른 용도로 사용됩니다. 따라서 재해 복구 테스트를 실행할 때는 설명된 단계 중 대부분을 실행해야 합니다. 반면 /etc/fstab, /usr/SAP/sapservices와 같은 관련 구성 파일을 준비하여 구성 파일을 복사하기만 하면 프로덕션에 추가할 수 있습니다. 재해 복구 페일오버 절차를 수행하면 준비된 관련 구성 파일이 올바르게 구성됩니다.
+
+또한 타겟 호스트 준비에는 HANA QA 또는 테스트 시스템을 종료하고 'emctl stop sapinit'를 사용하여 모든 서비스를 중지하는 작업도 포함됩니다.
+
+
+
+== 대상 서버 호스트 이름 및 IP 주소입니다
+
+타겟 서버의 호스트 이름은 소스 시스템의 호스트 이름과 동일해야 합니다. IP 주소는 다를 수 있습니다.
+
+
+NOTE: 대상 서버가 다른 시스템과 통신할 수 없도록 대상 서버의 적절한 펜싱을 설정해야 합니다. 적절한 펜싱을 사용하지 않으면 클론 생성된 운영 시스템에서 다른 운영 시스템과 데이터를 교환하여 데이터가 논리적으로 손상될 수 있습니다.
+
+
+
+== 필요한 소프트웨어를 설치합니다
+
+SAP Host Agent 소프트웨어를 타겟 서버에 설치해야 합니다. 자세한 내용은 를 참조하십시오 https://help.sap.com/viewer/9f03f1852ce94582af41bb49e0a667a7/103/en-US["SAP 호스트 에이전트"^] SAP 도움말 포털에서 확인하십시오.
+
+
+NOTE: 호스트가 HANA QA 또는 테스트 시스템으로 사용되는 경우 SAP Host Agent 소프트웨어가 이미 설치되어 있습니다.
+
+
+
+== 사용자, 포트 및 SAP 서비스를 구성합니다
+
+SAP HANA 데이터베이스에 필요한 사용자 및 그룹은 타겟 서버에서 사용할 수 있어야 합니다. 일반적으로 중앙 사용자 관리가 사용되므로 대상 서버에서 구성 단계가 필요하지 않습니다. HANA 데이터베이스에 필요한 포트는 타겟 호스트에서 구성해야 합니다. 이 구성은 '/etc/services' 파일을 타겟 서버로 복사하여 소스 시스템에서 복사할 수 있습니다.
+
+필요한 SAP 서비스 항목은 타겟 호스트에서 사용할 수 있어야 합니다. 소스 시스템에서 '/usr/sap/sapservices' 파일을 타겟 서버로 복사하여 구성을 복사할 수 있습니다. 다음 출력에는 실습 설정에 사용되는 SAP HANA 데이터베이스에 필요한 항목이 나와 있습니다.
+
+....
+vm-pr1:~ # cat /usr/sap/sapservices
+#!/bin/sh
+LD_LIBRARY_PATH=/usr/sap/PR1/HDB01/exe:$LD_LIBRARY_PATH;export LD_LIBRARY_PATH;/usr/sap/PR1/HDB01/exe/sapstartsrv pf=/usr/sap/PR1/SYS/profile/PR1_HDB01_vm-pr1 -D -u pr1adm
+limit.descriptors=1048576
+....
+
+
+== HANA 로그 볼륨을 준비합니다
+
+HANA 로그 볼륨은 복제의 일부가 아니므로 타겟 호스트에 빈 로그 볼륨이 있어야 합니다. 로그 볼륨은 소스 HANA 시스템과 동일한 하위 디렉토리를 포함해야 합니다.
+
+....
+vm-pr1:~ # ls -al /hana/log/PR1/mnt00001/
+total 16
+drwxrwxrwx 5 root   root   4096 Feb 19 16:20 .
+drwxr-xr-x 3 root   root     22 Feb 18 13:38 ..
+drwxr-xr-- 2 pr1adm sapsys 4096 Feb 22 10:25 hdb00001
+drwxr-xr-- 2 pr1adm sapsys 4096 Feb 22 10:25 hdb00002.00003
+drwxr-xr-- 2 pr1adm sapsys 4096 Feb 22 10:25 hdb00003.00003
+vm-pr1:~ #
+....
+
+
+== 로그 백업 볼륨을 준비합니다
+
+소스 시스템은 HANA 로그 백업을 위한 별도의 볼륨으로 구성되므로 타겟 호스트에서도 로그 백업 볼륨을 사용할 수 있어야 합니다. 로그 백업을 위한 볼륨을 구성하여 타겟 호스트에 마운트해야 합니다.
+
+로그 백업 볼륨 복제가 재해 복구 설정의 일부인 경우 복제된 로그 백업 볼륨이 타겟 호스트에 마운트되며 추가 로그 백업 볼륨을 준비할 필요가 없습니다.
+
+
+
+== 파일 시스템 마운트를 준비합니다
+
+다음 표에서는 실습 설정에 사용되는 명명 규칙을 보여 줍니다. 재해 복구 사이트의 볼륨 이름은 '/etc/fstab'에 포함됩니다.
+
+|===
+| HANA PR1 볼륨 | 재해 복구 사이트의 볼륨 및 하위 디렉터리 | 타겟 호스트의 마운트 지점 
+
+
+| 데이터 볼륨 | PR1-DATA-mnt00001-SM-Dest | /hana/data/PR1/mnt00001 
+
+
+| 공유 볼륨 | PR1-shared-sm-dest/shared PR1-shared-sm-dest/usr-sap-PR1 | /hana/shared/usr/sap/PR1 
+
+
+| 백업 볼륨을 기록합니다 | 하나베케업 - SM - 목적지 | / 한나백 
+|===
+
+NOTE: 이 테이블의 마운트 지점은 타겟 호스트에서 생성해야 합니다.
+
+여기에 필요한 '/etc/fstab' 항목이 있습니다.
+
+....
+vm-pr1:~ # cat /etc/fstab
+# HANA ANF DB Mounts
+10.0.2.4:/PR1-data-mnt0001-sm-dest /hana/data/PR1/mnt00001 nfs   rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
+10.0.2.4:/PR1-log-mnt00001-dr /hana/log/PR1/mnt00001 nfs   rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
+# HANA ANF Shared Mounts
+10.0.2.4:/PR1-shared-sm-dest/hana-shared /hana/shared nfs rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
+10.0.2.4:/PR1-shared-sm-dest/usr-sap-PR1 /usr/sap/PR1 nfs rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
+# HANA file and log backup destination
+10.0.2.4:/hanabackup-sm-dest    /hanabackup nfs   rw,vers=3,hard,timeo=600,rsize=262144,wsize=262144,nconnect=8,bg,noatime,nolock 0 0
+....

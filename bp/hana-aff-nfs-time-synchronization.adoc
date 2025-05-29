@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-nfs-time-synchronization.html 
+keywords: time, synchronization, storage controllers, sap hana database hosts 
+summary: 스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간에 시간을 동기화해야 합니다. 이렇게 하려면 모든 스토리지 컨트롤러 및 모든 SAP HANA 호스트에 대해 동일한 시간 서버를 설정합니다. 
+---
+= 시간 동기화
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+스토리지 컨트롤러와 SAP HANA 데이터베이스 호스트 간에 시간을 동기화해야 합니다. 이렇게 하려면 모든 스토리지 컨트롤러 및 모든 SAP HANA 호스트에 대해 동일한 시간 서버를 설정합니다.

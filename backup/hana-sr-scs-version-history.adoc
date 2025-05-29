@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sr-scs-version-history.html 
+keywords:  
+summary:  
+---
+= 버전 기록
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+버전 기록:
+
+|===
+| 버전 | 날짜 | 문서 버전 기록 
+
+
+| 버전 1.0 | 2018년 10월 | 초기 버전 
+
+
+| 버전 2.0 | 2022년 1월 | SnapCenter 4.6 HANA 시스템 복제 지원을 포함하는 업데이트 
+|===

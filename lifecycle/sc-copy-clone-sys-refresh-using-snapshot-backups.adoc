@@ -1,0 +1,134 @@
+---
+sidebar: sidebar 
+permalink: lifecycle/sc-copy-clone-sys-refresh-using-snapshot-backups.html 
+keywords: tr4667, 4667, SAP HANA, cloning, system refresh 
+summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP HANA 데이터베이스 및 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호를 SAP 테스트 시스템의 유연한 프로비저닝과 결합합니다. 
+---
+= 스토리지 스냅샷 백업을 사용한 SAP HANA 시스템 업데이트 작업 고려 사항
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP HANA 데이터베이스 및 라이프사이클 관리 툴에 통합되어 효율적인 애플리케이션 통합 데이터 보호를 SAP 테스트 시스템의 유연한 프로비저닝과 결합합니다.
+
+
+
+== 타겟 시스템의 테넌트 이름입니다
+
+SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 아래 그림과 같이 소스 시스템 테넌트 구성 및 타겟 시스템의 필수 테넌트 이름에 따라 다릅니다.
+
+테넌트 이름은 시스템 데이터베이스에 구성되어 있으므로 시스템 데이터베이스를 복구한 후 타겟 시스템에서 소스 시스템의 테넌트 이름도 사용할 수 있습니다. 따라서 타겟 시스템의 테넌트는 옵션 1에 표시된 소스 테넌트와 동일한 이름으로 복구될 수 있습니다. 타겟 시스템의 테넌트 이름이 달라야 하는 경우, 먼저 테넌트와 동일한 이름으로 테넌트를 복구한 다음 필요한 타겟 테넌트 이름으로 이름을 변경해야 합니다. 옵션 2입니다.
+
+이 규칙의 예외는 테넌트 이름이 시스템 SID와 동일한 단일 테넌트가 있는 SAP HANA 시스템입니다. 이 구성은 초기 SAP HANA 설치 후 기본으로 설정됩니다. 이 특정 구성은 SAP HANA 데이터베이스에 의해 플래그가 지정됩니다. 이 경우 타겟 시스템의 테넌트 이름을 사용하여 타겟 시스템의 테넌트 복구를 실행할 수 있습니다. 테넌트 이름은 타겟 시스템의 시스템 SID와 동일해야 합니다. 이 워크플로는 옵션 3에 나와 있습니다.
+
+
+NOTE: 소스 시스템에서 테넌트 생성, 이름 바꾸기 또는 삭제 작업을 실행하는 즉시 이 구성 플래그가 SAP HANA 데이터베이스에 의해 삭제됩니다. 따라서 구성을 다시 tenant=SID로 되돌려도 플래그를 더 이상 사용할 수 없으며 워크플로 3을 사용한 테넌트 복구에 대한 예외는 더 이상 가능하지 않습니다. 이 경우 옵션 2가 필요한 워크플로입니다.
+
+image:sc-copy-clone-image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+image:sc-copy-clone-image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+
+
+== SAP HANA 암호화를 사용하도록 설정한 시스템 새로 고침 워크플로
+
+SAP HANA 지속성 암호화를 사용하는 경우 대상 시스템에서 SAP HANA 데이터베이스를 복구하려면 먼저 추가 단계가 필요합니다.
+
+소스 시스템에서 시스템 데이터베이스뿐 아니라 모든 테넌트 데이터베이스에 대한 암호화 루트 키의 백업을 생성해야 합니다. 복구 작업을 실행하기 전에 백업 파일을 타겟 시스템에 복사하고 루트 키를 백업에서 가져와야 합니다.
+
+도 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["SAP HANA 관리 가이드"]참조하십시오.
+
+
+
+=== 루트 키 백업
+
+루트 키를 변경한 경우 항상 루트 키를 백업해야 합니다. backup 명령은 CLI 매개 변수로 DBID를 요구합니다. DBID는 아래 SQL 문을 사용하여 식별할 수 있습니다.
+
+image:sc-copy-clone-image12.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+SQL 문 및 추가 설명서는 SAP HANA 관리 가이드 의 다음 단계에 나와 https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["루트 키 백업 | SAP 도움말 포털"] 있으며 단일 테넌트 SS1이 있는 HANA 시스템에 필요한 작업을 소스 시스템에서 실행하는 방법을 보여 줍니다.
+
+. 시스템 및 테넌트(SS1) 데이터베이스에 대한 백업 암호를 설정합니다(아직 설정하지 않은 경우).
+
+
+....
+hdbsql SYSTEMDB=> ALTER SYSTEM SET ENCRYPTION ROOT KEYS BACKUP PASSWORD Netapp123;
+0 rows affected (overall time 3658.128 msec; server time 3657.967 msec)
+hdbsql SYSTEMDB=>
+hdbsql SS1=> ALTER SYSTEM SET ENCRYPTION ROOT KEYS BACKUP PASSWORD Netapp123;
+0 rows affected (overall time 2424.236 msec; server time 2424.010 msec)
+hdbsql SS1=>
+....
+. 시스템 및 테넌트(SS1) 데이터베이스에 대한 루트 키 백업을 생성합니다.
+
+
+....
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -backupRootKeys root-key-backup-SS1-SYSTEMDB.rkb --dbid=1 --type='ALL'
+Exporting root key backup for database SYSTEMDB (DBID: 1) to /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -backupRootKeys root-key-backup-SS1-SS1.rkb --dbid=3 --type='ALL'
+Exporting root key backup for database SS1 (DBID: 3) to /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb
+done.
+....
+. 루트 키 백업 검증(선택 사항)
+
+
+....
+ss1adm@hana-1:/usr/sap/SS1/home> ls -al root*
+-rw-r----- 1 ss1adm sapsys 1440 Apr 24 07:00 root-key-backup-SS1-SS1.rkb
+-rw-r----- 1 ss1adm sapsys 1440 Apr 24 06:54 root-key-backup-SS1-SYSTEMDB.rkb
+ss1adm@hana-1:/usr/sap/SS1/home>
+
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -validateRootKeysBackup root-key-backup-SS1-SS1.rkb
+Please Enter the password:
+Successfully validated SSFS backup file /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb
+done.
+
+ss1adm@hana-1:/usr/sap/SS1/home> /usr/sap/SS1/HDB00/exe/hdbnsutil -validateRootKeysBackup root-key-backup-SS1-SYSTEMDB.rkb
+Please Enter the password:
+Successfully validated SSFS backup file /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+....
+
+
+=== 대상 시스템에서 루트 키를 가져옵니다
+
+첫 번째 시스템 새로 고침 작업을 수행하려면 먼저 루트 키를 가져와야 합니다. 소스 시스템에서 루트 키가 변경되지 않은 경우 추가 가져오기가 필요하지 않습니다. import 명령을 사용하려면 DBID가 CLI 매개 변수로 필요합니다. DBID는 루트 키 백업에 대해 설명된 것과 동일한 방식으로 식별할 수 있습니다.
+
+. 설정에서 루트 키가 소스 시스템에서 NFS 공유로 복사됩니다
+
+
+....
+hana-1:~ # cp /usr/sap/SS1/home/root-key-backup-SS1-SS1.rkb /mnt/sapcc-share/SAP-System-Refresh/
+hana-1:~ # cp /usr/sap/SS1/home/root-key-backup-SS1-SYSTEMDB.rkb /mnt/sapcc-share/SAP-System-Refresh/
+....
+. 이제 hdbnsutil을 사용하여 루트 키를 가져올 수 있습니다. 시스템과 테넌트 데이터베이스의 DBID는 명령과 함께 제공해야 합니다. 백업 암호도 필요합니다.
+
+
+....
+qs1adm@hana-7:/usr/sap/QS1/HDB11> ./exe/hdbnsutil -recoverRootKeys /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb --dbid=1 --type=ALL
+Please Enter the password:
+Importing root keys for DBID: 1 from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb
+Successfully imported root keys from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SYSTEMDB.rkb
+done.
+
+qs1adm@hana-7:/usr/sap/QS1/HDB11> ./exe/hdbnsutil -recoverRootKeys /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb --dbid=3 --type=ALL Please Enter the password:
+Importing root keys for DBID: 3 from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb
+Successfully imported root keys from /mnt/sapcc-share/SAP-System-Refresh/root-key-backup-SS1-SS1.rkb
+done.
+qs1adm@hana-7:/usr/sap/QS1/HDB11>
+....
+
+
+=== 루트 키 가져오기(DBID가 대상에 없는 경우
+
+앞의 장에서 설명한 대로 시스템 및 모든 테넌트 데이터베이스에 대한 루트 키를 가져오려면 DBID가 필요합니다. 시스템 데이터베이스는 항상 DBID = 0이지만 테넌트 데이터베이스는 다른 DBID를 가질 수 있습니다.
+
+image:sc-copy-clone-image13.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+위의 출력은 DBID = 3, DBID = 4인 두 테넌트를 보여줍니다. 타겟 시스템이 아직 DBID가 4인 테넌트를 호스팅하지 않은 경우 루트 키 가져오기가 실패합니다. 이 경우 먼저 시스템 데이터베이스를 복구한 다음 DBID가 4인 테넌트의 키를 가져와야 합니다.
