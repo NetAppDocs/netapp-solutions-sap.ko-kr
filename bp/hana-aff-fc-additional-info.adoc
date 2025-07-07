@@ -17,7 +17,7 @@ summary:
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
 
 * link:../index.html["SAP HANA 소프트웨어 솔루션"]
-* link:../backup/hana-dr-sr-pdf-link.html["* TR-4646: 스토리지 복제를 통한 SAP HANA 재해 복구"]
+* link:../backup/hana-dr-sr-pdf-link.html["TR-4646: 스토리지 복제를 사용한 SAP HANA 재해 복구"]
 * link:../backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
 * link:../lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"]
 * NetApp 문서화 센터
@@ -26,7 +26,7 @@ https://www.netapp.com/support-and-training/documentation/["https://www.netapp.c
 
 * SAP HANA용 SAP 인증 엔터프라이즈 스토리지 하드웨어
 +
-http://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html["http://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/enterprise-storage.html"^]
+https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/["https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/"^]
 
 * SAP HANA 스토리지 요구사항
 +

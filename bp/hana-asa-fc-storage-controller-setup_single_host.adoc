@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-storage-controller-setup_single_host.html 
+keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
+summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 Data ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
+---
+= 스토리지 컨트롤러 설정 - 단일 호스트
+:allow-uri-read: 
+
+
+
+
+== 스토리지 컨트롤러 설정 - 단일 호스트
+
+[role="lead"]
+이 섹션에서는 SAP HANA 단일 호스트 시스템에 특화된 NetApp 스토리지 시스템 구성을 설명합니다.
+
+
+
+== SAP HANA 단일 호스트 시스템에 대한 LUN 구성
+
+Linux LVM은 성능을 높이고 LUN 크기 제한을 해결하는 데 사용됩니다. SAP HANA 호스트에서 다음 표에 나와 있는 것처럼 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다.
+
+|===
+| 논리적 볼륨/LUN | SAP HANA 호스트의 마운트 지점 | 참고 
+
+
+| LV: FC5_data_mnt0000-vol | /HANA/data/FC5/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+
+
+| LV: FC5_log_mnt00001-vol | /HANA/log/FC5/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+
+
+| LUN: FC5_shared | /HANA/공유/FC5 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+|===
+
+NOTE: 설명된 구성을 사용하면  `/usr/sap/FC5` 사용자 FC5adm의 기본 홈 디렉터리가 저장된 디렉터리는 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서 NetApp은 추가 LUN을 생성할 것을 권장합니다.  `/usr/sap/FC5` 모든 파일 시스템이 중앙 저장소에 있도록 디렉토리를 만듭니다.
+
+
+
+== LUN 생성 및 LUN을 이니시에이터 그룹에 매핑
+
+NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.
+
+
+NOTE: 'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.
+
+
+
+=== CLI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
+
+이 섹션에서는 LVM과 LVM 볼륨 그룹당 두 개의 LUN을 사용하는 SID FC5가 있는 SAP HANA 단일 호스트 시스템에 대해 ONTAP 9에서 명령줄을 사용하여 구성 예를 보여줍니다.
+
+. 모든 LUN을 생성합니다.
++
+....
+lun create -path  FC5_data_mnt00001   -size 1t -ostype linux  -class regular
+lun create -path FC5_data2_mnt00001 -size 1t -ostype linux  -class regular
+lun create -path FC5_log_mnt00001 -size 260g -ostype linux  -class regular
+lun create -path FC5_log2_mnt00001 -size 260g -ostype linux  -class regular
+lun create -path FC5_shared -size 260g -ostype linux  -class regular
+
+....
+. 시스템 FC5에 속하는 모든 서버에 대한 이니시에이터 그룹을 생성합니다.
++
+....
+lun igroup create -igroup HANA-FC5 -protocol fcp -ostype linux -initiator 10000090fadcc5fa,10000090fadcc5fb -vserver svm1
+....
+. 모든 LUN을 생성된 이니시에이터 그룹에 매핑합니다.
++
+....
+lun map -path FC5_data_mnt00001    -igroup HANA-FC5
+lun map -path FC5_data2_mnt00001  -igroup HANA-FC5
+lun map -path FC5_log_mnt00001  -igroup HANA-FC5
+lun map -path FC5_log2_mnt00001  -igroup HANA-FC5
+lun map -path FC5_shared  -igroup HANA-FC5
+....
+

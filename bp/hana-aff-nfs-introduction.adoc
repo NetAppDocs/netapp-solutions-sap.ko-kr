@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: bp/hana-aff-nfs-introduction.html 
 keywords: introduction, certification, AFF A220, AFF A250, AFF A300, AFF A320, AFF A400, AFF A700s, AFF A700, AFF A800A, 
-summary: 'NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 인증된 엔터프라이즈 스토리지 시스템의 특징은 NetApp ONTAP 소프트웨어입니다.' 
+summary: 'NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration) 프로젝트에서 SAP HANA와 함께 사용하도록 인증되었습니다. 이 가이드에서는 이 플랫폼에서 SAP HANA를 사용하는 모범 사례를 제공합니다.' 
 ---
 = NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드
 :hardbreaks:
@@ -14,9 +14,9 @@ summary: 'NetApp AFF 시스템 제품군은 TDI(Tailored Data Center Integration
 
 
 [role="lead"]
-NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다.
+NetApp AFF A-Series 및 AFF C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다. 이 가이드에서는 NFS 플랫폼에서 SAP HANA를 사용하는 모범 사례를 제공합니다.
 
-Marco schön, NetApp
+Marco Schoen, NetApp을 참조하십시오
 
 이 인증은 다음 모델에 대해 유효합니다.
 
@@ -40,9 +40,10 @@ NOTE: 이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 �
 
 FCP를 사용하는 NetApp AFF 시스템 및 NFS 또는 FCP를 사용하는 FAS 시스템의 구성 가이드는 다음 링크에서 찾을 수 있습니다.
 
-* link:hana-fas-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp FAS 시스템 기반 SAP HANA"^]
+* link:hana-fas-fc-introduction.html["FCP가 있는 NetApp FAS 시스템 기반 SAP HANA"^]
 * link:hana-fas-nfs-introduction.html["NFS를 포함한 NetApp FAS 시스템 기반 SAP HANA"^]
-* link:hana-aff-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"^]
+* link:hana-aff-fc-introduction.html["FCP가 있는 NetApp AFF 시스템 기반 SAP HANA"^]
+* link:hana-asa-fc-introduction.html["FCP가 있는 NetApp ASA 시스템 기반 SAP HANA"^]
 
 
 다음 표에는 SAP HANA 데이터베이스 구성에 따라 NFS 버전, NFS 잠금 및 필수 격리 구현이 지원되는 조합이 나와 있습니다.

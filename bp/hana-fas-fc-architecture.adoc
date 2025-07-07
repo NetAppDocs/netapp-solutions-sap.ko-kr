@@ -34,7 +34,7 @@ image:saphana_fas_fc_image3.png["입력/출력 대화 상자 또는 작성된 �
 
 구축된 FAS 시스템 스토리지 모델과 별도로 다음 그림과 같이 스토리지 컨트롤러를 추가하여 SAP HANA 환경을 확장할 수도 있습니다.
 
-image:saphana_fas_fc_image4.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:saphana_fas_fc_image4a.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
@@ -48,7 +48,7 @@ NetApp SnapVault 소프트웨어를 사용하면 기본 스토리지에 생성�
 
 다음 그림과 같이 NFS 마운트를 사용하여 데이터베이스 로그를 보조 스토리지에 직접 백업할 수 있습니다.
 
-image:saphana_fas_fc_image5.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:saphana_asa_fc_image5a.png["SnapCenter 개요"]
 
 스토리지 기반 Snapshot 백업은 파일 기반 백업에 비해 상당한 이점을 제공합니다. 다음과 같은 이점이 있습니다.
 

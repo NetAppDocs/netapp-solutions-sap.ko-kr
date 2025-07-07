@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-infra-setup-config-overview.html 
+keywords:  
+summary:  
+---
+= 인프라 설정 및 구성
+:allow-uri-read: 
+
+
+
+
+== 인프라 설정 및 구성
+
+[role="lead"]
+다음 섹션에서는 SAP HANA 인프라 설정 및 구성 지침을 제공하고 SAP HANA 시스템 설정에 필요한 모든 단계를 설명합니다. 이 섹션에서는 다음 예제 구성을 사용합니다.
+
+* SID가 FC5인 HANA 시스템
++
+** SAP HANA 단일 및 다중 호스트
+
+
+

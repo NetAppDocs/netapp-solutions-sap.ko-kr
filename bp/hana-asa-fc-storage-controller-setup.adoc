@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-storage-controller-setup.html 
+keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
+summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 Data ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
+---
+= 스토리지 컨트롤러 설정
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 Data ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다.
+
+
+
+== 스토리지 효율성
+
+SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중복제거, 인라인 압축, 인라인 컴팩션이 지원됩니다.
+
+
+
+== 서비스 품질
+
+QoS를 사용하면 공유 컨트롤러에서 특정 SAP HANA 시스템 또는 SAP 이외의 애플리케이션에 대한 스토리지 처리량을 제한할 수 있습니다.
+
+
+
+=== 운영 및 개발/테스트
+
+한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다. 사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다. 대규모 쓰기 I/O는 스토리지 시스템에 가장 큰 성능 영향을 미칩니다. 따라서 QoS 처리량 제한은 데이터 및 로그 볼륨에서 해당 쓰기 SAP HANA 스토리지 성능 KPI 값의 백분율로 설정해야 합니다.
+
+
+
+=== 공유 환경
+
+또 다른 사용 사례는 쓰기가 많은 워크로드의 처리량을 제한하는 것이며, 특히 이러한 워크로드가 지연 시간에 민감한 쓰기 워크로드에 영향을 미치지 않도록 하는 것입니다. 이러한 환경에서는 개별 스토리지 오브젝트의 최대 처리량을 지정된 값으로 제한하기 위해 비공유 처리량 상한 QoS 그룹 정책을 각 SVM(Storage Virtual Machine) 내의 각 LUN에 적용하는 것이 좋습니다. 따라서 단일 워크로드가 다른 워크로드에 부정적인 영향을 미칠 수 있는 가능성이 줄어듭니다.
+
+이렇게 하려면 각 SVM에 대해 ONTAP 클러스터의 CLI를 사용하여 그룹 정책을 생성해야 합니다.
+
+....
+qos policy-group create -policy-group <policy-name> -vserver <vserver name> -max-throughput 1000MB/s -is-shared false
+....
+SVM 내의 각 LUN에 적용됩니다. 아래는 SVM 내의 모든 기존 LUN에 정책 그룹을 적용하는 예입니다.
+
+....
+lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
+....
+이 작업은 모든 SVM에 대해 수행해야 합니다. 각 SVM의 QoS 경찰 그룹 이름은 달라야 합니다. 새 LUN의 경우 정책을 직접 적용할 수 있습니다.
+
+....
+lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
+....
+지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를 link:hana-asa-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["호스트 설정"]제공합니다.
+
+
+NOTE: 이 제한은 읽기에도 적용됩니다. 따라서 SAP HANA 데이터베이스 시작 시간 및 백업에 필요한 SLA를 충족하기 위해 충분한 LUN을 사용하십시오.
+
+
+
+== 스토리지를 구성합니다
+
+다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 섹션에서는 스토리지 하드웨어가 설정되어 있고 ONTAP 소프트웨어가 이미 설치되어 있다고 가정합니다. 또한 스토리지 FCP 포트를 SAN 패브릭에 이미 연결할 수 있어야 합니다.
+
+. 에 설명된 대로 디스크 쉘프의 구성이 올바른지 확인합니다<<NVMe(100GbE) 기반 디스크 쉘프>>.
+. 섹션 링크:saphana-asa-fc-storage-controller-setup.html#initiator-groups에 설명된 대로 HANA 서버의 전 세계 이름(WWN)을 사용하여 개시자 그룹(igroup)을 만듭니다. <<이니시에이터 그룹>> .
+. LUN을 생성하고 섹션에 설명된 서버에 매핑합니다. link:hana-asa-fc-storage-controller-setup_single_host.html["SAP HANA 단일 호스트 시스템에 대한 LUN 구성"] 그리고 link:hana-asa-fc-storage-controller-setup_multiple_hosts.html["SAP HANA 다중 호스트 시스템을 위한 LUN 구성"]
+
+
+
+
+=== NVMe(100GbE) 기반 디스크 쉘프
+
+각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 디스크는 HA 쌍의 두 컨트롤러에 자동으로 분배됩니다.
+
+image:saphana_asa_fc_image11a.png["NS224 NVMe 디스크 쉘프 연결"]
+
+
+
+=== 이니시에이터 그룹
+
+igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.
+
+'sanlun' 툴을 사용하여 각 SAP HANA 호스트의 WWPN을 얻으려면 다음 명령을 실행합니다.
+
+....
+sapcc-hana-tst:~ # sanlun fcp show adapter
+/sbin/udevadm
+/sbin/udevadm
+
+host0 ...... WWPN:2100000e1e163700
+host1 ...... WWPN:2100000e1e163701
+....
+
+NOTE: 이 `sanlun` 툴은 NetApp Host Utilities의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 섹션을 참조하십시오 link:hana-asa-fc-host-setup.html["호스트 설정."]
+
+이니시에이터 그룹은 ONTAP 클러스터의 CLI를 사용하여 생성할 수 있습니다.
+
+....
+lun igroup create -igroup <igroup name> -protocol fcp -ostype linux -initiator <list of initiators> -vserver <SVM name>
+....

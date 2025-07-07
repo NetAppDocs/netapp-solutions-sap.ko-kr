@@ -423,10 +423,6 @@ vol create -volume FC5_log2_mnt00001  -aggregate aggr1_1 -size 280g -snapshot-po
 vol create -volume FC5_data2_mnt00002  -aggregate aggr2_1 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
 vol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false  -space-guarantee none
 ....
-+
-
-NOTE: 2024년 8월 이후에 출시된 ASA 시스템은 _lun create_ 중에 자동으로 수행되므로 이 단계가 필요하지 않습니다
-
 . 모든 LUN을 생성합니다.
 +
 ....
@@ -439,10 +435,6 @@ lun create -path /vol/FC5_log2_mnt00001/FC5_log2_mnt00001 -size 260g -ostype lin
 lun create -path /vol/FC5_log_mnt00002/FC5_log_mnt00002 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
 lun create -path /vol/FC5_log2_mnt00002/FC5_log2_mnt00002 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
 ....
-+
-
-NOTE: 2024년 8월 이후에 출시된 ASA 시스템의 경로로만 LUN 이름을 제공하십시오. 이는 아래의 _lun map_명령에도 적용됩니다. 또한 _-space-reserve_및 _-space-allocation_ 옵션을 사용할 수 없습니다.
-
 . 시스템 FC5에 속하는 모든 서버에 대한 이니시에이터 그룹을 생성합니다.
 +
 ....

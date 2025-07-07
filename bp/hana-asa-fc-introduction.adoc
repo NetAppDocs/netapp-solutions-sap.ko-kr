@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-asa-fc-introduction.html 
+keywords: introduction, raw device mapping, rdm, tailored data center integration, FCP datastore 
+summary: NetApp ASA 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 이 가이드에서는 이 플랫폼에서 SAP HANA를 사용하는 모범 사례를 제공합니다. 
+---
+= 파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp ASA 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 이 가이드에서는 이 플랫폼에서 SAP HANA를 사용하는 모범 사례를 제공합니다.
+
+Marco Schoen, NetApp을 참조하십시오
+
+
+
+== 소개
+
+NetApp ASA A-Series 및 ASA C-Series 제품군은 맞춤형 데이터 센터 통합(TDI) 프로젝트에 SAP HANA와 함께 사용할 수 있다는 인증을 받았습니다. 이 가이드에서는 다음 인증 모델에 대한 모범 사례를 설명합니다.
+
+* ASA A20, ASA A30, ASA A50, ASA A70, ASA A90, ASA A1K
+* ASA C30
+
+
+SAP HANA용 NetApp 인증 스토리지 솔루션의 전체 목록은 를 참조하십시오 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=v:deCertified;ve:13["인증되고 지원되는 SAP HANA 하드웨어 디렉토리"^].
+
+이 문서에서는 FCP(파이버 채널 프로토콜)를 사용하는 ASA 구성에 대해 설명합니다.
+
+
+NOTE: 이 문서에 설명된 구성은 필요한 SAP HANA KPI와 SAP HANA의 최고 성능을 달성하기 위해 필요합니다. 여기에 나열되지 않은 기능을 사용하거나 설정을 변경하면 성능 저하 또는 예기치 않은 동작이 발생할 수 있으며 NetApp 지원 팀에서 권고한 경우에만 수행해야 합니다.
+
+SAP HANA 다중 호스트 환경에서 표준 SAP HANA 스토리지 커넥터는 SAP HANA 호스트 페일오버 시 펜싱을 제공하는 데 사용됩니다. 운영 체제 구성 지침 및 HANA 특정 Linux 커널 종속성에 대해서는 항상 관련 SAP 노트를 참조하십시오. 자세한 내용은 을 참조하십시오 https://launchpad.support.sap.com/["SAP Note 2235581 – SAP HANA 지원 운영 체제"^].
+
+
+
+== SAP HANA 맞춤형 데이터 센터 통합
+
+NetApp ASA 스토리지 시스템은 FC(SAN) 프로토콜을 사용하는 SAP HANA TDI 프로그램에서 인증을 받았습니다. 이 시스템은 단일 호스트 또는 다중 호스트 구성으로 HANA의 SAP Business Suite, S/4HANA, BW/4HANA 또는 HANA의 SAP Business Warehouse와 같은 현재 SAP HANA 시나리오에 배포될 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. 다음 그림에서는 아키텍처 개요를 보여 줍니다.
+
+image:saphana_aff_fc_image1.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+
+생산적인 SAP HANA 시스템의 사전 요구 사항 및 권장 사항에 대한 자세한 내용은 다음 리소스를 참조하십시오.
+
+* http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html["SAP HANA 맞춤형 데이터 센터 통합 FAQ를 참조하십시오"^]
+
+
+
+
+= VMware vSphere를 사용하는 SAP HANA
+
+스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 원시 장치 매핑(RDM), FCP 데이터 저장소 또는 FCP가 포함된 VVOL 데이터 저장소가 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다.
+
+SAP HANA에서 vSphere를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하십시오.
+
+* https://help.sap.com/docs/SUPPORT_CONTENT/virtualization/3362185751.html["VMware vSphere 기반 SAP HANA - 가상화 - 커뮤니티 Wiki"^]
+* https://www.vmware.com/docs/sap_hana_on_vmware_vsphere_best_practices_guide-white-paper["VMware vSphere 기반 SAP HANA 모범 사례 가이드 를 참조하십시오"^]
+* https://launchpad.support.sap.com/["2161991 - VMware vSphere 구성 지침 - SAP One Support Launchpad(로그인 필요)"^]
+

@@ -10,6 +10,8 @@ indexpage:
       url: bp/hana-aff-fc-introduction.html
     - title: NFS 구성 가이드가 포함된 NetApp AFF 시스템 기반 SAP HANA
       url: bp/hana-aff-nfs-introduction.html
+    - title: FCP가 있는 NetApp ASA 시스템 기반 SAP HANA 구성 가이드
+      url: "/bp/hana-asa-fc-introduction.html"
     - title: NFS가 포함된 NetApp FAS 시스템의 SAP HANA 구성 가이드
       url: bp/hana-fas-nfs-introduction.html
     - title: 파이버 채널 프로토콜을 포함한 NetApp FAS 시스템 기반 SAP HANA 구성 가이드 를 참조하십시오

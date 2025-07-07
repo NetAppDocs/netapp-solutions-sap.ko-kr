@@ -215,4 +215,4 @@ RAM의 크기, 각 SAP HANA 호스트의 디스크의 순 데이터 크기 및 S
 
 다음 그림은 사이징 프로세스를 요약합니다.
 
-image:saphana-fas-nfs_image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:saphana-fas-nfs_image9a.png["SAP HANA 스토리지 크기 조정 프로세스"]
