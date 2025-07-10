@@ -91,6 +91,26 @@ entries:
     url: "/backup/hana-sc-vmware-smas-failover-scenarios.html"
   - title: 추가 정보 및 버전 기록
     url: "/backup/hana-sc-vmware-smas-additional-info.html"
+- title: VMware VMFS 및 NetApp ASA 시스템을 사용한 SnapCenter 통한 SAP HANA 데이터 보호
+  entries:
+  - title: 이 문서의 범위
+    url: "/backup/hana-sc-vmfs-asar2-scope.html"
+  - title: 이 문서에 사용된 랩 설정
+    url: "/backup/hana-sc-vmfs-asar2-lab-setup.html"
+  - title: HANA 시스템 프로비저닝 및 설치
+    url: "/backup/hana-sc-vmfs-asar2-hana-prov.html"
+  - title: HANA 구성
+    url: "/backup/hana-sc-vmfs-asar2-hana-config.html"
+  - title: SnapCenter 구성
+    url: "/backup/hana-sc-vmfs-asar2-sc-config.html"
+  - title: SnapCenter 백업 작업
+    url: "/backup/hana-sc-vmfs-asar2-sc-backup.html"
+  - title: SnapCenter 복원 및 복구 작업
+    url: "/backup/hana-sc-vmfs-asar2-sc-restore.html"
+  - title: SAP 시스템 새로 고침
+    url: "/backup/hana-sc-vmfs-asar2sap-refresh.html"
+  - title: 추가 정보 및 버전 기록
+    url: "/backup/hana-sc-vmfs-asar2-add-info.html"
 - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 클라우드 오브젝트 스토리지를 백업 대상으로 합니다
   entries:
   - title: SAP HANA를 위한 BlueXP 백업 및 복구 - 개요

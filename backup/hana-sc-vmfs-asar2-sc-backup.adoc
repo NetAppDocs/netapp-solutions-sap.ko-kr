@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-sc-backup.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= 백업 작업
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+VMFS가 포함된 VMware에만 해당되는 내용은 없습니다.
+
+image:sc-hana-asrr2-vmfs-image18.png["논의 중인 내용을 보여 주는 그림"]
+
+image:sc-hana-asrr2-vmfs-image19.png["논의 중인 내용을 보여 주는 그림"]
+
+SnapCenter 일관성 그룹(CG)을 생성하고 hana++_++data++_++VFS 스토리지 유닛을 CG에 추가합니다. 스냅샷은 CG 수준에서 생성됩니다.
+
+image:sc-hana-asrr2-vmfs-image20.png["논의 중인 내용을 보여 주는 그림"]
+
+image:sc-hana-asrr2-vmfs-image21.png["논의 중인 내용을 보여 주는 그림"]
+
+image:sc-hana-asrr2-vmfs-image22.png["논의 중인 내용을 보여 주는 그림"]

@@ -40,7 +40,7 @@ SAP HANA 다중 호스트 시스템은 중앙 HANA 플러그인을 사용하여 
 
 
 
-=== SnapCenter for VMware vSphere 플러그인
+=== VMware vSphere 플러그인용 SnapCenter
 
 VMware 환경에 SnapCenter for VMware vSphere 플러그인을 구축해야 합니다.
 

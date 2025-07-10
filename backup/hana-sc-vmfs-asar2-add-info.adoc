@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-add-info.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery 
+summary:  
+---
+= 추가 정보 및 버전 기록
+:allow-uri-read: 
+
+
+HANA 모범 사례:
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"]..
+
+
+SnapCenter:
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter, SnapMirror Active Sync 및 VMware Metro Storage Cluster를 통한 SAP HANA 데이터 보호 및 고가용성"]
+* https://docs.netapp.com/us-en/snapcenter/index.html["SnapCenter 소프트웨어 설명서"]
+
+
+버전 기록:
+
+[cols="25%,25%,50%"]
+|===
+| 버전 | 날짜 | 설명 
+
+
+| 버전 1.0 | 07/2025 을 참조하십시오 | 초기 버전 
+|===
