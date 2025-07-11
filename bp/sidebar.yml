@@ -19,10 +19,20 @@ entries:
     - title: 시간 동기화
       url: "/bp/hana-aff-fc-time-synchronization.html"
     - title: 스토리지 컨트롤러 설정
+      entries:
+      - title: 단일 호스트 LUN 구성
+        url: "/bp/hana-aff-fc-storage-controller-setup_single_host.html"
+      - title: 다중 호스트 LUN 구성
+        url: "/bp/hana-aff-fc-storage-controller-setup_multiple_hosts.html"
       url: "/bp/hana-aff-fc-storage-controller-setup.html"
     - title: SAP HANA 스토리지 커넥터 API
       url: "/bp/hana-aff-fc-storage-connector-api.html"
     - title: 호스트 설정
+      entries:
+      - title: 단일 호스트
+        url: "/bp/hana-aff-fc-host-setup_single.html"
+      - title: 여러 호스트
+        url: "/bp/hana-aff-fc-host-setup_multi.html"
       url: "/bp/hana-aff-fc-host-setup.html"
     - title: SAP HANA용 I/O 스택 구성
       url: "/bp/hana-aff-fc-io-stack-configuration.html"
@@ -84,22 +94,20 @@ entries:
       url: "/bp/hana-asa-fc-time-synchronization.html"
     - title: 스토리지 컨트롤러 설정
       entries:
-      - title: 일반 설정
-        url: "/bp/hana-asa-fc-storage-controller-setup.html"
       - title: 단일 호스트 LUN 구성
         url: "/bp/hana-asa-fc-storage-controller-setup_single_host.html"
       - title: 다중 호스트 LUN 구성
         url: "/bp/hana-asa-fc-storage-controller-setup_multiple_hosts.html"
+      url: "/bp/hana-asa-fc-storage-controller-setup.html"
     - title: SAP HANA 스토리지 커넥터 API
       url: "/bp/hana-asa-fc-storage-connector-api.html"
     - title: 호스트 설정
       entries:
-      - title: 다중 경로 구성
-        url: "/bp/hana-asa-fc-host-setup.html"
       - title: 단일 호스트
         url: "/bp/hana-asa-fc-host-setup_single.html"
-      - title: 다중 호스트
+      - title: 여러 호스트
         url: "/bp/hana-asa-fc-host-setup_multi.html"
+      url: "/bp/hana-asa-fc-host-setup.html"
     - title: SAP HANA용 I/O 스택 구성
       url: "/bp/hana-asa-fc-io-stack-configuration.html"
     - title: SAP HANA 소프트웨어 설치

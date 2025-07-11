@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: bp/hana-aff-fc-host-setup_single.html 
+keywords: multipathing, fcp, hba, configure 
+summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp SAN 호스트 유틸리티를 다운로드하고 HANA 서버에 설치해야 합니다. 호스트 유틸리티 설명서에는 사용된 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다. 
+---
+= 단일 호스트 설정
+:allow-uri-read: 
+
+
+
+
+== 단일 호스트 설정
+
+[role="lead"]
+이 장에서는 SAP HANA 단일 호스트 설정에 대해 설명합니다.
+
+
+
+=== LVM 볼륨 그룹 및 논리 볼륨을 생성합니다
+
+. 모든 LUN을 물리적 볼륨으로 초기화합니다.
++
+....
+pvcreate /dev/mapper/hana-FC5_data_mnt00001
+pvcreate /dev/mapper/hana-FC5_data2_mnt00001
+pvcreate /dev/mapper/hana-FC5_log_mnt00001
+pvcreate /dev/mapper/hana-FC5_log2_mnt00001
+....
+. 각 데이터 및 로그 파티션에 대한 볼륨 그룹을 생성합니다.
++
+....
+vgcreate FC5_data_mnt00001 /dev/mapper/hana-FC5_data_mnt00001 /dev/mapper/hana-FC5_data2_mnt00001
+vgcreate FC5_log_mnt00001 /dev/mapper/hana-FC5_log_mnt00001 /dev/mapper/hana-FC5_log2_mnt00001
+....
+. 각 데이터 및 로그 파티션에 대한 논리적 볼륨을 생성합니다. 볼륨 그룹당 사용되는 LUN 수(이 예에서는 2개)와 데이터의 경우 스트라이프 크기 256K, 로그의 경우 64k를 사용하는 스트라이프 크기를 사용합니다. SAP는 볼륨 그룹당 하나의 논리적 볼륨만 지원합니다.
++
+....
+lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00001
+lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00001
+....
+. 다른 모든 호스트에서 물리적 볼륨, 볼륨 그룹 및 볼륨 그룹을 검사합니다.
+
+
+....
+modprobe dm_mod
+pvscan
+vgscan
+lvscan
+....
+
+NOTE: 이러한 명령을 실행해도 볼륨이 없으면 다시 시작해야 합니다.
+
+논리적 볼륨을 마운트하려면 논리적 볼륨을 활성화해야 합니다. 볼륨을 활성화하려면 다음 명령을 실행합니다.
+
+....
+vgchange -a y
+....
+
+
+=== 파일 시스템을 생성합니다
+
+모든 데이터 및 로그 논리 볼륨과 HANA 공유 LUN에 XFS 파일 시스템을 만듭니다.
+
+....
+mkfs.xfs FC5_data_mnt00001-vol
+mkfs.xfs FC5_log_mnt00001-vol
+mkfs.xfs /dev/mapper/svm1-FC5_shared
+....
+
+NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
+
+
+
+=== 마운트 지점을 생성합니다
+
+필요한 마운트 지점 디렉토리를 생성하려면 다음 작업 중 하나를 수행합니다.
+
+* 단일 호스트 시스템의 경우 사용 권한을 설정하고 데이터베이스 호스트에 마운트 지점을 생성합니다.
+
+
+....
+sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
+sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00001
+sapcc-hana-tst:/ # mkdir -p /hana/shared
+sapcc-hana-tst:/ # chmod –R 777 /hana/log/FC5
+sapcc-hana-tst:/ # chmod –R 777 /hana/data/FC5
+sapcc-hana-tst:/ # chmod 777 /hana/shared
+....
+
+
+=== 파일 시스템을 마운트합니다
+
+시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
+
+* 단일 호스트 시스템의 경우 필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.
++
+....
+# cat /etc/fstab
+/dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
+/dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
+/dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
+....
++
+
+NOTE: 데이터 및 로그 LUN을 위한 XFS 파일 시스템은 'laytime' 및 'inode64' 마운트 옵션으로 마운트되어야 합니다.
+
++
+파일 시스템을 마운트하려면 다음을 실행하세요.  `mount –a` 호스트에서 명령을 내립니다.
+
+
