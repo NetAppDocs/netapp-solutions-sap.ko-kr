@@ -96,7 +96,7 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 . 에 설명된 대로 스토리지 가상 머신(SVM)을 <<스토리지 가상 머신 구성>>생성합니다.
 . 에 설명된 대로 논리 인터페이스(LIF)를 <<논리 인터페이스 구성>>생성합니다.
 . 섹션에 설명된 대로 HANA 서버의 전 세계 이름(WWN)을 사용하여 시작자 그룹(igroup)을 만듭니다. <<이니시에이터 그룹>> .
-. 섹션에 설명된 대로 집계 내에서 볼륨과 LUN을 생성하고 구성합니다. link:hana-aff-fc-host-setup_single_host.html["단일 호스트 설정"] 단일 호스트 또는 섹션별 link:hana-aff-fc-host-setup_multiple_hosts.html["다중 호스트 설정"]
+. 섹션에 설명된 대로 집계 내에서 볼륨과 LUN을 생성하고 구성합니다. link:hana-aff-fc-storage-controller-setup_single_host.html["단일 호스트 설정"] 단일 호스트 또는 섹션별 link:hana-aff-fc-storage-controller-setup_multiple_hosts.html["다중 호스트 설정"]
 
 
 
@@ -116,7 +116,7 @@ image:saphana_aff_fc_image10.png["DS224C 디스크 쉘프 연결"]
 
 
 
-=== NVMe(100GbE) 기반 디스크 쉘프
+=== NVMe 기반 디스크 셸프
 
 각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다. ADPv2는 NS224 디스크 쉘프에도 사용됩니다.
 

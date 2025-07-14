@@ -4,13 +4,13 @@ permalink: bp/hana-asa-fc-storage-controller-setup_multiple_hosts.html
 keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
 summary: 이 섹션에서는 다중 호스트 시스템에 대한 LUN을 생성하는 방법을 설명합니다. 
 ---
-= 스토리지 컨트롤러 설정 - 여러 호스트
+= 여러 호스트
 :allow-uri-read: 
 
 
 
 
-== 스토리지 컨트롤러 설정 - 여러 호스트
+== 여러 호스트
 
 [role="lead"]
 이 섹션에서는 SAP HANA 다중 호스트 시스템에 특화된 NetApp 스토리지 시스템 구성을 설명합니다.

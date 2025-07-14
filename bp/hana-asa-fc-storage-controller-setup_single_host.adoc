@@ -4,13 +4,13 @@ permalink: bp/hana-asa-fc-storage-controller-setup_single_host.html
 keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
 summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 Data ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
 ---
-= 스토리지 컨트롤러 설정 - 단일 호스트
+= 단일 호스트
 :allow-uri-read: 
 
 
 
 
-== 스토리지 컨트롤러 설정 - 단일 호스트
+== 단일 호스트
 
 [role="lead"]
 이 섹션에서는 SAP HANA 단일 호스트 시스템에 특화된 NetApp 스토리지 시스템 구성을 설명합니다.

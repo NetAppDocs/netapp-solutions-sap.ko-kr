@@ -31,125 +31,154 @@ NOTE: SAP HANA 다중 호스트 구성의 모든 작업자 및 대기 호스트�
 . 'anlun lun show' 명령을 실행하여 필요한 모든 LUN이 표시되는지 확인합니다. 다음 예에서는 데이터 LUN 2개와 로그 LUN 2개가 있는 2+1 다중 호스트 HANA 시스템에 대한 'show' 명령 출력을 보여 줍니다. 이 출력에는 LUN의 S3_DATA_mnt00001 및 디바이스 파일 '/dev/sdag'과 같은 LUN과 해당 디바이스 파일이 표시됩니다. 각 LUN에는 호스트에서 스토리지 컨트롤러로 연결되는 8개의 FC 경로가 있습니다.
 +
 ....
-stlrx300s8-6:~ # sanlun lun show
-controller(7mode/E-Series)/                                            device          host       lun
-vserver(cDOT/FlashRay)        lun-pathname                             filename        adapter    protocol   size    product
--------------------------------------------------------------------------------------------------------------------------
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdah       host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdag       host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdaf       host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdae       host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdad       host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdac       host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdab       host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdaa       host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdz        host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdy        host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdx        host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdw        host11     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdv        host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdu        host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdt        host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sds        host11     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdr        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdq        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdp        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdo        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdn        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdm        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdl        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdk        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdj        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00002/SS3_log_mnt00002   /dev/sdi        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_data_mnt00001/SS3_data_mnt00001 /dev/sdh        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_data_mnt00002/SS3_data_mnt00002 /dev/sdg        host10     FCP        1.2t    cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdf        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sde        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdd        host10     FCP        512.0g  cDOT
-hana                          /vol/SS3_log_mnt00001/SS3_log_mnt00001   /dev/sdc        host10     FCP        512.0g  cDOT
+sapcc-hana-tst:~ # sanlun lun show
+controller(7mode/E-Series)/                                  device          host                  lun
+vserver(cDOT/FlashRay)        lun-pathname                   filename        adapter    protocol   size    product
+---------------------------------------------------------------------------------------------------------------
+svm1                          FC5_log2_mnt00002              /dev/sdbb       host21     FCP        500g    cDOT
+svm1                          FC5_log_mnt00002               /dev/sdba       host21     FCP        500g    cDOT
+svm1                          FC5_log2_mnt00001              /dev/sdaz       host21     FCP        500g    cDOT
+svm1                          FC5_log_mnt00001               /dev/sday       host21     FCP        500g    cDOT
+svm1                          FC5_data2_mnt00002             /dev/sdax       host21     FCP        1t      cDOT
+svm1                          FC5_data_mnt00002              /dev/sdaw       host21     FCP        1t      cDOT
+svm1                          FC5_data2_mnt00001             /dev/sdav       host21     FCP        1t      cDOT
+svm1                          FC5_data_mnt00001              /dev/sdau       host21     FCP        1t      cDOT
+svm1                          FC5_log2_mnt00002              /dev/sdat       host21     FCP        500g    cDOT
+svm1                          FC5_log_mnt00002               /dev/sdas       host21     FCP        500g    cDOT
+svm1                          FC5_log2_mnt00001              /dev/sdar       host21     FCP        500g    cDOT
+svm1                          FC5_log_mnt00001               /dev/sdaq       host21     FCP        500g    cDOT
+svm1                          FC5_data2_mnt00002             /dev/sdap       host21     FCP        1t      cDOT
+svm1                          FC5_data_mnt00002              /dev/sdao       host21     FCP        1t      cDOT
+svm1                          FC5_data2_mnt00001             /dev/sdan       host21     FCP        1t      cDOT
+svm1                          FC5_data_mnt00001              /dev/sdam       host21     FCP        1t      cDOT
+svm1                          FC5_log2_mnt00002              /dev/sdal       host20     FCP        500g    cDOT
+svm1                          FC5_log_mnt00002               /dev/sdak       host20     FCP        500g    cDOT
+svm1                          FC5_log2_mnt00001              /dev/sdaj       host20     FCP        500g    cDOT
+svm1                          FC5_log_mnt00001               /dev/sdai       host20     FCP        500g    cDOT
+svm1                          FC5_data2_mnt00002             /dev/sdah       host20     FCP        1t      cDOT
+svm1                          FC5_data_mnt00002              /dev/sdag       host20     FCP        1t      cDOT
+svm1                          FC5_data2_mnt00001             /dev/sdaf       host20     FCP        1t      cDOT
+svm1                          FC5_data_mnt00001              /dev/sdae       host20     FCP        1t      cDOT
+svm1                          FC5_log2_mnt00002              /dev/sdad       host20     FCP        500g    cDOT
+svm1                          FC5_log_mnt00002               /dev/sdac       host20     FCP        500g    cDOT
+svm1                          FC5_log2_mnt00001              /dev/sdab       host20     FCP        500g    cDOT
+svm1                          FC5_log_mnt00001               /dev/sdaa       host20     FCP        500g    cDOT
+svm1                          FC5_data2_mnt00002             /dev/sdz        host20     FCP        1t      cDOT
+svm1                          FC5_data_mnt00002              /dev/sdy        host20     FCP        1t      cDOT
+svm1                          FC5_data2_mnt00001             /dev/sdx        host20     FCP        1t      cDOT
+svm1                          FC5_data_mnt00001              /dev/sdw        host20     FCP        1t      cDOT
+
 ....
-. multipath -r 명령을 실행하여 디바이스 파일 이름에 대한 WWID(Worldwide Identifier)를 가져옵니다.
+. 실행하다  `multipath -r` 그리고  `multipath -ll` 장치 파일 이름에 대한 전 세계 식별자(WWID)를 가져오는 명령입니다.
 +
 
-NOTE: 이 예에서는 LUN 4개가 있습니다.
+NOTE: 이 예에서는 LUN이 8개 있습니다.
 
 +
 ....
-stlrx300s8-6:~ # multipath -r
-create: 3600a098038304436375d4d442d753878 undef NETAPP,LUN C-Mode
-size=512G features='3 pg_init_retries 50 queue_if_no_path' hwhandler='0' wp=undef
-|-+- policy='service-time 0' prio=50 status=undef
-| |- 10:0:1:0 sdd  8:48   undef ready running
-| |- 10:0:3:0 sdf  8:80   undef ready running
-| |- 11:0:0:0 sds  65:32  undef ready running
-| `- 11:0:2:0 sdu  65:64  undef ready running
-`-+- policy='service-time 0' prio=10 status=undef
-  |- 10:0:0:0 sdc  8:32   undef ready running
-  |- 10:0:2:0 sde  8:64   undef ready running
-  |- 11:0:1:0 sdt  65:48  undef ready running
-  `- 11:0:3:0 sdv  65:80  undef ready running
-create: 3600a098038304436375d4d442d753879 undef NETAPP,LUN C-Mode
-size=1.2T features='3 pg_init_retries 50 queue_if_no_path' hwhandler='0' wp=undef
-|-+- policy='service-time 0' prio=50 status=undef
-| |- 10:0:1:1 sdj  8:144  undef ready running
-| |- 10:0:3:1 sdp  8:240  undef ready running
-| |- 11:0:0:1 sdw  65:96  undef ready running
-| `- 11:0:2:1 sdac 65:192 undef ready running
-`-+- policy='service-time 0' prio=10 status=undef
-  |- 10:0:0:1 sdg  8:96   undef ready running
-  |- 10:0:2:1 sdm  8:192  undef ready running
-  |- 11:0:1:1 sdz  65:144 undef ready running
-  `- 11:0:3:1 sdaf 65:240 undef ready running
-create: 3600a098038304436392b4d442d6f534f undef NETAPP,LUN C-Mode
-size=1.2T features='3 pg_init_retries 50 queue_if_no_path' hwhandler='0' wp=undef
-|-+- policy='service-time 0' prio=50 status=undef
-| |- 10:0:0:2 sdh  8:112  undef ready running
-| |- 10:0:2:2 sdn  8:208  undef ready running
-| |- 11:0:1:2 sdaa 65:160 undef ready running
-| `- 11:0:3:2 sdag 66:0   undef ready running
-`-+- policy='service-time 0' prio=10 status=undef
-  |- 10:0:1:2 sdk  8:160  undef ready running
-  |- 10:0:3:2 sdq  65:0   undef ready running
-  |- 11:0:0:2 sdx  65:112 undef ready running
-  `- 11:0:2:2 sdad 65:208 undef ready running
-create: 3600a098038304436392b4d442d6f5350 undef NETAPP,LUN C-Mode
-size=512G features='3 pg_init_retries 50 queue_if_no_path' hwhandler='0' wp=undef
-|-+- policy='service-time 0' prio=50 status=undef
-| |- 10:0:0:3 sdi  8:128  undef ready running
-| |- 10:0:2:3 sdo  8:224  undef ready running
-| |- 11:0:1:3 sdab 65:176 undef ready running
-| `- 11:0:3:3 sdah 66:16  undef ready running
-`-+- policy='service-time 0' prio=10 status=undef
-  |- 10:0:1:3 sdl  8:176  undef ready running
-  |- 10:0:3:3 sdr  65:16  undef ready running
-  |- 11:0:0:3 sdy  65:128 undef ready running
-  `- 11:0:2:3 sdae 65:224 undef ready running
+sapcc-hana-tst:~ # multipath -r
+sapcc-hana-tst:~ # multipath -ll
+3600a098038314e63492b59326b4b786d dm-7 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:2 sdaf 65:240 active ready running
+  |- 20:0:5:2 sdx  65:112 active ready running
+  |- 21:0:4:2 sdav 66:240 active ready running
+  `- 21:0:6:2 sdan 66:112 active ready running
+3600a098038314e63492b59326b4b786e dm-9 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:4 sdah 66:16  active ready running
+  |- 20:0:5:4 sdz  65:144 active ready running
+  |- 21:0:4:4 sdax 67:16  active ready running
+  `- 21:0:6:4 sdap 66:144 active ready running
+3600a098038314e63492b59326b4b786f dm-11 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:6 sdaj 66:48  active ready running
+  |- 20:0:5:6 sdab 65:176 active ready running
+  |- 21:0:4:6 sdaz 67:48  active ready running
+  `- 21:0:6:6 sdar 66:176 active ready running
+3600a098038314e63492b59326b4b7870 dm-13 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:8 sdal 66:80  active ready running
+  |- 20:0:5:8 sdad 65:208 active ready running
+  |- 21:0:4:8 sdbb 67:80  active ready running
+  `- 21:0:6:8 sdat 66:208 active ready running
+3600a098038314e63532459326d495a64 dm-6 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:1 sdae 65:224 active ready running
+  |- 20:0:5:1 sdw  65:96  active ready running
+  |- 21:0:4:1 sdau 66:224 active ready running
+  `- 21:0:6:1 sdam 66:96  active ready running
+3600a098038314e63532459326d495a65 dm-8 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:3 sdag 66:0   active ready running
+  |- 20:0:5:3 sdy  65:128 active ready running
+  |- 21:0:4:3 sdaw 67:0   active ready running
+  `- 21:0:6:3 sdao 66:128 active ready running
+3600a098038314e63532459326d495a66 dm-10 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:5 sdai 66:32  active ready running
+  |- 20:0:5:5 sdaa 65:160 active ready running
+  |- 21:0:4:5 sday 67:32  active ready running
+  `- 21:0:6:5 sdaq 66:160 active ready running
+3600a098038314e63532459326d495a67 dm-12 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:7 sdak 66:64  active ready running
+  |- 20:0:5:7 sdac 65:192 active ready running
+  |- 21:0:4:7 sdba 67:64  active ready running
+  `- 21:0:6:7 sdas 66:192 active ready running
+
 ....
 . '/etc/multipath.conf' 파일을 편집하여 WWID 및 별칭 이름을 추가합니다.
 +
 
-NOTE: 예제 출력은 "/etc/multipath.conf" 파일의 내용으로, 2+1 다중 호스트 시스템의 4개 LUN에 대한 별칭 이름을 포함합니다. 사용 가능한 'multipath.conf' 파일이 없는 경우 'multitpath -T> /etc/multipath.conf' 명령을 실행하여 파일을 생성할 수 있습니다.
+NOTE: 예제 출력은 "/etc/multipath.conf" 파일의 내용으로, 2+1 다중 호스트 시스템의 4개 LUN에 대한 별칭 이름을 포함합니다. 사용 가능한 multipath.conf 파일이 없는 경우 multitpath -T> /etc/multipath.conf 명령을 실행하여 파일을 생성할 수 있습니다.
 
 +
 ....
-stlrx300s8-6:/ # cat /etc/multipath.conf
+sapcc-hana-tst:/ # cat /etc/multipath.conf
 multipaths {
-        multipath {
-                wwid    3600a098038304436392b4d442d6f534f
-                alias   hana-SS3_data_mnt00001
+                multipath {
+                wwid    3600a098038314e63492b59326b4b786d
+                alias   svm1-FC5_data2_mnt00001
         }
         multipath {
-                wwid    3600a098038304436375d4d442d753879
-                alias   hana-SS3_data_mnt00002
+                wwid    3600a098038314e63492b59326b4b786e
+                alias   svm1-FC5_data2_mnt00002
         }
         multipath {
-                wwid    3600a098038304436375d4d442d753878
-                alias   hana-SS3_log_mnt00001
+                wwid    3600a098038314e63532459326d495a64
+                alias   svm1-FC5_data_mnt00001
         }
         multipath {
-                wwid    3600a098038304436392b4d442d6f5350
-                alias   hana-SS3_log_mnt00002
+                wwid    3600a098038314e63532459326d495a65
+                alias   svm1-FC5_data_mnt00002
         }
+        multipath {
+                wwid    3600a098038314e63492b59326b4b786f
+                alias   svm1-FC5_log2_mnt00001
+        }
+        multipath {
+                wwid    3600a098038314e63492b59326b4b7870
+                alias   svm1-FC5_log2_mnt00002
+        }
+        multipath {
+                wwid    3600a098038314e63532459326d495a66
+                alias   svm1-FC5_log_mnt00001
+        }
+        multipath {
+                wwid    3600a098038314e63532459326d495a67
+                alias   svm1-FC5_log_mnt00002
+        }
+
+
 }
 ....
 . 'multipath -r' 명령을 실행하여 디바이스 맵을 다시 로드합니다.
@@ -160,226 +189,63 @@ NOTE: 다음 출력 예에서는 데이터 2개와 로그 LUN 2개가 있는 2+1
 
 +
 ....
-stlrx300s8-6:~ # multipath -ll
-hana- SS3_data_mnt00002 (3600a098038304436375d4d442d753879) dm-1 NETAPP,LUN C-Mode
-size=1.2T features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handler' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 10:0:1:1 sdj  8:144  active ready running
-| |- 10:0:3:1 sdp  8:240  active ready running
-| |- 11:0:0:1 sdw  65:96  active ready running
-| `- 11:0:2:1 sdac 65:192 active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 10:0:0:1 sdg  8:96   active ready running
-  |- 10:0:2:1 sdm  8:192  active ready running
-  |- 11:0:1:1 sdz  65:144 active ready running
-  `- 11:0:3:1 sdaf 65:240 active ready running
-hana- SS3_data_mnt00001 (3600a098038304436392b4d442d6f534f) dm-2 NETAPP,LUN C-Mode
-size=1.2T features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handler' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 10:0:0:2 sdh  8:112  active ready running
-| |- 10:0:2:2 sdn  8:208  active ready running
-| |- 11:0:1:2 sdaa 65:160 active ready running
-| `- 11:0:3:2 sdag 66:0   active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 10:0:1:2 sdk  8:160  active ready running
-  |- 10:0:3:2 sdq  65:0   active ready running
-  |- 11:0:0:2 sdx  65:112 active ready running
-  `- 11:0:2:2 sdad 65:208 active ready running
-hana- SS3_log_mnt00002 (3600a098038304436392b4d442d6f5350) dm-3 NETAPP,LUN C-Mode
-size=512G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handler' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 10:0:0:3 sdi  8:128  active ready running
-| |- 10:0:2:3 sdo  8:224  active ready running
-| |- 11:0:1:3 sdab 65:176 active ready running
-| `- 11:0:3:3 sdah 66:16  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 10:0:1:3 sdl  8:176  active ready running
-  |- 10:0:3:3 sdr  65:16  active ready running
-  |- 11:0:0:3 sdy  65:128 active ready running
-  `- 11:0:2:3 sdae 65:224 active ready running
-hana- SS3_log_mnt00001 (3600a098038304436375d4d442d753878) dm-0 NETAPP,LUN C-Mode
-size=512G features='4 queue_if_no_path pg_init_retries 50 retain_attached_hw_handler' hwhandler='1 alua' wp=rw
-|-+- policy='service-time 0' prio=50 status=enabled
-| |- 10:0:1:0 sdd  8:48   active ready running
-| |- 10:0:3:0 sdf  8:80   active ready running
-| |- 11:0:0:0 sds  65:32  active ready running
-| `- 11:0:2:0 sdu  65:64  active ready running
-`-+- policy='service-time 0' prio=10 status=enabled
-  |- 10:0:0:0 sdc  8:32   active ready running
-  |- 10:0:2:0 sde  8:64   active ready running
-  |- 11:0:1:0 sdt  65:48  active ready running
-  `- 11:0:3:0 sdv  65:80  active ready running
-....
-
-
-
-
-== LVM 볼륨 그룹 및 논리 볼륨을 생성합니다
-
-이 단계는 LVM을 사용하는 경우에만 필요합니다. 다음은 SID FC5를 사용한 2+1 호스트 설정에 대한 예입니다.
-
-
-NOTE: LVM 기반 설정의 경우 이전 섹션에서 설명한 다중 경로 구성도 완료해야 합니다. 이 예에서는 다중 경로에 8개의 LUN을 구성해야 합니다.
-
-. 모든 LUN을 물리적 볼륨으로 초기화합니다.
-+
-....
-pvcreate /dev/mapper/hana-FC5_data_mnt00001
-pvcreate /dev/mapper/hana-FC5_data2_mnt00001pvcreate /dev/mapper/hana-FC5_data_mnt00002
-pvcreate /dev/mapper/hana-FC5_data2_mnt00002
-pvcreate /dev/mapper/hana-FC5_log_mnt00001
-pvcreate /dev/mapper/hana-FC5_log2_mnt00001pvcreate /dev/mapper/hana-FC5_log_mnt00002
-pvcreate /dev/mapper/hana-FC5_log2_mnt00002
-....
-. 각 데이터 및 로그 파티션에 대한 볼륨 그룹을 생성합니다.
-+
-....
-vgcreate FC5_data_mnt00001 /dev/mapper/hana-FC5_data_mnt00001 /dev/mapper/hana-FC5_data2_mnt00001
-vgcreate FC5_data_mnt00002 /dev/mapper/hana-FC5_data_mnt00002 /dev/mapper/hana-FC5_data2_mnt00002
-vgcreate FC5_log_mnt00001 /dev/mapper/hana-FC5_log_mnt00001 /dev/mapper/hana-FC5_log2_mnt00001
-vgcreate FC5_log_mnt00002 /dev/mapper/hana-FC5_log_mnt00002 /dev/mapper/hana-FC5_log2_mnt00002
-....
-. 각 데이터 및 로그 파티션에 대한 논리적 볼륨을 생성합니다. 볼륨 그룹당 사용되는 LUN 수(예: 2개)와 데이터의 경우 스트라이프 크기 256K, 로그의 경우 64k와 같은 스트라이프 크기를 사용합니다. SAP는 볼륨 그룹당 하나의 논리적 볼륨만 지원합니다.
-+
-....
-lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00001
-lvcreate --extents 100%FREE -i 2 -I 256k --name vol FC5_data_mnt00002
-lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00002
-lvcreate --extents 100%FREE -i 2 -I 64k --name vol FC5_log_mnt00001
-....
-. 다른 모든 호스트에서 물리적 볼륨, 볼륨 그룹 및 볼륨 그룹을 검사합니다.
-+
-....
-modprobe dm_mod
-pvscan
-vgscan
-lvscan
-....
-+
-
-NOTE: 위의 명령을 실행해도 볼륨이 없으면 다시 시작해야 합니다.
-
-. 논리적 볼륨을 마운트하려면 논리적 볼륨을 활성화해야 합니다. 볼륨을 활성화하려면 다음 명령을 실행합니다.
-+
-....
-vgchange -a y 
-....
-
-
-
-
-== 파일 시스템을 생성합니다
-
-HANA 시스템에 속한 각 LUN에 XFS 파일 시스템을 생성하려면 다음 작업 중 하나를 수행합니다.
-
-* 단일 호스트 시스템의 경우 데이터, 로그 및 "/HANA/공유" LUN에 XFS 파일 시스템을 생성합니다.
-
+sapcc-hana-tst:~ # multipath -ll
+hsvm1-FC5_data2_mnt00001 (3600a098038314e63492b59326b4b786d) dm-7 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:2 sdaf 65:240 active ready running
+  |- 20:0:5:2 sdx  65:112 active ready running
+  |- 21:0:4:2 sdav 66:240 active ready running
+  `- 21:0:6:2 sdan 66:112 active ready running
+svm1-FC5_data2_mnt00002 (3600a098038314e63492b59326b4b786e) dm-9 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:4 sdah 66:16  active ready running
+  |- 20:0:5:4 sdz  65:144 active ready running
+  |- 21:0:4:4 sdax 67:16  active ready running
+  `- 21:0:6:4 sdap 66:144 active ready running
+svm1-FC5_data_mnt00001 (3600a098038314e63532459326d495a64) dm-6 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:1 sdae 65:224 active ready running
+  |- 20:0:5:1 sdw  65:96  active ready running
+  |- 21:0:4:1 sdau 66:224 active ready running
+  `- 21:0:6:1 sdam 66:96  active ready running
+svm1-FC5_data_mnt00002 (3600a098038314e63532459326d495a65) dm-8 NETAPP,LUN C-Mode
+size=1.0T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:3 sdag 66:0   active ready running
+  |- 20:0:5:3 sdy  65:128 active ready running
+  |- 21:0:4:3 sdaw 67:0   active ready running
+  `- 21:0:6:3 sdao 66:128 active ready running
+svm1-FC5_log2_mnt00001 (3600a098038314e63492b59326b4b786f) dm-11 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:6 sdaj 66:48  active ready running
+  |- 20:0:5:6 sdab 65:176 active ready running
+  |- 21:0:4:6 sdaz 67:48  active ready running
+  `- 21:0:6:6 sdar 66:176 active ready running
+svm1-FC5_log2_mnt00002 (3600a098038314e63492b59326b4b7870) dm-13 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:8 sdal 66:80  active ready running
+  |- 20:0:5:8 sdad 65:208 active ready running
+  |- 21:0:4:8 sdbb 67:80  active ready running
+  `- 21:0:6:8 sdat 66:208 active ready running
+svm1-FC5_log_mnt00001 (3600a098038314e63532459326d495a66) dm-10 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:5 sdai 66:32  active ready running
+  |- 20:0:5:5 sdaa 65:160 active ready running
+  |- 21:0:4:5 sday 67:32  active ready running
+  `- 21:0:6:5 sdaq 66:160 active ready running
+svm1-FC5_log_mnt00002 (3600a098038314e63532459326d495a67) dm-12 NETAPP,LUN C-Mode
+size=500G features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='service-time 0' prio=50 status=active
+  |- 20:0:4:7 sdak 66:64  active ready running
+  |- 20:0:5:7 sdac 65:192 active ready running
+  |- 21:0:4:7 sdba 67:64  active ready running
+  `- 21:0:6:7 sdas 66:192 active ready running
 
 ....
-stlrx300s8-6:/ # mkfs.xfs /dev/mapper/hana-SS3_data_mnt00001
-stlrx300s8-6:/ # mkfs.xfs /dev/mapper/hana-SS3_log_mnt00001
-stlrx300s8-6:/ # mkfs.xfs /dev/mapper/hana-SS3_shared
-....
-* 다중 호스트 시스템의 경우 모든 데이터 및 로그 LUN에 XFS 파일 시스템을 생성합니다.
-
-
-....
-stlrx300s8-6:~ # mkfs.xfs /dev/mapper/hana-SS3_log_mnt00001
-stlrx300s8-6:~ # mkfs.xfs /dev/mapper/hana-SS3_log_mnt00002
-stlrx300s8-6:~ # mkfs.xfs /dev/mapper/hana-SS3_data_mnt00001
-stlrx300s8-6:~ # mkfs.xfs /dev/mapper/hana-SS3_data_mnt00002
-....
-* LVM을 사용하는 경우 모든 데이터와 로그 논리 볼륨에 XFS 파일 시스템을 생성합니다.
-
-
-....
-mkfs.xfs FC5_data_mnt00001-vol
-mkfs.xfs FC5_data_mnt00002-vol
-mkfs.xfs FC5_log_mnt00001-vol
-mkfs.xfs FC5_log_mnt00002-vol
-....
-
-NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
-
-
-
-== 마운트 지점을 생성합니다
-
-필요한 마운트 지점 디렉토리를 생성하려면 다음 작업 중 하나를 수행합니다.
-
-* 단일 호스트 시스템의 경우 사용 권한을 설정하고 데이터베이스 호스트에 마운트 지점을 생성합니다.
-
-
-....
-stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00001
-stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00001
-stlrx300s8-6:/ # mkdir -p /hana/shared
-
-stlrx300s8-6:/ # chmod –R 777 /hana/log/SS3
-stlrx300s8-6:/ # chmod –R 777 /hana/data/SS3
-stlrx300s8-6:/ # chmod 777 /hana/shared
-....
-* 다중 호스트 시스템의 경우 사용 권한을 설정하고 모든 작업자 및 대기 호스트에 마운트 지점을 생성합니다.
-
-
-
-NOTE: 예제 명령은 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
-
-....
-stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00001
-stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00001
-stlrx300s8-6:/ # mkdir -p /hana/data/SS3/mnt00002
-stlrx300s8-6:/ # mkdir -p /hana/log/SS3/mnt00002
-stlrx300s8-6:/ # mkdir -p /hana/shared
-
-stlrx300s8-6:/ # chmod –R 777 /hana/log/SS3
-stlrx300s8-6:/ # chmod –R 777 /hana/data/SS3
-stlrx300s8-6:/ # chmod 777 /hana/shared
-....
-
-NOTE: Linux LVM을 사용하는 시스템 구성에 대해 동일한 단계를 실행해야 합니다.
-
-
-
-== 파일 시스템을 마운트합니다
-
-시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
-
-. 다음 작업 중 하나를 수행합니다.
-+
-** 단일 호스트 시스템의 경우 필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.
-+
-
-NOTE: 데이터 및 로그 LUN에 대한 XFS 파일 시스템은 'laytime' 및 'inode64' 마운트 옵션으로 마운트되어야 합니다.
-
-+
-....
-stlrx300s8-6:/ # cat /etc/fstab
-/dev/mapper/hana-SS3_shared /hana/shared xfs defaults 0 0
-/dev/mapper/hana-SS3_log_mnt00001 /hana/log/SS3/mnt00001 xfs relatime,inode64 0 0
-/dev/mapper/hana-SS3_data_mnt00001 /hana/data/SS3/mnt00001 xfs relatime,inode64 0 0
-....
-+
-LVM을 사용하는 경우 데이터와 로그에 논리적 볼륨 이름을 사용합니다.
-
-+
-....
-# cat /etc/fstab
-/dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
-/dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
-/dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
-....
-** 다중 호스트 시스템의 경우 각 호스트의 '/etc/fstab' 구성 파일에 '/hana/shared' 파일 시스템을 추가합니다.
-+
-
-NOTE: 모든 데이터 및 로그 파일 시스템은 SAP HANA 스토리지 커넥터를 통해 마운트됩니다.
-
-+
-....
-stlrx300s8-6:/ # cat /etc/fstab
-<storage-ip>:/hana_shared /hana/shared nfs rw,vers=3,hard,timeo=600,intr,noatime,nolock 0 0
-....
-
-
-. 파일 시스템을 마운트하려면 각 호스트에서 'mount –a' 명령을 실행합니다.
 

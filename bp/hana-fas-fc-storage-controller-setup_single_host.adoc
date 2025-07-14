@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: bp/hana-aff-fc-storage-controller-setup_single_host.html 
-keywords: storage efficiency, netapp volume encryption, quality of service, qos, fabricpool, Disk shelf, sas, fcp port sets, linux lvm, 
-summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 Data ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
+permalink: bp/hana-fas-fc-storage-controller-setup_single_host.html 
+keywords: storage, controller, setup, storage, efficiency volume, encryption, quality, configure, disk, connection, aggregate 
+summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다. 
 ---
 = 단일 호스트
 :allow-uri-read: 
@@ -19,12 +19,12 @@ summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설�
 
 == SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성
 
-다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨 'sid1_data_mnt00001'은 컨트롤러 A에 구성되고 볼륨 'sid1_log_mnt00001'은 컨트롤러 B에 구성됩니다 각 볼륨 내에서 단일 LUN이 구성됩니다.
+다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨이 `SID1_data_mnt00001` 컨트롤러 A에 구성되고 볼륨은 `SID1_log_mnt00001` 컨트롤러 B에 구성됩니다. 각 볼륨 내에서는 단일 LUN이 구성됩니다.
 
 
-NOTE: SAP HANA 시스템에 HA 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨과 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.
+NOTE: SAP HANA 시스템에 고가용성(HA) 쌍의 스토리지 컨트롤러가 하나만 사용되는 경우 데이터 볼륨 및 로그 볼륨을 동일한 스토리지 컨트롤러에 저장할 수도 있습니다.
 
-image:saphana_aff_fc_image16a.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:saphana_fas_fc_image18.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 각 SAP HANA 호스트마다 데이터 볼륨, 로그 볼륨 및 '/HANA/shared'에 대한 볼륨이 구성됩니다. 다음 표에는 4개의 SAP HANA 단일 호스트 시스템이 포함된 구성의 예가 나와 있습니다.
 
@@ -43,10 +43,10 @@ image:saphana_aff_fc_image16a.png["입력/출력 대화 상자 또는 작성된 
 
 | 시스템 SID4의 데이터, 로그 및 공유 볼륨 | 로그 볼륨: SID4_LOG_mnt00001 | – | 공유 볼륨: SID4_shared | 데이터 볼륨: SID4_DATA_mnt00001 
 |===
-다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다.
+다음 표에는 단일 호스트 시스템의 마운트 지점 구성 예가 나와 있습니다.
 
 |===
-| LUN을 클릭합니다 | SAP HANA 호스트의 마운트 지점 | 참고 
+| LUN을 클릭합니다 | HANA 호스트의 마운트 지점 | 참고 
 
 
 | SID1_DATA_mnt00001 | /HANA/data/SID1/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
@@ -75,7 +75,7 @@ NOTE: 여러 LUN에 LVM을 사용하여 SAP HANA KPI를 충족할 필요는 없�
 
 | LVM 기반 시스템의 데이터, 로그 및 공유 볼륨 | 데이터 볼륨: SID1_DATA_mnt00001 | 공유 볼륨: SID1_shared Log2 볼륨: SID1_log2_mnt00001 | 데이터 2 볼륨: SID1_data2_mnt00001 | 로그 볼륨: SID1_LOG_mnt00001 
 |===
-SAP HANA 호스트에서 다음 표에 나와 있는 것처럼 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다.
+SAP HANA 호스트에서 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다. 다음 표에는 LVM을 사용하는 단일 호스트 시스템의 마운트 지점이 나와 있습니다.
 
 |===
 | 논리적 볼륨/LUN | SAP HANA 호스트의 마운트 지점 | 참고 
@@ -109,7 +109,13 @@ NOTE: 설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 �
 |===
 
 
-=== CLI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
+=== LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑
+
+NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.
+
+
+
+=== CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 igroup에 매핑
 
 이 섹션에서는 LVM과 LVM 볼륨 그룹당 두 개의 LUN을 사용하는 SID FC5가 있는 SAP HANA 단일 호스트 시스템에 대해 ONTAP 9에서 명령줄을 사용하여 구성 예를 보여줍니다.
 

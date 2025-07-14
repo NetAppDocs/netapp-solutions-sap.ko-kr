@@ -12,8 +12,6 @@ entries:
     url: "/bp/hana-aff-fc-storage-sizing.html"
   - title: 인프라 설정 및 구성
     entries:
-    - title: 인프라 설정 및 구성 개요
-      url: "/bp/hana-aff-fc-infra-setup-config-overview.html"
     - title: SAN 패브릭 설정
       url: "/bp/hana-aff-fc-san-fabric-setup.html"
     - title: 시간 동기화
@@ -40,6 +38,7 @@ entries:
       url: "/bp/hana-aff-fc-software-install.html"
     - title: SAP HANA 단일 호스트 시스템을 위한 추가 데이터 볼륨 파티션 추가
       url: "/bp/hana-aff-fc-add-data-volume-partitions-single-host-systems.html"
+    url: "/bp/hana-aff-fc-infra-setup-config-overview.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/hana-aff-fc-additional-info.html"
   - title: 기록 업데이트
@@ -86,8 +85,6 @@ entries:
     url: "/bp/hana-asa-fc-storage-sizing.html"
   - title: 인프라 설정 및 구성
     entries:
-    - title: 인프라 설정 및 구성 개요
-      url: "/bp/hana-asa-fc-infra-setup-config-overview.html"
     - title: SAN 패브릭 설정
       url: "/bp/hana-asa-fc-san-fabric-setup.html"
     - title: 시간 동기화
@@ -112,6 +109,7 @@ entries:
       url: "/bp/hana-asa-fc-io-stack-configuration.html"
     - title: SAP HANA 소프트웨어 설치
       url: "/bp/hana-asa-fc-software-install.html"
+    url: "/bp/hana-asa-fc-infra-setup-config-overview.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/hana-asa-fc-additional-info.html"
   - title: 기록 업데이트
@@ -158,17 +156,25 @@ entries:
     url: "/bp/hana-fas-fc-storage-sizing.html"
   - title: 인프라 설정 및 구성
     entries:
-    - title: 인프라 설정 및 구성 개요
-      url: "/bp/hana-fas-fc-infra-setup-config-overview.html"
     - title: SAN 패브릭 설정
       url: "/bp/hana-fas-fc-san-fabric-setup.html"
     - title: 시간 동기화
       url: "/bp/hana-fas-fc-time-synchronization.html"
     - title: 스토리지 컨트롤러 설정
+      entries:
+      - title: 단일 호스트 LUN 구성
+        url: "/bp/hana-fas-fc-storage-controller-setup_single_host.html"
+      - title: 다중 호스트 LUN 구성
+        url: "/bp/hana-fas-fc-storage-controller-setup_multiple_hosts.html"
       url: "/bp/hana-fas-fc-storage-controller-setup.html"
     - title: SAP HANA 스토리지 커넥터 API
       url: "/bp/hana-fas-fc-storage-connector-api.html"
     - title: 호스트 설정
+      entries:
+      - title: 단일 호스트
+        url: "/bp/hana-fas-fc-host-setup_single_host.html"
+      - title: 여러 호스트
+        url: "/bp/hana-fas-fc-host-setup_multiple_hosts.html"
       url: "/bp/hana-fas-fc-host-setup.html"
     - title: SAP HANA용 I/O 스택 구성
       url: "/bp/hana-fas-fc-io-stack-configuration.html"
@@ -176,6 +182,7 @@ entries:
       url: "/bp/hana-fas-fc-software-install.html"
     - title: SAP HANA 단일 호스트 시스템을 위한 추가 데이터 볼륨 파티션 추가
       url: "/bp/hana-fas-fc-add-data-volume-partitions-single-host-systems.html"
+    url: "/bp/hana-fas-fc-infra-setup-config-overview.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/bp/hana-fas-fc-additional-info.html"
   - title: 기록 업데이트

@@ -70,7 +70,7 @@ image:saphana_aff_fc_image1.png["입력/출력 대화 상자 또는 작성된 �
 
 = VMware vSphere를 사용하는 SAP HANA
 
-스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 link:hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"]설명되어 있습니다.
+스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 권장되는 방법은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션은 에 link:hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"^]설명되어 있습니다.
 
 RDM(Raw Device Mapping), FCP 데이터 저장소 또는 FCP가 있는 VVOL 데이터 저장소도 지원됩니다. 두 데이터 저장소 옵션의 경우 생산적인 사용 사례를 위해 데이터 저장소 내에 하나의 SAP HANA 데이터 또는 로그 볼륨만 저장해야 합니다.
 

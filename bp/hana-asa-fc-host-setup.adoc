@@ -5,12 +5,13 @@ keywords: multipathing, fcp, hba, configure
 summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp SAN 호스트 유틸리티를 다운로드하고 HANA 서버에 설치해야 합니다. 호스트 유틸리티 설명서에는 사용된 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다. 
 ---
 = 호스트 설정
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
-
-
-
-== 호스트 설정
 
 [role="lead"]
 호스트를 설정하기 전에 에서 NetApp SAN 호스트 유틸리티를 다운로드해야 합니다 http://mysupport.netapp.com/["NetApp 지원"^] HANA 서버에 설치됩니다. 호스트 유틸리티 설명서에는 사용된 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다.

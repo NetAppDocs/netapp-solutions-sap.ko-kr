@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: bp/hana-asa-fc-host-setup_single.html 
-keywords: multipathing, fcp, hba, configure 
-summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp SAN 호스트 유틸리티를 다운로드하고 HANA 서버에 설치해야 합니다. 호스트 유틸리티 설명서에는 사용된 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다. 
+permalink: bp/hana-fas-fc-host-setup_single_host.html 
+keywords: configure, multipathing, create, lvm, volume, groups, logical, mount, points, file, systems 
+summary: 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대한 정보도 포함되어 있습니다. 
 ---
 = 단일 호스트 설정
 :allow-uri-read: 
@@ -67,9 +67,6 @@ mkfs.xfs FC5_data_mnt00001-vol
 mkfs.xfs FC5_log_mnt00001-vol
 mkfs.xfs /dev/mapper/svm1-FC5_shared
 ....
-
-NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
-
 
 
 === 마운트 지점을 생성합니다

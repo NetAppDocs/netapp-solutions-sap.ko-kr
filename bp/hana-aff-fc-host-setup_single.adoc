@@ -68,16 +68,10 @@ mkfs.xfs FC5_log_mnt00001-vol
 mkfs.xfs /dev/mapper/svm1-FC5_shared
 ....
 
-NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보여 줍니다.
-
-
 
 === 마운트 지점을 생성합니다
 
-필요한 마운트 지점 디렉토리를 생성하려면 다음 작업 중 하나를 수행합니다.
-
-* 단일 호스트 시스템의 경우 사용 권한을 설정하고 데이터베이스 호스트에 마운트 지점을 생성합니다.
-
+필요한 마운트 지점 디렉토리를 만들고 데이터베이스 호스트에 대한 권한을 설정합니다.
 
 ....
 sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
@@ -91,21 +85,15 @@ sapcc-hana-tst:/ # chmod 777 /hana/shared
 
 === 파일 시스템을 마운트합니다
 
-시스템 부팅 중에 '/etc/fstab' 구성 파일을 사용하여 파일 시스템을 마운트하려면 다음 단계를 수행하십시오.
+시스템 부팅 중에 파일 시스템을 마운트하려면 다음을 사용하십시오.  `/etc/fstab` 구성 파일에 필요한 파일 시스템을 추가합니다.  `/etc/fstab` 구성 파일:
 
-* 단일 호스트 시스템의 경우 필요한 파일 시스템을 '/etc/fstab' 구성 파일에 추가합니다.
-+
 ....
 # cat /etc/fstab
 /dev/mapper/hana-FC5_shared /hana/shared xfs defaults 0 0
 /dev/mapper/FC5_log_mnt00001-vol /hana/log/FC5/mnt00001 xfs relatime,inode64 0 0
 /dev/mapper/FC5_data_mnt00001-vol /hana/data/FC5/mnt00001 xfs relatime,inode64 0 0
 ....
-+
 
 NOTE: 데이터 및 로그 LUN을 위한 XFS 파일 시스템은 'laytime' 및 'inode64' 마운트 옵션으로 마운트되어야 합니다.
 
-+
 파일 시스템을 마운트하려면 다음을 실행하세요.  `mount –a` 호스트에서 명령을 내립니다.
-
-
