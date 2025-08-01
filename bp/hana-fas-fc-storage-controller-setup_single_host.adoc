@@ -67,27 +67,13 @@ NOTE: 설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 �
 Linux LVM을 사용하여 성능을 향상하고 LUN 크기 제한을 해결할 수 있습니다. LVM 볼륨 그룹의 서로 다른 LUN은 서로 다른 애그리게이트와 다른 컨트롤러에 저장해야 합니다. 다음 표에서는 볼륨 그룹당 2개의 LUN에 대한 예를 보여 줍니다.
 
 
-NOTE: 여러 LUN에 LVM을 사용하여 SAP HANA KPI를 충족할 필요는 없습니다. 단일 LUN 설정으로 필요한 KPI를 충족합니다.
+NOTE: SAP HANA KPI를 충족하기 위해 여러 LUN이 있는 LVM을 사용할 필요는 없지만 권장됩니다.
 
 |===
 | 목적 | 컨트롤러 A의 애그리게이트 1 | 컨트롤러 A의 애그리게이트 2 | 컨트롤러 B의 애그리게이트 1 | 컨트롤러 B의 애그리게이트 2 
 
 
 | LVM 기반 시스템의 데이터, 로그 및 공유 볼륨 | 데이터 볼륨: SID1_DATA_mnt00001 | 공유 볼륨: SID1_shared Log2 볼륨: SID1_log2_mnt00001 | 데이터 2 볼륨: SID1_data2_mnt00001 | 로그 볼륨: SID1_LOG_mnt00001 
-|===
-SAP HANA 호스트에서 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다. 다음 표에는 LVM을 사용하는 단일 호스트 시스템의 마운트 지점이 나와 있습니다.
-
-|===
-| 논리적 볼륨/LUN | SAP HANA 호스트의 마운트 지점 | 참고 
-
-
-| LV:SID1_DATA_mnt0000-vol | /HANA/data/SID1/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
-
-
-| LV:SID1_LOG_mnt00001-vol | /HANA/log/SID1/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
-
-
-| LUN: SID1_SHARED | /HANA/공유/SID1 | /etc/fstab 항목을 사용하여 마운트되었습니다 
 |===
 
 NOTE: 설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 저장된 '/usr/sap/sID1' 디렉토리가 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서는 모든 파일 시스템이 중앙 스토리지에 있도록 '/usr/SAP/SID1' 디렉토리에 대한 'sid1_shared' 볼륨 내에 추가 LUN을 생성하는 것이 좋습니다.

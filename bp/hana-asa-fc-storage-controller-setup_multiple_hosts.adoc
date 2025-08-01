@@ -17,62 +17,27 @@ summary: 이 섹션에서는 다중 호스트 시스템에 대한 LUN을 생성�
 
 
 
-== SAP HANA 다중 호스트 시스템에 대한 LUN 구성
-
-Linux LVM은 성능을 높이고 LUN 크기 제한을 해결하는 데 사용됩니다.
-
-SAP HANA 호스트에서 다음 표에 나와 있는 것처럼 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다.
-
-|===
-| 논리 볼륨(LV) | SAP HANA 호스트의 마운트 지점 | 참고 
-
-
-| LV: FC5_data_mnt00001-vol | /HANA/data/FC5/mnt00001 | 보관 커넥터를 사용하여 장착합니다 
-
-
-| LV: FC5_log_mnt00001-vol | /HANA/log/FC5/mnt00001 | 보관 커넥터를 사용하여 장착합니다 
-
-
-| LV: FC5_data_mnt00002-vol | /HANA/data/FC5/mnt00002 | 보관 커넥터를 사용하여 장착합니다 
-
-
-| LV: FC5_log_mnt00002-vol | /HANA/log/FC5/mnt00002 | 보관 커넥터를 사용하여 장착합니다 
-
-
-| 외부 NFS 공유: FC5_shared | /HANA/공유 | NFS 및 /etc/fstab 항목을 사용하여 모든 호스트에 마운트됩니다 
-|===
-
-NOTE: SAP HANA 다중 호스트 시스템에는 다음이 필요합니다.  `/hana/shared` 시스템의 모든 호스트에 연결된 파일 시스템입니다. 일반적으로 이는 NFS 서버가 제공하는 NFS 공유입니다. NetApp FAS 또는 AFF 시스템과 같은 고가용성 NFS 서버를 사용하는 것이 좋습니다. 또 다른 옵션은 LINUX 호스트에 내장된 NFS 서버를 사용하는 것입니다.
-
-
-NOTE: 설명된 구성을 사용하면  `/usr/sap/FC5` 사용자 FC5adm의 기본 홈 디렉터리가 저장되는 디렉터리는 각 HANA 호스트의 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서 NetApp은 4개의 추가 LUN을 사용할 것을 권장합니다.  `/usr/sap/FC5` 각 호스트에 파일 시스템을 설치하여 각 데이터베이스 호스트가 모든 파일 시스템을 중앙 저장소에 두도록 합니다.
-
-
-
 == LUN 생성 및 LUN을 이니시에이터 그룹에 매핑
 
-NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.
-
-
-NOTE: 'NetApp' 툴은 NetApp 호스트 유틸리티의 일부이며 각 SAP HANA 호스트에 설치해야 합니다. 자세한 내용은 "host_setup" 섹션을 참조하십시오.
+NetApp ONTAP System Manager를 사용하면 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup과 ONTAP CLI에 매핑할 수 있습니다.
 
 
 
 === CLI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
 
-이 섹션에서는 LVM과 LVM 볼륨 그룹당 두 개의 LUN을 사용하는 FC5 FC5가 있는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9에서 명령줄을 사용하여 구성 예를 보여줍니다.
+이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.
 
 . 모든 LUN을 생성합니다.
 +
 ....
-lun create -path FC5_data_mnt00001   -size 1t -ostype linux  -class regular
-lun create -path FC5_data2_mnt00001 -size 1t -ostype linux  -class regular
-lun create -path FC5_data_mnt00002 -size 1t -ostype linux  -class regular
-lun create -path FC5_data2_mnt00002 -size 1t -ostype linux  -class regular
-lun create -path FC5_log_mnt00001 -size 260g -ostype linux  -class regular
-lun create -path FC5_log2_mnt00001 -size 260g -ostype linux  -class regular
-lun create -path FC5_log_mnt00002 -size 260g -ostype linux  -class regular
-lun create -path FC5_log2_mnt00002 -size 260g -ostype linux  -class regular
+lun create -path FC5_data_mnt00001_1 -size 1t -ostype linux  -class regular
+lun create -path FC5_data_mnt00001_2 -size 1t -ostype linux  -class regular
+lun create -path FC5_data_mnt00002_1 -size 1t -ostype linux  -class regular
+lun create -path FC5_data_mnt00002_2 -size 1t -ostype linux  -class regular
+lun create -path FC5_log_mnt00001_1 -size 260g -ostype linux  -class regular
+lun create -path FC5_log_mnt00001_2 -size 260g -ostype linux  -class regular
+lun create -path FC5_log_mnt00002_1 -size 260g -ostype linux  -class regular
+lun create -path FC5_log_mnt00002_2 -size 260g -ostype linux  -class regular
 ....
 . 시스템 FC5에 속하는 모든 서버에 대한 이니시에이터 그룹을 생성합니다.
 +
@@ -82,13 +47,105 @@ lun igroup create -igroup HANA-FC5 -protocol fcp -ostype linux -initiator 100000
 . 모든 LUN을 생성된 이니시에이터 그룹에 매핑합니다.
 +
 ....
-lun map -path FC5_data_mnt00001  -igroup HANA-FC5
-lun map -path FC5_data2_mnt00001  -igroup HANA-FC5
-lun map -path FC5_data_mnt00002  -igroup HANA-FC5
-lun map -path FC5_data2_mnt00002  -igroup HANA-FC5
-lun map -path FC5_log_mnt00001  -igroup HANA-FC5
-lun map -path FC5_log2_mnt00001  -igroup HANA-FC5
-lun map -path FC5_log_mnt00002  -igroup HANA-FC5
-lun map -path FC5_log2_mnt00002  -igroup HANA-FC5
+lun map -path FC5_data_mnt00001_1 -igroup HANA-FC5
+lun map -path FC5_data_mnt00001_2 -igroup HANA-FC5
+lun map -path FC5_data_mnt00002_1 -igroup HANA-FC5
+lun map -path FC5_data_mnt00002_2 -igroup HANA-FC5
+lun map -path FC5_log_mnt00001_1 -igroup HANA-FC5
+lun map -path FC5_log_mnt00001_2 -igroup HANA-FC5
+lun map -path FC5_log_mnt00002_1 -igroup HANA-FC5
+lun map -path FC5_log_mnt00002_2 -igroup HANA-FC5
 ....
 
+
+
+
+=== GUI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
+
+이 섹션에서는 다음을 사용한 구성 예를 보여줍니다. `ONTAP System Manager` LVM과 LVM 볼륨 그룹당 2개의 LUN을 사용하는 SID FC5가 있는 2+1 SAP HANA 다중 호스트 시스템의 경우:
+
+. 에 로그인하세요 `ONTAP System Manager` ONTAP 클러스터를 선택하고 `Storage` 왼쪽 메뉴에서.
++
+.. 누르다 `Add`
++
+image:saphana_asa_fc_image12.png["ONTAP 시스템 관리자 - 스토리지"]
+
+
+
+. 선택하다 `More options`
++
+image:saphana_asa_fc_image13.png["ONTAP 시스템 관리자 - 스토리지 추가"]
+
+. 필요한 정보를 제공하세요:
++
+.. 데이터 LUN의 이름(예:.`FC5_data_mnt00001`
+.. LVM과 결합할 LUN의 양(예: 2)
+.. 각 LUN의 크기(예: 1000GB)
+.. 선택하다 `SCSI (FC or iSCSI)`
+.. 선택하다 `Linux` ~처럼 `Host Operating system`
+.. 선택하다 `New host` 를 위해 `Host mapping` 옵션, 이름 제공, 예: `FC5_host` 원하는 개시자를 선택하거나 추가하세요
+.. 유지하다 `Schedule snapshots` 확인되지 않은
+.. 누르다 `Add`
++
+image:saphana_asa_fc_image14.png["ONTAP 시스템 관리자 - 데이터 LUN 생성"]
+
+
+
+. 다음 작업자 호스트에 대한 데이터 LUN을 생성하려면 다음을 누르세요. `Add`
++
+image:saphana_asa_fc_image15.png["ONTAP 시스템 관리자 - 추가 데이터 LUN 생성"]
+
+. 필요한 정보를 제공하세요:
++
+.. 추가 데이터 LUN의 이름(예: `FC5_data_mnt00002`
+.. LVM과 결합할 LUN의 양(예: 2)
+.. 각 LUN의 크기(예: 1000GB)
+.. 선택하다 `Linux` ~처럼 `Host Operating system`
+.. 이전에 생성된 매핑을 선택하세요 `FC5_host` 를 위해 `Host mapping` 옵션
+.. 누르다 `Add`
+
+
++
+image:saphana_asa_fc_image20.png["ONTAP 시스템 관리자 - 데이터 LUN 생성"]
+
+. 추가된 모든 작업자 호스트에 대해 4단계와 5단계를 반복합니다.
+. 데이터 LUN을 성공적으로 생성한 후 다음을 눌러 로그 LUN을 생성합니다. `Add`
++
+image:saphana_asa_fc_image21.png["ONTAP 시스템 관리자 - 로그 LUN 생성"]
+
+. 필요한 정보를 제공하세요:
++
+.. LVM과 결합할 로그 LUN의 이름(예: `FC5_log_mnt00001`
+.. LVM과 결합할 LUN의 양(예: 2)
+.. 각 LUN의 크기(예: 260GB)
+.. 선택하다 `Linux` ~처럼 `Host Operating system`
+.. 이전에 생성된 매핑을 선택하세요 `FC5_host` 를 위해 `Host mapping` 옵션
+.. 누르다 `Add`
++
+image:saphana_asa_fc_image22.png["ONTAP 시스템 관리자 - 로그 LUN 생성"]
+
+
+
+. 다음 작업자 호스트에 대한 로그 LUN을 생성하려면 다음을 누르세요. `Add`
++
+image:saphana_asa_fc_image23.png["ONTAP 시스템 관리자 - 추가 로그 LUN 생성"]
+
+. 필요한 정보를 제공하세요:
++
+.. 추가 로그 LUN의 이름(예: `FC5_log_mnt00002`
+.. LVM과 결합할 LUN의 양(예: 2)
+.. 각 LUN의 크기(예: 260GB)
+.. 선택하다 `Linux` ~처럼 `Host Operating system`
+.. 이전에 생성된 매핑을 선택하세요 `FC5_host` 를 위해 `Host mapping` 옵션
+.. 누르다 `Add`
++
+image:saphana_asa_fc_image24.png["ONTAP 시스템 관리자 - 추가 로그 LUN 생성"]
+
+
+
+. 추가된 모든 작업자 호스트에 대해 9단계와 10단계를 반복합니다.
+
+
+SAP HANA 다중 호스트 시스템에 필요한 모든 LUN이 생성되었습니다.
+
+image:saphana_asa_fc_image25.png["ONTAP 시스템 관리자 - LUN 개요"]

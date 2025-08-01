@@ -13,7 +13,28 @@ summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp 
 == 단일 호스트 설정
 
 [role="lead"]
-이 장에서는 SAP HANA 단일 호스트 설정에 대해 설명합니다.
+이 장에서는 LINUX LVM을 사용하여 SAP HANA 단일 호스트를 설정하는 방법을 설명합니다.
+
+
+
+== SAP HANA 단일 호스트 시스템에 대한 LUN 구성
+
+SAP HANA 호스트에서 다음 표에 나와 있는 것처럼 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다.
+
+|===
+| 논리적 볼륨/LUN | SAP HANA 호스트의 마운트 지점 | 참고 
+
+
+| LV: FC5_data_mnt0000-vol | /하나/데이터/FC51/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+
+
+| LV: FC5_log_mnt00001-vol | /HANA/log/FC5/mnt00001 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+
+
+| LUN: FC5_shared | /HANA/공유/FC5 | /etc/fstab 항목을 사용하여 마운트되었습니다 
+|===
+
+NOTE: 설명된 구성을 사용하면 `/usr/sap/FC5` 사용자 FC5adm의 기본 홈 디렉토리가 저장된 디렉토리는 로컬 디스크에 있습니다.  디스크 기반 복제를 사용하는 재해 복구 설정에서 NetApp 추가 LUN을 생성하는 것을 권장합니다. `FC5_shared` 볼륨에 대한 `/usr/sap/FC5` 모든 파일 시스템이 중앙 저장소에 있도록 디렉토리를 만듭니다.
 
 
 
