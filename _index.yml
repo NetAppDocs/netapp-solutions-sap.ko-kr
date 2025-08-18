@@ -63,3 +63,7 @@ indexpage:
       url: backup/snapcenter-ibm-db2.html
     - title: SAP MaxDB 데이터베이스용 SnapCenter 통합
       url: backup/snapcenter-sap-maxdb.html
+  - title: FlexPod SAP 솔루션
+    links:
+    - title: FlexPod 에서 SAP 소개
+      url: https://docs.netapp.com/us-en/flexpod/ent-db/index.html
