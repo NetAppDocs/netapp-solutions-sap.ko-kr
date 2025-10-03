@@ -69,7 +69,7 @@ lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
 ....
 lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
 ....
-지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를 link:hana-fas-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["호스트 설정"]제공합니다.
+주어진 LUN에 대해 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다.  애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑을 사용한 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다.  이 가이드에서는 Linux LVM 기반 SAP HANA에 대한 예를 섹션에 제공합니다.link:hana-fas-fc-host-setup.html["호스트 설정"] .
 
 
 NOTE: 이 제한은 읽기에도 적용됩니다. 따라서 SAP HANA 데이터베이스 시작 시간 및 백업에 필요한 SLA를 충족하기 위해 충분한 LUN을 사용하십시오.
@@ -93,13 +93,17 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 
 다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 단계를 시작하기 전에 스토리지 하드웨어 설정, ONTAP 소프트웨어 설치 및 스토리지 FCP 포트의 SAN 패브릭 연결을 완료합니다.
 
-. 에 설명된 대로 디스크 쉘프의 구성이 올바른지 확인합니다<<디스크 쉘프 연결>>.
+. 설명된 대로 올바른 디스크 선반 구성을 확인하십시오.<<디스크 쉘프 연결>> .
 . 에 설명된 대로 필요한 애그리게이트를 생성하고 <<애그리게이트 구성>>구성합니다.
 . 에 설명된 대로 스토리지 가상 머신(SVM)을 <<스토리지 가상 머신 구성>>생성합니다.
 . 에 설명된 대로 논리 인터페이스(LIF)를 <<논리 인터페이스 구성>>생성합니다.
 . HANA-FAS-fc-storage-controller-setup.html#initiator-groups 섹션에 설명된 대로 HANA 서버의 WWN(전 세계 이름)으로 이니시에이터 그룹(igroup)을 <<이니시에이터 그룹>>생성합니다.
 . 섹션에 설명된 대로 집계 내에서 볼륨과 LUN을 생성하고 구성합니다. link:hana-fas-fc-storage-controller-setup_single_host.html["단일 호스트 설정"] 단일 호스트 또는 섹션별 link:hana-fas-fc-storage-controller-setup_multiple_hosts.html["다중 호스트 설정"] 여러 호스트에 대해
 
+
+
+
+== 디스크 쉘프 연결
 
 HDD를 사용할 경우 다음 그림과 같이 최대 2개의 DS2246 디스크 쉘프 또는 4개의 DS224C 디스크 쉘프를 하나의 SAS 스택에 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다.
 

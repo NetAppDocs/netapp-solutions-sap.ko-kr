@@ -55,7 +55,7 @@ lun modify -vserver <vserver name>  -path * -qos-policy-group  <policy-name>
 ....
 lun create -vserver <vserver_name> -path  /vol/<volume_name>/<lun_name>   -size <size> -ostype <e.g. linux>  -qos-policy-group <policy-name>
 ....
-지정된 LUN의 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다. 애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑이 포함된 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다. 이 가이드는 섹션 에서 Linux LVM 기반 SAP HANA에 대한 예를 link:hana-asa-fc-host-setup.html#create-lvm-volume-groups-and-logical-volumes["호스트 설정"]제공합니다.
+주어진 LUN에 대해 최대 처리량으로 1000MB/s를 사용하는 것이 좋습니다.  애플리케이션에 더 많은 처리량이 필요한 경우 LUN 스트라이핑을 사용한 여러 LUN을 사용하여 필요한 대역폭을 제공해야 합니다.  이 가이드에서는 Linux LVM 기반 SAP HANA에 대한 예를 섹션에 제공합니다.link:hana-asa-fc-host-setup.html["호스트 설정"] .
 
 
 NOTE: 이 제한은 읽기에도 적용됩니다. 따라서 SAP HANA 데이터베이스 시작 시간 및 백업에 필요한 SLA를 충족하기 위해 충분한 LUN을 사용하십시오.
