@@ -1,0 +1,25 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-update-history.html 
+keywords:  
+summary:  
+---
+= 기록 업데이트
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 솔루션의 원래 게시 이후 다음과 같은 기술적 변경 사항이 있습니다.
+
+[cols="25,50"]
+|===
+| 날짜 | 업데이트 요약 
+
+
+| 2025년 10월 | 초기 버전 
+|===

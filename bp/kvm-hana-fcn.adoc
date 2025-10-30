@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-fcn.html 
+keywords: fibre channel,KVM, SAP HANA, tailored data center integration, FCP 
+summary: 이 가이드에서는 NetApp 스토리지를 사용하여 SAP HANA에 대해 SUSE KVM을 구성하는 방법에 대한 정보를 제공합니다. 
+---
+= 파이버 채널 네트워크 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이 섹션에서는 NetApp 스토리지를 사용하여 SAP HANA용 SUSE KVM에서 FCP를 구성하는 방법에 대한 정보를 제공합니다.
+
+
+
+== VM에 FCP 포트 할당
+
+FCP의 경우 SR-IOV와 유사한 기능이 없으므로 물리적 HBA 포트를 VM에 할당해야 합니다.  서로 다른 패브릭에 연결된 두 개의 물리적 포트를 사용해야 합니다.
+
+
+NOTE: 물리적 포트는 하나의 VM에만 할당되어야 합니다.
+
+그렇게 하려면 다음 단계를 완료하세요.
+
+. _virt-manager._를 시작합니다.image:kvm-hana-image2.png["너비=601, 높이=385"]
+. 원하는 VM을 엽니다. + image:kvm-hana-image3.png["너비=601, 높이=385"]
+. "하드웨어 추가"를 누르세요. + image:kvm-hana-image4.png["Virtmanager 하드웨어 추가, 너비=601, 높이=443"]
+. PCI 호스트 장치 목록에서 원하는 HBA 포트를 선택하고 마침을 누릅니다.  + 이 예에서는 0000.A2:00:0입니다. + image:kvm-hana-image9.png["너비=601, 높이=441"]
+. 두 번째 패브릭에 속한 PCI 호스트 장치 목록에서 원하는 HBA 포트를 선택하고 마침을 누릅니다.  이 예에서는 0000.A2:00:1입니다. + image:kvm-hana-image10.png["너비=601, 높이=441"]
+. 그런 다음 물리적 HBA 포트가 VM에 할당되고 VM을 시작할 수 있습니다. + image:kvm-hana-image11.png["너비=601, 높이=441"]
+
+
+물리적 포트가 VM으로 전달되었으므로 추가 준비가 필요하지 않습니다.
