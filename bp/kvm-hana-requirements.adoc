@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: bp/kvm-hana-requirements.html 
+keywords: requirements,KVM, SAP HANA, tailored data center integration, FCP, NFS, prerequisites 
+summary: SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 프로토콜을 갖춘 NetApp 스토리지를 사용하여 SUSE KVM에 SAP HANA 단일 호스트를 배포하기 위한 요구 사항을 검토합니다. 
+---
+= NetApp 스토리지를 사용하는 SUSE KVM에서 SAP HANA 배포 요구 사항
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 프로토콜을 갖춘 NetApp 스토리지를 사용하여 SUSE KVM에 SAP HANA 단일 호스트를 배포하기 위한 요구 사항을 검토합니다.
+
+배포에는 인증된 SAP HANA 서버, NetApp 스토리지 시스템, SR-IOV 지원 네트워크 어댑터, KVM 호스트로 SAP 애플리케이션용 SUSE Linux Enterprise Server가 필요합니다.
+
+
+
+== 인프라 요구 사항
+
+다음 구성 요소와 구성이 제대로 되어 있는지 확인하세요.
+
+* 인증된 SAP HANA 서버 및 NetApp 스토리지 시스템.  를 참조하세요 https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN["SAP HANA 하드웨어 디렉토리"^] 사용 가능한 옵션:
+* KVM 호스트로 SAP 애플리케이션용 SUSE Linux Enterprise Server 15 SP5/SP6
+* NFS 및/또는 FCP 트래픽을 위해 구성된 SVM(Storage Virtual Machine)이 있는 NetApp ONTAP 스토리지 시스템
+* NFS 및 FCP 트래픽을 위해 적절한 네트워크에 생성된 논리 인터페이스(LIF)
+* SR-IOV 지원 네트워크 어댑터(예: Mellanox ConnectX 시리즈)
+* FCP 스토리지 액세스를 위한 파이버 채널 HBA 어댑터
+* 필요한 VLAN 및 네트워크 세그먼트를 지원하는 네트워크 인프라
+* VM은 다음에 따라 구성됩니다. https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM에서 SAP HANA를 위한 SUSE 모범 사례"^]
+
+
+
+
+== 중요한 고려 사항
+
+* SR-IOV는 SAP HANA 네트워크 통신과 NFS를 사용한 스토리지 액세스에 사용해야 합니다. VM에 할당된 각 가상 기능(VF)에는 최소 10Gbit/s 대역폭이 필요합니다.
+* FCP LUN을 사용하려면 물리적 FCP HBA 포트를 VM에 PCI 장치로 할당해야 합니다.  물리적 포트는 하나의 VM에만 할당될 수 있습니다.
+* 이 구성에서는 SAP HANA 다중 호스트 시스템이 지원되지 않습니다.
+
+
+
+
+== 추가 자료
+
+* 지원되는 CPU 아키텍처 및 제한 사항을 포함한 최신 정보는 SAP Note를 참조하세요. https://me.sap.com/notes/3538596["3538596 - SLES 15 SP5를 사용한 SUSE KVM 가상화 기반 SAP HANA - SAP for Me"] .
+* ONTAP 스토리지 시스템 구성에 대한 정보는 다음을 참조하십시오. https://docs.netapp.com/us-en/ontap["ONTAP 9 문서"] .
+* NetApp 시스템을 사용한 SAP HANA 스토리지 구성에 대해서는 다음을 참조하세요. https://docs.netapp.com/us-en/netapp-solutions-sap/["NetApp SAP 솔루션 설명서"] .
+
+
+
+
+== 다음은 무엇인가요?
+
+배포 요구 사항을 검토한 후link:kvm-hana-network.html["SR-IOV 네트워크 인터페이스 구성"] .

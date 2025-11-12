@@ -189,13 +189,13 @@ entries:
     url: "/bp/hana-fas-fc-update-history.html"
 - title: SUSE KVM 및 NetApp 스토리지를 갖춘 SAP HANA
   entries:
-  - title: 소개
+  - title: 배포 워크플로
     url: "/bp/kvm-hana-introduction.html"
+  - title: 배포 요구 사항
+    url: "/bp/kvm-hana-requirements.html"
   - title: 이더넷 네트워크 구성
     url: "/bp/kvm-hana-network.html"
   - title: 파이버 채널 네트워크 구성
     url: "/bp/kvm-hana-fcn.html"
-  - title: 스토리지 연결
+  - title: 저장소 구성
     url: "/bp/kvm-hana-storage.html"
-  - title: 기록 업데이트
-    url: "/bp/kvm-hana-update-history.html"

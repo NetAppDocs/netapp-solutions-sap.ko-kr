@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: bp/kvm-hana-storage.html 
-keywords: NetApp storage, KVM, SAP HANA, tailored data center integration, NFS, FCP 
-summary: 이 가이드에서는 NetApp 스토리지를 사용하여 SAP HANA에 대해 SUSE KVM을 구성하는 방법에 대한 정보를 제공합니다. 
+keywords: NetApp storage, KVM, SAP HANA, NFS, FCP, ONTAP, storage configuration 
+summary: NFS 또는 FCP 프로토콜을 사용하여 SUSE KVM에서 SAP HANA용 NetApp 스토리지를 구성합니다.  최적의 데이터베이스 성능을 위해 VM과 NetApp ONTAP 시스템 간에 스토리지 연결을 설정합니다. 
 ---
-= SAP HANA를 위한 KVM VM에 스토리지 연결
+= SUSE KVM에서 SAP HANA에 대한 NetApp 스토리지 구성
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,4 +14,41 @@ summary: 이 가이드에서는 NetApp 스토리지를 사용하여 SAP HANA에 
 
 
 [role="lead"]
-VM이 성공적으로 구성되면 VM 내에서 저장소를 연결할 수 있습니다.  + NFS의 경우 다음을 따르세요. https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드"] FCP의 경우 다음 중 하나를 따르세요. https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"] 가이드 또는 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"] 사용된 저장 제품에 따라 가이드가 달라집니다.
+NFS 또는 FCP 프로토콜을 사용하여 SUSE KVM에서 SAP HANA용 NetApp 스토리지를 구성합니다.  최적의 데이터베이스 성능을 위해 VM과 NetApp ONTAP 시스템 간에 스토리지 연결을 설정합니다.
+
+SR-IOV 네트워크 인터페이스나 FCP HBA 포트로 VM을 구성한 후 VM 내에서 스토리지 액세스를 구성합니다.  선택한 스토리지 프로토콜에 따라 적절한 NetApp SAP HANA 구성 가이드를 사용하세요.
+
+
+
+== SAP HANA에 대한 NFS 스토리지 구성
+
+SAP HANA 스토리지에 NFS 프로토콜을 사용하려면 이전에 만든 SR-IOV 네트워크 인터페이스를 사용하세요.
+
+다음의 포괄적인 구성 단계를 따르세요. https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템의 SAP HANA - 구성 가이드"] .
+
+KVM 환경을 위한 주요 구성 고려 사항:
+
+* 네트워크 트래픽을 위해 이전에 구성된 SR-IOV 가상 기능(VF)을 사용합니다.
+* 중복성을 위해 VM 내에서 네트워크 본딩을 구성합니다.
+* VM과 NetApp 스토리지 SVM 간의 적절한 네트워크 전환을 보장합니다.
+* SAP HANA 구성 가이드에 따라 스토리지 컨트롤러와 VM을 구성합니다.
+
+
+
+
+== SAP HANA에 대한 FCP 스토리지 구성
+
+FCP 프로토콜을 SAP HANA 스토리지에 사용할 경우 VM에 할당된 물리적 HBA 포트를 PCI 장치로 사용합니다.
+
+NetApp 스토리지 시스템에 따라 적절한 구성 가이드를 선택하세요.
+
+* NetApp AFF 시스템의 경우: https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-aff-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp AFF 시스템 기반 SAP HANA"]
+* NetApp ASA 시스템의 경우: https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"]
+
+
+KVM 환경을 위한 주요 구성 고려 사항:
+
+* PCI 패스스루를 통해 VM에 할당된 물리적 HBA 포트를 사용합니다.
+* 패브릭 스위치 간 중복성을 위해 VM 내에서 다중 경로 구성
+* SAP HANA 구성 가이드에 따라 스토리지 컨트롤러 및 VM을 구성합니다.
+
