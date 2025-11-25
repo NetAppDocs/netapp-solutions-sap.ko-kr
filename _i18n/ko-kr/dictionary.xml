@@ -200,7 +200,6 @@
   <block id="89c617c4ed9cac275e572a67b1c52b29" category="section-title">파일 시스템을 마운트합니다</block>
   <block id="f698665f2a88873767fbe21e3908ef17" category="admonition">데이터 및 로그 LUN을 위한 XFS 파일 시스템은 'laytime' 및 'inode64' 마운트 옵션으로 마운트되어야 합니다.</block>
   <block id="54720e6c9a787dee1a825e4ea3505728" category="admonition">모든 데이터 및 로그 파일 시스템은 SAP HANA 스토리지 커넥터를 통해 마운트됩니다.</block>
-  <block id="5a3bf297b3cbbda0eaa792a3fc9aa696" category="paragraph">파일 시스템을 마운트하려면 각 호스트에서 'mount –a' 명령을 실행합니다.</block>
   <block id="e368e008d79a3b2079d973871fd38c35" category="summary">이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설명합니다. 해당 ONTAP 설치 및 구성 가이드에 따라 기본 설치 및 설정을 완료해야 합니다.</block>
   <block id="331f03787d9544cd97e5b3a31e2b31bc" category="doc">스토리지 컨트롤러 설정</block>
   <block id="fd18465573ec21a6218982055981f6b1" category="section-title">스토리지 효율성</block>
@@ -5289,7 +5288,6 @@ IBM Power 기반 Linux용 중앙 플러그인 배포</block>
   <block id="2769a82040d53d42eadf3bec6f97136d" category="doc">단일 호스트 설정</block>
   <block id="4d0dd5bf85707730b1a1b706c12b2e73" category="paragraph">이 장에서는 SAP HANA 단일 호스트 설정에 대해 설명합니다.</block>
   <block id="94ebdd04c5726b33d92db91c2cfa34f4" category="paragraph">모든 데이터 및 로그 논리 볼륨과 HANA 공유 LUN에 XFS 파일 시스템을 만듭니다.</block>
-  <block id="b68bdc5f6c4af520ce42995c3c60f1d0" category="paragraph">파일 시스템을 마운트하려면 다음을 실행하세요. <block ref="86e32ba5e4c9ee3025482cd68628bc59" prefix=" " category="inline-code"></block> 호스트에서 명령을 내립니다.</block>
   <block id="69cf65aac7e60a91062a6b558c083ef3" category="list-text">SID가 FC5인 HANA 시스템</block>
   <block id="20b674149670813ea625bde00479e3f4" category="summary">NetApp ASA 제품군은 TDI 프로젝트에서 SAP HANA에 사용할 수 있도록 인증되었습니다. 이 가이드에서는 이 플랫폼에서 SAP HANA를 사용하는 모범 사례를 제공합니다.</block>
   <block id="21e0a2aad39a01380645381043e9d955" category="doc">파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA</block>
@@ -5631,7 +5629,6 @@ IBM Power 기반 Linux용 중앙 플러그인 배포</block>
   <block id="6a9c098947d8b811552347f2ed990ebd" category="inline-link-macro"><block ref="6a9c098947d8b811552347f2ed990ebd" category="inline-link-rx"></block></block>
   <block id="702c9bfa6d3b8d8b923fbeba4db3625f" category="paragraph"><block ref="702c9bfa6d3b8d8b923fbeba4db3625f" category="inline-link-macro-rx"></block></block>
   <block id="225b42e7cb6036e97607adda6dcca1c3" category="summary">SAP 담보를 위한 NetApp 솔루션의 최근 변경 사항 로그입니다.</block>
-  <block id="4a2fff3ce5a292ada8e788cd34005db8" category="doc">NetApp 가상화 솔루션의 새로운 기능</block>
   <block id="2ca0fa0a322d6c31c3d0906a34c85e6c" category="paragraph">SAP 솔루션의 새로운 소식을 알아보세요.</block>
   <block id="bab52961b58c502c7991d35556c25367" category="section-title">2025년 8월 18일</block>
   <block id="47e26e0d5bbeef43c544dd9ae72e66b0" category="inline-link-macro">NetApp 솔루션 제품군</block>
@@ -5826,4 +5823,7 @@ IBM Power 기반 Linux용 중앙 플러그인 배포</block>
   <block id="be9795993b0f7ea6e032752c428deb13" category="sidebar">이더넷 네트워크 구성</block>
   <block id="6ea13559c46e38e3cf3559ec91659a75" category="sidebar">파이버 채널 네트워크 구성</block>
   <block id="b3cb0a0b8107b0dbcf00b7ef366e3fa1" category="sidebar">저장소 구성</block>
+  <block id="1d34e524e547228bbc972b1e3e9959dd" category="paragraph">파일 시스템을 마운트하려면 다음을 실행하세요.<block ref="9f7a2b0acd2325ca01c92df6a9e32ef7" prefix=" " category="inline-code"></block> 각 호스트에서 명령을 내립니다.</block>
+  <block id="e38bdf2f2c158270debf7ee7f12f1356" category="paragraph">파일 시스템을 마운트하려면 다음을 실행하세요.<block ref="9f7a2b0acd2325ca01c92df6a9e32ef7" prefix=" " category="inline-code"></block> 호스트에서 명령을 내립니다.</block>
+  <block id="4fef2ff68dffba6c16f0aed5de1fb55c" category="doc">SAP용 NetApp 솔루션의 새로운 기능</block>
 </blocks>

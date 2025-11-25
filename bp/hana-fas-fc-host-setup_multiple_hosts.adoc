@@ -98,10 +98,10 @@ vgchange -a y
 모든 데이터 및 로그 논리 볼륨에 XFS 파일 시스템을 만듭니다.
 
 ....
-mkfs.xfs FC5_data_mnt00001-vol
-mkfs.xfs FC5_data_mnt00002-vol
-mkfs.xfs FC5_log_mnt00001-vol
-mkfs.xfs FC5_log_mnt00002-vol
+mkfs.xfs /dev/mapper/FC5_data_mnt00001-vol
+mkfs.xfs /dev/mapper/FC5_data_mnt00002-vol
+mkfs.xfs /dev/mapper/FC5_log_mnt00001-vol
+mkfs.xfs /dev/mapper/FC5_log_mnt00002-vol
 ....
 
 
@@ -115,8 +115,8 @@ sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00001
 sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00002
 sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00002
 sapcc-hana-tst:/ # mkdir -p /hana/shared
-sapcc-hana-tst:/ # chmod –R 777 /hana/log/FC5
-sapcc-hana-tst:/ # chmod –R 777 /hana/data/FC5
+sapcc-hana-tst:/ # chmod -R 777 /hana/log/FC5
+sapcc-hana-tst:/ # chmod -R 777 /hana/data/FC5
 sapcc-hana-tst:/ # chmod 777 /hana/shared
 ....
 
@@ -132,4 +132,4 @@ sapcc-hana-tst:/ # cat /etc/fstab
 
 NOTE: 모든 데이터 및 로그 파일 시스템은 SAP HANA 스토리지 커넥터를 통해 마운트됩니다.
 
-파일 시스템을 마운트하려면 각 호스트에서 'mount –a' 명령을 실행합니다.
+파일 시스템을 마운트하려면 다음을 실행하세요. `mount -a` 각 호스트에서 명령을 내립니다.

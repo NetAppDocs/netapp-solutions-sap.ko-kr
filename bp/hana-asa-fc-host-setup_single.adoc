@@ -84,8 +84,8 @@ vgchange -a y
 모든 데이터 및 로그 논리 볼륨과 HANA 공유 LUN에 XFS 파일 시스템을 만듭니다.
 
 ....
-mkfs.xfs FC5_data_mnt00001-vol
-mkfs.xfs FC5_log_mnt00001-vol
+mkfs.xfs /dev/mapper/FC5_data_mnt00001-vol
+mkfs.xfs /dev/mapper/FC5_log_mnt00001-vol
 mkfs.xfs /dev/mapper/svm1-FC5_shared
 ....
 
@@ -101,8 +101,8 @@ NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보�
 sapcc-hana-tst:/ # mkdir -p /hana/data/FC5/mnt00001
 sapcc-hana-tst:/ # mkdir -p /hana/log/FC5/mnt00001
 sapcc-hana-tst:/ # mkdir -p /hana/shared
-sapcc-hana-tst:/ # chmod –R 777 /hana/log/FC5
-sapcc-hana-tst:/ # chmod –R 777 /hana/data/FC5
+sapcc-hana-tst:/ # chmod -R 777 /hana/log/FC5
+sapcc-hana-tst:/ # chmod -R 777 /hana/data/FC5
 sapcc-hana-tst:/ # chmod 777 /hana/shared
 ....
 
@@ -120,4 +120,4 @@ sapcc-hana-tst:/ # chmod 777 /hana/shared
 
 NOTE: 데이터 및 로그 LUN을 위한 XFS 파일 시스템은 'laytime' 및 'inode64' 마운트 옵션으로 마운트되어야 합니다.
 
-파일 시스템을 마운트하려면 다음을 실행하세요.  `mount –a` 호스트에서 명령을 내립니다.
+파일 시스템을 마운트하려면 다음을 실행하세요. `mount -a` 호스트에서 명령을 내립니다.

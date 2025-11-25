@@ -4,7 +4,7 @@ permalink: whats-new.html
 keywords: 'netapp, solutions, sap, sap hana, what"s new, updates, change log' 
 summary: SAP 담보를 위한 NetApp 솔루션의 최근 변경 사항 로그입니다. 
 ---
-= NetApp 가상화 솔루션의 새로운 기능
+= SAP용 NetApp 솔루션의 새로운 기능
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
