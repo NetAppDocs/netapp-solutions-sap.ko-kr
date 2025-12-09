@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-config-non-data-vols.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= 비데이터 볼륨을 백업하도록 SnapCenter 구성
+:allow-uri-read: 
+
+
+[role="lead"]
+실행 파일, 구성 파일, 추적 파일, 애플리케이션 서버 데이터와 같은 비데이터 볼륨을 백업하도록 SnapCenter 구성합니다.
+
+데이터베이스 설치 리소스와 필요한 로그를 계속 사용할 수 있는 경우 데이터베이스 데이터 볼륨을 보호하면 SAP HANA 데이터베이스를 특정 시점으로 복원 및 복구할 수 있습니다.
+
+다른 비데이터 파일을 복원해야 하는 상황에서 복구하기 위해 NetApp SAP HANA 데이터베이스 백업을 보완하기 위해 비데이터 볼륨에 대한 추가 백업 전략을 개발할 것을 권장합니다. 특정 요구 사항에 따라 비데이터 볼륨의 백업은 예약 빈도와 보존 설정이 다를 수 있으며, 비데이터 파일이 얼마나 자주 변경되는지 고려해야 합니다. 예를 들어, HANA 볼륨 /hana/shared에는 실행 파일, 구성 파일뿐만 아니라 SAP HANA 추적 파일도 포함되어 있습니다. 실행 파일은 SAP HANA 데이터베이스가 업그레이드될 때만 변경되지만, SAP HANA 구성 및 추적 파일은 더 높은 백업 빈도가 필요할 수 있습니다. 또한 SnapCenter 사용하여 비데이터 볼륨 백업을 사용하여 SAP 애플리케이션 서버 볼륨을 보호할 수 있습니다.
+
+SnapCenter 비데이터 볼륨 백업을 사용하면 SAP HANA 데이터베이스 백업과 동일한 공간 효율성으로 모든 관련 볼륨의 스냅샷 복사본을 몇 초 안에 생성할 수 있습니다. 차이점은 SAP HANA 데이터베이스와의 상호 작용이 필요 없다는 것입니다.
+
+리소스 탭에서 비 데이터 볼륨 을 선택하고 SAP HANA 데이터베이스 추가 를 클릭합니다.
+
+image:hana-sc-generic-image-055.png["너비=601, 높이=173"]
+
+image:hana-sc-generic-image-056.png["너비=601, 높이=112"]
+
+SAP HANA 데이터베이스 추가 대화 상자의 리소스 유형 목록에서 비 데이터 볼륨을 선택합니다. 리소스에 사용할 리소스 및 관련 SID와 SAP HANA 플러그인 호스트의 이름을 지정한 후 다음 을 클릭합니다.
+
+image:hana-sc-generic-image-057.png["너비=332, 높이=310"]
+
+ONTAP 시스템과 FSx for ONTAP 의 경우 스토리지 유형으로 ONTAP 선택하고 SVM과 스토리지 볼륨을 스토리지 공간으로 추가한 후 다음을 클릭합니다.
+
+image:hana-sc-generic-image-058.png["너비=332, 높이=312"]
+
+ANF의 경우 스토리지 유형을 선택하고 Azure NetApp Files NetApp 계정 및 용량 풀을 선택한 다음 ANF 볼륨을 스토리지 공간으로 추가하고 다음을 클릭합니다.
+
+image:hana-sc-generic-image-059.png["너비=350, 높이=337"]
+
+요약 단계에서 마침 을 클릭하여 설정을 저장합니다.
+
+필요한 모든 비데이터 볼륨에 대해 이 단계를 반복합니다. 새 리소스의 보호 구성을 계속합니다.
+
+
+NOTE: 비데이터 볼륨 리소스에 대한 데이터 보호 구성은 SAP HANA 데이터베이스 리소스에 대한 워크플로와 동일하며 개별 리소스 수준에서 정의할 수 있습니다.

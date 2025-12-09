@@ -1,0 +1,207 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-resource-config.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= 개별 SAP HANA 데이터베이스에 대한 SnapCenter 리소스 구성
+:allow-uri-read: 
+
+
+[role="lead"]
+백업 사용자와 사용자 저장소 키를 생성하고, 보조 백업을 위한 스토리지 복제를 설정하고, 자동 검색을 위한 HANA 플러그인을 배포하고, 정책과 일정을 사용하여 리소스 보호를 구성하여 SnapCenter 에서 개별 SAP HANA 데이터베이스를 구성합니다.
+
+SnapCenter 에서 HANA 데이터베이스를 구성하는 단계는 다음과 같습니다.
+
+. SnapCenter 백업 사용자는 HANA 시스템 데이터베이스에 구성되어야 하며 SAP HANA 사용자 저장소 키는 HANA 데이터베이스 호스트에 설정되어야 합니다.
+. 보조 저장소에 대한 데이터 복제가 필요한 경우 HANA 데이터 볼륨에 대한 ONTAP 저장소 복제를 구성해야 합니다.
+. SnapCenter HANA 플러그인은 HANA 데이터베이스 호스트에 배포되어야 합니다.
++
+.. 자동 검색 프로세스가 시작됩니다
+.. SAP HANA 사용자 저장소 키는 SnapCenter 에서 구성되어야 합니다.
+.. 자동 검색의 두 번째 단계가 시작되고 HANA 리소스가 SnapCenter 에 의해 자동으로 추가됩니다.
+
+
+. 새로 추가된 HANA 리소스에 대해 HANA 리소스 보호를 구성해야 합니다.
+
+
+이전 항목에서 설명한 대로 초기 SnapCenter 구성 link:hana-sc-generic-initial.html["SnapCenter 초기 구성"] HANA 데이터베이스 리소스를 구성하는 동안 자격 증명, 스토리지 시스템 및 정책이 필요하므로 먼저 이 작업을 수행해야 합니다. 아래 그림은 단계와 종속성을 요약한 것입니다.
+
+아래 그림은 다양한 구성 구성 요소와 종속성을 시각화한 것입니다.
+
+image:hana-sc-generic-image-041.png["너비=601, 높이=315"] 다음 섹션에서는 필요한 구성 단계에 대한 자세한 설명을 제공합니다.
+
+
+
+== SAP HANA 백업 사용자 및 SAP HANA 사용자 저장소 구성
+
+NetApp SnapCenter 사용하여 백업 작업을 실행하기 위해 HANA 데이터베이스에 전담 사용자를 구성할 것을 권장합니다. 두 번째 단계로, 이 백업 사용자에 대해 SAP HANA 사용자 저장소 키가 구성되고, SAP HANA 사용자 저장소 키는 SnapCenter 구성에 제공됩니다.
+
+다음 그림은 SAP HANA Studio를 보여줍니다. 이 예제에서는 백업 사용자인 SNAPCENTER를 생성할 수 있습니다.
+
+
+NOTE: 백업 사용자는 백업 관리자, 카탈로그 읽기, 데이터베이스 백업 관리자 및 데이터베이스 복구 운영자 권한을 갖도록 구성되어야 합니다.
+
+
+NOTE: 모든 시스템 및 테넌트 데이터베이스에 대한 백업 명령은 시스템 데이터베이스를 통해 실행되므로 백업 사용자는 시스템 데이터베이스에서 생성되어야 합니다.
+
+image:hana-sc-generic-image-042.png["너비=601, 높이=382"]
+
+
+
+=== HANA 데이터베이스 호스트의 SAP HANA 사용자 저장소 구성
+
+SnapCenter <sid>adm 사용자를 사용하여 HANA 데이터베이스와 통신합니다. 따라서 SAP HANA 사용자 저장소 키는 데이터베이스 호스트의 <sid>adm 사용자를 사용하여 구성해야 합니다.
+
+hdbuserstore set <키 이름> <호스트>:<포트> <데이터베이스 사용자> <비밀번호>
+
+SAP HANA MDC 시스템의 경우 HANA 시스템 데이터베이스의 포트는 3<instanceNo>13입니다.
+
+
+
+=== SAP HANA 사용자 저장소 구성 예
+
+출력은 인스턴스 번호 = 00인 HANA 시스템에 대해 구성된 키 SS1KEY를 보여줍니다.
+
+....
+ss1adm@hana-1:/usr/sap/SS1/HDB00> hdbuserstore list
+DATA FILE : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.DAT
+KEY FILE : /usr/sap/SS1/home/.hdb/hana-1/SSFS_HDB.KEY
+KEY SS1SAPDBCTRL
+ENV : hana-1:30013
+USER: SAPDBCTRL
+KEY SS1KEY
+ENV : hana-1:30013
+USER: SNAPCENTER
+KEY SYSTEMKEY
+ENV : hana-1:30013
+USER: SYSTEM
+ACTIVE RECORDS : 10
+DELETED RECORDS : 15
+NUMBER OF COMPLETE KEY: 3
+Operation succeed.
+ss1adm@hana-1:/usr/sap/SS1/HDB00>
+....
+출력은 인스턴스 번호 = 12인 HANA 시스템에 대해 구성된 키 SM1KEY를 보여줍니다.
+
+....
+sm1adm@hana-2:/usr/sap/SM1/HDB12> hdbuserstore list
+DATA FILE : /usr/sap/SM1/home/.hdb/hana-2/SSFS_HDB.DAT
+KEY FILE : /usr/sap/SM1/home/.hdb/hana-2/SSFS_HDB.KEY
+KEY SM1SAPDBCTRL
+ENV : hana-2:31213
+USER: SAPDBCTRL
+KEY SM1KEY
+ENV : hana-2:31213
+USER: SNAPCENTER
+ACTIVE RECORDS : 7
+DELETED RECORDS : 9
+NUMBER OF COMPLETE KEY: 2
+Operation succeed.
+sm1adm@hana-2:/usr/sap/SM1/HDB12>
+....
+
+
+== 스토리지 복제 구성
+
+SnapCenter에서 복제 업데이트를 관리하기 전에 초기 데이터 전송뿐만 아니라 데이터 보호 관계의 구성을 실행해야 합니다.
+
+다음 스크린샷은 ONTAP 시스템 관리자를 사용한 구성을 보여줍니다. ONTAP 시스템용 FSx의 경우 복제는 ONTAP CLI를 사용하여 수행해야 합니다. https://docs.netapp.com/us-en/netapp-solutions-sap/backup/fsxn-backup-replication-with-snapvault-overview.html["개요 - SnapVault를 사용한 백업 복제"].
+
+다음 그림은 SAP HANA 시스템 SS1의 데이터 볼륨에 대해 구성된 보호 관계를 보여줍니다. 이 예제에서는 SVM hana-primary의 소스 볼륨 SS1_data_mnt00001이 SVM hana-backup과 대상 볼륨 SS1_data_mnt00001_dst로 복제됩니다.
+
+image:hana-sc-generic-image-043.png["너비=601, 높이=183"]
+
+다음 그림은 이 랩 설정을 위해 만들어진 보호 정책을 보여줍니다. 보호 관계에 사용되는 보호 정책은 SnapMirror 레이블과 보조 저장소에서의 백업 보존을 정의합니다. 이 예에서 사용된 레이블은 '매일'이고, 보존 기간은 5로 설정되었습니다.
+
+
+NOTE: 복제 정책의 SnapMirror 레이블은 SnapCenter 정책 구성에 정의된 레이블과 일치해야 합니다.
+
+
+NOTE: SnapCenter 이전에 생성된 애플리케이션 일관성 스냅샷을 기반으로 백업 작업의 일부로 SnapVault 업데이트를 트리거하므로 관계 일정은 없음으로 설정해야 합니다.
+
+
+NOTE: 보조 백업 저장소의 백업 보존은 정책에 정의되어 있으며 ONTAP 에서 제어합니다.
+
+image:hana-sc-generic-image-044.png["너비=601, 높이=180"]
+
+
+
+== ANF 백업 구성
+
+ANF ​​백업에는 특별한 준비가 필요하지 않습니다. ANF ​​백업이 활성화된 첫 번째 백업이 실행되자마자 SnapCenter 에서 snapcenter-vault라는 이름의 Azure 백업 볼트가 생성됩니다. 이 백업 볼트는 SnapCenter 에서 실행되는 모든 후속 ANF 백업 작업에 사용됩니다.
+
+image:hana-sc-generic-image-045.png["너비=601, 높이=227"]
+
+
+
+== SAP HANA용 SnapCenter 플러그인 배포
+
+호스트 요구 사항은 다음에 나열되어 있습니다. https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_host_requirements_to_install_snapcenter_plug_in_package_for_linux.html["Linux용 SnapCenter 플러그인 패키지를 설치하기 위한 호스트 요구 사항"].
+
+HANA 플러그인 배포는 SnapCenter UI의 호스트 섹션에서 추가 버튼을 클릭하여 수행됩니다.
+
+image:hana-sc-generic-image-046.png["너비=601, 높이=145"]
+
+호스트 추가 화면에서는 배포 프로세스에 사용할 호스트 유형과 이름, 자격 증명을 제공해야 합니다. 또한 SAP HANA 플러그인을 선택해야 합니다. 제출을 클릭하면 배포 프로세스가 시작됩니다.
+
+
+NOTE: 이 설명에서는 새로운 호스트를 추가하지 않았지만 SnapCenter 에 있는 기존 호스트의 구성을 보여줍니다.
+
+image:hana-sc-generic-image-047.png["너비=601, 높이=154"]
+
+
+
+== HANA 자동 검색
+
+HANA 플러그인 배포가 완료되면 자동 검색 프로세스가 시작됩니다. 첫 번째 단계에서는 기본 설정만 검색되고 SnapCenter UI의 리소스 섹션에 빨간색 자물쇠로 표시된 새 리소스를 만듭니다.
+
+image:hana-sc-generic-image-048.png["너비=601, 높이=169"]
+
+리소스를 클릭하면 이 HANA 데이터베이스에 대한 SAP HANA 사용자 저장소 키를 입력하라는 메시지가 표시됩니다.
+
+image:hana-sc-generic-image-049.png["너비=316, 높이=180"]
+
+키가 제공된 후 자동 검색 프로세스의 두 번째 단계가 시작됩니다. 자동 검색 프로세스는 HANA 시스템의 모든 테넌트 데이터베이스를 감지하고, 로그 및 카탈로그 백업 구성 세부 정보와 HANA 시스템 복제 역할을 감지합니다. 또한, 저장 공간 세부 정보가 자동으로 검색됩니다. 이러한 설정은 리소스를 선택하고 세부 정보 버튼을 클릭하면 확인할 수 있습니다.
+
+
+NOTE: 이 자동 검색 프로세스는 각 백업 작업과 함께 실행되므로 백업 작업과 관련된 HANA 시스템의 모든 변경 사항이 자동으로 감지됩니다.
+
+image:hana-sc-generic-image-050.png["너비=601, 높이=219"]
+
+
+
+== 리소스 보호 구성
+
+자동 검색 프로세스가 완료된 후 리소스를 클릭하면 리소스 보호 구성 화면이 열립니다. 이 문서의 스크린샷은 기존 리소스의 보호 구성을 보여줍니다.
+
+스냅샷에 대한 사용자 정의 이름 형식을 구성합니다. NetApp 어떤 백업이 어떤 정책 및 일정 유형으로 생성되었는지 쉽게 식별할 수 있도록 사용자 지정 스냅샷 이름을 사용할 것을 권장합니다.
+
+다음 그림에 나와 있는 구성에서는 백업 및 스냅샷 복사본 이름의 형식이 다음과 같습니다.
+
+* 예약된 시간별 백업: + SnapCenter_<호스트 이름>_LocalSnap_Hourly_<타임스탬프>
+* 예약된 일일 백업: + SnapCenter_<호스트 이름>_LocalSnapAndSnapVault_Daily_<타임스탬프>
+
+
+image:hana-sc-generic-image-051.png["너비=601, 높이=294"]
+
+다음 화면에서는 스크립트를 구성할 수 있으며, 이 스크립트는 백업 워크플로의 다양한 단계에서 실행되어야 합니다.
+
+image:hana-sc-generic-image-052.png["너비=601, 높이=294"]
+
+이제 정책이 리소스에 첨부되고 일정이 정의되었습니다.
+
+이 예에서는 다음을 구성했습니다.
+
+* 매주 일요일에 블록 무결성 검사를 실시합니다.
+* 4시간마다 로컬 스냅샷 백업
+* SnapVault 복제를 통해 하루에 한 번씩 일일 스냅샷 백업
+
+
+image:hana-sc-generic-image-053.png["너비=601, 높이=294"]
+
+이메일 알림을 구성할 수 있습니다.
+
+image:hana-sc-generic-image-054.png["너비=601, 높이=294"]
+
+리소스 보호 구성이 완료되면 정의된 설정에 따라 예약된 백업이 실행됩니다.

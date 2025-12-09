@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-backup-solution.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA를 위한 SnapCenter 백업 및 복구에 대해 알아보세요
+:allow-uri-read: 
+
+
+[role="lead"]
+SnapCenter 스토리지 기반 스냅샷 복사본, 자동화된 보존 관리, NetApp ONTAP, Azure NetApp Files, FSx for NetApp ONTAP 과의 통합을 사용하여 SAP HANA 데이터베이스에 대한 포괄적인 백업 및 복구 기능을 제공합니다. 이 솔루션은 SnapVault 또는 ANF 백업을 사용하여 애플리케이션 일관성 있는 데이터베이스 백업, 비데이터 볼륨 보호, 블록 무결성 검사 및 보조 스토리지로의 복제를 지원합니다.
+
+SAP HANA용 SnapCenter 백업 솔루션은 다음과 같은 영역을 다룹니다.
+
+* 백업 작업, 스케줄링 및 보존 관리
+* 스토리지 기반 Snapshot 복사본으로 SAP HANA 데이터 백업
+* 저장소 기반 스냅샷 복사본(예: /hana/shared)을 사용한 비데이터 볼륨 백업
+* 데이터베이스 블록 무결성 검사 작업
++
+** 파일 기반 백업 사용
+** SAP HANA hdbpersdiag 도구 사용
+
+
+* 보조 백업 위치로의 스냅샷 백업 복제
++
+** SnapVault/ SnapMirror 사용
+** Azure NetApp Files ANF 백업 사용
+
+
+* SAP HANA 백업 카탈로그 관리
++
+** HANA 데이터 백업(스냅샷 및 파일 기반)
+** HANA 로그 백업용
+
+
+* 복원 및 복구 작업
++
+** 자동 복원 및 복구
+** 단일 테넌트 복원 작업
+
+
+
+
+데이터베이스 데이터 백업은 SAP HANA용 SnapCenter 플러그인과 함께 SnapCenter 에서 실행됩니다. 플러그인은 SAP HANA 내부 데이터베이스 스냅샷을 트리거하여 스토리지 시스템에 생성되는 스냅샷이 SAP HANA 데이터베이스의 애플리케이션 일관성 이미지를 기반으로 하도록 합니다.
+
+SnapCenter SnapVault 또는 SnapMirror^.^ 기능을 사용하여 일관된 데이터베이스 이미지를 보조 백업이나 재해 복구 위치로 복제할 수 있도록 합니다. 일반적으로 기본 저장소와 보조 저장소의 백업에는 서로 다른 보존 정책이 정의됩니다. SnapCenter 기본 스토리지에서의 보존을 처리하고, ONTAP 보조 백업 스토리지에서의 보존을 처리합니다.
+
+또한 SnapCenter를 사용하면 모든 SAP HANA 관련 리소스를 완벽하게 백업할 수 있을 뿐만 아니라 스토리지 기반 Snapshot 복사본과 함께 SAP HANA 플러그인을 사용하여 모든 비 데이터 볼륨을 백업할 수 있습니다. 개별 보존 및 보호 정책을 사용할 수 있도록 데이터베이스 데이터 백업과 별도로 비데이터 볼륨을 예약할 수 있습니다.
+
+SAP에서는 스토리지 기반 스냅샷 백업과 지속성 계층의 주간 일관성 검사를 결합할 것을 권장합니다. SnapCenter 내에서 블록 일관성 검사를 실행하려면 파일 기반 백업을 실행하거나 SAP hdbpersdiag 도구를 실행하면 됩니다.
+
+구성된 보존 정책에 따라 SnapCenter 기본 저장소의 데이터 파일 백업, 로그 파일 백업 및 SAP HANA 백업 카탈로그의 정리 작업을 관리합니다.
+
+SnapCenter는 운영 스토리지에서 보존을 처리하고, ONTAP은 보조 백업 보존을 관리합니다.
+
+다음 그림에서는 SnapCenter 백업 및 보존 관리 작업의 개요를 보여 줍니다.
+
+SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할 때 SnapCenter은 다음과 같은 작업을 수행합니다.
+
+* 백업 작업:
++
+** 지속성 계층에서 애플리케이션 일관성 이미지를 얻기 위해 내부 HANA 데이터베이스 스냅샷을 트리거합니다.
+** 데이터 볼륨의 저장소 기반 스냅샷 백업을 생성합니다.
+** 내부 HANA 데이터베이스 스냅샷을 닫고, 백업 작업을 확인하거나 중단합니다. 이 단계에서는 HANA 백업 카탈로그에 백업을 등록합니다.
+
+
+* 보존 관리:
++
+** 정의된 보존 기간을 기준으로 스토리지 스냅샷 백업을 삭제합니다.
+** 스토리지 계층에서 스냅샷을 삭제합니다.
+** SAP HANA 백업 카탈로그 항목을 삭제합니다.
+** 가장 오래된 데이터 백업보다 오래된 모든 로그 백업을 삭제합니다. 로그 백업은 파일 시스템 및 SAP HANA 백업 카탈로그에서 삭제됩니다.
+
+
+
+
+image:hana-sc-generic-image-006.png["너비=601, 높이=285"]
+
+SnapVault/ SnapMirror 또는 ANF 백업을 사용하여 보조 백업이 구성된 경우 기본 볼륨에서 생성된 스냅샷이 보조 백업 저장소에 복제됩니다. SnapCenter 보조 백업의 가용성에 따라 HANA 백업 카탈로그와 로그 백업 보존을 관리합니다.
+
+image:hana-sc-generic-image-007.png["너비=601, 높이=278"]

@@ -1,0 +1,327 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-initial-config.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA에 대한 초기 SnapCenter 설정 구성
+:allow-uri-read: 
+
+
+[role="lead"]
+Azure 서비스 주체에 대한 자격 증명을 설정하고, 스토리지 시스템을 추가하고, 스냅샷 백업, 블록 무결성 검사 및 보조 복제에 대한 정책을 만들어 SAP HANA 환경에 대한 초기 SnapCenter 설정을 구성합니다.
+
+SnapCenter 초기 구성에는 다음 단계가 포함됩니다.
+
+. 자격 증명 구성
++
+.. Azure NetApp Files (ANF)로 구성된 HANA 시스템의 경우 서비스 주체를 준비한 다음 SnapCenter 에서 구성해야 합니다.
+.. HANA 데이터베이스 호스트에 HANA 플러그인을 자동으로 설치하려면 호스트 자격 증명을 제공해야 합니다.
+
+
+. 스토리지 시스템 구성
++
+.. ANF로 구성된 HANA 시스템의 경우, 필요한 NetApp 계정을 선택하여 SnapCenter 구성에 추가할 수 있습니다.
+.. ONTAP 또는 FSx for ONTAP 스토리지 시스템의 경우 SVM이나 전체 스토리지 클러스터를 SnapCenter 에 추가할 수 있습니다.
+
+
+. 정책 구성
++
+.. 스냅샷 기반 백업과 블록 무결성 검사 작업에 대한 정책은 ANF뿐만 아니라 ONTAP 및 FSx for ONTAP 스토리지 시스템에 대해서도 구성할 수 있습니다.
+.. SnapVault 또는 SnapMirror 사용한 변조 방지 스냅샷 및 보조 백업에 대한 정책은 ONTAP 및 FSx for ONTAP 스토리지 시스템에만 구성할 수 있습니다.
+.. ANF로 구성된 HANA 시스템의 경우 정책에는 다음이 포함될 수 있습니다. https://learn.microsoft.com/en-us/azure/azure-netapp-files/backup-introduction["ANF 백업"].
+
+
+
+
+
+NOTE: 동일한 스냅샷 백업 정책은 HANA 데이터베이스뿐만 아니라 HANA 공유 볼륨과 같은 비데이터 볼륨에도 사용할 수 있습니다.
+
+아래 그림은 구성 섹션을 요약한 것입니다.
+
+image:hana-sc-generic-image-017.png["너비=601, 높이=158"]
+
+다음 장에서는 초기 구성 단계를 설명합니다.
+
+
+
+== 자격 증명 구성
+
+
+
+=== HANA 플러그인 배포를 위한 자격 증명
+
+자격 증명은 설정 섹션에서 자격 증명 탭을 선택하여 구성합니다. + 아이콘을 클릭하면 자격 증명을 추가할 수 있습니다.
+
+image:hana-sc-generic-image-018.png["너비=601, 높이=118"]
+
+NetApp 모든 HANA 데이터베이스 호스트(예: scuser)에 사용자를 구성하고 설명된 대로 sudo 권한을 구성할 것을 권장합니다. https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_prerequisites_to_adding_hosts_and_installing_snapcenter_plug_in_for_sap_hana_database.html#windows-hosts["SAP HANA 데이터베이스용 SnapCenter 플러그인을 설치하고 호스트를 추가하기 위한 전제 조건"].
+
+image:hana-sc-generic-image-019.png["너비=287, 높이=247"]
+
+
+
+=== Azure NetApp Files 에 대한 자격 증명
+
+SnapCenter ANF 볼륨에 필요한 작업을 실행할 수 있도록 Azure 서비스 주체를 준비해야 합니다. 아래 예는 반드시 포함되어야 하는 최소한의 필수 권한을 보여줍니다.
+
+....
+
+    "assignableScopes": [
+        "/subscriptions/xxx"
+    ],
+    "createdBy": "xxx",
+    "createdOn": "2025-05-07T07:12:14.451483+00:00",
+    "description": "Restricted Access for SnapCenter ",
+    "id": "/subscriptions/xxx/providers/Microsoft.Authorization/roleDefinitions/xxx",
+    "name": "xxx",
+    "permissions": [
+        {
+            "actions": [
+            "Microsoft.NetApp/register/action",
+            "Microsoft.NetApp/unregister/action",
+            "Microsoft.NetApp/netAppAccounts/read",
+            "Microsoft.NetApp/netAppAccounts/getKeyVaultStatus/action",
+            "Microsoft.NetApp/netAppAccounts/migrateEncryption/action",
+            "Microsoft.NetApp/netAppAccounts/transitionToCmk/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/revert/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/poolChange/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/finalizeRelocation/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/revertRelocation/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/breakFileLocks/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/getGroupIdListForLdapUser/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/restoreFiles/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/restoreFiles/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/subvolumes/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/subvolumes/write",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/subvolumes/getMetadata/action",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/volumeQuotaRules/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/latestRestoreStatus/current/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/mountTargets/read",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/restoreStatus/read",
+            "Microsoft.NetApp/netAppAccounts/snapshotPolicies/read",
+            "Microsoft.NetApp/netAppAccounts/snapshotPolicies/write",
+            "Microsoft.NetApp/netAppAccounts/snapshotPolicies/listVolumes/read",
+            "Microsoft.NetApp/netAppAccounts/snapshotPolicies/volumes/read",
+            "Microsoft.NetApp/netAppAccounts/volumeGroups/read",
+            "Microsoft.NetApp/netAppAccounts/volumeGroups/write",
+            "Microsoft.NetApp/locations/checknameavailability/action",
+            "Microsoft.NetApp/locations/checkfilepathavailability/action",
+            "Microsoft.NetApp/locations/operationresults/read",
+            "Microsoft.NetApp/Operations/read",
+            "Microsoft.Resources/resources/read",
+            "Microsoft.Resources/subscriptions/resourceGroups/read",
+            "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+            "Microsoft.Network/virtualNetworks/read",
+            "Microsoft.Network/virtualNetworks/subnets/read",
+            "Microsoft.Network/virtualNetworks/write",
+            "Microsoft.Network/virtualNetworks/subnets/write"
+            ],
+            "condition": null,
+            "conditionVersion": null,
+            "dataActions": [],
+            "notActions": [],
+            "notDataActions": []
+        }
+    ],
+    "roleName": "SnapCenter-Restricted-Access",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "updatedBy": "xxx",
+    "updatedOn": "2025-05-07T07:12:14.451483+00:00"
+}
+....
+자격 증명은 설정 섹션에서 자격 증명 탭을 선택하여 구성합니다. 자격 증명은 + 아이콘을 클릭하여 구성합니다.
+
+image:hana-sc-generic-image-020.png["너비=601, 높이=116"]
+
+다음 화면에서는 자격 증명 이름을 제공하고 인증 모드 Azure 자격 증명을 선택해야 합니다. 그런 다음 테넌트 ID, 클라이언트 ID 및 클라이언트 비밀 키를 구성해야 합니다.
+
+image:hana-sc-generic-image-021.png["너비=252, 높이=246"]
+
+
+
+== 스토리지 시스템 구성
+
+
+
+=== ONTAP 시스템 및 ONTAP 용 FSx
+
+ONTAP 시스템이나 FSx for ONTAP 클러스터 자격 증명이나 필요한 각 SVM에 대한 자격 증명을 제공하여 SnapCenter 에 추가할 수 있습니다. 클러스터 자격 증명이 제공되면 클러스터의 모든 SVM이 SnapCenter 에 추가됩니다.
+
+우리 연구실 설정에서 SnapCenter 에 스토리지 클러스터를 추가했습니다. ONTAP 클러스터는 ONTAP 스토리지 탭과 ONTAP 클러스터 유형을 선택하여 스토리지 시스템 섹션에서 구성됩니다. + 아이콘을 클릭하면 새로운 클러스터가 추가됩니다.
+
+image:hana-sc-generic-image-022.png["너비=601, 높이=117"]
+
+다음 화면에서는 클러스터 사용자의 자격 증명을 제공해야 합니다.
+
+
+NOTE: 클러스터 사용자 admin을 사용하면 안 됩니다. 대신, 설명된 대로 필요한 권한을 가진 새 사용자를 만들어야 합니다. https://docs.netapp.com/us-en/snapcenter/install/task_create_an_ontap_cluster_role_with_minimum_privileges.html["최소 권한으로 ONTAP 클러스터 역할 생성"]. ASA 시스템에 필요한 권한은 다음에서 찾을 수 있습니다. https://docs.netapp.com/us-en/snapcenter/install/create-cluster-roles-asa-r2-resources.html["ASA r2 시스템에 대한 ONTAP 클러스터 역할 생성"].
+
+image:hana-sc-generic-image-023.png["너비=299, 높이=176"]
+
+SVM은 ONTAP 스토리지 탭과 ONTAP SVMS 유형을 선택하여 스토리지 시스템 섹션에서 구성됩니다. + 아이콘을 클릭하면 새로운 SVM이 추가됩니다.
+
+다음 화면에서는 클러스터 사용자의 자격 증명을 제공해야 합니다.
+
+
+NOTE: SVM 사용자 vsadmin을 사용하면 안 됩니다. 대신, 설명된 대로 필요한 권한을 가진 새 사용자를 만들어야 합니다. https://docs.netapp.com/us-en/snapcenter/install/create-svm-roles-minimum-privileges.html["최소 권한으로 SVM 역할 생성"]. ASA 시스템에 필요한 권한은 다음에서 찾을 수 있습니다. https://docs.netapp.com/us-en/snapcenter/install/create-svm-roles-asa-r2-resources.html["ASA r2 시스템에 대한 SVM 역할 생성"].
+
+
+NOTE: SVM의 DNS 이름은 ONTAP 시스템에 구성된 SVM 이름과 일치해야 합니다.
+
+image:hana-sc-generic-image-024.png["너비=331, 높이=199"]
+
+
+
+=== Azure NetApp Files
+
+ANF ​​자격 증명이 구성된 후 ANF NetApp 계정을 SnapCenter 에 추가할 수 있습니다. NetApp 계정은 스토리지 시스템 섹션에서 구성하고 Azure NetApp Files 탭을 선택하여 구성합니다. + 아이콘을 클릭하면 새로운 NetApp 계정이 추가됩니다.
+
+image:hana-sc-generic-image-025.png["너비=601, 높이=117"]
+
+ANF ​​자격 증명과 구독을 선택한 후 NetApp 계정을 SnapCenter 에 추가할 수 있습니다.
+
+image:hana-sc-generic-image-026.png["너비=401, 높이=176"]
+
+
+
+=== SnapMirror Active Sync 사용 시 스토리지 구성
+
+특정 저장소 구성 단계는 다음에서 설명됩니다. https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-sc-config.html#add-storage-systems["SnapMirror Active Sync를 사용한 스토리지 구성"].
+
+
+
+== 정책 구성
+
+데이터 보호 전략 정책 섹션에서 설명한 대로 일반적으로 리소스와 독립적으로 구성되며 여러 SAP HANA 시스템에 사용할 수 있습니다.
+
+일반적인 최소 구성은 다음 정책으로 구성됩니다.
+
+* 복제 없이 매시간 백업하기 위한 정책
+* SnapVault 또는 ANF 백업 복제를 통한 일일 백업 정책
+* 주간 블록 무결성 검사 작업에 대한 정책
++
+** 파일 기반 백업 사용
+** HANA 도구 hdbpersdiag 사용
+
+
+
+
+다음 섹션에서는 이러한 세 가지 정책의 구성에 대해 설명합니다.
+
+정책은 설정 섹션에서 정책 탭을 선택하여 구성합니다. + 아이콘을 클릭하면 새로운 정책을 구성할 수 있습니다. 아래의 두 스크린샷은 Azure NetApp Files 사용하여 실행되는 HANA 시스템에 대한 정책 목록과 ONTAP 스토리지 시스템 또는 FSx for ONTAP 사용하여 실행되는 HANA 시스템에 대한 정책 목록을 보여줍니다.
+
+image:hana-sc-generic-image-027.png["너비=601, 높이=133"]
+
+image:hana-sc-generic-image-028.png["너비=601, 높이=138"]
+
+
+
+=== ONTAP 시스템 및 FSx for ONTAP 사용한 스냅샷 백업
+
+ONTAP 시스템이나 FSx for ONTAP 의 스냅샷 백업 정책은 로컬 스냅샷을 복제 또는 스냅샷 잠금(변조 방지 스냅샷) 작업과 결합할 수 있습니다. 이 예에서는 SnapVault 사용하여 보조 저장소로 복제하는 정책을 보여줍니다.
+
+정책 이름과 설명(선택 사항)을 제공합니다.
+
+image:hana-sc-generic-image-029.png["너비=376, 높이=103"]
+
+ONTAP 스토리지 유형과 스냅샷 정책 범위를 선택합니다.
+
+image:hana-sc-generic-image-030.png["너비=385, 높이=97"]
+
+이 정책에서는 일일 일정 유형이 구성되었습니다. 매일 스냅샷이 생성되고, 스냅샷 델타는 SnapVault 사용하여 보조 저장소에 복제됩니다.
+
+
+NOTE: 일정 자체는 개별 HANA 리소스 보호 구성에 따라 구성됩니다.
+
+정책에 구성된 보존은 기본 스냅샷에만 유효합니다. SnapVault 대상의 보존은 HANA 데이터베이스의 개별 볼륨에 대한 ONTAP 복제 관계로 구성됩니다. 이는 챕터에서 설명합니다. link:hana-sc-generic-backup-operations.html["SAP HANA 스냅샷 백업 작업"]. 정책에 구성된 스냅샷 레이블은 ONTAP 복제 관계에 구성된 레이블과 일치해야 합니다.
+
+스냅샷 잠금(변조 방지 스냅샷)은 확인란을 클릭하고 잠금 기간을 정의하여 활성화할 수 있습니다. 이 기능을 사용하려면 스토리지 시스템에 SnapLock 라이선스가 필요하고 규정 준수 시계가 구성되어 있어야 합니다.
+
+로컬 스냅샷에 대한 정책만 구성하려면 시간별 일정을 적용하고 SnapVault 업데이트 확인란을 비활성화해야 합니다.
+
+image:hana-sc-generic-image-031.png["너비=378, 높이=352"]
+
+요약 화면에는 구성된 매개변수가 표시됩니다.
+
+image:hana-sc-generic-image-032.png["너비=385, 높이=119"]
+
+
+
+=== Azure NetApp Files 사용한 스냅샷 백업
+
+Azure NetApp Files 의 스냅샷 백업 정책은 로컬 스냅샷과 ANF 백업을 결합하여 스냅샷 데이터를 Azure Blob에 복제할 수 있습니다. 이 예에서는 ANF 백업을 사용한 복제에 사용되는 정책을 보여줍니다.
+
+정책 이름과 설명(선택 사항)을 제공합니다.
+
+image:hana-sc-generic-image-033.png["너비=356, 높이=95"]
+
+Azure NetApp Files 저장소 유형과 스냅샷 정책 범위를 선택합니다.
+
+image:hana-sc-generic-image-034.png["너비=360, 높이=102"]
+
+이 정책에서는 일일 일정 유형이 구성되었습니다. 매일 스냅샷이 생성되고, 스냅샷 델타는 ANF 백업을 사용하여 백업 볼트에 복제됩니다.
+
+
+NOTE: 일정 자체는 개별 HANA 리소스 보호 구성에 따라 구성됩니다.
+
+정책에 구성된 스냅샷 보존은 ANF 볼륨의 기본 스냅샷에 유효합니다. ANF 백업의 보존 기간은 백업 보존 설정으로 구성됩니다.
+
+로컬 스냅샷에 대한 정책만 구성하려면 시간별 일정을 설정하고 백업 사용 확인란을 비활성화해야 합니다.
+
+image:hana-sc-generic-image-035.png["너비=373, 높이=361"]
+
+요약 화면에는 구성된 매개변수가 표시됩니다.
+
+image:hana-sc-generic-image-036.png["너비=376, 높이=138"]
+
+
+
+=== 모든 플랫폼에 대한 블록 무결성 검사 작업
+
+
+
+==== HANA 도구 hdbpersdiag
+
+자세한 내용은 장에서 설명합니다. link:hana-sc-generic-block-check.html["SnapCenter 사용한 블록 일관성 검사"].
+
+
+
+==== 파일 기반 백업
+
+정책 이름과 설명(선택 사항)을 제공합니다.
+
+image:hana-sc-generic-image-037.png["너비=346, 높이=95"]
+
+설정에 따라 ONTAP 또는 Azure NetApp Files 저장소 유형을 선택하고 파일 기반 정책 범위를 선택합니다.
+
+image:hana-sc-generic-image-038.png["너비=357, 높이=98"]
+
+논의된 대로, 일주일에 한 번씩 블록 무결성 검사를 실행하는 것이 좋습니다. 따라서 주간 일정이 선택되었습니다.
+
+
+NOTE: 일정 자체는 개별 HANA 리소스 보호 구성에 따라 구성됩니다.
+
+
+NOTE: 파일 기반 백업이 기록되는 파일 시스템은 보존 설정에 정의된 것보다 더 많은 백업을 저장할 수 있는 충분한 용량을 제공해야 합니다. SnapCenter 새 백업이 생성된 후 이전 백업을 삭제하기 때문입니다. 이 예시에서는 두 개의 백업을 위한 공간이 필요하고 그 중 하나는 보존됩니다. 구성 가능한 최소 보존 기간은 0입니다.
+
+image:hana-sc-generic-image-039.png["너비=351, 높이=173"]
+
+요약 화면에는 구성된 매개변수가 표시됩니다.
+
+image:hana-sc-generic-image-040.png["너비=366, 높이=101"]
+
+
+
+=== SnapMirror Active Sync를 사용할 때의 정책 구성
+
+특정 정책 구성 단계는 문서에 설명되어 있습니다. https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-sc-config.html#policy-configuration["SnapMirror 활성 동기화 정책 구성"].

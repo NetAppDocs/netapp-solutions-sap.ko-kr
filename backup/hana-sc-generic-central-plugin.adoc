@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-central-plugin.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA용 SnapCenter 중앙 플러그인 호스트 구성
+:allow-uri-read: 
+
+
+[role="lead"]
+SAP HANA 다중 호스트 시스템이나 IBM Power 기반 HANA 시스템을 지원하기 위해 중앙 호스트에 SnapCenter HANA 플러그인을 배포합니다. 이 절차에는 Windows 또는 Linux 호스트에 플러그인을 설치하고, SAP HANA hdbsql 클라이언트를 구성하고, 보호된 각 HANA 시스템에 대한 사용자 저장소 키를 설정하는 작업이 포함됩니다.
+
+에서 논의된 바와 같이 link:hana-sc-generic-concepts.html#deployment-options-for-snapcenter-plug-in-for-sap-hana["SAP HANA용 SnapCenter 플러그인 배포 옵션"]HANA 플러그인은 SAP HANA 다중 호스트 시스템이나 IBM Power 환경의 SAP HANA에 필요한 중앙 플러그인 구성을 지원하기 위해 HANA 데이터베이스 외부에 배포될 수 있습니다.
+
+중앙 플러그인 호스트는 Windows나 Linux 호스트가 될 수 있지만, 일반적으로 SnapCenter 서버 자체가 중앙 플러그인 호스트로 사용됩니다.
+
+중앙 플러그인 호스트 구성은 다음 단계로 구성됩니다.
+
+* SnapCenter HANA 플러그인 배포
+* SAP HANA hdbsql 클라이언트 설치 및 구성
+* 중앙 플러그인 호스트로 보호되는 각 HANA 시스템에 대한 SAP HANA 사용자 저장소 구성
+
+
+
+
+== SnapCenter HANA 플러그인 배포
+
+호스트 요구 사항은 다음에 나열되어 있습니다. https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_host_requirements_to_install_snapcenter_plug_in_package_for_linux.html["Linux용 SnapCenter 플러그인 패키지를 설치하기 위한 호스트 요구 사항"].
+
+중앙 플러그인 호스트가 호스트로 추가되고, SAP HANA 플러그인이 호스트에 설치됩니다. 아래 스크린샷은 Windows에서 실행되는 SnapCenter 서버에 플러그인을 배포하는 모습을 보여줍니다.
+
+. 호스트 로 이동하고 추가 를 클릭합니다.
+. 필요한 호스트 정보를 제공합니다. 제출 을 클릭합니다.
+
+
+image:hana-sc-generic-image-060.png["너비=601, 높이=166"]
+
+
+
+== SAP HANA hdbsql 클라이언트 소프트웨어 설치 및 구성
+
+SAP HANA hdbsql 클라이언트 소프트웨어는 SAP HANA 플러그인이 설치된 동일한 호스트에 설치해야 합니다. 소프트웨어는 다음에서 다운로드할 수 있습니다. https://support.sap.com/en/index.html["SAP 지원 포털"].
+
+HANA 리소스 구성 중에 구성된 hdbsql OS 사용자는 hdbsql 실행 파일을 실행할 수 있어야 합니다. hdbsql 실행 파일의 경로는 hana.properties 파일이나 OS 사용자의 검색 경로 매개변수(%PATH%, $PATH)에서 구성해야 합니다.
+
+Windows의 중앙 플러그인 호스트:
+
+....
+C:\More C:\Program Files\NetApp\SnapCenter\Snapcenter Plug-in Creator\etc\hana.properties
+
+HANA_HDBSQL_CMD=C:\\Program Files\\sap\\hdbclient\\hdbsql.exe
+....
+Linux의 중앙 플러그인 호스트:
+
+....
+cat /opt/NetApp/snapcenter/scc/etc/hana.properties
+
+HANA_HDBSQL_CMD=/usr/sap/hdbclient/hdbsql
+....
+
+
+== 중앙 플러그인 호스트를 위한 SAP HANA 사용자 저장소 구성
+
+중앙 플러그인 호스트에서 관리하는 각 HANA 시스템에 대해 SAP HANA 사용자 저장소 키를 구성해야 합니다. 중앙 플러그인 호스트에서 키를 구성하기 전에 다음에서 설명한 대로 데이터베이스 사용자를 생성해야 합니다. link:hana-sc-generic-sc-resource-config.html#sap-hana-backup-user-and-sap-hana-user-store-configuration["SAP HANA 백업 사용자 및 SAP HANA 사용자 저장소 구성"].
+
+SAP HANA 플러그인과 SAP hdbsql 클라이언트가 Windows에 설치된 경우 로컬 시스템 사용자는 hdbsql 명령을 실행하고 기본적으로 리소스 구성에서 구성됩니다. 시스템 사용자는 로그온 사용자가 아니므로 SAP HANA 사용자 저장소 구성은 -u <사용자> 옵션을 사용하여 다른 사용자로 수행해야 합니다.
+
+....
+hdbuserstore.exe -u SYSTEM set <key> <host>:<port> <database user> <password>
+....
+SAP HANA 다중 호스트 설정의 경우 모든 호스트에 대한 SAP HANA 사용자 저장소 키를 구성해야 합니다. SnapCenter 제공된 각 키를 사용하여 데이터베이스에 연결을 시도하므로 시스템 데이터베이스(HANA 네임 서버)가 다른 호스트로 장애 조치되는 것과 관계없이 독립적으로 작동할 수 있습니다. 모든 작업자와 대기 호스트에 대해 SAP HANA 사용자 저장소 키가 구성됩니다. 이 예에서 HANA 데이터베이스 사용자인 SNAPCENTER는 시스템 데이터베이스에 구성된 사용자입니다.
+
+....
+
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST1 hana-4:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST2 hana-5:30013 SNAPCENTER password
+hdbuserstore.exe -u SYSTEM set MS1KEYHOST3 hana-6:30013 SNAPCENTER password
+C:\Program Files\sap\hdbclient>hdbuserstore.exe -u SYSTEM list
+DATA FILE : C:\ProgramData\.hdb\SNAPCENTER-61\S-1-5-18\SSFS_HDB.DAT
+KEY FILE : C:\ProgramData\.hdb\SNAPCENTER-61\S-1-5-18\SSFS_HDB.KEY
+KEY MS1KEYHOST1
+ENV : hana-4:30013
+USER: SNAPCENTER
+KEY MS1KEYHOST2
+ENV : hana-5:30013
+USER: SNAPCENTER
+KEY MS1KEYHOST3
+ENV : hana-6:30013
+USER: SNAPCENTER
+KEY SS2KEY
+ENV : hana-3:30013
+USER: SNAPCENTER
+
+C:\Program Files\sap\hdbclient>
+
+....
+
+
+== HANA 수동 리소스 구성
+
+SnapCenter 에서 리소스 보기의 추가 버튼을 클릭하면 수동으로 구성된 HANA 시스템 리소스가 생성됩니다.
+
+image:hana-sc-generic-image-061.png["너비=601, 높이=189"]
+
+다음 화면에서는 몇 가지 시스템 매개변수를 제공해야 합니다.
+
+* 플러그인 호스트: 중앙 플러그인 호스트를 선택해야 합니다.
+* SAP HANA 사용자 저장소 키: 단일 호스트 HANA 시스템의 경우 중앙 플러그인 호스트에서 준비된 키 이름을 제공해야 합니다. 다중 호스트 HANA 시스템의 경우 시스템의 모든 키를 쉼표로 구분하여 나열해야 합니다.
+* HDBSQL OS 사용자: 중앙 플러그인 호스트가 Windows에서 실행되는 경우 사용자는 SYSTEM 사용자로 미리 선택됩니다. 그렇지 않으면 SAP HANA 사용자 저장소 키에 사용된 사용자를 제공해야 합니다.
+
+
+image:hana-sc-generic-image-062.png["너비=384, 높이=357"]
+
+다음 단계로 저장 공간을 구성해야 합니다. HANA 시스템에 속하는 모든 ONTAP 또는 ANF 볼륨을 여기에 추가해야 합니다.
+
+image:hana-sc-generic-image-063.png["너비=385, 높이=359"]
+
+이제 자동 검색된 HANA 시스템과 동일한 방식으로 리소스 보호 구성을 수행할 수 있습니다.

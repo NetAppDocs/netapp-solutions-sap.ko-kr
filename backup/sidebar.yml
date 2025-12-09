@@ -2,6 +2,38 @@
 section: backup
 title: 백업, 복원 및 재해 복구
 entries:
+- title: SnapCenter를 사용한 SAP HANA 백업 및 복구
+  entries:
+  - title: 솔루션 개요
+    url: "/backup/hana-sc-generic-scope.html"
+  - title: SAP HANA 데이터 보호
+    url: "/backup/hana-sc-generic-overview-dp.html"
+  - title: SnapCenter 아키텍처
+    url: "/backup/hana-sc-generic-sc-architecture.html"
+  - title: SAP HANA 백업 솔루션용 SnapCenter
+    url: "/backup/hana-sc-generic-sc-backup-solution.html"
+  - title: SnapCenter 지원 구성
+    url: "/backup/hana-sc-generic-sc-supported-configs.html"
+  - title: 개념 및 모범 사례
+    url: "/backup/hana-sc-generic-concepts.html"
+  - title: SnapCenter 구성 개요
+    url: "/backup/hana-sc-generic-sc-config-overview.html"
+  - title: SnapCenter 초기 구성
+    url: "/backup/hana-sc-generic-sc-initial-config.html"
+  - title: SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다
+    url: "/backup/hana-sc-generic-sc-resource-config.html"
+  - title: 비 데이터 볼륨 백업을 위한 SnapCenter 리소스 관련 구성입니다
+    url: "/backup/hana-sc-generic-sc-config-non-data-vols.html"
+  - title: 중앙 플러그인 호스트 구성
+    url: "/backup/hana-sc-generic-central-plugin.html"
+  - title: SAP HANA 스냅샷 백업 작업
+    url: "/backup/hana-sc-generic-backup-operations.html"
+  - title: SnapCenter 사용한 블록 일관성 검사
+    url: "/backup/hana-sc-generic-block-check.html"
+  - title: SnapCenter 사용한 복원 및 복구
+    url: "/backup/hana-sc-generic-restore.html"
+  - title: 고급 구성 및 조정
+    url: "/backup/hana-sc-generic-advanced-config.html"
 - title: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구
   entries:
   - title: 개요
@@ -34,36 +66,6 @@ entries:
       url: "/backup/fsxn-restore-recover-from-secondary-storage.html"
   - title: 추가 정보를 찾을 수 있는 위치
     url: "/backup/fsxn-additional-info.html"
-- title: SnapCenter를 사용한 SAP HANA 백업 및 복구
-  entries:
-  - title: 개요
-    url: "/backup/hana-br-scs-overview.html"
-  - title: SnapCenter 아키텍처
-    url: "/backup/hana-br-scs-snapcenter-architecture.html"
-  - title: SnapCenter SAP HANA 백업 솔루션
-    url: "/backup/hana-br-scs-snapcenter-backup.html"
-  - title: SnapCenter 개념 및 모범 사례
-    url: "/backup/hana-br-scs-concepts-best-practices.html"
-  - title: 이 보고서에 사용된 랩 설정
-    url: "/backup/hana-br-scs-lab-setup.html"
-  - title: SnapCenter 구성
-    url: "/backup/hana-br-scs-snapcenter-config.html"
-  - title: SnapCenter 초기 구성
-    url: "/backup/hana-br-scs-snapcenter-initial-config.html"
-  - title: SAP HANA 데이터베이스 백업을 위한 SnapCenter 리소스 관련 구성입니다
-    url: "/backup/hana-br-scs-resource-config-hana-database-backups.html"
-  - title: 비 데이터 볼륨 백업을 위한 SnapCenter 리소스 관련 구성입니다
-    url: "/backup/hana-br-scs-resource-specific-config-non-data-volume-backups.html"
-  - title: 데이터베이스 백업
-    url: "/backup/hana-br-scs-database-backups.html"
-  - title: 블록 무결성 검사
-    url: "/backup/hana-br-scs-block-integrity-check.html"
-  - title: 복원 및 복구
-    url: "/backup/hana-br-scs-restore-recovery.html"
-  - title: 고급 구성 및 조정
-    url: "/backup/hana-br-scs-advanced-config-tuning.html"
-  - title: 추가 정보 및 버전 기록을 찾을 수 있는 위치
-    url: "/backup/hana-br-scs-additional-info.html"
 - title: SnapCenter, SnapMirror active sync 및 VMware Metro Storage Cluster를 통한 SAP
     HANA 데이터 보호 및 고가용성
   entries:

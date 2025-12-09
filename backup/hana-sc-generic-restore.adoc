@@ -1,0 +1,363 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-restore.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SnapCenter 사용하여 SAP HANA 데이터베이스 복원 및 복구
+:allow-uri-read: 
+
+
+[role="lead"]
+SnapCenter 사용하여 자동 또는 수동 복구 옵션을 통해 SAP HANA 시스템을 복원하고 복구하세요. 여기에는 전체 시스템 복원, ONTAP 의 HANA 데이터베이스, Azure NetApp Files 및 FSx for ONTAP 에 대한 단일 테넌트 복원이 포함됩니다.
+
+SnapCenter 다음과 같은 복원 및 복구 작업을 지원합니다.
+
+* 단일 테넌트가 있는 SAP HANA MDC 시스템
++
+** 종단 간 자동 복원 및 복구
+** 종단 간 자동 복구 및 수동 복구(선택 가능)
+
+
+* 여러 테넌트가 있는 SAP HANA MDC 시스템
++
+** 종단 간 자동 복구, 복구는 수동으로 수행해야 함
+
+
+* 단일 테넌트의 복원
++
+** 종단 간 자동 복구, 복구는 수동으로 수행해야 함
+
+
+
+
+
+NOTE: 자동 복구는 HANA 플러그인이 HANA 데이터베이스 호스트에 배포되고 HANA 시스템이 SnapCenter 에 의해 자동으로 검색된 경우에만 지원됩니다. 중앙 플러그인 호스트 구성을 사용하는 경우 SnapCenter 사용하여 복원 작업을 수행한 후 수동으로 복구를 수행해야 합니다.
+
+
+NOTE: 기본 ANF 볼륨에서 복원이 지원됩니다. ANF 백업을 통한 복원은 아직 지원되지 않습니다. ANF 백업에서 제자리 복원이나 새 볼륨으로 복원하는 작업은 Azure Portal이나 CLI를 사용하여 수동으로 수행해야 합니다.
+
+
+
+== 단일 테넌트가 있는 SAP HANA MDC 시스템에 대한 자동 복원 및 복구
+
+복원 작업은 리소스 토폴로지 보기에서 스냅샷 백업을 선택하고 복원을 클릭하여 시작됩니다.
+
+image:hana-sc-generic-image-098.png["너비=601, 높이=294"]
+
+ANF에서 NFS를 사용하는 HANA 시스템, ONTAP 용 FSx 또는 ONTAP 스토리지 시스템의 경우 기본 볼륨 스냅샷에 대해 볼륨 되돌리기 작업을 포함하거나 포함하지 않고 전체 복원을 선택할 수 있습니다.
+
+* 볼륨 되돌리기 없는 전체 리소스는 SFSR(Single File SnapRestore )을 사용하여 데이터베이스의 모든 파일을 복원합니다.
+* 볼륨 되돌리기가 있는 전체 리소스는 볼륨 기반 복원 작업(VBSR)을 사용하여 전체 볼륨을 선택한 스냅샷 상태로 되돌립니다.
+
+
+
+NOTE: 활성 SnapVault 또는 SnapMirror 복제 스냅샷보다 오래된 스냅샷으로 복원해야 하는 경우 볼륨 되돌리기를 사용할 수 없습니다.
+
+
+NOTE: 볼륨 되돌리기 작업은 되돌리기 작업에 선택된 스냅샷보다 최신인 모든 스냅샷 백업을 삭제합니다.
+
+
+NOTE: SFSR을 사용한 복원은 볼륨 되돌리기 작업만큼 빠르지만 백그라운드 프로세스가 메타데이터 작업을 완료할 때까지 모든 스냅샷 작업이 차단됩니다.
+
+image:hana-sc-generic-image-099.png["너비=300"]
+
+FC SAN을 사용하는 베어 메탈 호스트의 HANA 시스템의 경우 볼륨 되돌리기(VBSR)가 지원되지 않고 대신 복원 작업에는 항상 SFSR이 사용됩니다. VMFS가 있는 VMware에서 실행되는 HANA 시스템의 경우 복제, 마운트, 복사 작업이 사용됩니다.
+
+image:hana-sc-generic-image-100.png["너비=345, 높이=325"]
+
+보조 백업에서 복원하려면 보관 위치를 선택해야 합니다.
+
+image:hana-sc-generic-image-101.png["너비=345, 높이=323"]
+
+복구 범위를 사용하면 로그 백업을 사용하지 않고 '최근 상태로', '특정 시점으로' 또는 저장 지점 복구를 선택할 수 있습니다. 복구 안 함을 선택하면 SnapCenter 복원 작업만 실행하고 복구는 설명된 대로 수동으로 수행해야 합니다. link:hana-sc-generic-restore.html#manual-recovery-with-hana-studio["HANA Studio를 사용한 수동 복구"].
+
+
+NOTE: SnapCenter SAP HANA에 구성된 경로를 로그 백업 및 카탈로그 백업 위치에 사용합니다. 추가 위치에 계층형 백업이 있는 경우 이러한 추가 경로를 추가할 수 있습니다.
+
+image:hana-sc-generic-image-102.png["너비=346, 높이=324"]
+
+선택적으로 복원 전후의 스크립트를 추가할 수 있습니다.
+
+image:hana-sc-generic-image-103.png["너비=348, 높이=326"]
+
+image:hana-sc-generic-image-104.png["너비=359, 높이=335"]
+
+요약 화면에서 '마침'을 클릭하면 복원 및 복구 작업이 시작됩니다.
+
+image:hana-sc-generic-image-105.png["너비=361, 높이=336"]
+
+복원 및 복구 워크플로는 세 가지 주요 섹션으로 나눌 수 있습니다.
+
+* HANA 시스템 종료
+* 복원 작업
++
+** 파일 시스템별 준비, 예: 마운트 해제 작업
+** 스냅샷 복원 작업
+** 파일 시스템별 포스트 작업(예: 마운트 작업)
+
+
+* HANA 복구
++
+** 시스템 데이터베이스 복구
+** 테넌트 데이터베이스 복구
+
+
+
+
+image:hana-sc-generic-image-106.png["너비=357, 높이=439"]
+
+
+
+== HANA Studio를 사용한 수동 복구
+
+SAP HANA Studio와 SnapCenter 사용하여 단일 또는 여러 테넌트가 있는 SAP HANA MDC 시스템을 복원하고 복구하려면 다음 단계를 완료하세요.
+
+. SAP HANA Studio를 사용하여 복원 및 복구 프로세스 준비:
++
+.. Recover System Database(시스템 데이터베이스 복구) 를 선택하고 SAP HANA 시스템의 종료를 확인합니다.
+.. 복구 유형을 선택하고 백업 카탈로그 위치를 제공합니다.
+.. 데이터 백업 목록이 표시됩니다. 백업을 선택하여 외부 백업 ID를 확인합니다.
+
+
+. SnapCenter를 사용하여 복원 프로세스 수행:
++
+.. 리소스의 토폴로지 보기에서 기본 저장소에서 복원하려면 로컬 복사본을 선택하고, 보조 백업 저장소에서 복원하려면 볼트 복사본을 선택합니다.
+.. SAP HANA Studio의 외부 백업 ID 또는 설명 필드와 일치하는 SnapCenter 백업을 선택합니다.
+.. 복원 프로세스를 시작합니다.
+
+
+. SAP HANA Studio를 사용하여 시스템 데이터베이스에 대한 복구 프로세스 실행:
++
+.. 백업 목록에서 새로 고침 을 클릭하고 복구에 사용할 수 있는 백업(녹색 아이콘으로 표시됨)을 선택합니다.
+.. 복구 프로세스를 시작합니다. 복구 프로세스가 완료되면 시스템 데이터베이스가 시작됩니다.
+
+
+. SAP HANA Studio를 사용하여 테넌트 데이터베이스에 대한 복구 프로세스 실행:
++
+.. Recover Tenant Database 를 선택하고 복구할 테넌트를 선택합니다.
+.. 복구 유형 및 로그 백업 위치를 선택합니다.
+.. 데이터 백업 목록이 표시됩니다. 데이터 볼륨이 이미 복원되었기 때문에 테넌트 백업은 사용 가능으로 표시됩니다(녹색).
+.. 이 백업을 선택하고 복구 프로세스를 시작합니다. 복구 프로세스가 완료되면 테넌트 데이터베이스가 자동으로 시작됩니다.
+
+
+. 여러 테넌트가 있는 HANA 시스템의 경우 각 테넌트에 대해 4단계를 반복합니다.
+
+
+
+NOTE: SAP HANA Cockpit을 사용한 수동 복구는 동일한 단계로 수행됩니다.
+
+다음 섹션에서는 단일 테넌트가 있는 SAP HANA MDC 시스템의 복원 및 복구 작업 단계를 설명합니다.
+
+HANA Studio에서 백업 및 복구와 시스템 데이터베이스 복구를 선택합니다.
+
+image:hana-sc-generic-image-107.png["너비=450, 높이=368"]
+
+종료 작업을 확인합니다. HANA 시스템이 계속 실행 중인 경우에만 필요합니다.
+
+image:hana-sc-generic-image-108.png["너비=349, 높이=83"]
+
+복구 작업을 선택하세요. 이 예에서는 가장 최근 상태로 복구하고 싶습니다.
+
+image:hana-sc-generic-image-109.png["너비=345, 높이=359"]
+
+백업 카탈로그 위치를 제공합니다.
+
+image:hana-sc-generic-image-110.png["너비=343, 높이=356"]
+
+HANA Studio는 HANA 백업 카탈로그에 저장된 최신 백업을 나열합니다.
+
+백업 카탈로그의 내용을 기반으로 사용 가능한 백업 목록이 표시됩니다. 필요한 백업을 선택하고 외부 백업 ID를 기록해 둡니다. 이 예에서는 가장 최근 백업입니다.
+
+image:hana-sc-generic-image-111.png["너비=391, 높이=283"]
+
+SnapCenter GUI에서 리소스 토폴로지 보기를 선택하고 복원해야 하는 백업을 선택합니다. 이 예에서는 가장 최근의 기본 백업입니다. 복원 아이콘을 클릭하여 복원을 시작하세요.
+
+image:hana-sc-generic-image-112.png["너비=601, 높이=294"]
+
+SnapCenter 복원 마법사가 시작됩니다. 볼륨 기반 복원을 사용하려면 복원 유형으로 전체 리소스 및 볼륨 되돌리기를 선택합니다.
+
+image:hana-sc-generic-image-113.png["너비=346, 높이=325"]
+
+SnapCenter 워크플로에서 복구 작업을 제외하려면 '복구 안 함'을 선택합니다.
+
+image:hana-sc-generic-image-114.png["너비=358, 높이=336"]
+
+마침을 클릭하여 복원 작업을 시작합니다.
+
+image:hana-sc-generic-image-115.png["너비=361, 높이=339"]
+
+SnapCenter 복원 작업을 실행 중입니다.
+
+* 파일 시스템별 준비, 예: 마운트 해제 작업
+* 스냅샷 복원 작업
+* 파일 시스템별 포스트 작업(예: 마운트 작업)
+
+
+image:hana-sc-generic-image-116.png["너비=322, 높이=398"]
+
+SnapCenter 에서 스냅샷을 복원하면 HANA 데이터 볼륨의 시스템 및 테넌트 데이터베이스 하위 디렉토리에서 snapshot_databackup_0_1 파일을 사용할 수 있습니다. 이 파일은 HANA 데이터베이스 스냅샷 생성 중에 HANA 데이터베이스에 의해 생성되었습니다. HANA는 백업 작업이 완료되면 파일을 삭제하므로 해당 파일은 스냅샷 백업 내에서만 볼 수 있습니다. 이러한 파일은 모든 복구 작업에 필요합니다. 복구 후 파일은 HANA 데이터베이스에 의해 삭제됩니다.
+
+....
+
+hana-1:~ # cd /hana/data/SS1/mnt00001/
+hana-1:/hana/data/SS1/mnt00001 # ls -al *
+-rw-r--r-- 1 ss1adm sapsys 16 Aug 26 06:00 nameserver.lck
+hdb00001:
+total 4992236
+drwxr-x--- 2 ss1adm sapsys 4096 Aug 26 06:00 .
+drwxr-x--- 5 ss1adm sapsys 4096 Aug 26 06:00 ..
+-rw-r----- 1 ss1adm sapsys 0 Nov 3 2020 __DO_NOT_TOUCH_FILES_IN_THIS_DIRECTORY__
+-rw-r----- 1 ss1adm sapsys 5100273664 Aug 26 06:00 datavolume_0000.dat
+-rw-r----- 1 ss1adm sapsys 36 Aug 25 10:30 landscape.id
+-rw-r----- 1 ss1adm sapsys 163840 Aug 26 06:00 snapshot_databackup_0_1
+hdb00002.00003:
+total 201420
+drwxr-xr-- 2 ss1adm sapsys 4096 Nov 3 2020 .
+drwxr-x--- 5 ss1adm sapsys 4096 Aug 26 06:00 ..
+-rw-r--r-- 1 ss1adm sapsys 0 Nov 3 2020 __DO_NOT_TOUCH_FILES_IN_THIS_DIRECTORY__
+-rw-r--r-- 1 ss1adm sapsys 335544320 Aug 26 06:00 datavolume_0000.dat
+hdb00003.00003:
+total 4803140
+drwxr-xr-- 2 ss1adm sapsys 4096 Aug 26 06:00 .
+drwxr-x--- 5 ss1adm sapsys 4096 Aug 26 06:00 ..
+-rw-r--r-- 1 ss1adm sapsys 0 Nov 3 2020 __DO_NOT_TOUCH_FILES_IN_THIS_DIRECTORY__
+-rw-r--r-- 1 ss1adm sapsys 4898947072 Aug 26 06:00 datavolume_0000.dat
+-rw-r----- 1 ss1adm sapsys 159744 Aug 26 06:00 snapshot_databackup_0_1
+hana-1:/hana/data/SS1/mnt00001 #
+
+....
+SAP HANA Studio로 이동하여 새로 고침을 클릭하면 사용 가능한 백업 목록이 업데이트됩니다. SnapCenter 로 복원된 백업은 이제 백업 목록에서 녹색 아이콘으로 표시됩니다. 백업을 선택하고 다음을 클릭합니다.
+
+image:hana-sc-generic-image-117.png["너비=400, 높이=290"]
+
+로그 백업의 위치를 제공합니다. 다음 을 클릭합니다.
+
+
+NOTE: SAP HANA Studio는 SAP HANA에 구성된 경로를 로그 백업 및 카탈로그 백업 위치에 사용합니다. 추가 위치에 계층형 백업이 있는 경우 이러한 추가 경로를 추가할 수 있습니다.
+
+image:hana-sc-generic-image-118.png["너비=465, 높이=296"]
+
+필요에 따라 다른 설정을 선택합니다. Delta 백업 사용 이 선택되어 있지 않은지 확인합니다. 다음 을 클릭합니다.
+
+image:hana-sc-generic-image-119.png["너비=466, 높이=296"]
+
+복구 설정을 검토하고 마침 을 클릭합니다.
+
+SQL 명령문 표시를 클릭하면 HANA Studio에서 복구 작업에 대해 실행되는 SQL 명령이 표시됩니다.
+
+image:hana-sc-generic-image-120.png["너비=464, 높이=295"]
+
+복구 프로세스가 시작됩니다. 시스템 데이터베이스 복구가 완료될 때까지 기다리세요.
+
+image:hana-sc-generic-image-121.png["너비=376, 높이=239"]
+
+SAP HANA Studio에서 시스템 데이터베이스의 항목을 선택하고 Backup Recovery - Recover Tenant Database를 시작합니다.
+
+image:hana-sc-generic-image-122.png["너비=476, 높이=315"]
+
+복구할 테넌트를 선택하고 다음 을 클릭합니다.
+
+image:hana-sc-generic-image-123.png["너비=342, 높이=355"]
+
+복구 유형을 지정하고 Next를 클릭합니다.
+
+image:hana-sc-generic-image-124.png["너비=343, 높이=356"]
+
+백업 카탈로그 위치를 확인하고 Next를 클릭합니다.
+
+image:hana-sc-generic-image-125.png["너비=342, 높이=355"]
+
+테넌트 데이터베이스가 종료되었는지 확인하세요.
+
+image:hana-sc-generic-image-126.png["너비=348, 높이=85"]
+
+시스템 데이터베이스를 복구하기 전에 데이터 볼륨을 복원했으므로 테넌트 백업을 즉시 사용할 수 있습니다. 녹색으로 강조 표시된 백업을 선택하고 다음을 클릭합니다.
+
+image:hana-sc-generic-image-127.png["너비=433, 높이=349"]
+
+로그 백업의 위치를 제공합니다. 다음 을 클릭합니다.
+
+
+NOTE: SAP HANA Studio는 SAP HANA에 구성된 경로를 로그 백업 및 카탈로그 백업 위치에 사용합니다. 추가 위치에 계층형 백업이 있는 경우 이러한 추가 경로를 추가할 수 있습니다.
+
+image:hana-sc-generic-image-128.png["너비=384, 높이=310"]
+
+필요에 따라 다른 설정을 선택합니다. Delta 백업 사용 이 선택되어 있지 않은지 확인합니다. 다음 을 클릭합니다.
+
+image:hana-sc-generic-image-129.png["너비=384, 높이=310"]
+
+복구 설정을 검토하고 마침 을 클릭합니다.
+
+SQL 명령문 표시를 클릭하면 HANA Studio에서 복구 작업에 대해 실행되는 SQL 명령이 표시됩니다.
+
+image:hana-sc-generic-image-130.png["너비=380, 높이=307"]
+
+복구가 완료되고 테넌트 데이터베이스가 시작될 때까지 기다립니다.
+
+image:hana-sc-generic-image-131.png["너비=378, 높이=305"]
+
+테넌트 복구가 완료되면 SAP HANA 시스템이 실행됩니다.
+
+
+NOTE: 여러 테넌트가 있는 SAP HANA MDC 시스템의 경우 각 테넌트에 대해 테넌트 복구를 반복해야 합니다.
+
+
+
+== SQL 명령을 사용한 수동 복구
+
+HANA 시스템을 복구하려면 SQL 문을 사용할 수도 있습니다.
+
+먼저 시스템 데이터베이스를 복구해야 합니다.
+
+....
+
+HDBSettings.sh recoverSys.py --command="RECOVER DATABASE UNTIL TIMESTAMP '2026-08-26 10:55:49' USING CATALOG PATH ('mnt/log-backup/SYSTEMDB') USING LOG PATH ('mnt/log-backup/SYSTEMDB') USING SNAPSHOT"
+....
+두 번째 단계로 시스템 데이터베이스에 연결하고 테넌트 데이터베이스 복구를 시작해야 합니다. 이 예에서 테넌트 데이터베이스는 SS1입니다.
+
+....
+
+hdbsql SYSTEMDB=> RECOVER DATABASE FOR SS1 UNTIL TIMESTAMP '2026-08-26 10:55:49' USING CATALOG PATH ('mnt/log-backup/DB_SS1') USING LOG PATH ('mnt/log-backup/DB_SS1') USING SNAPSHOT
+....
+
+
+== 단일 테넌트 복원 및 복구
+
+SnapCenter 사용한 단일 테넌트 복원 및 복구 작업은 이전 항목에서 설명한 워크플로와 매우 유사합니다. link:hana-sc-generic-restore.html#manual-recovery-with-hana-studio["HANA Studio를 사용한 수동 복구"].
+
+SAP HANA Studio 및 SnapCenter를 사용하여 SAP HANA MDC 단일 테넌트 시스템을 복원 및 복구하려면 다음 단계를 수행하십시오.
+
+. SAP HANA Studio를 사용하여 복원 및 복구 프로세스 준비:
++
+.. 테넌트 데이터베이스 복구를 선택하고 테넌트 데이터베이스 종료를 확인합니다.
+.. 복구 유형을 선택하고 백업 카탈로그 위치를 제공합니다.
+.. 데이터 백업 목록이 표시됩니다. 백업을 선택하여 외부 백업 ID를 확인합니다.
+
+
+. SnapCenter를 사용하여 복원 프로세스 수행:
++
+.. 리소스의 토폴로지 보기에서 기본 저장소에서 복원하려면 로컬 복사본을 선택하고, 보조 백업 저장소에서 복원하려면 볼트 복사본을 선택합니다.
+.. SAP HANA Studio의 외부 백업 ID 또는 설명 필드와 일치하는 SnapCenter 백업을 선택합니다.
+.. 세입자 복구 프로세스를 시작합니다.
+
+
+. SAP HANA Studio를 사용하여 테넌트 데이터베이스에 대한 복구 프로세스 실행:
++
+.. 백업 목록에서 새로 고침 을 클릭하고 복구에 사용할 수 있는 백업(녹색 아이콘으로 표시됨)을 선택합니다.
+.. 복구 프로세스를 시작합니다. 복구 프로세스가 완료되면 테넌트 데이터베이스가 시작됩니다.
+
+
+
+
+
+
+== 비데이터 볼륨 복원
+
+비데이터 볼륨에 대한 복원 작업은 비데이터 볼륨 리소스의 토폴로지 보기에서 스냅샷 백업을 선택하고 복원을 클릭하여 시작됩니다.
+
+image:hana-sc-generic-image-132.png["너비=601, 높이=294"]
+
+NFS가 있는 비데이터 볼륨의 경우 전체 리소스(VBSR) 또는 파일 수준(SFSR) 복원 작업을 선택할 수 있습니다. 파일 수준 복원의 경우 모든 파일이나 개별 파일을 복원 작업에 대해 정의할 수 있습니다.
+
+image:hana-sc-generic-image-133.png["너비=369, 높이=344"]

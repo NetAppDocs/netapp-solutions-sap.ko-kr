@@ -1,0 +1,343 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-generic-sc-supported-configs.html 
+keywords: SAP HANA, SnapCenter, backup and recovery, Azure NetApp Files, FSx for NetApp ONTAP 
+summary:  
+---
+= SAP HANA에 대한 SnapCenter 지원 구성에 대해 알아보세요.
+:allow-uri-read: 
+
+
+[role="lead"]
+SnapCenter 온프레미스 및 클라우드 스토리지 플랫폼 전반에서 광범위한 SAP HANA 시스템 아키텍처와 배포 시나리오를 지원합니다. 각 환경에 지원되는 SAP HANA 구성, 플랫폼 조합, 스토리지 프로토콜, 사용 가능한 백업 및 복원 작업에 대해 알아보세요.
+
+
+
+== 지원되는 SAP HANA 구성
+
+SnapCenter 다음과 같은 HANA 구성과 기능을 지원합니다.
+
+* SAP HANA 단일 호스트 시스템
+* SAP HANA 다중 호스트 시스템
++
+** 설명된 대로 중앙 플러그인 배포가 필요합니다. link:hana-sc-generic-concepts.html#deployment-options-for-snapcenter-plug-in-for-sap-hana["SAP HANA용 SnapCenter 플러그인 배포 옵션"].
+
+
+* SAP HANA MDC 시스템
++
+** 단일 또는 여러 세입자와 함께
+
+
+* 여러 파티션이 있는 SAP HANA 시스템
+* SAP HANA 시스템 복제
+* SAP HANA 암호화(데이터, 로그, 백업)
+
+
+
+
+== 지원되는 플랫폼 및 인프라 구성
+
+SnapCenter 다음과 같은 호스트 플랫폼, 파일 시스템 및 스토리지 플랫폼의 조합을 지원합니다.
+
+[cols="24%,47%,29%"]
+|===
+| 호스트 플랫폼 | SAP HANA 스토리지 연결 및 파일 시스템 | 저장 플랫폼 
+
+
+| VMware | 게스트 내 NFS 마운트 | ONTAP AFF 
+
+
+| VMware | VMFS가 있는 FC 데이터 저장소 + Linux LVM이 있거나 없는 XFS가 있는 VM | ONTAP AFF 또는 ASA 
+
+
+| 케이비엠 | 게스트 내 NFS 마운트 | ONTAP AFF 
+
+
+| 베어메탈 서버 | NFS 마운트 | ONTAP AFF 
+
+
+| 베어메탈 서버 | FC SAN + 및 Linux LVM이 있거나 없는 XFS | ONTAP AFF 또는 ASA (*) 
+
+
+| Azure VM | NFS 마운트 | Azure NetApp Files 
+
+
+| AWS EC2 | NFS 마운트 | ONTAP 용 FSx 
+|===
+(*): SnapCenter 6.2 릴리스부터 ASA 지원이 가능합니다.
+
+
+NOTE: HANA 및 Linux 플러그인은 Intel CPU 플랫폼에서만 사용할 수 있습니다. IBM Power의 Linux의 경우 중앙 HANA 플러그인 배포는 다음에 설명된 대로 설정해야 합니다. link:hana-sc-generic-concepts.html#deployment-options-for-snapcenter-plug-in-for-sap-hana["SAP HANA용 SnapCenter 플러그인 배포 옵션"].
+
+
+
+== 지원되는 기능 및 작업
+
+
+
+=== 약어 설명
+
+* VBSR: 볼륨 기반 SnapRestore + 볼륨 기반 SnapRestore 볼륨을 스냅샷 상태로 되돌립니다.
+* SFSR: 단일 파일 SnapRestore + 단일 파일 SnapRestore 볼륨 내의 특정 파일이나 LUN을 복원하는 데 사용할 수 있습니다.
+
+
+또한 참조하세요 https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_types_of_restore_performed_for_auto_discovered_sap_hana_databases.html["자동 검색된 SAP HANA 데이터베이스에 대한 복원 작업 유형"]
+
+
+
+=== ONTAP AFF 및 ONTAP 용 FSx
+
+
+NOTE: 아래 표의 열 1(NFS 마운트)만 FSx for ONTAP 과 관련이 있습니다.
+
+[cols="40%,20%,20%,20%"]
+|===
+| 작업 | VMware 또는 KVM을 사용하여 베어 메탈 또는 게스트 내부 NFS 마운트 | FC SAN + 베어 메탈 | FC 데이터 저장소 VMware VMFS 
+
+
+| *HANA 데이터베이스에 대한 스냅샷 백업 및 복원 작업* |  |  |  
+
+
+| 스냅샷 백업 | 예 | 예 | 예 
+
+
+| 변조 방지 스냅샷 | 예 | 예 | 예 
+
+
+| 전체 복원 | VBSR 또는 SFSR(선택 가능) | 완전한 LUN의 SFSR | 복제, 마운트, 복사 
+
+
+| 단일 테넌트 복원 | SFSR | 복제, 마운트, 복사 | 복제, 마운트, 복사 
+
+
+| * HANA 데이터베이스에 대한 SnapVault 백업 및 복원 작업* |  |  |  
+
+
+| SnapVault 복제 | 예 | 예 | 예 
+
+
+| 변조 방지 스냅샷 | 예 | 예 | 예 
+
+
+| 전체 복원 | 예 | 예 | 복제, 마운트, 복사 
+
+
+| 단일 테넌트 복원 | 예 | 복제, 마운트, 복사 | 복제, 마운트, 복사 
+
+
+| *기본 스냅샷 또는 SnapVault 대상에서의 HANA 복구 작업* |  |  |  
+
+
+| 자동 복구 MDC 단일 테넌트 | 예 | 예 | 예 
+
+
+| 자동 복구 MDC 다중 테넌트 | 아니요 | 아니요 | 아니요 
+
+
+| *데이터가 아닌 볼륨 백업 및 복원* |  |  |  
+
+
+| 스냅샷 백업 | 예 | 예 | 예 (*) 
+
+
+| 스냅샷에서 복원 | VBSR 또는 SFSR(선택 가능) | 완전한 LUN의 SFSR | VBSR (*) 
+
+
+| SnapVault 복제 | 예 | 예 | 예 (*) 
+
+
+| SnapVault 대상에서 복원 | 예 | 예 | 예 (*) 
+
+
+| *SAP 시스템 새로 고침* |  |  |  
+
+
+| 기본 스냅샷에서 | 예 | 예 (**) | 예 (**) 
+
+
+| SnapVault 대상에서 | 예 | 예 (**) | 예 (**) 
+
+
+| *HA와 DR* |  |  |  
+
+
+| HSR은 스냅샷과 SnapVault 지원합니다. | 예 | 예 | 예 
+
+
+| SC를 사용한 SnapMirror 복제 업데이트 | 예 | 예 | 예 
+
+
+| SnapMirror 액티브 싱크 | 해당 없음 | 예 | 예 
+|===
+(*): VMware 통합 없음 - 충돌 이미지 스냅샷 및 전체 볼륨 복원
+
+(**): SnapCenter 릴리스 < 6.2에 필요한 해결 방법
+
+
+
+=== ONTAP ASA
+
+[cols="40%,30%,30%"]
+|===
+| 작업 | FC SAN + 베어 메탈(*) | FC 데이터 저장소 VMware VMFS 
+
+
+| *HANA 데이터베이스에 대한 스냅샷 백업 및 복원 작업* |  |  
+
+
+| 스냅샷 백업 | 예 | 예 
+
+
+| 변조 방지 스냅샷 | 아니요 | 아니요 
+
+
+| 전체 복원 | 완전한 LUN의 SFSR | 복제, 마운트, 복사 
+
+
+| 단일 테넌트 복원 | 복제, 마운트, 복사 | 복제, 마운트, 복사 
+
+
+| * HANA 데이터베이스에 대한 SnapVault 백업 및 복원 작업* |  |  
+
+
+| SnapVault 복제 | 예 | 예 
+
+
+| 변조 방지 스냅샷 | 아니요 | 아니요 
+
+
+| 전체 복원 | 예 | 복제, 마운트, 복사 
+
+
+| 단일 테넌트 복원 | 복제, 마운트, 복사 | 복제, 마운트, 복사 
+
+
+| *기본 스냅샷 또는 SnapVault 대상에서의 HANA 복구 작업* |  |  
+
+
+| 자동 복구 MDC 단일 테넌트 | 예 | 예 
+
+
+| 자동 복구 MDC 다중 테넌트 | 아니요 | 아니요 
+
+
+| *데이터가 아닌 볼륨 백업 및 복원* |  |  
+
+
+| 스냅샷 백업 | 예 (*) | 예 (*) 
+
+
+| 스냅샷에서 복원 | 완전한 LUN의 SFSR (*) | 완전한 LUN의 SFSR (*) 
+
+
+| SnapVault 복제 | 예 (*) | 예 (*) 
+
+
+| SnapVault 대상에서 복원 | 예 (*) | 예 (*) 
+
+
+| *SAP 시스템 새로 고침* |  |  
+
+
+| 기본 스냅샷에서 | 예 (**) | 예 (**) 
+
+
+| SnapVault 대상에서 | 예 (**) | 예 (**) 
+
+
+| *HA와 DR* |  |  
+
+
+| HSR은 스냅샷과 SnapVault 지원합니다. | 예 | 예 
+
+
+| SnapCenter 에서 트리거되는 SnapMirror 복제 업데이트 | 예 | 예 
+
+
+| SnapMirror 액티브 싱크 | 예 | 예 
+|===
+(*): SnapCenter 6.2 릴리스부터 지원
+
+(**): SnapCenter 릴리스 < 6.2에 필요한 해결 방법
+
+
+
+=== Azure NetApp Files
+
+[cols="60%,40%"]
+|===
+| 작업 | NFS 마운트 
+
+
+| *HANA 데이터베이스에 대한 스냅샷 백업 및 복원 작업* |  
+
+
+| 스냅샷 백업 | 예 
+
+
+| 변조 방지 스냅샷 | 아니요 
+
+
+| 전체 제자리 복원 | 볼륨 되돌리기 또는 SFSR(선택 가능) 
+
+
+| 단일 테넌트 복원 | SFSR 
+
+
+| *HANA 데이터베이스에 대한 ANF 백업 및 복원 작업* |  
+
+
+| ANF 백업 복제 | 예 
+
+
+| 변조 방지 스냅샷 | 아니요 
+
+
+| 전체 제자리 복원 | 예 
+
+
+| 단일 테넌트 복원 | 예 
+
+
+| *기본 스냅샷 또는 ANF 백업에서 HANA 복구 작업* |  
+
+
+| 자동 복구 MDC 단일 테넌트 | 예 
+
+
+| 자동 복구 MDC 다중 테넌트 | 아니요 
+
+
+| *데이터가 아닌 볼륨 백업 및 복원* |  
+
+
+| 스냅샷 백업 | 예 
+
+
+| 스냅샷에서 복원 | 볼륨 되돌리기 
+
+
+| ANF 백업 복제 | 예 
+
+
+| ANF 백업에서 전체 복원 | 아니요 (*) 
+
+
+| *SAP 시스템 새로 고침* |  
+
+
+| 기본 스냅샷에서 | 예 
+
+
+| ANF 백업에서 | 예 
+
+
+| *HA와 DR* |  
+
+
+| HSR은 스냅샷과 ANF 백업을 지원합니다. | 예 
+
+
+| SnapCenter 에서 트리거된 지역 간 복제 업데이트 | 아니요 
+|===
+(*): 현재 버전에서는 Azure Portal 또는 CLI를 사용하여 복원 작업을 수행해야 합니다.
