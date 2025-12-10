@@ -17,7 +17,7 @@ summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루�
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.
 
 * link:../index.html["SAP 비즈니스 애플리케이션 및 SAP HANA 데이터베이스 솔루션(netapp.com)"]
-* link:../backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+* link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
 * link:../bp/hana-aff-fc-introduction.html["TR-4436: 파이버 채널 프로토콜을 지원하는 NetApp All Flash FAS 시스템 기반 SAP HANA"]
 * link:../bp/hana-aff-nfs-introduction.html["TR-4435: NFS를 포함한 NetApp All Flash FAS 시스템 기반 SAP HANA"]
 * link:../backup/fsxn-overview.html["TR-4926: NetApp ONTAP용 Amazon FSx 기반 SAP HANA - SnapCenter를 통한 백업 및 복구"]

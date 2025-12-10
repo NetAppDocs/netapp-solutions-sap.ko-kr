@@ -84,7 +84,7 @@ SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할
 
 == 이 문서의 범위
 
-이 문서에서는 ONTAP용 FSx에서 단일 테넌트가 있는 SAP HANA MDC 단일 호스트 시스템에 대한 가장 일반적인 SnapCenter 구성 옵션에 대해 설명합니다. 다른 구성 옵션도 사용 가능하며, 경우에 따라 다중 호스트 시스템과 같은 특정 SAP HANA 시스템에 필요합니다. 다른 구성 옵션에 대한 자세한 내용은 을 참조하십시오link:hana-br-scs-concepts-best-practices.html["SnapCenter 개념 및 모범 사례(netapp.com)"^].
+이 문서에서는 FSx for ONTAP 에서 단일 테넌트를 사용하는 SAP HANA MDC 단일 호스트 시스템에 대한 가장 일반적인 SnapCenter 구성 옵션을 설명합니다. 다른 구성 옵션도 가능하며, 경우에 따라 특정 SAP HANA 시스템(예: 다중 호스트 시스템)에 필요할 수 있습니다. 다른 구성 옵션에 대한 자세한 설명은 다음을 참조하십시오. link:hana-sc-generic-concepts.html["SnapCenter 개념 및 모범 사례(netapp.com)"^].
 
 이 문서에서는 AWS(Amazon Web Services) 콘솔과 ONTAP CLI용 FSx를 사용하여 스토리지 계층에서 필요한 구성 단계를 실행합니다. NetApp Cloud Manager를 사용하여 ONTAP용 FSx를 관리할 수도 있지만, 이 문서의 범위에 포함되지 않습니다. ONTAP용 FSx용 NetApp Cloud Manager를 사용하는 방법에 대한 자세한 내용은 을 참조하십시오 https://docs.netapp.com/us-en/occm/concept_fsx_aws.html["ONTAP용 Amazon FSx에 대해 자세히 알아보기(netapp.com)"^].
 

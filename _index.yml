@@ -50,7 +50,7 @@ indexpage:
   - title: SnapCenter(플랫폼 독립적)
     links:
     - title: SnapCenter를 사용한 SAP HANA 백업 및 복구
-      url: backup/hana-br-scs-overview.html
+      url: backup/hana-sc-generic-scope.html
     - title: SAP HANA 시스템 복제 - SnapCenter를 사용한 백업 및 복구
       url: backup/hana-sr-scs-system-replication-overview.html
     - title: SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화

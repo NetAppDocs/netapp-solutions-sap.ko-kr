@@ -15,7 +15,7 @@ HANA 모범 사례:
 
 SnapCenter:
 
-* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화"]
 * https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter, SnapMirror Active Sync 및 VMware Metro Storage Cluster를 통한 SAP HANA 데이터 보호 및 고가용성"]

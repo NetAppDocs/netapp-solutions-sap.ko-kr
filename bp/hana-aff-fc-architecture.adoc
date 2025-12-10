@@ -58,7 +58,7 @@ image:saphana_asa_fc_image5a.png["SnapCenter 개요"]
 * 블록 변경을 기반으로 공간 효율적이고 대역폭 효율적인 2차 스토리지 복제
 
 
-SAP HANA 백업 및 복구 솔루션에 대한 자세한 내용은 를 참조하십시오.link:../backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"^]
+SAP HANA 백업 및 복구 솔루션에 대한 자세한 내용은 다음을 참조하십시오. link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"^].
 
 
 

@@ -25,7 +25,7 @@ SnapCenter 에서 HANA 데이터베이스를 구성하는 단계는 다음과 �
 . 새로 추가된 HANA 리소스에 대해 HANA 리소스 보호를 구성해야 합니다.
 
 
-이전 항목에서 설명한 대로 초기 SnapCenter 구성 link:hana-sc-generic-initial.html["SnapCenter 초기 구성"] HANA 데이터베이스 리소스를 구성하는 동안 자격 증명, 스토리지 시스템 및 정책이 필요하므로 먼저 이 작업을 수행해야 합니다. 아래 그림은 단계와 종속성을 요약한 것입니다.
+이전 항목에서 설명한 대로 초기 SnapCenter 구성 link:hana-sc-generic-sc-initial-config.html["SnapCenter 초기 구성"] HANA 데이터베이스 리소스를 구성하는 동안 자격 증명, 스토리지 시스템 및 정책이 필요하므로 먼저 이 작업을 수행해야 합니다. 아래 그림은 단계와 종속성을 요약한 것입니다.
 
 아래 그림은 다양한 구성 구성 요소와 종속성을 시각화한 것입니다.
 

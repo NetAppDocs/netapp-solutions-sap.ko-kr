@@ -104,7 +104,7 @@ MDC 다중 테넌트
 * ONTAP 9.14P1 를 참조하십시오
 
 
-모든 SAP HANA 시스템은 구성 가이드에 따라 구성해야 link:../bp/hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"]합니다. SnapCenter 및 SAP HANA 리소스는 모범 사례 가이드를 기반으로 link:../backup/hana-br-scs-overview.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]구성되었습니다.
+모든 SAP HANA 시스템은 구성 가이드에 따라 구성해야 합니다. link:../bp/hana-aff-nfs-introduction.html["NFS를 포함한 NetApp AFF 시스템 기반 SAP HANA"]. SnapCenter 와 SAP HANA 리소스는 모범 사례 가이드에 따라 구성되었습니다. link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"].
 
 image:sc-copy-clone-image16.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
@@ -115,7 +115,7 @@ image:sc-copy-clone-image16.png["입력/출력 대화 상자 또는 작성된 �
 초기 단계로서 대상 SAP HANA 시스템은 SnapCenter 내에서 구성해야 합니다.
 
 . SAP HANA 대상 시스템 설치
-. 에 설명된 대로 SnapCenter에서 SAP HANA 시스템 구성 link:../backup/hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+. SnapCenter 에서 SAP HANA 시스템을 구성하는 방법은 다음과 같습니다. link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
 +
 .. SnapCenter 백업 작업을 위한 SAP HANA 데이터베이스 사용자 구성 이 사용자는 소스 시스템과 타겟 시스템에서 동일해야 합니다.
 .. 위의 백업 사용자를 가진 <sid> adm에 대한 hdbuserstore 키의 구성. 복구에 자동화 스크립트를 사용하는 경우 키 이름은 <SID> 키여야 합니다

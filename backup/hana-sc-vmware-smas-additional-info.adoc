@@ -17,7 +17,7 @@ summary:
 
 SnapCenter:
 
-link:hana-br-scs-overview.html["TR-4614: SnapCenter를 통한 SAP HANA 백업 및 복구"]
+link:hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
 
 link:hana-sr-scs-system-replication-overview.html["TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구"]
 
