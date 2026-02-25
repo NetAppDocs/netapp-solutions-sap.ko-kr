@@ -4,7 +4,7 @@ permalink: backup/hana-sr-scs-system-replication-overview.html
 keywords: tr4719, 4719, introduction, system replication, dr, snapcenter, high availability, RPO, RTO 
 summary: SAP HANA 시스템 복제는 일반적으로 SAP HANA 데이터베이스를 위한 고가용성 또는 재해 복구 솔루션으로 사용됩니다. SAP HANA 시스템 복제는 사용 사례 또는 가용성 요구사항에 따라 사용할 수 있는 다양한 운영 모드를 제공합니다. 
 ---
-= TR-4719: SAP HANA 시스템 복제 - SnapCenter를 통한 백업 및 복구
+= SAP HANA 시스템 복제 - SnapCenter를 사용한 백업 및 복구
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -29,15 +29,25 @@ SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 아래 
 
 NOTE: 소스 시스템에서 테넌트 생성, 이름 바꾸기 또는 삭제 작업을 실행하는 즉시 이 구성 플래그가 SAP HANA 데이터베이스에 의해 삭제됩니다. 따라서 구성을 다시 tenant=SID로 되돌려도 플래그를 더 이상 사용할 수 없으며 워크플로 3을 사용한 테넌트 복구에 대한 예외는 더 이상 가능하지 않습니다. 이 경우 옵션 2가 필요한 워크플로입니다.
 
-image:sc-copy-clone-image10.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:sc-copy-clone-image10.png[""]
 
-image:sc-copy-clone-image11.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:sc-copy-clone-image11.png[""]
 
 
 
 == SAP HANA 암호화를 사용하도록 설정한 시스템 새로 고침 워크플로
 
-SAP HANA 지속성 암호화를 사용하는 경우 대상 시스템에서 SAP HANA 데이터베이스를 복구하려면 먼저 추가 단계가 필요합니다.
+SAP HANA 영구 암호화가 활성화되고 암호화 루트 키에 사용되는 보안 저장소(인스턴스 SFSS 또는 로컬 보안 저장소 LSS)에 따라 대상 시스템에서 SAP HANA 데이터베이스를 복구하기 전에 추가 단계가 필요합니다.
+
+SFSS에서 루트 키는 파일 시스템에 저장되므로 HANA 데이터베이스와 별도로 백업해야 합니다. 백업된 루트 키는 대상 시스템으로 가져와야 HANA 데이터베이스 복구가 가능해집니다. 루트 키가 변경되지 않는 경우 이 작업은 한 번만 수행하면 됩니다.
+
+LSS를 사용하면 루트 키가 HANA 데이터베이스와 함께 단일 작업으로 백업 및 복원됩니다. HANA 데이터베이스를 복구하려면 루트 키 백업에 사용된 암호가 필요합니다.
+
+필요한 작업은 다음 장에서 더 자세히 설명합니다.
+
+
+
+=== 보안 저장소 SFSS
 
 소스 시스템에서 시스템 데이터베이스뿐 아니라 모든 테넌트 데이터베이스에 대한 암호화 루트 키의 백업을 생성해야 합니다. 복구 작업을 실행하기 전에 백업 파일을 타겟 시스템에 복사하고 루트 키를 백업에서 가져와야 합니다.
 
@@ -45,7 +55,7 @@ SAP HANA 지속성 암호화를 사용하는 경우 대상 시스템에서 SAP H
 
 
 
-=== 루트 키 백업
+==== 루트 키 백업
 
 루트 키를 변경한 경우 항상 루트 키를 백업해야 합니다. backup 명령은 CLI 매개 변수로 DBID를 요구합니다. DBID는 아래 SQL 문을 사용하여 식별할 수 있습니다.
 
@@ -96,7 +106,7 @@ done.
 ....
 
 
-=== 대상 시스템에서 루트 키를 가져옵니다
+==== 대상 시스템에서 루트 키를 가져옵니다
 
 첫 번째 시스템 새로 고침 작업을 수행하려면 먼저 루트 키를 가져와야 합니다. 소스 시스템에서 루트 키가 변경되지 않은 경우 추가 가져오기가 필요하지 않습니다. import 명령을 사용하려면 DBID가 CLI 매개 변수로 필요합니다. DBID는 루트 키 백업에 대해 설명된 것과 동일한 방식으로 식별할 수 있습니다.
 
@@ -125,10 +135,40 @@ qs1adm@hana-7:/usr/sap/QS1/HDB11>
 ....
 
 
-=== 루트 키 가져오기(DBID가 대상에 없는 경우
+==== 루트 키 가져오기(DBID가 대상에 없는 경우
 
 앞의 장에서 설명한 대로 시스템 및 모든 테넌트 데이터베이스에 대한 루트 키를 가져오려면 DBID가 필요합니다. 시스템 데이터베이스는 항상 DBID = 0이지만 테넌트 데이터베이스는 다른 DBID를 가질 수 있습니다.
 
-image:sc-copy-clone-image13.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
+image:sc-copy-clone-image13.png[""]
 
 위의 출력은 DBID = 3, DBID = 4인 두 테넌트를 보여줍니다. 타겟 시스템이 아직 DBID가 4인 테넌트를 호스팅하지 않은 경우 루트 키 가져오기가 실패합니다. 이 경우 먼저 시스템 데이터베이스를 복구한 다음 DBID가 4인 테넌트의 키를 가져와야 합니다.
+
+
+
+=== 보안 저장소 LSS
+
+
+NOTE: 최소 HANA 버전 2.00.088을 사용해야 합니다. 그렇지 않으면 설명된 절차가 작동하지 않습니다. SAP note 3613110도 참조하십시오.
+
+암호화 및 LSS를 사용하는 HANA 시스템을 복구하려면 루트 키를 백업하는 데 사용된 암호가 필요합니다.
+
+SQL 문
+
+....
+alter system set encryption root keys backup password <backup-pw-of-source-system>;
+....
+대상 시스템의 LSS 구성에서 소스 시스템의 암호를 설정하는 데 사용할 수 있습니다. 시스템 데이터베이스와 테넌트 데이터베이스에 동일한 명령을 사용해야 합니다.
+
+사전에 암호를 설정하지 않은 경우 복구 작업 중에 암호를 입력할 수 있습니다.
+
+시스템 데이터베이스:
+
+....
+./exe/Python/bin/python /usr/sap/QM1/HDB22/exe/python_support/recoverSys.py --command "RECOVER DATA USING SNAPSHOT CLEAR LOG ENCRYPTION ROOT KEYS BACKUP PASSWORD '<backup-pw-of-source-system>'"
+....
+테넌트 데이터베이스:
+
+....
+hdbsql SYSTEMDB=> RECOVER DATA for QM1 USING SNAPSHOT CLEAR LOG ENCRYPTION ROOT KEYS BACKUP PASSWORD '<backup-pw-of-source-system>';
+
+....
