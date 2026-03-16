@@ -38,6 +38,14 @@ SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encrypt
 
 
 
+== ONTAP 자율 랜섬웨어 보호
+
+ONTAP Autonomous Ransomware Protection으로 생성된 스냅샷은 SAP HANA 데이터베이스의 순방향 복구에 사용할 수 없습니다. 따라서 SAP HANA 데이터 및 로그 볼륨에는 이 기능을 사용하지 않는 것이 좋으며, 해당 볼륨에서는 이 기능을 비활성화해야 합니다. 랜섬웨어 보호를 위해서는 대신 SnapCenter 기반 데이터 보호 기능과 변조 방지 스냅샷을 사용하십시오: link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]. ONTAP Autonomous Ransomware Protection은 /hana/shared와 같은 다른 볼륨에는 유용할 수 있습니다.
+
+ONTAP 클러스터의 볼륨 생성 시 이 기능의 자동 활성화를 비활성화할 수 있지만, 기본 설정을 유지하고 이 기능이 필요하지 않은 볼륨에 대해서만 비활성화하는 것이 좋습니다.
+
+
+
 == 서비스 품질
 
 QoS를 사용하면 공유 사용 컨트롤러에서 특정 SAP HANA 시스템 또는 기타 애플리케이션의 스토리지 처리량을 제한할 수 있습니다. 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다.
@@ -188,6 +196,9 @@ image:saphana-fas-nfs_image17.png["입력/출력 대화 상자 또는 작성된 
 |===
 다음 표에서는 단일 호스트 시스템의 마운트 지점 구성의 예를 보여 줍니다. 중앙 스토리지에 'sidadm' 사용자의 홈 디렉토리를 배치하려면 'sid_shared' 볼륨에서 '/usr/sap/sid' 파일 시스템을 마운트해야 합니다.
 
+
+NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우 `/lss/shared/SID` 디렉터리, LSS의 기본 설치 디렉터리는 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 환경에서 NetApp은 모든 파일 시스템이 중앙 스토리지에 있도록 `SID_shared` 볼륨 내에 `/lss/shared/SID` 디렉터리를 생성하는 것을 권장합니다.
+
 |===
 | 접합 경로 | 디렉토리 | HANA 호스트의 마운트 지점 
 
@@ -198,7 +209,7 @@ image:saphana-fas-nfs_image17.png["입력/출력 대화 상자 또는 작성된 
 | SID_LOG_mnt00001 | – | /HANA/log/SID/mnt00001 
 
 
-| SID_공유됨 | usr-SAP 공유 | /usr/sap/sid/hana/shared 
+| SID 공유 | usr-sap + shared + lss-shared | /usr/sap/SID + /hana/shared + /lss/shared/SID 
 |===
 
 
@@ -236,6 +247,9 @@ image:saphana-fas-nfs_image18.png["입력/출력 대화 상자 또는 작성된 
 |===
 다음 표에는 4개의 활성 SAP HANA 호스트가 있는 다중 호스트 시스템의 구성 및 마운트 지점이 나와 있습니다. 각 호스트의 'sidadm' 사용자의 홈 디렉토리를 중앙 스토리지에 배치하기 위해 'sid_shared' 볼륨에서 /usr/sap/sid' 파일 시스템이 마운트된다.
 
+
+NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우  `/lss/shared/SID` 디렉터리는 모든 호스트에서 액세스할 수 있어야 합니다. NetApp에서는  `SID_shared` 볼륨 내에  `/lss/shared/SID` 디렉터리용 디렉터리를 생성하는 것을 권장합니다.
+
 |===
 | 접합 경로 | 디렉토리 | SAP HANA 호스트의 마운트 지점 | 참고 
 
@@ -267,6 +281,9 @@ image:saphana-fas-nfs_image18.png["입력/출력 대화 상자 또는 작성된 
 | SID_공유됨 | 공유됨 | /HANA/공유/ | 모든 호스트에 마운트되었습니다 
 
 
+| SID_공유됨 | lss-shared | /lss/shared/ | 모든 호스트에 마운트되었습니다 
+
+
 | SID_공유됨 | usr-SAP-host1 | /usr/sap/sid | 호스트 1에 마운트되었습니다 
 
 
@@ -294,7 +311,10 @@ image:saphana-fas-nfs_image18.png["입력/출력 대화 상자 또는 작성된 
 | 스냅샷 디렉토리 표시를 해제합니다 | vol modify -vserver <vserver-name> -volume <volname> -snapdir -access false 
 
 
-| 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify –vserver <vserver-name> -volume <volname> -snapshot-policy none 
+| 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify -vserver <vserver-name> -volume <volname> -snapshot-policy none 
+
+
+| SID_shared 볼륨을 제외하고 랜섬웨어 보호를 비활성화합니다 | vol modify -vserver <vserver-name> -volume <volname> -anti-ransomware-state disabled 
 
 
 | SID_shared 볼륨을 제외하고 액세스 시간 업데이트를 비활성화합니다 | 고급 vol modify -vserver <vserver-name> -volume <volname> -atime-update false set admin을 설정합니다 

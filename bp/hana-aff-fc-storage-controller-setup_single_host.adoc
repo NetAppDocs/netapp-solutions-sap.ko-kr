@@ -61,6 +61,9 @@ image:saphana_aff_fc_image16a.png["입력/출력 대화 상자 또는 작성된 
 NOTE: 설명된 구성에서 사용자 SID1adm 의 기본 홈 디렉토리가 저장된 '/usr/sap/sID1' 디렉토리가 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 설정에서는 모든 파일 시스템이 중앙 스토리지에 있도록 '/usr/SAP/SID1' 디렉토리에 대한 'sid1_shared' 볼륨 내에 추가 LUN을 생성하는 것이 좋습니다.
 
 
+NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우 `/lss/shared/SID` 디렉터리, LSS의 기본 설치 디렉터리는 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 환경에서 NetApp은 모든 파일 시스템이 중앙 스토리지에 있도록 `SID1_shared` 볼륨 내에 `/lss/shared/SID` 디렉터리용 LUN을 추가로 생성하는 것을 권장합니다.
+
+
 
 == Linux LVM을 사용하여 SAP HANA 단일 호스트 시스템에 대한 볼륨 및 LUN 구성
 
@@ -85,11 +88,17 @@ NOTE: SAP HANA KPI를 충족하기 위해 여러 LUN이 있는 LVM을 사용할 
 | 조치 | ONTAP 9 
 
 
-| 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify –vserver <vserver-name> -volume <volname> -snapshot-policy none 
+| 자동 스냅샷 복사본을 사용하지 않도록 설정합니다 | vol modify -vserver <vserver-name> -volume <volname> -snapshot-policy none 
 
 
 | 스냅샷 디렉토리 표시를 해제합니다 | vol modify -vserver <vserver-name> -volume <volname> -snapdir -access false 
+
+
+| SID_shared 볼륨을 제외하고 랜섬웨어 보호를 비활성화합니다 | vol modify -vserver <vserver-name> -volume <volname> -anti-ransomware-state disabled 
 |===
+
+NOTE: 아래 예에서는 볼륨 생성 중에 이러한 옵션을 설정합니다
+
 
 
 === CLI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
@@ -99,11 +108,11 @@ NOTE: SAP HANA KPI를 충족하기 위해 여러 LUN이 있는 LVM을 사용할 
 . 필요한 볼륨을 모두 생성합니다.
 +
 ....
-vol create -volume FC5_data_mnt00001 -aggregate aggr1_1 -size 1200g  -snapshot-policy none -foreground true -encrypt false  -space-guarantee none
-vol create -volume FC5_log_mnt00001  -aggregate aggr1_2 -size 280g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
-vol create -volume FC5_data2_mnt00001 -aggregate aggr1_2 -size 1200g -snapshot-policy none -foreground true -encrypt false -space-guarantee none
-vol create -volume FC5_log2_mnt00001  -aggregate aggr1_1 -size 280g -snapshot-policy none -foreground true -encrypt false  -space-guarantee none
-vol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false  -space-guarantee none
+vol create -volume FC5_data_mnt00001 -aggregate aggr1_1 -size 1200g  -snapshot-policy none -foreground true -encrypt false  -snapdir-access false -space-guarantee none -anti-ransomware-state disabled
+vol create -volume FC5_log_mnt00001  -aggregate aggr1_2 -size 280g -snapshot-policy none -foreground true -encrypt false -snapdir-access false -space-guarantee none -anti-ransomware-state disabled
+vol create -volume FC5_data2_mnt00001 -aggregate aggr1_2 -size 1200g -snapshot-policy none -foreground true -encrypt false -snapdir-access false -space-guarantee none -anti-ransomware-state disabled
+vol create -volume FC5_log2_mnt00001  -aggregate aggr1_1 -size 280g -snapshot-policy none -foreground true -encrypt false  -snapdir-access false -space-guarantee none -anti-ransomware-state disabled
+vol create -volume FC5_shared -aggregate aggr1_1 -size 512g -state online -policy default -snapshot-policy none -junction-path /FC5_shared -encrypt false -snapdir-access false -space-guarantee none
 ....
 . 모든 LUN을 생성합니다.
 +
@@ -112,6 +121,7 @@ lun create -path  /vol/FC5_data_mnt00001/FC5_data_mnt00001   -size 1t -ostype li
 lun create -path /vol/FC5_data2_mnt00001/FC5_data2_mnt00001 -size 1t -ostype linux -space-reserve disabled -space-allocation disabled -class regular
 lun create -path /vol/FC5_log_mnt00001/FC5_log_mnt00001 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
 lun create -path /vol/FC5_log2_mnt00001/FC5_log2_mnt00001 -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
+lun create -path /vol/FC5_shared/FC5_shared -size 260g -ostype linux -space-reserve disabled -space-allocation disabled -class regular
 ....
 . FC5의 sythe 호스트에 속하는 모든 포트에 대한 개시자 그룹을 생성합니다.
 +
@@ -125,5 +135,6 @@ lun map -path /vol/FC5_data_mnt00001/FC5_data_mnt00001    -igroup HANA-FC5
 lun map -path /vol/FC5_data2_mnt00001/FC5_data2_mnt00001  -igroup HANA-FC5
 lun map -path /vol/FC5_log_mnt00001/FC5_log_mnt00001  -igroup HANA-FC5
 lun map -path /vol/FC5_log2_mnt00001/FC5_log2_mnt00001  -igroup HANA-FC5
+lun map -path /vol/FC5_shared/FC5_shared -igroup HANA-FC5
 ....
 
