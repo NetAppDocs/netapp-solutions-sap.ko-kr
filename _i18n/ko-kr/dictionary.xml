@@ -59,8 +59,6 @@
   <block id="e0f43a4c6e28079f6afdc78865b7782e" category="admonition">운영 체제 구성 지침 및 HANA 관련 Linux 커널 종속성에 대해서는 관련 SAP 노트를 참조하십시오. 자세한 내용은 SAP 참고 2235581: SAP HANA 지원 운영 체제 를 참조하십시오.</block>
   <block id="c28f239d8c4b11cfe19d1dcf078100b9" category="section-title">SAP HANA 맞춤형 데이터 센터 통합</block>
   <block id="5d75848b6169b06c4cd7d6a8c2ec2337" category="paragraph">NetApp AFF 스토리지 컨트롤러는 NFS(NAS) 및 FC(SAN) 프로토콜을 모두 사용하는 SAP HANA TDI 프로그램에서 인증을 받았습니다. HANA 기반 SAP Business Suite, S/4HANA, BW/4HANA 또는 단일 호스트 또는 다중 호스트 구성의 HANA 기반 SAP Business Warehouse와 같은 현재 SAP HANA 시나리오에 구축할 수 있습니다. SAP HANA용으로 인증된 모든 서버를 NetApp 인증 스토리지 솔루션과 결합할 수 있습니다. SAP HANA TDI의 아키텍처 개요는 다음 그림을 참조하십시오.</block>
-  <block id="14a31d6554fa48b10cc86d1aaf656a07" category="inline-link">SAP HANA 맞춤형 데이터 센터 통합 FAQ를 참조하십시오</block>
-  <block id="9282f2106e2ecc166cf241e78c58163e" category="list-text"><block ref="9282f2106e2ecc166cf241e78c58163e" category="inline-link-rx"></block></block>
   <block id="244d98fed97800c3bc8073163dc1e3b2" category="inline-link">SAP HANA 스토리지 요구사항</block>
   <block id="ff3f1e894014f4c26eac8cab49b8a0f4" category="section-title">VMware vSphere를 사용하는 SAP HANA</block>
   <block id="4769b140b92a70ffdab406be16d30122" category="paragraph">스토리지를 가상 머신(VM)에 연결하는 몇 가지 옵션이 있습니다. 기본 옵션은 스토리지 볼륨을 NFS와 게스트 운영 체제 밖으로 직접 연결하는 것입니다. 이 옵션을 사용하면 호스트 및 스토리지의 구성이 물리적 호스트와 VM 간에 차이가 없습니다.</block>
@@ -2905,8 +2903,6 @@ admin 설정</block>
   <block id="0a961d2cbb588be1d5a93b4774cf6ef1" category="cell">새로운 스토리지 시스템(AFF A-Series)</block>
   <block id="f31f11743f1dfba18e9f008e2956d24e" category="cell">2024년 9월</block>
   <block id="e4a9c264a13e2ec5faac7a73cf8d0e8c" category="cell">부 업데이트</block>
-  <block id="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link"><block ref="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link-rx"></block></block>
-  <block id="55162df4eaa40993b4b04219f5dd5e87" category="paragraph"><block ref="55162df4eaa40993b4b04219f5dd5e87" category="inline-link-rx"></block></block>
   <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
   <block id="a36cfc2690f8671748f584abb16bdd04" category="cell">새로운 스토리지 시스템</block>
   <block id="0fba9f2a3fbb4cfbaed44806cd9933a2" category="cell">새로운 스토리지 시스템(ASA A-Series)</block>
@@ -5895,4 +5891,8 @@ admin 설정</block>
   <block id="3d4f8b4b1b1faa02f0aa9e9f49fe9088" category="paragraph">ONTAP Autonomous Ransomware Protection으로 생성된 스냅샷은 SAP HANA 데이터베이스의 순방향 복구에 사용할 수 없습니다. 따라서 SAP HANA 데이터 및 로그 볼륨에는 이 기능을 사용하지 않는 것이 좋으며, 해당 볼륨에서는 이 기능을 비활성화해야 합니다. 랜섬웨어 보호를 위해서는 대신 SnapCenter 기반 데이터 보호 기능과 변조 방지 스냅샷을 사용하십시오: <block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>. ONTAP Autonomous Ransomware Protection은 /hana/shared와 같은 다른 볼륨에는 유용할 수 있습니다.</block>
   <block id="5c9e36a122daafc35d852512bd535596" category="admonition">SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block> 디렉터리, LSS의 기본 설치 디렉터리는 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 환경에서 NetApp은 모든 파일 시스템이 중앙 스토리지에 있도록<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block> 볼륨 내에<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block> 디렉터리를 생성하는 것을 권장합니다.</block>
   <block id="3ee7f42a5f57f42357faa6066ecfb5d8" category="cell">/lss/shared/</block>
+  <block id="e72900b6484d9e136f9baaf67301d38d" category="paragraph"><block ref="8878a31e958f2f4fbc2f0cb5299a88fc" category="inline-link-rx"></block>]</block>
+  <block id="b0b3e68761dd70d0fa49b725910dc993" category="list-text">SAP HANA 맞춤형 데이터 센터 통합</block>
+  <block id="37716fa00dd641976ad10af0418c9f93" category="inline-link">SAP HANA 맞춤형 데이터 센터 통합</block>
+  <block id="74e5a15645e2d65a375593199e01c962" category="list-text"><block ref="74e5a15645e2d65a375593199e01c962" category="inline-link-rx"></block></block>
 </blocks>
