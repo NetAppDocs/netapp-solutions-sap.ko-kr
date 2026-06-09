@@ -113,8 +113,6 @@
   <block id="4bb047f8c530785002e490ef17fa725e" category="doc">추가 정보를 찾을 수 있는 위치</block>
   <block id="345245c83d2b2c4c2a5eb9f2887da627" category="paragraph">이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및/또는 웹 사이트를 참조하십시오.</block>
   <block id="0efd230d120bc177f0918dac852f2cf2" category="list-text">SAP HANA용 SAP 인증 엔터프라이즈 스토리지 하드웨어</block>
-  <block id="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link"><block ref="06ad3435fb38e020aa7a36d8924c9f5c" category="inline-link-rx"></block></block>
-  <block id="3710f13cc62644ea40b0af38f0b1198e" category="paragraph"><block ref="3710f13cc62644ea40b0af38f0b1198e" category="inline-link-rx"></block></block>
   <block id="6137d44b5191549a06e7bea8ffd942d3" category="inline-link"><block ref="6137d44b5191549a06e7bea8ffd942d3" category="inline-link-rx"></block></block>
   <block id="c54847a2046020d06d345fd8b61fc169" category="list-text">NetApp 문서화 센터</block>
   <block id="1f97b7a68d0268791593f9152a2471f4" category="list-text">SAP HANA 소프트웨어 솔루션</block>
@@ -5891,8 +5889,11 @@ admin 설정</block>
   <block id="3d4f8b4b1b1faa02f0aa9e9f49fe9088" category="paragraph">ONTAP Autonomous Ransomware Protection으로 생성된 스냅샷은 SAP HANA 데이터베이스의 순방향 복구에 사용할 수 없습니다. 따라서 SAP HANA 데이터 및 로그 볼륨에는 이 기능을 사용하지 않는 것이 좋으며, 해당 볼륨에서는 이 기능을 비활성화해야 합니다. 랜섬웨어 보호를 위해서는 대신 SnapCenter 기반 데이터 보호 기능과 변조 방지 스냅샷을 사용하십시오: <block ref="f7a9a89a273a9d57fcd022d94d56f53f" category="inline-link-macro-rx"></block>. ONTAP Autonomous Ransomware Protection은 /hana/shared와 같은 다른 볼륨에는 유용할 수 있습니다.</block>
   <block id="5c9e36a122daafc35d852512bd535596" category="admonition">SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block> 디렉터리, LSS의 기본 설치 디렉터리는 로컬 디스크에 있습니다. 디스크 기반 복제를 사용하는 재해 복구 환경에서 NetApp은 모든 파일 시스템이 중앙 스토리지에 있도록<block ref="07fe7fc9aa3cd33458708758a4a5854e" prefix=" " category="inline-code"></block> 볼륨 내에<block ref="1d7604fd1dd9d655c19ff0843bcd1cab" prefix=" " category="inline-code"></block> 디렉터리를 생성하는 것을 권장합니다.</block>
   <block id="3ee7f42a5f57f42357faa6066ecfb5d8" category="cell">/lss/shared/</block>
-  <block id="e72900b6484d9e136f9baaf67301d38d" category="paragraph"><block ref="8878a31e958f2f4fbc2f0cb5299a88fc" category="inline-link-rx"></block>]</block>
   <block id="b0b3e68761dd70d0fa49b725910dc993" category="list-text">SAP HANA 맞춤형 데이터 센터 통합</block>
   <block id="37716fa00dd641976ad10af0418c9f93" category="inline-link">SAP HANA 맞춤형 데이터 센터 통합</block>
   <block id="74e5a15645e2d65a375593199e01c962" category="list-text"><block ref="74e5a15645e2d65a375593199e01c962" category="inline-link-rx"></block></block>
+  <block id="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link"><block ref="44fee80ab2b2a3105ec17b94b206cc8f" category="inline-link-rx"></block></block>
+  <block id="55162df4eaa40993b4b04219f5dd5e87" category="paragraph"><block ref="55162df4eaa40993b4b04219f5dd5e87" category="inline-link-rx"></block></block>
+  <block id="9b3c3b7775f8b0fe4b367630784b02be" category="inline-link"><block ref="9b3c3b7775f8b0fe4b367630784b02be" category="inline-link-rx"></block></block>
+  <block id="09e3bfa407b8475f684f4afa0d1a65d0" category="paragraph"><block ref="09e3bfa407b8475f684f4afa0d1a65d0" category="inline-link-rx"></block></block>
 </blocks>
