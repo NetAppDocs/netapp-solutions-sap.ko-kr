@@ -18,4 +18,4 @@ summary: TR-4711에서는 SAP HANA용 NetApp 및 Commvault 솔루션의 디자�
 
 저자: Marco Schoen, NetApp; Dr. Tristan Daude, Commvault Systems
 
-link:https://www.netapp.com/pdf.html?item=/media/17050-tr4711pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17050-tr4711pdf.pdf"]
+link:https://www.netapp.com/pdf.html?item=/media/17050-tr4711.pdf["https://www.netapp.com/pdf.html?item=/media/17050-tr4711.pdf"^]
