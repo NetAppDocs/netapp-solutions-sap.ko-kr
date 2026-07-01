@@ -16,7 +16,7 @@ summary: SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 액�
 [role="lead"]
 SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 액세스를 갖춘 NetApp 스토리지를 사용하여 SUSE KVM에 SAP HANA 단일 호스트를 배포합니다.  이 워크플로를 따라 가상 인터페이스를 구성하고, 이를 VM에 할당하고, 최적의 성능을 위해 스토리지 연결을 설정하세요.
 
-KVM 가상화 기반 SAP HANA에 대한 개요는 SUSE 문서를 참조하세요. https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM에서 SAP HANA를 위한 SUSE 모범 사례"] .
+KVM 가상화의 SAP HANA 개요는 SUSE 설명서를 참조하십시오. https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP7/["KVM에서 SAP HANA를 위한 SUSE 모범 사례"].
 
 image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["하나"]link:kvm-hana-requirements.html["구성 요구 사항을 검토하세요"]
 

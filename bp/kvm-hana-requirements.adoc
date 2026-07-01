@@ -31,14 +31,14 @@ SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 프로토콜�
 * SR-IOV 지원 네트워크 어댑터(예: Mellanox ConnectX 시리즈)
 * FCP 스토리지 액세스를 위한 파이버 채널 HBA 어댑터
 * 필요한 VLAN 및 네트워크 세그먼트를 지원하는 네트워크 인프라
-* VM은 다음에 따라 구성됩니다. https://documentation.suse.com/sbp/sap-15/pdf/SBP-SLES4SAP-HANAonKVM-SLES15SP5_en.pdf["KVM에서 SAP HANA를 위한 SUSE 모범 사례"^]
+* VM은  https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP7/["KVM에서 SAP HANA를 위한 SUSE 모범 사례"^]에 따라 구성되었습니다.
 
 
 
 
 == 중요한 고려 사항
 
-* SR-IOV는 SAP HANA 네트워크 통신과 NFS를 사용한 스토리지 액세스에 사용해야 합니다. VM에 할당된 각 가상 기능(VF)에는 최소 10Gbit/s 대역폭이 필요합니다.
+* SR-IOV는 SAP HANA 네트워크 통신 및 가능한 경우 NFS를 사용하는 스토리지 액세스에 사용해야 하지만, 브리지 네트워킹도 지원됩니다. VM에 할당된 각 가상 기능(VF)에는 최소 10Gbit/s 대역폭이 필요합니다.
 * FCP LUN을 사용하려면 물리적 FCP HBA 포트를 VM에 PCI 장치로 할당해야 합니다.  물리적 포트는 하나의 VM에만 할당될 수 있습니다.
 * 이 구성에서는 SAP HANA 다중 호스트 시스템이 지원되지 않습니다.
 
@@ -47,7 +47,7 @@ SR-IOV 네트워크 인터페이스와 NFS 또는 FCP 스토리지 프로토콜�
 
 == 추가 자료
 
-* 지원되는 CPU 아키텍처 및 제한 사항을 포함한 최신 정보는 SAP Note를 참조하세요. https://me.sap.com/notes/3538596["3538596 - SLES 15 SP5를 사용한 SUSE KVM 가상화 기반 SAP HANA - SAP for Me"] .
+* 지원되는 CPU 아키텍처 및 제한 사항을 포함한 최신 정보는 SAP Note https://me.sap.com/notes/3741904["3741904 - SLES 15 SP7을 사용한 SUSE KVM 가상화 환경에서의 SAP HANA - SAP for Me"]를 참조하십시오.
 * ONTAP 스토리지 시스템 구성에 대한 정보는 다음을 참조하십시오. https://docs.netapp.com/us-en/ontap["ONTAP 9 문서"] .
 * NetApp 시스템을 사용한 SAP HANA 스토리지 구성에 대해서는 다음을 참조하세요. https://docs.netapp.com/us-en/netapp-solutions-sap/["NetApp SAP 솔루션 설명서"] .
 
