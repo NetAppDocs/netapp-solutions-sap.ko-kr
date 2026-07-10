@@ -13,6 +13,7 @@ SAP HANA 환경을 위한 SnapCenter 배포 옵션, 데이터 보호 전략 및 
 
 
 
+[[deployment-options-for-snapcenter-plug-in-for-sap-hana]]
 == SAP HANA용 SnapCenter 플러그인 배포 옵션
 
 다음 그림은 SnapCenter 서버, SAP HANA 데이터베이스 및 스토리지 시스템 간 통신의 논리적 보기를 보여줍니다. SnapCenter 서버는 HANA 및 Linux 플러그인을 활용하여 HANA 데이터베이스와 Linux 운영 체제와 통신합니다.
@@ -49,6 +50,7 @@ SnapCenter HANA 시스템을 위한 중앙 플러그인 배포를 지원하지�
 
 
 
+[[snapcenter-plug-in-for-hana-deployed-on-the-sap-hana-database-host]]
 === SAP HANA 데이터베이스 호스트에 배포된 HANA용 SnapCenter 플러그인
 
 SnapCenter 서버는 HANA 플러그인을 통해 HANA 데이터베이스와 통신합니다. HANA 플러그인은 HANA hdbsql 클라이언트 소프트웨어를 사용하여 HANA 데이터베이스에 SQL 명령을 실행합니다. HANA hdb 사용자 저장소는 HANA 데이터베이스에 액세스하기 위한 사용자 자격 증명, 호스트 이름 및 포트 정보를 제공하는 데 사용됩니다. SnapCenter Linux 플러그인은 호스트 파일 시스템 작업과 파일 시스템 및 스토리지 리소스의 자동 검색을 처리하는 데 사용됩니다.
@@ -59,6 +61,7 @@ image:hana-sc-generic-image-009.png["너비=601, 높이=304"]
 
 
 
+[[snapcenter-server-high-availability]]
 === SnapCenter 서버 고가용성
 
 SnapCenter 2노드 HA 구성으로 설정할 수 있습니다. 이러한 구성에서는 로드 밸런서(예: F5)를 사용하여 SnapCenter 호스트에 액세스합니다. SnapCenter 저장소(MySQL 데이터베이스)는 SnapCenter 에 의해 두 호스트 간에 복제되므로 SnapCenter 데이터는 항상 동기화됩니다.
@@ -69,6 +72,7 @@ image:hana-sc-generic-image-010.png["너비=601, 높이=307"]
 
 
 
+[[central-plug-in-host]]
 === 중앙 플러그인 호스트
 
 이전 장에서 논의한 대로 중앙 플러그인이 필요합니다.
@@ -92,6 +96,7 @@ image:hana-sc-generic-image-012.png["너비=601, 높이=338"]
 
 
 
+[[sap-hana-block-consistency-check]]
 == SAP HANA 블록 일관성 검사
 
 SAP에서는 전반적인 백업 전략에 정기적인 HANA 블록 일관성 검사를 포함할 것을 권장합니다. 기존의 파일 기반 백업에서는 이러한 확인 작업이 각 백업 작업마다 수행됩니다. 스냅샷 백업의 경우 스냅샷 백업 작업 외에도 일관성 검사를 실행해야 합니다(예: 주 1회).
@@ -123,6 +128,7 @@ NetApp HANA 블록 일관성 검사를 실행하기 위해 hdbpersdiag를 사용
 
 
 
+[[data-protection-strategy]]
 == 데이터 보호 전략
 
 SnapCenter 및 SAP HANA 플러그인을 구성하기 전에 다양한 SAP 시스템의 RTO 및 RPO 요구사항을 기준으로 데이터 보호 전략을 정의해야 합니다.
@@ -189,6 +195,7 @@ image:hana-sc-generic-image-013.png["너비=601, 높이=192"]
 
 
 
+[[backup-of-encryption-root-keys]]
 == 암호화 루트 키 백업
 
 HANA 지속성 암호화를 사용하는 경우 표준 데이터 백업 외에도 루트 키의 백업을 만드는 것이 중요합니다. 데이터 볼륨과 HANA 설치 파일 시스템이 손실된 경우 HANA 데이터베이스를 복구하려면 루트 키 백업이 필요합니다. 자세한 내용은 다음을 참조하세요. https://help.sap.com/docs/SAP_HANA_PLATFORM/6b94445c94ae495c83a19646e7c3fd56/b1e7562e2c704c19bd86f2f9f4feedc4.html["SAP HANA 관리 가이드"].
@@ -198,6 +205,7 @@ NOTE: 루트 키가 변경되면 새로운 루트 키를 사용하여 이전에 
 
 
 
+[[backup-operations]]
 == 백업 작업
 
 SnapCenter 단일 또는 여러 테넌트가 있는 HANA MDC 시스템의 스냅샷 백업 작업을 지원합니다. SnapCenter HANA MDC 시스템의 두 가지 다른 복원 작업도 지원합니다. 전체 시스템, 시스템 DB 및 모든 테넌트를 복원할 수도 있고, 하나의 테넌트만 복원할 수도 있습니다. SnapCenter 이러한 작업을 실행하려면 몇 가지 전제 조건이 있습니다.
@@ -223,6 +231,7 @@ image:hana-sc-generic-image-014.png["너비=601, 높이=237"]
 
 
 
+[[backup-retention-management]]
 == 백업 보존 관리
 
 데이터 백업 보존 관리 및 로그 백업 정리정돈 은 보존 관리를 포함하여 5가지 주요 영역으로 나눌 수 있습니다.
@@ -240,18 +249,21 @@ image:hana-sc-generic-image-015.png["너비=601, 높이=309"]
 
 
 
+[[retention-management-of-local-backups-at-the-primary-storage]]
 === 운영 스토리지에서 로컬 백업의 보존 관리
 
 SnapCenter SnapCenter 백업 정책에 정의된 보존 기간에 따라 기본 스토리지와 SnapCenter 저장소에서 스냅샷 복사본을 삭제하여 SAP HANA 데이터베이스 백업과 비데이터 볼륨 백업의 정리 작업을 처리합니다. SnapCenter 의 각 백업 워크플로에는 보존 관리가 포함되어 있습니다. 기본 저장소의 로컬 백업도 SnapCenter 에서 수동으로 삭제할 수 있습니다.
 
 
 
+[[retention-management-of-file-based-backups]]
 === 파일 기반 백업의 보존 관리
 
 SnapCenter SnapCenter 백업 정책에 정의된 보존 기간에 따라 파일 시스템의 백업을 삭제하여 파일 기반 백업의 정리 작업을 처리합니다. SnapCenter 의 각 백업 워크플로우에서는 보존 관리 로직이 실행됩니다.
 
 
 
+[[retention-management-of-backups-at-the-secondary-storage-snapvault]]
 === 보조 저장소(SnapVault)에서의 백업 보존 관리
 
 보조 저장소(SnapVault)에서 백업의 보존 관리를 담당하는 ONTAP 은 ONTAP 보호 관계에 정의된 보존을 기반으로 관리합니다. SnapCenter 저장소의 보조 저장소에서 이러한 변경 사항을 동기화하기 위해 SnapCenter 예약된 정리 작업을 사용합니다. 이 정리 작업은 모든 SnapCenter 플러그인과 모든 리소스에 대한 모든 보조 저장소 백업을 SnapCenter 저장소와 동기화합니다.
@@ -260,18 +272,21 @@ SnapCenter SnapCenter 백업 정책에 정의된 보존 기간에 따라 파일 
 
 
 
+[[retention-management-of-backups-at-the-secondary-storage-anf-backup]]
 === 2차 저장소(ANF 백업)에서의 백업 보존 관리
 
 ANF ​​백업의 보존은 SnapCenter 에서 구성하고 처리합니다. SnapCenter SnapCenter 백업 정책에 정의된 보존 기간에 따라 백업을 삭제하여 ANF 백업의 정리 작업을 처리합니다. SnapCenter 의 각 백업 워크플로에는 보존 관리가 포함되어 있습니다.
 
 
 
+[[retention-management-of-data-backups-within-the-sap-hana-backup-catalog]]
 === SAP HANA 백업 카탈로그 내에서 데이터 백업의 보존 관리
 
 SnapCenter 백업, 로컬 스냅샷 또는 파일 기반을 삭제하거나 SnapCenter 보조 저장소에서 백업 삭제를 식별한 경우, 이 데이터 백업은 SAP HANA 백업 카탈로그에서도 삭제됩니다. SnapCenter 기본 저장소에서 로컬 스냅샷 백업에 대한 SAP HANA 카탈로그 항목을 삭제하기 전에 백업이 보조 저장소에 여전히 있는지 확인합니다.
 
 
 
+[[retention-management-of-log-backups]]
 === 로그 백업의 보존 관리
 
 SAP HANA 데이터베이스는 자동으로 로그 백업을 생성합니다. 이러한 작업은 SAP HANA에 구성된 백업 디렉토리에 각 SAP HANA 서비스에 대한 백업 파일을 생성합니다. 최신 데이터 백업보다 오래된 로그 백업은 더 이상 전방 복구에 필요하지 않으므로 삭제할 수 있습니다. SnapCenter 다음 단계를 실행하여 파일 시스템 수준과 SAP HANA 백업 카탈로그에서 로그 파일 백업의 정리 작업을 처리합니다.

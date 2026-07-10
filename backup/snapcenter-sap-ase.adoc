@@ -18,6 +18,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 SAP ASE 데이터베�
 
 
 
+[[introduction]]
 == 소개
 
 이 문서는 전체 환경을 설정하는 방법을 단계별로 설명하는 것이 아니라 다음과 관련된 개념과 관련 세부 사항을 다룹니다.
@@ -32,6 +33,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 SAP ASE 데이터베�
 
 
 
+[[example-configuration-overview]]
 === 구성 개요 예
 
 Azure 플랫폼에서 실행되는 SAP 시스템용 SnapCenter ASE 플러그인의 예 구현.
@@ -43,12 +45,14 @@ NOTE: 이 구현에서는 필요한 최소 볼륨 구성에 대해 설명합니�
 
 
 
+[[demo-environment]]
 === 데모 환경
 
 image:sc-sap-ase-image01.png["사용된 데모 환경을 강조하는 그림"]
 
 
 
+[[software-versions]]
 === 소프트웨어 버전
 
 [cols="50%, 50%"]
@@ -69,6 +73,7 @@ image:sc-sap-ase-image01.png["사용된 데모 환경을 강조하는 그림"]
 |===
 
 
+[[ase-volume-design]]
 === ASE 볼륨 설계
 
 SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃 을 사용해야 합니다. 예제 구성은 <SID>:A01을 사용합니다.
@@ -121,6 +126,7 @@ SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 �
 |===
 
 
+[[steps-to-protect-database-a01]]
 === 데이터베이스 A01을 보호하는 단계
 
 * 샘플 레이아웃에 따라 파일 배포를 확인합니다
@@ -132,6 +138,7 @@ SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 �
 
 
 
+[[prerequisites-on-host]]
 === 호스트에 대한 사전 요구 사항
 
 자세한 최신 정보가 제공될 수 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html["여기"]있습니다.
@@ -150,6 +157,7 @@ SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 �
 
 
 
+[[prerequisites-for-the-database-enable-logging-and-backups]]
 === 데이터베이스 사전 요구 사항 – 로깅 및 백업을 사용하도록 설정합니다
 
 * 백업 및 log_archives에 대한 디렉토리 생성(/Sybase/A01/backups, /Sybase/A01/log_archives)
@@ -198,6 +206,7 @@ SAP ASE 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 �
 
 
 
+[[optional-create-dedicated-database-user]]
 === 선택 사항 – 전용 데이터베이스 사용자를 생성합니다
 
 SAP 환경의 경우 사용자 sapsa를 사용할 수 있습니다.
@@ -223,6 +232,7 @@ SAP 환경의 경우 사용자 sapsa를 사용할 수 있습니다.
 
 
 
+[[deploy-snapcenter-agent-to-host-vm-a01]]
 === 호스트 VM-A01에 SnapCenter 에이전트를 배포합니다
 
 자세한 내용은 에서 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter 설명서"]확인할 수 있습니다.
@@ -233,6 +243,7 @@ image:sc-sap-ase-image02.png["호스트 추가 대화 상자 스크린 샷"]
 
 
 
+[[create-snapcenter-instance-resource-configuration-for-database-a01]]
 === 데이터베이스 A01에 대한 SnapCenter 인스턴스 리소스 구성을 생성합니다
 
 리소스 -> SAP ASE -> 리소스 추가
@@ -300,6 +311,7 @@ image:sc-sap-ase-image06.png["리소스 설정 사용자 지정 키-값 쌍 대�
 |===
 
 
+[[sequence-to-recover-system-a01]]
 === 시스템 A01을 복구하는 순서
 
 . SAP 시스템 A01(데이터베이스 포함)을 중지하고 sapinit를 중지합니다
@@ -316,6 +328,7 @@ image:sc-sap-ase-image06.png["리소스 설정 사용자 지정 키-값 쌍 대�
 
 
 
+[[recover-instance-a01]]
 === 인스턴스 A01을 복구합니다
 
 * 호스트 VM-A01에서 SAP 시스템 + DB A01을 중지합니다
@@ -398,10 +411,12 @@ image:sc-sap-ase-image11.png["스냅샷 복구 요약 스크린 샷"]
 
 
 
+[[additional-information-and-version-history]]
 == 추가 정보 및 버전 기록
 
 
 
+[[quiesce-vs-prepare]]
 === 정지 vs 준비
 
 https://help.sap.com/docs/SAP_ASE/4e870f06a15b4bbeb237cca890000421/d9d3ce996bdd415693cdb17663bfc0e3.html?locale=en-US&version=16.0.2.0[SAP 도움말 페이지]에 있는 문서를 참조하십시오.
@@ -414,6 +429,7 @@ image:sc-sap-ase-image13.png["데이터베이스 정지 명령 스크린 샷"]
 
 
 
+[[recorded-demos]]
 === 녹화된 데모
 
 다음 녹화 데모를 사용하여 문서를 지원할 수 있습니다.
@@ -424,6 +440,7 @@ video::079554d1-452c-42e5-95f6-b2b900c1fa86[panopto,width=360]
 video::0aba8433-e0d0-4c40-be0a-b2b900c1fb54[panopto,width=360]
 
 
+[[external-documentation]]
 === 외부 문서
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
@@ -447,6 +464,7 @@ video::0aba8433-e0d0-4c40-be0a-b2b900c1fb54[panopto,width=360]
 
 
 
+[[version-history]]
 === 버전 기록
 
 [cols="30%, 30%, 40%"]

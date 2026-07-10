@@ -35,6 +35,7 @@ root     23359  2597  0 11:29 pts/1    00:00:00 grep --color=auto sap
 
 
 
+[[recovery-to-latest-hana-data-volume-backup-savepoint]]
 == 최신 HANA 데이터 볼륨 백업 저장점으로 복구
 
 최신 백업 저장점에 대한 복구는 pr1adm 사용자로 다음 명령을 사용하여 실행됩니다.
@@ -57,6 +58,7 @@ Within hdbsql: RECOVER DATA FOR PR1 USING SNAPSHOT CLEAR LOG
 
 
 
+[[system-database-recovery]]
 === 시스템 데이터베이스 복구
 
 ....
@@ -87,6 +89,7 @@ pr1adm@vm-pr1:/usr/sap/PR1/HDB01>
 ....
 
 
+[[tenant-database-recovery]]
 === 테넌트 데이터베이스 복구
 
 소스 시스템에서 pr1adm 사용자에 대한 사용자 저장소 키가 생성되지 않은 경우 대상 시스템에서 키를 생성해야 합니다. 키에 구성된 데이터베이스 사용자는 테넌트 복구 작업을 실행할 수 있는 권한이 있어야 합니다.
@@ -109,6 +112,7 @@ hdbsql SYSTEMDB=>
 
 
 
+[[recovery-with-forward-recovery-using-logcatalog-backups]]
 == 로그/카탈로그 백업을 사용한 정방향 복구를 사용한 복구
 
 로그 백업과 HANA 백업 카탈로그가 소스 시스템에서 복제되고 있습니다.
@@ -136,6 +140,7 @@ NOTE: 사용 가능한 모든 로그를 사용하여 복구하려면 나중에 �
 
 
 
+[[system-database-recovery]]
 === 시스템 데이터베이스 복구
 
 ....
@@ -165,6 +170,7 @@ recoverSys finished successfully: 2021-02-19 16:07:20
 ....
 
 
+[[tenant-database-recovery]]
 === 테넌트 데이터베이스 복구
 
 ....
@@ -182,6 +188,7 @@ hdbsql SYSTEMDB=>
 
 
 
+[[check-consistency-of-latest-log-backups]]
 == 최신 로그 백업의 일관성을 확인합니다
 
 로그 백업 볼륨 복제는 SAP HANA 데이터베이스에서 실행되는 로그 백업 프로세스와 독립적으로 수행되기 때문에 재해 복구 사이트에 일관되지 않은 로그 백업 파일이 열려 있을 수 있습니다. 최신 로그 백업 파일만 정합성이 보장되지 않을 수 있으며, 이러한 파일은 "hdbbackupcheck" 도구를 사용하여 재해 복구 사이트에서 정방향 복구를 수행하기 전에 확인해야 합니다.

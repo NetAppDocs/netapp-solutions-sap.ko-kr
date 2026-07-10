@@ -20,6 +20,7 @@ summary:
 
 
 
+[[scope-of-this-document]]
 == 이 문서의 범위
 
 이는 전체 환경을 구성하기 위한 단계별 가이드 역할을 하지 않으며 다음을 포함하여 VMFS의 SnapCenter 및 HANA에 대한 세부 사항에 중점을 둡니다.

@@ -18,6 +18,7 @@ summary: 이 섹션에서는 필요 시 Snapshot 백업과 필요 시 블록 무
 
 
 
+[[create-an-on-demand-snapshot-backup]]
 == 필요 시 Snapshot 백업을 생성합니다
 
 다음 단계에 따라 필요 시 Snapshot 백업을 생성합니다.
@@ -78,6 +79,7 @@ sapcc-hana-svm::>
 ....
 
 
+[[create-an-on-demand-block-integrity-check-operation]]
 == 온디맨드 블록 무결성 검사 작업을 생성합니다
 
 Block 무결성 검사 작업은 BlockIntegrityCheck 정책을 선택하여 Snapshot 백업 작업과 같은 방식으로 실행됩니다. 이 정책을 사용하여 백업을 예약할 때 SnapCenter는 시스템 및 테넌트 데이터베이스에 대한 표준 SAP HANA 파일 백업을 생성합니다.

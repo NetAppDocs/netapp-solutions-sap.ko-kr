@@ -21,6 +21,7 @@ NOTE: SAP HANA 단일 호스트 및 SAP HANA 다중 호스트 시스템에서 �
 
 
 
+[[enabling-additional-data-volume-partitions]]
 == 추가 데이터 볼륨 파티션 활성화
 
 추가 데이터 볼륨 파티션을 활성화하려면 SYSTEMDB 구성에서 SAP HANA Studio 또는 Cockpit을 사용하여 global.ini` 내에 다음 항목을 추가합니다.
@@ -34,6 +35,7 @@ NOTE: global.ini` 파일에 수동으로 파라미터를 추가하려면 데이�
 
 
 
+[[volume-configuration-for-single-host-sap-hana-systems]]
 == 단일 호스트 SAP HANA 시스템용 볼륨 구성
 
 여러 파티션이 있는 단일 호스트 SAP HANA 시스템의 볼륨 레이아웃은 한 데이터 볼륨 파티션이 있는 시스템의 레이아웃과 같지만 다른 애그리게이트에 로그 볼륨과 다른 데이터 볼륨으로 저장된 추가 데이터 볼륨이 있는 것과 같습니다. 다음 표에서는 두 개의 데이터 볼륨 파티션이 있는 SAP HANA 단일 호스트 시스템의 구성 예를 보여 줍니다.
@@ -65,6 +67,7 @@ NetApp ONTAP 시스템 관리자 또는 ONTAP CLI를 사용하여 새 데이터 
 
 
 
+[[volume-configuration-for-multiple-host-sap-hana-systems]]
 == 다중 호스트 SAP HANA 시스템을 위한 볼륨 구성
 
 볼륨 레이아웃은 한 개의 데이터 볼륨 파티션이 있는 다중 호스트 SAP HANA 시스템의 레이아웃과 같지만 다른 애그리게이트에 로그 볼륨과 다른 데이터 볼륨으로 저장된 추가 데이터 볼륨이 있는 것과 같습니다. 다음 표에서는 두 개의 데이터 볼륨 파티션이 있는 SAP HANA 다중 호스트 시스템의 구성 예를 보여 줍니다.
@@ -150,6 +153,7 @@ ONTAP 시스템 관리자 또는 ONTAP CLI를 사용하여 새 데이터 볼륨�
 
 
 
+[[host-configuration]]
 == 호스트 구성
 
 섹션에 설명된 작업 외에도 link:hana-aff-nfs-host-setup.html["호스트 설정,"]새 추가 데이터 볼륨에 대한 추가 마운트 지점 및 `fstab` 항목을 생성하고 새 볼륨을 마운트해야 합니다.
@@ -210,6 +214,7 @@ NOTE: 각 데이터 볼륨을 연결하는 데 다른 스토리지 가상 인터
 
 
 
+[[adding-an-additional-data-volume-partition]]
 == 추가 데이터 볼륨 파티션 추가
 
 테넌트 데이터베이스에 대해 다음 SQL 문을 실행하여 테넌트 데이터베이스에 추가 데이터 볼륨 파티션을 추가합니다. 추가 볼륨의 경로를 사용합니다.

@@ -24,12 +24,14 @@ link:../lifecycle/sc-copy-clone-introduction.html["SnapCenter를 사용하여 SA
 
 
 
+[[pre-requisites]]
 == 필수 구성 요소
 
 일반적으로 보호된 리소스가 SnapCenter에 추가되기 전에 SnapMirror 활성 동기화를 설정해야 합니다. SnapMirror 활성 동기화를 설정하기 전에 생성된 백업은 원래 운영 스토리지에만 존재하며 이후에 복제되지 않습니다.
 
 
 
+[[snapcenter-hana-resource-must-be-auto-discovered]]
 === SnapCenter HANA 리소스를 자동으로 검색해야 합니다
 
 VMware VMFS로 구성된 리소스 또는 SnapMirror 활성 동기화로 보호되는 리소스는 이러한 구성에 필요한 특정 작업을 허용하도록 SnapCenter에서 자동으로 검색되어야 합니다.
@@ -40,18 +42,21 @@ SAP HANA 다중 호스트 시스템은 중앙 HANA 플러그인을 사용하여 
 
 
 
+[[snapcenter-for-vmware-vsphere-plugin]]
 === VMware vSphere 플러그인용 SnapCenter
 
 VMware 환경에 SnapCenter for VMware vSphere 플러그인을 구축해야 합니다.
 
 
 
+[[management-ip-address-on-svm-hosting-the-volumes]]
 === 볼륨을 호스팅하는 SVM의 관리 IP 주소입니다
 
 클러스터가 SnapCenter에 추가되더라도 소스 볼륨과 타겟 볼륨을 호스팅하는 SVM에 관리 IP 주소가 구성되어 있어야 합니다.
 
 
 
+[[rest-apis-for-storage-communication]]
 === 스토리지 통신을 위한 REST API
 
 SnapMirror 액티브 동기화를 관리하고 모니터링하려면 REST API에 액세스해야 합니다. 따라서 스토리지 통신에 REST API를 사용하도록 SnapCenter를 구성해야 합니다. 구성 파일 +C:++\++Program Files++\++NetApp+\++SMCore++\++SMCoreServiceHost.dll.config의 "IsRestEnabledForStorageConnection" 매개 변수는 true로 설정해야 합니다.
@@ -67,6 +72,7 @@ image:sc-saphana-vmware-smas-image22.png["논의 중인 내용을 보여 주는 
 
 
 
+[[add-storage-systems]]
 == 스토리지 시스템을 추가합니다
 
 SnapCenter에 대해 REST API를 활성화한 후에 스토리지 시스템을 추가할 수 있다. 개별 SVM이 아닌 두 스토리지 클러스터를 추가해야 합니다.
@@ -77,6 +83,7 @@ image:sc-saphana-vmware-smas-image24.png["논의 중인 내용을 보여 주는 
 
 
 
+[[add-host-snapcenter-for-vmware-vsphere-plugin]]
 == 호스트 추가 – SnapCenter for VMware vSphere 플러그인
 
 SnapCenter의 리소스가 가상화된 VMware 환경에서 실행 중인 경우, SnapCenter는 VMware vSphere용 SnapCenter 플러그인을 활용하여 VMware 계층에서 필요한 단계에 따라 SnapCenter 백업, 복구 및 복제 워크플로우를 확장합니다.
@@ -97,6 +104,7 @@ NOTE: SnapCenter for vSphere 플러그인 자체에는 추가 구성이 필요�
 
 
 
+[[add-host-hana-system]]
 == 호스트 추가 - HANA 시스템
 
 
@@ -113,6 +121,7 @@ image:sc-saphana-vmware-smas-image28.png["논의 중인 내용을 보여 주는 
 
 
 
+[[policy-configuration]]
 == 정책 구성
 
 SnapMirror 활성 동기화로 보호되는 리소스에 사용되는 정책은 SnapCenter에서 SnapMirror 업데이트 작업을 트리거하지 않더라도 SnapMirror 복제를 사용하여 구성해야 합니다.
@@ -123,6 +132,7 @@ image:sc-saphana-vmware-smas-image30.png["논의 중인 내용을 보여 주는 
 
 
 
+[[hana-resource-protection-configuration]]
 == HANA 리소스 보호 구성
 
 특별한 요구 사항이 없습니다. 리소스 보호 구성은 평소와 같이 수행됩니다.

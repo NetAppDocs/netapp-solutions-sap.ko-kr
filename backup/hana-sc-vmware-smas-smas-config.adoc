@@ -18,6 +18,7 @@ summary:
 
 
 
+[[pre-requisites]]
 == 필수 구성 요소
 
 스토리지 클러스터와 관련 SVM이 피어링되어야 합니다.
@@ -30,6 +31,7 @@ image:sc-saphana-vmware-smas-image11.png["논의 중인 내용을 보여 주는 
 
 
 
+[[storage-layout-and-consistency-group-configuration]]
 == 스토리지 레이아웃 및 정합성 보장 그룹 구성
 
 ONTAP 설명서에서는 https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html#key-concepts["ONTAP의 SnapMirror 활성 동기화 개요"] SnapMirror 활성 동기화를 사용하는 정합성 보장 그룹의 개념을 다음과 같이 설명합니다.
@@ -44,6 +46,7 @@ image:sc-saphana-vmware-smas-image12.png["논의 중인 내용을 보여 주는 
 
 
 
+[[initiator-group-configuration]]
 == 이니시에이터 그룹 구성
 
 본 실습 과정에서는 SnapMirror Active Sync 복제에 사용되는 두 스토리지 SVM을 포함한 이니시에이터 그룹을 생성했습니다. 나중에 설명하는 SnapMirror 활성 동기화 구성에서는 이니시에이터 그룹이 복제에 포함되도록 정의합니다.
@@ -59,12 +62,14 @@ NOTE: 비균일 액세스 설정의 경우 ESX-2에 대한 SAN 연결이 없으�
 
 
 
+[[configure-protection-with-ontap-system-manager]]
 == ONTAP System Manager로 보호 구성
 
 image:sc-saphana-vmware-smas-image15.png["논의 중인 내용을 보여 주는 그림"]
 
 
 
+[[consistency-group-and-initiator-group-replication]]
 === 일관성 그룹 및 이니시에이터 그룹 복제
 
 새 일관성 그룹을 생성하고 HANA 시스템의 LUN 3개 모두를 일관성 그룹에 추가해야 합니다.
@@ -84,6 +89,7 @@ image:sc-saphana-vmware-smas-image17.png["논의 중인 내용을 보여 주는 
 
 
 
+[[synchronisation]]
 === 동기화
 
 A700 스토리지 클러스터(소스)에서 새로운 관계가 나열되어 있습니다.
@@ -96,12 +102,14 @@ image:sc-saphana-vmware-smas-image19.png["논의 중인 내용을 보여 주는 
 
 
 
+[[infrastructure-datastore]]
 == 인프라 데이터 저장소
 
 HANA 시스템, SnapCenter 및 vSphere 플러그인의 OS 이미지가 저장되는 데이터 저장소는 HANA 데이터베이스 데이터 저장소에 대해 설명된 것과 동일한 방식으로 복제됩니다.
 
 
 
+[[primary-site]]
 == 기본 사이트
 
 SnapMirror 액티브 동기화 동작은 대칭이며 한 가지 중요한 예외 - 기본 사이트 구성입니다.

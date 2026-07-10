@@ -18,6 +18,7 @@ summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설�
 
 
 
+[[storage-efficiency]]
 == 스토리지 효율성
 
 SSD 구성의 SAP HANA에서는 인라인 중복제거, 볼륨 간 인라인 중복제거, 인라인 압축, 인라인 컴팩션이 지원됩니다.
@@ -26,18 +27,21 @@ HDD 구성에서 스토리지 효율성 기능을 사용하도록 설정하는 �
 
 
 
+[[netapp-flexgroup-volumes]]
 == NetApp FlexGroup 볼륨
 
 SAP HANA에는 NetApp FlexGroup 볼륨 사용이 지원되지 않습니다. SAP HANA의 아키텍처로 인해 FlexGroup 볼륨을 사용할 경우 이점이 없으므로 성능 문제가 발생할 수 있습니다.
 
 
 
+[[netapp-volume-and-aggregate-encryption]]
 == NetApp 볼륨 및 애그리게이트 암호화
 
 SAP HANA에서는 NVE(NetApp Volume Encryption) 및 NAE(NetApp Aggregate Encryption)를 사용할 수 있습니다.
 
 
 
+[[ontap-autonomous-ransomware-protection]]
 == ONTAP 자율 랜섬웨어 보호
 
 ONTAP Autonomous Ransomware Protection으로 생성된 스냅샷은 SAP HANA 데이터베이스의 정방향 복구에 사용할 수 없습니다. 따라서 SAP HANA 데이터 및 로그 볼륨에는 사용하지 않는 것이 좋으며 이러한 볼륨에 대해 비활성화해야 합니다. 랜섬웨어 보호를 위해 변조 방지 스냅샷이 포함된 SnapCenter 기반 데이터 보호를 대신 사용하십시오: link:../backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]. ONTAP Autonomous Ransomware Protection은 /hana/shared와 같은 다른 볼륨에 유용할 수 있습니다.
@@ -46,18 +50,21 @@ ONTAP 클러스터의 볼륨 생성 시 이 기능의 자동 활성화를 비활
 
 
 
+[[quality-of-service]]
 == 서비스 품질
 
 QoS를 사용하면 공유 컨트롤러에서 특정 SAP HANA 시스템 또는 SAP 이외의 애플리케이션에 대한 스토리지 처리량을 제한할 수 있습니다.
 
 
 
+[[production-and-devtest]]
 === 운영 및 개발/테스트
 
 한 가지 사용 사례는 개발 및 테스트 시스템의 처리량을 제한하여 혼합 설정에서 운영 시스템에 영향을 주지 않도록 하는 것입니다. 사이징 프로세스 중에 비운영 시스템의 성능 요구사항을 결정해야 합니다. 개발 및 테스트 시스템은 일반적으로 SAP에서 정의한 운영 시스템 KPI의 20% ~ 50% 범위에서 낮은 성능 값으로 사이징할 수 있습니다. 대규모 쓰기 I/O는 스토리지 시스템에 가장 큰 성능 영향을 미칩니다. 따라서 QoS 처리량 제한은 데이터 및 로그 볼륨에서 해당 쓰기 SAP HANA 스토리지 성능 KPI 값의 백분율로 설정해야 합니다.
 
 
 
+[[shared-environments]]
 === 공유 환경
 
 또 다른 사용 사례는 쓰기가 많은 워크로드의 처리량을 제한하는 것이며, 특히 이러한 워크로드가 지연 시간에 민감한 쓰기 워크로드에 영향을 미치지 않도록 하는 것입니다. 이러한 환경에서는 개별 스토리지 오브젝트의 최대 처리량을 지정된 값으로 제한하기 위해 비공유 처리량 상한 QoS 그룹 정책을 각 SVM(Storage Virtual Machine) 내의 각 LUN에 적용하는 것이 좋습니다. 따라서 단일 워크로드가 다른 워크로드에 부정적인 영향을 미칠 수 있는 가능성이 줄어듭니다.
@@ -84,6 +91,7 @@ NOTE: 이 제한은 읽기에도 적용됩니다. 따라서 SAP HANA 데이터�
 
 
 
+[[netapp-fabricpool]]
 == NetApp FabricPool를 참조하십시오
 
 SAP HANA 시스템의 액티브 운영 파일 시스템에 NetApp FabricPool 기술을 사용하면 안 됩니다. 여기에는 데이터 및 로그 영역을 위한 파일 시스템과 '/HANA/공유' 파일 시스템이 포함됩니다. 따라서 특히 SAP HANA 시스템을 시작할 때 성능을 예측할 수 없습니다.
@@ -97,6 +105,7 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 
 
 
+[[configure-storage]]
 == 스토리지를 구성합니다
 
 다음 개요에는 필요한 스토리지 구성 단계가 요약되어 있습니다. 각 단계는 다음 섹션에서 자세히 설명합니다. 이 단계를 시작하기 전에 스토리지 하드웨어 설정, ONTAP 소프트웨어 설치 및 스토리지 FCP 포트의 SAN 패브릭 연결을 완료합니다.
@@ -111,6 +120,7 @@ FabricPool는 로그 백업을 다른 스토리지 계층으로 이동하는 데
 
 
 
+[[disk-shelf-connections]]
 == 디스크 쉘프 연결
 
 HDD를 사용할 경우 다음 그림과 같이 최대 2개의 DS2246 디스크 쉘프 또는 4개의 DS224C 디스크 쉘프를 하나의 SAS 스택에 연결하여 SAP HANA 호스트에 필요한 성능을 제공할 수 있습니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다.
@@ -123,6 +133,7 @@ image:saphana_fas_fc_image11.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[nvme-disk-shelves]]
 === NVMe 디스크 셸프
 
 각 NS224 NVMe 디스크 쉘프는 다음 그림과 같이 컨트롤러당 2개의 100GbE 포트를 통해 연결됩니다. 각 쉘프 내의 디스크는 HA 쌍의 두 컨트롤러에 균등하게 분산되어야 합니다.
@@ -131,12 +142,14 @@ image:saphana_fas_ns224.png["MVMe 디스크 쉘프 연결"]
 
 
 
+[[aggregate-configuration]]
 == 애그리게이트 구성
 
 일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)에 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다. 이 단계는 사용 가능한 모든 컨트롤러 리소스를 사용할 수 있도록 하는 데 필요합니다. FAS 2000 시리즈 시스템의 경우 한 개의 데이터 집합만으로도 충분합니다.
 
 
 
+[[aggregate-configuration-with-hdds]]
 === HDD를 포함한 애그리게이트 구성
 
 다음 그림에서는 8개의 SAP HANA 호스트에 대한 구성을 보여 줍니다. 각 스토리지 컨트롤러에 4개의 SAP HANA 호스트가 연결되어 있습니다. 각 스토리지 컨트롤러에 하나씩, 두 개의 개별 애그리게이트가 구성됩니다. 각 애그리게이트는 4 × 10 = 40개의 데이터 디스크(HDD)로 구성됩니다.
@@ -145,6 +158,7 @@ image:saphana_fas_fc_image12.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[aggregate-configuration-with-sdd-only-systems]]
 === SDD 전용 시스템을 사용하여 구성을 집계합니다
 
 일반적으로 사용되는 디스크 쉘프 또는 디스크 기술(SSD 또는 HDD)과 관계없이 컨트롤러당 2개의 애그리게이트를 구성해야 합니다.
@@ -155,12 +169,14 @@ image:saphana_fas_fc_image13.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[storage-virtual-machine-configuration]]
 == 스토리지 가상 머신 구성
 
 SAP HANA 데이터베이스를 사용하는 다중 호스트 SAP 환경에는 단일 SVM이 사용될 수 있습니다. 회사 내의 서로 다른 팀에서 관리되는 경우 필요에 따라 SVM을 각 SAP 환경에 할당할 수도 있습니다. 이 문서의 스크린샷과 명령 출력에는 HANA라는 SVM이 사용됩니다.
 
 
 
+[[logical-interface-configuration]]
 == 논리 인터페이스 구성
 
 스토리지 클러스터 구성 내에서 하나의 네트워크 인터페이스(LIF)를 생성하여 전용 FCP 포트에 할당해야 합니다. 예를 들어, 성능상의 이유로 FCP 포트 4개가 필요한 경우 LIF 4개를 생성해야 합니다. 다음 그림은 SVM에 구성된 8개 LIF의 스크린샷을 보여줍니다.
@@ -175,6 +191,7 @@ image:saphana_fas_fc_image15a.png["SVM 생성"]
 
 
 
+[[initiator-groups]]
 == 이니시에이터 그룹
 
 igroup은 각 서버 또는 LUN에 대한 액세스가 필요한 서버 그룹에 대해 구성할 수 있습니다. igroup을 구성하려면 서버의 WWPN(Worldwide Port Name)이 필요합니다.

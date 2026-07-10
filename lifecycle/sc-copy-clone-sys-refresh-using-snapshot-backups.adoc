@@ -18,6 +18,7 @@ SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루션은 SAP 
 
 
 
+[[tenant-names-at-target-system]]
 == 타겟 시스템의 테넌트 이름입니다
 
 SAP HANA 시스템 새로 고침을 수행하는 데 필요한 단계는 아래 그림과 같이 소스 시스템 테넌트 구성 및 타겟 시스템의 필수 테넌트 이름에 따라 다릅니다.
@@ -35,6 +36,7 @@ image:sc-copy-clone-image11.png[""]
 
 
 
+[[system-refresh-workflow-with-enabled-sap-hana-encryption]]
 == SAP HANA 암호화를 사용하도록 설정한 시스템 새로 고침 워크플로
 
 SAP HANA 영구 암호화가 활성화되고 암호화 루트 키에 사용되는 보안 저장소(인스턴스 SFSS 또는 로컬 보안 저장소 LSS)에 따라 대상 시스템에서 SAP HANA 데이터베이스를 복구하기 전에 추가 단계가 필요합니다.
@@ -47,6 +49,7 @@ LSS를 사용하면 루트 키가 HANA 데이터베이스와 함께 단일 작�
 
 
 
+[[secure-store-sfss]]
 === 보안 저장소 SFSS
 
 소스 시스템에서 시스템 데이터베이스뿐 아니라 모든 테넌트 데이터베이스에 대한 암호화 루트 키의 백업을 생성해야 합니다. 복구 작업을 실행하기 전에 백업 파일을 타겟 시스템에 복사하고 루트 키를 백업에서 가져와야 합니다.
@@ -145,6 +148,7 @@ image:sc-copy-clone-image13.png[""]
 
 
 
+[[secure-store-lss]]
 === 보안 저장소 LSS
 
 

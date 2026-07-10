@@ -18,6 +18,7 @@ summary: '이 문서에서는 Ansible Playbook 및 맞춤형 스크립트를 사
 
 
 
+[[solution-overview]]
 == 솔루션 개요
 
 SAP 시스템은 매우 복잡합니다. 하지만 SAP를 사용하는 기업에게는 이러한 시스템이 비즈니스 프로세스의 핵심입니다. SAP 시스템 관리자는 반복적인 일상 운영 작업을 자동화하여 보다 적은 노력으로 더 많은 시스템을 관리하고, 반복 가능한 결과를 산출하고, 인적 오류를 줄일 수 있습니다.
@@ -26,12 +27,14 @@ SAP 시스템은 매우 복잡합니다. 하지만 SAP를 사용하는 기업에
 
 
 
+[[target-audience]]
 === 대상
 
 이 문서는 Ansible 자동화에 대한 경험이 많지 않은 SAP 시스템 관리자를 대상으로 합니다. Ansible을 시작하고, 첫 번째 플레이북을 실행하고, 첫 번째 SAP LaMa 기반 시스템 업데이트 작업을 구성 및 실행하는 데 도움이 될 것입니다.
 
 
 
+[[sap-system-clone-copy-and-refresh-scenarios]]
 === SAP 시스템 클론, 복제 및 업데이트 시나리오
 
 SAP 시스템 복제라는 용어는 SAP 시스템 클론, SAP 시스템 복제 및 SAP 시스템 새로 고침이라는 세 가지 프로세스에 대한 동의어로 자주 사용됩니다. 워크플로우와 사용 사례는 서로 다르므로 서로 다른 작업을 구분하는 것이 중요합니다.
@@ -47,6 +50,7 @@ image:sap-lama-image1.png["NetApp 스토리지와 관련된 SAP 시스템 클론
 
 
 
+[[solution-technology]]
 === 솔루션 기술
 
 전반적인 솔루션은 다음과 같은 주요 구성 요소로 이루어집니다.
@@ -72,6 +76,7 @@ image:sap-lama-image2.png["SAP LaMa 및 NetApp 스토리지 시스템이 SAP Hos
 
 
 
+[[use-case-summary]]
 === 사용 사례 요약
 
 테스트 또는 교육 목적으로 소스 시스템의 데이터를 대상 시스템에서 사용할 수 있도록 해야 하는 시나리오가 몇 가지 있습니다. 현재 데이터 세트에 대해 테스트 및 교육이 수행되도록 하기 위해 이러한 테스트 및 교육 시스템을 정기적으로 소스 시스템의 데이터로 업데이트해야 합니다. 이러한 시스템 업데이트 작업은 인프라, 데이터베이스 및 애플리케이션 계층에 대한 여러 작업으로 구성되며, 자동화 수준에 따라 며칠이 걸릴 수 있습니다.
@@ -84,6 +89,7 @@ image:sap-lama-image3.png["자동화 사용 시 운영 효율성 개선 가능�
 
 
 
+[[integrating-the-different-technology-components]]
 === 다양한 기술 구성 요소 통합
 
 Ansible을 사용하여 SAP LaMa를 NetApp 스토리지 시스템과 통합하려면 Ansible Playbook을 실행할 수 있는 노드가 필요합니다. Ansible Automation Platform을 사용하는 것이 좋습니다. SAP LaMa에서 시작된 이 호스트에서 셸 스크립트 및 Ansible Playbook을 실행하려면 이 서버에서 실행 중인 SAP Host Agent가 필요합니다. SAP Host Agent는 SAP LaMa와의 양방향 통신을 담당하고 실제 플레이북을 트리거하는 셸 스크립트를 실행합니다.
@@ -92,6 +98,7 @@ Ansible을 사용하여 SAP LaMa를 NetApp 스토리지 시스템과 통합하�
 
 
 
+[[conclusion]]
 == 결론
 
 NetApp, SAP LaMa 및 Ansible 자동화 플랫폼을 결합하면 SAP 시스템 관리와 관련된 가장 복잡하고 시간이 많이 소요되는 작업에 필요한 시간과 노력을 대폭 줄일 수 있는 강력한 솔루션을 제공할 수 있습니다. 이러한 조합을 통해 시스템 간에 인적 오류가 발생할 수 있는 구성 편차를 방지할 수도 있습니다.
@@ -100,6 +107,7 @@ NetApp, SAP LaMa 및 Ansible 자동화 플랫폼을 결합하면 SAP 시스템 �
 
 
 
+[[where-to-find-additional-information]]
 == 추가 정보를 찾을 수 있는 위치
 
 이 문서에 설명된 정보에 대한 자세한 내용은 다음 문서 및 웹 사이트를 참조하십시오.
@@ -112,6 +120,7 @@ NetApp, SAP LaMa 및 Ansible 자동화 플랫폼을 결합하면 SAP 시스템 �
 
 
 
+[[version-history]]
 == 버전 기록
 
 [cols="25,25,50"]

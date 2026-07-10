@@ -24,6 +24,7 @@ https://docs.netapp.com["https://docs.netapp.com"^]
 
 
 
+[[version-history]]
 == 버전 기록
 
 |===

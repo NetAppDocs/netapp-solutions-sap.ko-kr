@@ -18,12 +18,14 @@ summary: 이 섹션에 설명된 모든 호스트 설정 단계는 물리적 서
 
 
 
+[[configuration-parameter-for-suse-linux-enterprise-server]]
 == SUSE Linux Enterprise Server의 구성 매개 변수입니다
 
 SAP HANA에서 생성되는 워크로드에 따라 각 SAP HANA 호스트의 추가 커널 및 구성 매개 변수를 조정해야 합니다.
 
 
 
+[[suse-linux-enterprise-server-12-and-15]]
 === SUSE Linux Enterprise Server 12 및 15
 
 SUSE Linux Enterprise Server 12 SP1부터 '/etc/sysctl.d' 디렉토리의 구성 파일에 커널 매개 변수를 설정해야 합니다. 예를 들어, 이름이 91-netapp-hana.conf 인 구성 파일을 만들어야 합니다.
@@ -47,6 +49,7 @@ NOTE: SAP OS용 SLES 버전에 포함된 Saptune을 사용하여 이러한 값�
 
 
 
+[[configuration-parameters-for-red-hat-enterprise-linux-7-2-or-later]]
 == Red Hat Enterprise Linux 7.2 이상에 대한 구성 매개 변수
 
 SAP HANA에서 생성되는 워크로드에 대해 각 SAP HANA 호스트에서 추가 커널 및 구성 매개 변수를 조정해야 합니다.
@@ -72,6 +75,7 @@ NOTE: RedHat Enterprise Linux 버전 8.6부터 SAP용 RHEL 시스템 역할(Ansi
 
 
 
+[[create-subdirectories-in-hanashared-volume]]
 == /HANA/공유 볼륨에 하위 디렉토리를 생성합니다
 
 
@@ -110,6 +114,7 @@ sapcc-hana-tst-06:/mnt # umount /mnt/tmp
 ....
 
 
+[[create-mount-points]]
 == 마운트 지점을 생성합니다
 
 
@@ -189,6 +194,7 @@ sapcc-hana-tst-08:~ # chmod -R 777 /usr/sap/NF2
 ....
 
 
+[[mount-file-systems]]
 == 파일 시스템을 마운트합니다
 
 NFS 버전 및 ONTAP 릴리즈별로 다른 마운트 옵션을 사용해야 합니다. 다음 파일 시스템이 호스트에 마운트되어야 합니다.

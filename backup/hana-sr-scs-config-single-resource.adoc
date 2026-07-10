@@ -41,6 +41,7 @@ image:saphana-sr-scs-image29.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[snapcenter-configuration]]
 == SnapCenter 구성
 
 다음 그림은 랩 설정과 필요한 SnapCenter 구성의 개요를 보여 줍니다.
@@ -73,6 +74,7 @@ image:saphana-sr-scs-image33.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[snapcenter-backup-operation]]
 == SnapCenter 백업 작업
 
 이제 백업 작업이 평소와 같이 실행됩니다. 데이터 및 로그 백업의 하우스키핑은 어떤 SAP HANA 호스트가 기본 또는 보조 호스트인지 독립적으로 수행됩니다.
@@ -96,6 +98,7 @@ image:saphana-sr-scs-image36.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[restore-and-recovery]]
 == 복원 및 복구
 
 앞에서 설명한 대로 선택한 백업이 생성된 위치를 확인하여 필요한 복원 작업을 정의할 수 있어야 합니다. SAP HANA 데이터베이스가 아직 온라인 상태인 경우 SAP HANA Studio를 사용하여 백업이 생성된 호스트를 확인할 수 있습니다. 데이터베이스가 오프라인 상태인 경우 이 정보는 SnapCenter 백업 작업 로그에서만 사용할 수 있습니다.
@@ -124,6 +127,7 @@ image:saphana-sr-scs-image38.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[snapcenter-restore-of-the-valid-backup-only]]
 === 유효한 백업의 SnapCenter 복구만 가능합니다
 
 다음 그림에서는 이 섹션에서 설명하는 복원 및 복구 시나리오의 개요를 보여 줍니다.
@@ -167,6 +171,7 @@ image:saphana-sr-scs-image44.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[snapcenter-restore-of-valid-backup-and-crash-image]]
 === 유효한 백업 및 충돌 이미지의 SnapCenter 복원
 
 다음 그림에서는 이 섹션에서 설명하는 복원 및 복구 시나리오의 개요를 보여 줍니다.

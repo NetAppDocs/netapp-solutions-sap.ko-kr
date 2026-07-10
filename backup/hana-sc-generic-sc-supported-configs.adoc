@@ -13,6 +13,7 @@ SnapCenter 온프레미스 및 클라우드 스토리지 플랫폼 전반에서 
 
 
 
+[[supported-sap-hana-configurations]]
 == 지원되는 SAP HANA 구성
 
 SnapCenter 다음과 같은 HANA 구성과 기능을 지원합니다.
@@ -35,6 +36,7 @@ SnapCenter 다음과 같은 HANA 구성과 기능을 지원합니다.
 
 
 
+[[supported-platform-and-infrastructure-configurations]]
 == 지원되는 플랫폼 및 인프라 구성
 
 SnapCenter 다음과 같은 호스트 플랫폼, 파일 시스템 및 스토리지 플랫폼의 조합을 지원합니다.
@@ -71,10 +73,12 @@ NOTE: HANA 및 Linux 플러그인은 Intel CPU 플랫폼에서만 사용할 수 
 
 
 
+[[supported-features-and-operations]]
 == 지원되는 기능 및 작업
 
 
 
+[[abbreviation-explanation]]
 === 약어 설명
 
 * VBSR: 볼륨 기반 SnapRestore + 볼륨 기반 SnapRestore 볼륨을 스냅샷 상태로 되돌립니다.
@@ -85,6 +89,7 @@ NOTE: HANA 및 Linux 플러그인은 Intel CPU 플랫폼에서만 사용할 수 
 
 
 
+[[ontap-aff-and-fsx-for-ontap]]
 === ONTAP AFF 및 ONTAP 용 FSx
 
 
@@ -175,6 +180,7 @@ NOTE: 아래 표의 열 1(NFS 마운트)만 FSx for ONTAP 과 관련이 있습�
 
 
 
+[[ontap-asa]]
 === ONTAP ASA
 
 [cols="40%,30%,30%"]
@@ -262,6 +268,7 @@ NOTE: 아래 표의 열 1(NFS 마운트)만 FSx for ONTAP 과 관련이 있습�
 
 
 
+[[azure-netapp-files]]
 === Azure NetApp Files
 
 [cols="60%,40%"]

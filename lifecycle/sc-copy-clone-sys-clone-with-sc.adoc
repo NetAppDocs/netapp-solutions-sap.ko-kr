@@ -28,17 +28,29 @@ summary: SAP 라이프사이클 관리를 최적화하기 위한 NetApp 솔루�
 NOTE: 시스템을 다른 스냅샷 백업으로 재설정해야 하는 경우 6단계와 4단계만으로 충분합니다. SAP HANA 공유 볼륨은 계속 마운트될 수 있습니다.
 
 +
-시스템이 더 이상 필요하지 않은 경우 다음 단계를 수행하여 정리 프로세스를 수행합니다.
+시스템이 더 이상 필요하지 않은 경우, 다음 단계에 따라 정리 프로세스를 수행합니다.
 
-. 데이터베이스 종료를 포함한 SAP HANA 데이터 볼륨에 대한 SnapCenter 클론 삭제 워크플로우
-. SAP HANA 서비스 중지
-. SAP HANA 공유 볼륨에 대한 SnapCenter 클론 삭제 워크플로우
++
+.. 데이터베이스 종료를 포함하여 SAP HANA 데이터 볼륨에 대한 SnapCenter 클론 삭제 워크플로를 수행합니다.
++
+[NOTE]
+====
+SnapCenter 클론 삭제 워크플로는 기본적으로  `/etc/fstab` 항목을 삭제하지 않습니다.
+
+ `/etc/fstab` 항목이 클론 삭제 과정에서 자동으로 삭제되려면 먼저 클론을 복구하고 자동 검색 리소스로 설정해야 합니다. 이 단계를 수행하지 않으면  `/etc/fstab` 항목이 자동으로 삭제되지 않으므로 수동으로 제거해야 합니다.
+
+====
+.. SAP HANA 서비스 중지
+.. SAP HANA 공유 볼륨에 대한 SnapCenter 클론 삭제 워크플로를 수행합니다.
+
+
 
 
 image:sc-copy-clone-image9.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"]
 
 
 
+[[prerequisites-and-limitations]]
 == 사전 요구 사항 및 제한 사항
 
 다음 섹션에서 설명하는 워크플로에는 SAP HANA 시스템 아키텍처 및 SnapCenter 구성과 관련된 몇 가지 사전 요구 사항과 제한 사항이 있습니다.
@@ -51,6 +63,7 @@ image:sc-copy-clone-image9.png["입력/출력 대화 상자 또는 작성된 내
 
 
 
+[[lab-setup]]
 == 랩 설정
 
 아래 그림은 시스템 클론 작업에 사용된 실습 설정입니다.
@@ -69,6 +82,7 @@ image:sc-copy-clone-image41.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[target-host-preparation]]
 == 타겟 호스트 준비
 
 이 섹션에서는 시스템 클론 타겟으로 사용되는 서버에서 필요한 준비 단계를 설명합니다.
@@ -79,6 +93,7 @@ image:sc-copy-clone-image41.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[target-server-host-name-and-ip-address]]
 === * 대상 서버 호스트 이름 및 IP 주소 *
 
 타겟 서버의 호스트 이름은 소스 시스템의 호스트 이름과 동일해야 합니다. IP 주소는 다를 수 있습니다.
@@ -91,6 +106,7 @@ NOTE: 실습 설정에서는 대상 시스템의 호스트 이름을 대상 시�
 
 
 
+[[install-required-software]]
 === * 필요한 소프트웨어를 설치합니다 *
 
 SAP Host Agent 소프트웨어를 타겟 서버에 설치해야 합니다. 자세한 내용은 SAP 도움말 포털에서 를 https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/8b/92b1cf6d5f4a7eac40700295ea687f/content.htm?no_cache=true["SAP 호스트 에이전트"] 참조하십시오.
@@ -99,6 +115,7 @@ SnapCenter SAP HANA 플러그인은 SnapCenter 내에서 호스트 추가 작업
 
 
 
+[[configure-users-ports-and-sap-services]]
 === * 사용자, 포트 및 SAP 서비스 구성 *
 
 SAP HANA 데이터베이스에 필요한 사용자 및 그룹은 타겟 서버에서 사용할 수 있어야 합니다. 일반적으로 중앙 사용자 관리가 사용되므로 대상 서버에서 구성 단계가 필요하지 않습니다. SAP HANA 데이터베이스에 필요한 포트는 타겟 호스트에서 구성해야 합니다. /etc/services 파일을 타겟 서버로 복사하여 소스 시스템에서 구성을 복사할 수 있습니다.
@@ -112,6 +129,7 @@ limit.descriptors=1048576
 ....
 
 
+[[prepare-log-and-log-backup-volume]]
 === 로그 및 로그 백업 볼륨을 준비합니다
 
 소스 시스템에서 로그 볼륨을 클론할 필요가 없고 로그 지우기 옵션을 사용하여 모든 복구가 수행되므로 타겟 호스트에서 빈 로그 볼륨을 준비해야 합니다.
@@ -146,6 +164,7 @@ drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:14 SYSTEMDB
 ....
 
 
+[[prepare-file-system-mounts]]
 === * 파일 시스템 마운트 준비 *
 
 데이터와 공유 볼륨에 대한 마운트 지점을 준비해야 합니다.
@@ -154,6 +173,7 @@ drwxr-xr-- 2 ss1adm sapsys 4096 Dec 1 06:14 SYSTEMDB
 
 
 
+[[prepare-script-execution]]
 === * 스크립트 실행 준비 *
 
 대상 시스템에서 실행해야 하는 스크립트를 SnapCenter allowed commands config 파일에 추가해야 합니다.
@@ -168,6 +188,7 @@ hana-7:/opt/NetApp/snapcenter/scc/etc #
 ....
 
 
+[[cloning-the-hana-shared-volume]]
 == HANA 공유 볼륨 클론 생성
 
 . 소스 시스템 SS1 공유 볼륨에서 스냅샷 백업을 선택하고 클론 을 클릭합니다.
@@ -247,6 +268,7 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 ....
 
 
+[[cloning-additional-sap-application-services]]
 == 추가 SAP 애플리케이션 서비스 클론 생성
 
 추가 SAP 애플리케이션 서비스는 "SAP HANA 공유 볼륨 클론 복제" 섹션에 설명된 것처럼 SAP HANA 공유 볼륨과 동일한 방식으로 클론 복제됩니다. 물론 SAP 애플리케이션 서버에 필요한 스토리지 볼륨도 SnapCenter로 보호해야 합니다.
@@ -255,6 +277,7 @@ hana-1:/mnt/sapcc-share/SAP-System-Refresh #
 
 
 
+[[cloning-the-data-volume-and-recovery-of-the-hana-database]]
 == HANA 데이터베이스의 클론 복제 및 복구
 
 . 소스 시스템 SS1에서 SAP HANA 스냅샷 백업을 선택합니다.

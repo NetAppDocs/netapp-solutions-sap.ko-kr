@@ -24,6 +24,7 @@ image:sc-saphana-vmware-smas-image1.png["논의 중인 내용을 보여 주는 �
 
 
 
+[[software-versions]]
 == 소프트웨어 버전
 
 [cols="50%,50%"]

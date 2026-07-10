@@ -20,6 +20,7 @@ SnapCenter는 NetApp에서 제공하는 Data Fabric의 엔드 포인트 전체�
 
 
 
+[[snapcenter-components]]
 == SnapCenter 구성 요소
 
 SnapCenter에는 SnapCenter 서버, Windows용 SnapCenter 플러그인 패키지 및 Linux용 SnapCenter 플러그인 패키지가 포함되어 있습니다. 각 패키지에는 다양한 애플리케이션 및 인프라 구성요소를 위한 SnapCenter용 플러그인이 포함되어 있습니다.
@@ -28,6 +29,7 @@ image:amazon-fsx-image5.png["입력/출력 대화 상자 또는 작성된 내용
 
 
 
+[[snapcenter-sap-hana-backup-solution]]
 == SnapCenter SAP HANA 백업 솔루션
 
 SAP HANA용 SnapCenter 백업 솔루션은 다음과 같은 영역을 다룹니다.
@@ -82,6 +84,7 @@ SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할
 
 
 
+[[scope-of-this-document]]
 == 이 문서의 범위
 
 이 문서에서는 FSx for ONTAP 에서 단일 테넌트를 사용하는 SAP HANA MDC 단일 호스트 시스템에 대한 가장 일반적인 SnapCenter 구성 옵션을 설명합니다. 다른 구성 옵션도 가능하며, 경우에 따라 특정 SAP HANA 시스템(예: 다중 호스트 시스템)에 필요할 수 있습니다. 다른 구성 옵션에 대한 자세한 설명은 다음을 참조하십시오. link:hana-sc-generic-concepts.html["SnapCenter 개념 및 모범 사례(netapp.com)"^].
@@ -90,6 +93,7 @@ SAP HANA 데이터베이스의 스토리지 기반 스냅샷 백업을 실행할
 
 
 
+[[data-protection-strategy]]
 == 데이터 보호 전략
 
 다음 그림은 ONTAP용 FSx에서 SAP HANA를 위한 일반적인 백업 아키텍처를 보여줍니다. HANA 시스템은 AWS 가용성 영역 1에 있으며 동일한 가용성 영역 내에서 ONTAP 파일 시스템용 FSx를 사용합니다. 스냅샷 백업 작업은 HANA 데이터베이스의 데이터와 공유 볼륨에 대해 실행됩니다. 3-5일 동안 유지되는 로컬 스냅샷 백업 외에도 장기 보존을 위해 오프사이트 스토리지에도 백업이 복제됩니다. 오프사이트 백업 스토리지는 다른 AWS 가용성 영역에 있는 ONTAP 파일 시스템용 두 번째 FSx입니다. HANA 데이터 및 공유 볼륨의 백업은 SnapVault를 통해 ONTAP 파일 시스템용 두 번째 FSx로 복제되며 2-3주 동안 유지됩니다.
@@ -177,6 +181,7 @@ LocalSnapshot 정책은 운영, 개발 및 테스트 시스템에 사용되어 2
 
 
 
+[[example-lab-setup]]
 == 실습 설정 예
 
 다음 실습 설정은 이 문서의 나머지 부분에 대한 예제 구성으로 사용되었습니다.

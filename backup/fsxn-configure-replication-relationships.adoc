@@ -24,6 +24,7 @@ SnapMirror 구성 옵션에 대한 자세한 내용은 의 ONTAP 문서를 참�
 
 
 
+[[peer-fsx-for-ontap-file-systems]]
 == ONTAP 파일 시스템용 피어 FSx
 
 ....
@@ -74,6 +75,7 @@ FsxId05f7f00af49dc7a3e    1-80-000011           Available      ok
 ....
 
 
+[[peer-svms]]
 == 피어 SVM
 
 ....
@@ -96,6 +98,7 @@ sapcc-backup-target-zone5
 ....
 
 
+[[create-a-target-volume]]
 == 타겟 볼륨을 생성합니다
 
 복제 대상으로 플래그를 지정하려면 타겟 볼륨을 "DP" 유형으로 생성해야 합니다.
@@ -106,6 +109,7 @@ FsxId05f7f00af49dc7a3e::> volume create -vserver sapcc-backup-target-zone5  -vol
 ....
 
 
+[[create-a-snapmirror-policy]]
 == SnapMirror 정책을 생성합니다
 
 SnapMirror 정책과 추가된 규칙은 복제해야 하는 스냅샷을 식별하기 위해 보존 및 SnapMirror 레이블을 정의합니다. 나중에 SnapCenter 정책을 생성할 때 동일한 레이블을 사용해야 합니다.
@@ -127,6 +131,7 @@ FsxId00fa9e3c784b6abbb
 ....
 
 
+[[create-snapmirror-relationship]]
 == SnapMirror 관계를 생성합니다
 
 이제 소스 볼륨과 타겟 볼륨 간의 관계는 물론 XDP 유형 및 앞서 생성한 정책도 정의됩니다.
@@ -137,6 +142,7 @@ Operation succeeded: snapmirror create for the relationship with destination "sa
 ....
 
 
+[[initialize-snapmirror]]
 == SnapMirror를 초기화합니다
 
 이 명령을 사용하면 초기 복제가 시작됩니다. 소스 볼륨에서 타겟 볼륨으로의 모든 데이터 전송입니다.

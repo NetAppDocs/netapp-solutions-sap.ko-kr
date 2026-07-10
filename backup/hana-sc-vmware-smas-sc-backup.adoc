@@ -20,6 +20,7 @@ image:sc-saphana-vmware-smas-image31.png["논의 중인 내용을 보여 주는 
 
 
 
+[[topology-view]]
 == 토폴로지 뷰
 
 토폴로지 보기 내에 SnapCenter는 소스 및 대상 스토리지 클러스터의 백업을 모두 보여 줍니다.
@@ -34,6 +35,7 @@ image:sc-saphana-vmware-smas-image34.png["논의 중인 내용을 보여 주는 
 
 
 
+[[snapshots-at-storage-systems]]
 == 스토리지 시스템의 스냅샷
 
 SnapCenter에서 생성된 스냅샷 백업은 두 스토리지 시스템의 두 HANA 데이터 볼륨에서 사용할 수 있습니다. ONTAP은 일관성 그룹 레벨에 추가 스냅샷을 생성하며, 다른 모든 HANA 볼륨에서도 사용할 수 있습니다.

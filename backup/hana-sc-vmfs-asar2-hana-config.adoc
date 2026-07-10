@@ -15,6 +15,7 @@ summary:
 
 
 
+[[configure-snapcenter-database-user]]
 == SnapCenter 데이터베이스 사용자 구성
 
 시스템 데이터베이스 사용자에 대한 사용자 저장소를 만들어야 하며, 이 저장소는 SnapCenter에서 사용해야 합니다.
@@ -23,6 +24,7 @@ image:sc-hana-asrr2-vmfs-image8.png["논의 중인 내용을 보여 주는 그�
 
 
 
+[[configure-hdb-userstore-key]]
 == hdb userstore 키 구성
 
 사용자 vfsadm에 대한 사용자 저장소 키를 생성해야 합니다. 포트 통신을 위해 HANA 인스턴스 번호도 그에 맞게 설정해야 합니다. 설치 인스턴스 번호 "45"이 사용됩니다.

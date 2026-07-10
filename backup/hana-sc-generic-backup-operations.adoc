@@ -27,6 +27,7 @@ SnapCenter 다음과 같은 백업 작업을 지원합니다.
 
 
 
+[[sap-hana-snapshot-backups-in-snapcenter]]
 == SnapCenter 의 SAP HANA 스냅샷 백업
 
 SnapCenter 리소스 토폴로지는 SnapCenter 에서 생성된 백업 목록을 보여줍니다. 다음 그림은 기본 저장소에서 사용 가능한 백업을 보여주며 가장 최근의 백업을 강조 표시합니다.
@@ -43,6 +44,7 @@ image:hana-sc-generic-image-066.png["너비=601, 높이=293"]
 
 
 
+[[sap-hana-snapshot-backups-in-sap-hana-studio]]
 == SAP HANA Studio에서 SAP HANA 스냅샷 백업
 
 SAP HANA MDC 시스템의 스토리지 스냅샷을 사용하여 백업을 수행하면 데이터 볼륨의 스냅샷 복사본이 생성됩니다. 이 데이터 볼륨에는 시스템 데이터베이스의 데이터와 모든 테넌트 데이터베이스의 데이터가 포함되어 있습니다. 이러한 물리적 아키텍처를 반영하기 위해 SAP HANA는 SnapCenter 스냅샷 백업을 트리거할 때마다 시스템 데이터베이스와 모든 테넌트 데이터베이스의 결합된 내부 데이터베이스 스냅샷을 내부적으로 수행합니다. 이로 인해 SAP HANA 백업 카탈로그에 여러 개의 별도 백업 항목이 생성됩니다. 하나는 시스템 데이터베이스용이고 다른 하나는 각 테넌트 데이터베이스용입니다.
@@ -58,6 +60,7 @@ NOTE: SnapCenter 자체 백업만 인식합니다. 예를 들어 SAP HANA Studio
 
 
 
+[[sap-hana-snapshot-backups-on-storage-layer]]
 == 스토리지 계층의 SAP HANA 스냅샷 백업
 
 스토리지 계층의 백업을 보려면 NetApp System Manager를 사용하여 데이터베이스 볼륨을 선택하면 됩니다. 다음 스크린샷은 기본 저장소에서 SS1_data_mnt00001 데이터베이스 볼륨에 대해 사용 가능한 백업을 보여줍니다. 강조 표시된 백업은 이전 이미지에서 SnapCenter 와 SAP HANA Studio에 표시된 백업이며 동일한 명명 규칙을 따릅니다.
@@ -70,6 +73,7 @@ image:hana-sc-generic-image-070.png["너비=601, 높이=294"]
 
 
 
+[[sap-hana-snapshot-backups-with-anf]]
 == ANF를 사용한 SAP HANA 스냅샷 백업
 
 다음 스크린샷은 Azure NetApp Files 사용한 HANA 시스템의 토폴로지 보기를 보여줍니다. 이 HANA 시스템의 경우 로컬 스냅샷 백업과 ANF 백업을 사용한 백업 복제가 구성되었습니다.
@@ -90,6 +94,7 @@ image:hana-sc-generic-image-074.png["너비=601, 높이=216"]
 
 
 
+[[snapshot-backups-of-non-data-volumes]]
 == 비데이터 볼륨의 스냅샷 백업
 
 SnapCenter 리소스 토폴로지는 비데이터 볼륨에 대한 백업 목록을 보여줍니다. 다음 그림에서는 HANA 공유 볼륨의 백업이 나열되어 있습니다.
@@ -98,6 +103,7 @@ image:hana-sc-generic-image-075.png["너비=601, 높이=294"]
 
 
 
+[[backup-workflow-for-hana-database-backups]]
 == HANA 데이터베이스 백업을 위한 백업 워크플로
 
 HANA 데이터베이스 스냅샷 백업을 위한 백업 워크플로는 세 가지 주요 섹션으로 구성됩니다.
@@ -147,6 +153,7 @@ image:hana-sc-generic-image-076.png["너비=339, 높이=475"]
 
 
 
+[[backup-workflow-for-non-data-volumes]]
 == 비데이터 볼륨에 대한 백업 워크플로
 
 비데이터 볼륨의 경우 백업 워크플로는 스냅샷 작업과 보존 관리 작업으로 구성됩니다.
@@ -155,6 +162,7 @@ image:hana-sc-generic-image-077.png["너비=329, 높이=404"]
 
 
 
+[[cleanup-of-secondary-backups]]
 == 2차 백업 정리
 
 에서 설명한 대로 link:hana-sc-generic-concepts.html#retention-management-of-backups-at-the-secondary-storage-snapvault["2차 백업에 대한 보존 관리"], 보조 백업 저장소에 대한 데이터 백업의 보존 관리 작업은 ONTAP 에서 처리합니다. SnapCenter 주 단위 기본 일정으로 정리 작업을 실행하여 ONTAP 보조 백업 저장소에서 백업을 삭제했는지 주기적으로 확인합니다.
@@ -169,6 +177,7 @@ image:hana-sc-generic-image-079.png["너비=267, 높이=330"]
 
 
 
+[[change-the-frequency-of-the-snapcenter-cleanup-job]]
 === SnapCenter 정리 작업의 빈도를 변경합니다
 
 SnapCenter 기본적으로 모든 리소스에 대해 주 단위로 정리 작업 SnapCenter_RemoveSecondaryBackup을 실행합니다. 이는 SnapCenter PowerShell cmdlet을 사용하여 변경할 수 있습니다.
@@ -233,6 +242,7 @@ image:hana-sc-generic-image-080.png["너비=601, 높이=257"]
 
 
 
+[[manual-refresh-on-resource-level]]
 === 리소스 레벨의 수동 새로 고침
 
 필요한 경우 리소스의 토폴로지 보기에서 보조 백업의 수동 정리를 실행할 수도 있습니다. 다음 스크린샷에 표시된 것처럼, 보조 백업을 선택하면 SnapCenter 보조 백업 저장소에 있는 백업이 표시됩니다. SnapCenter 새로 고침 아이콘을 사용하여 정리 작업을 실행하여 이 리소스의 백업을 동기화합니다.

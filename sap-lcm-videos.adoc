@@ -18,6 +18,7 @@ SAP 수명 주기 관리를 강조하는 비디오 및 데모 개요
 
 
 
+[[sap-lifecycle-management-videos-and-demos]]
 == SAP Lifecycle Management 비디오 및 데모
 
 * link:https://media.netapp.com/video-detail/c1229d10-fe84-58f1-9cdf-ca3c0f9d9104/ensure-continuity-for-lines-of-business-in-the-face-of-unexpected-events["예상치 못한 이벤트에 직면하여 사업 라인에 대한 연속성을 보장합니다"^]

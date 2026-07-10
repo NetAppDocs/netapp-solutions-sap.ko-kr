@@ -13,6 +13,7 @@ summary:
 
 
 
+[[warning-message-with-virtualized-environments-and-in-guest-mounts]]
 == 가상화 환경 및 게스트 내 마운트에 대한 경고 메시지
 
 예를 들어 NFS 게스트 마운트를 사용하여 VMware를 사용하는 경우 SnapCenter SnapCenter VMware 플러그인을 사용해야 한다는 경고 메시지를 표시합니다. 게스트 내 마운트에는 VMWare 플러그인이 필요하지 않으므로 경고 메시지를 무시하고 끌 수 있습니다. 이 경고를 억제하도록 SnapCenter 구성하려면 다음 구성을 적용해야 합니다.
@@ -25,6 +26,7 @@ image:hana-sc-generic-image-134.png["너비=601, 높이=176"]
 
 
 
+[[deactivate-automated-log-backup-housekeeping]]
 == 자동 로그 백업 관리 기능을 비활성화합니다
 
 로그 백업 하우스키핑은 기본적으로 활성화되어 있으며 HANA 플러그인 호스트 수준에서 비활성화할 수 있습니다. PowerShell 명령을 사용하세요.
@@ -33,6 +35,7 @@ image:hana-sc-generic-image-134.png["너비=601, 높이=176"]
 
 
 
+[[enable-secure-communication-to-hana-database]]
 == HANA 데이터베이스에 대한 보안 통신 지원
 
 HANA 데이터베이스가 보안 통신으로 구성된 경우 SnapCenter 에서 실행되는 hdbsql 명령은 추가 명령줄 옵션을 사용해야 합니다.
@@ -55,6 +58,7 @@ HANA_HDBSQL_CMD = /usr/sap/SM1/HDB12/exe/hdbsqls
 ....
 
 
+[[disable-auto-discovery-on-the-hana-plug-in-host]]
 == HANA 플러그인 호스트에서 자동 검색을 해제합니다
 
 HANA 플러그인 호스트에서 자동 검색을 비활성화하려면 다음 단계를 완료하세요.

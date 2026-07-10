@@ -10,6 +10,7 @@ summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp 
 
 
 
+[[single-host-setup]]
 == 단일 호스트 설정
 
 [role="lead"]
@@ -17,6 +18,7 @@ summary: 호스트를 설정하기 전에 NetApp Support 사이트에서 NetApp 
 
 
 
+[[lun-configuration-for-sap-hana-single-host-systems]]
 == SAP HANA 단일 호스트 시스템에 대한 LUN 구성
 
 Linux LVM은 성능을 높이고 LUN 크기 제한을 해결하는 데 사용됩니다. SAP HANA 호스트에서 다음 표에 나와 있는 것처럼 볼륨 그룹 및 논리적 볼륨을 생성하고 마운트해야 합니다.
@@ -41,6 +43,7 @@ NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우 LSS의 �
 
 
 
+[[create-lvm-volume-groups-and-logical-volumes]]
 === LVM 볼륨 그룹 및 논리 볼륨을 생성합니다
 
 . 모든 LUN을 물리적 볼륨으로 초기화합니다.
@@ -82,6 +85,7 @@ vgchange -a y
 ....
 
 
+[[create-file-systems]]
 === 파일 시스템을 생성합니다
 
 모든 데이터 및 로그 논리 볼륨과 HANA 공유 LUN에 XFS 파일 시스템을 만듭니다.
@@ -96,6 +100,7 @@ NOTE: 여러 호스트 명령 예는 2+1 다중 호스트 HANA 시스템을 보�
 
 
 
+[[create-mount-points]]
 === 마운트 지점을 생성합니다
 
 필요한 마운트 지점 디렉토리를 만들고 데이터베이스 호스트에 대한 권한을 설정합니다.
@@ -110,6 +115,7 @@ sapcc-hana-tst:/ # chmod 777 /hana/shared
 ....
 
 
+[[mount-file-systems]]
 === 파일 시스템을 마운트합니다
 
 시스템 부팅 중에 파일 시스템을 마운트하려면 다음을 사용하십시오.  `/etc/fstab` 구성 파일에 필요한 파일 시스템을 추가합니다.  `/etc/fstab` 구성 파일:

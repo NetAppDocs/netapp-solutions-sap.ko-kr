@@ -10,6 +10,7 @@ summary: 이 섹션에서는 다중 호스트 시스템에 대한 LUN을 생성�
 
 
 
+[[multiple-hosts]]
 == 여러 호스트
 
 [role="lead"]
@@ -17,6 +18,7 @@ summary: 이 섹션에서는 다중 호스트 시스템에 대한 LUN을 생성�
 
 
 
+[[lun-overview]]
 == LUN 개요
 
 다음 표는 2+1 멀티 호스트 SAP HANA 시스템의 LUN 구성을 보여줍니다.
@@ -47,12 +49,15 @@ NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우  `/lss/s
 
 
 
+[[creating-luns-and-mapping-luns-to-initiator-groups]]
+[[lun_create]]
 == LUN 생성 및 LUN을 이니시에이터 그룹에 매핑
 
 NetApp ONTAP System Manager를 사용하면 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup과 ONTAP CLI에 매핑할 수 있습니다.
 
 
 
+[[creating-luns-and-mapping-luns-to-initiator-groups-using-the-cli]]
 === CLI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
 
 이 섹션에서는 LVM을 사용하는 SID FC5와 LVM 볼륨 그룹당 2개의 LUN을 사용하는 2+1 SAP HANA 다중 호스트 시스템에 대해 ONTAP 9과 함께 명령줄을 사용하는 구성의 예를 보여 줍니다.
@@ -94,6 +99,7 @@ lun map -path FC5_log_mnt00002_2 -igroup HANA-FC5
 
 
 
+[[creating-luns-and-mapping-luns-to-initiator-groups-using-the-gui]]
 === GUI를 사용하여 LUN을 생성하고 LUN을 이니시에이터 그룹에 매핑
 
 이 섹션에서는 다음을 사용한 구성 예를 보여줍니다. `ONTAP System Manager` LVM과 LVM 볼륨 그룹당 2개의 LUN을 사용하는 SID FC5가 있는 2+1 SAP HANA 다중 호스트 시스템의 경우:
@@ -186,6 +192,7 @@ image:saphana_asa_fc_image25.png["ONTAP 시스템 관리자 - LUN 개요"]
 
 
 
+[[disable-autonomous-ransomware-protection-for-all-data-und-log-luns]]
 === 모든 데이터 및 로그 LUN에 대해 Autonomous Ransomware Protection 비활성화
 
 각 데이터 및 로그 LUN의 컨텍스트 메뉴를 열고 랜섬웨어 보호를 비활성화합니다

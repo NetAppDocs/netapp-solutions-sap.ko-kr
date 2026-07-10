@@ -40,6 +40,7 @@ link:hana-sr-scs-system-replication-overview.html["SnapCenter를 사용한 백�
 
 
 
+[[version-history]]
 == 버전 기록
 
 |===

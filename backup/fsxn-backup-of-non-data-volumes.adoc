@@ -24,6 +24,7 @@ SnapCenter 비 데이터 볼륨 백업을 사용하면 SAP HANA 데이터베이�
 
 
 
+[[configure-non-data-volume-resources]]
 === 비 데이터 볼륨 리소스를 구성합니다
 
 다음 단계에 따라 비데이터 볼륨 리소스를 구성합니다.

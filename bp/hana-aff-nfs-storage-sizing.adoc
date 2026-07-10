@@ -21,6 +21,7 @@ NOTE: 적절한 규모의 스토리지 환경을 구축할 수 있도록 NetApp 
 
 
 
+[[performance-considerations]]
 == 성능 고려 사항
 
 SAP는 정적 스토리지 KPI 세트를 정의했습니다. 이러한 KPI는 데이터베이스 호스트의 메모리 크기와 SAP HANA 데이터베이스를 사용하는 애플리케이션에 관계없이 모든 운영 SAP HANA 환경에 유효합니다. 이러한 KPI는 단일 호스트, 다중 호스트, HANA 기반 Business Suite, HANA 기반 Business Warehouse, S/4HANA 및 BW/4HANA 환경에 대해 유효합니다. 따라서 현재 성능 사이징 방식은 스토리지 시스템에 연결된 활성 SAP HANA 호스트 수에 따라서만 달라집니다.
@@ -36,6 +37,7 @@ SAP 성능 테스트 툴을 실행하여 디스크 쉘프에서 실행 가능한
 
 
 
+[[sas-disk-shelf]]
 === SAS 디스크 쉘프
 
 12Gb SAS(Serial-Attached SCSI) 디스크 쉘프(DS224C)에서 성능 사이징은 다음과 같은 고정 디스크 쉘프 구성을 사용하여 수행됩니다.
@@ -62,6 +64,7 @@ NOTE: 이 계산은 사용되는 스토리지 컨트롤러와 무관합니다. �
 
 
 
+[[ns224-nvme-shelf]]
 === NS224 NVMe 쉘프
 
 하나의 NVMe SSD(데이터)는 사용된 NVMe 디스크에 따라 최대 2/5개의 SAP HANA 호스트를 지원합니다. SSD와 SAP HANA 호스트는 두 스토리지 컨트롤러 간에 균등하게 분산되어야 합니다. AFF 시스템의 내부 NVMe 디스크에도 동일하게 적용됩니다.
@@ -71,6 +74,7 @@ NOTE: 디스크 쉘프를 추가해도 스토리지 컨트롤러가 지원할 �
 
 
 
+[[mixed-workloads]]
 == 혼합 워크로드
 
 동일한 스토리지 컨트롤러 또는 동일한 스토리지 애그리게이트에서 실행되는 SAP HANA 및 기타 애플리케이션 워크로드가 지원됩니다. 그러나 SAP HANA 워크로드를 다른 모든 애플리케이션 워크로드와 분리하는 것이 NetApp 모범 사례입니다.
@@ -81,6 +85,7 @@ SAP 성능 테스트 툴을 사용하여 다른 워크로드에 이미 사용 �
 
 
 
+[[capacity-considerations]]
 === 용량 고려 사항
 
 SAP HANA의 용량 요구사항에 대한 자세한 설명은 에 나와 있습니다 https://launchpad.support.sap.com/#/notes/1900823["SAP Note 1900823"^] 백서.
@@ -90,6 +95,7 @@ NOTE: 여러 SAP HANA 시스템을 사용하는 전체 SAP 환경의 용량 사�
 
 
 
+[[configuring-the-performance-test-tool]]
 == 성능 테스트 도구 구성
 
 SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다. SAP 성능 테스트 툴을 사용하여 스토리지 성능을 테스트하는 경우 이러한 매개 변수를 SAP의 성능 테스트 툴에 대해서도 설정해야 합니다.
@@ -203,6 +209,7 @@ NetApp은 최적의 값을 정의하기 위해 성능 테스트를 실시했습�
 ....
 
 
+[[storage-sizing-process-overview]]
 == 스토리지 사이징 프로세스 개요
 
 HANA 호스트당 디스크 수와 각 스토리지 모델의 SAP HANA 호스트 밀도는 성능 테스트 툴을 통해 결정되었습니다.

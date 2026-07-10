@@ -42,6 +42,7 @@ NOTE: 볼륨 암호화가 활성화되어 있고 SAP 로컬 보안 저장소(LSS
 
 
 
+[[automated-restore-and-recovery-for-sap-hana-mdc-systems-with-a-single-tenant]]
 == 단일 테넌트가 있는 SAP HANA MDC 시스템에 대한 자동 복원 및 복구
 
 복원 작업은 리소스 토폴로지 보기에서 스냅샷 백업을 선택하고 복원을 클릭하여 시작됩니다.
@@ -112,6 +113,7 @@ image:hana-sc-generic-image-106.png["너비=357, 높이=439"]
 
 
 
+[[manual-recovery-with-hana-studio]]
 == HANA Studio를 사용한 수동 복구
 
 SAP HANA Studio와 SnapCenter 사용하여 단일 또는 여러 테넌트가 있는 SAP HANA MDC 시스템을 복원하고 복구하려면 다음 단계를 완료하세요.
@@ -307,6 +309,7 @@ NOTE: 여러 테넌트가 있는 SAP HANA MDC 시스템의 경우 각 테넌트�
 
 
 
+[[manual-recovery-with-sql-commands]]
 == SQL 명령을 사용한 수동 복구
 
 HANA 시스템을 복구하려면 SQL 문을 사용할 수도 있습니다.
@@ -325,6 +328,7 @@ hdbsql SYSTEMDB=> RECOVER DATABASE FOR SS1 UNTIL TIMESTAMP '2026-08-26 10:55:49'
 ....
 
 
+[[single-tenant-restore-and-recovery]]
 == 단일 테넌트 복원 및 복구
 
 SnapCenter 사용한 단일 테넌트 복원 및 복구 작업은 이전 항목에서 설명한 워크플로와 매우 유사합니다. link:hana-sc-generic-restore.html#manual-recovery-with-hana-studio["HANA Studio를 사용한 수동 복구"].
@@ -355,6 +359,7 @@ SAP HANA Studio 및 SnapCenter를 사용하여 SAP HANA MDC 단일 테넌트 시
 
 
 
+[[restore-of-non-data-volumes]]
 == 비데이터 볼륨 복원
 
 비데이터 볼륨에 대한 복원 작업은 비데이터 볼륨 리소스의 토폴로지 보기에서 스냅샷 백업을 선택하고 복원을 클릭하여 시작됩니다.

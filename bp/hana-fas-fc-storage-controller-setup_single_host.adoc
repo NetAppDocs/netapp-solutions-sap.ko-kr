@@ -10,6 +10,7 @@ summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설�
 
 
 
+[[single-host]]
 == 단일 호스트
 
 [role="lead"]
@@ -17,6 +18,7 @@ summary: 이 섹션에서는 NetApp 스토리지 시스템 구성에 대해 설�
 
 
 
+[[volume-and-lun-configuration-for-sap-hana-single-host-systems]]
 == SAP HANA 단일 호스트 시스템을 위한 볼륨 및 LUN 구성
 
 다음 그림은 4개의 단일 호스트 SAP HANA 시스템의 볼륨 구성을 보여줍니다. 각 SAP HANA 시스템의 데이터 및 로그 볼륨은 서로 다른 스토리지 컨트롤러에 분산됩니다. 예를 들어, 볼륨이 `SID1_data_mnt00001` 컨트롤러 A에 구성되고 볼륨은 `SID1_log_mnt00001` 컨트롤러 B에 구성됩니다. 각 볼륨 내에서는 단일 LUN이 구성됩니다.
@@ -65,6 +67,7 @@ NOTE: SAP 로컬 보안 저장소 서비스(LSS)를 사용하는 경우 `/lss/sh
 
 
 
+[[volume-and-lun-configuration-for-sap-hana-single-host-systems-using-linux-lvm]]
 == Linux LVM을 사용하여 SAP HANA 단일 호스트 시스템에 대한 볼륨 및 LUN 구성
 
 Linux LVM을 사용하여 성능을 향상하고 LUN 크기 제한을 해결할 수 있습니다. LVM 볼륨 그룹의 서로 다른 LUN은 서로 다른 애그리게이트와 다른 컨트롤러에 저장해야 합니다. 다음 표에서는 볼륨 그룹당 2개의 LUN에 대한 예를 보여 줍니다.
@@ -80,6 +83,7 @@ NOTE: SAP HANA KPI를 충족하기 위해 여러 LUN이 있는 LVM을 사용할 
 |===
 
 
+[[volume-options]]
 == 볼륨 옵션
 
 다음 표에 나열된 볼륨 옵션은 SAP HANA에 사용되는 모든 볼륨에서 확인 및 설정되어야 합니다.
@@ -101,12 +105,14 @@ NOTE: 아래 예에서는 볼륨 생성 중에 이러한 옵션을 설정합니�
 
 
 
+[[creating-luns-volumes-and-mapping-luns-to-initiator-groups]]
 === LUN 생성, 볼륨 및 LUN을 이니시에이터 그룹에 매핑
 
 NetApp ONTAP System Manager를 사용하여 스토리지 볼륨과 LUN을 생성하고 이를 서버의 igroup 및 ONTAP CLI에 매핑할 수 있습니다. 이 가이드에서는 CLI 사용에 대해 설명합니다.
 
 
 
+[[creating-luns-volumes-and-mapping-luns-to-igroups-using-the-cli]]
 === CLI를 사용하여 LUN, 볼륨 생성 및 LUN을 igroup에 매핑
 
 이 섹션에서는 LVM과 LVM 볼륨 그룹당 두 개의 LUN을 사용하는 SID FC5가 있는 SAP HANA 단일 호스트 시스템에 대해 ONTAP 9에서 명령줄을 사용하여 구성 예를 보여줍니다.

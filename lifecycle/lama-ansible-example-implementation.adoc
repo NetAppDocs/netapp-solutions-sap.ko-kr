@@ -21,6 +21,7 @@ NOTE: 예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원�
 
 
 
+[[validated-configurations-and-limitations]]
 == 검증된 구성 및 제한
 
 예제 구현에 적용된 원리는 다음과 같습니다. 고객의 요구 사항에 맞게 조정해야 할 수 있습니다.
@@ -37,6 +38,7 @@ NOTE: 예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원�
 
 
 
+[[lab-setup]]
 == 랩 설정
 
 다음 그림은 사용된 랩 설정을 보여 줍니다. 시스템 클론 작업에 사용되는 소스 SAP 시스템 HN9는 데이터베이스 H09, SAP CS 및 SAP가 설치된 동일한 호스트(SAP-lnx32)에서 실행되는 서비스로 구성되었습니다 https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/737a99e86f8743bdb8d1f6cf4b862c79.html["적응형 설계"^] 활성화됨. 에 따라 Ansible 컨트롤 노드가 준비되었습니다 https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp ONTAP용 Ansible 플레이북"^] 문서화:
@@ -63,10 +65,12 @@ image:lama-ansible-image7.png["이 이미지는 다양한 SAP 호스트 에이�
 
 
 
+[[sap-lama-configuration]]
 == SAP LaMa 구성
 
 
 
+[[sap-lama-provider-definition]]
 === SAP LaMa Provider 정의
 
 공급자 정의는 다음 스크린샷과 같이 SAP LaMa의 Automation Studio 내에서 수행됩니다. 예제 구현에서는 앞에서 설명한 것처럼 다양한 사용자 지정 프로비저닝 단계 및 작업 후크에 사용되는 단일 공급자 정의를 사용합니다.
@@ -87,6 +91,7 @@ image:lama-ansible-image11.png["CLonePostFix 및 SnapPostFix의 두 매개 변�
 
 
 
+[[sap-lama-custom-provisioning]]
 === SAP LaMa 맞춤형 프로비저닝
 
 SAP LaMa 사용자 지정 프로비저닝 구성에서 앞서 설명한 고객 공급자는 프로비저닝 워크플로우 단계 * 클론 볼륨 * 및 * PostCloneVolumes * 를 대체하는 데 사용됩니다.
@@ -95,6 +100,7 @@ image:lama-ansible-image12.png["사용자 지정 프로비저닝 구성 화면�
 
 
 
+[[sap-lama-custom-hook]]
 === SAP LaMa 맞춤형 후크
 
 시스템이 시스템 제거 워크플로와 함께 삭제된 경우 hook * Delete NetAppClone * 은 공급자 정의를 호출하는 데 사용됩니다 `netapp_clone`. 실행 중에 인스턴스가 유지되므로 * NetApp 클론 업데이트 삭제 * 후크는 시스템 업데이트 워크플로우 중에 사용됩니다.
@@ -113,6 +119,7 @@ image:lama-ansible-image15.png["NetApp 클론 제약 조건 삭제 페이지의 
 
 
 
+[[enable-custom-provisioning-workflow-for-sap-source-system]]
 === SAP 소스 시스템에 대한 사용자 지정 프로비저닝 워크플로우를 설정합니다
 
 소스 시스템에 대한 사용자 지정 프로비저닝 워크플로우를 설정하려면 구성에서 해당 워크플로우를 적용해야 합니다. 해당 사용자 지정 프로비저닝 정의와 함께 * 사용자 지정 프로비저닝 프로세스 사용 * 확인란을 선택해야 합니다.

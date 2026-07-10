@@ -18,6 +18,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 SAP MaxDB 데이터�
 
 
 
+[[introduction]]
 == 소개
 
 이 문서는 전체 환경을 설정하는 방법을 단계별로 설명하는 것이 아니라 다음과 관련된 개념과 관련 세부 사항을 다룹니다.
@@ -30,6 +31,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 SAP MaxDB 데이터�
 
 
 
+[[example-configuration-overview]]
 == 구성 개요 예
 
 데모 센터에서 실행 중인 SAP 시스템용 SnapCenter MaxDB 플러그인 구현 예.
@@ -41,12 +43,14 @@ NOTE: 이 구현에서는 필요한 최소 볼륨 구성에 대해 설명합니�
 
 
 
+[[demo-environment]]
 == 데모 환경
 
 image:sc-sap-maxdb-image01.png["사용된 데모 환경을 강조하는 그림"]
 
 
 
+[[software-versions]]
 == 소프트웨어 버전
 
 [cols="50%, 50%"]
@@ -67,6 +71,7 @@ image:sc-sap-maxdb-image01.png["사용된 데모 환경을 강조하는 그림"]
 |===
 
 
+[[maxdb-volume-design]]
 == MaxDB 볼륨 설계
 
 SAP MaxDB 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃을 사용해야 합니다. 예제 구성은 <SID>:M02을 사용합니다.
@@ -107,6 +112,7 @@ SAP MaxDB 데이터베이스에 대한 백업/복구 및 클론 활용 사례를
 |===
 
 
+[[steps-to-protect-database-m02]]
 == 데이터베이스 M02을 보호하는 단계
 
 * 샘플 레이아웃에 따라 파일 배포를 확인합니다
@@ -118,6 +124,7 @@ SAP MaxDB 데이터베이스에 대한 백업/복구 및 클론 활용 사례를
 
 
 
+[[prerequisites-on-host]]
 == 호스트에 대한 사전 요구 사항
 
 자세한 최신 정보가 제공될 수 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/reference_prerequisites_for_adding_hosts_and_installing_snapcenter_plug_ins_package_for_linux.html["여기"]있습니다.
@@ -136,6 +143,7 @@ SAP MaxDB 데이터베이스에 대한 백업/복구 및 클론 활용 사례를
 
 
 
+[[prerequisites-for-the-database-create-backup-templates-enable-logbackup]]
 == 데이터베이스 사전 요구 사항 - 백업 템플릿 생성, 로그 백업 활성화
 
 * 데이터 및 로그 백업용 디렉토리 생성(/sapdb/m02/backup/data, /sapdb/m02/backup/log – owner sdb:sdba – Permissions 755)
@@ -177,6 +185,7 @@ SAP MaxDB 데이터베이스에 대한 백업/복구 및 클론 활용 사례를
 
 
 
+[[deploy-snapcenter-agent-to-host-sap-lnx25]]
 == SAP-lnx25를 호스팅할 SnapCenter 에이전트를 배포합니다
 
 추가 정보는 에서 찾을 수 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter 설명서"]있습니다.
@@ -187,6 +196,7 @@ image:sc-sap-maxdb-image02.png["호스트 추가 사용자 인터페이스 스�
 
 
 
+[[create-snapcenter-resource-configuration-for-database-m02]]
 == 데이터베이스 M02에 대한 SnapCenter 리소스 구성을 만듭니다
 
 리소스 -> SAP MaxDB -> 리소스 추가
@@ -246,6 +256,7 @@ image:sc-sap-maxdb-image13.png["MaxDB 리소스 추가 사용자 인터페이스
 
 
 
+[[sequence-to-recover-system-m02]]
 == 시스템 M02을 복구하는 순서
 
 . SAP 시스템 M02(데이터베이스 포함)을 중지하고 sapinit를 중지합니다
@@ -262,6 +273,7 @@ image:sc-sap-maxdb-image13.png["MaxDB 리소스 추가 사용자 인터페이스
 
 
 
+[[recover-instance-m02]]
 == 인스턴스 M02을 복구합니다
 
 * SAP-lnx25 호스트에서 SAP System+DB M02를 중지합니다
@@ -371,10 +383,12 @@ NOTE: 복구에 대한 자세한 내용은 에서 확인할 수 있습니다 lin
 
 
 
+[[additional-information-and-version-history]]
 == 추가 정보 및 버전 기록
 
 
 
+[[recorded-demos]]
 === 녹화된 데모
 
 다음 녹화 데모를 사용하여 문서를 지원할 수 있습니다.
@@ -385,6 +399,7 @@ video::4b9ca452-d282-44c1-82ab-b2e501188b0f[panopto,width=360]
 video::ecd66443-637f-4e67-90a0-b2e501188acf[panopto,width=360]
 
 
+[[external-documentation]]
 === 외부 문서
 
 이 문서에 설명된 정보에 대해 자세히 알아보려면 다음 문서 및/또는 웹 사이트를 검토하십시오.
@@ -408,6 +423,7 @@ video::ecd66443-637f-4e67-90a0-b2e501188acf[panopto,width=360]
 
 
 
+[[version-history]]
 === 버전 기록
 
 [cols="25%, 25%, 50%"]

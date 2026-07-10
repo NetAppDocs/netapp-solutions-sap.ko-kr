@@ -18,18 +18,22 @@ NetApp 기반 SAP를 소개하는 블로그 개요
 
 
 
+[[sap-solution-blogs]]
 == SAP 솔루션 블로그
 
 
 
+[[sap-configuration-best-practices-blogs]]
 == SAP 구성 모범 사례 블로그
 
 
 
+[[sap-backup-restore-and-disaster-recovery-blogs]]
 === SAP 백업, 복원 및 재해 복구 블로그 를 참조하십시오
 
 
 
+[[sap-lifecycle-management-blogs]]
 == SAP Lifecycle Management 블로그
 
 * link:https://blogs.sap.com/2021/10/27/whitepaper-sap-landscape-management-with-netapp/["NetApp을 통한 SAP Landscape Management"]

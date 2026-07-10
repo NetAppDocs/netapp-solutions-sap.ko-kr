@@ -18,4 +18,5 @@ SAP 백업, 복원 및 재해 복구를 강조하는 블로그의 개요
 
 
 
+[[sap-backup-restore-and-disaster-recovery-blogs]]
 === SAP 백업, 복원 및 재해 복구 블로그 를 참조하십시오

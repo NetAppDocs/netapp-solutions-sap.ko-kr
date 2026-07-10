@@ -34,12 +34,14 @@ image:libelle-sc-image23.png["입력/출력 대화 상자 또는 작성된 내�
 
 
 
+[[prerequisites-and-limitations]]
 == 사전 요구 사항 및 제한 사항
 
 다음 필수 구성 요소를 이행해야 합니다.
 
 
 
+[[azacsnap-installed-and-configured-for-the-source-database]]
 === 소스 데이터베이스에 대해 설치 및 구성된 AzAcSnap
 
 일반적으로 다음 그림과 같이 AzAcSnap에 대한 두 가지 구축 옵션이 있습니다.
@@ -50,6 +52,7 @@ AzAcSnap은 중앙 Linux VM에서 설치 및 실행할 수 있으며, 중앙 Lin
 
 
 
+[[libelle-systemcopy-installed-and-configured-for-source-and-target-sap-system]]
 === Libelle SystemCopy 소스 및 대상 SAP 시스템에 설치 및 구성되어 있습니다
 
 Libelle SystemCopy 배포는 다음 구성 요소로 구성됩니다.
@@ -71,6 +74,7 @@ image:libelle-sc-image26.png["입력/출력 대화 상자 또는 작성된 내�
 
 
 
+[[known-limitations]]
 === 알려진 제한 사항
 
 여기에 설명된 AzAcSnap 및 LSC 통합은 SAP HANA 단일 호스트 데이터베이스에만 작동합니다. SAP HANA 다중 호스트(또는 스케일아웃) 구축도 지원할 수 있지만, 이러한 구축에서는 복사 단계 및 언더레이팅된 스크립트에 대한 LSC 맞춤형 작업을 몇 가지 조정 또는 개선해야 합니다. 이러한 향상된 기능은 본 문서에서 다루지 않습니다.
@@ -79,6 +83,7 @@ SAP 시스템 업데이트 통합에서는 항상 소스 시스템의 성공적�
 
 
 
+[[lab-setup]]
 == 랩 설정
 
 실습 설정은 소스 SAP 시스템과 타겟 SAP 시스템으로 구성되며, 두 시스템 모두 SAP HANA 단일 호스트 데이터베이스에서 실행됩니다.
@@ -103,6 +108,7 @@ image:libelle-sc-image27.png["입력/출력 대화 상자 또는 작성된 내�
 
 
 
+[[initial-one-time-preparation-steps]]
 == 초기 1회 준비 단계
 
 첫 번째 SAP 시스템 업데이트를 실행하기 전에 AzAcSnap에서 실행되는 Azure NetApp Files 스냅샷 복사본 및 클론 복제 기반 스토리지 작업을 통합해야 합니다. 또한 데이터베이스를 시작 및 중지하고 Azure NetApp Files 볼륨을 마운트 또는 마운트 해제하는 보조 스크립트를 실행해야 합니다. 필요한 모든 작업은 복사 단계의 일부로 LSC에서 사용자 정의 작업으로 수행됩니다. 다음 그림에서는 LSC 작업 목록의 사용자 지정 작업을 보여 줍니다.
@@ -116,6 +122,7 @@ NOTE: 샘플 스크립트는 있는 그대로 제공되며 NetApp에서 지원�
 
 
 
+[[sc-system-refresh-sh-configuration-file]]
 === Sc-system-refresh.sh 구성 파일
 
 앞에서 설명한 것처럼 보조 스크립트는 데이터베이스를 시작 및 중지하고, Azure NetApp Files 볼륨을 마운트 및 마운트 해제하고, 스냅샷 복사본에서 SAP HANA 데이터베이스를 복구하는 데 사용됩니다. 스크립트 'c-system-refresh.sh'는 중앙 NFS 공유에 저장됩니다. 스크립트에는 스크립트 자체와 동일한 폴더에 저장해야 하는 각 대상 데이터베이스에 대한 구성 파일이 필요합니다. 구성 파일의 이름은 'sc-system-refresh-<target DB SID>.cfg'이어야 합니다(예: 이 실습 환경에서는 'c-system-refresh-ql1.cfg'). 여기에 사용된 구성 파일은 고정/하드 코딩된 소스 DB SID를 사용합니다. 몇 가지 변경 사항이 있을 경우 스크립트와 구성 파일을 개선하여 소스 DB SID를 입력 매개 변수로 사용할 수 있습니다.
@@ -134,6 +141,7 @@ export CLONED_VOLUMES_MOUNT_PATH=`tail -2 /mnt/software/AZACSNAP/snapshot_tool/l
 ....
 
 
+[[zsccopyshutdown]]
 === ZSCCOPYSHUTDOWN
 
 이 작업은 타겟 SAP HANA 데이터베이스를 중지합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
@@ -148,6 +156,7 @@ image:libelle-sc-image29.png["입력/출력 대화 상자 또는 작성된 내�
 
 
 
+[[zsccopyumount]]
 === ZSCCOPYUMOUNT
 
 이 작업은 타겟 DB 운영 체제(OS)에서 이전 Azure NetApp Files 데이터 볼륨을 마운트 해제합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
@@ -160,6 +169,7 @@ sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh umount $_syste
 
 
 
+[[zazacsnaprestore]]
 === ZAZACSNAPRESTORE
 
 이 작업은 AzAcSnap을 실행하여 소스 데이터베이스의 성공한 최신 스냅샷 복사본을 타겟 데이터베이스의 새 볼륨에 복제합니다. 이 작업은 기존 백업 환경에서 리디렉션된 백업 복원과 동일합니다. 하지만 스냅샷 복사본 및 클론 복제 기능을 사용하면 최대 규모의 데이터베이스도 몇 초 내에 이 작업을 수행할 수 있습니다. 그러나 기존 백업을 사용하면 이 작업에 몇 시간이 걸릴 수 있습니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
@@ -179,6 +189,7 @@ image:libelle-sc-image30.png["입력/출력 대화 상자 또는 작성된 내�
 
 
 
+[[zsccopymount]]
 === ZSCCOPYMOUNT
 
 이 작업은 타겟 DB의 OS에 새 Azure NetApp Files 데이터 볼륨을 마운트합니다. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
@@ -191,6 +202,7 @@ sc-system-refresh.sh 스크립트가 다시 사용되어 'mount' 명령과 대�
 
 
 
+[[zsccopyrecover]]
 === ZSCCOPYRECOVER
 
 이 작업은 복원된(클론 복제된) 스냅샷 복사본을 기반으로 시스템 데이터베이스와 테넌트 데이터베이스의 SAP HANA 데이터베이스 복구를 수행합니다. 여기에 사용되는 복구 옵션은 추가 로그 없이 특정 데이터베이스 백업에 적용됩니다. 따라서 복구 시간이 매우 짧습니다(최대 몇 분). 이 작업의 런타임은 복구 프로세스 후에 자동으로 발생하는 SAP HANA 데이터베이스의 시작에 의해 결정됩니다. 시작 시간을 단축하기 위해 필요한 경우 이 Azure 설명서에 설명된 대로 Azure NetApp Files 데이터 볼륨의 처리량을 일시적으로 늘릴 수 있습니다. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-performance-considerations["볼륨 할당량을 동적으로 늘리거나 줄입니다"^]. 이 작업의 코드 섹션에는 다음 텍스트가 포함되어 있습니다.
@@ -203,6 +215,7 @@ sudo /mnt/software/scripts/sc-system-refresh/sc-system-refresh.sh recover $_syst
 
 
 
+[[sap-hana-system-refresh-operation]]
 == SAP HANA 시스템 업데이트 작업
 
 이 섹션에서는 랩 시스템의 예제 새로 고침 작업에 이 워크플로의 주요 단계가 나와 있습니다.

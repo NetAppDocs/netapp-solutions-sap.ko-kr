@@ -20,6 +20,7 @@ summary: 이 문서에는 사용된 Linux 버전별 다중 경로 구성에 대�
 
 
 
+[[configure-multipathing]]
 == 다중 경로를 구성합니다
 
 

@@ -14,6 +14,7 @@ SnapCenter를 사용한 SAP 시스템 새로 고침 작업에 대한 자세한 �
 
 
 
+[[prerequisites]]
 === 필수 구성 요소
 
 SnapCenter 릴리스 < 6.2의 경우 고려해야 할 제한 사항이 있습니다.
@@ -24,6 +25,7 @@ SnapCenter 릴리스 < 6.2의 경우 고려해야 할 제한 사항이 있습니
 
 
 
+[[workflow-summary]]
 === 워크플로 요약
 
 첫 번째 SAP 시스템 새로 고침 작업을 실행하려면 대상 HANA 시스템을 설치하고 호스트를 SnapCenter 에 추가해야 합니다. 그런 다음 HANA 시스템을 종료하고 HANA 데이터 디스크를 호스트에서 마운트 해제해야 합니다.
@@ -60,6 +62,7 @@ NOTE: 복원 작업과 비교했을 때, 복제 작업의 실행 시간은 HANA 
 
 
 
+[[snapcenter-clone-create-workflow]]
 === SnapCenter 복제본 생성 워크플로
 
 복제본 생성 워크플로는 원하는 스냅샷을 선택하고 복제 버튼을 클릭하면 시작됩니다.
@@ -160,6 +163,7 @@ image:sc-hana-asrr2-vmfs-image36.png["논의 중인 내용을 보여 주는 그�
 
 
 
+[[snapcenter-clone-delete-workflow]]
 === SnapCenter 복제본 삭제 워크플로
 
 복제본 삭제 워크플로는 소스 HANA 리소스에서 복제본을 선택하고 삭제 버튼을 클릭하여 시작됩니다.

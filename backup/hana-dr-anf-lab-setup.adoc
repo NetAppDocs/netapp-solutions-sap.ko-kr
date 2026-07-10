@@ -31,6 +31,7 @@ image:saphana-dr-anf_image7.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[snapshot-backup-configuration-with-azacsnap]]
 == AzAcSnap을 사용한 스냅샷 백업 구성
 
 운영 사이트에서 AzAcSnap은 HANA 시스템 PR1의 애플리케이션 정합성 보장 스냅샷 백업을 생성하도록 구성되었습니다. 이러한 스냅샷 백업은 PR1 HANA 시스템의 ANF 데이터 볼륨에서 사용할 수 있으며 다음 두 그림에 표시된 것처럼 SAP HANA 백업 카탈로그에 등록됩니다. 스냅샷 백업은 4시간마다 예약되었습니다.

@@ -20,6 +20,7 @@ SR-IOV 네트워크 인터페이스나 FCP HBA 포트로 VM을 구성한 후 VM 
 
 
 
+[[configure-nfs-storage-for-sap-hana]]
 == SAP HANA에 대한 NFS 스토리지 구성
 
 SAP HANA 스토리지에 NFS 프로토콜을 사용하려면 이전에 만든 SR-IOV 네트워크 인터페이스를 사용하세요.
@@ -36,6 +37,7 @@ KVM 환경을 위한 주요 구성 고려 사항:
 
 
 
+[[configure-fcp-storage-for-sap-hana]]
 == SAP HANA에 대한 FCP 스토리지 구성
 
 FCP 프로토콜을 SAP HANA 스토리지에 사용할 경우 VM에 할당된 물리적 HBA 포트를 PCI 장치로 사용합니다.

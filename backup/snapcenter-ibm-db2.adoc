@@ -18,6 +18,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 IBM DB2 데이터베�
 
 
 
+[[introduction]]
 == 소개
 
 이 문서는 전체 환경을 설정하는 방법을 단계별로 설명하는 것이 아니라 다음과 관련된 개념과 관련 세부 사항을 다룹니다.
@@ -32,6 +33,7 @@ summary: 이 문서에서는 SAP 환경에서 사용되는 IBM DB2 데이터베�
 
 
 
+[[example-configuration-overview]]
 == 구성 개요 예
 
 Azure 플랫폼에서 실행되는 SAP 시스템용 SnapCenter DB2 플러그인 구현 예
@@ -45,10 +47,12 @@ image:sc-ibm-db2-image01.png["IBM DB2를 사용한 예제 구현 다이어그램
 
 
 
+[[demo-environment]]
 == 데모 환경
 
 
 
+[[software-versions]]
 === 소프트웨어 버전
 
 [cols="50%, 50%"]
@@ -69,6 +73,7 @@ image:sc-ibm-db2-image01.png["IBM DB2를 사용한 예제 구현 다이어그램
 |===
 
 
+[[db2-volume-design]]
 === DB2 볼륨 설계
 
 DB2 데이터베이스에 대한 백업/복구 및 클론 활용 사례를 활성화하려면 최소 볼륨 레이아웃을 사용해야 합니다. 예제 구성은 <SID>:D01을 사용합니다.
@@ -146,6 +151,7 @@ image:sc-ibm-db2-image02.png["데이터베이스 파일 경로의 스크린샷"]
 
 
 
+[[steps-to-protect-database-d01]]
 === 데이터베이스 D01을 보호하는 단계
 
 * 샘플 레이아웃에 따라 파일 배포를 확인합니다
@@ -157,6 +163,7 @@ image:sc-ibm-db2-image02.png["데이터베이스 파일 경로의 스크린샷"]
 
 
 
+[[prerequisites-on-host]]
 === 호스트에 대한 사전 요구 사항
 
 자세한 최신 정보는 다음 웹 사이트에서 확인할 수 있습니다.
@@ -179,6 +186,7 @@ image:sc-ibm-db2-image02.png["데이터베이스 파일 경로의 스크린샷"]
 
 
 
+[[prerequisites-for-the-database-enable-logging-and-backups]]
 === 데이터베이스 사전 요구 사항 – 로깅 및 백업을 사용하도록 설정합니다
 
 
@@ -202,6 +210,7 @@ NOTE: 오프라인 로그를 사용하려면 데이터베이스의 오프라인 
 
 
 
+[[deploy-snapcenter-agent-to-host-vm-d01]]
 === 호스트 VM-d01에 SnapCenter 에이전트를 배포합니다
 
 자세한 내용은 에서 link:https://docs.netapp.com/us-en/snapcenter/protect-scu/task_add_hosts_and_install_the_snapcenter_plug_ins_package_for_linux.html["SnapCenter 설명서"]확인할 수 있습니다.
@@ -217,6 +226,7 @@ image:sc-ibm-db2-image04.png["호스트에서 데이터베이스 검색 스크�
 
 
 
+[[create-resource-configuration-for-database-d01]]
 === 데이터베이스 D01에 대한 리소스 구성을 만듭니다
 
 검색된 리소스 D01을 선택합니다
@@ -252,6 +262,7 @@ image:sc-ibm-db2-image07.png["정책 및 알림 설정 구성 스크린샷"]
 
 
 
+[[recover-database-d01]]
 === 데이터베이스 D01을 복구합니다
 
 * 호스트 vm-d01에서 SAP 시스템 + DB D01을 중지합니다
@@ -304,6 +315,7 @@ NOTE: "db2inidb d01 as mirror"는 SnapCenter 복원 워크플로우의 일부로
 
 
 
+[[additional-information-and-version-history]]
 == 추가 정보 및 버전 기록
 
 다음 녹화 데모를 사용하여 문서를 지원할 수 있습니다.
@@ -330,6 +342,7 @@ video::3a82e561-e5a2-4a23-9465-b2b900c1fac5[panopto,width=360]
 
 
 
+[[version-history]]
 === 버전 기록
 
 [cols="25 %, 25%, 50%"]

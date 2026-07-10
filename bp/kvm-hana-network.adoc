@@ -18,6 +18,7 @@ SAP HANA용 SUSE KVM에서 SR-IOV 네트워크 인터페이스를 구성합니�
 
 
 
+[[step-1-setup-sr-iov]]
 == 1단계: SR-IOV 설정
 
 어댑터 펌웨어에서 SR-IOV 기능을 활성화하고 구성하여 가상 기능 생성을 허용합니다.
@@ -91,6 +92,7 @@ mlxconfig -d /dev/mst/mt4125_pciconf0 set  NUM_OF_VFS=4
 
 
 
+[[step-2-create-the-virtual-interfaces]]
 == 2단계: 가상 인터페이스 만들기
 
 SR-IOV 기능을 활성화하려면 물리적 네트워크 포트에 가상 기능(VF)을 만듭니다.  이 단계에서는 물리적 포트당 4개의 VF가 생성됩니다.
@@ -280,6 +282,7 @@ altname ens3f1np1
 
 
 
+[[step-3-enable-vfs-during-boot]]
 == 3단계: 부팅 중 VF 활성화
 
 systemd 서비스와 시작 스크립트를 만들어 시스템을 재부팅해도 VF 설정이 유지되도록 구성합니다.
@@ -319,6 +322,7 @@ echo 4 > /sys/class/infiniband/mlx5_1/device/sriov_numvfs
 
 
 
+[[step-4-assign-the-virtual-interfaces-to-the-vm]]
 == 4단계: VM에 가상 인터페이스 할당
 
 _virt-manager_를 사용하여 생성된 가상 기능을 PCI 호스트 장치로 SAP HANA VM에 할당합니다.
@@ -348,6 +352,7 @@ image:kvm-hana-image6.png["너비=601, 높이=441"]
 
 
 
+[[step-5-configure-network-interfaces-within-the-vm]]
 == 5단계: VM 내에서 네트워크 인터페이스 구성
 
 VM에 로그인하고 두 VF를 본드로 구성합니다. 모드 0 또는 모드 2를 선택하세요. LACP는 물리적 포트에서만 사용할 수 있으므로 LACP를 사용하지 마세요. 아래 그림은 YAST를 사용한 모드 2 구성을 보여줍니다.
@@ -356,6 +361,7 @@ image:kvm-hana-image8.png["너비=601, 높이=335"]
 
 
 
+[[whats-next]]
 == 다음은 무엇인가요?
 
 SR-IOV 네트워크 인터페이스를 구성한 후link:kvm-hana-fcn.html["파이버 채널 네트워킹 구성"] FCP를 저장 프로토콜로 사용할 경우.

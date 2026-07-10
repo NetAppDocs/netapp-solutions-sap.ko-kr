@@ -17,6 +17,7 @@ summary:
 
 
 
+[[storage-configuration]]
 == 스토리지 구성
 
 SAP가 프로덕션 HANA 시스템에 대해 정의한 스토리지 성능 KPI를 충족하려면 HANA 시스템의 데이터 및 로그 파일 시스템에 대한 전용 LUN과 데이터 저장소를 구성해야 합니다. 데이터 저장소는 여러 HANA 시스템이나 다른 워크로드 간에 공유되어서는 안 됩니다.
@@ -39,6 +40,7 @@ image:sc-hana-asrr2-vmfs-image3.png["논의 중인 내용을 보여 주는 그�
 
 
 
+[[vm-disk-configuration]]
 == VM 디스크 구성
 
 HANA VM에 세 개의 새 디스크(VMDK)를 추가해야 합니다. 아래 그림과 같이 이전에 생성된 데이터 저장소 중 하나에 각 디스크가 있어야 합니다.
@@ -76,6 +78,7 @@ sr0 11:0 1 17.1G 0 rom
 ....
 
 
+[[vm-parameter-disk-enableuuid]]
 == VM 매개변수 disk.EnableUUID
 
 이 매개변수는 반드시 적절히 설정해야 합니다. 그렇지 않으면 SnapCenter 데이터베이스 자동 검색이 실패합니다.
@@ -89,10 +92,12 @@ image:sc-hana-asrr2-vmfs-image7.png["논의 중인 내용을 보여 주는 그�
 
 
 
+[[file-system-preparation-at-linux-host]]
 == Linux 호스트에서 파일 시스템 준비
 
 
 
+[[creation-of-xfs-filesystem-on-new-disks]]
 === 새 디스크에 xfs 파일 시스템을 생성합니다
 
 xfs 파일 시스템이 세 개의 새 디스크 각각에 생성되었습니다.
@@ -141,6 +146,7 @@ hana-8:~ #
 ....
 
 
+[[creation-of-mount-points]]
 === 마운트 지점 생성
 
 ....
@@ -153,6 +159,7 @@ hana-8:/ # chmod -R 777 /hana/shared
 ....
 
 
+[[configuration-of-etcfstab]]
 === /etc/fstab 구성
 
 ....
@@ -213,6 +220,7 @@ hana-8:/ #
 ....
 
 
+[[hana-installation]]
 == HANA 설치
 
 이제 HANA 설치를 실행할 수 있습니다.

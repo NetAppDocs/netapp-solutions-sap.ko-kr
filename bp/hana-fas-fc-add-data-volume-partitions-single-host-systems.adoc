@@ -26,6 +26,7 @@ NOTE: 데이터 볼륨에 둘 이상의 개별 LUN을 사용하는 것은 SAP HA
 
 
 
+[[enabling-additional-data-volume-partitions]]
 == 추가 데이터 볼륨 파티션 활성화
 
 추가 데이터 볼륨 파티션을 활성화하려면 다음 단계를 수행하십시오.
@@ -41,6 +42,7 @@ persistence_datavolume_partition_multipath = true
 
 
 
+[[volume-and-lun-configuration]]
 == 볼륨 및 LUN 구성
 
 볼륨 및 LUN의 레이아웃은 하나의 데이터 볼륨 파티션이 있는 단일 호스트의 레이아웃과 비슷하지만 추가 데이터 볼륨 및 LUN이 로그 볼륨과 다른 데이터 볼륨으로 다른 애그리게이트에 저장되어 있습니다. 다음 표에서는 두 개의 데이터 볼륨 파티션이 있는 SAP HANA 단일 호스트 시스템의 구성 예를 보여 줍니다.
@@ -72,6 +74,7 @@ ONTAP 시스템 관리자 또는 ONTAP CLI를 사용하여 새 데이터 LUN을 
 
 
 
+[[host-configuration]]
 == 호스트 구성
 
 호스트를 구성하려면 다음 단계를 수행하십시오.
@@ -106,6 +109,7 @@ stlrx300s8-6:/ # chmod –R 777 /hana/data2/FC5
 
 
 
+[[adding-an-additional-datavolume-partition]]
 == 추가 데이터 볼륨 파티션을 추가하는 중입니다
 
 테넌트 데이터베이스에 데이터 볼륨 파티션을 추가하려면 다음 단계를 완료합니다.

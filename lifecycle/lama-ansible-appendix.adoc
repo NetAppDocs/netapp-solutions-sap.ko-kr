@@ -21,6 +21,7 @@ NOTE: 예제 스크립트는 있는 그대로 제공되며 NetApp에서 지원�
 
 
 
+[[provider-configuration-file-netappclone-conf]]
 == provider 구성 파일 netapp_clone.conf
 
 구성 파일은 에 설명된 대로 생성됩니다 https://help.sap.com/doc/700f9a7e52c7497cad37f7c46023b7ff/3.0.11.0/en-US/250dfc5eef4047a38bab466c295d3a49.html["SAP LaMa 설명서 - SAP Host Agent 등록 스크립트 구성"^]. 이 구성 파일은 SAP 호스트 에이전트가 설치된 Ansible 제어 노드에 위치해야 합니다.
@@ -40,12 +41,14 @@ Platform: Unix
 ....
 
 
+[[provider-script-netappclone-sh]]
 == 공급자 스크립트 netapp_clone.sh
 
 공급자 스크립트는 에 저장해야 합니다 `/usr/sap/scripts` 공급자 구성 파일에 구성되어 있습니다.
 
 
 
+[[variables]]
 === 변수
 
 다음 변수는 스크립트에 하드 코딩되어 있으며 그에 따라 수정해야 합니다.
@@ -61,18 +64,21 @@ NOTE: 서로 다른 SAP 시스템에 서로 다른 클러스터 또는 SVM이 �
 
 
 
+[[function-create-inventory-file]]
 === Function(기능): 재고 파일을 생성합니다
 
 Ansible 플레이북을 더 동적이며 `inventory. yml` 파일이 즉시 생성됩니다. 일부 정적 값은 변수 섹션에서 구성되며, 일부는 실행 중에 동적으로 생성됩니다.
 
 
 
+[[function-run-ansible-playbook]]
 === 기능: Ansible 플레이북을 실행하십시오
 
 이 기능은 동적으로 생성된 과 함께 Ansible 플레이북을 실행하는 데 사용됩니다 `inventory.yml` 파일. Playbook의 명명 규칙은 입니다 `netapp_lama_${HookOperationName}.yml`. 의 값 `${HookOperationName}` LaMa 운용에 의존하며 LaMa에 의해 명령행 파라미터로 전달된다.
 
 
 
+[[section-main]]
 === 섹션 기본
 
 이 섹션에서는 기본 실행 계획을 다룹니다. 변수 `${HookOperationName}` LAMA 교체 단계의 이름이 포함되어 있으며 스크립트를 호출할 때 LaMa에서 제공됩니다.
@@ -97,6 +103,7 @@ Ansible 플레이북을 더 동적이며 `inventory. yml` 파일이 즉시 생�
 
 
 
+[[hookoperationname-clonevolumes]]
 === HookOperationName = CloneVolumes입니다
 
 이 단계에서는 Ansible 플레이북을 실행하여 스냅샷 복사본 및 클론 복제 작업을 트리거합니다. 볼륨 이름 및 마운트 구성은 변수에 정의된 XML 파일을 통해 SAP LaMa에 의해 전달됩니다 `$MOUNT_XML_PATH`. 이 파일은 나중에 단계에서 사용되므로 저장됩니다 `FinalizeCloneVolumes` 를 클릭하여 새 마운트 지점 구성을 생성합니다. 볼륨 이름은 XML 파일에서 추출되고 Ansible 클론 플레이북은 각 볼륨에 대해 실행됩니다.
@@ -106,6 +113,7 @@ NOTE: 이 예에서 AS 인스턴스와 중앙 서비스는 동일한 볼륨을 �
 
 
 
+[[hookoperationname-postclonevolumes]]
 === HookOperationName = PostCloneVolumes
 
 이 단계에서 사용자 정의 속성이 표시됩니다 `ClonePostFix` 및 `SnapPostFix` 타겟 시스템의 마운트 지점 구성이 유지됩니다.
@@ -128,6 +136,7 @@ NOTE: 이 예에서는 스토리지 시스템의 qtree가 단일 볼륨에 여�
 
 
 
+[[hookoperationname-serviceconfigremoval]]
 === HookOperationName = ServiceConfigRemoval
 
 이 단계에서는 볼륨 클론을 삭제하는 역할을 하는 Ansible 플레이북을 실행합니다.
@@ -141,6 +150,7 @@ NOTE: 이 예에서 AS 인스턴스와 중앙 서비스는 동일한 볼륨을 �
 
 
 
+[[hookoperationname-clearmountconfig]]
 === HookOperationName = ClearMountConfig입니다
 
 이 단계에서는 시스템 업데이트 워크플로우 중에 볼륨 클론을 삭제하는 역할을 하는 Ansible 플레이북을 실행합니다.
@@ -373,6 +383,7 @@ exit 0
 ....
 
 
+[[ansible-playbook-netapplamaclonevolumes-yml]]
 == Ansible 플레이북 NetApp_LaMa_CloneVolumes.yml
 
 LaMa 시스템 클론 워크플로우의 CloneVolumes 단계에서 실행되는 플레이북은 의 조합입니다 `create_snapshot.yml` 및 `create_clone.yml` (을 참조하십시오 https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp Ansible 모듈 - YAML 파일"^])를 클릭합니다. 이 플레이북은 보조 및 클론 분할 작업의 클론 복제와 같은 추가 사용 사례를 쉽게 포함할 수 있습니다.
@@ -416,6 +427,7 @@ root@sap-jump:~# cat /usr/sap/scripts/ansible/netapp_lama_CloneVolumes.yml
 ....
 
 
+[[ansible-playbook-netapplamaserviceconfigremoval-yml]]
 == Ansible 플레이북 NetApp_LaMa_ServiceConfigRemoval.yml
 
 동안 실행되는 플레이북 `ServiceConfigRemoval` LaMa 시스템 제거 워크플로의 단계는 의 조합입니다 `delete_clone.yml` 및 `delete_snapshot.yml` (을 참조하십시오 https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp Ansible 모듈 - YAML 파일"^])를 클릭합니다. 의 실행 단계와 정렬되어야 합니다 `netapp_lama_CloneVolumes` 플레이북.
@@ -458,6 +470,7 @@ root@sap-jump:~#
 ....
 
 
+[[ansible-playbook-netapplamaclearmountconfig-yml]]
 == Ansible Playbook NetApp_LaMa_ClearMountConfig.yml
 
 Playbook은 에서 실행됩니다 `netapp_lama_ClearMountConfig` LaMa 시스템 업데이트 워크플로의 단계는 의 조합입니다 `delete_clone.yml` 및 `delete_snapshot.yml` (을 참조하십시오 https://github.com/sap-linuxlab/demo.netapp_ontap/blob/main/netapp_ontap.md["NetApp Ansible 모듈 - YAML 파일"^])를 클릭합니다. 의 실행 단계와 정렬되어야 합니다 `netapp_lama_CloneVolumes` 플레이북.
@@ -500,6 +513,7 @@ root@sap-jump:~#
 ....
 
 
+[[sample-ansible-inventory-yml]]
 == Ansible 재고 샘플
 
 이 재고 파일은 워크플로 실행 중에 동적으로 구축되며, 여기에는 설명을 위한 용도로만 표시됩니다.

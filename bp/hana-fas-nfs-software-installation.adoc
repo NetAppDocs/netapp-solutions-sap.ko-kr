@@ -18,12 +18,14 @@ summary: 다음은 SAP HANA용 소프트웨어 설치를 위한 요구사항입�
 
 
 
+[[install-on-single-host-system]]
 == 단일 호스트 시스템에 설치합니다
 
 SAP HANA 소프트웨어를 설치하는 경우 단일 호스트 시스템을 위한 추가 준비가 필요하지 않습니다.
 
 
 
+[[install-on-multiple-host-system]]
 == 다중 호스트 시스템에 설치합니다
 
 다중 호스트 시스템에 SAP HANA를 설치하려면 다음 단계를 수행하십시오.

@@ -57,6 +57,7 @@ image:kvm-hana-image11.png["너비=601, 높이=441"]
 
 
 
+[[whats-next]]
 == 다음은 무엇인가요?
 
 파이버 채널 네트워킹을 구성한 후link:kvm-hana-storage.html["SAP HANA에 대한 NetApp 스토리지 구성"] .

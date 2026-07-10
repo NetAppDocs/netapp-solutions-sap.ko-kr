@@ -18,12 +18,14 @@ summary: 이 섹션에서는 단일 호스트 및 다중 호스트 시스템에 
 
 
 
+[[installation-on-single-host-system]]
 == 단일 호스트 시스템에 설치합니다
 
 SAP HANA 소프트웨어 설치는 단일 호스트 시스템을 위한 추가 준비가 필요하지 않습니다.
 
 
 
+[[installation-on-multiple-host-system]]
 == 다중 호스트 시스템에 설치
 
 설치를 시작하기 전에 설치 프로세스 중에 SAP 스토리지 커넥터를 사용할 수 있도록 global.ini` 파일을 만듭니다. SAP 스토리지 커넥터는 설치 프로세스 중에 작업자 호스트에 필요한 파일 시스템을 마운트합니다. global.ini` 파일은 모든 호스트에서 액세스할 수 있는 파일 시스템('/hana/shared' 파일 시스템 등)에서 사용할 수 있어야 합니다.

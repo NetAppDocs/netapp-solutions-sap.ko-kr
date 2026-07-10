@@ -24,6 +24,7 @@ SAP HANA 다중 호스트 시스템이나 IBM Power 기반 HANA 시스템을 지
 
 
 
+[[snapcenter-hana-plug-in-deployment]]
 == SnapCenter HANA 플러그인 배포
 
 호스트 요구 사항은 다음에 나열되어 있습니다. https://docs.netapp.com/us-en/snapcenter/protect-hana/reference_host_requirements_to_install_snapcenter_plug_in_package_for_linux.html["Linux용 SnapCenter 플러그인 패키지를 설치하기 위한 호스트 요구 사항"].
@@ -38,6 +39,7 @@ image:hana-sc-generic-image-060.png["너비=601, 높이=166"]
 
 
 
+[[sap-hana-hdbsql-client-software-installation-and-configuration]]
 == SAP HANA hdbsql 클라이언트 소프트웨어 설치 및 구성
 
 SAP HANA hdbsql 클라이언트 소프트웨어는 SAP HANA 플러그인이 설치된 동일한 호스트에 설치해야 합니다. 소프트웨어는 다음에서 다운로드할 수 있습니다. https://support.sap.com/en/index.html["SAP 지원 포털"].
@@ -60,6 +62,7 @@ HANA_HDBSQL_CMD=/usr/sap/hdbclient/hdbsql
 ....
 
 
+[[sap-hana-user-store-configuration-for-a-central-plug-in-host]]
 == 중앙 플러그인 호스트를 위한 SAP HANA 사용자 저장소 구성
 
 중앙 플러그인 호스트에서 관리하는 각 HANA 시스템에 대해 SAP HANA 사용자 저장소 키를 구성해야 합니다. 중앙 플러그인 호스트에서 키를 구성하기 전에 다음에서 설명한 대로 데이터베이스 사용자를 생성해야 합니다. link:hana-sc-generic-sc-resource-config.html#sap-hana-backup-user-and-sap-hana-user-store-configuration["SAP HANA 백업 사용자 및 SAP HANA 사용자 저장소 구성"].
@@ -97,6 +100,7 @@ C:\Program Files\sap\hdbclient>
 ....
 
 
+[[hana-manual-resource-configuration]]
 == HANA 수동 리소스 구성
 
 SnapCenter 에서 리소스 보기의 추가 버튼을 클릭하면 수동으로 구성된 HANA 시스템 리소스가 생성됩니다.

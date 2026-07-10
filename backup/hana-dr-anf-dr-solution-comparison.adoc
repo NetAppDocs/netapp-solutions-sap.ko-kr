@@ -26,6 +26,7 @@ image:saphana-dr-anf_image3.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[sap-hana-system-replication]]
 == SAP HANA 시스템 복제
 
 SAP HANA 시스템 복제는 데이터베이스 계층에서 작동합니다. 이 솔루션은 기본 시스템에서 변경 사항을 수신하는 재해 복구 사이트의 추가 SAP HANA 시스템을 기반으로 합니다. 이 보조 시스템은 운영 시스템과 동일해야 합니다.
@@ -56,6 +57,7 @@ image:saphana-dr-anf_image4.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[sap-hana-system-replication-with-data-preloaded-into-memory]]
 === 메모리에 사전 로드된 데이터로 SAP HANA 시스템 복제
 
 SAP HANA의 RTO 가치는 메모리에 사전 로드된 데이터로 SAP HANA 시스템 복제를 통해서만 달성할 수 있습니다. 재해 복구 사이트의 전용 보조 서버에서 SAP HANA 시스템 복제를 실행하면 RTO 값이 약 1분 이하로 유지됩니다. 복제된 데이터가 수신되고 보조 시스템의 메모리에 사전 로드됩니다. 이렇게 낮은 페일오버 시간 덕분에 HANA 소프트웨어 업그레이드와 같이 다운타임이 거의 발생하지 않는 유지보수 작업에도 SAP HANA 시스템 복제가 사용되는 경우가 많습니다.
@@ -64,6 +66,7 @@ SAP HANA의 RTO 가치는 메모리에 사전 로드된 데이터로 SAP HANA �
 
 
 
+[[sap-system-replication-without-data-preloaded-into-memory]]
 === 데이터가 메모리에 사전 로드되지 않은 SAP 시스템 복제
 
 RTO 요구 사항이 비교적 엄격하지 않은 경우, 사전 로드된 데이터 없이 SAP HANA 시스템 복제를 사용할 수 있습니다. 이 운영 모드에서는 재해 복구 영역의 데이터가 메모리에 로드되지 않습니다. DR 지역의 서버는 여전히 필요한 모든 SAP HANA 프로세스를 실행하는 SAP HANA 시스템 복제를 처리하는 데 사용됩니다. 그러나 대부분의 서버 메모리는 SAP HANA 개발/테스트 시스템과 같은 다른 서비스를 실행하는 데 사용할 수 있습니다.
@@ -72,6 +75,7 @@ RTO 요구 사항이 비교적 엄격하지 않은 경우, 사전 로드된 데�
 
 
 
+[[sap-hana-disaster-recovery-with-anf-cross-region-replication]]
 == ANF 교차 지역 복제를 통한 SAP HANA 재해 복구
 
 ANF 교차 지역 복제는 비동기 데이터 복제를 사용하는 재해 복구 솔루션으로 ANF에 내장되어 있습니다. ANF 지역 간 복제는 운영 및 보조 Azure 영역에 있는 두 ANF 볼륨 간의 데이터 보호 관계를 통해 구성됩니다. ANF 지역 간 복제는 효율적인 블록 델타 복제를 사용하여 보조 볼륨을 업데이트합니다. 복제 구성 중에 업데이트 일정을 정의할 수 있습니다.
@@ -90,6 +94,7 @@ image:saphana-dr-anf_image5.png["입력/출력 대화 상자 또는 작성된 �
 
 
 
+[[summary-of-disaster-recovery-solutions]]
 == 재해 복구 솔루션 요약
 
 다음 표에서는 이 섹션에서 설명하는 재해 복구 솔루션을 비교하여 가장 중요한 지표를 보여 줍니다.
