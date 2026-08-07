@@ -59,6 +59,6 @@ SnapMirror를 통한 스토리지 복제를 사용하면 RTO 및 RPO를 위험�
 
 image:sc-copy-clone-image6.png["입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림"] 자세한 단계별 설명은 기술 보고서를 참조하십시오
 
-https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["스토리지 복제를 사용한 SAP HANA 재해 복구"]
+https://www.netapp.com/pdf.html?item=/media/8584-tr4646.pdf["스토리지 복제를 사용한 SAP HANA 재해 복구"]
 
 link:../backup/hana-dr-anf-data-protection-overview.html["Azure NetApp Files을 사용한 SAP HANA 재해 복구"]

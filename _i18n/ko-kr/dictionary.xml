@@ -956,8 +956,6 @@
   <block id="1e36c812f9450a024b52c0b4085d0776" category="paragraph">SAP 수명 주기 관리를 강조하는 비디오 및 데모 개요</block>
   <block id="1b957531101399d0f744aec724e69fa1" category="summary">NetApp은 SAP LaMa(SAP Landscape Management)와 같은 일상적인 작업에 SAP 관리자가 사용하는 도구에 완벽하게 통합되는 라이프사이클 관리 솔루션을 제공함으로써 기능의 느린 구현, 자동화 부족 및 생산성 저하와 관련된 과제를 해결하고 있습니다. 목표는 프로덕션 시스템의 복사본을 만드는 데 필요한 모든 소프트웨어 및 스토리지 계층 작업을 비롯하여 사전 처리에서 사후 처리까지 프로비저닝 워크플로를 단순화하는 것입니다. 이 솔루션을 사용하면 관리자는 몇 번의 마우스 클릭으로 개발 및 테스트 환경을 만들 수 있으므로 라이프사이클 관리가 개선됩니다.</block>
   <block id="643fa590028dacc026f165afdf4fb795" category="doc">SB-3978: SAP HANA의 라이프사이클 관리</block>
-  <block id="2302484597c5b4089c4a24a850b7f489" category="inline-link-macro"><block ref="2302484597c5b4089c4a24a850b7f489" category="inline-link-rx"></block></block>
-  <block id="33876e03541db5898b573e9322b655e7" category="paragraph"><block ref="33876e03541db5898b573e9322b655e7" category="inline-link-macro-rx"></block></block>
   <block id="3595bb49b6abd88938e481ccc0d97119" category="section-title">데이터베이스를 복원하는 데 필요한 시간입니다</block>
   <block id="9abaa35fafe6af9114d3f925f652af20" category="section-title">데이터베이스를 시작하는 데 필요한 시간입니다</block>
   <block id="60ea11645c6193ef1631453b24f6f3ca" category="section-title">데이터베이스 복구에 필요한 시간</block>
@@ -971,8 +969,6 @@
   <block id="1cc8efad9ef8bc01d2445bfc8d04e15c" category="doc">SAP HANA를 사용한 ANF 지역 간 복제</block>
   <block id="a9f4d9aafbea086205494239b45e7d8a" category="inline-link">Azure NetApp Files 설명서 | Microsoft 문서</block>
   <block id="8132c1d54d27cf7a67ac0e563e82c329" category="summary">TR-4646은 SAP HANA의 재해 복구 보호 옵션에 대한 개요입니다. 여기에는 자세한 설정 정보와 동기 및 비동기 NetApp SnapMirror 스토리지 복제를 기반으로 한 3개 사이트 재해 복구 솔루션의 사용 사례 설명이 포함됩니다. 설명된 솔루션에서는 SAP HANA 플러그인을 통해 NetApp SnapCenter를 사용하여 데이터베이스 정합성을 관리합니다.</block>
-  <block id="c79cdf002876c8be8a196f93f344a33f" category="inline-link-macro"><block ref="c79cdf002876c8be8a196f93f344a33f" category="inline-link-rx"></block></block>
-  <block id="d925ae253e076ec94fce589bf0750a31" category="paragraph"><block ref="d925ae253e076ec94fce589bf0750a31" category="inline-link-macro-rx"></block></block>
   <block id="6be8f3086a30e59e908d53eb620b51dd" category="doc">복원 및 복구</block>
   <block id="6ce7acfe97d30fdc19c079a65ba07e22" category="list-text">SAP HANA Studio를 사용하여 복원 및 복구 프로세스 준비:</block>
   <block id="217b91e8b34ae4d89f6ce0aea3eae3e0" category="list-text">복구 유형 및 로그 백업 위치를 선택합니다.</block>
@@ -1537,7 +1533,6 @@
   <block id="e1147a04a00490e6c50fca223d7f0bbc" category="list-text">요약 페이지에서 마침 을 클릭합니다.</block>
   <block id="26e2418d177df1dddb008e455ce28752" category="doc">SnapCenter 아키텍처</block>
   <block id="4a8478781fce30dd0844fa495323657c" category="section-title">SnapCenter 구성 요소</block>
-  <block id="1911e0ada44759ee3994a93b354b6e23" category="inline-link"><block ref="1911e0ada44759ee3994a93b354b6e23" category="inline-link-rx"></block></block>
   <block id="532841fbf704673d5f6dc65db8d8cf66" category="inline-link"><block ref="532841fbf704673d5f6dc65db8d8cf66" category="inline-link-rx"></block></block>
   <block id="ea97f578f1fa3dc5c59fcebd659118ba" category="section-title">자동 복원 및 복구</block>
   <block id="4344ed84200b3882e693332ce520922b" category="paragraph">다음 단계를 수행하여 자동 복원 및 복구 작업을 실행할 수 있습니다.</block>
@@ -1884,7 +1879,6 @@
   <block id="ec5c19062711162507c65806ea542ac5" category="paragraph">이제 새 SnapCenter 정책이 구성되었습니다.</block>
   <block id="2c0b1092a288f5d67050f3fbf404d5f8" category="list-text">NetApp ONTAP용 FSX 사용자 가이드 — NetApp ONTAP용 Amazon FSx란?</block>
   <block id="d82c21a48349085e4fd93fb6712e3789" category="paragraph"><block ref="d82c21a48349085e4fd93fb6712e3789" category="inline-link-rx"></block></block>
-  <block id="3306e00cec668497714eaadcd7aa6ac8" category="list-text">SnapCenter 리소스 페이지를 참조하십시오</block>
   <block id="7608e75619cff3eeb4e8bce40481b456" category="list-text">SnapCenter 소프트웨어 설명서</block>
   <block id="7a3492bffc26e95ce3669b39a1f14422" category="list-text">TR-4667: SnapCenter를 사용하여 SAP HANA 시스템 복제 및 클론 작업 자동화</block>
   <block id="baaebabde318c3efac57f4b4eaf80541" category="summary">NetApp Snapshot 기술을 사용하여 몇 분 내에 데이터베이스 백업을 생성할 수 있습니다. 스냅샷 복사본은 스토리지 플랫폼에서 물리적 데이터 블록을 이동하지 않으므로 스냅샷 복사본을 만드는 데 필요한 시간은 데이터베이스의 크기와 상관없습니다.</block>
@@ -2898,7 +2892,6 @@ admin 설정</block>
   <block id="0a961d2cbb588be1d5a93b4774cf6ef1" category="cell">새로운 스토리지 시스템(AFF A-Series)</block>
   <block id="f31f11743f1dfba18e9f008e2956d24e" category="cell">2024년 9월</block>
   <block id="e4a9c264a13e2ec5faac7a73cf8d0e8c" category="cell">부 업데이트</block>
-  <block id="e5e2a6bf28307550240d9ed91bbb0fa0" category="paragraph"><block ref="e5e2a6bf28307550240d9ed91bbb0fa0" category="inline-link-rx"></block></block>
   <block id="a36cfc2690f8671748f584abb16bdd04" category="cell">새로운 스토리지 시스템</block>
   <block id="0fba9f2a3fbb4cfbaed44806cd9933a2" category="cell">새로운 스토리지 시스템(ASA A-Series)</block>
   <block id="5e8f0f670e38fbdf628b0883f946934f" category="inline-image-macro">입력/출력 대화 상자 또는 작성된 내용을 표시하는 그림</block>
@@ -2997,7 +2990,6 @@ admin 설정</block>
   <block id="14397cf778300a82704513944fe2f1ec" category="paragraph"><block ref="14397cf778300a82704513944fe2f1ec" category="inline-image-macro-rx" type="image"></block></block>
   <block id="9e6a6eb10efdb10620a6a3d4bdeb2b88" category="paragraph"><block ref="9e6a6eb10efdb10620a6a3d4bdeb2b88" category="inline-image-macro-rx" type="image"></block></block>
   <block id="5bf509e6d43ff3eb5c07c44c1546ab09" category="paragraph"><block ref="5bf509e6d43ff3eb5c07c44c1546ab09" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="55aab77fa5d7f50b7fbedbf0df160938" category="paragraph"><block ref="55aab77fa5d7f50b7fbedbf0df160938" category="inline-link-rx"></block></block>
   <block id="5455f48dc7894a1b2782bb01cf938a86" category="paragraph"><block ref="5455f48dc7894a1b2782bb01cf938a86" category="inline-link-rx"></block></block>
   <block id="170e3ae89d6261851ff484a8e771649e" category="paragraph">저자: Marco Schoen, NetApp; Dr. Tristan Daude, Commvault Systems</block>
   <block id="477777d7db9a7b53d5e478c5db17b758" category="paragraph">이 문서에서는 SAP HANA를 통한 ANF 지역 간 복제에 대해 설명합니다.</block>
@@ -3370,8 +3362,6 @@ admin 설정</block>
   <block id="ef1fb8d9c97217ef2fbf941299c08adf" category="paragraph">SnapMirror 활성 동기화:</block>
   <block id="32e3115035ed1831322c88ce03af5c52" category="inline-link">ONTAP의 SnapMirror 활성 동기화 개요</block>
   <block id="9f090056bc76628ad2a8b94b102aa48c" category="paragraph"><block ref="9f090056bc76628ad2a8b94b102aa48c" category="inline-link-rx"></block></block>
-  <block id="e4004172088b034dfe07abe579273b06" category="inline-link">NetApp SnapMirror vMSC(VMware vSphere Metro Storage Cluster)와 NetApp ONTAP Active Sync를 사용합니다.</block>
-  <block id="44d0d1ca42daaecc86f8bb55519f9ec5" category="paragraph"><block ref="44d0d1ca42daaecc86f8bb55519f9ec5" category="inline-link-rx"></block></block>
   <block id="34fd97d0487efaacb8dc98024d287c11" category="inline-link">SnapMirror 활성 동기화가 포함된 VMware vSphere Metro 스토리지 클러스터</block>
   <block id="d5ad3267276646604ba509767a3d16f2" category="paragraph"><block ref="d5ad3267276646604ba509767a3d16f2" category="inline-link-rx"></block></block>
   <block id="58486898b4fe52f80d7a134d74186a4c" category="inline-link">VMware vMSC(vSphere Metro Storage Cluster)</block>
@@ -4540,7 +4530,6 @@ admin 설정</block>
   <block id="087870f30d860ffeb01eac4f727d6656" category="section-title">VMware vSphere 플러그인용 SnapCenter</block>
   <block id="5e9bba71efcdfbbed1dcf18802f8a227" category="sidebar">SnapCenter 복원 및 복구 작업</block>
   <block id="743ac471396f82caf85eeeeac51160f8" category="sidebar">SAP 시스템 새로 고침</block>
-  <block id="3a499e89a73d22ba78550fb47f2e0c88" category="sidebar">추가 정보 및 버전 기록</block>
   <block id="000c450c2b1b3fbe68fc0d1893fb42e7" category="list-text">챕터에 설명된 대로 추가 LUN에 대한 다중 경로를 구성합니다. <block ref="5dbefb7618e64c1782ebe16427fe0a08" category="inline-link-macro-rx"></block> .</block>
   <block id="6089175223f03bbb436ea3677ff5d54e" category="paragraph"><block ref="6089175223f03bbb436ea3677ff5d54e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="3082ebb564b0862e5b62f45e9c7f2918" category="paragraph"><block ref="3082ebb564b0862e5b62f45e9c7f2918" category="inline-image-macro-rx" type="image"></block></block>
@@ -4647,14 +4636,10 @@ admin 설정</block>
   <block id="3c4ac70408381221e011d1b8eb9ca8ce" category="paragraph">SAP HANA 백업 및 복원 작업을 통해 조직은 다음과 같은 과제에 직면합니다. • 프로덕션 SAP 시스템에서 성능 저하로 인한 긴 백업 작업 • 긴 복원 및 복구 작업으로 인한 허용할 수 없는 시스템 가동 중지 • 애플리케이션의 중요성으로 인한 백업 창 축소 • 논리적 손상을 완화하기 위한 유연한 솔루션 필요</block>
   <block id="34e74b1c7f4aad91715567cf698912f6" category="section-title">해결책</block>
   <block id="b230779de102682fe4be587788f9b085" category="paragraph">NetApp ONTAP ® 데이터 관리 소프트웨어를 실행하는 NetApp ® 스토리지 솔루션과 NetApp SnapCenter ® 데이터 보호 소프트웨어를 함께 사용하면 이러한 모든 과제를 해결할 수 있습니다.  ONTAP 소프트웨어에 포함된 NetApp Snapshot™ 기술을 사용하면 몇 초 만에 모든 규모의 데이터 세트에 대한 백업을 만들거나 복원 작업을 실행할 수 있습니다.  SAP HANA는 유효한 백업 작업으로 스토리지 기반 스냅샷 복사본 사용을 지원합니다.</block>
-  <block id="07d632c80bac8a4755255f5e335d8974" category="inline-link-macro"><block ref="07d632c80bac8a4755255f5e335d8974" category="inline-link-rx"></block></block>
-  <block id="e3d55b357098828096098ba417d3c90c" category="paragraph"><block ref="e3d55b357098828096098ba417d3c90c" category="inline-link-macro-rx"></block></block>
   <block id="9446c7c84986f94f08b68900006bb1e5" category="summary">이 문서는 SAP HANA의 재해 복구에 중점을 둡니다.</block>
   <block id="bf6723a5d293af775d564a8960e50265" category="doc">SB-3968: SAP HANA 재해 복구</block>
   <block id="24226245cbb8f6448d2fc2fad9d6d847" category="paragraph">IT 조직에서는 비즈니스 연속성이 필수적입니다.  그들은 고객이 사업을 운영하는 데 필요한 미션 크리티컬 애플리케이션에 대해 고가용성 서비스를 제공할 수 있어야 합니다.  그렇지 않으면 고객의 생산성이 감소하고, 전자상거래 기업은 수익에 직접적인 영향을 받을 수 있습니다.</block>
   <block id="d9bb80ae32f686bbae368979a76f86d7" category="paragraph">NetApp IT 조직이 모든 비즈니스 요구에 대응할 수 있도록 재해 복구 계획을 구축하거나 조정할 수 있도록 돕는 완전한 기술 및 도구 포트폴리오를 개발했습니다.</block>
-  <block id="6a9c098947d8b811552347f2ed990ebd" category="inline-link-macro"><block ref="6a9c098947d8b811552347f2ed990ebd" category="inline-link-rx"></block></block>
-  <block id="702c9bfa6d3b8d8b923fbeba4db3625f" category="paragraph"><block ref="702c9bfa6d3b8d8b923fbeba4db3625f" category="inline-link-macro-rx"></block></block>
   <block id="225b42e7cb6036e97607adda6dcca1c3" category="summary">SAP 담보를 위한 NetApp 솔루션의 최근 변경 사항 로그입니다.</block>
   <block id="2ca0fa0a322d6c31c3d0906a34c85e6c" category="paragraph">SAP 솔루션의 새로운 소식을 알아보세요.</block>
   <block id="bab52961b58c502c7991d35556c25367" category="section-title">2025년 8월 18일</block>
@@ -5808,7 +5793,6 @@ admin 설정</block>
   <block id="0efcefbaac1272d75fa3f95b9712d630" category="paragraph">시스템 데이터베이스:</block>
   <block id="8c87d36e58a14d731d3cb35d037718d8" category="paragraph">테넌트 데이터베이스:</block>
   <block id="02fd0d0d93ba9f1705c5a633970698b9" category="paragraph">논리적 손상은 소프트웨어 오류, 사용자 오류 또는 고의적인 파괴 행위로 인해 발생할 수 있습니다. 안타깝게도 논리적 손상은 표준적인 고가용성 및 재해 복구 솔루션으로는 해결할 수 없는 경우가 많습니다. 따라서 논리적 손상이 발생한 계층, 애플리케이션, 파일 시스템 또는 스토리지에 따라 최대 다운타임 및 데이터 손실 요구 사항을 충족하지 못하는 경우가 발생할 수 있습니다.</block>
-  <block id="411b1ca4cfe8073933ca1284bac60213" category="paragraph"><block ref="411b1ca4cfe8073933ca1284bac60213" category="inline-link-rx"></block></block>
   <block id="ea7fdceccfe7d9332d70547a6be7cf72" category="paragraph"><block ref="ea7fdceccfe7d9332d70547a6be7cf72" category="inline-link-macro-rx"></block></block>
   <block id="56a5c925d77740ea69d50272863f3f75" category="section-title">2026년 2월 26일</block>
   <block id="7dad4c0ee446a92530a257db0791c76e" category="paragraph">로컬 보안 저장소(LSS)를 사용한 SAP HANA 볼륨 암호화를 다루도록 업데이트된<block ref="c3708ebf567e377ab7439ca8121b298b" category="inline-link-rx"></block> 솔루션입니다.</block>
@@ -5902,4 +5886,108 @@ admin 설정</block>
   <block id="caa5de93118549a4fb1b814eeb2f5544" category="paragraph">SnapCenter 클론 삭제 워크플로는 기본적으로 <block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block> 항목을 삭제하지 않습니다.</block>
   <block id="8bfab5683aa400a8bc0f218a12d430e9" category="paragraph"><block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block> 항목이 클론 삭제 과정에서 자동으로 삭제되려면 먼저 클론을 복구하고 자동 검색 리소스로 설정해야 합니다. 이 단계를 수행하지 않으면 <block ref="816a3ef77b62ade41c3f936c958aa555" prefix=" " category="inline-code"></block> 항목이 자동으로 삭제되지 않으므로 수동으로 제거해야 합니다.</block>
   <block id="c18615d685f179944bb9c594c9e6c732" category="list-text">SAP HANA 공유 볼륨에 대한 SnapCenter 클론 삭제 워크플로를 수행합니다.</block>
+  <block id="9d1408a757e9069797cf7beab6881e23" category="inline-link-macro"><block ref="9d1408a757e9069797cf7beab6881e23" category="inline-link-rx"></block></block>
+  <block id="fbf1e5a8081f7fc23d2d5271b50d8792" category="paragraph"><block ref="fbf1e5a8081f7fc23d2d5271b50d8792" category="inline-link-macro-rx"></block></block>
+  <block id="fba71cc250d7d1a7df4fd50e90fab5e3" category="paragraph">이 장에서는 이 솔루션과 관련된 추가 자료 링크를 제공합니다.</block>
+  <block id="7912a6ea019693a170bbf40a62a72e9f" category="list-text"><block ref="7912a6ea019693a170bbf40a62a72e9f" category="inline-link-rx"></block></block>
+  <block id="60cfba11af764b91802636a5bffeb222" category="inline-link">ONTAP&amp;amp;#44; Azure NetApp Files&amp;amp;#44; 및 FSx for ONTAP 전반에서 SnapCenter를 사용하여 SAP HANA 시스템 보호</block>
+  <block id="928d3b07164bc787951a0af9883e6bc3" category="list-text"><block ref="804a70f1f58a8d76d7850abbe1f47e1e" category="inline-link-rx"></block></block>
+  <block id="f754d929fae407f5c8d867af7641e060" category="cell">08/2026</block>
+  <block id="b88081ecae2714a1f990a3844a1ca60d" category="paragraph">이 장에서는 본 솔루션 문서에 사용된 SAP HANA 시스템 BM1의 구체적인 설치 및 구성에 대해 설명합니다. HANA 시스템 QM1도 동일한 방식으로 배포되었습니다.</block>
+  <block id="5fe2c5d2c4ab7cedc213ca5c68b05330" category="paragraph">추가적인 일반 배포 정보 및 모범 사례는<block ref="5888c0fcaa90f43e1381a41ee8a6b7b6" category="inline-link-rx"></block>에서 확인할 수 있습니다.</block>
+  <block id="6f7e25b2593ffdea51a1764f1fdcef78" category="paragraph">다음 스크린샷은 스토리지 유닛 BM1++_++data++_++mnt00001의 생성 과정을 보여줍니다. HANA 로그 및 공유 스토리지 유닛도 동일한 방식으로 생성되었습니다.</block>
+  <block id="181373e23754fc92ef40c43618103a70" category="paragraph"><block ref="181373e23754fc92ef40c43618103a70" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2243d8c4509f2941e2d63fedd009f4e0" category="inline-link-macro">HANA 호스트 구성</block>
+  <block id="2e626f2495c3cf150ebe609448c25678" category="paragraph">HANA 호스트 FCP 어댑터의 WWPN은 <block ref="b77d6bd40a846ccc7ca1a7a06570d692" category="inline-link-macro-rx"></block>장에서 설명한 대로 NetApp 호스트 유틸리티의 일부인 sanlun 명령을 사용하여 나열할 수 있습니다.</block>
+  <block id="b34f9895408cab6e676ce498e645ec3d" category="inline-image-macro">width=601,height=320</block>
+  <block id="94a650aaa1bb03432a6203a1e23f10fa" category="paragraph"><block ref="94a650aaa1bb03432a6203a1e23f10fa" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f0f72d91e0604a056769a0193392528b" category="paragraph">스토리지 유닛을 생성하려면 추가를 클릭합니다.</block>
+  <block id="e36f02d14e3a78adbae48b28c37d2692" category="paragraph"><block ref="e36f02d14e3a78adbae48b28c37d2692" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="1eded785990201ae1e7f340804d72ed1" category="paragraph">스크린샷은 HANA 시스템 BM1을 위해 생성된 세 개의 스토리지 유닛을 보여줍니다.</block>
+  <block id="89132c66b0273f0a29d9193cf0702f16" category="paragraph"><block ref="89132c66b0273f0a29d9193cf0702f16" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e026d341645671586b9ce55ee09aa6ff" category="paragraph">호스트를 설정하기 전에 NetApp SAN 호스트 유틸리티를 해당 <block ref="b5521980cacd8acc0482c24b2751e3c6" category="inline-link-rx"></block> 사이트에서 다운로드하여 HANA 서버에 설치해야 합니다. 호스트 유틸리티 설명서에는 사용 중인 FCP HBA에 따라 설치해야 하는 추가 소프트웨어에 대한 정보가 포함되어 있습니다.</block>
+  <block id="eab12b4f6e78f007ba9c2c8c7b1a0186" category="paragraph">NetApp SAN 호스트 유틸리티를 사용하여 스토리지 시스템에서 호스트 매핑을 구성하는 데 필요한 호스트 어댑터의 WWPN을 가져올 수도 있습니다.</block>
+  <block id="2be6edbbf8bc654c3c0bfd578455c69d" category="section-title">다중 경로 구성</block>
+  <block id="eb5f11d29c534fdaee78618f730d19fb" category="list-text">새로운 LUN을 검색하려면 각 서버에서 Linux rescan-scsi-bus.sh -a 명령을 실행하십시오.</block>
+  <block id="217308982fdfe3d7361a64c05fd7c019" category="list-text">sanlun lun show 명령을 실행하고 필요한 모든 LUN이 표시되는지 확인하십시오. 출력에는 LUN과 해당 장치 파일에 호스트에서 스토리지 컨트롤러까지의 FC 경로가 4개씩 표시됩니다.</block>
+  <block id="be2a13eb2b54304d53b799418e936343" category="list-text">장치 파일 이름에 대한 전역 식별자(WWID)를 얻으려면 multipath -r 및 multipath -ll 명령을 실행하십시오.</block>
+  <block id="4a5796bc43390ec85030f36cad92be8a" category="list-text">/etc/multipath.conf 파일을 편집하고 WWID와 별칭 이름을 추가하십시오.</block>
+  <block id="d49a21e46543119b2dab3af45da1e584" category="list-text">다중 경로 장치 맵을 다시 로드하려면 multipath -r 명령을 실행하십시오.</block>
+  <block id="2e4b99a5da4c365f80291acf83f25625" category="list-text">multipath -ll 명령을 실행하여 모든 LUN, 별칭 이름 및 스토리지 경로를 나열함으로써 구성을 확인하십시오.</block>
+  <block id="db5efbe05d05de40804ba94195f74393" category="section-title">호스트 파일 시스템 구성</block>
+  <block id="8d4f66e6bde210b4bbcbec584cd88566" category="admonition">위에서 설명한 구성에서 /usr/sap/BM1 디렉터리는 OS 디스크에 저장됩니다. /usr/sap/BM1을 별도의 디스크에 저장해야 하는 경우 스토리지 시스템에 추가 LUN을 구성해야 합니다.</block>
+  <block id="fd43d830bdb4e388d4c9d3238d8db821" category="paragraph">아래 그림은 사용된 랩 환경의 개략적인 구성을 보여줍니다. 두 개의 단일 호스트 HANA MDC 시스템을 사용하여 다양한 작업을 시연합니다. HANA 시스템 BM1은 백업, 복원 및 복구 작업을 수행하도록 지정되었으며, HANA 시스템 QM1은 SAP System Refresh 작업의 대상 시스템으로 사용됩니다. HANA 시스템은 두 대의 베어메탈 서버에 배포되었으며, 스토리지 측면에서는 두 개의 ASA A30 2노드 클러스터가 사용됩니다. 첫 번째 클러스터는 HANA 시스템의 모든 스토리지 장치를 호스팅하고, 두 번째 클러스터는 백업 복제의 대상으로 사용됩니다.</block>
+  <block id="1413de5fa63eb0786c0adaaa425315a9" category="paragraph"><block ref="1413de5fa63eb0786c0adaaa425315a9" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="aaf58e5a5445d876b8f7b0fe22b5afbf" category="cell">9.19.1</block>
+  <block id="b9f16534f2b2bafc42883e1f3157014a" category="cell">SLES 15 SP7</block>
+  <block id="4dd5a41036da7fb1df274a1b9fafae33" category="cell">HANA</block>
+  <block id="268a6971497141d3f068e24521aec931" category="cell">2.0 리비전 89</block>
+  <block id="3e7e96fad5e237fb2d5a081c6cb11212" category="cell">6.2.2</block>
+  <block id="dc9c4db78e29038229eda79cb4fb3a62" category="doc">SnapCenter 작업</block>
+  <block id="cf222679af586f2f6fcef36213402eb3" category="paragraph">이 장에서는 SnapCenter를 사용한 백업, 복원 및 복구, SAP 시스템 새로 고침 및 비동기 복제 작업에 대해 요약합니다.</block>
+  <block id="fc257548c9d0dd5a5cc664774b7e659c" category="paragraph">백업 작업은 <block ref="b58105cf256232f10befd13824eb8fbd" category="inline-link-rx"></block>에 설명된 것과 동일한 방식으로 실행됩니다.</block>
+  <block id="6ce0091e478ffaede7916f5983a47e11" category="admonition">스토리지 유닛에 대해 일관성 그룹이 구성되어 있지 않으면 SnapCenter는 첫 번째 스냅샷 백업 작업 시 일관성 그룹과 하위 일관성 그룹을 생성합니다. 그러면 HANA 데이터 스토리지가 하위 일관성 그룹에 할당됩니다. SnapCenter 스냅샷 백업은 하위 일관성 그룹 내에 나열됩니다.</block>
+  <block id="9cf18086f625ef5df5144a31dc5fbea3" category="inline-image-macro">width=601,height=191</block>
+  <block id="79ba06e59598bce5953dac5bf2051a80" category="paragraph"><block ref="79ba06e59598bce5953dac5bf2051a80" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a76982505db7be9c1561069a79abf435" category="inline-image-macro">width=601,height=205</block>
+  <block id="00f6780c2555a0936eb72dcc73e9a806" category="paragraph"><block ref="00f6780c2555a0936eb72dcc73e9a806" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="512011d5b74ed22c82bf2dd87d933b45" category="paragraph">복원 및 복구 작업은 설명된 방식과 동일하게 실행됩니다<block ref="66e2e60033c47c8fe627c71a834090ce" category="inline-link-rx"></block>.</block>
+  <block id="6b2c568c43233dc04f1da2fa10845e34" category="section-title">비동기 스토리지 복제</block>
+  <block id="b12bdbebdc2b957e89692a4ac0bfe43a" category="paragraph">HANA 데이터 볼륨의 경우 비동기 스토리지 복제가 구성되었습니다.</block>
+  <block id="f1929b21af7705b79eccced6f3001dea" category="paragraph"><block ref="f1929b21af7705b79eccced6f3001dea" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="310400b0b4a3a418d6d86450884f9780" category="paragraph">MirrorAndVault 정책을 사용하여 복제가 구성되었습니다.</block>
+  <block id="f65d14dd831dcce421764471da054aa6" category="inline-image-macro">width=601,height=206</block>
+  <block id="c4c8c63932d27f8c3250f467fcd26fa6" category="paragraph"><block ref="c4c8c63932d27f8c3250f467fcd26fa6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="fb0e1e71df602c6e2ed1c6728be93efe" category="paragraph">MirrorAndVault 정책에는 서로 다른 SnapMirror 레이블과 보존 기간이 포함됩니다.</block>
+  <block id="bda6dbadb0f513f5218f10abf7195c62" category="inline-image-macro">width=601,height=235</block>
+  <block id="bf306170d819e7c3313e91938ba23611" category="paragraph"><block ref="bf306170d819e7c3313e91938ba23611" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="59e89217d1f7ec869277e9af1d3ddd18" category="paragraph">SnapCenter에서 ONTAP MirrorAndVault 정책의 SnapMirror 레이블 "daily"와 일치하도록 정책이 구성되었습니다.</block>
+  <block id="f13df62a1916288c276f504297f42831" category="inline-image-macro">width=378,height=354</block>
+  <block id="00f88ef02fe4c0a8c575a513eec00d7e" category="paragraph"><block ref="00f88ef02fe4c0a8c575a513eec00d7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="5faf148cadf753c102f515fcf70f82f9" category="paragraph">ONTAP MirrorAndVault 정책을 사용할 때 SnapCenter는 스냅샷 백업이 대상 스토리지에 한 번만 존재하더라도 Vault 복사본과 미러 복사본을 분리하여 표시합니다.</block>
+  <block id="d8ccdfcfedcf950d141658f96224da27" category="paragraph"><block ref="d8ccdfcfedcf950d141658f96224da27" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f3fbac44c3d690f9cb32b8c84c98b9bf" category="paragraph">SnapCenter를 사용한 SAP 시스템 갱신 및 클로닝 작업에 대한 자세한 내용은 <block ref="c3708ebf567e377ab7439ca8121b298b" category="inline-link-rx"></block>에서 확인할 수 있습니다.</block>
+  <block id="96b8c3cfc88602d57e00e31f795909a5" category="section-title">SnapCenter 워크플로</block>
+  <block id="884e6feda877b79be06e0b21fb7ba23b" category="paragraph">작업 세부 정보 및 사전 요구 사항은<block ref="2997ff14a5f91e8cb6ac3a5e838cbf44" category="inline-link-rx"></block>에 설명되어 있습니다. 특히, 첫 번째 새로 고침/복제 작업을 실행하기 전에 대상 시스템을 SnapCenter에 추가해야 합니다.</block>
+  <block id="a44a87fa875df86dc018e5fad20a8969" category="paragraph">클로닝 워크플로의 첫 번째 단계에서는 대상 호스트와 대상 SID를 제공해야 합니다.</block>
+  <block id="bf631e62061aadc0780364c8629bf104" category="inline-image-macro">width=333,height=313</block>
+  <block id="4bb56f1b7bfc0841e871324869b2461f" category="paragraph"><block ref="4bb56f1b7bfc0841e871324869b2461f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="dc844487eb5e6912e10ffcdeb0db6b58" category="paragraph">프로토콜 선택은 "FCP"여야 합니다.</block>
+  <block id="18f2a59240825d4c3d3982c7f7c6d210" category="inline-image-macro">width=334,height=312</block>
+  <block id="79459453d7ce4eea71ad3c2500ddf454" category="paragraph"><block ref="79459453d7ce4eea71ad3c2500ddf454" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="144fca8386a43e261ab72b107b422397" category="paragraph">선택적으로 sc-system-refresh.sh 스크립트를 추가하여 복구 작업을 자동화할 수 있습니다.</block>
+  <block id="6f9579dcced83f5ab7f3fb18d64f963a" category="inline-image-macro">width=352,height=331</block>
+  <block id="47738e1b349d4c4de3f7fa47efb8248d" category="paragraph"><block ref="47738e1b349d4c4de3f7fa47efb8248d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4aab671e038be0d155852633c46a2803" category="paragraph">아래 스크린샷은 클론 생성 워크플로의 작업 로그를 보여줍니다.</block>
+  <block id="a74716b6cfdeb6de488dc178eb7fab64" category="inline-image-macro">width=379,height=468</block>
+  <block id="1aefc8acecb8ca8d5a4b71e8ada504b8" category="paragraph"><block ref="1aefc8acecb8ca8d5a4b71e8ada504b8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="8a2ac840f78e7d6f1289a33914b99885" category="paragraph">다음 출력은 sc-system-refresh.sh 스크립트의 로그 파일을 보여 줍니다.</block>
+  <block id="49ea6572c02d426caf6ed4a9d7e1c224" category="section-title">스토리지 보기</block>
+  <block id="e7203d350029cf0e6540cf4d9593f079" category="paragraph">스토리지 계층에서 FlexClone 볼륨이 생성되어 대상 호스트에 매핑되었습니다.</block>
+  <block id="cf29ceec036428af03682ca211e04807" category="inline-image-macro">width=601,height=295</block>
+  <block id="f04e7ed0a367cf04e9044498415aa805" category="paragraph"><block ref="f04e7ed0a367cf04e9044498415aa805" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4e1a05d9f0bbe4014d12b951157de8ca" category="paragraph"><block ref="4e1a05d9f0bbe4014d12b951157de8ca" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="6de17a2d8dca6c7fc4a6d5b47e8fdd83" category="section-title">호스트 뷰</block>
+  <block id="acf2994852bd4b04e16be66bfa221852" category="paragraph">호스트에서 새로운 FlexClone 볼륨이 감지되어 마운트되었습니다.</block>
+  <block id="4e1c0112e7e27e6f70e64692bf2a46b3" category="doc">SnapCenter가 베어메탈 서버와 NetApp ASA 시스템에서 실행되는 SAP HANA 데이터 보호</block>
+  <block id="4f53c8764978efc7e04ccf5eca9a2dff" category="paragraph">이 문서는 NetApp ASA 시스템에 데이터가 저장되고 X64 베어메탈 서버에서 실행되는 HANA 시스템을 위해 SnapCenter를 사용하는 데이터 보호 모범 사례를 설명합니다.</block>
+  <block id="d2f7d32c4d8c10fa202de66471914177" category="paragraph">이 문서는 전체 환경을 구성하기 위한 단계별 가이드 역할을 하지 않으며, NetApp ASA 스토리지 시스템에 연결된 베어메탈 서버를 사용하는 SnapCenter 및 HANA에 특화된 세부 정보에 초점을 맞춥니다.</block>
+  <block id="2003f744581b30fdfdc3025618263450" category="list-text">SAP HANA 시스템 설정</block>
+  <block id="8200552a5d7fa999d46a29d4bc8985d1" category="list-text">특정 SnapCenter 구성</block>
+  <block id="5e70357dec520255b41d23b97e3c4d6d" category="list-text">SnapCenter 백업, 복원 및 복구 작업에 대한 세부 정보</block>
+  <block id="0f135e62f6cfd5d495df5aec6e12f852" category="list-text">SnapCenter SAP 시스템 새로 고침 작업 관련 세부 사항</block>
+  <block id="0f68b904e33d9ac04605aecc958bcf52" category="inline-link-macro">추가 정보</block>
+  <block id="2e0d7bb1690285b33309213b7b97c622" category="paragraph">자세한 내용 및 상세한 구성 지침은 해당 <block ref="0d570cdc19f454db1ceb6d65aba93fe2" category="inline-link-macro-rx"></block> 장에 나열된 문서를 참조하십시오.</block>
+  <block id="a61723211ec45014f02ec9920daaef26" category="paragraph"><block ref="a61723211ec45014f02ec9920daaef26" category="inline-link-rx"></block></block>
+  <block id="590403e24af81b2be2c1d9abb8663627" category="inline-link-macro"><block ref="590403e24af81b2be2c1d9abb8663627" category="inline-link-rx"></block></block>
+  <block id="8f790e9f9bdd4ea835cccd0f35081a83" category="paragraph"><block ref="8f790e9f9bdd4ea835cccd0f35081a83" category="inline-link-macro-rx"></block></block>
+  <block id="fa1c65a872b9ca230975b3c2b7de8866" category="inline-link-macro"><block ref="fa1c65a872b9ca230975b3c2b7de8866" category="inline-link-rx"></block></block>
+  <block id="6c52a11ec179c9b0dce7aec85aa5f16b" category="paragraph"><block ref="6c52a11ec179c9b0dce7aec85aa5f16b" category="inline-link-macro-rx"></block></block>
+  <block id="452dc078c2039ad92c2da2058afb9627" category="inline-link-macro"><block ref="452dc078c2039ad92c2da2058afb9627" category="inline-link-rx"></block></block>
+  <block id="9f9b969c1fb521eeb60afd916d299ec9" category="paragraph"><block ref="9f9b969c1fb521eeb60afd916d299ec9" category="inline-link-macro-rx"></block></block>
+  <block id="4b4d55bb27bec5759e7aab4dfc59c7a2" category="paragraph"><block ref="4b4d55bb27bec5759e7aab4dfc59c7a2" category="inline-link-rx"></block></block>
+  <block id="90af59cf899c13071304f737b8b45d68" category="section-title">2026년 8월 5일</block>
+  <block id="a8b91b41f89181ec38a97b7e6940398a" category="inline-link">NetApp SnapCenter for SAP HANA on bare metal servers with NetApp ASA 시스템</block>
+  <block id="6c6d709c806fd2c237a28a9dedbceedc" category="paragraph">새로운 솔루션<block ref="87909c917dfc6a157b3191955e2fd2bf" category="inline-link-rx"></block>은 NetApp SnapCenter를 사용한 SAP HANA 데이터 보호를 위한 모범 사례를 제공하며, 베어 메탈 서버가 있는 ONTAP ASA 시스템에서 SAP HANA 시스템을 보호하기 위한 SnapCenter 구성 및 운영 지침을 다룹니다.</block>
+  <block id="5e8a88c8a8066d604cea2cd759db882b" category="sidebar">SnapCenter를 통한 SAP HANA 데이터 보호(베어메탈 서버 및 NetApp ASA 시스템)</block>
 </blocks>

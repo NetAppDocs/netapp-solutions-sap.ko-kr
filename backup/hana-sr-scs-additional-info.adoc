@@ -20,6 +20,6 @@ summary:
 * link:../lifecycle/sc-copy-clone-introduction.html["SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화"]
 * 스토리지 복제를 사용한 SAP HANA 재해 복구
 +
-https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["https://www.netapp.com/us/media/tr-4646.pdf"^]
+https://www.netapp.com/pdf.html?item=/media/8584-tr4646.pdf["https://www.netapp.com/us/media/tr-4646.pdf"^]
 
 

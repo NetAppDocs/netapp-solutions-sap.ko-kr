@@ -18,4 +18,4 @@ summary: TR-4646은 SAP HANA의 재해 복구 보호 옵션에 대한 개요입�
 
 저자: 닐스 바우어, NetApp
 
-link:https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf["https://www.netapp.com/pdf.html?item=/media/8584-tr4646pdf.pdf"]
+link:https://www.netapp.com/pdf.html?item=/media/8584-tr4646.pdf["https://www.netapp.com/pdf.html?item=/media/8584-tr4646.pdf"]

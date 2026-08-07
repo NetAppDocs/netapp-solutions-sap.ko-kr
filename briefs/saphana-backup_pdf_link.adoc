@@ -27,4 +27,4 @@ SAP HANA 백업 및 복원 작업을 통해 조직은 다음과 같은 과제에
 
 NetApp ONTAP ® 데이터 관리 소프트웨어를 실행하는 NetApp ® 스토리지 솔루션과 NetApp SnapCenter ® 데이터 보호 소프트웨어를 함께 사용하면 이러한 모든 과제를 해결할 수 있습니다.  ONTAP 소프트웨어에 포함된 NetApp Snapshot™ 기술을 사용하면 몇 초 만에 모든 규모의 데이터 세트에 대한 백업을 만들거나 복원 작업을 실행할 수 있습니다.  SAP HANA는 유효한 백업 작업으로 스토리지 기반 스냅샷 복사본 사용을 지원합니다.
 
-link:https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6997-sb-3965pdf.pdf"]
+link:https://www.netapp.com/pdf.html?item=/media/6997-sb-3965.pdf["https://www.netapp.com/pdf.html?item=/media/6997-sb-3965.pdf"]
