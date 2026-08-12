@@ -13,6 +13,7 @@ summary: 각 SAP HANA 서버에는 최소 8Gbps 대역폭으로 이중화된 FCP
 :imagesdir: ../media/
 
 
+[role="lead"]
 각 SAP HANA 서버에는 최소 8Gbps 대역폭으로 이중화된 FCP SAN 연결이 있어야 합니다. 스토리지 컨트롤러에 연결된 각 SAP HANA 호스트에 대해 스토리지 컨트롤러에서 8Gbps 이상의 대역폭을 구성해야 합니다.
 
 다음 그림에서는 두 개의 스토리지 컨트롤러에 연결된 4개의 SAP HANA 호스트를 보여 주는 예를 보여 줍니다. 각 SAP HANA 호스트에는 중복 패브릭에 연결된 두 개의 FCP 포트가 있습니다. 스토리지 계층에서는 각 SAP HANA 호스트에 필요한 처리량을 제공하도록 FCP 포트 4개가 구성됩니다.

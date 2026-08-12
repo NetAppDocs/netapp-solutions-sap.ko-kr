@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: backup/hana-sc-vmfs-asar2-smas-add_info.html 
+keywords: SAP HANA, VMware, SnapCenter, backup and recovery, SnapMirror active sync, symmetric active-active, NetApp ASA R2 
+summary:  
+---
+= 추가 정보
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+
+
+[[additional-information]]
+== *추가 정보*
+
+[role="lead"]
+이 문서에서는 이 솔루션과 관련된 추가 리소스에 대한 링크를 제공합니다.
+
+*SAP HANA 모범 사례*
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"]..
+
+
+*SnapCenter*
+
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-generic-scope.html["SnapCenter를 사용한 SAP HANA 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sr-scs-system-replication-overview.html["SAP HANA 시스템 복제 - SnapCenter를 사용한 백업 및 복구"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/lifecycle/sc-copy-clone-introduction.html["SnapCenter를 사용하여 SAP HANA 시스템 복사 및 클론 작업 자동화"]
+* https://docs.netapp.com/us-en/netapp-solutions-sap/backup/hana-sc-vmware-smas-scope.html["SnapCenter, SnapMirror Active Sync 및 VMware Metro Storage Cluster를 통한 SAP HANA 데이터 보호 및 고가용성"]
+* https://docs.netapp.com/us-en/snapcenter/index.html["SnapCenter 소프트웨어 설명서"]
+* https://docs.netapp.com/us-en/snapcenter/protect-hana/concept_snapcenter_plug_in_for_sap_hana_database_overview.html["SnapCenter SAP HANA용 플러그인 개요"]
+* https://docs.netapp.com/us-en/snapcenter/protect-hana/task_add_hosts_and_install_plug_in_packages_on_remote_hosts_sap_hana.html["호스트를 추가하고 SnapCenter 플러그인 패키지를 설치합니다"]
+
+
+*NetApp ASA 스토리지 시스템* - SAN 기반 블록 스토리지 액세스
+
+* https://docs.netapp.com/us-en/ontap-systems/asa-r2/index.html["NetApp ASA R2 시스템 설명서"]
+* https://docs.netapp.com/us-en/ontap/san-admin/index.html["ONTAP SAN 관리"]
+
+
+*ONTAP 일관성 그룹*을 사용하여 SAP HANA 관련 스토리지 장치를 단일 보호 엔티티로 관리합니다.
+
+* https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["ONTAP 일관성 그룹 개요"]
+
+
+*SnapMirror active sync*: 대칭형 활성/활성 동기 복제를 위한 *AutomatedFailOverDuplex* 모드
+
+* https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["SnapMirror 활성 동기화 개요"]
+* https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/architecture-concept.html["SnapMirror 활성 동기화 아키텍처"]
+
+
+*ONTAP Mediator* 의 설정 및 구성
+
+* https://docs.netapp.com/us-en/ontap/mediator/index.html["ONTAP Mediator 문서"]
+* https://docs.netapp.com/us-en/ontap/mediator/workflow-summary.html["ONTAP Mediator 설치 또는 업그레이드"]
+
+
+*SnapMirror 및 SnapVault 복제*: 2차 시스템에 대한 비동기 백업 복제
+
+* https://docs.netapp.com/us-en/ontap/data-protection/index.html["ONTAP 데이터 보호 문서"]
+* https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-replication-concept.html["SnapMirror 복제 개요"]
+* https://docs.netapp.com/us-en/ontap/data-protection/snapmirror-disaster-recovery-concept.html["SnapVault 아카이브/볼트 보호 개념"] ++|++
+
+
+*VMware vSphere 및 VMFS 데이터스토어* SAP HANA VM 디스크 호스팅용
+
+* https://docs.netapp.com/us-en/ontap-apps-dbs/vmware/vmware-vsphere-overview.html["VMware vSphere with ONTAP 설명서"]
+* https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/["ONTAP tools for VMware vSphere 설명서"]
+

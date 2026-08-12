@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: bp/hana-asa-fc-io-stack-configuration.html 
-keywords: io, i/o, stack, configuration, database 
-summary: SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다. 
+keywords: io, io-stack, configuration, database 
+summary: SAP는 SAP HANA 1.0 SPS10부터 IO 동작을 조정하고 사용 중인 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개변수를 도입했습니다. 
 ---
 = SAP HANA용 I/O 스택 구성
 :allow-uri-read: 
@@ -13,6 +13,7 @@ summary: SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는
 [[io-stack-configuration-for-sap-hana]]
 == SAP HANA용 I/O 스택 구성
 
+[role="lead"]
 SAP는 SAP HANA 1.0 SPS10부터 I/O 동작을 조정하고 사용되는 파일 및 스토리지 시스템에 맞게 데이터베이스를 최적화하는 매개 변수를 도입했습니다.
 
 NetApp은 이상적인 가치를 정의하기 위해 성능 테스트를 실시했습니다. 다음 표에는 성능 테스트에서 유추된 최적의 값이 나와 있습니다.

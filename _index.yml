@@ -16,6 +16,8 @@ indexpage:
       url: bp/hana-fas-nfs-introduction.html
     - title: 파이버 채널 프로토콜을 포함한 NetApp FAS 시스템 기반 SAP HANA 구성 가이드 를 참조하십시오
       url: bp/hana-fas-fc-introduction.html
+    - title: SUSE KVM 및 NetApp 스토리지를 갖춘 SAP HANA
+      url: "/bp/kvm-hana-introduction.html"
   - title: 온프레미스 SAP HANA
     links:
     - title: SnapCenter가 베어메탈 서버와 NetApp ASA 시스템에서 실행되는 SAP HANA 데이터 보호
@@ -25,6 +27,9 @@ indexpage:
       url: backup/hana-sc-vmware-smas-scope.html
     - title: VMware VMFS 및 NetApp ASA 시스템을 사용한 SnapCenter 통한 SAP HANA 데이터 보호
       url: backup/hana-sc-vmfs-asar2-scope.html
+    - title: NetApp ASA R2에서 VMware VMFS 및 SnapMirror active sync를 사용하는 SnapCenter를
+        이용한 SAP HANA 데이터 보호
+      url: "/backup/hana-sc-vmfs-asar2-smas-introduction.html"
     - title: 스토리지 복제를 사용한 SAP HANA 재해 복구
       url: backup/hana-dr-sr-pdf-link.html
     - title: LSC 및 SnapCenter를 통해 SAP HANA 시스템 업데이트
