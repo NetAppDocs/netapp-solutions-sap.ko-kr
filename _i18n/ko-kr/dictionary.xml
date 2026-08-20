@@ -6228,4 +6228,9 @@ admin 설정</block>
   <block id="e7fce6efbbfa47cad3d6d62bbaf91452" category="paragraph">새로운 솔루션 <block ref="ddc486d09dd6bdaddbb379506389ee5b" category="inline-link-rx"></block>. VMFS 데이터스토어와 LUN을 사용하는 VMware에서 실행되는 HANA 시스템에 대해 SnapCenter를 사용한 데이터 보호 모범 사례와 NetApp ASAr2 시스템에 저장된 LUN에 대한 SnapMirror 액티브 싱크 사용 방법이 이 문서에 설명되어 있습니다.</block>
   <block id="ee5bad12c036fd3375e857e834c5b014" category="paragraph">새로운 솔루션<block ref="5d63f7ef6c292c23c51e2512d87ed65d" category="inline-link-rx"></block>은 NetApp SnapCenter를 사용한 SAP HANA 데이터 보호를 위한 모범 사례를 제공하며, 베어 메탈 서버가 있는 ONTAP ASA 시스템에서 SAP HANA 시스템을 보호하기 위한 SnapCenter 구성 및 운영 지침을 다룹니다.</block>
   <block id="33213c577fd73208a57eaf90c9296037" category="sidebar">VMware 구성 - 데이터스토어 및 VM 생성</block>
+  <block id="64500d2f1eb952270058fcdc56fc55cb" category="section-title">SnapMirror NAS용 활성 동기화</block>
+  <block id="6213cd9f309a0bac74202500f3d95388" category="paragraph">NetApp SnapMirror NAS용 액티브 동기화는 NFSv4.1을 통해 SAP HANA와 함께 사용되며, 두 개의 ONTAP 클러스터 간 SVM 미러링을 기반으로 합니다. 이 아키텍처는 NAS 데이터와 관련 SVM 구성을 동기적으로 복제하여 미션 크리티컬 SAP HANA 워크로드에 지속적인 가용성과 제로 RPO 보호를 제공합니다.</block>
+  <block id="a4c2f2f16b272c4054a8e3cd554f5fa0" category="paragraph">SVM 복제를 사용하면 볼륨, 논리 인터페이스, 내보내기 정책, NFS 설정 및 액세스 구성 등 주요 NAS 구성 요소가 보조 사이트로 미러링됩니다. 이를 통해 운영 복잡성이 줄어들고 기본 사이트 또는 스토리지 시스템을 사용할 수 없게 될 경우 보조 환경이 신속하게 인계받을 수 있습니다.</block>
+  <block id="334c73889c7cb1cdbc6f31b27820c9a9" category="paragraph">ONTAP Mediator는 참여하는 ONTAP 시스템을 모니터링하고 장애 발생 시 쿼럼 결정을 지원합니다. 이를 통해 스플릿 브레인 현상을 방지하고 제어된 페일오버 동작을 구현할 수 있습니다. SnapMirror Active Sync for NAS와 ONTAP Mediator는 함께 고가용성, 동기식 복제 및 강력한 복구 목표가 요구되는 SAP HANA 환경을 위한 안정적인 스토리지 기반을 제공합니다.</block>
+  <block id="201a54a995825f338ef39a67ad865244" category="paragraph"><block ref="201a54a995825f338ef39a67ad865244" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
