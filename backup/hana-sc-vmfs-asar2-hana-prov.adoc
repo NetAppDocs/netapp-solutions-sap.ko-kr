@@ -13,6 +13,7 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
 이 장에서는 VMFS를 사용한 VMware 설정과 관련된 SAP HANA 시스템의 설치 및 구성에 대해 설명합니다. 일반적인 추가 모범 사례는 에서 https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"]확인할 수 있습니다.
 
 

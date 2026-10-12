@@ -13,6 +13,9 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
+필수 조건을 검토하고 VMware VMFS 데이터스토어를 사용하는 SAP HANA 시스템을 보호하도록 SnapCenter를 구성하십시오.
+
 
 
 [[pre-requisites]]

@@ -13,6 +13,7 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
 VMFS가 포함된 VMware에만 해당되는 내용은 없습니다.
 
 image:sc-hana-asrr2-vmfs-image18.png["논의 중인 내용을 보여 주는 그림"]

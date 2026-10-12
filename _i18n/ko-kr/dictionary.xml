@@ -6233,4 +6233,9 @@ admin 설정</block>
   <block id="a4c2f2f16b272c4054a8e3cd554f5fa0" category="paragraph">SVM 복제를 사용하면 볼륨, 논리 인터페이스, 내보내기 정책, NFS 설정 및 액세스 구성 등 주요 NAS 구성 요소가 보조 사이트로 미러링됩니다. 이를 통해 운영 복잡성이 줄어들고 기본 사이트 또는 스토리지 시스템을 사용할 수 없게 될 경우 보조 환경이 신속하게 인계받을 수 있습니다.</block>
   <block id="334c73889c7cb1cdbc6f31b27820c9a9" category="paragraph">ONTAP Mediator는 참여하는 ONTAP 시스템을 모니터링하고 장애 발생 시 쿼럼 결정을 지원합니다. 이를 통해 스플릿 브레인 현상을 방지하고 제어된 페일오버 동작을 구현할 수 있습니다. SnapMirror Active Sync for NAS와 ONTAP Mediator는 함께 고가용성, 동기식 복제 및 강력한 복구 목표가 요구되는 SAP HANA 환경을 위한 안정적인 스토리지 기반을 제공합니다.</block>
   <block id="201a54a995825f338ef39a67ad865244" category="paragraph"><block ref="201a54a995825f338ef39a67ad865244" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4b516344ad0bee38d9cb77420d3090f1" category="paragraph">관련 SAP HANA, SnapCenter 및 NetApp 문서에 대한 링크를 찾고 이 솔루션의 버전 기록을 검토하십시오.</block>
+  <block id="d86efceb79b2224e96602b9a52811721" category="paragraph">SnapCenter가 HANA 시스템과 통신하는 데 사용하는 SAP HANA 데이터베이스 사용자 및 hdb 사용자 저장소 키를 구성합니다.</block>
+  <block id="2d56321b4b08c798784701897164d4a4" category="paragraph">필수 조건을 검토하고 VMware VMFS 데이터스토어를 사용하는 SAP HANA 시스템을 보호하도록 SnapCenter를 구성하십시오.</block>
+  <block id="07112221fd2661fd0e95645b350bce7c" category="paragraph">NetApp ONTAP 스토리지, Snapshot 기술 및 SnapCenter software를 사용하여 프로덕션 성능에 영향을 주지 않고 모든 크기의 SAP HANA 데이터베이스를 몇 초 만에 백업하고 복원할 수 있습니다.</block>
+  <block id="9418552ef4445215e623a2257da09813" category="paragraph">NetApp 기술 및 툴 포트폴리오를 사용하여 핵심 업무용 SAP HANA 애플리케이션을 지속적으로 사용할 수 있도록 재해 복구 계획을 수립하거나 조정하십시오.</block>
 </blocks>

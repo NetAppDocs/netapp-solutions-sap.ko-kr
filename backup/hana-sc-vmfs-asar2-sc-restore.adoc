@@ -8,6 +8,7 @@ summary:
 :allow-uri-read: 
 
 
+[role="lead"]
 VMFS/VMDK의 SnapCenter 에 저장된 가상 리소스의 경우 복원 작업은 항상 복제, 마운트, 복사 작업을 통해 수행됩니다.
 
 . SnapCenter 선택된 스냅샷을 기반으로 스토리지 복제본을 생성합니다.

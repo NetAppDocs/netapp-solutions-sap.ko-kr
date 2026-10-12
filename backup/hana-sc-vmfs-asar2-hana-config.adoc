@@ -13,6 +13,9 @@ summary:
 :imagesdir: ../media/
 
 
+[role="lead"]
+SnapCenter가 HANA 시스템과 통신하는 데 사용하는 SAP HANA 데이터베이스 사용자 및 hdb 사용자 저장소 키를 구성합니다.
+
 
 
 [[configure-snapcenter-database-user]]

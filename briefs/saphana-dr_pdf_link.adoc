@@ -13,6 +13,9 @@ summary: 이 문서는 SAP HANA의 재해 복구에 중점을 둡니다.
 :imagesdir: ../media/
 
 
+[role="lead"]
+NetApp 기술 및 툴 포트폴리오를 사용하여 핵심 업무용 SAP HANA 애플리케이션을 지속적으로 사용할 수 있도록 재해 복구 계획을 수립하거나 조정하십시오.
+
 
 
 [[the-challenge]]

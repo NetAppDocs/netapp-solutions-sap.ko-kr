@@ -8,6 +8,9 @@ summary:
 :allow-uri-read: 
 
 
+[role="lead"]
+관련 SAP HANA, SnapCenter 및 NetApp 문서에 대한 링크를 찾고 이 솔루션의 버전 기록을 검토하십시오.
+
 HANA 모범 사례:
 
 * https://docs.netapp.com/us-en/netapp-solutions-sap/bp/hana-asa-fc-introduction.html["파이버 채널 프로토콜을 지원하는 NetApp ASA 시스템 기반 SAP HANA"]..
